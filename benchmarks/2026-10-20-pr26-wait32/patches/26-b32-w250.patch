@@ -1,0 +1,15 @@
+--- a/src/server.c
++++ b/src/server.c
+@@ -56,10 +56,10 @@
+ #define STALL_S 30          /* close a connection whose pending request or response made no progress */
+ #define CKPT_FRAMES 1000    /* checkpoint when the WAL has this many frames */
+ #ifndef WAIT_NR
+-#define WAIT_NR 128         /* wake the loop once this many completions are pending... */
++#define WAIT_NR 32         /* wake the loop once this many completions are pending... */
+ #endif
+ #ifndef WAIT_USEC
+-#define WAIT_USEC 4000      /* ...or this long after it went to sleep with work outstanding */
++#define WAIT_USEC 250      /* ...or this long after it went to sleep with work outstanding */
+ #endif
+ /* SQLite's own page cache beats mmap here: in WAL mode an mmap'd page still needs a pager wrapper
+  * built on every fetch, while a cached page is one hash lookup. The hot set (newest posts, their likes,

@@ -1,0 +1,2718 @@
+{
+  "schema_version": 1,
+  "kind": "PR26 tuning public evidence copy",
+  "created_at": "2026-10-20T14:52:13.475543+00:00",
+  "source_root": "results/tuning26-2026-10-20",
+  "public_directory": "benchmarks/2026-10-20-pr26-wait32",
+  "scope": "All 51 timed trials in three separate measured stages, plus correctness, negative outcomes and supporting evidence.",
+  "identity_preserved": "Numeric values, source commits, image/source/fixture hashes, record fingerprints and original audit input hashes are unchanged.",
+  "original_hash_semantics": "canonical_* fields hash original local bytes; publication_* fields hash normalized publication bytes. Private path keys may differ. The manifest itself is excluded.",
+  "omitted": [
+    "seed database and benchmark tokens",
+    "full source copies",
+    "built images, caches and build contexts",
+    "progress and lock files",
+    "PR-planning metadata",
+    "unused followup-screen/confirmation stage",
+    "adjacent original benchmark analysis helpers"
+  ],
+  "files": [
+    {
+      "path": "EXPERIMENT_STATE.json",
+      "canonical_path": "results/tuning26-2026-10-20/EXPERIMENT_STATE.json",
+      "canonical_sha256": "642c80f229bb121cc2366d495228869415c2a4c2407259e689d78aa0c3894b71",
+      "canonical_bytes": 3022,
+      "publication_sha256": "642c80f229bb121cc2366d495228869415c2a4c2407259e689d78aa0c3894b71",
+      "publication_bytes": 3022,
+      "transformations": {}
+    },
+    {
+      "path": "PUBLICATION.md",
+      "canonical_path": null,
+      "canonical_sha256": null,
+      "canonical_bytes": null,
+      "publication_sha256": "e3578128c377eb173a68ea3f8f4028cf3dd81685c52b5ce5bf26c9544120ce3e",
+      "publication_bytes": 3199,
+      "transformations": {
+        "generated_publication_documentation": 1
+      }
+    },
+    {
+      "path": "README.md",
+      "canonical_path": "results/tuning26-2026-10-20/README.md",
+      "canonical_sha256": "2f809b3bc0becb5e0b379fe36222d2e30ee4270732aa57a198991eb13cd6d8cd",
+      "canonical_bytes": 1084,
+      "publication_sha256": "22c67f27ee68ace2413abc191d1fdc9dbd0cfb9363d144c186659a805aab866b",
+      "publication_bytes": 1843,
+      "transformations": {
+        "publication_scope_documentation": 1
+      }
+    },
+    {
+      "path": "RESULT.md",
+      "canonical_path": "results/tuning26-2026-10-20/RESULT.md",
+      "canonical_sha256": "559ca4720d074a2b8c3990ad8c528f1dc29edb3e8fb2ecd6cc98c26253f5b574",
+      "canonical_bytes": 10379,
+      "publication_sha256": "559ca4720d074a2b8c3990ad8c528f1dc29edb3e8fb2ecd6cc98c26253f5b574",
+      "publication_bytes": 10379,
+      "transformations": {}
+    },
+    {
+      "path": "RUN_STATUS.json",
+      "canonical_path": "results/tuning26-2026-10-20/RUN_STATUS.json",
+      "canonical_sha256": "7bfc6a288c2b842ca1bcd447d02352d4a1075e685e1f557bb998b6908d9dcebc",
+      "canonical_bytes": 3009,
+      "publication_sha256": "7bfc6a288c2b842ca1bcd447d02352d4a1075e685e1f557bb998b6908d9dcebc",
+      "publication_bytes": 3009,
+      "transformations": {}
+    },
+    {
+      "path": "analysis-cases.csv",
+      "canonical_path": "results/tuning26-2026-10-20/analysis-cases.csv",
+      "canonical_sha256": "84448bfd7748510c8b8acdb8bece56a7290f37772e09e89e98de049e3c099e53",
+      "canonical_bytes": 2307,
+      "publication_sha256": "84448bfd7748510c8b8acdb8bece56a7290f37772e09e89e98de049e3c099e53",
+      "publication_bytes": 2307,
+      "transformations": {}
+    },
+    {
+      "path": "analysis-report.md",
+      "canonical_path": "results/tuning26-2026-10-20/analysis-report.md",
+      "canonical_sha256": "22541bd86f557cdc68f7d04776894e789278b22e2ff65b442551fff5c05a1545",
+      "canonical_bytes": 3416,
+      "publication_sha256": "22541bd86f557cdc68f7d04776894e789278b22e2ff65b442551fff5c05a1545",
+      "publication_bytes": 3416,
+      "transformations": {}
+    },
+    {
+      "path": "analysis-summary.json",
+      "canonical_path": "results/tuning26-2026-10-20/analysis-summary.json",
+      "canonical_sha256": "9bfd73ffd9ae7416287cc139352b48891c9f3370b70f956e43a5c1ec6de93dec",
+      "canonical_bytes": 36000,
+      "publication_sha256": "ec650bb8e9deb1e760507d3773ca56ab4b96a0f91bf1830e4be2f20311914e7a",
+      "publication_bytes": 35918,
+      "transformations": {
+        "experiment_workspace_prefix": 1,
+        "personal_hostname": 1
+      }
+    },
+    {
+      "path": "analysis-trials.csv",
+      "canonical_path": "results/tuning26-2026-10-20/analysis-trials.csv",
+      "canonical_sha256": "bbd13ce3a4a00477cc29aa28ae68e7734fa6457e1246969b9f3c1290c4241604",
+      "canonical_bytes": 7274,
+      "publication_sha256": "bbd13ce3a4a00477cc29aa28ae68e7734fa6457e1246969b9f3c1290c4241604",
+      "publication_bytes": 7274,
+      "transformations": {}
+    },
+    {
+      "path": "analyze_experiment.py",
+      "canonical_path": "results/tuning26-2026-10-20/analyze_experiment.py",
+      "canonical_sha256": "452e5d590a3121d0e8867a80aaa80ce048e23ab88958b7802473ca61a748b67b",
+      "canonical_bytes": 34058,
+      "publication_sha256": "452e5d590a3121d0e8867a80aaa80ce048e23ab88958b7802473ca61a748b67b",
+      "publication_bytes": 34058,
+      "transformations": {}
+    },
+    {
+      "path": "archives/26-b128-w250-sha256.json",
+      "canonical_path": "results/tuning26-2026-10-20/archives/26-b128-w250-sha256.json",
+      "canonical_sha256": "d5de4cdad09bb129486f24ea5493b3e353cbf905c6caebfcd3eed7f101764922",
+      "canonical_bytes": 1640,
+      "publication_sha256": "d5de4cdad09bb129486f24ea5493b3e353cbf905c6caebfcd3eed7f101764922",
+      "publication_bytes": 1640,
+      "transformations": {}
+    },
+    {
+      "path": "archives/26-b128-w4000-sha256.json",
+      "canonical_path": "results/tuning26-2026-10-20/archives/26-b128-w4000-sha256.json",
+      "canonical_sha256": "86fa0e28d17f026b6221998a4115e331b3f0989acda95d5b8ddf53c0a4fd1ebe",
+      "canonical_bytes": 1640,
+      "publication_sha256": "86fa0e28d17f026b6221998a4115e331b3f0989acda95d5b8ddf53c0a4fd1ebe",
+      "publication_bytes": 1640,
+      "transformations": {}
+    },
+    {
+      "path": "archives/26-b32-w250-sha256.json",
+      "canonical_path": "results/tuning26-2026-10-20/archives/26-b32-w250-sha256.json",
+      "canonical_sha256": "e677212266373af7701563a296de7cbf4de53bd1db595e070b753d75feb15de8",
+      "canonical_bytes": 1640,
+      "publication_sha256": "e677212266373af7701563a296de7cbf4de53bd1db595e070b753d75feb15de8",
+      "publication_bytes": 1640,
+      "transformations": {}
+    },
+    {
+      "path": "archives/26-b32-w4000-sha256.json",
+      "canonical_path": "results/tuning26-2026-10-20/archives/26-b32-w4000-sha256.json",
+      "canonical_sha256": "7fc0fdb63dcadf9d0a6c9669da94268e03ee2e1ab6c73eafc29ffbcdbeddd396",
+      "canonical_bytes": 1640,
+      "publication_sha256": "7fc0fdb63dcadf9d0a6c9669da94268e03ee2e1ab6c73eafc29ffbcdbeddd396",
+      "publication_bytes": 1640,
+      "transformations": {}
+    },
+    {
+      "path": "archives/26-original-sha256.json",
+      "canonical_path": "results/tuning26-2026-10-20/archives/26-original-sha256.json",
+      "canonical_sha256": "86fa0e28d17f026b6221998a4115e331b3f0989acda95d5b8ddf53c0a4fd1ebe",
+      "canonical_bytes": 1640,
+      "publication_sha256": "86fa0e28d17f026b6221998a4115e331b3f0989acda95d5b8ddf53c0a4fd1ebe",
+      "publication_bytes": 1640,
+      "transformations": {}
+    },
+    {
+      "path": "archives/82-leader-sha256.json",
+      "canonical_path": "results/tuning26-2026-10-20/archives/82-leader-sha256.json",
+      "canonical_sha256": "e5b65b7e3baa75e97ba4ec2bfc7c1e1b44f43c6022559a4d1c1168cfbf9e007a",
+      "canonical_bytes": 4566,
+      "publication_sha256": "e5b65b7e3baa75e97ba4ec2bfc7c1e1b44f43c6022559a4d1c1168cfbf9e007a",
+      "publication_bytes": 4566,
+      "transformations": {}
+    },
+    {
+      "path": "audit_confirmation.py",
+      "canonical_path": "results/tuning26-2026-10-20/audit_confirmation.py",
+      "canonical_sha256": "98e620d156d949a9b8831c5ea957dd7d7daa7ba874ec2cfc023c7b1d1092cb4a",
+      "canonical_bytes": 12301,
+      "publication_sha256": "98e620d156d949a9b8831c5ea957dd7d7daa7ba874ec2cfc023c7b1d1092cb4a",
+      "publication_bytes": 12301,
+      "transformations": {}
+    },
+    {
+      "path": "bench/nginx.conf",
+      "canonical_path": "results/tuning26-2026-10-20/bench/nginx.conf",
+      "canonical_sha256": "1b4b00789b0d138759bebde391d4cd05a9598dc10a17df3d09eb569512b8f654",
+      "canonical_bytes": 890,
+      "publication_sha256": "1b4b00789b0d138759bebde391d4cd05a9598dc10a17df3d09eb569512b8f654",
+      "publication_bytes": 890,
+      "transformations": {}
+    },
+    {
+      "path": "build-status-1-130.json",
+      "canonical_path": "results/tuning26-2026-10-20/build-status-1-130.json",
+      "canonical_sha256": "3696a95d7a2cafe32216b5e8aa7014fe62f2bd82bcf3a958baa0512bd2557cd0",
+      "canonical_bytes": 6155,
+      "publication_sha256": "1b43ef67bfcb11ada187b04913249db4121164e79da7a2cdacb97875d6b2a254",
+      "publication_bytes": 6117,
+      "transformations": {
+        "repository_workspace_prefix": 1
+      }
+    },
+    {
+      "path": "build-status.json",
+      "canonical_path": "results/tuning26-2026-10-20/build-status.json",
+      "canonical_sha256": "3696a95d7a2cafe32216b5e8aa7014fe62f2bd82bcf3a958baa0512bd2557cd0",
+      "canonical_bytes": 6155,
+      "publication_sha256": "1b43ef67bfcb11ada187b04913249db4121164e79da7a2cdacb97875d6b2a254",
+      "publication_bytes": 6117,
+      "transformations": {
+        "repository_workspace_prefix": 1
+      }
+    },
+    {
+      "path": "build_variants.py",
+      "canonical_path": "results/tuning26-2026-10-20/build_variants.py",
+      "canonical_sha256": "bfd5a359bb4f9247608d020f3e18bf25b7332b4cea78fc1581fc3c92caeb5897",
+      "canonical_bytes": 4637,
+      "publication_sha256": "bfd5a359bb4f9247608d020f3e18bf25b7332b4cea78fc1581fc3c92caeb5897",
+      "publication_bytes": 4637,
+      "transformations": {}
+    },
+    {
+      "path": "check_durability.py",
+      "canonical_path": "results/tuning26-2026-10-20/check_durability.py",
+      "canonical_sha256": "9b75c1eda7080fa4a8d22d366b5c760c792f8d7aa638fecb841501c082cc4fd3",
+      "canonical_bytes": 7068,
+      "publication_sha256": "9b75c1eda7080fa4a8d22d366b5c760c792f8d7aa638fecb841501c082cc4fd3",
+      "publication_bytes": 7068,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/COMPLETION.json",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/COMPLETION.json",
+      "canonical_sha256": "038bcbafd4ee2d437340999322944379a4d294c64b94e0d74a20a9fac0c6fb59",
+      "canonical_bytes": 994,
+      "publication_sha256": "038bcbafd4ee2d437340999322944379a4d294c64b94e0d74a20a9fac0c6fb59",
+      "publication_bytes": 994,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/EXPERIMENT_STATE.json",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/EXPERIMENT_STATE.json",
+      "canonical_sha256": "fab845c18f13eafedebedf210a52e005d7a95f7f4a8cf0b97bf9c4fd9d1c882e",
+      "canonical_bytes": 2759,
+      "publication_sha256": "fab845c18f13eafedebedf210a52e005d7a95f7f4a8cf0b97bf9c4fd9d1c882e",
+      "publication_bytes": 2759,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/analysis-cases.csv",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/analysis-cases.csv",
+      "canonical_sha256": "b25d5ca5f8e6f6e99d883c7251ea66f4ade9e9fbc21c7879e606f28bde48f1bd",
+      "canonical_bytes": 1310,
+      "publication_sha256": "b25d5ca5f8e6f6e99d883c7251ea66f4ade9e9fbc21c7879e606f28bde48f1bd",
+      "publication_bytes": 1310,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/analysis-report.md",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/analysis-report.md",
+      "canonical_sha256": "be6323b755af1d418792a933c89466908c6c50ee3006eb89f9b7a320b55565c4",
+      "canonical_bytes": 2470,
+      "publication_sha256": "be6323b755af1d418792a933c89466908c6c50ee3006eb89f9b7a320b55565c4",
+      "publication_bytes": 2470,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/analysis-summary.json",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/analysis-summary.json",
+      "canonical_sha256": "a8603a6495ae76c27b7fcc5715a286b38228e4e641fb3ef729842516c1fe1fee",
+      "canonical_bytes": 30420,
+      "publication_sha256": "99efde3a5a390734226988851af5b922879a96c7e8ed55dcbbe070baec3c808a",
+      "publication_bytes": 30338,
+      "transformations": {
+        "experiment_workspace_prefix": 1,
+        "personal_hostname": 1
+      }
+    },
+    {
+      "path": "confirmation/analysis-trials.csv",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/analysis-trials.csv",
+      "canonical_sha256": "6fcd23786d27ab7e54d2b413e1d0a743aa2e5c42d997a8ea5c9c0c42d9691c62",
+      "canonical_bytes": 7251,
+      "publication_sha256": "6fcd23786d27ab7e54d2b413e1d0a743aa2e5c42d997a8ea5c9c0c42d9691c62",
+      "publication_bytes": 7251,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/archives/26-b32-w4000-sha256.json",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/archives/26-b32-w4000-sha256.json",
+      "canonical_sha256": "7fc0fdb63dcadf9d0a6c9669da94268e03ee2e1ab6c73eafc29ffbcdbeddd396",
+      "canonical_bytes": 1640,
+      "publication_sha256": "7fc0fdb63dcadf9d0a6c9669da94268e03ee2e1ab6c73eafc29ffbcdbeddd396",
+      "publication_bytes": 1640,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/archives/26-original-sha256.json",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/archives/26-original-sha256.json",
+      "canonical_sha256": "86fa0e28d17f026b6221998a4115e331b3f0989acda95d5b8ddf53c0a4fd1ebe",
+      "canonical_bytes": 1640,
+      "publication_sha256": "86fa0e28d17f026b6221998a4115e331b3f0989acda95d5b8ddf53c0a4fd1ebe",
+      "publication_bytes": 1640,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/archives/82-leader-sha256.json",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/archives/82-leader-sha256.json",
+      "canonical_sha256": "e5b65b7e3baa75e97ba4ec2bfc7c1e1b44f43c6022559a4d1c1168cfbf9e007a",
+      "canonical_bytes": 4566,
+      "publication_sha256": "e5b65b7e3baa75e97ba4ec2bfc7c1e1b44f43c6022559a4d1c1168cfbf9e007a",
+      "publication_bytes": 4566,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/bench/nginx.conf",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/bench/nginx.conf",
+      "canonical_sha256": "1b4b00789b0d138759bebde391d4cd05a9598dc10a17df3d09eb569512b8f654",
+      "canonical_bytes": 890,
+      "publication_sha256": "1b4b00789b0d138759bebde391d4cd05a9598dc10a17df3d09eb569512b8f654",
+      "publication_bytes": 890,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/build-status-1-130.json",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/build-status-1-130.json",
+      "canonical_sha256": "0f3a574b438efb99078ccb1315a2e27f4f6269d6e004b6eb26b0a8b1a12b26f2",
+      "canonical_bytes": 2541,
+      "publication_sha256": "17b7d1aa0136f70c6ddd888e2a639e2f3b89d4b60dc5e27fbdda31d8c964a08a",
+      "publication_bytes": 2503,
+      "transformations": {
+        "repository_workspace_prefix": 1
+      }
+    },
+    {
+      "path": "confirmation/build-status.json",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/build-status.json",
+      "canonical_sha256": "0f3a574b438efb99078ccb1315a2e27f4f6269d6e004b6eb26b0a8b1a12b26f2",
+      "canonical_bytes": 2541,
+      "publication_sha256": "17b7d1aa0136f70c6ddd888e2a639e2f3b89d4b60dc5e27fbdda31d8c964a08a",
+      "publication_bytes": 2503,
+      "transformations": {
+        "repository_workspace_prefix": 1
+      }
+    },
+    {
+      "path": "confirmation/environment-bench.json",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/environment-bench.json",
+      "canonical_sha256": "6c66d29e791c6784e9b656203cd1a144f3e401cb44ff3a8fc5d5729291b7bb70",
+      "canonical_bytes": 3936,
+      "publication_sha256": "19558fb295b5a928a7da8d1ac4db10fb06c35e9a648bd1952e18c260f2f83a77",
+      "publication_bytes": 3921,
+      "transformations": {
+        "personal_hostname": 1
+      }
+    },
+    {
+      "path": "confirmation/environment-verify.json",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/environment-verify.json",
+      "canonical_sha256": "aa05fb5d2dc4d70666b23364da4514dfd2af240df664bc8a16e7763ea4219f99",
+      "canonical_bytes": 3937,
+      "publication_sha256": "6af44a2df0051700aaa145085492d94e0abe226cb388d9961d5edda26d7d7afe",
+      "publication_bytes": 3922,
+      "transformations": {
+        "personal_hostname": 1
+      }
+    },
+    {
+      "path": "confirmation/frozen-inputs.json",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/frozen-inputs.json",
+      "canonical_sha256": "a8fda3a495cdf447f06212da6d2412251dc8c6fd02cf1b3d681423d6166cd0b5",
+      "canonical_bytes": 10666,
+      "publication_sha256": "9d0ee0e8915ec6812661b802b71553ece37d1cc1fc474c648ce4606168f79983",
+      "publication_bytes": 6780,
+      "transformations": {
+        "experiment_workspace_prefix": 58
+      }
+    },
+    {
+      "path": "confirmation/host-observation.json",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/host-observation.json",
+      "canonical_sha256": "fc2b3a975c7f0702289e24e125e38be5d07bb9270c5123b0b0b69e1f2ee2d066",
+      "canonical_bytes": 577,
+      "publication_sha256": "fc2b3a975c7f0702289e24e125e38be5d07bb9270c5123b0b0b69e1f2ee2d066",
+      "publication_bytes": 577,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/identity-audit-post.json",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/identity-audit-post.json",
+      "canonical_sha256": "468b258f299b4796c8ebbecd2766874906208b01829a1dc4eee446ba5eade916",
+      "canonical_bytes": 13363,
+      "publication_sha256": "6765049ba86dcfe6eb6dffff1ef2a53798b0f11400830361555990692f5da9ca",
+      "publication_bytes": 9477,
+      "transformations": {
+        "experiment_workspace_prefix": 58
+      }
+    },
+    {
+      "path": "confirmation/identity-audit-pre.json",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/identity-audit-pre.json",
+      "canonical_sha256": "815231760b7ecc397a048cce5260197e1b6291e8cd7723a9d87fde37d9993bf1",
+      "canonical_bytes": 13363,
+      "publication_sha256": "c4b81df0dacc44efd6bd055464bad5e0d106184f4c9d46476126a9942ddab385",
+      "publication_bytes": 9477,
+      "transformations": {
+        "experiment_workspace_prefix": 58
+      }
+    },
+    {
+      "path": "confirmation/logs/bench-26-b32-w4000-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/logs/bench-26-b32-w4000-1.log",
+      "canonical_sha256": "90a02744ed2a44c29bb42b27ef887320702ff46b26d7497d430a95b683e2a78f",
+      "canonical_bytes": 440,
+      "publication_sha256": "90a02744ed2a44c29bb42b27ef887320702ff46b26d7497d430a95b683e2a78f",
+      "publication_bytes": 440,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/logs/bench-26-b32-w4000-2.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/logs/bench-26-b32-w4000-2.log",
+      "canonical_sha256": "c1498b68c0bdd7662053d3620705773eb50021f721b824bf7ff8f8fa9a6d0947",
+      "canonical_bytes": 441,
+      "publication_sha256": "c1498b68c0bdd7662053d3620705773eb50021f721b824bf7ff8f8fa9a6d0947",
+      "publication_bytes": 441,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/logs/bench-26-b32-w4000-3.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/logs/bench-26-b32-w4000-3.log",
+      "canonical_sha256": "d8b0564645f0bf3ee998f737beb1367a96e7d59c565c7f3f8ec38e9105a4f132",
+      "canonical_bytes": 440,
+      "publication_sha256": "d8b0564645f0bf3ee998f737beb1367a96e7d59c565c7f3f8ec38e9105a4f132",
+      "publication_bytes": 440,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/logs/bench-26-b32-w4000-4.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/logs/bench-26-b32-w4000-4.log",
+      "canonical_sha256": "2b3ddb1dd68f66769979dfb0639b4457e3088266701aea235c5926d64952eda1",
+      "canonical_bytes": 441,
+      "publication_sha256": "2b3ddb1dd68f66769979dfb0639b4457e3088266701aea235c5926d64952eda1",
+      "publication_bytes": 441,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/logs/bench-26-b32-w4000-5.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/logs/bench-26-b32-w4000-5.log",
+      "canonical_sha256": "01b5b3e24435058693ceba09d3f09a3393dcecae2ac1753637fc9ecfc336bb95",
+      "canonical_bytes": 440,
+      "publication_sha256": "01b5b3e24435058693ceba09d3f09a3393dcecae2ac1753637fc9ecfc336bb95",
+      "publication_bytes": 440,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/logs/bench-26-b32-w4000-6.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/logs/bench-26-b32-w4000-6.log",
+      "canonical_sha256": "0402b0b5215be0e619880d8acf64121133b19b38435440f841b455a6fb004757",
+      "canonical_bytes": 441,
+      "publication_sha256": "0402b0b5215be0e619880d8acf64121133b19b38435440f841b455a6fb004757",
+      "publication_bytes": 441,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/logs/bench-26-original-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/logs/bench-26-original-1.log",
+      "canonical_sha256": "b99f062e3678a13ea22b7f687a42e7d6c2cc7e336c9497580ee3fde263406625",
+      "canonical_bytes": 439,
+      "publication_sha256": "b99f062e3678a13ea22b7f687a42e7d6c2cc7e336c9497580ee3fde263406625",
+      "publication_bytes": 439,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/logs/bench-26-original-2.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/logs/bench-26-original-2.log",
+      "canonical_sha256": "b7064547d40f190e5cd390ee218c76f2c296750aa3e0f97e4bb23488ae07084d",
+      "canonical_bytes": 439,
+      "publication_sha256": "b7064547d40f190e5cd390ee218c76f2c296750aa3e0f97e4bb23488ae07084d",
+      "publication_bytes": 439,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/logs/bench-26-original-3.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/logs/bench-26-original-3.log",
+      "canonical_sha256": "d8cb4396947a5ad9ca942ceab396458c2fba58fe7ffd062159615e475256306a",
+      "canonical_bytes": 439,
+      "publication_sha256": "d8cb4396947a5ad9ca942ceab396458c2fba58fe7ffd062159615e475256306a",
+      "publication_bytes": 439,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/logs/bench-26-original-4.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/logs/bench-26-original-4.log",
+      "canonical_sha256": "fabe42ad14a5d9428948979c0cbb7e7affdc7f9fc8f4c0360e5ba508b6c595dc",
+      "canonical_bytes": 439,
+      "publication_sha256": "fabe42ad14a5d9428948979c0cbb7e7affdc7f9fc8f4c0360e5ba508b6c595dc",
+      "publication_bytes": 439,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/logs/bench-26-original-5.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/logs/bench-26-original-5.log",
+      "canonical_sha256": "83d25584368e7dfb3bd0ea9c4e11bee19962d055124edcb437dd7fb4dcb3903b",
+      "canonical_bytes": 439,
+      "publication_sha256": "83d25584368e7dfb3bd0ea9c4e11bee19962d055124edcb437dd7fb4dcb3903b",
+      "publication_bytes": 439,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/logs/bench-26-original-6.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/logs/bench-26-original-6.log",
+      "canonical_sha256": "3b515a56f0fee3e7051bad5fcbdb8388d3907e0398eab3b2c739fd029c4ff8da",
+      "canonical_bytes": 439,
+      "publication_sha256": "3b515a56f0fee3e7051bad5fcbdb8388d3907e0398eab3b2c739fd029c4ff8da",
+      "publication_bytes": 439,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/logs/bench-82-leader-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/logs/bench-82-leader-1.log",
+      "canonical_sha256": "2a8d6c72be88362bf2b2e6dfb0fb933585db26c44f0b3758b077e6f47feaa28d",
+      "canonical_bytes": 441,
+      "publication_sha256": "2a8d6c72be88362bf2b2e6dfb0fb933585db26c44f0b3758b077e6f47feaa28d",
+      "publication_bytes": 441,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/logs/bench-82-leader-2.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/logs/bench-82-leader-2.log",
+      "canonical_sha256": "94f2769fab17ba68a8ac89bccf4a3ffbcec405bfade95e38e5163e69603d08b3",
+      "canonical_bytes": 441,
+      "publication_sha256": "94f2769fab17ba68a8ac89bccf4a3ffbcec405bfade95e38e5163e69603d08b3",
+      "publication_bytes": 441,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/logs/bench-82-leader-3.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/logs/bench-82-leader-3.log",
+      "canonical_sha256": "c61c3a71bcb9b18ce34e4f7ae969976953ec84358ed3da35f504a6a46f7e7beb",
+      "canonical_bytes": 441,
+      "publication_sha256": "c61c3a71bcb9b18ce34e4f7ae969976953ec84358ed3da35f504a6a46f7e7beb",
+      "publication_bytes": 441,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/logs/bench-82-leader-4.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/logs/bench-82-leader-4.log",
+      "canonical_sha256": "336e91eccb78ef68c4fac7eb8a47e9e329cdb668b40aed3065a0166345674e89",
+      "canonical_bytes": 441,
+      "publication_sha256": "336e91eccb78ef68c4fac7eb8a47e9e329cdb668b40aed3065a0166345674e89",
+      "publication_bytes": 441,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/logs/bench-82-leader-5.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/logs/bench-82-leader-5.log",
+      "canonical_sha256": "71d45c4d7b0631800e2d01fd919dd04418f956397389e0621110952ba492efb2",
+      "canonical_bytes": 441,
+      "publication_sha256": "71d45c4d7b0631800e2d01fd919dd04418f956397389e0621110952ba492efb2",
+      "publication_bytes": 441,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/logs/bench-82-leader-6.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/logs/bench-82-leader-6.log",
+      "canonical_sha256": "1cd2c2cb4e647e308d7bf6612969aae6c2c8f05290389a348b0bc64f0f8e1914",
+      "canonical_bytes": 441,
+      "publication_sha256": "1cd2c2cb4e647e308d7bf6612969aae6c2c8f05290389a348b0bc64f0f8e1914",
+      "publication_bytes": 441,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/logs/verify-26-b32-w4000-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/logs/verify-26-b32-w4000-1.log",
+      "canonical_sha256": "f97ccaf814c8ed0cf1d5da2f962cdab896b073bd6dad0ebd3655ea43d481ebbe",
+      "canonical_bytes": 1755,
+      "publication_sha256": "f97ccaf814c8ed0cf1d5da2f962cdab896b073bd6dad0ebd3655ea43d481ebbe",
+      "publication_bytes": 1755,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/logs/verify-26-original-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/logs/verify-26-original-1.log",
+      "canonical_sha256": "710d80ba70e5ca336d4096b0a7553e40a79677c2000933c5c023e34a5c82de6f",
+      "canonical_bytes": 1755,
+      "publication_sha256": "710d80ba70e5ca336d4096b0a7553e40a79677c2000933c5c023e34a5c82de6f",
+      "publication_bytes": 1755,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/logs/verify-82-leader-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/logs/verify-82-leader-1.log",
+      "canonical_sha256": "2a508964ac7a8f362745de88f1a3150f9edd17bd29c7b03f2fdcaa66e36cf14b",
+      "canonical_bytes": 1755,
+      "publication_sha256": "2a508964ac7a8f362745de88f1a3150f9edd17bd29c7b03f2fdcaa66e36cf14b",
+      "publication_bytes": 1755,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/manifest.json",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/manifest.json",
+      "canonical_sha256": "20df253a042742c2b8d71161c0c33466c2bae9e2d3d6d40b6769d65b5e4b81e0",
+      "canonical_bytes": 7900,
+      "publication_sha256": "20df253a042742c2b8d71161c0c33466c2bae9e2d3d6d40b6769d65b5e4b81e0",
+      "publication_bytes": 7900,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/measurements.json",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/measurements.json",
+      "canonical_sha256": "140cdbff1d50b2b956837dcec01a5352062c7cf822bf03e18fe752ec9ef51d08",
+      "canonical_bytes": 353889,
+      "publication_sha256": "140cdbff1d50b2b956837dcec01a5352062c7cf822bf03e18fe752ec9ef51d08",
+      "publication_bytes": 353889,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/mixed.lua",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/mixed.lua",
+      "canonical_sha256": "eb8d49273c56fe4b558a58bd6c7e65551ec683c53d299e2b3a69e0b71421d701",
+      "canonical_bytes": 1478,
+      "publication_sha256": "eb8d49273c56fe4b558a58bd6c7e65551ec683c53d299e2b3a69e0b71421d701",
+      "publication_bytes": 1478,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/orders.json",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/orders.json",
+      "canonical_sha256": "4b87fb554cd0cdc632d2d97e7afd458b97a7758c1d8e6b12cb0bf7dea1b4f253",
+      "canonical_bytes": 417,
+      "publication_sha256": "4b87fb554cd0cdc632d2d97e7afd458b97a7758c1d8e6b12cb0bf7dea1b4f253",
+      "publication_bytes": 417,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/patches/26-b32-w4000.patch",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/patches/26-b32-w4000.patch",
+      "canonical_sha256": "3a420dbe948dbab31b2ed928f08f216d5ee73ca3fb43b5c5b07d4ef74ad79fbc",
+      "canonical_bytes": 562,
+      "publication_sha256": "3a420dbe948dbab31b2ed928f08f216d5ee73ca3fb43b5c5b07d4ef74ad79fbc",
+      "publication_bytes": 562,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/run.py",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/run.py",
+      "canonical_sha256": "b85ee72abe98e8c8072fec1be0c052cf6968faf03d8fb9e08719625b77315d39",
+      "canonical_bytes": 17380,
+      "publication_sha256": "b85ee72abe98e8c8072fec1be0c052cf6968faf03d8fb9e08719625b77315d39",
+      "publication_bytes": 17380,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/seccomp-io-uring.json",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/seccomp-io-uring.json",
+      "canonical_sha256": "4baf3b268185f55527933e7df090e85936003674e34b5f5396461fd9d3efeb17",
+      "canonical_bytes": 22434,
+      "publication_sha256": "4baf3b268185f55527933e7df090e85936003674e34b5f5396461fd9d3efeb17",
+      "publication_bytes": 22434,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/selection.json",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/selection.json",
+      "canonical_sha256": "1bdf88ca1a1f76c0965c13f006c768da53083a6a77d18b5f99b3f0bc8217a3f3",
+      "canonical_bytes": 42856,
+      "publication_sha256": "e5cd0b76112537ae4798f44015bfc799d097cfc37c532b042c59aaa771725aef",
+      "publication_bytes": 42640,
+      "transformations": {
+        "experiment_workspace_prefix": 3,
+        "personal_hostname": 1
+      }
+    },
+    {
+      "path": "confirmation/semantic.py",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/semantic.py",
+      "canonical_sha256": "785f8ce565b469e4f4d702d01a9d868cd7458d64e3f1362c3fb8728560215fbc",
+      "canonical_bytes": 3365,
+      "publication_sha256": "785f8ce565b469e4f4d702d01a9d868cd7458d64e3f1362c3fb8728560215fbc",
+      "publication_bytes": 3365,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/serve.py",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/serve.py",
+      "canonical_sha256": "52d8bdd75c0dc2477fc5b2391c797a2832eab5ac61a72d3bbe4dac4cb94bf311",
+      "canonical_bytes": 8993,
+      "publication_sha256": "52d8bdd75c0dc2477fc5b2391c797a2832eab5ac61a72d3bbe4dac4cb94bf311",
+      "publication_bytes": 8993,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/server-logs/bench-26-b32-w4000-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/server-logs/bench-26-b32-w4000-1.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/server-logs/bench-26-b32-w4000-2.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/server-logs/bench-26-b32-w4000-2.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/server-logs/bench-26-b32-w4000-3.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/server-logs/bench-26-b32-w4000-3.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/server-logs/bench-26-b32-w4000-4.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/server-logs/bench-26-b32-w4000-4.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/server-logs/bench-26-b32-w4000-5.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/server-logs/bench-26-b32-w4000-5.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/server-logs/bench-26-b32-w4000-6.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/server-logs/bench-26-b32-w4000-6.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/server-logs/bench-26-original-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/server-logs/bench-26-original-1.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/server-logs/bench-26-original-2.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/server-logs/bench-26-original-2.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/server-logs/bench-26-original-3.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/server-logs/bench-26-original-3.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/server-logs/bench-26-original-4.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/server-logs/bench-26-original-4.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/server-logs/bench-26-original-5.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/server-logs/bench-26-original-5.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/server-logs/bench-26-original-6.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/server-logs/bench-26-original-6.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/server-logs/bench-82-leader-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/server-logs/bench-82-leader-1.log",
+      "canonical_sha256": "548fdd34d36ce752af14d5afa5d94578455e9b954e91060df629174ebacf6397",
+      "canonical_bytes": 91,
+      "publication_sha256": "548fdd34d36ce752af14d5afa5d94578455e9b954e91060df629174ebacf6397",
+      "publication_bytes": 91,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/server-logs/bench-82-leader-2.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/server-logs/bench-82-leader-2.log",
+      "canonical_sha256": "548fdd34d36ce752af14d5afa5d94578455e9b954e91060df629174ebacf6397",
+      "canonical_bytes": 91,
+      "publication_sha256": "548fdd34d36ce752af14d5afa5d94578455e9b954e91060df629174ebacf6397",
+      "publication_bytes": 91,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/server-logs/bench-82-leader-3.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/server-logs/bench-82-leader-3.log",
+      "canonical_sha256": "548fdd34d36ce752af14d5afa5d94578455e9b954e91060df629174ebacf6397",
+      "canonical_bytes": 91,
+      "publication_sha256": "548fdd34d36ce752af14d5afa5d94578455e9b954e91060df629174ebacf6397",
+      "publication_bytes": 91,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/server-logs/bench-82-leader-4.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/server-logs/bench-82-leader-4.log",
+      "canonical_sha256": "548fdd34d36ce752af14d5afa5d94578455e9b954e91060df629174ebacf6397",
+      "canonical_bytes": 91,
+      "publication_sha256": "548fdd34d36ce752af14d5afa5d94578455e9b954e91060df629174ebacf6397",
+      "publication_bytes": 91,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/server-logs/bench-82-leader-5.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/server-logs/bench-82-leader-5.log",
+      "canonical_sha256": "548fdd34d36ce752af14d5afa5d94578455e9b954e91060df629174ebacf6397",
+      "canonical_bytes": 91,
+      "publication_sha256": "548fdd34d36ce752af14d5afa5d94578455e9b954e91060df629174ebacf6397",
+      "publication_bytes": 91,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/server-logs/bench-82-leader-6.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/server-logs/bench-82-leader-6.log",
+      "canonical_sha256": "548fdd34d36ce752af14d5afa5d94578455e9b954e91060df629174ebacf6397",
+      "canonical_bytes": 91,
+      "publication_sha256": "548fdd34d36ce752af14d5afa5d94578455e9b954e91060df629174ebacf6397",
+      "publication_bytes": 91,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/server-logs/verify-26-b32-w4000-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/server-logs/verify-26-b32-w4000-1.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/server-logs/verify-26-original-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/server-logs/verify-26-original-1.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/server-logs/verify-82-leader-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/server-logs/verify-82-leader-1.log",
+      "canonical_sha256": "548fdd34d36ce752af14d5afa5d94578455e9b954e91060df629174ebacf6397",
+      "canonical_bytes": 91,
+      "publication_sha256": "548fdd34d36ce752af14d5afa5d94578455e9b954e91060df629174ebacf6397",
+      "publication_bytes": 91,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/shared-sha256.json",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/shared-sha256.json",
+      "canonical_sha256": "aadccf6cbeeedd100ec927e47525ab197d6f81cd665cccae97b3dcf7f29158e3",
+      "canonical_bytes": 1096,
+      "publication_sha256": "aadccf6cbeeedd100ec927e47525ab197d6f81cd665cccae97b3dcf7f29158e3",
+      "publication_bytes": 1096,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/test/golden/feed.json",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/test/golden/feed.json",
+      "canonical_sha256": "8c9b3d6cb46e650c4786ab9281bc3a72ba7bd75b7926021d2b0c431dd9bd3d68",
+      "canonical_bytes": 5102,
+      "publication_sha256": "8c9b3d6cb46e650c4786ab9281bc3a72ba7bd75b7926021d2b0c431dd9bd3d68",
+      "publication_bytes": 5102,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/test/golden/post-1.json",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/test/golden/post-1.json",
+      "canonical_sha256": "8035350dc55714c9a673af9f441ab07d2b269047e1137612f022877b9e8f3652",
+      "canonical_bytes": 195,
+      "publication_sha256": "8035350dc55714c9a673af9f441ab07d2b269047e1137612f022877b9e8f3652",
+      "publication_bytes": 195,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/test/golden/post-250000.json",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/test/golden/post-250000.json",
+      "canonical_sha256": "febb2506b9d4a99bc34f1f182c61ced6b3ba3b2533724485c6e5206604a65b71",
+      "canonical_bytes": 146,
+      "publication_sha256": "febb2506b9d4a99bc34f1f182c61ced6b3ba3b2533724485c6e5206604a65b71",
+      "publication_bytes": 146,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/test/golden/post-500000.json",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/test/golden/post-500000.json",
+      "canonical_sha256": "662fe8c7282dee8aab00dab6cdb15e64e953f10a2c1c923e2ea67fab1429a4de",
+      "canonical_bytes": 324,
+      "publication_sha256": "662fe8c7282dee8aab00dab6cdb15e64e953f10a2c1c923e2ea67fab1429a4de",
+      "publication_bytes": 324,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/test/test.sh",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/test/test.sh",
+      "canonical_sha256": "679e722044fd1f366d85093232e7f2ec2e3398ea312032dd9eb6cbdf8b17306a",
+      "canonical_bytes": 8408,
+      "publication_sha256": "679e722044fd1f366d85093232e7f2ec2e3398ea312032dd9eb6cbdf8b17306a",
+      "publication_bytes": 8408,
+      "transformations": {}
+    },
+    {
+      "path": "confirmation/verification.json",
+      "canonical_path": "results/tuning26-2026-10-20/confirmation/verification.json",
+      "canonical_sha256": "418ff73c396175beedd06cadaa09eb8aefdf6f10854f393755ea0db30e4391f1",
+      "canonical_bytes": 62495,
+      "publication_sha256": "418ff73c396175beedd06cadaa09eb8aefdf6f10854f393755ea0db30e4391f1",
+      "publication_bytes": 62495,
+      "transformations": {}
+    },
+    {
+      "path": "diagnose_commit.py",
+      "canonical_path": "results/tuning26-2026-10-20/diagnose_commit.py",
+      "canonical_sha256": "9d296d43bf0418611545c752634316a882016600e6ba8508f9849eda12acd567",
+      "canonical_bytes": 4433,
+      "publication_sha256": "9d296d43bf0418611545c752634316a882016600e6ba8508f9849eda12acd567",
+      "publication_bytes": 4433,
+      "transformations": {}
+    },
+    {
+      "path": "durability/26-b32-w4000-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/durability/26-b32-w4000-1.log",
+      "canonical_sha256": "1cc346880b50892b51b376f78554086efe99bb59d3a40ef5b9a02ae38017589b",
+      "canonical_bytes": 112,
+      "publication_sha256": "1cc346880b50892b51b376f78554086efe99bb59d3a40ef5b9a02ae38017589b",
+      "publication_bytes": 112,
+      "transformations": {}
+    },
+    {
+      "path": "durability/26-b32-w4000-attempt2-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/durability/26-b32-w4000-attempt2-1.log",
+      "canonical_sha256": "486a444189b1a25c6458b09c049230d96326d10ff4401ff32b7e84fbff931645",
+      "canonical_bytes": 4816,
+      "publication_sha256": "486a444189b1a25c6458b09c049230d96326d10ff4401ff32b7e84fbff931645",
+      "publication_bytes": 4816,
+      "transformations": {}
+    },
+    {
+      "path": "durability/26-b32-w4000-attempt2-2.log",
+      "canonical_path": "results/tuning26-2026-10-20/durability/26-b32-w4000-attempt2-2.log",
+      "canonical_sha256": "c67d49206985acaba45c4e1b3c9eeb5628fa9863e56565dea13cc018ac0c6b89",
+      "canonical_bytes": 398,
+      "publication_sha256": "c67d49206985acaba45c4e1b3c9eeb5628fa9863e56565dea13cc018ac0c6b89",
+      "publication_bytes": 398,
+      "transformations": {}
+    },
+    {
+      "path": "durability/26-b32-w4000-attempt2-3.log",
+      "canonical_path": "results/tuning26-2026-10-20/durability/26-b32-w4000-attempt2-3.log",
+      "canonical_sha256": "d86bee1a8e93f3afa5a9b70bea838a81285681826633611436d9507ffa0da2da",
+      "canonical_bytes": 232,
+      "publication_sha256": "d86bee1a8e93f3afa5a9b70bea838a81285681826633611436d9507ffa0da2da",
+      "publication_bytes": 232,
+      "transformations": {}
+    },
+    {
+      "path": "durability/26-b32-w4000-attempt2.json",
+      "canonical_path": "results/tuning26-2026-10-20/durability/26-b32-w4000-attempt2.json",
+      "canonical_sha256": "1fb18b8154161340c8df48ebf117e72e11178d2e6ede128ba7f62bc9df452b1c",
+      "canonical_bytes": 1702,
+      "publication_sha256": "1fb18b8154161340c8df48ebf117e72e11178d2e6ede128ba7f62bc9df452b1c",
+      "publication_bytes": 1702,
+      "transformations": {}
+    },
+    {
+      "path": "durability/26-b32-w4000.json",
+      "canonical_path": "results/tuning26-2026-10-20/durability/26-b32-w4000.json",
+      "canonical_sha256": "b8eeb7dd9d65f41dfc05df2b9248cf39d4e48c5f6342f7e22d2eea079fc7df94",
+      "canonical_bytes": 1426,
+      "publication_sha256": "b8eeb7dd9d65f41dfc05df2b9248cf39d4e48c5f6342f7e22d2eea079fc7df94",
+      "publication_bytes": 1426,
+      "transformations": {}
+    },
+    {
+      "path": "environment-bench.json",
+      "canonical_path": "results/tuning26-2026-10-20/environment-bench.json",
+      "canonical_sha256": "8fac3d19e91e1b83e753709e11e9d5f8ddb594db2e9e8d19b0ec9c96275a5ea4",
+      "canonical_bytes": 3460,
+      "publication_sha256": "82b0121d652eb7861fa75dd82870d585b4a6197b3357e2c238d48a6404162040",
+      "publication_bytes": 3445,
+      "transformations": {
+        "personal_hostname": 1
+      }
+    },
+    {
+      "path": "environment-verify.json",
+      "canonical_path": "results/tuning26-2026-10-20/environment-verify.json",
+      "canonical_sha256": "ea9eab143ffe3b00fb3931ba81722df8fd0fc9835de1e432d9ee461489bc1092",
+      "canonical_bytes": 3461,
+      "publication_sha256": "90bfa423e104129dcde459f16e614e39635793ea10a52c879757d106d737dc8b",
+      "publication_bytes": 3446,
+      "transformations": {
+        "personal_hostname": 1
+      }
+    },
+    {
+      "path": "followup-screen/EXPERIMENT_STATE.json",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/EXPERIMENT_STATE.json",
+      "canonical_sha256": "114ede2e1ca6862066d768628f67439e6b62ef8b2ec70d284d9a13b8727326de",
+      "canonical_bytes": 8486,
+      "publication_sha256": "114ede2e1ca6862066d768628f67439e6b62ef8b2ec70d284d9a13b8727326de",
+      "publication_bytes": 8486,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/analysis-cases.csv",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/analysis-cases.csv",
+      "canonical_sha256": "db5c84434b7186e24abb3195a94b36b995e85b29364c88022ee6365d477dac09",
+      "canonical_bytes": 1938,
+      "publication_sha256": "db5c84434b7186e24abb3195a94b36b995e85b29364c88022ee6365d477dac09",
+      "publication_bytes": 1938,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/analysis-report.md",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/analysis-report.md",
+      "canonical_sha256": "bd5abf15e8a8060c6ca838f1360dd8298cbd654264ef9e21b35dc7b1d169a3b9",
+      "canonical_bytes": 2885,
+      "publication_sha256": "bd5abf15e8a8060c6ca838f1360dd8298cbd654264ef9e21b35dc7b1d169a3b9",
+      "publication_bytes": 2885,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/analysis-summary.json",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/analysis-summary.json",
+      "canonical_sha256": "7504ca6d652e7771affc8718d5ad1c28ffbce7113f4dae87db28e14c99fa4159",
+      "canonical_bytes": 30482,
+      "publication_sha256": "56faed34a14d5193dd440b86bf1a695e399b120af3d90af9d26cbb03e379aadd",
+      "publication_bytes": 30400,
+      "transformations": {
+        "experiment_workspace_prefix": 1,
+        "personal_hostname": 1
+      }
+    },
+    {
+      "path": "followup-screen/analysis-trials.csv",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/analysis-trials.csv",
+      "canonical_sha256": "fc1515825ea1fb3f8cab7b1bf4eda9fca09cf22978b8a7cf84c848b5340c2d5a",
+      "canonical_bytes": 6071,
+      "publication_sha256": "fc1515825ea1fb3f8cab7b1bf4eda9fca09cf22978b8a7cf84c848b5340c2d5a",
+      "publication_bytes": 6071,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/archives/26-b16-w4000-sha256.json",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/archives/26-b16-w4000-sha256.json",
+      "canonical_sha256": "fd8af6d334e6aad34dcb2a8adbe6db7e3e621a73935c9bc4e2f19f4788fd8a97",
+      "canonical_bytes": 1640,
+      "publication_sha256": "fd8af6d334e6aad34dcb2a8adbe6db7e3e621a73935c9bc4e2f19f4788fd8a97",
+      "publication_bytes": 1640,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/archives/26-b32-w4000-sha256.json",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/archives/26-b32-w4000-sha256.json",
+      "canonical_sha256": "7fc0fdb63dcadf9d0a6c9669da94268e03ee2e1ab6c73eafc29ffbcdbeddd396",
+      "canonical_bytes": 1640,
+      "publication_sha256": "7fc0fdb63dcadf9d0a6c9669da94268e03ee2e1ab6c73eafc29ffbcdbeddd396",
+      "publication_bytes": 1640,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/archives/26-b8-w4000-sha256.json",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/archives/26-b8-w4000-sha256.json",
+      "canonical_sha256": "338bcd8145a2c673080f3c29416937be72cdad66447e4c1b0b5d992d99f7134c",
+      "canonical_bytes": 1640,
+      "publication_sha256": "338bcd8145a2c673080f3c29416937be72cdad66447e4c1b0b5d992d99f7134c",
+      "publication_bytes": 1640,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/archives/26-original-sha256.json",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/archives/26-original-sha256.json",
+      "canonical_sha256": "86fa0e28d17f026b6221998a4115e331b3f0989acda95d5b8ddf53c0a4fd1ebe",
+      "canonical_bytes": 1640,
+      "publication_sha256": "86fa0e28d17f026b6221998a4115e331b3f0989acda95d5b8ddf53c0a4fd1ebe",
+      "publication_bytes": 1640,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/archives/82-leader-sha256.json",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/archives/82-leader-sha256.json",
+      "canonical_sha256": "e5b65b7e3baa75e97ba4ec2bfc7c1e1b44f43c6022559a4d1c1168cfbf9e007a",
+      "canonical_bytes": 4566,
+      "publication_sha256": "e5b65b7e3baa75e97ba4ec2bfc7c1e1b44f43c6022559a4d1c1168cfbf9e007a",
+      "publication_bytes": 4566,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/bench/nginx.conf",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/bench/nginx.conf",
+      "canonical_sha256": "1b4b00789b0d138759bebde391d4cd05a9598dc10a17df3d09eb569512b8f654",
+      "canonical_bytes": 890,
+      "publication_sha256": "1b4b00789b0d138759bebde391d4cd05a9598dc10a17df3d09eb569512b8f654",
+      "publication_bytes": 890,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/build-status-1-130.json",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/build-status-1-130.json",
+      "canonical_sha256": "1d6ff7ec419455cacc6d4c6bbfbc14f83eab506cb0733beb5a210c17e7b25a2b",
+      "canonical_bytes": 4946,
+      "publication_sha256": "ee2ed0fbd01696fbc28dd0b13c148de8bf5105ce3a48041187d3ac6f9ef5f9c0",
+      "publication_bytes": 4908,
+      "transformations": {
+        "repository_workspace_prefix": 1
+      }
+    },
+    {
+      "path": "followup-screen/build-status.json",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/build-status.json",
+      "canonical_sha256": "1d6ff7ec419455cacc6d4c6bbfbc14f83eab506cb0733beb5a210c17e7b25a2b",
+      "canonical_bytes": 4946,
+      "publication_sha256": "ee2ed0fbd01696fbc28dd0b13c148de8bf5105ce3a48041187d3ac6f9ef5f9c0",
+      "publication_bytes": 4908,
+      "transformations": {
+        "repository_workspace_prefix": 1
+      }
+    },
+    {
+      "path": "followup-screen/build_variants.py",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/build_variants.py",
+      "canonical_sha256": "d7377d7ea34feae60b18fbcfac957535577210b97b32fa06eddadda11f9dd45d",
+      "canonical_bytes": 4724,
+      "publication_sha256": "d7377d7ea34feae60b18fbcfac957535577210b97b32fa06eddadda11f9dd45d",
+      "publication_bytes": 4724,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/check_durability.py",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/check_durability.py",
+      "canonical_sha256": "9b75c1eda7080fa4a8d22d366b5c760c792f8d7aa638fecb841501c082cc4fd3",
+      "canonical_bytes": 7068,
+      "publication_sha256": "9b75c1eda7080fa4a8d22d366b5c760c792f8d7aa638fecb841501c082cc4fd3",
+      "publication_bytes": 7068,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/commit-diagnostics/26-b32-w4000/build-diagnostic.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/commit-diagnostics/26-b32-w4000/build-diagnostic.log",
+      "canonical_sha256": "11e0d88c8bc5a614ec14ca3415dd2944f709e347bd890fecc54356bb1f9c1c82",
+      "canonical_bytes": 2734,
+      "publication_sha256": "11e0d88c8bc5a614ec14ca3415dd2944f709e347bd890fecc54356bb1f9c1c82",
+      "publication_bytes": 2734,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/commit-diagnostics/26-b32-w4000/build-original.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/commit-diagnostics/26-b32-w4000/build-original.log",
+      "canonical_sha256": "7ebb1c4739c415c97cafc8e466bdccc1c684d276026a3024d48bdcc89221e4ae",
+      "canonical_bytes": 3575,
+      "publication_sha256": "7ebb1c4739c415c97cafc8e466bdccc1c684d276026a3024d48bdcc89221e4ae",
+      "publication_bytes": 3575,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/commit-diagnostics/26-b32-w4000/commit-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/commit-diagnostics/26-b32-w4000/commit-1.log",
+      "canonical_sha256": "c67d49206985acaba45c4e1b3c9eeb5628fa9863e56565dea13cc018ac0c6b89",
+      "canonical_bytes": 398,
+      "publication_sha256": "c67d49206985acaba45c4e1b3c9eeb5628fa9863e56565dea13cc018ac0c6b89",
+      "publication_bytes": 398,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/commit-diagnostics/26-b32-w4000/commit-2.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/commit-diagnostics/26-b32-w4000/commit-2.log",
+      "canonical_sha256": "c67d49206985acaba45c4e1b3c9eeb5628fa9863e56565dea13cc018ac0c6b89",
+      "canonical_bytes": 398,
+      "publication_sha256": "c67d49206985acaba45c4e1b3c9eeb5628fa9863e56565dea13cc018ac0c6b89",
+      "publication_bytes": 398,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/commit-diagnostics/26-b32-w4000/commit-3.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/commit-diagnostics/26-b32-w4000/commit-3.log",
+      "canonical_sha256": "c67d49206985acaba45c4e1b3c9eeb5628fa9863e56565dea13cc018ac0c6b89",
+      "canonical_bytes": 398,
+      "publication_sha256": "c67d49206985acaba45c4e1b3c9eeb5628fa9863e56565dea13cc018ac0c6b89",
+      "publication_bytes": 398,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/commit-diagnostics/26-b32-w4000/commit-diagnostic-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/commit-diagnostics/26-b32-w4000/commit-diagnostic-1.log",
+      "canonical_sha256": "4eb9a25080355cc44929b84d67774a24ea3f24e57aec580cdf9a395b90397a27",
+      "canonical_bytes": 6481,
+      "publication_sha256": "4eb9a25080355cc44929b84d67774a24ea3f24e57aec580cdf9a395b90397a27",
+      "publication_bytes": 6481,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/commit-diagnostics/26-b32-w4000/commit-diagnostic-2.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/commit-diagnostics/26-b32-w4000/commit-diagnostic-2.log",
+      "canonical_sha256": "4eb9a25080355cc44929b84d67774a24ea3f24e57aec580cdf9a395b90397a27",
+      "canonical_bytes": 6481,
+      "publication_sha256": "4eb9a25080355cc44929b84d67774a24ea3f24e57aec580cdf9a395b90397a27",
+      "publication_bytes": 6481,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/commit-diagnostics/26-b32-w4000/commit-diagnostic-3.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/commit-diagnostics/26-b32-w4000/commit-diagnostic-3.log",
+      "canonical_sha256": "4eb9a25080355cc44929b84d67774a24ea3f24e57aec580cdf9a395b90397a27",
+      "canonical_bytes": 6481,
+      "publication_sha256": "4eb9a25080355cc44929b84d67774a24ea3f24e57aec580cdf9a395b90397a27",
+      "publication_bytes": 6481,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/commit-diagnostics/26-b32-w4000/commit-diagnostic.c",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/commit-diagnostics/26-b32-w4000/commit-diagnostic.c",
+      "canonical_sha256": "550c0a43257a1adf936eb9d44874a25da2428f2bdec70bf55abe6816a577f072",
+      "canonical_bytes": 3996,
+      "publication_sha256": "550c0a43257a1adf936eb9d44874a25da2428f2bdec70bf55abe6816a577f072",
+      "publication_bytes": 3996,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/commit-diagnostics/26-b32-w4000/result.json",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/commit-diagnostics/26-b32-w4000/result.json",
+      "canonical_sha256": "5dd0f4bf8ddc4eeb2b78b0e629b7ea716023a9d539e8b8a23c95cc8605ef8e4d",
+      "canonical_bytes": 1562,
+      "publication_sha256": "5dd0f4bf8ddc4eeb2b78b0e629b7ea716023a9d539e8b8a23c95cc8605ef8e4d",
+      "publication_bytes": 1562,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/commit-diagnostics/26-b8-w4000/build-diagnostic.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/commit-diagnostics/26-b8-w4000/build-diagnostic.log",
+      "canonical_sha256": "11e0d88c8bc5a614ec14ca3415dd2944f709e347bd890fecc54356bb1f9c1c82",
+      "canonical_bytes": 2734,
+      "publication_sha256": "11e0d88c8bc5a614ec14ca3415dd2944f709e347bd890fecc54356bb1f9c1c82",
+      "publication_bytes": 2734,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/commit-diagnostics/26-b8-w4000/build-original.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/commit-diagnostics/26-b8-w4000/build-original.log",
+      "canonical_sha256": "7ebb1c4739c415c97cafc8e466bdccc1c684d276026a3024d48bdcc89221e4ae",
+      "canonical_bytes": 3575,
+      "publication_sha256": "7ebb1c4739c415c97cafc8e466bdccc1c684d276026a3024d48bdcc89221e4ae",
+      "publication_bytes": 3575,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/commit-diagnostics/26-b8-w4000/commit-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/commit-diagnostics/26-b8-w4000/commit-1.log",
+      "canonical_sha256": "c804c1fa3b1fdf093e7c51f9c3e0e0d86af1b6cd79f00c91a09d1d3480c14207",
+      "canonical_bytes": 455,
+      "publication_sha256": "c804c1fa3b1fdf093e7c51f9c3e0e0d86af1b6cd79f00c91a09d1d3480c14207",
+      "publication_bytes": 455,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/commit-diagnostics/26-b8-w4000/commit-2.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/commit-diagnostics/26-b8-w4000/commit-2.log",
+      "canonical_sha256": "c67d49206985acaba45c4e1b3c9eeb5628fa9863e56565dea13cc018ac0c6b89",
+      "canonical_bytes": 398,
+      "publication_sha256": "c67d49206985acaba45c4e1b3c9eeb5628fa9863e56565dea13cc018ac0c6b89",
+      "publication_bytes": 398,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/commit-diagnostics/26-b8-w4000/commit-3.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/commit-diagnostics/26-b8-w4000/commit-3.log",
+      "canonical_sha256": "c67d49206985acaba45c4e1b3c9eeb5628fa9863e56565dea13cc018ac0c6b89",
+      "canonical_bytes": 398,
+      "publication_sha256": "c67d49206985acaba45c4e1b3c9eeb5628fa9863e56565dea13cc018ac0c6b89",
+      "publication_bytes": 398,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/commit-diagnostics/26-b8-w4000/commit-diagnostic-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/commit-diagnostics/26-b8-w4000/commit-diagnostic-1.log",
+      "canonical_sha256": "4fe2c68f401f70f872d3990ba9bc869066d026310d2b204ea7a5e957c728c36d",
+      "canonical_bytes": 6475,
+      "publication_sha256": "4fe2c68f401f70f872d3990ba9bc869066d026310d2b204ea7a5e957c728c36d",
+      "publication_bytes": 6475,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/commit-diagnostics/26-b8-w4000/commit-diagnostic-2.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/commit-diagnostics/26-b8-w4000/commit-diagnostic-2.log",
+      "canonical_sha256": "4eb9a25080355cc44929b84d67774a24ea3f24e57aec580cdf9a395b90397a27",
+      "canonical_bytes": 6481,
+      "publication_sha256": "4eb9a25080355cc44929b84d67774a24ea3f24e57aec580cdf9a395b90397a27",
+      "publication_bytes": 6481,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/commit-diagnostics/26-b8-w4000/commit-diagnostic-3.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/commit-diagnostics/26-b8-w4000/commit-diagnostic-3.log",
+      "canonical_sha256": "c662015db615b271b1382927f082347bdd469e1763c865ce257d2cb36c978a6a",
+      "canonical_bytes": 1432,
+      "publication_sha256": "c662015db615b271b1382927f082347bdd469e1763c865ce257d2cb36c978a6a",
+      "publication_bytes": 1432,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/commit-diagnostics/26-b8-w4000/commit-diagnostic.c",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/commit-diagnostics/26-b8-w4000/commit-diagnostic.c",
+      "canonical_sha256": "550c0a43257a1adf936eb9d44874a25da2428f2bdec70bf55abe6816a577f072",
+      "canonical_bytes": 3996,
+      "publication_sha256": "550c0a43257a1adf936eb9d44874a25da2428f2bdec70bf55abe6816a577f072",
+      "publication_bytes": 3996,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/commit-diagnostics/26-b8-w4000/result.json",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/commit-diagnostics/26-b8-w4000/result.json",
+      "canonical_sha256": "a3f0dd922af837a9610b865274ac899af65d77d6f859f357d42252c98c38171d",
+      "canonical_bytes": 1561,
+      "publication_sha256": "a3f0dd922af837a9610b865274ac899af65d77d6f859f357d42252c98c38171d",
+      "publication_bytes": 1561,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/commit-diagnostics/26-original/build-diagnostic.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/commit-diagnostics/26-original/build-diagnostic.log",
+      "canonical_sha256": "11e0d88c8bc5a614ec14ca3415dd2944f709e347bd890fecc54356bb1f9c1c82",
+      "canonical_bytes": 2734,
+      "publication_sha256": "11e0d88c8bc5a614ec14ca3415dd2944f709e347bd890fecc54356bb1f9c1c82",
+      "publication_bytes": 2734,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/commit-diagnostics/26-original/build-original.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/commit-diagnostics/26-original/build-original.log",
+      "canonical_sha256": "7ebb1c4739c415c97cafc8e466bdccc1c684d276026a3024d48bdcc89221e4ae",
+      "canonical_bytes": 3575,
+      "publication_sha256": "7ebb1c4739c415c97cafc8e466bdccc1c684d276026a3024d48bdcc89221e4ae",
+      "publication_bytes": 3575,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/commit-diagnostics/26-original/commit-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/commit-diagnostics/26-original/commit-1.log",
+      "canonical_sha256": "c67d49206985acaba45c4e1b3c9eeb5628fa9863e56565dea13cc018ac0c6b89",
+      "canonical_bytes": 398,
+      "publication_sha256": "c67d49206985acaba45c4e1b3c9eeb5628fa9863e56565dea13cc018ac0c6b89",
+      "publication_bytes": 398,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/commit-diagnostics/26-original/commit-2.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/commit-diagnostics/26-original/commit-2.log",
+      "canonical_sha256": "c67d49206985acaba45c4e1b3c9eeb5628fa9863e56565dea13cc018ac0c6b89",
+      "canonical_bytes": 398,
+      "publication_sha256": "c67d49206985acaba45c4e1b3c9eeb5628fa9863e56565dea13cc018ac0c6b89",
+      "publication_bytes": 398,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/commit-diagnostics/26-original/commit-3.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/commit-diagnostics/26-original/commit-3.log",
+      "canonical_sha256": "c67d49206985acaba45c4e1b3c9eeb5628fa9863e56565dea13cc018ac0c6b89",
+      "canonical_bytes": 398,
+      "publication_sha256": "c67d49206985acaba45c4e1b3c9eeb5628fa9863e56565dea13cc018ac0c6b89",
+      "publication_bytes": 398,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/commit-diagnostics/26-original/commit-diagnostic-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/commit-diagnostics/26-original/commit-diagnostic-1.log",
+      "canonical_sha256": "4eb9a25080355cc44929b84d67774a24ea3f24e57aec580cdf9a395b90397a27",
+      "canonical_bytes": 6481,
+      "publication_sha256": "4eb9a25080355cc44929b84d67774a24ea3f24e57aec580cdf9a395b90397a27",
+      "publication_bytes": 6481,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/commit-diagnostics/26-original/commit-diagnostic-2.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/commit-diagnostics/26-original/commit-diagnostic-2.log",
+      "canonical_sha256": "4eb9a25080355cc44929b84d67774a24ea3f24e57aec580cdf9a395b90397a27",
+      "canonical_bytes": 6481,
+      "publication_sha256": "4eb9a25080355cc44929b84d67774a24ea3f24e57aec580cdf9a395b90397a27",
+      "publication_bytes": 6481,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/commit-diagnostics/26-original/commit-diagnostic-3.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/commit-diagnostics/26-original/commit-diagnostic-3.log",
+      "canonical_sha256": "4eb9a25080355cc44929b84d67774a24ea3f24e57aec580cdf9a395b90397a27",
+      "canonical_bytes": 6481,
+      "publication_sha256": "4eb9a25080355cc44929b84d67774a24ea3f24e57aec580cdf9a395b90397a27",
+      "publication_bytes": 6481,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/commit-diagnostics/26-original/commit-diagnostic.c",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/commit-diagnostics/26-original/commit-diagnostic.c",
+      "canonical_sha256": "550c0a43257a1adf936eb9d44874a25da2428f2bdec70bf55abe6816a577f072",
+      "canonical_bytes": 3996,
+      "publication_sha256": "550c0a43257a1adf936eb9d44874a25da2428f2bdec70bf55abe6816a577f072",
+      "publication_bytes": 3996,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/commit-diagnostics/26-original/result.json",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/commit-diagnostics/26-original/result.json",
+      "canonical_sha256": "7acaac207e57bb4bfe22ef950dbc7a0525a049871f296aaf5767124565aeb8d9",
+      "canonical_bytes": 1561,
+      "publication_sha256": "7acaac207e57bb4bfe22ef950dbc7a0525a049871f296aaf5767124565aeb8d9",
+      "publication_bytes": 1561,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/durability/26-b8-w4000-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/durability/26-b8-w4000-1.log",
+      "canonical_sha256": "486a444189b1a25c6458b09c049230d96326d10ff4401ff32b7e84fbff931645",
+      "canonical_bytes": 4816,
+      "publication_sha256": "486a444189b1a25c6458b09c049230d96326d10ff4401ff32b7e84fbff931645",
+      "publication_bytes": 4816,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/durability/26-b8-w4000-2.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/durability/26-b8-w4000-2.log",
+      "canonical_sha256": "7883e5ac948410ecad286a293e976032f97f47a7f986894aba6465b0619c7827",
+      "canonical_bytes": 455,
+      "publication_sha256": "7883e5ac948410ecad286a293e976032f97f47a7f986894aba6465b0619c7827",
+      "publication_bytes": 455,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/durability/26-b8-w4000-server-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/durability/26-b8-w4000-server-1.log",
+      "canonical_sha256": "c47d97b922e54e592b59aa184c3d7c13aee43c8389821e99c7f496bd29b86c4a",
+      "canonical_bytes": 61,
+      "publication_sha256": "c47d97b922e54e592b59aa184c3d7c13aee43c8389821e99c7f496bd29b86c4a",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/durability/26-b8-w4000.json",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/durability/26-b8-w4000.json",
+      "canonical_sha256": "8877134b1c40ea92f59739bb8a3920400a3d40b32539747bfb433cad3ab85d13",
+      "canonical_bytes": 1828,
+      "publication_sha256": "8877134b1c40ea92f59739bb8a3920400a3d40b32539747bfb433cad3ab85d13",
+      "publication_bytes": 1828,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/environment-bench.json",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/environment-bench.json",
+      "canonical_sha256": "0040b899472656405ff7acfe613639ab8e6446201d47a7076f44f9c2a3f87372",
+      "canonical_bytes": 3460,
+      "publication_sha256": "865ced67c5893916649f289eaefaf2ce8b5ddacc33d755eae2910f2985ad828f",
+      "publication_bytes": 3445,
+      "transformations": {
+        "personal_hostname": 1
+      }
+    },
+    {
+      "path": "followup-screen/environment-verify.json",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/environment-verify.json",
+      "canonical_sha256": "2be139dd584602bcad92912a024e391551110d227f4129f3d7dc945a28c2bbe0",
+      "canonical_bytes": 3461,
+      "publication_sha256": "6afb41880c49ca3bcc204ed77e6c77d58cd2ac6fb1d1bbf969cd1ef68ae344a2",
+      "publication_bytes": 3446,
+      "transformations": {
+        "personal_hostname": 1
+      }
+    },
+    {
+      "path": "followup-screen/followup-plan.json",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/followup-plan.json",
+      "canonical_sha256": "54c06e9ab35ff2591cb75e9b6d0a29258f9219d266ea8aaf0e7bea984b6312a5",
+      "canonical_bytes": 45786,
+      "publication_sha256": "71cf51ec7bac21e467143fefdca119214511c0079a3849d5effde05dc7125f69",
+      "publication_bytes": 45637,
+      "transformations": {
+        "experiment_workspace_prefix": 2,
+        "personal_hostname": 1
+      }
+    },
+    {
+      "path": "followup-screen/logs/bench-26-b16-w4000-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/logs/bench-26-b16-w4000-1.log",
+      "canonical_sha256": "3b3a8616e0ca039edcf9a1da7807dd9c97d847e908a63d77ed60201186a2d3e3",
+      "canonical_bytes": 441,
+      "publication_sha256": "3b3a8616e0ca039edcf9a1da7807dd9c97d847e908a63d77ed60201186a2d3e3",
+      "publication_bytes": 441,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/logs/bench-26-b16-w4000-2.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/logs/bench-26-b16-w4000-2.log",
+      "canonical_sha256": "34a4d7788c19585989cfc1fbb9c91355d94fbd257f5793cb94742e2c7377755b",
+      "canonical_bytes": 440,
+      "publication_sha256": "34a4d7788c19585989cfc1fbb9c91355d94fbd257f5793cb94742e2c7377755b",
+      "publication_bytes": 440,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/logs/bench-26-b16-w4000-3.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/logs/bench-26-b16-w4000-3.log",
+      "canonical_sha256": "7e5eeee1c5a8a360272d8a390fba4589f0382769df647bf7253ca8fb43549e9f",
+      "canonical_bytes": 440,
+      "publication_sha256": "7e5eeee1c5a8a360272d8a390fba4589f0382769df647bf7253ca8fb43549e9f",
+      "publication_bytes": 440,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/logs/bench-26-b32-w4000-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/logs/bench-26-b32-w4000-1.log",
+      "canonical_sha256": "e53ad0ae44f4f97a7ae9a1266e6bdfaf4c16b67481007d1894faf397c1d1d670",
+      "canonical_bytes": 440,
+      "publication_sha256": "e53ad0ae44f4f97a7ae9a1266e6bdfaf4c16b67481007d1894faf397c1d1d670",
+      "publication_bytes": 440,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/logs/bench-26-b32-w4000-2.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/logs/bench-26-b32-w4000-2.log",
+      "canonical_sha256": "892939b69cb660ffc0bf0809b6c2aa1b360b371d44bf55c73c1e6a12698569f2",
+      "canonical_bytes": 441,
+      "publication_sha256": "892939b69cb660ffc0bf0809b6c2aa1b360b371d44bf55c73c1e6a12698569f2",
+      "publication_bytes": 441,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/logs/bench-26-b32-w4000-3.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/logs/bench-26-b32-w4000-3.log",
+      "canonical_sha256": "c25d5018a8ce0ef13eeaef8ee7c496c68d7bd0ddc6309f2bbc4266d5a5df4164",
+      "canonical_bytes": 440,
+      "publication_sha256": "c25d5018a8ce0ef13eeaef8ee7c496c68d7bd0ddc6309f2bbc4266d5a5df4164",
+      "publication_bytes": 440,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/logs/bench-26-b8-w4000-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/logs/bench-26-b8-w4000-1.log",
+      "canonical_sha256": "4a81fc14a1acb808564918f6a92428990f433431f310f01135c4518397e743b3",
+      "canonical_bytes": 441,
+      "publication_sha256": "4a81fc14a1acb808564918f6a92428990f433431f310f01135c4518397e743b3",
+      "publication_bytes": 441,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/logs/bench-26-b8-w4000-2.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/logs/bench-26-b8-w4000-2.log",
+      "canonical_sha256": "37b4e27eac5da0227a916236ef0bf488f896555dbc6d76996863733b8ef54c4c",
+      "canonical_bytes": 441,
+      "publication_sha256": "37b4e27eac5da0227a916236ef0bf488f896555dbc6d76996863733b8ef54c4c",
+      "publication_bytes": 441,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/logs/bench-26-b8-w4000-3.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/logs/bench-26-b8-w4000-3.log",
+      "canonical_sha256": "0dd86d9031bc8007d5c7009ba5e81858499aa439aa97e8e205c264f7b9c20260",
+      "canonical_bytes": 440,
+      "publication_sha256": "0dd86d9031bc8007d5c7009ba5e81858499aa439aa97e8e205c264f7b9c20260",
+      "publication_bytes": 440,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/logs/bench-26-original-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/logs/bench-26-original-1.log",
+      "canonical_sha256": "f5ffc943e87b34fae0882bcaa11588b055ea4f42b62d534418d2d59655b136c3",
+      "canonical_bytes": 439,
+      "publication_sha256": "f5ffc943e87b34fae0882bcaa11588b055ea4f42b62d534418d2d59655b136c3",
+      "publication_bytes": 439,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/logs/bench-26-original-2.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/logs/bench-26-original-2.log",
+      "canonical_sha256": "7e5662541390afbaf36456ad7405201634c11d126e980fa745c5121227372f97",
+      "canonical_bytes": 439,
+      "publication_sha256": "7e5662541390afbaf36456ad7405201634c11d126e980fa745c5121227372f97",
+      "publication_bytes": 439,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/logs/bench-26-original-3.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/logs/bench-26-original-3.log",
+      "canonical_sha256": "b78c233e49b9b3ecdcf53da573725f3a6f0220170a01e27bf989d1771d47ad2f",
+      "canonical_bytes": 439,
+      "publication_sha256": "b78c233e49b9b3ecdcf53da573725f3a6f0220170a01e27bf989d1771d47ad2f",
+      "publication_bytes": 439,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/logs/bench-82-leader-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/logs/bench-82-leader-1.log",
+      "canonical_sha256": "e8b98b236b123f4bc227ea8a4c2c4f48fd78e6d7de36f1bca644fe077f6c7219",
+      "canonical_bytes": 441,
+      "publication_sha256": "e8b98b236b123f4bc227ea8a4c2c4f48fd78e6d7de36f1bca644fe077f6c7219",
+      "publication_bytes": 441,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/logs/bench-82-leader-2.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/logs/bench-82-leader-2.log",
+      "canonical_sha256": "b492d617b4e54d8a30f59044602da5fc1e237f9078e43c334f73fe703a2ac670",
+      "canonical_bytes": 441,
+      "publication_sha256": "b492d617b4e54d8a30f59044602da5fc1e237f9078e43c334f73fe703a2ac670",
+      "publication_bytes": 441,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/logs/bench-82-leader-3.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/logs/bench-82-leader-3.log",
+      "canonical_sha256": "804765c206179a088b964852cab5e4bd536c46491bad7d2264abc31e1609f429",
+      "canonical_bytes": 441,
+      "publication_sha256": "804765c206179a088b964852cab5e4bd536c46491bad7d2264abc31e1609f429",
+      "publication_bytes": 441,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/logs/build-26-b16-w4000.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/logs/build-26-b16-w4000.log",
+      "canonical_sha256": "fa14c3cae490cc9ae705e59ae5d0105889691b427d205613affae929a00e6dc4",
+      "canonical_bytes": 183,
+      "publication_sha256": "fa14c3cae490cc9ae705e59ae5d0105889691b427d205613affae929a00e6dc4",
+      "publication_bytes": 183,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/logs/build-26-b8-w4000.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/logs/build-26-b8-w4000.log",
+      "canonical_sha256": "fa14c3cae490cc9ae705e59ae5d0105889691b427d205613affae929a00e6dc4",
+      "canonical_bytes": 183,
+      "publication_sha256": "fa14c3cae490cc9ae705e59ae5d0105889691b427d205613affae929a00e6dc4",
+      "publication_bytes": 183,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/logs/verify-26-b16-w4000-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/logs/verify-26-b16-w4000-1.log",
+      "canonical_sha256": "c1f42558141f6a6bad231db58cf497757883077410ef0f6f3f9ef1d85ed11a92",
+      "canonical_bytes": 1755,
+      "publication_sha256": "c1f42558141f6a6bad231db58cf497757883077410ef0f6f3f9ef1d85ed11a92",
+      "publication_bytes": 1755,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/logs/verify-26-b32-w4000-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/logs/verify-26-b32-w4000-1.log",
+      "canonical_sha256": "b30e4630455fa05d4c0831942ecce169a24e0ed7d7e1ef8c8befd4ea8e705d8e",
+      "canonical_bytes": 1755,
+      "publication_sha256": "b30e4630455fa05d4c0831942ecce169a24e0ed7d7e1ef8c8befd4ea8e705d8e",
+      "publication_bytes": 1755,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/logs/verify-26-b8-w4000-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/logs/verify-26-b8-w4000-1.log",
+      "canonical_sha256": "ae68313f549517884e9b4df7632a079834f6499c4011a7b13bad624c07bd2333",
+      "canonical_bytes": 1755,
+      "publication_sha256": "ae68313f549517884e9b4df7632a079834f6499c4011a7b13bad624c07bd2333",
+      "publication_bytes": 1755,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/logs/verify-26-original-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/logs/verify-26-original-1.log",
+      "canonical_sha256": "4ebae28d7b4d2dda077777c981e46b7c99afd0555b46c63962bdf2d6afa142cd",
+      "canonical_bytes": 1755,
+      "publication_sha256": "4ebae28d7b4d2dda077777c981e46b7c99afd0555b46c63962bdf2d6afa142cd",
+      "publication_bytes": 1755,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/logs/verify-82-leader-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/logs/verify-82-leader-1.log",
+      "canonical_sha256": "950aabd60ec721ad07cc2b09eb334f0f59dfb109083ee226a3df9440b89abcd1",
+      "canonical_bytes": 1755,
+      "publication_sha256": "950aabd60ec721ad07cc2b09eb334f0f59dfb109083ee226a3df9440b89abcd1",
+      "publication_bytes": 1755,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/manifest.json",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/manifest.json",
+      "canonical_sha256": "82eb9b35156c830e968ea6dc3ad5525f791fa3a5a9e545e37bb73ffa73573f70",
+      "canonical_bytes": 12853,
+      "publication_sha256": "82eb9b35156c830e968ea6dc3ad5525f791fa3a5a9e545e37bb73ffa73573f70",
+      "publication_bytes": 12853,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/measurements.json",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/measurements.json",
+      "canonical_sha256": "ad19f5a34b81fdb7e20a8962d6a67c0277f9882821d6d92c0946b24052d371ff",
+      "canonical_bytes": 295773,
+      "publication_sha256": "ad19f5a34b81fdb7e20a8962d6a67c0277f9882821d6d92c0946b24052d371ff",
+      "publication_bytes": 295773,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/mixed.lua",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/mixed.lua",
+      "canonical_sha256": "eb8d49273c56fe4b558a58bd6c7e65551ec683c53d299e2b3a69e0b71421d701",
+      "canonical_bytes": 1478,
+      "publication_sha256": "eb8d49273c56fe4b558a58bd6c7e65551ec683c53d299e2b3a69e0b71421d701",
+      "publication_bytes": 1478,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/patches/26-b16-w4000.patch",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/patches/26-b16-w4000.patch",
+      "canonical_sha256": "425581268b2ab0773c34ea479d44984c4276f69538860e12e546a7d62777bf60",
+      "canonical_bytes": 562,
+      "publication_sha256": "425581268b2ab0773c34ea479d44984c4276f69538860e12e546a7d62777bf60",
+      "publication_bytes": 562,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/patches/26-b32-w4000.patch",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/patches/26-b32-w4000.patch",
+      "canonical_sha256": "3a420dbe948dbab31b2ed928f08f216d5ee73ca3fb43b5c5b07d4ef74ad79fbc",
+      "canonical_bytes": 562,
+      "publication_sha256": "3a420dbe948dbab31b2ed928f08f216d5ee73ca3fb43b5c5b07d4ef74ad79fbc",
+      "publication_bytes": 562,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/patches/26-b8-w4000.patch",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/patches/26-b8-w4000.patch",
+      "canonical_sha256": "8c4f63cb7f7090030e5d39e5411e60b045b7455528b11aace96848112e34e38f",
+      "canonical_bytes": 561,
+      "publication_sha256": "8c4f63cb7f7090030e5d39e5411e60b045b7455528b11aace96848112e34e38f",
+      "publication_bytes": 561,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/run.py",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/run.py",
+      "canonical_sha256": "b85ee72abe98e8c8072fec1be0c052cf6968faf03d8fb9e08719625b77315d39",
+      "canonical_bytes": 17380,
+      "publication_sha256": "b85ee72abe98e8c8072fec1be0c052cf6968faf03d8fb9e08719625b77315d39",
+      "publication_bytes": 17380,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/seccomp-io-uring.json",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/seccomp-io-uring.json",
+      "canonical_sha256": "4baf3b268185f55527933e7df090e85936003674e34b5f5396461fd9d3efeb17",
+      "canonical_bytes": 22434,
+      "publication_sha256": "4baf3b268185f55527933e7df090e85936003674e34b5f5396461fd9d3efeb17",
+      "publication_bytes": 22434,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/semantic.py",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/semantic.py",
+      "canonical_sha256": "785f8ce565b469e4f4d702d01a9d868cd7458d64e3f1362c3fb8728560215fbc",
+      "canonical_bytes": 3365,
+      "publication_sha256": "785f8ce565b469e4f4d702d01a9d868cd7458d64e3f1362c3fb8728560215fbc",
+      "publication_bytes": 3365,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/serve.py",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/serve.py",
+      "canonical_sha256": "52d8bdd75c0dc2477fc5b2391c797a2832eab5ac61a72d3bbe4dac4cb94bf311",
+      "canonical_bytes": 8993,
+      "publication_sha256": "52d8bdd75c0dc2477fc5b2391c797a2832eab5ac61a72d3bbe4dac4cb94bf311",
+      "publication_bytes": 8993,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/server-logs/bench-26-b16-w4000-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/server-logs/bench-26-b16-w4000-1.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/server-logs/bench-26-b16-w4000-2.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/server-logs/bench-26-b16-w4000-2.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/server-logs/bench-26-b16-w4000-3.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/server-logs/bench-26-b16-w4000-3.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/server-logs/bench-26-b32-w4000-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/server-logs/bench-26-b32-w4000-1.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/server-logs/bench-26-b32-w4000-2.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/server-logs/bench-26-b32-w4000-2.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/server-logs/bench-26-b32-w4000-3.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/server-logs/bench-26-b32-w4000-3.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/server-logs/bench-26-b8-w4000-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/server-logs/bench-26-b8-w4000-1.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/server-logs/bench-26-b8-w4000-2.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/server-logs/bench-26-b8-w4000-2.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/server-logs/bench-26-b8-w4000-3.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/server-logs/bench-26-b8-w4000-3.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/server-logs/bench-26-original-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/server-logs/bench-26-original-1.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/server-logs/bench-26-original-2.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/server-logs/bench-26-original-2.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/server-logs/bench-26-original-3.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/server-logs/bench-26-original-3.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/server-logs/bench-82-leader-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/server-logs/bench-82-leader-1.log",
+      "canonical_sha256": "548fdd34d36ce752af14d5afa5d94578455e9b954e91060df629174ebacf6397",
+      "canonical_bytes": 91,
+      "publication_sha256": "548fdd34d36ce752af14d5afa5d94578455e9b954e91060df629174ebacf6397",
+      "publication_bytes": 91,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/server-logs/bench-82-leader-2.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/server-logs/bench-82-leader-2.log",
+      "canonical_sha256": "548fdd34d36ce752af14d5afa5d94578455e9b954e91060df629174ebacf6397",
+      "canonical_bytes": 91,
+      "publication_sha256": "548fdd34d36ce752af14d5afa5d94578455e9b954e91060df629174ebacf6397",
+      "publication_bytes": 91,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/server-logs/bench-82-leader-3.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/server-logs/bench-82-leader-3.log",
+      "canonical_sha256": "548fdd34d36ce752af14d5afa5d94578455e9b954e91060df629174ebacf6397",
+      "canonical_bytes": 91,
+      "publication_sha256": "548fdd34d36ce752af14d5afa5d94578455e9b954e91060df629174ebacf6397",
+      "publication_bytes": 91,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/server-logs/verify-26-b16-w4000-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/server-logs/verify-26-b16-w4000-1.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/server-logs/verify-26-b32-w4000-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/server-logs/verify-26-b32-w4000-1.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/server-logs/verify-26-b8-w4000-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/server-logs/verify-26-b8-w4000-1.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/server-logs/verify-26-original-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/server-logs/verify-26-original-1.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/server-logs/verify-82-leader-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/server-logs/verify-82-leader-1.log",
+      "canonical_sha256": "548fdd34d36ce752af14d5afa5d94578455e9b954e91060df629174ebacf6397",
+      "canonical_bytes": 91,
+      "publication_sha256": "548fdd34d36ce752af14d5afa5d94578455e9b954e91060df629174ebacf6397",
+      "publication_bytes": 91,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/shared-sha256.json",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/shared-sha256.json",
+      "canonical_sha256": "aadccf6cbeeedd100ec927e47525ab197d6f81cd665cccae97b3dcf7f29158e3",
+      "canonical_bytes": 1096,
+      "publication_sha256": "aadccf6cbeeedd100ec927e47525ab197d6f81cd665cccae97b3dcf7f29158e3",
+      "publication_bytes": 1096,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/test/golden/feed.json",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/test/golden/feed.json",
+      "canonical_sha256": "8c9b3d6cb46e650c4786ab9281bc3a72ba7bd75b7926021d2b0c431dd9bd3d68",
+      "canonical_bytes": 5102,
+      "publication_sha256": "8c9b3d6cb46e650c4786ab9281bc3a72ba7bd75b7926021d2b0c431dd9bd3d68",
+      "publication_bytes": 5102,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/test/golden/post-1.json",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/test/golden/post-1.json",
+      "canonical_sha256": "8035350dc55714c9a673af9f441ab07d2b269047e1137612f022877b9e8f3652",
+      "canonical_bytes": 195,
+      "publication_sha256": "8035350dc55714c9a673af9f441ab07d2b269047e1137612f022877b9e8f3652",
+      "publication_bytes": 195,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/test/golden/post-250000.json",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/test/golden/post-250000.json",
+      "canonical_sha256": "febb2506b9d4a99bc34f1f182c61ced6b3ba3b2533724485c6e5206604a65b71",
+      "canonical_bytes": 146,
+      "publication_sha256": "febb2506b9d4a99bc34f1f182c61ced6b3ba3b2533724485c6e5206604a65b71",
+      "publication_bytes": 146,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/test/golden/post-500000.json",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/test/golden/post-500000.json",
+      "canonical_sha256": "662fe8c7282dee8aab00dab6cdb15e64e953f10a2c1c923e2ea67fab1429a4de",
+      "canonical_bytes": 324,
+      "publication_sha256": "662fe8c7282dee8aab00dab6cdb15e64e953f10a2c1c923e2ea67fab1429a4de",
+      "publication_bytes": 324,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/test/test.sh",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/test/test.sh",
+      "canonical_sha256": "679e722044fd1f366d85093232e7f2ec2e3398ea312032dd9eb6cbdf8b17306a",
+      "canonical_bytes": 8408,
+      "publication_sha256": "679e722044fd1f366d85093232e7f2ec2e3398ea312032dd9eb6cbdf8b17306a",
+      "publication_bytes": 8408,
+      "transformations": {}
+    },
+    {
+      "path": "followup-screen/verification.json",
+      "canonical_path": "results/tuning26-2026-10-20/followup-screen/verification.json",
+      "canonical_sha256": "205b57cce380239d94f9b6cc9fe49cd2fd8da0e1821f4516f2117731a0153b1f",
+      "canonical_bytes": 104320,
+      "publication_sha256": "205b57cce380239d94f9b6cc9fe49cd2fd8da0e1821f4516f2117731a0153b1f",
+      "publication_bytes": 104320,
+      "transformations": {}
+    },
+    {
+      "path": "logs/bench-26-b128-w250-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/logs/bench-26-b128-w250-1.log",
+      "canonical_sha256": "f4005d37f2b12b27c87c68f007267c0dea13116bb43bc75644b1af71d5edfa1f",
+      "canonical_bytes": 440,
+      "publication_sha256": "f4005d37f2b12b27c87c68f007267c0dea13116bb43bc75644b1af71d5edfa1f",
+      "publication_bytes": 440,
+      "transformations": {}
+    },
+    {
+      "path": "logs/bench-26-b128-w250-2.log",
+      "canonical_path": "results/tuning26-2026-10-20/logs/bench-26-b128-w250-2.log",
+      "canonical_sha256": "2f46a1b440fdb417457c08a42b1bd13f0c36cbac642daa69981215716a0ff5ce",
+      "canonical_bytes": 439,
+      "publication_sha256": "2f46a1b440fdb417457c08a42b1bd13f0c36cbac642daa69981215716a0ff5ce",
+      "publication_bytes": 439,
+      "transformations": {}
+    },
+    {
+      "path": "logs/bench-26-b128-w250-3.log",
+      "canonical_path": "results/tuning26-2026-10-20/logs/bench-26-b128-w250-3.log",
+      "canonical_sha256": "95f75bcd797df6ee5d15b2424f0f526f0196675700bacaf0795ebcf7eee643e8",
+      "canonical_bytes": 439,
+      "publication_sha256": "95f75bcd797df6ee5d15b2424f0f526f0196675700bacaf0795ebcf7eee643e8",
+      "publication_bytes": 439,
+      "transformations": {}
+    },
+    {
+      "path": "logs/bench-26-b128-w4000-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/logs/bench-26-b128-w4000-1.log",
+      "canonical_sha256": "c2ea98f48a303cd457762ccc8bb85c312b38db68a09f49066cf97461ca09c0b4",
+      "canonical_bytes": 439,
+      "publication_sha256": "c2ea98f48a303cd457762ccc8bb85c312b38db68a09f49066cf97461ca09c0b4",
+      "publication_bytes": 439,
+      "transformations": {}
+    },
+    {
+      "path": "logs/bench-26-b128-w4000-2.log",
+      "canonical_path": "results/tuning26-2026-10-20/logs/bench-26-b128-w4000-2.log",
+      "canonical_sha256": "9592bbd1e9216454179adb42bb6cfe46cae2086343ceb887fcdf0350624eae07",
+      "canonical_bytes": 439,
+      "publication_sha256": "9592bbd1e9216454179adb42bb6cfe46cae2086343ceb887fcdf0350624eae07",
+      "publication_bytes": 439,
+      "transformations": {}
+    },
+    {
+      "path": "logs/bench-26-b128-w4000-3.log",
+      "canonical_path": "results/tuning26-2026-10-20/logs/bench-26-b128-w4000-3.log",
+      "canonical_sha256": "b47dea2069396725381d3a040516020ae4c373511501ea8eac7dd10d6dc0b3e3",
+      "canonical_bytes": 439,
+      "publication_sha256": "b47dea2069396725381d3a040516020ae4c373511501ea8eac7dd10d6dc0b3e3",
+      "publication_bytes": 439,
+      "transformations": {}
+    },
+    {
+      "path": "logs/bench-26-b32-w250-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/logs/bench-26-b32-w250-1.log",
+      "canonical_sha256": "a602b5e99cf96524963346703656e2c1fe7839e848dbde006401a70136456971",
+      "canonical_bytes": 441,
+      "publication_sha256": "a602b5e99cf96524963346703656e2c1fe7839e848dbde006401a70136456971",
+      "publication_bytes": 441,
+      "transformations": {}
+    },
+    {
+      "path": "logs/bench-26-b32-w250-2.log",
+      "canonical_path": "results/tuning26-2026-10-20/logs/bench-26-b32-w250-2.log",
+      "canonical_sha256": "48fde0db48e9ad9ddebaa80e7b734b507a1b0bb2133e1b8fdd8df494a755d3f8",
+      "canonical_bytes": 441,
+      "publication_sha256": "48fde0db48e9ad9ddebaa80e7b734b507a1b0bb2133e1b8fdd8df494a755d3f8",
+      "publication_bytes": 441,
+      "transformations": {}
+    },
+    {
+      "path": "logs/bench-26-b32-w250-3.log",
+      "canonical_path": "results/tuning26-2026-10-20/logs/bench-26-b32-w250-3.log",
+      "canonical_sha256": "720ba54019fed4cd260b9909660c77425e1aab29946b67bb6b542a501bf54781",
+      "canonical_bytes": 441,
+      "publication_sha256": "720ba54019fed4cd260b9909660c77425e1aab29946b67bb6b542a501bf54781",
+      "publication_bytes": 441,
+      "transformations": {}
+    },
+    {
+      "path": "logs/bench-26-b32-w4000-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/logs/bench-26-b32-w4000-1.log",
+      "canonical_sha256": "2a991ba5f21a4f1a71284c503c2fa918b27346f66af0e58fad16ef1b4af9244e",
+      "canonical_bytes": 441,
+      "publication_sha256": "2a991ba5f21a4f1a71284c503c2fa918b27346f66af0e58fad16ef1b4af9244e",
+      "publication_bytes": 441,
+      "transformations": {}
+    },
+    {
+      "path": "logs/bench-26-b32-w4000-2.log",
+      "canonical_path": "results/tuning26-2026-10-20/logs/bench-26-b32-w4000-2.log",
+      "canonical_sha256": "8646a1ce8e1ae0860a462bd2794f12e3207e8bc35d125da9c8b2a93efd7c25c8",
+      "canonical_bytes": 441,
+      "publication_sha256": "8646a1ce8e1ae0860a462bd2794f12e3207e8bc35d125da9c8b2a93efd7c25c8",
+      "publication_bytes": 441,
+      "transformations": {}
+    },
+    {
+      "path": "logs/bench-26-b32-w4000-3.log",
+      "canonical_path": "results/tuning26-2026-10-20/logs/bench-26-b32-w4000-3.log",
+      "canonical_sha256": "3703f54004bac347459d41168fb06899b61fef9b1788b5d6a28116cb314b8709",
+      "canonical_bytes": 440,
+      "publication_sha256": "3703f54004bac347459d41168fb06899b61fef9b1788b5d6a28116cb314b8709",
+      "publication_bytes": 440,
+      "transformations": {}
+    },
+    {
+      "path": "logs/bench-26-original-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/logs/bench-26-original-1.log",
+      "canonical_sha256": "1f36246d67e3a660823052f7ddddb9451e48bf37c1c53f6ab9ffc5cc99a9f088",
+      "canonical_bytes": 439,
+      "publication_sha256": "1f36246d67e3a660823052f7ddddb9451e48bf37c1c53f6ab9ffc5cc99a9f088",
+      "publication_bytes": 439,
+      "transformations": {}
+    },
+    {
+      "path": "logs/bench-26-original-2.log",
+      "canonical_path": "results/tuning26-2026-10-20/logs/bench-26-original-2.log",
+      "canonical_sha256": "cc59ab0c650f74bb64d4ab241b9172764dae5833f40e1bc36f5f6f10db9e4e30",
+      "canonical_bytes": 440,
+      "publication_sha256": "cc59ab0c650f74bb64d4ab241b9172764dae5833f40e1bc36f5f6f10db9e4e30",
+      "publication_bytes": 440,
+      "transformations": {}
+    },
+    {
+      "path": "logs/bench-26-original-3.log",
+      "canonical_path": "results/tuning26-2026-10-20/logs/bench-26-original-3.log",
+      "canonical_sha256": "534cc8a3bf4e96d35c293a954a9873377cb2667f0eba8f18e8f3b574b9922dc2",
+      "canonical_bytes": 439,
+      "publication_sha256": "534cc8a3bf4e96d35c293a954a9873377cb2667f0eba8f18e8f3b574b9922dc2",
+      "publication_bytes": 439,
+      "transformations": {}
+    },
+    {
+      "path": "logs/bench-82-leader-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/logs/bench-82-leader-1.log",
+      "canonical_sha256": "8fc0d58f84a9cee0c0655eed0e41141effbf025917db7f5ba6ea12a38ae09c72",
+      "canonical_bytes": 441,
+      "publication_sha256": "8fc0d58f84a9cee0c0655eed0e41141effbf025917db7f5ba6ea12a38ae09c72",
+      "publication_bytes": 441,
+      "transformations": {}
+    },
+    {
+      "path": "logs/bench-82-leader-2.log",
+      "canonical_path": "results/tuning26-2026-10-20/logs/bench-82-leader-2.log",
+      "canonical_sha256": "da42e7f4b4c8a62d9024440b4aa698441b65e337f7670d64602b6bfd8809673c",
+      "canonical_bytes": 441,
+      "publication_sha256": "da42e7f4b4c8a62d9024440b4aa698441b65e337f7670d64602b6bfd8809673c",
+      "publication_bytes": 441,
+      "transformations": {}
+    },
+    {
+      "path": "logs/bench-82-leader-3.log",
+      "canonical_path": "results/tuning26-2026-10-20/logs/bench-82-leader-3.log",
+      "canonical_sha256": "838c200722501461213823ebdae5f91ecd43858630b177f7c8eb3a0d6f12048c",
+      "canonical_bytes": 496,
+      "publication_sha256": "838c200722501461213823ebdae5f91ecd43858630b177f7c8eb3a0d6f12048c",
+      "publication_bytes": 496,
+      "transformations": {}
+    },
+    {
+      "path": "logs/build-26-b128-w250.log",
+      "canonical_path": "results/tuning26-2026-10-20/logs/build-26-b128-w250.log",
+      "canonical_sha256": "fa14c3cae490cc9ae705e59ae5d0105889691b427d205613affae929a00e6dc4",
+      "canonical_bytes": 183,
+      "publication_sha256": "fa14c3cae490cc9ae705e59ae5d0105889691b427d205613affae929a00e6dc4",
+      "publication_bytes": 183,
+      "transformations": {}
+    },
+    {
+      "path": "logs/build-26-b128-w4000.log",
+      "canonical_path": "results/tuning26-2026-10-20/logs/build-26-b128-w4000.log",
+      "canonical_sha256": "fa14c3cae490cc9ae705e59ae5d0105889691b427d205613affae929a00e6dc4",
+      "canonical_bytes": 183,
+      "publication_sha256": "fa14c3cae490cc9ae705e59ae5d0105889691b427d205613affae929a00e6dc4",
+      "publication_bytes": 183,
+      "transformations": {}
+    },
+    {
+      "path": "logs/build-26-b32-w250.log",
+      "canonical_path": "results/tuning26-2026-10-20/logs/build-26-b32-w250.log",
+      "canonical_sha256": "fa14c3cae490cc9ae705e59ae5d0105889691b427d205613affae929a00e6dc4",
+      "canonical_bytes": 183,
+      "publication_sha256": "fa14c3cae490cc9ae705e59ae5d0105889691b427d205613affae929a00e6dc4",
+      "publication_bytes": 183,
+      "transformations": {}
+    },
+    {
+      "path": "logs/build-26-b32-w4000.log",
+      "canonical_path": "results/tuning26-2026-10-20/logs/build-26-b32-w4000.log",
+      "canonical_sha256": "fa14c3cae490cc9ae705e59ae5d0105889691b427d205613affae929a00e6dc4",
+      "canonical_bytes": 183,
+      "publication_sha256": "fa14c3cae490cc9ae705e59ae5d0105889691b427d205613affae929a00e6dc4",
+      "publication_bytes": 183,
+      "transformations": {}
+    },
+    {
+      "path": "logs/verify-26-b128-w250-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/logs/verify-26-b128-w250-1.log",
+      "canonical_sha256": "5c1995ed19d5128024027ae45377262f8ba4b812efab5830c6c9a0320932b0a1",
+      "canonical_bytes": 1755,
+      "publication_sha256": "5c1995ed19d5128024027ae45377262f8ba4b812efab5830c6c9a0320932b0a1",
+      "publication_bytes": 1755,
+      "transformations": {}
+    },
+    {
+      "path": "logs/verify-26-b128-w4000-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/logs/verify-26-b128-w4000-1.log",
+      "canonical_sha256": "4ff05270b67d08da2897e4b443bc06321d9a1ef1a82e1f465df15243a06f90d8",
+      "canonical_bytes": 1755,
+      "publication_sha256": "4ff05270b67d08da2897e4b443bc06321d9a1ef1a82e1f465df15243a06f90d8",
+      "publication_bytes": 1755,
+      "transformations": {}
+    },
+    {
+      "path": "logs/verify-26-b32-w250-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/logs/verify-26-b32-w250-1.log",
+      "canonical_sha256": "0a12cfe7b459a72a5e4e8025cf1b07bfa9dfe7f06e11d53052cc17a442e63500",
+      "canonical_bytes": 1755,
+      "publication_sha256": "0a12cfe7b459a72a5e4e8025cf1b07bfa9dfe7f06e11d53052cc17a442e63500",
+      "publication_bytes": 1755,
+      "transformations": {}
+    },
+    {
+      "path": "logs/verify-26-b32-w4000-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/logs/verify-26-b32-w4000-1.log",
+      "canonical_sha256": "786ee59255caff31953ca8c7e94768de4b0b63993aa8c4462baadc2e00105230",
+      "canonical_bytes": 1755,
+      "publication_sha256": "786ee59255caff31953ca8c7e94768de4b0b63993aa8c4462baadc2e00105230",
+      "publication_bytes": 1755,
+      "transformations": {}
+    },
+    {
+      "path": "logs/verify-26-original-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/logs/verify-26-original-1.log",
+      "canonical_sha256": "7190bf959ce3febfa1f7b08c41612ca288e302d6e56d54d0ef3610f850f53b80",
+      "canonical_bytes": 1755,
+      "publication_sha256": "7190bf959ce3febfa1f7b08c41612ca288e302d6e56d54d0ef3610f850f53b80",
+      "publication_bytes": 1755,
+      "transformations": {}
+    },
+    {
+      "path": "logs/verify-82-leader-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/logs/verify-82-leader-1.log",
+      "canonical_sha256": "dc51d52b0793c8e45b906e737b026538d336b78a85b1b7f8e90c493b8a8286a4",
+      "canonical_bytes": 1755,
+      "publication_sha256": "dc51d52b0793c8e45b906e737b026538d336b78a85b1b7f8e90c493b8a8286a4",
+      "publication_bytes": 1755,
+      "transformations": {}
+    },
+    {
+      "path": "manifest.json",
+      "canonical_path": "results/tuning26-2026-10-20/manifest.json",
+      "canonical_sha256": "081d049139ecec1664e0cbb0a41e39ebd130f0ce2dff37feb490d6627218a4f2",
+      "canonical_bytes": 15283,
+      "publication_sha256": "081d049139ecec1664e0cbb0a41e39ebd130f0ce2dff37feb490d6627218a4f2",
+      "publication_bytes": 15283,
+      "transformations": {}
+    },
+    {
+      "path": "measurements.json",
+      "canonical_path": "results/tuning26-2026-10-20/measurements.json",
+      "canonical_sha256": "630dde30c0eb95ce058d0bd352e63a482b6560bbcb4b0ed7b9a9ce20f4dedb6e",
+      "canonical_bytes": 355253,
+      "publication_sha256": "630dde30c0eb95ce058d0bd352e63a482b6560bbcb4b0ed7b9a9ce20f4dedb6e",
+      "publication_bytes": 355253,
+      "transformations": {}
+    },
+    {
+      "path": "mixed.lua",
+      "canonical_path": "results/tuning26-2026-10-20/mixed.lua",
+      "canonical_sha256": "eb8d49273c56fe4b558a58bd6c7e65551ec683c53d299e2b3a69e0b71421d701",
+      "canonical_bytes": 1478,
+      "publication_sha256": "eb8d49273c56fe4b558a58bd6c7e65551ec683c53d299e2b3a69e0b71421d701",
+      "publication_bytes": 1478,
+      "transformations": {}
+    },
+    {
+      "path": "patches/26-b128-w250.patch",
+      "canonical_path": "results/tuning26-2026-10-20/patches/26-b128-w250.patch",
+      "canonical_sha256": "f9e21cd0ca57854fc92efbf6f482a5d9e992d5b7a32bf86aa726bd6ae903a2e7",
+      "canonical_bytes": 579,
+      "publication_sha256": "f9e21cd0ca57854fc92efbf6f482a5d9e992d5b7a32bf86aa726bd6ae903a2e7",
+      "publication_bytes": 579,
+      "transformations": {}
+    },
+    {
+      "path": "patches/26-b128-w4000.patch",
+      "canonical_path": "results/tuning26-2026-10-20/patches/26-b128-w4000.patch",
+      "canonical_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "canonical_bytes": 0,
+      "publication_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "publication_bytes": 0,
+      "transformations": {}
+    },
+    {
+      "path": "patches/26-b32-w250.patch",
+      "canonical_path": "results/tuning26-2026-10-20/patches/26-b32-w250.patch",
+      "canonical_sha256": "01615a0384e0f06241c2b492af03319e9988b97da52099b1714eb3f6d1e36155",
+      "canonical_bytes": 873,
+      "publication_sha256": "01615a0384e0f06241c2b492af03319e9988b97da52099b1714eb3f6d1e36155",
+      "publication_bytes": 873,
+      "transformations": {}
+    },
+    {
+      "path": "patches/26-b32-w4000.patch",
+      "canonical_path": "results/tuning26-2026-10-20/patches/26-b32-w4000.patch",
+      "canonical_sha256": "3a420dbe948dbab31b2ed928f08f216d5ee73ca3fb43b5c5b07d4ef74ad79fbc",
+      "canonical_bytes": 562,
+      "publication_sha256": "3a420dbe948dbab31b2ed928f08f216d5ee73ca3fb43b5c5b07d4ef74ad79fbc",
+      "publication_bytes": 562,
+      "transformations": {}
+    },
+    {
+      "path": "prepare_confirmation.py",
+      "canonical_path": "results/tuning26-2026-10-20/prepare_confirmation.py",
+      "canonical_sha256": "91c3284c426123b8d87898870d86c4718fc8a602e0d0e089620dc8fc4dba3488",
+      "canonical_bytes": 19512,
+      "publication_sha256": "91c3284c426123b8d87898870d86c4718fc8a602e0d0e089620dc8fc4dba3488",
+      "publication_bytes": 19512,
+      "transformations": {}
+    },
+    {
+      "path": "prepare_experiment.py",
+      "canonical_path": "results/tuning26-2026-10-20/prepare_experiment.py",
+      "canonical_sha256": "52d117e1aafb60c65369fa249a7e132ded97e7e717d831fb3bf4e73076215b3d",
+      "canonical_bytes": 6431,
+      "publication_sha256": "52d117e1aafb60c65369fa249a7e132ded97e7e717d831fb3bf4e73076215b3d",
+      "publication_bytes": 6431,
+      "transformations": {}
+    },
+    {
+      "path": "prepare_followup.py",
+      "canonical_path": "results/tuning26-2026-10-20/prepare_followup.py",
+      "canonical_sha256": "ae7ece0795c0250e6ec1b937b56c3bd525a63e2d6ab1ef6c21350d8937cc2875",
+      "canonical_bytes": 13264,
+      "publication_sha256": "ae7ece0795c0250e6ec1b937b56c3bd525a63e2d6ab1ef6c21350d8937cc2875",
+      "publication_bytes": 13264,
+      "transformations": {}
+    },
+    {
+      "path": "publication-checks.json",
+      "canonical_path": null,
+      "canonical_sha256": null,
+      "canonical_bytes": null,
+      "publication_sha256": "3523d5a5de5047922bb6d914ec7c109d9b4b242e3d25f0a2ad8e1d567f192629",
+      "publication_bytes": 1005,
+      "transformations": {
+        "generated_publication_checks": 1
+      }
+    },
+    {
+      "path": "run.py",
+      "canonical_path": "results/tuning26-2026-10-20/run.py",
+      "canonical_sha256": "b85ee72abe98e8c8072fec1be0c052cf6968faf03d8fb9e08719625b77315d39",
+      "canonical_bytes": 17380,
+      "publication_sha256": "b85ee72abe98e8c8072fec1be0c052cf6968faf03d8fb9e08719625b77315d39",
+      "publication_bytes": 17380,
+      "transformations": {}
+    },
+    {
+      "path": "seccomp-io-uring.json",
+      "canonical_path": "results/tuning26-2026-10-20/seccomp-io-uring.json",
+      "canonical_sha256": "4baf3b268185f55527933e7df090e85936003674e34b5f5396461fd9d3efeb17",
+      "canonical_bytes": 22434,
+      "publication_sha256": "4baf3b268185f55527933e7df090e85936003674e34b5f5396461fd9d3efeb17",
+      "publication_bytes": 22434,
+      "transformations": {}
+    },
+    {
+      "path": "semantic.py",
+      "canonical_path": "results/tuning26-2026-10-20/semantic.py",
+      "canonical_sha256": "785f8ce565b469e4f4d702d01a9d868cd7458d64e3f1362c3fb8728560215fbc",
+      "canonical_bytes": 3365,
+      "publication_sha256": "785f8ce565b469e4f4d702d01a9d868cd7458d64e3f1362c3fb8728560215fbc",
+      "publication_bytes": 3365,
+      "transformations": {}
+    },
+    {
+      "path": "serve.py",
+      "canonical_path": "results/tuning26-2026-10-20/serve.py",
+      "canonical_sha256": "52d8bdd75c0dc2477fc5b2391c797a2832eab5ac61a72d3bbe4dac4cb94bf311",
+      "canonical_bytes": 8993,
+      "publication_sha256": "52d8bdd75c0dc2477fc5b2391c797a2832eab5ac61a72d3bbe4dac4cb94bf311",
+      "publication_bytes": 8993,
+      "transformations": {}
+    },
+    {
+      "path": "server-logs/bench-26-b128-w250-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/server-logs/bench-26-b128-w250-1.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "server-logs/bench-26-b128-w250-2.log",
+      "canonical_path": "results/tuning26-2026-10-20/server-logs/bench-26-b128-w250-2.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "server-logs/bench-26-b128-w250-3.log",
+      "canonical_path": "results/tuning26-2026-10-20/server-logs/bench-26-b128-w250-3.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "server-logs/bench-26-b128-w4000-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/server-logs/bench-26-b128-w4000-1.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "server-logs/bench-26-b128-w4000-2.log",
+      "canonical_path": "results/tuning26-2026-10-20/server-logs/bench-26-b128-w4000-2.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "server-logs/bench-26-b128-w4000-3.log",
+      "canonical_path": "results/tuning26-2026-10-20/server-logs/bench-26-b128-w4000-3.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "server-logs/bench-26-b32-w250-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/server-logs/bench-26-b32-w250-1.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "server-logs/bench-26-b32-w250-2.log",
+      "canonical_path": "results/tuning26-2026-10-20/server-logs/bench-26-b32-w250-2.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "server-logs/bench-26-b32-w250-3.log",
+      "canonical_path": "results/tuning26-2026-10-20/server-logs/bench-26-b32-w250-3.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "server-logs/bench-26-b32-w4000-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/server-logs/bench-26-b32-w4000-1.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "server-logs/bench-26-b32-w4000-2.log",
+      "canonical_path": "results/tuning26-2026-10-20/server-logs/bench-26-b32-w4000-2.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "server-logs/bench-26-b32-w4000-3.log",
+      "canonical_path": "results/tuning26-2026-10-20/server-logs/bench-26-b32-w4000-3.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "server-logs/bench-26-original-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/server-logs/bench-26-original-1.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "server-logs/bench-26-original-2.log",
+      "canonical_path": "results/tuning26-2026-10-20/server-logs/bench-26-original-2.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "server-logs/bench-26-original-3.log",
+      "canonical_path": "results/tuning26-2026-10-20/server-logs/bench-26-original-3.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "server-logs/bench-82-leader-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/server-logs/bench-82-leader-1.log",
+      "canonical_sha256": "548fdd34d36ce752af14d5afa5d94578455e9b954e91060df629174ebacf6397",
+      "canonical_bytes": 91,
+      "publication_sha256": "548fdd34d36ce752af14d5afa5d94578455e9b954e91060df629174ebacf6397",
+      "publication_bytes": 91,
+      "transformations": {}
+    },
+    {
+      "path": "server-logs/bench-82-leader-2.log",
+      "canonical_path": "results/tuning26-2026-10-20/server-logs/bench-82-leader-2.log",
+      "canonical_sha256": "548fdd34d36ce752af14d5afa5d94578455e9b954e91060df629174ebacf6397",
+      "canonical_bytes": 91,
+      "publication_sha256": "548fdd34d36ce752af14d5afa5d94578455e9b954e91060df629174ebacf6397",
+      "publication_bytes": 91,
+      "transformations": {}
+    },
+    {
+      "path": "server-logs/bench-82-leader-3.log",
+      "canonical_path": "results/tuning26-2026-10-20/server-logs/bench-82-leader-3.log",
+      "canonical_sha256": "548fdd34d36ce752af14d5afa5d94578455e9b954e91060df629174ebacf6397",
+      "canonical_bytes": 91,
+      "publication_sha256": "548fdd34d36ce752af14d5afa5d94578455e9b954e91060df629174ebacf6397",
+      "publication_bytes": 91,
+      "transformations": {}
+    },
+    {
+      "path": "server-logs/verify-26-b128-w250-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/server-logs/verify-26-b128-w250-1.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "server-logs/verify-26-b128-w4000-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/server-logs/verify-26-b128-w4000-1.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "server-logs/verify-26-b32-w250-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/server-logs/verify-26-b32-w250-1.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "server-logs/verify-26-b32-w4000-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/server-logs/verify-26-b32-w4000-1.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "server-logs/verify-26-original-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/server-logs/verify-26-original-1.log",
+      "canonical_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "canonical_bytes": 61,
+      "publication_sha256": "ff67ccbf605a25186771e9ce49412e02b1df03785b3fa13f82013ac2192ab7ec",
+      "publication_bytes": 61,
+      "transformations": {}
+    },
+    {
+      "path": "server-logs/verify-82-leader-1.log",
+      "canonical_path": "results/tuning26-2026-10-20/server-logs/verify-82-leader-1.log",
+      "canonical_sha256": "548fdd34d36ce752af14d5afa5d94578455e9b954e91060df629174ebacf6397",
+      "canonical_bytes": 91,
+      "publication_sha256": "548fdd34d36ce752af14d5afa5d94578455e9b954e91060df629174ebacf6397",
+      "publication_bytes": 91,
+      "transformations": {}
+    },
+    {
+      "path": "shared-sha256.json",
+      "canonical_path": "results/tuning26-2026-10-20/shared-sha256.json",
+      "canonical_sha256": "aadccf6cbeeedd100ec927e47525ab197d6f81cd665cccae97b3dcf7f29158e3",
+      "canonical_bytes": 1096,
+      "publication_sha256": "aadccf6cbeeedd100ec927e47525ab197d6f81cd665cccae97b3dcf7f29158e3",
+      "publication_bytes": 1096,
+      "transformations": {}
+    },
+    {
+      "path": "summarize_tuning.py",
+      "canonical_path": "results/tuning26-2026-10-20/summarize_tuning.py",
+      "canonical_sha256": "cfe361868496c19694e12204873d16e207bd1a0c992ae9836f3beaaabfb84aff",
+      "canonical_bytes": 35322,
+      "publication_sha256": "cfe361868496c19694e12204873d16e207bd1a0c992ae9836f3beaaabfb84aff",
+      "publication_bytes": 35322,
+      "transformations": {}
+    },
+    {
+      "path": "test/golden/feed.json",
+      "canonical_path": "results/tuning26-2026-10-20/test/golden/feed.json",
+      "canonical_sha256": "8c9b3d6cb46e650c4786ab9281bc3a72ba7bd75b7926021d2b0c431dd9bd3d68",
+      "canonical_bytes": 5102,
+      "publication_sha256": "8c9b3d6cb46e650c4786ab9281bc3a72ba7bd75b7926021d2b0c431dd9bd3d68",
+      "publication_bytes": 5102,
+      "transformations": {}
+    },
+    {
+      "path": "test/golden/post-1.json",
+      "canonical_path": "results/tuning26-2026-10-20/test/golden/post-1.json",
+      "canonical_sha256": "8035350dc55714c9a673af9f441ab07d2b269047e1137612f022877b9e8f3652",
+      "canonical_bytes": 195,
+      "publication_sha256": "8035350dc55714c9a673af9f441ab07d2b269047e1137612f022877b9e8f3652",
+      "publication_bytes": 195,
+      "transformations": {}
+    },
+    {
+      "path": "test/golden/post-250000.json",
+      "canonical_path": "results/tuning26-2026-10-20/test/golden/post-250000.json",
+      "canonical_sha256": "febb2506b9d4a99bc34f1f182c61ced6b3ba3b2533724485c6e5206604a65b71",
+      "canonical_bytes": 146,
+      "publication_sha256": "febb2506b9d4a99bc34f1f182c61ced6b3ba3b2533724485c6e5206604a65b71",
+      "publication_bytes": 146,
+      "transformations": {}
+    },
+    {
+      "path": "test/golden/post-500000.json",
+      "canonical_path": "results/tuning26-2026-10-20/test/golden/post-500000.json",
+      "canonical_sha256": "662fe8c7282dee8aab00dab6cdb15e64e953f10a2c1c923e2ea67fab1429a4de",
+      "canonical_bytes": 324,
+      "publication_sha256": "662fe8c7282dee8aab00dab6cdb15e64e953f10a2c1c923e2ea67fab1429a4de",
+      "publication_bytes": 324,
+      "transformations": {}
+    },
+    {
+      "path": "test/test.sh",
+      "canonical_path": "results/tuning26-2026-10-20/test/test.sh",
+      "canonical_sha256": "679e722044fd1f366d85093232e7f2ec2e3398ea312032dd9eb6cbdf8b17306a",
+      "canonical_bytes": 8408,
+      "publication_sha256": "679e722044fd1f366d85093232e7f2ec2e3398ea312032dd9eb6cbdf8b17306a",
+      "publication_bytes": 8408,
+      "transformations": {}
+    },
+    {
+      "path": "verification.json",
+      "canonical_path": "results/tuning26-2026-10-20/verification.json",
+      "canonical_sha256": "39a245eab3abe3192fe0324d84ee23655a10d1e914c4df5a9033031a94ca77e5",
+      "canonical_bytes": 125228,
+      "publication_sha256": "39a245eab3abe3192fe0324d84ee23655a10d1e914c4df5a9033031a94ca77e5",
+      "publication_bytes": 125228,
+      "transformations": {}
+    }
+  ]
+}

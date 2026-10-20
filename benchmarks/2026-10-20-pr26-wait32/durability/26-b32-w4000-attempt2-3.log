@@ -1,0 +1,4 @@
+  ok   an acknowledged post and like survive SIGKILL and restart
+  ok   2 of 2 keep-alive connections open, each answered /health
+  ok   2 of 2 of the same connections answer again after 0 idle seconds
+lifecycle: 3 passed, 0 failed

@@ -1,0 +1,3 @@
+mkdir -p build
+mkdir: cannot create directory 'build': Permission denied
+make: *** [Makefile:20: build] Error 1

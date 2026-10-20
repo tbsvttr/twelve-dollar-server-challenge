@@ -1,0 +1,65 @@
+{
+  "case_id": "26-b32-w4000",
+  "attempt": 2,
+  "image_id": "sha256:63c9077452d1b89a1890e49a8e11786ac9047b7640dd0a93a6dffda2d56f5fa0",
+  "source_sha256": "11da0037c4bcc4d0dc9d938b7e036f417bfafabd2809ca171159a48233c8802e",
+  "settings": {
+    "WAIT_NR": 32,
+    "WAIT_USEC": 4000
+  },
+  "recorded_at": "2026-10-20T14:17:46Z",
+  "scope": "Commit fault checks and production-binary SIGKILL persistence; keepalive reduced to 2 connections/0 idle seconds, not a capacity claim.",
+  "passed": true,
+  "commands": [
+    [
+      "make",
+      "-j1",
+      "build/commit",
+      "build/commit-server",
+      "build/lifecycle"
+    ],
+    [
+      "env",
+      "SEED=/evidence/seed/feed.db",
+      "SERVER=build/commit-server",
+      "./build/commit"
+    ],
+    [
+      "env",
+      "SEED=/evidence/seed/feed.db",
+      "SERVER=../bin/server",
+      "CONNECTIONS=2",
+      "IDLE_SECONDS=0",
+      "./build/lifecycle"
+    ]
+  ],
+  "test_workspace_preparation": {
+    "exit_code": 0,
+    "stderr": ""
+  },
+  "steps": [
+    {
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "durability/26-b32-w4000-attempt2-1.log",
+      "log_sha256": "486a444189b1a25c6458b09c049230d96326d10ff4401ff32b7e84fbff931645"
+    },
+    {
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "durability/26-b32-w4000-attempt2-2.log",
+      "log_sha256": "c67d49206985acaba45c4e1b3c9eeb5628fa9863e56565dea13cc018ac0c6b89"
+    },
+    {
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "durability/26-b32-w4000-attempt2-3.log",
+      "log_sha256": "d86bee1a8e93f3afa5a9b70bea838a81285681826633611436d9507ffa0da2da"
+    }
+  ],
+  "checks_passed": true,
+  "cleanup": {
+    "exit_code": 0,
+    "stderr": ""
+  }
+}

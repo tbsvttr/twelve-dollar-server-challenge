@@ -1,0 +1,11 @@
+--- a/src/server.c
++++ b/src/server.c
+@@ -56,7 +56,7 @@
+ #define STALL_S 30          /* close a connection whose pending request or response made no progress */
+ #define CKPT_FRAMES 1000    /* checkpoint when the WAL has this many frames */
+ #ifndef WAIT_NR
+-#define WAIT_NR 128         /* wake the loop once this many completions are pending... */
++#define WAIT_NR 16         /* wake the loop once this many completions are pending... */
+ #endif
+ #ifndef WAIT_USEC
+ #define WAIT_USEC 4000      /* ...or this long after it went to sleep with work outstanding */

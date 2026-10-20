@@ -1,0 +1,29 @@
+  ok   a failed commit answers 500, and the post does not exist
+  ok   a read pipelined after a failed write gets no response: one 500, then the connection closes
+  FAIL 20 rounds of a failing write with 4 concurrent feed reads: rolled-back rows shown 0 times
+  ok   a 201 is not sent before its commit finishes
+  ok   the next write after the rollbacks commits normally
+commit: 4 passed, 1 failed
+server log kept in /tmp/c-iouring-test-SCKwMC/server.log
+DIAG round=0 write_read=1 write_status=500
+DIAG round=1 write_read=0 write_status=0
+DIAG round=2 write_read=1 write_status=500
+DIAG round=3 write_read=1 write_status=500
+DIAG round=4 write_read=1 write_status=500
+DIAG round=5 write_read=1 write_status=500
+DIAG round=6 write_read=1 write_status=500
+DIAG round=7 write_read=1 write_status=500
+DIAG round=8 write_read=0 write_status=0
+DIAG round=9 write_read=0 write_status=0
+DIAG round=10 write_read=1 write_status=500
+DIAG round=11 write_read=1 write_status=500
+DIAG round=12 write_read=1 write_status=500
+DIAG round=13 write_read=1 write_status=500
+DIAG round=14 write_read=1 write_status=500
+DIAG round=15 write_read=1 write_status=500
+DIAG round=16 write_read=1 write_status=500
+DIAG round=17 write_read=1 write_status=500
+DIAG round=18 write_read=1 write_status=500
+DIAG round=19 write_read=0 write_status=0
+DIAG final_feed_status=0 contains_phantom=0 body=(null)
+DIAG final_post_status=404 body={"error":"post not found"}

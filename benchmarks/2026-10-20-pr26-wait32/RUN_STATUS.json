@@ -1,0 +1,49 @@
+{
+  "phase": "Complete: six-round independent confirmation and pre/post identity audits passed; threshold32 improves throughput but does not reach the leader.",
+  "selected_case": "26-b32-w4000",
+  "reason": "Selected the initial screen winner after rejecting threshold 8 for repeated rollback-recovery assertion failures. Threshold 32 passed the original commit suite and SIGKILL persistence assertions, followed by three original and three instrumented commit suites. Unchanged PR26 passed all six diagnostic repeats. The exact threshold-8 failure cause remains unresolved; no phantom rows were observed. Confirmation used the frozen initial selection and six balanced orders.",
+  "rejected_candidates": [
+    {
+      "case_id": "26-b8-w4000",
+      "reason": "Rollback-recovery assertion failed in the initial check, in one of three original-client repeats, and in one of three instrumented-client repeats. The failed diagnostic final feed request returned status 0: no successfully parsed complete HTTP response. The original control passed six corresponding repeats. No data leak was observed; root cause unresolved. Not accepted for adoption.",
+      "evidence": [
+        "followup-screen/durability/26-b8-w4000.json",
+        "followup-screen/commit-diagnostics/26-b8-w4000/result.json",
+        "followup-screen/commit-diagnostics/26-b8-w4000/commit-diagnostic-3.log",
+        "followup-screen/commit-diagnostics/26-original/result.json"
+      ]
+    }
+  ],
+  "not_adopted_candidates": [
+    {
+      "case_id": "26-b16-w4000",
+      "reason": "Exploratory median only 2.74% above the fresh 32/4000 control and 0.11% below threshold 8, with overlapping ranges. Additional rollback-fault validation was not performed; no fault failure is claimed. Retained the initial threshold-32 winner while recovery behavior at lower thresholds remains unresolved.",
+      "evidence": [
+        "followup-screen/analysis-summary.json"
+      ]
+    }
+  ],
+  "selected_candidate_fault_evidence": [
+    "durability/26-b32-w4000-attempt2.json",
+    "followup-screen/commit-diagnostics/26-b32-w4000/result.json"
+  ],
+  "unused_confirmation": "followup-screen/confirmation was prepared for8 before fault failure; no verification or timing was run there. Preserve it as preparation evidence, not results.",
+  "confirmation_directory": "confirmation",
+  "published_benchmark_unchanged": true,
+  "remote_publication_authorized": false,
+  "result": {
+    "confirmation_trials": 18,
+    "median_successful_rps": {
+      "26-b32-w4000": 91102.955,
+      "26-original": 63849.815,
+      "82-leader": 101552.375
+    },
+    "candidate_median_gain_percent": 42.68319336555635,
+    "candidate_median_vs_leader_percent": -10.289685494800093,
+    "original_comparison_wins": 6,
+    "leader_comparison_wins": 1,
+    "all_confirmation_counters_zero": true,
+    "host_observation": "confirmation/host-observation.json",
+    "claim": "Descriptive throughput experiment on a shared host; no official capacity score or established #1."
+  }
+}

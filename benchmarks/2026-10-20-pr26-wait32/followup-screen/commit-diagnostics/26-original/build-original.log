@@ -1,0 +1,54 @@
+mkdir -p build
+cc -O2 -g -std=gnu11 -Wall -Wextra -Wno-unused-function commit.c -o build/commit
+cc -O2 -DSQLITE_THREADSAFE=0 -DSQLITE_DEFAULT_MEMSTATUS=0 -DSQLITE_DEFAULT_WAL_SYNCHRONOUS=1 -DSQLITE_DQS=0 -DSQLITE_LIKE_DOESNT_MATCH_BLOBS -DSQLITE_MAX_EXPR_DEPTH=0 -DSQLITE_OMIT_DEPRECATED -DSQLITE_OMIT_PROGRESS_CALLBACK -DSQLITE_OMIT_SHARED_CACHE -DSQLITE_OMIT_LOAD_EXTENSION -DSQLITE_USE_ALLOCA -w -c ../deps/sqlite/sqlite3.c -o build/sqlite3.o
+cc -O2 -std=gnu11 -w -I../deps/sqlite -I../deps/liburing/src/include ../src/server.c commit_fault.c build/sqlite3.o ../deps/liburing/src/liburing.a \
+  -Wl,--wrap=sqlite3_open_v2 -lpthread -lm -o build/commit-server
+In file included from commit.c:4:
+commit.c: In function 'newest_id':
+t.h:355:51: warning: argument 1 null where non-null expected [-Wnonnull]
+  355 | #define req(m, p, t, b, r) reqb(m, p, t, b, (b) ? strlen(b) : 0, r)
+      |                                                   ^~~~~~
+commit.c:32:5: note: in expansion of macro 'req'
+   32 |     req("GET", "/feed", NULL, NULL, &r);
+      |     ^~~
+In file included from t.h:16:
+/usr/include/string.h:407:15: note: in a call to function 'strlen' declared 'nonnull'
+  407 | extern size_t strlen (const char *__s)
+      |               ^~~~~~
+commit.c: In function 'main':
+t.h:355:51: warning: argument 1 null where non-null expected [-Wnonnull]
+  355 | #define req(m, p, t, b, r) reqb(m, p, t, b, (b) ? strlen(b) : 0, r)
+      |                                                   ^~~~~~
+commit.c:48:11: note: in expansion of macro 'req'
+   48 |     ok &= req("GET", path, NULL, NULL, &r) == 404;
+      |           ^~~
+/usr/include/string.h:407:15: note: in a call to function 'strlen' declared 'nonnull'
+  407 | extern size_t strlen (const char *__s)
+      |               ^~~~~~
+t.h:355:51: warning: argument 1 null where non-null expected [-Wnonnull]
+  355 | #define req(m, p, t, b, r) reqb(m, p, t, b, (b) ? strlen(b) : 0, r)
+      |                                                   ^~~~~~
+commit.c:77:21: note: in expansion of macro 'req'
+   77 |     ok = !leaked && req("GET", "/feed", NULL, NULL, &r) == 200 && !strstr(r.body, "phantom") && req("GET", path, NULL, NULL, &r) == 404;
+      |                     ^~~
+/usr/include/string.h:407:15: note: in a call to function 'strlen' declared 'nonnull'
+  407 | extern size_t strlen (const char *__s)
+      |               ^~~~~~
+t.h:355:51: warning: argument 1 null where non-null expected [-Wnonnull]
+  355 | #define req(m, p, t, b, r) reqb(m, p, t, b, (b) ? strlen(b) : 0, r)
+      |                                                   ^~~~~~
+commit.c:77:97: note: in expansion of macro 'req'
+   77 |     ok = !leaked && req("GET", "/feed", NULL, NULL, &r) == 200 && !strstr(r.body, "phantom") && req("GET", path, NULL, NULL, &r) == 404;
+      |                                                                                                 ^~~
+/usr/include/string.h:407:15: note: in a call to function 'strlen' declared 'nonnull'
+  407 | extern size_t strlen (const char *__s)
+      |               ^~~~~~
+t.h:355:51: warning: argument 1 null where non-null expected [-Wnonnull]
+  355 | #define req(m, p, t, b, r) reqb(m, p, t, b, (b) ? strlen(b) : 0, r)
+      |                                                   ^~~~~~
+commit.c:94:10: note: in expansion of macro 'req'
+   94 |     ok = req("GET", path, NULL, NULL, &r) == 200;
+      |          ^~~
+/usr/include/string.h:407:15: note: in a call to function 'strlen' declared 'nonnull'
+  407 | extern size_t strlen (const char *__s)
+      |               ^~~~~~

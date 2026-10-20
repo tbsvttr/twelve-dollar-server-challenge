@@ -1,0 +1,336 @@
+[
+  {
+    "pr": 26,
+    "id": "26-original",
+    "case_id": "26-original",
+    "title": "Add c-iouring-raoz submission (C, io_uring, direct)",
+    "url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/26",
+    "state": "open",
+    "merged": false,
+    "repo": "raoz/twelve-dollar-server-challenge",
+    "commit": "35cc55c85fa837cd703367a740e0b8eeb6b825b4",
+    "eligible": true,
+    "folder": "c-iouring-raoz",
+    "nginx": false,
+    "status": "prepared",
+    "archive": "archives/pr26-35cc55c85fa837cd703367a740e0b8eeb6b825b4.tar.gz",
+    "archive_sha256": "3ded2f91d5b4f0dbc48ce82c41b72d6ff056a56b971e4911d074212d4c5b93af",
+    "archive_endpoint": "repos/arjaythedev/twelve-dollar-server-challenge/tarball/35cc55c85fa837cd703367a740e0b8eeb6b825b4",
+    "source_url": "https://github.com/raoz/twelve-dollar-server-challenge/tree/35cc55c85fa837cd703367a740e0b8eeb6b825b4/submissions/c-iouring-raoz",
+    "source_sha256": "5aeaece314275fbc614a79677fd6f223ed38ae89098fffaa2b6709b380597611",
+    "source_file_count": 19,
+    "source_hashes": "archives/26-original-sha256.json",
+    "app_loc": 2128,
+    "own_loc": 4200,
+    "loc_method": "Physical lines including blanks/comments; heuristic file classification retained in source-inventories, excluding docs, lockfiles, binary/generated/dependency folders.",
+    "start_sh": true,
+    "build_sh": true,
+    "install_sh": true,
+    "skipped_members": [],
+    "nginx_evidence": [
+      {
+        "file": "README.md",
+        "line": "| **Nginx or direct** | **Direct**: the server listens on `0.0.0.0:80` |"
+      },
+      {
+        "file": "README.md",
+        "line": "SQLITE_PATH=... JWT_SECRET=... HOST=0.0.0.0 PORT=80 bash start.sh"
+      },
+      {
+        "file": "readme.md",
+        "line": "| **Nginx or direct** | **Direct**: the server listens on `0.0.0.0:80` |"
+      },
+      {
+        "file": "readme.md",
+        "line": "SQLITE_PATH=... JWT_SECRET=... HOST=0.0.0.0 PORT=80 bash start.sh"
+      }
+    ],
+    "source_dir": "/suite/sources/pr26",
+    "experiment_role": "unchanged reference"
+  },
+  {
+    "pr": 82,
+    "id": "82-leader",
+    "case_id": "82-leader",
+    "title": "rust io_uring version 2",
+    "url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/82",
+    "state": "open",
+    "merged": false,
+    "repo": "Scooter1337/twelve-dollar-server-challenge",
+    "commit": "95aa405a0003599dbc7fb4dfa47a09e8343239df",
+    "eligible": true,
+    "folder": "rust-epoll-scooter1337",
+    "nginx": false,
+    "status": "prepared",
+    "archive": "archives/pr82-95aa405a0003599dbc7fb4dfa47a09e8343239df.tar.gz",
+    "archive_sha256": "6157f04b6ef9177431f1bad5fe003f52383a8e8523fa8d95e03d972c6e0d1a8d",
+    "archive_endpoint": "repos/arjaythedev/twelve-dollar-server-challenge/tarball/95aa405a0003599dbc7fb4dfa47a09e8343239df",
+    "source_url": "https://github.com/Scooter1337/twelve-dollar-server-challenge/tree/95aa405a0003599dbc7fb4dfa47a09e8343239df/submissions/rust-epoll-scooter1337",
+    "source_sha256": "b91b9491e2a7a8856f8f360bc89f376b6493ae9b9a3907c557836b94f5131438",
+    "source_file_count": 49,
+    "source_hashes": "archives/82-leader-sha256.json",
+    "app_loc": 2816,
+    "own_loc": 4508,
+    "loc_method": "Physical lines including blanks/comments; heuristic file classification retained in source-inventories, excluding docs, lockfiles, binary/generated/dependency folders.",
+    "start_sh": true,
+    "build_sh": true,
+    "install_sh": true,
+    "skipped_members": [],
+    "nginx_evidence": [
+      {
+        "file": "README.md",
+        "line": "Direct HTTP/1.1 on $HOST:$PORT. No Nginx, HTTP framework, async executor or ORM. Requires Linux 6.1+ with io_uring enabled. The existing submission directory and executable names are retained."
+      },
+      {
+        "file": "README.md",
+        "line": "  HOST=0.0.0.0 PORT=80 bash start.sh"
+      },
+      {
+        "file": "README.md",
+        "line": "- io_uring issuers use multishot direct accept/receive, fixed socket descriptors, provided buffers and batched completions. Tables adapt to the inherited hard limit: eight rings of 65,535 slots under the spec limit, or one ring of 524,280 slots with a one-million limit. Accepted sockets occupy those tables instead of ordinary process descriptors, lifting the previous connection ceiling under LimitNOFILE=65535. The process raises only its own soft limit within the inherited hard limit."
+      },
+      {
+        "file": "readme.md",
+        "line": "Direct HTTP/1.1 on $HOST:$PORT. No Nginx, HTTP framework, async executor or ORM. Requires Linux 6.1+ with io_uring enabled. The existing submission directory and executable names are retained."
+      },
+      {
+        "file": "readme.md",
+        "line": "  HOST=0.0.0.0 PORT=80 bash start.sh"
+      },
+      {
+        "file": "readme.md",
+        "line": "- io_uring issuers use multishot direct accept/receive, fixed socket descriptors, provided buffers and batched completions. Tables adapt to the inherited hard limit: eight rings of 65,535 slots under the spec limit, or one ring of 524,280 slots with a one-million limit. Accepted sockets occupy those tables instead of ordinary process descriptors, lifting the previous connection ceiling under LimitNOFILE=65535. The process raises only its own soft limit within the inherited hard limit."
+      }
+    ],
+    "source_dir": "/suite/sources/pr82",
+    "experiment_role": "unchanged reference"
+  },
+  {
+    "pr": 26,
+    "id": "26-b128-w4000",
+    "case_id": "26-b128-w4000",
+    "title": "Add c-iouring-raoz submission (C, io_uring, direct)",
+    "url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/26",
+    "state": "open",
+    "merged": false,
+    "repo": "raoz/twelve-dollar-server-challenge",
+    "commit": "35cc55c85fa837cd703367a740e0b8eeb6b825b4",
+    "eligible": true,
+    "folder": "c-iouring-raoz",
+    "nginx": false,
+    "status": "prepared",
+    "archive": "archives/pr26-35cc55c85fa837cd703367a740e0b8eeb6b825b4.tar.gz",
+    "archive_sha256": "3ded2f91d5b4f0dbc48ce82c41b72d6ff056a56b971e4911d074212d4c5b93af",
+    "archive_endpoint": "repos/arjaythedev/twelve-dollar-server-challenge/tarball/35cc55c85fa837cd703367a740e0b8eeb6b825b4",
+    "source_url": "https://github.com/raoz/twelve-dollar-server-challenge/tree/35cc55c85fa837cd703367a740e0b8eeb6b825b4/submissions/c-iouring-raoz",
+    "source_sha256": "5aeaece314275fbc614a79677fd6f223ed38ae89098fffaa2b6709b380597611",
+    "source_file_count": 19,
+    "source_hashes": "archives/26-b128-w4000-sha256.json",
+    "app_loc": 2128,
+    "own_loc": 4200,
+    "loc_method": "Physical lines including blanks/comments; heuristic file classification retained in source-inventories, excluding docs, lockfiles, binary/generated/dependency folders.",
+    "start_sh": true,
+    "build_sh": true,
+    "install_sh": true,
+    "skipped_members": [],
+    "nginx_evidence": [
+      {
+        "file": "README.md",
+        "line": "| **Nginx or direct** | **Direct**: the server listens on `0.0.0.0:80` |"
+      },
+      {
+        "file": "README.md",
+        "line": "SQLITE_PATH=... JWT_SECRET=... HOST=0.0.0.0 PORT=80 bash start.sh"
+      },
+      {
+        "file": "readme.md",
+        "line": "| **Nginx or direct** | **Direct**: the server listens on `0.0.0.0:80` |"
+      },
+      {
+        "file": "readme.md",
+        "line": "SQLITE_PATH=... JWT_SECRET=... HOST=0.0.0.0 PORT=80 bash start.sh"
+      }
+    ],
+    "source_dir": "/suite/sources/pr26",
+    "experiment_role": "rebuilt baseline",
+    "local_variant": {
+      "WAIT_NR": 128,
+      "WAIT_USEC": 4000
+    },
+    "upstream_commit": "35cc55c85fa837cd703367a740e0b8eeb6b825b4",
+    "commit_semantics": "Upstream base revision; local patch and source inventory define the measured derivative.",
+    "patch": "patches/26-b128-w4000.patch",
+    "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "pr": 26,
+    "id": "26-b32-w4000",
+    "case_id": "26-b32-w4000",
+    "title": "Add c-iouring-raoz submission (C, io_uring, direct)",
+    "url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/26",
+    "state": "open",
+    "merged": false,
+    "repo": "raoz/twelve-dollar-server-challenge",
+    "commit": "35cc55c85fa837cd703367a740e0b8eeb6b825b4",
+    "eligible": true,
+    "folder": "c-iouring-raoz",
+    "nginx": false,
+    "status": "prepared",
+    "archive": "archives/pr26-35cc55c85fa837cd703367a740e0b8eeb6b825b4.tar.gz",
+    "archive_sha256": "3ded2f91d5b4f0dbc48ce82c41b72d6ff056a56b971e4911d074212d4c5b93af",
+    "archive_endpoint": "repos/arjaythedev/twelve-dollar-server-challenge/tarball/35cc55c85fa837cd703367a740e0b8eeb6b825b4",
+    "source_url": "https://github.com/raoz/twelve-dollar-server-challenge/tree/35cc55c85fa837cd703367a740e0b8eeb6b825b4/submissions/c-iouring-raoz",
+    "source_sha256": "11da0037c4bcc4d0dc9d938b7e036f417bfafabd2809ca171159a48233c8802e",
+    "source_file_count": 19,
+    "source_hashes": "archives/26-b32-w4000-sha256.json",
+    "app_loc": 2128,
+    "own_loc": 4200,
+    "loc_method": "Physical lines including blanks/comments; heuristic file classification retained in source-inventories, excluding docs, lockfiles, binary/generated/dependency folders.",
+    "start_sh": true,
+    "build_sh": true,
+    "install_sh": true,
+    "skipped_members": [],
+    "nginx_evidence": [
+      {
+        "file": "README.md",
+        "line": "| **Nginx or direct** | **Direct**: the server listens on `0.0.0.0:80` |"
+      },
+      {
+        "file": "README.md",
+        "line": "SQLITE_PATH=... JWT_SECRET=... HOST=0.0.0.0 PORT=80 bash start.sh"
+      },
+      {
+        "file": "readme.md",
+        "line": "| **Nginx or direct** | **Direct**: the server listens on `0.0.0.0:80` |"
+      },
+      {
+        "file": "readme.md",
+        "line": "SQLITE_PATH=... JWT_SECRET=... HOST=0.0.0.0 PORT=80 bash start.sh"
+      }
+    ],
+    "source_dir": "/suite/sources/pr26",
+    "experiment_role": "count only",
+    "local_variant": {
+      "WAIT_NR": 32,
+      "WAIT_USEC": 4000
+    },
+    "upstream_commit": "35cc55c85fa837cd703367a740e0b8eeb6b825b4",
+    "commit_semantics": "Upstream base revision; local patch and source inventory define the measured derivative.",
+    "patch": "patches/26-b32-w4000.patch",
+    "patch_sha256": "3a420dbe948dbab31b2ed928f08f216d5ee73ca3fb43b5c5b07d4ef74ad79fbc"
+  },
+  {
+    "pr": 26,
+    "id": "26-b128-w250",
+    "case_id": "26-b128-w250",
+    "title": "Add c-iouring-raoz submission (C, io_uring, direct)",
+    "url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/26",
+    "state": "open",
+    "merged": false,
+    "repo": "raoz/twelve-dollar-server-challenge",
+    "commit": "35cc55c85fa837cd703367a740e0b8eeb6b825b4",
+    "eligible": true,
+    "folder": "c-iouring-raoz",
+    "nginx": false,
+    "status": "prepared",
+    "archive": "archives/pr26-35cc55c85fa837cd703367a740e0b8eeb6b825b4.tar.gz",
+    "archive_sha256": "3ded2f91d5b4f0dbc48ce82c41b72d6ff056a56b971e4911d074212d4c5b93af",
+    "archive_endpoint": "repos/arjaythedev/twelve-dollar-server-challenge/tarball/35cc55c85fa837cd703367a740e0b8eeb6b825b4",
+    "source_url": "https://github.com/raoz/twelve-dollar-server-challenge/tree/35cc55c85fa837cd703367a740e0b8eeb6b825b4/submissions/c-iouring-raoz",
+    "source_sha256": "da92407e4dabd26fc15184054ee85f8a4ef10c232470ca55bbb9e902c6e47a9a",
+    "source_file_count": 19,
+    "source_hashes": "archives/26-b128-w250-sha256.json",
+    "app_loc": 2128,
+    "own_loc": 4200,
+    "loc_method": "Physical lines including blanks/comments; heuristic file classification retained in source-inventories, excluding docs, lockfiles, binary/generated/dependency folders.",
+    "start_sh": true,
+    "build_sh": true,
+    "install_sh": true,
+    "skipped_members": [],
+    "nginx_evidence": [
+      {
+        "file": "README.md",
+        "line": "| **Nginx or direct** | **Direct**: the server listens on `0.0.0.0:80` |"
+      },
+      {
+        "file": "README.md",
+        "line": "SQLITE_PATH=... JWT_SECRET=... HOST=0.0.0.0 PORT=80 bash start.sh"
+      },
+      {
+        "file": "readme.md",
+        "line": "| **Nginx or direct** | **Direct**: the server listens on `0.0.0.0:80` |"
+      },
+      {
+        "file": "readme.md",
+        "line": "SQLITE_PATH=... JWT_SECRET=... HOST=0.0.0.0 PORT=80 bash start.sh"
+      }
+    ],
+    "source_dir": "/suite/sources/pr26",
+    "experiment_role": "timeout only",
+    "local_variant": {
+      "WAIT_NR": 128,
+      "WAIT_USEC": 250
+    },
+    "upstream_commit": "35cc55c85fa837cd703367a740e0b8eeb6b825b4",
+    "commit_semantics": "Upstream base revision; local patch and source inventory define the measured derivative.",
+    "patch": "patches/26-b128-w250.patch",
+    "patch_sha256": "f9e21cd0ca57854fc92efbf6f482a5d9e992d5b7a32bf86aa726bd6ae903a2e7"
+  },
+  {
+    "pr": 26,
+    "id": "26-b32-w250",
+    "case_id": "26-b32-w250",
+    "title": "Add c-iouring-raoz submission (C, io_uring, direct)",
+    "url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/26",
+    "state": "open",
+    "merged": false,
+    "repo": "raoz/twelve-dollar-server-challenge",
+    "commit": "35cc55c85fa837cd703367a740e0b8eeb6b825b4",
+    "eligible": true,
+    "folder": "c-iouring-raoz",
+    "nginx": false,
+    "status": "prepared",
+    "archive": "archives/pr26-35cc55c85fa837cd703367a740e0b8eeb6b825b4.tar.gz",
+    "archive_sha256": "3ded2f91d5b4f0dbc48ce82c41b72d6ff056a56b971e4911d074212d4c5b93af",
+    "archive_endpoint": "repos/arjaythedev/twelve-dollar-server-challenge/tarball/35cc55c85fa837cd703367a740e0b8eeb6b825b4",
+    "source_url": "https://github.com/raoz/twelve-dollar-server-challenge/tree/35cc55c85fa837cd703367a740e0b8eeb6b825b4/submissions/c-iouring-raoz",
+    "source_sha256": "e25aa03f7d17acd7cd0ddaf57b55f46a80c52d5009fb86241dbcd3aaeab1e941",
+    "source_file_count": 19,
+    "source_hashes": "archives/26-b32-w250-sha256.json",
+    "app_loc": 2128,
+    "own_loc": 4200,
+    "loc_method": "Physical lines including blanks/comments; heuristic file classification retained in source-inventories, excluding docs, lockfiles, binary/generated/dependency folders.",
+    "start_sh": true,
+    "build_sh": true,
+    "install_sh": true,
+    "skipped_members": [],
+    "nginx_evidence": [
+      {
+        "file": "README.md",
+        "line": "| **Nginx or direct** | **Direct**: the server listens on `0.0.0.0:80` |"
+      },
+      {
+        "file": "README.md",
+        "line": "SQLITE_PATH=... JWT_SECRET=... HOST=0.0.0.0 PORT=80 bash start.sh"
+      },
+      {
+        "file": "readme.md",
+        "line": "| **Nginx or direct** | **Direct**: the server listens on `0.0.0.0:80` |"
+      },
+      {
+        "file": "readme.md",
+        "line": "SQLITE_PATH=... JWT_SECRET=... HOST=0.0.0.0 PORT=80 bash start.sh"
+      }
+    ],
+    "source_dir": "/suite/sources/pr26",
+    "experiment_role": "combined",
+    "local_variant": {
+      "WAIT_NR": 32,
+      "WAIT_USEC": 250
+    },
+    "upstream_commit": "35cc55c85fa837cd703367a740e0b8eeb6b825b4",
+    "commit_semantics": "Upstream base revision; local patch and source inventory define the measured derivative.",
+    "patch": "patches/26-b32-w250.patch",
+    "patch_sha256": "01615a0384e0f06241c2b492af03319e9988b97da52099b1714eb3f6d1e36155"
+  }
+]

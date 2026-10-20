@@ -1,0 +1,49 @@
+In file included from commit-diagnostic.c:4:
+commit-diagnostic.c: In function 'newest_id':
+t.h:355:51: warning: argument 1 null where non-null expected [-Wnonnull]
+  355 | #define req(m, p, t, b, r) reqb(m, p, t, b, (b) ? strlen(b) : 0, r)
+      |                                                   ^~~~~~
+commit-diagnostic.c:32:5: note: in expansion of macro 'req'
+   32 |     req("GET", "/feed", NULL, NULL, &r);
+      |     ^~~
+In file included from t.h:16:
+/usr/include/string.h:407:15: note: in a call to function 'strlen' declared 'nonnull'
+  407 | extern size_t strlen (const char *__s)
+      |               ^~~~~~
+commit-diagnostic.c: In function 'main':
+t.h:355:51: warning: argument 1 null where non-null expected [-Wnonnull]
+  355 | #define req(m, p, t, b, r) reqb(m, p, t, b, (b) ? strlen(b) : 0, r)
+      |                                                   ^~~~~~
+commit-diagnostic.c:48:11: note: in expansion of macro 'req'
+   48 |     ok &= req("GET", path, NULL, NULL, &r) == 404;
+      |           ^~~
+/usr/include/string.h:407:15: note: in a call to function 'strlen' declared 'nonnull'
+  407 | extern size_t strlen (const char *__s)
+      |               ^~~~~~
+t.h:355:51: warning: argument 1 null where non-null expected [-Wnonnull]
+  355 | #define req(m, p, t, b, r) reqb(m, p, t, b, (b) ? strlen(b) : 0, r)
+      |                                                   ^~~~~~
+commit-diagnostic.c:77:14: note: in expansion of macro 'req'
+   77 |     int fs = req("GET", "/feed", NULL, NULL, &r);
+      |              ^~~
+/usr/include/string.h:407:15: note: in a call to function 'strlen' declared 'nonnull'
+  407 | extern size_t strlen (const char *__s)
+      |               ^~~~~~
+t.h:355:51: warning: argument 1 null where non-null expected [-Wnonnull]
+  355 | #define req(m, p, t, b, r) reqb(m, p, t, b, (b) ? strlen(b) : 0, r)
+      |                                                   ^~~~~~
+commit-diagnostic.c:80:14: note: in expansion of macro 'req'
+   80 |     int ps = req("GET", path, NULL, NULL, &r);
+      |              ^~~
+/usr/include/string.h:407:15: note: in a call to function 'strlen' declared 'nonnull'
+  407 | extern size_t strlen (const char *__s)
+      |               ^~~~~~
+t.h:355:51: warning: argument 1 null where non-null expected [-Wnonnull]
+  355 | #define req(m, p, t, b, r) reqb(m, p, t, b, (b) ? strlen(b) : 0, r)
+      |                                                   ^~~~~~
+commit-diagnostic.c:99:10: note: in expansion of macro 'req'
+   99 |     ok = req("GET", path, NULL, NULL, &r) == 200;
+      |          ^~~
+/usr/include/string.h:407:15: note: in a call to function 'strlen' declared 'nonnull'
+  407 | extern size_t strlen (const char *__s)
+      |               ^~~~~~

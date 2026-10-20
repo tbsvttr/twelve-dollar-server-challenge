@@ -1,0 +1,152 @@
+{
+  "26-original": {
+    "exit_code": 0,
+    "status": "built",
+    "elapsed_s": 68.34,
+    "commit": "35cc55c85fa837cd703367a740e0b8eeb6b825b4",
+    "container": "twelve-current-build-26",
+    "log": "<WORKSPACE_ROOT>/results/current-2026-10-20/logs/build-pr26.log",
+    "base_image": "twelve-unified:2026-10-07",
+    "substitutions": [],
+    "image": "sha256:d4782af7b918b7b0e01f29fce4e50ca879ad2e9e82dc724c0ac0f716d8d3e9f4",
+    "image_id": "sha256:d4782af7b918b7b0e01f29fce4e50ca879ad2e9e82dc724c0ac0f716d8d3e9f4"
+  },
+  "82-leader": {
+    "pr": 82,
+    "commit": "95aa405a0003599dbc7fb4dfa47a09e8343239df",
+    "base": "twelve-unified:2026-10-07",
+    "architecture": "linux/arm64",
+    "image": "sha256:64227e803306084617be2a4ebc1c3623260d265f158dd8c009f647558a280135",
+    "source_hashes_verified": true,
+    "runtime_integrity": "official checksums or pinned apt packages; see setup log",
+    "started_at": "2026-10-20T10:55:39Z",
+    "runtime_setup": "runtime-scripts/pr82.sh",
+    "exit_code": 0,
+    "image_id": "sha256:64227e803306084617be2a4ebc1c3623260d265f158dd8c009f647558a280135",
+    "state": "built",
+    "elapsed_s": 93.54,
+    "finished_at": "2026-10-20T10:57:12Z",
+    "build_helper_removed": true,
+    "immutable_image_and_nproc_audit": "build-helper-audit-41-90.json"
+  },
+  "26-b128-w4000": {
+    "status": "built",
+    "commit": "35cc55c85fa837cd703367a740e0b8eeb6b825b4",
+    "source_sha256": "5aeaece314275fbc614a79677fd6f223ed38ae89098fffaa2b6709b380597611",
+    "upstream_image": "sha256:d4782af7b918b7b0e01f29fce4e50ca879ad2e9e82dc724c0ac0f716d8d3e9f4",
+    "local_variant": {
+      "WAIT_NR": 128,
+      "WAIT_USEC": 4000
+    },
+    "patch": "patches/26-b128-w4000.patch",
+    "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "build_cpu_quota": 2,
+    "build_memory_bytes": 3221225472,
+    "build_command": [
+      "bash",
+      "build.sh"
+    ],
+    "log": "logs/build-26-b128-w4000.log",
+    "exit_code": 0,
+    "image_source_check": {
+      "source_files_verified": 19,
+      "binary_sha256": "1e6b191fccc5c2062eeb53b93f6636aba90225b7ae486d3c358c75620db0b3f1",
+      "nproc_helper_absent": true
+    },
+    "compiler": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+    "image": "sha256:77202091e91448a5d20bfb908d536537d0e39f7efa8f16eefcc7a2bef48be990",
+    "image_id": "sha256:77202091e91448a5d20bfb908d536537d0e39f7efa8f16eefcc7a2bef48be990",
+    "image_tag": "twelve-tuning26-26-b128-w4000:2026-10-20",
+    "elapsed_s": 53.8
+  },
+  "26-b32-w4000": {
+    "status": "built",
+    "commit": "35cc55c85fa837cd703367a740e0b8eeb6b825b4",
+    "source_sha256": "11da0037c4bcc4d0dc9d938b7e036f417bfafabd2809ca171159a48233c8802e",
+    "upstream_image": "sha256:d4782af7b918b7b0e01f29fce4e50ca879ad2e9e82dc724c0ac0f716d8d3e9f4",
+    "local_variant": {
+      "WAIT_NR": 32,
+      "WAIT_USEC": 4000
+    },
+    "patch": "patches/26-b32-w4000.patch",
+    "patch_sha256": "3a420dbe948dbab31b2ed928f08f216d5ee73ca3fb43b5c5b07d4ef74ad79fbc",
+    "build_cpu_quota": 2,
+    "build_memory_bytes": 3221225472,
+    "build_command": [
+      "bash",
+      "build.sh"
+    ],
+    "log": "logs/build-26-b32-w4000.log",
+    "exit_code": 0,
+    "image_source_check": {
+      "source_files_verified": 19,
+      "binary_sha256": "d00dc4f2a13b65e2156df003cab56e9e626460b5854edbc56de34eb0027e3a62",
+      "nproc_helper_absent": true
+    },
+    "compiler": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+    "image": "sha256:63c9077452d1b89a1890e49a8e11786ac9047b7640dd0a93a6dffda2d56f5fa0",
+    "image_id": "sha256:63c9077452d1b89a1890e49a8e11786ac9047b7640dd0a93a6dffda2d56f5fa0",
+    "image_tag": "twelve-tuning26-26-b32-w4000:2026-10-20",
+    "elapsed_s": 53.79
+  },
+  "26-b128-w250": {
+    "status": "built",
+    "commit": "35cc55c85fa837cd703367a740e0b8eeb6b825b4",
+    "source_sha256": "da92407e4dabd26fc15184054ee85f8a4ef10c232470ca55bbb9e902c6e47a9a",
+    "upstream_image": "sha256:d4782af7b918b7b0e01f29fce4e50ca879ad2e9e82dc724c0ac0f716d8d3e9f4",
+    "local_variant": {
+      "WAIT_NR": 128,
+      "WAIT_USEC": 250
+    },
+    "patch": "patches/26-b128-w250.patch",
+    "patch_sha256": "f9e21cd0ca57854fc92efbf6f482a5d9e992d5b7a32bf86aa726bd6ae903a2e7",
+    "build_cpu_quota": 2,
+    "build_memory_bytes": 3221225472,
+    "build_command": [
+      "bash",
+      "build.sh"
+    ],
+    "log": "logs/build-26-b128-w250.log",
+    "exit_code": 0,
+    "image_source_check": {
+      "source_files_verified": 19,
+      "binary_sha256": "18b1f56659c8346ff3db3495ee48eab557db97a5891abfe30848cb522336bfb1",
+      "nproc_helper_absent": true
+    },
+    "compiler": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+    "image": "sha256:71fbc388b014c3cdf8379bf98cb8539ced4cec1dfe3f19aaec827caf0332b8ab",
+    "image_id": "sha256:71fbc388b014c3cdf8379bf98cb8539ced4cec1dfe3f19aaec827caf0332b8ab",
+    "image_tag": "twelve-tuning26-26-b128-w250:2026-10-20",
+    "elapsed_s": 52.14
+  },
+  "26-b32-w250": {
+    "status": "built",
+    "commit": "35cc55c85fa837cd703367a740e0b8eeb6b825b4",
+    "source_sha256": "e25aa03f7d17acd7cd0ddaf57b55f46a80c52d5009fb86241dbcd3aaeab1e941",
+    "upstream_image": "sha256:d4782af7b918b7b0e01f29fce4e50ca879ad2e9e82dc724c0ac0f716d8d3e9f4",
+    "local_variant": {
+      "WAIT_NR": 32,
+      "WAIT_USEC": 250
+    },
+    "patch": "patches/26-b32-w250.patch",
+    "patch_sha256": "01615a0384e0f06241c2b492af03319e9988b97da52099b1714eb3f6d1e36155",
+    "build_cpu_quota": 2,
+    "build_memory_bytes": 3221225472,
+    "build_command": [
+      "bash",
+      "build.sh"
+    ],
+    "log": "logs/build-26-b32-w250.log",
+    "exit_code": 0,
+    "image_source_check": {
+      "source_files_verified": 19,
+      "binary_sha256": "91bafa7efd07e933ddaa62100038b90349133d10bda32c4e80cb81fd19e03594",
+      "nproc_helper_absent": true
+    },
+    "compiler": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+    "image": "sha256:ebe247cf6e67af37567db675c8ad3bd87cbe89921c0330981203b63d4db788f9",
+    "image_id": "sha256:ebe247cf6e67af37567db675c8ad3bd87cbe89921c0330981203b63d4db788f9",
+    "image_tag": "twelve-tuning26-26-b32-w250:2026-10-20",
+    "elapsed_s": 52.13
+  }
+}

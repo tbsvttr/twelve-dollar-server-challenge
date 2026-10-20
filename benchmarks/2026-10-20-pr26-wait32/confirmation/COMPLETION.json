@@ -1,0 +1,18 @@
+{
+  "completed_at": "2026-10-20T14:41:42Z",
+  "status": "complete",
+  "trials": 18,
+  "cases": 3,
+  "rounds_per_case": 6,
+  "all_counter_values_zero": true,
+  "identity_audit_post": "matched",
+  "protocol_state": "EXPERIMENT_STATE.json is the frozen pre-measurement protocol snapshot. Its phase text is historical; this completion record and ../RUN_STATUS.json describe the final status.",
+  "evidence_sha256": {
+    "measurements.json": "140cdbff1d50b2b956837dcec01a5352062c7cf822bf03e18fe752ec9ef51d08",
+    "verification.json": "418ff73c396175beedd06cadaa09eb8aefdf6f10854f393755ea0db30e4391f1",
+    "analysis-summary.json": "a8603a6495ae76c27b7fcc5715a286b38228e4e641fb3ef729842516c1fe1fee",
+    "identity-audit-pre.json": "815231760b7ecc397a048cce5260197e1b6291e8cd7723a9d87fde37d9993bf1",
+    "identity-audit-post.json": "468b258f299b4796c8ebbecd2766874906208b01829a1dc4eee446ba5eade916",
+    "frozen-inputs.json": "a8fda3a495cdf447f06212da6d2412251dc8c6fd02cf1b3d681423d6166cd0b5"
+  }
+}

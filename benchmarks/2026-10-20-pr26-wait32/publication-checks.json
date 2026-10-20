@@ -1,0 +1,36 @@
+{
+  "valid": true,
+  "scope": "Packaging integrity checks only; no workloads, builds or external actions.",
+  "stage_counts": {
+    "initial-screen": {
+      "timed_trials": 18,
+      "correctness_records": 6
+    },
+    "followup-screen": {
+      "timed_trials": 15,
+      "correctness_records": 5
+    },
+    "confirmation": {
+      "timed_trials": 18,
+      "correctness_records": 3
+    }
+  },
+  "total_timed_trials": 51,
+  "total_correctness_records": 14,
+  "measurement_and_correctness_identity_projection_unchanged": true,
+  "all_record_fingerprints_recomputed_and_matched": true,
+  "json_numeric_leaves_unchanged": true,
+  "json_files_checked": 74,
+  "markdown_relative_links_checked": 29,
+  "broken_markdown_relative_links": [],
+  "privacy_patterns_checked": [
+    "private_host_path",
+    "personal_host_identifier",
+    "provider_credential",
+    "private_key",
+    "encoded_jwt"
+  ],
+  "privacy_matches": [],
+  "canonical_selected_files_unchanged": true,
+  "excluded_unused_confirmation": true
+}

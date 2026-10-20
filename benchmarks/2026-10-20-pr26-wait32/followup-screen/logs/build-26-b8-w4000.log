@@ -1,0 +1,4 @@
+ar: creating liburing.a
+lto-wrapper: warning: using serial compilation of 21 LTRANS jobs
+lto-wrapper: note: see the '-flto' option documentation for more information
+built bin/server

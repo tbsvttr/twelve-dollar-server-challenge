@@ -1,0 +1,37 @@
+{
+  "objective": "Test PR26 completion-wait tuning against rebuilt/original controls and the current leader.",
+  "phase": "Initial screening complete18/18 valid;32/4000 selected, bounded smaller-threshold exploratory follow-up pending",
+  "load_image": "sha256:901ab577025cfdcf7abc716fb4158774615b881383529bb77163b5f07f963898",
+  "upstream_commit": "35cc55c85fa837cd703367a740e0b8eeb6b825b4",
+  "published_benchmark_unchanged": true,
+  "remote_publication_authorized": false,
+  "screening": "Three shuffled rounds, all six cases, fresh 2s warmup +15s per trial.",
+  "confirmation": "If a tuned setting is promising, six balanced rounds of best variant, original26 and82.",
+  "selection": "Among exactly three tuned cells (32/4000,128/250,32/250), require three clean valid screen trials; select highest median successful req/s. Rebuilt128/4000 is a control, not a candidate. Confirmation trigger: selected median >=5% above BOTH original26 and rebuilt128/4000 medians; practical trigger only, not statistical significance. Confirm in a separate directory with six frozen balanced orders.",
+  "source_delta": "Only WAIT_NR / WAIT_USEC default constants; original build.sh and PGO training unchanged.",
+  "fixture_hashes": {
+    "seed/feed.db": "ef5f135c16a2277a68ef37f1f1a66e4100f9dbc6743d2ef54dbeb533c4dceb0e",
+    "seed/tokens.json": "b39f1edf8a3545ab5851031d1cee8d2d1192e4b598361e516f4560f6893a939a",
+    "mixed.lua": "eb8d49273c56fe4b558a58bd6c7e65551ec683c53d299e2b3a69e0b71421d701",
+    "test/test.sh": "679e722044fd1f366d85093232e7f2ec2e3398ea312032dd9eb6cbdf8b17306a",
+    "semantic.py": "785f8ce565b469e4f4d702d01a9d868cd7458d64e3f1362c3fb8728560215fbc",
+    "serve.py": "52d8bdd75c0dc2477fc5b2391c797a2832eab5ac61a72d3bbe4dac4cb94bf311",
+    "bench/nginx.conf": "1b4b00789b0d138759bebde391d4cd05a9598dc10a17df3d09eb569512b8f654",
+    "seccomp-io-uring.json": "4baf3b268185f55527933e7df090e85936003674e34b5f5396461fd9d3efeb17",
+    "test/golden/feed.json": "8c9b3d6cb46e650c4786ab9281bc3a72ba7bd75b7926021d2b0c431dd9bd3d68",
+    "test/golden/post-1.json": "8035350dc55714c9a673af9f441ab07d2b269047e1137612f022877b9e8f3652",
+    "test/golden/post-250000.json": "febb2506b9d4a99bc34f1f182c61ced6b3ba3b2533724485c6e5206604a65b71",
+    "test/golden/post-500000.json": "662fe8c7282dee8aab00dab6cdb15e64e953f10a2c1c923e2ea67fab1429a4de"
+  },
+  "controller_sha256": "b85ee72abe98e8c8072fec1be0c052cf6968faf03d8fb9e08719625b77315d39",
+  "cases": [
+    "26-original",
+    "82-leader",
+    "26-b128-w4000",
+    "26-b32-w4000",
+    "26-b128-w250",
+    "26-b32-w250"
+  ],
+  "followup_reason": "Across three rounds,32/4000 median97712.79 (CPU76.06%) vs original65869.23 and rebuilt65648.49;128/250median65976.84. Test16/4000 and8/4000 with fresh32/4000,original26,leader82 controls before choosing one final independent-confirmation candidate.",
+  "durability_32_4000": "Commit fault5/5 and productionbinary SIGKILL/lifecycle3/3 passed in disposablecontainer; setuppermissionfailure retained asattempt1, successfulattempt2."
+}

@@ -1,0 +1,7 @@
+  ok   a failed commit answers 500, and the post does not exist
+  ok   a read pipelined after a failed write gets no response: one 500, then the connection closes
+  FAIL 20 rounds of a failing write with 4 concurrent feed reads: rolled-back rows shown 0 times
+  ok   a 201 is not sent before its commit finishes
+  ok   the next write after the rollbacks commits normally
+commit: 4 passed, 1 failed
+server log kept in /tmp/c-iouring-test-UCgsQg/server.log

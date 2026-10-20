@@ -1,0 +1,48 @@
+{
+  "case_id": "26-b32-w4000",
+  "image_id": "sha256:63c9077452d1b89a1890e49a8e11786ac9047b7640dd0a93a6dffda2d56f5fa0",
+  "source_sha256": "11da0037c4bcc4d0dc9d938b7e036f417bfafabd2809ca171159a48233c8802e",
+  "diagnostic_source_sha256": "550c0a43257a1adf936eb9d44874a25da2428f2bdec70bf55abe6816a577f072",
+  "steps": [
+    {
+      "label": "build-original",
+      "exit_code": 0,
+      "log_sha256": "7ebb1c4739c415c97cafc8e466bdccc1c684d276026a3024d48bdcc89221e4ae"
+    },
+    {
+      "label": "build-diagnostic",
+      "exit_code": 0,
+      "log_sha256": "11e0d88c8bc5a614ec14ca3415dd2944f709e347bd890fecc54356bb1f9c1c82"
+    },
+    {
+      "label": "commit-1",
+      "exit_code": 0,
+      "log_sha256": "c67d49206985acaba45c4e1b3c9eeb5628fa9863e56565dea13cc018ac0c6b89"
+    },
+    {
+      "label": "commit-2",
+      "exit_code": 0,
+      "log_sha256": "c67d49206985acaba45c4e1b3c9eeb5628fa9863e56565dea13cc018ac0c6b89"
+    },
+    {
+      "label": "commit-3",
+      "exit_code": 0,
+      "log_sha256": "c67d49206985acaba45c4e1b3c9eeb5628fa9863e56565dea13cc018ac0c6b89"
+    },
+    {
+      "label": "commit-diagnostic-1",
+      "exit_code": 0,
+      "log_sha256": "4eb9a25080355cc44929b84d67774a24ea3f24e57aec580cdf9a395b90397a27"
+    },
+    {
+      "label": "commit-diagnostic-2",
+      "exit_code": 0,
+      "log_sha256": "4eb9a25080355cc44929b84d67774a24ea3f24e57aec580cdf9a395b90397a27"
+    },
+    {
+      "label": "commit-diagnostic-3",
+      "exit_code": 0,
+      "log_sha256": "4eb9a25080355cc44929b84d67774a24ea3f24e57aec580cdf9a395b90397a27"
+    }
+  ]
+}

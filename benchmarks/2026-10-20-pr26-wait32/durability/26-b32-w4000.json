@@ -1,0 +1,54 @@
+{
+  "case_id": "26-b32-w4000",
+  "image_id": "sha256:63c9077452d1b89a1890e49a8e11786ac9047b7640dd0a93a6dffda2d56f5fa0",
+  "source_sha256": "11da0037c4bcc4d0dc9d938b7e036f417bfafabd2809ca171159a48233c8802e",
+  "settings": {
+    "WAIT_NR": 32,
+    "WAIT_USEC": 4000
+  },
+  "recorded_at": "2026-10-20T14:17:20Z",
+  "scope": "Commit fault checks and production-binary SIGKILL persistence; keepalive reduced to 2 connections/0 idle seconds, not a capacity claim.",
+  "passed": false,
+  "commands": [
+    [
+      "make",
+      "-j1",
+      "build/commit",
+      "build/commit-server",
+      "build/lifecycle"
+    ],
+    [
+      "env",
+      "SEED=/evidence/seed/feed.db",
+      "SERVER=build/commit-server",
+      "./build/commit"
+    ],
+    [
+      "env",
+      "SEED=/evidence/seed/feed.db",
+      "SERVER=../bin/server",
+      "CONNECTIONS=2",
+      "IDLE_SECONDS=0",
+      "./build/lifecycle"
+    ]
+  ],
+  "steps": [
+    {
+      "exit_code": 2,
+      "timed_out": false,
+      "log": "durability/26-b32-w4000-1.log",
+      "log_sha256": "1cc346880b50892b51b376f78554086efe99bb59d3a40ef5b9a02ae38017589b"
+    }
+  ],
+  "error": "Durability step 1 failed: mkdir: cannot create directory 'build': Permission denied\nmake: *** [Makefile:20: build] Error 1\n",
+  "checks_passed": false,
+  "server_log_capture": {
+    "exit_code": 0,
+    "stderr": ""
+  },
+  "server_logs": [],
+  "cleanup": {
+    "exit_code": 0,
+    "stderr": ""
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "case_id": "26-b8-w4000",
+  "attempt": 1,
+  "image_id": "sha256:26c8854e3874b400c28468c53e4c4f98deeb1cf5370628466e503c674cc64f86",
+  "source_sha256": "dce12e242d6ee1a8b2c84415fcc1bbad35050d780d8113960f2dc4fa5c444761",
+  "settings": {
+    "WAIT_NR": 8,
+    "WAIT_USEC": 4000
+  },
+  "recorded_at": "2026-10-20T14:26:57Z",
+  "scope": "Commit fault checks and production-binary SIGKILL persistence; keepalive reduced to 2 connections/0 idle seconds, not a capacity claim.",
+  "passed": false,
+  "commands": [
+    [
+      "make",
+      "-j1",
+      "build/commit",
+      "build/commit-server",
+      "build/lifecycle"
+    ],
+    [
+      "env",
+      "SEED=/evidence/seed/feed.db",
+      "SERVER=build/commit-server",
+      "./build/commit"
+    ],
+    [
+      "env",
+      "SEED=/evidence/seed/feed.db",
+      "SERVER=../bin/server",
+      "CONNECTIONS=2",
+      "IDLE_SECONDS=0",
+      "./build/lifecycle"
+    ]
+  ],
+  "test_workspace_preparation": {
+    "exit_code": 0,
+    "stderr": ""
+  },
+  "steps": [
+    {
+      "exit_code": 0,
+      "timed_out": false,
+      "log": "durability/26-b8-w4000-1.log",
+      "log_sha256": "486a444189b1a25c6458b09c049230d96326d10ff4401ff32b7e84fbff931645"
+    },
+    {
+      "exit_code": 1,
+      "timed_out": false,
+      "log": "durability/26-b8-w4000-2.log",
+      "log_sha256": "7883e5ac948410ecad286a293e976032f97f47a7f986894aba6465b0619c7827"
+    }
+  ],
+  "error": "Durability step 2 failed: ",
+  "checks_passed": false,
+  "server_log_capture": {
+    "exit_code": 0,
+    "stderr": ""
+  },
+  "server_logs": [
+    {
+      "container_path": "/tmp/c-iouring-test-UCgsQg/server.log",
+      "log": "durability/26-b8-w4000-server-1.log",
+      "log_sha256": "c47d97b922e54e592b59aa184c3d7c13aee43c8389821e99c7f496bd29b86c4a"
+    }
+  ],
+  "cleanup": {
+    "exit_code": 0,
+    "stderr": ""
+  }
+}

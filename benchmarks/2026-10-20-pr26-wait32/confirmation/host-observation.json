@@ -1,0 +1,14 @@
+{
+  "recorded_at": "2026-10-20T14:37:56Z",
+  "context": "Noninvasive host observation after throughput variability appeared; no values used to exclude or adjust trials.",
+  "uptime": {
+    "exit_code": 0,
+    "stdout": "16:37  1 user, load averages: 13.35 10.56 10.10\n",
+    "stderr": ""
+  },
+  "pmset -g therm": {
+    "exit_code": 0,
+    "stdout": "Error:Failed to get thermal warning level with error code 0xe00002bc\nError: Failed to get performance warning level with error code 0xe00002bc\nError: No CPU power status with error code 0xe00002bc\n",
+    "stderr": ""
+  }
+}
