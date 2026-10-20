@@ -1,0 +1,50 @@
+Pinned source: 315df90113281bfd9e78a62c1999a12e6d671370
+
+$ docker run -d --name twelve-current-build-121-c-iouring-ssmurfgg04-gif --cpus 1 --memory 2g --memory-swap 2g --security-opt seccomp=seccomp-io-uring.json --mount type=bind,src=<BENCHMARK_EVIDENCE>,dst=/evidence,readonly twelve-unified:2026-10-07 sleep infinity
+8f175cd087824643aeaa2ac62dcec4bb7e4bf3b66790c22ad4b2beb499ccb8e4
+
+$ docker exec -i twelve-current-build-121-c-iouring-ssmurfgg04-gif python3 - 121-c-iouring-ssmurfgg04-gif
+Verified 20 pinned source files
+
+$ docker exec twelve-current-build-121-c-iouring-ssmurfgg04-gif bash /evidence/runtime-scripts/pr121-c-iouring-ssmurfgg04-gif.sh
+/usr/bin/gcc
+/usr/bin/curl
+/usr/bin/unzip
+/tmp/sqlite-headers.zip: OK
+
+$ docker exec twelve-current-build-121-c-iouring-ssmurfgg04-gif chown -R bench:bench /suite/sources/pr121-c-iouring-ssmurfgg04-gif
+
+$ docker exec twelve-current-build-121-c-iouring-ssmurfgg04-gif runuser -u bench -- env PATH=/opt/twelve-rust/cargo/bin:/usr/local/go/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 NIM_JOBS=2 MAKEFLAGS=-j2 bash /suite/sources/pr121-c-iouring-ssmurfgg04-gif/build.sh
+build: downloading sqlite-amalgamation-3540000.zip
+build: downloading liburing-2.15.tar.gz
+ar: creating liburing.a
+ar: creating liburing-ffi.a
+build: deps ready
+src/util.c:2: warning: "_GNU_SOURCE" redefined
+    2 | #define _GNU_SOURCE
+      | 
+<command-line>: note: this is the location of the previous definition
+build: PGO build
+pgo/train.c: In function 'main':
+pgo/train.c:80:91: warning: '%s' directive output may be truncated writing up to 599 bytes into a region of size between 198 and 203 [-Wformat-truncation=]
+   80 |         snprintf(sql, sizeof sql, "INSERT INTO posts (id, user_id, body) VALUES (%d, %d, '%s')",
+      |                                                                                           ^~
+   81 |                  i, 1 + i % 200, body);
+      |                                  ~~~~                                                      
+pgo/train.c:80:9: note: 'snprintf' output between 56 and 660 bytes into a destination of size 256
+   80 |         snprintf(sql, sizeof sql, "INSERT INTO posts (id, user_id, body) VALUES (%d, %d, '%s')",
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   81 |                  i, 1 + i % 200, body);
+      |                  ~~~~~~~~~~~~~~~~~~~~~
+lto-wrapper: warning: using serial compilation of 2 LTRANS jobs
+lto-wrapper: note: see the '-flto' option documentation for more information
+train: ok (build/train.db kept)
+gen: 132912 request rounds
+build: built bin/server (PGO)
+build: smoke test ok
+-rwxr-xr-x 1 bench bench 1158952 Oct 20 11:07 bin/server
+
+$ docker exec twelve-current-build-121-c-iouring-ssmurfgg04-gif bash -c rm -rf /tmp/* /root/.cache /home/bench/.cache /home/bench/.npm/_cacache /var/lib/apt/lists/* /var/cache/apt/archives/*.deb
+
+$ docker commit twelve-current-build-121-c-iouring-ssmurfgg04-gif twelve-current-pr121-c-iouring-ssmurfgg04-gif:2026-10-20
+sha256:8f5507820adfd2d73640d4c6f1e3721d9a26b4b3ed912c96c66562bbb2fa08ab

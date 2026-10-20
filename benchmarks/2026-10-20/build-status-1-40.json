@@ -1,0 +1,2802 @@
+{
+  "1": {
+    "exit_code": 0,
+    "status": "built",
+    "elapsed_s": 5.29,
+    "commit": "71d67de0e49b2152a558b41b997e9bdd918493a2",
+    "container": "twelve-current-build-1",
+    "log": "logs/build-pr1.log",
+    "base_image": "twelve-unified:2026-10-07",
+    "substitutions": [],
+    "image": "twelve-current-pr1:2026-10-20",
+    "image_id": "sha256:cabf2dae55bd46374aa100acfbef7dffb9b53b48c45e90fcd6595cb836f1f415"
+  },
+  "3": {
+    "exit_code": 0,
+    "status": "built",
+    "elapsed_s": 4.24,
+    "commit": "cfe31fc20f89836c4e432b660c689c19dea97d27",
+    "container": "twelve-current-build-3",
+    "log": "logs/build-pr3.log",
+    "base_image": "twelve-unified:2026-10-07",
+    "substitutions": [],
+    "image": "twelve-current-pr3:2026-10-20",
+    "image_id": "sha256:92a5cfc2e6c72051698c53f2a74ab01fd49cec6c48161197b5e30d729ec9cb79",
+    "runtime_setup": "runtime-scripts/pr3.sh"
+  },
+  "4": {
+    "exit_code": 0,
+    "status": "built",
+    "elapsed_s": 0.61,
+    "commit": "970d6079914330030add382d381e32bcb41ddb04",
+    "container": "twelve-current-build-4",
+    "log": "logs/build-pr4.log",
+    "base_image": "twelve-unified:2026-10-07",
+    "substitutions": [],
+    "image": "twelve-current-pr4:2026-10-20",
+    "image_id": "sha256:9a6ab3cc92a81849181b86f637fb6b9a0987a7bb95d292d347fb54042af6d15b"
+  },
+  "2": {
+    "exit_code": 0,
+    "status": "built",
+    "elapsed_s": 8.5,
+    "commit": "33dd92f6bc13d4b4a78e2ef3f50467fca2fc52cc",
+    "container": "twelve-current-build-2",
+    "log": "logs/build-pr2.log",
+    "base_image": "twelve-unified:2026-10-07",
+    "substitutions": [],
+    "image": "twelve-current-pr2:2026-10-20",
+    "image_id": "sha256:c28c0126cae22d7b1b306d2f41bb50465f2e76c480a73bae7bd646e9e4bd1238"
+  },
+  "6": {
+    "exit_code": 0,
+    "status": "built",
+    "elapsed_s": 22.83,
+    "commit": "d9238eaa4b107ff061aeecd1b7bcc1ae9fa89b48",
+    "container": "twelve-current-build-6",
+    "log": "logs/build-pr6.log",
+    "base_image": "twelve-unified:2026-10-07",
+    "substitutions": [],
+    "image": "twelve-current-pr6:2026-10-20",
+    "image_id": "sha256:68029b95c0ea7669ceaece51410e522c6be15ede369731cd69bfa051868ceab1"
+  },
+  "5": {
+    "exit_code": 0,
+    "status": "built",
+    "elapsed_s": 35.34,
+    "commit": "0037443c8ca4d49a426919c4c359993756975760",
+    "container": "twelve-current-build-5",
+    "log": "logs/build-pr5.log",
+    "base_image": "twelve-unified:2026-10-07",
+    "substitutions": [],
+    "image": "twelve-current-pr5:2026-10-20",
+    "image_id": "sha256:1cabce4531eecdd2009b2f26393996bac148ff3eaaf2011f295db4dbda72b44d"
+  },
+  "8": {
+    "exit_code": 0,
+    "status": "built",
+    "elapsed_s": 11.01,
+    "commit": "20ad0cc493da4b701d353abc484e2815156c476a",
+    "container": "twelve-current-build-8",
+    "log": "logs/build-pr8.log",
+    "base_image": "twelve-unified:2026-10-07",
+    "substitutions": [],
+    "image": "twelve-current-pr8:2026-10-20",
+    "image_id": "sha256:9559c8ea387483ccc07e97a419e894f7bd678c9e2182a9e0be8c45ac8f76bea5"
+  },
+  "10": {
+    "exit_code": 0,
+    "status": "built",
+    "elapsed_s": 5.11,
+    "commit": "606970b8c9c85bcebf299f7208a99525d4d6aa23",
+    "container": "twelve-current-build-10",
+    "log": "logs/build-pr10.log",
+    "base_image": "twelve-unified:2026-10-07",
+    "substitutions": [],
+    "image": "twelve-current-pr10:2026-10-20",
+    "image_id": "sha256:a571af638627119028f1ba8b7b9c7e4a0dba2aca7d6be0332b7aa308ec8466ef"
+  },
+  "9": {
+    "exit_code": 0,
+    "status": "built",
+    "elapsed_s": 10.57,
+    "commit": "3d92a3b349bdf8abb0425fce990fdfb8ab7dfdc3",
+    "container": "twelve-current-build-9",
+    "log": "logs/build-pr9.log",
+    "base_image": "twelve-unified:2026-10-07",
+    "substitutions": [],
+    "image": "twelve-current-pr9:2026-10-20",
+    "image_id": "sha256:0aa13839ea874791738cb4d340209958ec84b86bd1860e7eb7fe80d8516c5fd9"
+  },
+  "12": {
+    "exit_code": 0,
+    "status": "built",
+    "elapsed_s": 5.01,
+    "commit": "8855078ec587763a2cfcc5b8144aa5f3d3ebae88",
+    "container": "twelve-current-build-12",
+    "log": "logs/build-pr12.log",
+    "base_image": "twelve-unified:2026-10-07",
+    "substitutions": [],
+    "image": "twelve-current-pr12:2026-10-20",
+    "image_id": "sha256:62ff707c0f43cd5163ccf2cabcf94fdc7183ad2f42fdd350c36bb86ae7ebcf65"
+  },
+  "13": {
+    "exit_code": 0,
+    "status": "built",
+    "elapsed_s": 2.92,
+    "commit": "825048080634a9b43d329b6597623ffe34d3c240",
+    "container": "twelve-current-build-13",
+    "log": "logs/build-pr13.log",
+    "base_image": "twelve-unified:2026-10-07",
+    "substitutions": [],
+    "image": "twelve-current-pr13:2026-10-20",
+    "image_id": "sha256:aaa99b4edff56550e0c2f5f561e6576de59affe0f34e24a822fd15c8f0bd4caf"
+  },
+  "14": {
+    "exit_code": 0,
+    "status": "built",
+    "elapsed_s": 0.78,
+    "commit": "4eaabd8ff706997bd5e9e211ab85c78d1dcfad5e",
+    "container": "twelve-current-build-14",
+    "log": "logs/build-pr14.log",
+    "base_image": "twelve-unified:2026-10-07",
+    "substitutions": [],
+    "image": "twelve-current-pr14:2026-10-20",
+    "image_id": "sha256:2d4ae693758a39f7d189b314b33a0c8403c9d4b589709bdc841eaad2f8eafcca"
+  },
+  "11": {
+    "exit_code": 0,
+    "status": "built",
+    "elapsed_s": 31.07,
+    "commit": "83a51a2dd6b82434d01da25c9471725946e741a9",
+    "container": "twelve-current-build-11",
+    "log": "logs/build-pr11.log",
+    "base_image": "twelve-unified:2026-10-07",
+    "substitutions": [],
+    "image": "twelve-current-pr11:2026-10-20",
+    "image_id": "sha256:625250c50c08ae672ed39d90a797971a85aa36ea9fbe4c80312a8ce57793e8aa"
+  },
+  "15": {
+    "exit_code": 0,
+    "status": "built",
+    "elapsed_s": 18.73,
+    "commit": "67fedf39ce4c385b7d48d3aadd488140be453929",
+    "container": "twelve-current-build-15",
+    "log": "logs/build-pr15.log",
+    "base_image": "twelve-unified:2026-10-07",
+    "substitutions": [],
+    "image": "twelve-current-pr15:2026-10-20",
+    "image_id": "sha256:fbbb125ab95c4208b1d39f438d83355c7fde1b7d38a12723e14da407c22bb620"
+  },
+  "16": {
+    "exit_code": 0,
+    "status": "built",
+    "elapsed_s": 21.83,
+    "commit": "b887fd1fa882f60988d004c75911048b902bf6f7",
+    "container": "twelve-current-build-16",
+    "log": "logs/build-pr16.log",
+    "base_image": "twelve-unified:2026-10-07",
+    "substitutions": [],
+    "image": "twelve-current-pr16:2026-10-20",
+    "image_id": "sha256:2b8e6f7dd374e71331da3810ecc55e11eb403bc2e5f6e9c85784f9e344723b73"
+  },
+  "17": {
+    "exit_code": 0,
+    "status": "built",
+    "elapsed_s": 28.69,
+    "commit": "bc776417d1ef8ef5d99037adec7d172c8038098c",
+    "container": "twelve-current-build-17",
+    "log": "logs/build-pr17.log",
+    "base_image": "twelve-unified:2026-10-07",
+    "substitutions": [],
+    "image": "twelve-current-pr17:2026-10-20",
+    "image_id": "sha256:631a1c760f9476f93286d2a6d564682ec029e52ecf1f6e5ee41e9555708b50b5"
+  },
+  "18": {
+    "exit_code": 0,
+    "status": "built",
+    "elapsed_s": 22.19,
+    "commit": "a3845fc52677b55394d5ff2045f5945d2c3ba273",
+    "container": "twelve-current-build-18",
+    "log": "logs/build-pr18.log",
+    "base_image": "twelve-unified:2026-10-07",
+    "substitutions": [],
+    "image": "twelve-current-pr18:2026-10-20",
+    "image_id": "sha256:2a78a4dc2a067a182ccaf04336c99aa847f377ab35603412dab401ea40d47254"
+  },
+  "20": {
+    "exit_code": 0,
+    "status": "built",
+    "elapsed_s": 3.78,
+    "commit": "d2ea5d8c7225eb640e07a65cb2c951b271d10e63",
+    "container": "twelve-current-build-20",
+    "log": "logs/build-pr20.log",
+    "base_image": "twelve-unified:2026-10-07",
+    "substitutions": [],
+    "image": "twelve-current-pr20:2026-10-20",
+    "image_id": "sha256:253e786767f0ff31ed69afda7527ca19fafaab486017b5eb72dda794bf1bf43a"
+  },
+  "21": {
+    "exit_code": 0,
+    "status": "built",
+    "elapsed_s": 2.35,
+    "commit": "0b20a77593cac9cd4e2d0e8f499332f6d1b7e671",
+    "container": "twelve-current-build-21",
+    "log": "logs/build-pr21.log",
+    "base_image": "twelve-unified:2026-10-07",
+    "substitutions": [],
+    "image": "twelve-current-pr21:2026-10-20",
+    "image_id": "sha256:330c594d9f880c7faf81b301ab933ae50bbcee1c51746ae3ed61c38ee9b9702d"
+  },
+  "23": {
+    "exit_code": 0,
+    "status": "built",
+    "elapsed_s": 7.44,
+    "commit": "815a8ff96c18091a5d7fcedbccb95c4fa9173623",
+    "container": "twelve-current-build-23",
+    "log": "logs/build-pr23.log",
+    "base_image": "twelve-unified:2026-10-07",
+    "substitutions": [],
+    "image": "twelve-current-pr23:2026-10-20",
+    "image_id": "sha256:71632129559071460d75be17b09e100ef359d52e354f925ce884a803a701b07f"
+  },
+  "24": {
+    "exit_code": 0,
+    "status": "built",
+    "elapsed_s": 0.42,
+    "commit": "eed3bd3d2f776e9ce0ee490c57a1367336a8c4a4",
+    "container": "twelve-current-build-24",
+    "log": "logs/build-pr24.log",
+    "base_image": "twelve-unified:2026-10-07",
+    "substitutions": [],
+    "image": "twelve-current-pr24:2026-10-20",
+    "image_id": "sha256:dd5cc5fdd818226aa15a9b7911835bb1d3705f6dae656500d61cdfd742e0166a"
+  },
+  "25": {
+    "exit_code": 0,
+    "status": "built",
+    "elapsed_s": 92.44,
+    "commit": "a2ff9cfc34d5667fc12befdb328252c94100df79",
+    "container": "twelve-current-build-25",
+    "log": "logs/build-pr25.log",
+    "base_image": "twelve-unified:2026-10-07",
+    "substitutions": [],
+    "runtime_setup": "runtime-scripts/pr25.sh",
+    "image": "twelve-current-pr25:2026-10-20",
+    "image_id": "sha256:9a20d2b85315408f4271acfef689fdeb6c2b05f5527856b2d4916f64e0d8576c",
+    "previous_attempt_evidence": [
+      "build-status-root-before-finalization.json",
+      "logs/build-pr25-before-retry.log"
+    ]
+  },
+  "19": {
+    "exit_code": 0,
+    "status": "built",
+    "elapsed_s": 73.08,
+    "commit": "bd517fa7c8a57b135579ae02fdddb6196b4cd9a4",
+    "container": "twelve-current-build-19",
+    "log": "logs/build-pr19.log",
+    "base_image": "twelve-unified:2026-10-07",
+    "substitutions": [],
+    "image": "twelve-current-pr19:2026-10-20",
+    "image_id": "sha256:2ffcb7d9e4c5bdc9d0fd182dbc7f24900e4599e74825c8d037088dc5abc9d77a"
+  },
+  "27": {
+    "exit_code": 0,
+    "status": "built",
+    "elapsed_s": 3.11,
+    "commit": "6bb4bc5dfb4ebf7778598631fb010d9426179e16",
+    "container": "twelve-current-build-27",
+    "log": "logs/build-pr27.log",
+    "base_image": "twelve-unified:2026-10-07",
+    "substitutions": [],
+    "image": "twelve-current-pr27:2026-10-20",
+    "image_id": "sha256:524ad08f46bd87751bc0f1df4855879d9a0dc2ca7c6c24118176cae10d7a61f7"
+  },
+  "26": {
+    "exit_code": 0,
+    "status": "built",
+    "elapsed_s": 68.34,
+    "commit": "35cc55c85fa837cd703367a740e0b8eeb6b825b4",
+    "container": "twelve-current-build-26",
+    "log": "logs/build-pr26.log",
+    "base_image": "twelve-unified:2026-10-07",
+    "substitutions": [],
+    "image": "twelve-current-pr26:2026-10-20",
+    "image_id": "sha256:d4782af7b918b7b0e01f29fce4e50ca879ad2e9e82dc724c0ac0f716d8d3e9f4"
+  },
+  "28": {
+    "exit_code": 0,
+    "status": "built",
+    "elapsed_s": 79.96,
+    "commit": "e3d3e0e036fcfc924a3200a7227a2467d6817a7a",
+    "container": "twelve-current-build-28",
+    "log": "logs/build-pr28.log",
+    "base_image": "twelve-unified:2026-10-07",
+    "substitutions": [],
+    "image": "twelve-current-pr28:2026-10-20",
+    "image_id": "sha256:7eae0890d4009173e58fd45515fb43237cc4b3348b5bca7e0d5b3988ed00ed4c"
+  },
+  "31": {
+    "exit_code": 0,
+    "status": "built",
+    "elapsed_s": 49.25,
+    "commit": "80f16f6a293fcac3096d32f9dc4a8dca0c75abf4",
+    "container": "twelve-current-build-31",
+    "log": "logs/build-pr31.log",
+    "base_image": "twelve-unified:2026-10-07",
+    "substitutions": [],
+    "image": "twelve-current-pr31:2026-10-20",
+    "image_id": "sha256:bb39b1daf32ea292be2f3a3b28bc2b8d9fb5a0b7313539639f9f037621fb738a",
+    "runtime_setup": "runtime-scripts/pr31.sh",
+    "repair_log": "logs/repair-pr31.log",
+    "repair_elapsed_s": 6.05,
+    "repair_reason": "Install libwebpmux3 and libuv1t64 required by submitted R production packages.",
+    "image_id_before_runtime_repair": "sha256:94238732b94844db80df849b096796d65860c00be682d6920131bef77ce94f45"
+  },
+  "29": {
+    "exit_code": 0,
+    "status": "built",
+    "elapsed_s": 136.19,
+    "commit": "1efb7c92278f65d3209884c723cc87d95a6bc6f7",
+    "container": "twelve-current-build-29",
+    "log": "logs/build-pr29.log",
+    "base_image": "twelve-unified:2026-10-07",
+    "substitutions": [],
+    "image": "twelve-current-pr29:2026-10-20",
+    "image_id": "sha256:7282748f33712b603b6e70d7bd070fddcba2075babd47a1e9ec7a7a443fdf8dd",
+    "runtime_setup": "runtime-scripts/pr29.sh"
+  },
+  "32": {
+    "exit_code": 1,
+    "status": "unsupported_architecture",
+    "elapsed_s": 73.69,
+    "commit": "647f962dc2eab8fc64e2f112728ac5dfb20154c5",
+    "container": "twelve-current-build-32",
+    "log": "logs/build-pr32.log",
+    "base_image": "twelve-unified:2026-10-07",
+    "substitutions": [],
+    "original_build_status": "build_failed",
+    "reason": "Pinned C++ source unconditionally uses x86 SSE2 <emmintrin.h> (src/json.cpp:3, src/http.cpp:3, src/writer.hpp:4). Native ARM64 compilation fails with \"fatal error: emmintrin.h: No such file or directory\".",
+    "architecture": "linux/arm64",
+    "required_architecture": "x86_64",
+    "source_evidence": [
+      {
+        "file": "src/json.cpp",
+        "line": 3,
+        "url": "https://github.com/hendy643/twelve-dollar-server-challenge/blob/647f962dc2eab8fc64e2f112728ac5dfb20154c5/submissions/cpp-eastl-io_uring-pgo-hendy643/src/json.cpp#L3"
+      },
+      {
+        "file": "src/http.cpp",
+        "line": 3,
+        "url": "https://github.com/hendy643/twelve-dollar-server-challenge/blob/647f962dc2eab8fc64e2f112728ac5dfb20154c5/submissions/cpp-eastl-io_uring-pgo-hendy643/src/http.cpp#L3"
+      },
+      {
+        "file": "src/writer.hpp",
+        "line": 4,
+        "url": "https://github.com/hendy643/twelve-dollar-server-challenge/blob/647f962dc2eab8fc64e2f112728ac5dfb20154c5/submissions/cpp-eastl-io_uring-pgo-hendy643/src/writer.hpp#L4"
+      }
+    ],
+    "container_state_before_cleanup": {
+      "Status": "running",
+      "Running": true,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 81466,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-10-20T10:52:59.685952588Z",
+      "FinishedAt": "0001-01-01T00:00:00Z"
+    },
+    "failed_container_cleanup": {
+      "exit_code": 0,
+      "output": "twelve-current-build-32",
+      "stderr": ""
+    }
+  },
+  "34": {
+    "exit_code": 1,
+    "status": "unsupported_architecture",
+    "elapsed_s": 55.05,
+    "commit": "7d8785bb9643e49f3e06744eb478cb450875edc8",
+    "container": "twelve-current-build-34",
+    "log": "logs/build-pr34.log",
+    "base_image": "twelve-unified:2026-10-07",
+    "substitutions": [],
+    "original_build_status": "build_failed",
+    "reason": "Pinned generated Go codecs require x86 AVX2: domain/domain_ggen.go imports simd/archsimd and calls ggen.SkipSpaceAVX2, ggen.StringAVX2, archsimd.LoadUint8x32 and BroadcastUint8x32. Native ARM64 Go compilation reports these symbols undefined; README.md:39 documents AVX2 codec generation.",
+    "architecture": "linux/arm64",
+    "required_architecture": "x86_64",
+    "source_evidence": [
+      {
+        "file": "domain/domain_ggen.go",
+        "line": 8,
+        "url": "https://github.com/sirkostya009/twelve-dollar-server-challenge/blob/7d8785bb9643e49f3e06744eb478cb450875edc8/submissions/go-fib-sirkostya009/domain/domain_ggen.go#L8"
+      },
+      {
+        "file": "domain/domain_ggen.go",
+        "line": 29,
+        "url": "https://github.com/sirkostya009/twelve-dollar-server-challenge/blob/7d8785bb9643e49f3e06744eb478cb450875edc8/submissions/go-fib-sirkostya009/domain/domain_ggen.go#L29"
+      },
+      {
+        "file": "README.md",
+        "line": 39,
+        "url": "https://github.com/sirkostya009/twelve-dollar-server-challenge/blob/7d8785bb9643e49f3e06744eb478cb450875edc8/submissions/go-fib-sirkostya009/README.md#L39"
+      }
+    ],
+    "container_state_before_cleanup": {
+      "Status": "running",
+      "Running": true,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 85972,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-10-20T10:54:13.392395927Z",
+      "FinishedAt": "0001-01-01T00:00:00Z"
+    },
+    "failed_container_cleanup": {
+      "exit_code": 0,
+      "output": "twelve-current-build-34",
+      "stderr": ""
+    }
+  },
+  "33": {
+    "exit_code": 0,
+    "status": "built",
+    "elapsed_s": 74.9,
+    "commit": "5300ca9105fca097ba8839a51cb7e6d86b61ed37",
+    "container": "twelve-current-build-33",
+    "log": "logs/build-pr33.log",
+    "base_image": "twelve-unified:2026-10-07",
+    "substitutions": [],
+    "image": "twelve-current-pr33:2026-10-20",
+    "image_id": "sha256:5acbff69e09ed4c89e1eed5be65d541ce48bc75f70ad1f874f400cbe69faf526",
+    "runtime_setup": "runtime-scripts/pr33.sh"
+  },
+  "36": {
+    "exit_code": 0,
+    "status": "built",
+    "elapsed_s": 108.76,
+    "commit": "22a4436e80c275c798cf3d40180fb81acf9fd016",
+    "container": "twelve-current-build-36",
+    "log": "logs/build-pr36.log",
+    "base_image": "twelve-unified:2026-10-07",
+    "substitutions": [],
+    "image": "twelve-current-pr36:2026-10-20",
+    "image_id": "sha256:d9464ca72892fb9d903d2627281ec018e70d3ffc5f67a2b0f82c8daa97a83a10",
+    "runtime_setup": "runtime-scripts/pr36.sh"
+  },
+  "38": {
+    "exit_code": 0,
+    "status": "built",
+    "elapsed_s": 40.18,
+    "commit": "8fe4cb032ab1875193bc3d5c8ec68e4ac7ef088a",
+    "container": "twelve-current-build-38",
+    "log": "logs/build-pr38.log",
+    "base_image": "twelve-unified:2026-10-07",
+    "substitutions": [],
+    "image": "twelve-current-pr38:2026-10-20",
+    "image_id": "sha256:23a8b0c21d72db4bb527ecebdd3a752359dfb8d8720ece7d9c7d32029cd8290b",
+    "runtime_setup": "runtime-scripts/pr38.sh"
+  },
+  "39": {
+    "exit_code": 0,
+    "status": "built",
+    "elapsed_s": 125.73,
+    "commit": "71b98db511b9c20ffa9ecff3c9adeedbc9ccfcdc",
+    "container": "twelve-current-build-39",
+    "log": "logs/build-pr39.log",
+    "base_image": "twelve-unified:2026-10-07",
+    "substitutions": [],
+    "image": "twelve-current-pr39:2026-10-20",
+    "image_id": "sha256:ff4bb0a25abe13e3e0771203619c9652907fb499ce1d0bc18a35f8a4a1a745b7",
+    "runtime_setup": "runtime-scripts/pr39.sh"
+  },
+  "40": {
+    "exit_code": 0,
+    "status": "built",
+    "elapsed_s": 19.25,
+    "commit": "d7d5d1aa99fff179238d2be1495118316d44c4b9",
+    "container": "twelve-current-build-40",
+    "log": "logs/build-pr40.log",
+    "base_image": "twelve-unified:2026-10-07",
+    "substitutions": [],
+    "image": "twelve-current-pr40:2026-10-20",
+    "image_id": "sha256:7e582c22d741e4331ac7a8724dbcf0da5fa124ed651b7848751692b9a1fc77fa",
+    "runtime_setup": "runtime-scripts/pr40.sh"
+  },
+  "35": {
+    "exit_code": 0,
+    "status": "built",
+    "elapsed_s": 1710.94,
+    "commit": "880310aec7f1d6908e66dbc606769d0a3c5fb780",
+    "container": "twelve-current-build-35",
+    "log": "logs/build-pr35.log",
+    "base_image": "twelve-unified:2026-10-07",
+    "substitutions": [],
+    "build_deadline_extension": {
+      "initial_exit_code": 124,
+      "extension_seconds": 900,
+      "started_at": "2026-10-20T11:11:06Z",
+      "observations": [
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 6.81
+            },
+            {
+              "pid": 12359,
+              "comm": "cc",
+              "command": "cc -O3 -ffunction-sections -fdata-sections -fPIC -w -DSQLITE_CORE -DSQLITE_DEFAULT_FOREIGN_KEYS=1 -DSQLITE_ENABLE_API_ARMOR -DSQLITE_ENABLE_COLUMN_METADATA -DSQLITE_ENABLE_DBSTAT_VTAB -DSQLITE_ENABLE_FTS3 -DSQLITE_ENABLE_FTS3_PARENTHESIS -DSQLITE_ENABLE_FTS5 -DSQLITE_ENABLE_JSON1 -DSQLITE_ENABLE_LOAD_EXTENSION=1 -DSQLITE_ENABLE_MEMORY_MANAGEMENT -DSQLITE_ENABLE_RTREE -DSQLITE_ENABLE_STAT4 -DSQLITE_SOUNDEX -DSQLITE_THREADSAFE=1 -DSQLITE_USE_URI -DHAVE_USLEEP=1 -DHAVE_ISNAN -D_POSIX_THREAD_SAFE_FUNCTIONS -DHAVE_LOCALTIME_R -o /suite/sources/pr35/.build/baml/baml_language/target/release/build/lib",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 12360,
+              "comm": "cc1",
+              "command": "/usr/libexec/gcc/aarch64-linux-gnu/13/cc1 -quiet -imultiarch aarch64-linux-gnu -D SQLITE_CORE -D SQLITE_DEFAULT_FOREIGN_KEYS=1 -D SQLITE_ENABLE_API_ARMOR -D SQLITE_ENABLE_COLUMN_METADATA -D SQLITE_ENABLE_DBSTAT_VTAB -D SQLITE_ENABLE_FTS3 -D SQLITE_ENABLE_FTS3_PARENTHESIS -D SQLITE_ENABLE_FTS5 -D SQLITE_ENABLE_JSON1 -D SQLITE_ENABLE_LOAD_EXTENSION=1 -D SQLITE_ENABLE_MEMORY_MANAGEMENT -D SQLITE_ENABLE_RTREE -D SQLITE_ENABLE_STAT4 -D SQLITE_SOUNDEX -D SQLITE_THREADSAFE=1 -D SQLITE_USE_URI -D HAVE_USLEEP=1 -D HAVE_ISNAN -D _POSIX_THREAD_SAFE_FUNCTIONS -D HAVE_LOCALTIME_R sqlite3/sqlite3.c -D_FORTI",
+              "cpu_s": 20.28
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "0",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 0.3,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 6.81
+            },
+            {
+              "pid": 12359,
+              "comm": "cc",
+              "command": "cc -O3 -ffunction-sections -fdata-sections -fPIC -w -DSQLITE_CORE -DSQLITE_DEFAULT_FOREIGN_KEYS=1 -DSQLITE_ENABLE_API_ARMOR -DSQLITE_ENABLE_COLUMN_METADATA -DSQLITE_ENABLE_DBSTAT_VTAB -DSQLITE_ENABLE_FTS3 -DSQLITE_ENABLE_FTS3_PARENTHESIS -DSQLITE_ENABLE_FTS5 -DSQLITE_ENABLE_JSON1 -DSQLITE_ENABLE_LOAD_EXTENSION=1 -DSQLITE_ENABLE_MEMORY_MANAGEMENT -DSQLITE_ENABLE_RTREE -DSQLITE_ENABLE_STAT4 -DSQLITE_SOUNDEX -DSQLITE_THREADSAFE=1 -DSQLITE_USE_URI -DHAVE_USLEEP=1 -DHAVE_ISNAN -D_POSIX_THREAD_SAFE_FUNCTIONS -DHAVE_LOCALTIME_R -o /suite/sources/pr35/.build/baml/baml_language/target/release/build/lib",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 12360,
+              "comm": "cc1",
+              "command": "/usr/libexec/gcc/aarch64-linux-gnu/13/cc1 -quiet -imultiarch aarch64-linux-gnu -D SQLITE_CORE -D SQLITE_DEFAULT_FOREIGN_KEYS=1 -D SQLITE_ENABLE_API_ARMOR -D SQLITE_ENABLE_COLUMN_METADATA -D SQLITE_ENABLE_DBSTAT_VTAB -D SQLITE_ENABLE_FTS3 -D SQLITE_ENABLE_FTS3_PARENTHESIS -D SQLITE_ENABLE_FTS5 -D SQLITE_ENABLE_JSON1 -D SQLITE_ENABLE_LOAD_EXTENSION=1 -D SQLITE_ENABLE_MEMORY_MANAGEMENT -D SQLITE_ENABLE_RTREE -D SQLITE_ENABLE_STAT4 -D SQLITE_SOUNDEX -D SQLITE_THREADSAFE=1 -D SQLITE_USE_URI -D HAVE_USLEEP=1 -D HAVE_ISNAN -D _POSIX_THREAD_SAFE_FUNCTIONS -D HAVE_LOCALTIME_R sqlite3/sqlite3.c -D_FORTI",
+              "cpu_s": 30.38
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "0",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 10.44,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 6.83
+            },
+            {
+              "pid": 12377,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name baml_fmt --edition=2024 crates/baml_fmt/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::pedantic --warn=clippy::unused_peekable --warn=unsafe_code --warn=unreachable_pub --allow=clippy::unnecessary_debug_formatting --warn=unexpected_cfgs --allow=clippy::too_many_lines --allow=clippy::single_match_else --allow=clippy::similar_names --warn=clippy::rest_",
+              "cpu_s": 0.83
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "0",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 20.56,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 6.83
+            },
+            {
+              "pid": 12463,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name signature --edition=2021 /home/bench/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/signature-2.2.0/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --cfg feature=\"alloc\" --cfg feature=\"digest\" --cfg feature=\"rand_core\" --cfg feature=\"std\" --check-cfg cfg(docsrs,test) --check-cfg cfg(feature, values(\"alloc\", \"derive\", \"digest\", \"rand_core\", \"std\")) -C metadata=",
+              "cpu_s": 0.06
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "0",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 30.7,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 6.89
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "0",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 40.87,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 6.9
+            },
+            {
+              "pid": 12738,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name paste --edition=2018 /home/bench/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/paste-1.0.15/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type proc-macro --emit=dep-info,link -C prefer-dynamic -C embed-bitcode=no -C debug-assertions=off --check-cfg cfg(docsrs,test) --check-cfg cfg(feature, values()) -C metadata=2ce241037b0cabd2 -C extra-filename=-d3e09e756519cda0 --out-dir /suite/sources/pr35/.build/baml/baml_language/target/release/deps -C strip=sy",
+              "cpu_s": 0.12
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "0",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 51.01,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 6.92
+            },
+            {
+              "pid": 12768,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name bex_cache --edition=2024 crates/bex_cache/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::pedantic --warn=clippy::unused_peekable --warn=unsafe_code --warn=unreachable_pub --allow=clippy::unnecessary_debug_formatting --warn=unexpected_cfgs --allow=clippy::too_many_lines --allow=clippy::single_match_else --allow=clippy::similar_names --warn=clippy::res",
+              "cpu_s": 9.19
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "0",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 61.16,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.07
+            },
+            {
+              "pid": 13142,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name bex_project --edition=2024 crates/bex_project/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::pedantic --warn=clippy::unused_peekable --warn=unsafe_code --warn=unreachable_pub --allow=clippy::unnecessary_debug_formatting --warn=unexpected_cfgs --allow=clippy::too_many_lines --allow=clippy::single_match_else --allow=clippy::similar_names --warn=clippy:",
+              "cpu_s": 2.01
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "0",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 71.59,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.07
+            },
+            {
+              "pid": 13142,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name bex_project --edition=2024 crates/bex_project/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::pedantic --warn=clippy::unused_peekable --warn=unsafe_code --warn=unreachable_pub --allow=clippy::unnecessary_debug_formatting --warn=unexpected_cfgs --allow=clippy::too_many_lines --allow=clippy::single_match_else --allow=clippy::similar_names --warn=clippy:",
+              "cpu_s": 11.65
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "0",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 81.72,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.07
+            },
+            {
+              "pid": 13142,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name bex_project --edition=2024 crates/bex_project/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::pedantic --warn=clippy::unused_peekable --warn=unsafe_code --warn=unreachable_pub --allow=clippy::unnecessary_debug_formatting --warn=unexpected_cfgs --allow=clippy::too_many_lines --allow=clippy::single_match_else --allow=clippy::similar_names --warn=clippy:",
+              "cpu_s": 21.44
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "0",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 91.88,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.07
+            },
+            {
+              "pid": 13142,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name bex_project --edition=2024 crates/bex_project/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::pedantic --warn=clippy::unused_peekable --warn=unsafe_code --warn=unreachable_pub --allow=clippy::unnecessary_debug_formatting --warn=unexpected_cfgs --allow=clippy::too_many_lines --allow=clippy::single_match_else --allow=clippy::similar_names --warn=clippy:",
+              "cpu_s": 31.06
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "0",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 102.06,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.09
+            },
+            {
+              "pid": 13236,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name forked_google_cloud_auth --edition=2024 forks/google-cloud-auth/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::pedantic --warn=clippy::unused_peekable --warn=unsafe_code --warn=unreachable_pub --allow=clippy::unnecessary_debug_formatting --warn=unexpected_cfgs --allow=clippy::too_many_lines --allow=clippy::single_match_else --allow=clippy::similar_na",
+              "cpu_s": 0.39
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "0",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 112.21,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.14
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "0",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 122.41,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.15
+            },
+            {
+              "pid": 13476,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name moxcms --edition=2024 /home/bench/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/moxcms-0.8.1/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --cfg feature=\"avx\" --cfg feature=\"avx_luts\" --cfg feature=\"avx_shaper_fixed_point_paths\" --cfg feature=\"avx_shaper_paths\" --cfg feature=\"default\" --cfg feature=\"lut\" --cfg feature=\"neon\" --cfg feature=\"neon_luts\" --cfg ",
+              "cpu_s": 9.68
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "0",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 132.6,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.19
+            },
+            {
+              "pid": 13612,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name png --edition=2021 /home/bench/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/png-0.18.1/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=unexpected_cfgs --check-cfg cfg(fuzzing) --check-cfg cfg(docsrs,test) --check-cfg cfg(feature, values(\"benchmarks\", \"unstable\", \"zlib-rs\")) -C metadata=82eea7b79ee9bf82 -C extra-filename=-4d6647af209bd21d --out-dir /su",
+              "cpu_s": 0.26
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "0",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 142.8,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.19
+            },
+            {
+              "pid": 13698,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name bridge_ctypes --edition=2024 crates/bridge_ctypes/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::pedantic --warn=clippy::unused_peekable --warn=unsafe_code --warn=unreachable_pub --allow=clippy::unnecessary_debug_formatting --warn=unexpected_cfgs --allow=clippy::too_many_lines --allow=clippy::single_match_else --allow=clippy::similar_names --warn=cli",
+              "cpu_s": 6.63
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "0",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 153.15,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.27
+            },
+            {
+              "pid": 13983,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name thiserror_impl --edition=2021 /home/bench/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/thiserror-impl-1.0.69/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type proc-macro --emit=dep-info,link -C prefer-dynamic -C embed-bitcode=no -C debug-assertions=off --check-cfg cfg(docsrs,test) --check-cfg cfg(feature, values()) -C metadata=29793cc5b15c3631 -C extra-filename=-65afcb5afce92f7d --out-dir /suite/sources/pr35/.build/baml/baml_language/target/releas",
+              "cpu_s": 0.14
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "0",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 163.31,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.3
+            },
+            {
+              "pid": 14111,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name zopfli --edition=2021 /home/bench/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zopfli-0.8.3/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --cfg feature=\"default\" --cfg feature=\"gzip\" --cfg feature=\"std\" --cfg feature=\"zlib\" --check-cfg cfg(docsrs,test) --check-cfg cfg(feature, values(\"default\", \"gzip\", \"nightly\", \"std\", \"zlib\")) -C metadata=3c14512de73450b",
+              "cpu_s": 1.38
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "0",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 173.49,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.32
+            },
+            {
+              "pid": 14157,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name image --edition=2021 /home/bench/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/image-0.25.10/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --cfg feature=\"bmp\" --cfg feature=\"ico\" --cfg feature=\"png\" --check-cfg cfg(docsrs,test) --check-cfg cfg(feature, values(\"avif\", \"avif-native\", \"benchmarks\", \"bmp\", \"color_quant\", \"dds\", \"default\", \"default-formats\", \"ex",
+              "cpu_s": 9.43
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "0",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 183.62,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.32
+            },
+            {
+              "pid": 14202,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name sys_native --edition=2024 crates/sys_native/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::pedantic --warn=clippy::unused_peekable --warn=unsafe_code --warn=unreachable_pub --allow=clippy::unnecessary_debug_formatting --warn=unexpected_cfgs --allow=clippy::too_many_lines --allow=clippy::single_match_else --allow=clippy::similar_names --warn=clippy::r",
+              "cpu_s": 4.26
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "0",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 193.78,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.32
+            },
+            {
+              "pid": 14202,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name sys_native --edition=2024 crates/sys_native/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::pedantic --warn=clippy::unused_peekable --warn=unsafe_code --warn=unreachable_pub --allow=clippy::unnecessary_debug_formatting --warn=unexpected_cfgs --allow=clippy::too_many_lines --allow=clippy::single_match_else --allow=clippy::similar_names --warn=clippy::r",
+              "cpu_s": 14.4
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "0",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 203.9,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.32
+            },
+            {
+              "pid": 14202,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name sys_native --edition=2024 crates/sys_native/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::pedantic --warn=clippy::unused_peekable --warn=unsafe_code --warn=unreachable_pub --allow=clippy::unnecessary_debug_formatting --warn=unexpected_cfgs --allow=clippy::too_many_lines --allow=clippy::single_match_else --allow=clippy::similar_names --warn=clippy::r",
+              "cpu_s": 24.5
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "0",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 214.02,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.37
+            },
+            {
+              "pid": 14417,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name lsp_server --edition=2024 /home/bench/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/lsp-server-0.7.9/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::suspicious --warn=clippy::style --allow=clippy::restriction --deny=clippy::perf --deny=clippy::correctness --warn=clippy::complexity --allow=clippy::wrong_self_convention --allow=clippy::vec_init_t",
+              "cpu_s": 1.1
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "0",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 224.12,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.38
+            },
+            {
+              "pid": 14484,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name sqlparser --edition=2021 /home/bench/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sqlparser-0.62.0/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --cfg feature=\"default\" --cfg feature=\"recursive\" --cfg feature=\"recursive-protection\" --cfg feature=\"std\" --check-cfg cfg(docsrs,test) --check-cfg cfg(feature, values(\"bigdecimal\", \"default\", \"derive-dialect\", \"j",
+              "cpu_s": 9.04
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "239",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 234.24,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.38
+            },
+            {
+              "pid": 14484,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name sqlparser --edition=2021 /home/bench/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sqlparser-0.62.0/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --cfg feature=\"default\" --cfg feature=\"recursive\" --cfg feature=\"recursive-protection\" --cfg feature=\"std\" --check-cfg cfg(docsrs,test) --check-cfg cfg(feature, values(\"bigdecimal\", \"default\", \"derive-dialect\", \"j",
+              "cpu_s": 18.67
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "304",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 244.36,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.38
+            },
+            {
+              "pid": 14484,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name sqlparser --edition=2021 /home/bench/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sqlparser-0.62.0/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --cfg feature=\"default\" --cfg feature=\"recursive\" --cfg feature=\"recursive-protection\" --cfg feature=\"std\" --check-cfg cfg(docsrs,test) --check-cfg cfg(feature, values(\"bigdecimal\", \"default\", \"derive-dialect\", \"j",
+              "cpu_s": 28.54
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "304",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 254.5,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.39
+            },
+            {
+              "pid": 14484,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name sqlparser --edition=2021 /home/bench/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sqlparser-0.62.0/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --cfg feature=\"default\" --cfg feature=\"recursive\" --cfg feature=\"recursive-protection\" --cfg feature=\"std\" --check-cfg cfg(docsrs,test) --check-cfg cfg(feature, values(\"bigdecimal\", \"default\", \"derive-dialect\", \"j",
+              "cpu_s": 38.45
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "304",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 264.64,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.39
+            },
+            {
+              "pid": 14484,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name sqlparser --edition=2021 /home/bench/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sqlparser-0.62.0/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --cfg feature=\"default\" --cfg feature=\"recursive\" --cfg feature=\"recursive-protection\" --cfg feature=\"std\" --check-cfg cfg(docsrs,test) --check-cfg cfg(feature, values(\"bigdecimal\", \"default\", \"derive-dialect\", \"j",
+              "cpu_s": 48.47
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "304",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 274.78,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.39
+            },
+            {
+              "pid": 14484,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name sqlparser --edition=2021 /home/bench/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/sqlparser-0.62.0/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --cfg feature=\"default\" --cfg feature=\"recursive\" --cfg feature=\"recursive-protection\" --cfg feature=\"std\" --check-cfg cfg(docsrs,test) --check-cfg cfg(feature, values(\"bigdecimal\", \"default\", \"derive-dialect\", \"j",
+              "cpu_s": 58.0
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "304",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 284.91,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.4
+            },
+            {
+              "pid": 14556,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name syn --edition=2021 /home/bench/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/syn-2.0.117/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --cfg feature=\"clone-impls\" --cfg feature=\"default\" --cfg feature=\"derive\" --cfg feature=\"full\" --cfg feature=\"parsing\" --cfg feature=\"printing\" --cfg feature=\"proc-macro\" --check-cfg cfg(docsrs,test) --check-cfg cfg(feature",
+              "cpu_s": 4.07
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "304",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 295.02,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.41
+            },
+            {
+              "pid": 14602,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name baml_ide --edition=2024 crates/baml_ide/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::pedantic --warn=clippy::unused_peekable --warn=unsafe_code --warn=unreachable_pub --allow=clippy::unnecessary_debug_formatting --warn=unexpected_cfgs --allow=clippy::too_many_lines --allow=clippy::single_match_else --allow=clippy::similar_names --warn=clippy::rest_",
+              "cpu_s": 0.24
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "304",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 305.12,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.41
+            },
+            {
+              "pid": 14602,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name baml_ide --edition=2024 crates/baml_ide/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::pedantic --warn=clippy::unused_peekable --warn=unsafe_code --warn=unreachable_pub --allow=clippy::unnecessary_debug_formatting --warn=unexpected_cfgs --allow=clippy::too_many_lines --allow=clippy::single_match_else --allow=clippy::similar_names --warn=clippy::rest_",
+              "cpu_s": 9.92
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "304",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 315.29,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.41
+            },
+            {
+              "pid": 14602,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name baml_ide --edition=2024 crates/baml_ide/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::pedantic --warn=clippy::unused_peekable --warn=unsafe_code --warn=unreachable_pub --allow=clippy::unnecessary_debug_formatting --warn=unexpected_cfgs --allow=clippy::too_many_lines --allow=clippy::single_match_else --allow=clippy::similar_names --warn=clippy::rest_",
+              "cpu_s": 19.73
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "304",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 325.49,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.46
+            },
+            {
+              "pid": 14816,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name object --edition=2018 /home/bench/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/object-0.36.3/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --cfg feature=\"build\" --cfg feature=\"build_core\" --cfg feature=\"elf\" --cfg feature=\"read_core\" --cfg feature=\"std\" --cfg feature=\"write_core\" --cfg feature=\"write_std\" --check-cfg cfg(docsrs,test) --check-cfg cfg(featur",
+              "cpu_s": 0.63
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "304",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 335.68,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.54
+            },
+            {
+              "pid": 14978,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name axum --edition=2021 /home/bench/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/axum-0.8.9/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=rust_2018_idioms --warn=clippy::verbose_file_reads --warn=clippy::unused_self --forbid=unsafe_code --warn=unreachable_pub --warn=clippy::unnested_or_patterns --warn=clippy::uninlined_format_args --allow=clippy::type_c",
+              "cpu_s": 4.39
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "304",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 345.88,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.56
+            },
+            {
+              "pid": 15064,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name baml_query_btel --edition=2024 crates/baml_query_btel/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::pedantic --warn=clippy::unused_peekable --warn=unsafe_code --warn=unreachable_pub --allow=clippy::unnecessary_debug_formatting --warn=unexpected_cfgs --allow=clippy::too_many_lines --allow=clippy::single_match_else --allow=clippy::similar_names --warn",
+              "cpu_s": 5.76
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "304",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 356.02,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.56
+            },
+            {
+              "pid": 15064,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name baml_query_btel --edition=2024 crates/baml_query_btel/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::pedantic --warn=clippy::unused_peekable --warn=unsafe_code --warn=unreachable_pub --allow=clippy::unnecessary_debug_formatting --warn=unexpected_cfgs --allow=clippy::too_many_lines --allow=clippy::single_match_else --allow=clippy::similar_names --warn",
+              "cpu_s": 15.25
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "304",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 366.27,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.57
+            },
+            {
+              "pid": 15064,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name baml_query_btel --edition=2024 crates/baml_query_btel/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::pedantic --warn=clippy::unused_peekable --warn=unsafe_code --warn=unreachable_pub --allow=clippy::unnecessary_debug_formatting --warn=unexpected_cfgs --allow=clippy::too_many_lines --allow=clippy::single_match_else --allow=clippy::similar_names --warn",
+              "cpu_s": 25.12
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "304",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 376.4,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.57
+            },
+            {
+              "pid": 15064,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name baml_query_btel --edition=2024 crates/baml_query_btel/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::pedantic --warn=clippy::unused_peekable --warn=unsafe_code --warn=unreachable_pub --allow=clippy::unnecessary_debug_formatting --warn=unexpected_cfgs --allow=clippy::too_many_lines --allow=clippy::single_match_else --allow=clippy::similar_names --warn",
+              "cpu_s": 34.63
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "304",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 386.57,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.6
+            },
+            {
+              "pid": 15207,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name tar --edition=2021 /home/bench/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/tar-0.4.46/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --deny=dead_code --cfg feature=\"default\" --cfg feature=\"xattr\" --check-cfg cfg(docsrs,test) --check-cfg cfg(feature, values(\"default\", \"xattr\")) -C metadata=01ce71b68f8004cf -C extra-filename=-c6c0e43a48201c1c --out-dir /suit",
+              "cpu_s": 2.13
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "304",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 396.91,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.61
+            },
+            {
+              "pid": 15253,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name baml_lsp --edition=2024 crates/baml_lsp/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::pedantic --warn=clippy::unused_peekable --warn=unsafe_code --warn=unreachable_pub --allow=clippy::unnecessary_debug_formatting --warn=unexpected_cfgs --allow=clippy::too_many_lines --allow=clippy::single_match_else --allow=clippy::similar_names --warn=clippy::rest_",
+              "cpu_s": 9.24
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "304",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 407.12,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.61
+            },
+            {
+              "pid": 15253,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name baml_lsp --edition=2024 crates/baml_lsp/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::pedantic --warn=clippy::unused_peekable --warn=unsafe_code --warn=unreachable_pub --allow=clippy::unnecessary_debug_formatting --warn=unexpected_cfgs --allow=clippy::too_many_lines --allow=clippy::single_match_else --allow=clippy::similar_names --warn=clippy::rest_",
+              "cpu_s": 18.87
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "304",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 417.32,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.63
+            },
+            {
+              "pid": 15305,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name baml_exec --edition=2024 crates/baml_exec/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::pedantic --warn=clippy::unused_peekable --warn=unsafe_code --warn=unreachable_pub --allow=clippy::unnecessary_debug_formatting --warn=unexpected_cfgs --allow=clippy::too_many_lines --allow=clippy::single_match_else --allow=clippy::similar_names --warn=clippy::res",
+              "cpu_s": 9.17
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "304",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 427.86,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.67
+            },
+            {
+              "pid": 15470,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name zip --edition=2021 /home/bench/.cargo/registry/src/index.crates.io-1949cf8c6b5b557f/zip-2.4.2/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --cfg feature=\"_deflate-any\" --cfg feature=\"deflate\" --cfg feature=\"deflate-flate2\" --cfg feature=\"deflate-zopfli\" --cfg feature=\"flate2\" --cfg feature=\"zopfli\" --check-cfg cfg(docsrs,test) --check-cfg cfg(feature, values(\"_al",
+              "cpu_s": 0.01
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "304",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 438.0,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.74
+            },
+            {
+              "pid": 15610,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name baml_lsp_server --edition=2024 crates/baml_lsp_server/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::pedantic --warn=clippy::unused_peekable --warn=unsafe_code --warn=unreachable_pub --allow=clippy::unnecessary_debug_formatting --warn=unexpected_cfgs --allow=clippy::too_many_lines --allow=clippy::single_match_else --allow=clippy::similar_names --warn",
+              "cpu_s": 2.76
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "304",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 448.22,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.74
+            },
+            {
+              "pid": 15610,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name baml_lsp_server --edition=2024 crates/baml_lsp_server/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::pedantic --warn=clippy::unused_peekable --warn=unsafe_code --warn=unreachable_pub --allow=clippy::unnecessary_debug_formatting --warn=unexpected_cfgs --allow=clippy::too_many_lines --allow=clippy::single_match_else --allow=clippy::similar_names --warn",
+              "cpu_s": 12.47
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "304",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 458.35,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.74
+            },
+            {
+              "pid": 15610,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name baml_lsp_server --edition=2024 crates/baml_lsp_server/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::pedantic --warn=clippy::unused_peekable --warn=unsafe_code --warn=unreachable_pub --allow=clippy::unnecessary_debug_formatting --warn=unexpected_cfgs --allow=clippy::too_many_lines --allow=clippy::single_match_else --allow=clippy::similar_names --warn",
+              "cpu_s": 22.08
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "304",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 468.49,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.74
+            },
+            {
+              "pid": 15610,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name baml_lsp_server --edition=2024 crates/baml_lsp_server/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::pedantic --warn=clippy::unused_peekable --warn=unsafe_code --warn=unreachable_pub --allow=clippy::unnecessary_debug_formatting --warn=unexpected_cfgs --allow=clippy::too_many_lines --allow=clippy::single_match_else --allow=clippy::similar_names --warn",
+              "cpu_s": 31.74
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "304",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 478.67,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.74
+            },
+            {
+              "pid": 15610,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name baml_lsp_server --edition=2024 crates/baml_lsp_server/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::pedantic --warn=clippy::unused_peekable --warn=unsafe_code --warn=unreachable_pub --allow=clippy::unnecessary_debug_formatting --warn=unexpected_cfgs --allow=clippy::too_many_lines --allow=clippy::single_match_else --allow=clippy::similar_names --warn",
+              "cpu_s": 41.37
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "304",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 488.81,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.74
+            },
+            {
+              "pid": 15610,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name baml_lsp_server --edition=2024 crates/baml_lsp_server/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::pedantic --warn=clippy::unused_peekable --warn=unsafe_code --warn=unreachable_pub --allow=clippy::unnecessary_debug_formatting --warn=unexpected_cfgs --allow=clippy::too_many_lines --allow=clippy::single_match_else --allow=clippy::similar_names --warn",
+              "cpu_s": 51.48
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "304",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 499.05,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.77
+            },
+            {
+              "pid": 15759,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name sdkgen_python_pydantic2 --edition=2024 sdks/python/rust/sdkgen_python_pydantic2/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::pedantic --warn=clippy::unused_peekable --warn=unsafe_code --warn=unreachable_pub --allow=clippy::unnecessary_debug_formatting --warn=unexpected_cfgs --allow=clippy::too_many_lines --allow=clippy::single_match_else --allow=cl",
+              "cpu_s": 1.28
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "304",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 509.19,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.79
+            },
+            {
+              "pid": 15805,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name sdkgen_cpp --edition=2024 sdks/cpp/sdkgen_cpp/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::pedantic --warn=clippy::unused_peekable --warn=unsafe_code --warn=unreachable_pub --allow=clippy::unnecessary_debug_formatting --warn=unexpected_cfgs --allow=clippy::too_many_lines --allow=clippy::single_match_else --allow=clippy::similar_names --warn=clippy:",
+              "cpu_s": 2.02
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "304",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 519.29,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.8
+            },
+            {
+              "pid": 15890,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name sdkgen_csharp --edition=2024 sdks/csharp/sdkgen_csharp/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::pedantic --warn=clippy::unused_peekable --warn=unsafe_code --warn=unreachable_pub --allow=clippy::unnecessary_debug_formatting --warn=unexpected_cfgs --allow=clippy::too_many_lines --allow=clippy::single_match_else --allow=clippy::similar_names --war",
+              "cpu_s": 2.9
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "304",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 529.39,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.8
+            },
+            {
+              "pid": 15890,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name sdkgen_csharp --edition=2024 sdks/csharp/sdkgen_csharp/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::pedantic --warn=clippy::unused_peekable --warn=unsafe_code --warn=unreachable_pub --allow=clippy::unnecessary_debug_formatting --warn=unexpected_cfgs --allow=clippy::too_many_lines --allow=clippy::single_match_else --allow=clippy::similar_names --war",
+              "cpu_s": 13.03
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "304",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 539.49,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.8
+            },
+            {
+              "pid": 15983,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name sdkgen_go --edition=2024 sdks/go/sdkgen_go/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::pedantic --warn=clippy::unused_peekable --warn=unsafe_code --warn=unreachable_pub --allow=clippy::unnecessary_debug_formatting --warn=unexpected_cfgs --allow=clippy::too_many_lines --allow=clippy::single_match_else --allow=clippy::similar_names --warn=clippy::re",
+              "cpu_s": 6.0
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "304",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 549.58,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.81
+            },
+            {
+              "pid": 16069,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name sdkgen_swift --edition=2024 sdks/swift/rust/sdkgen_swift/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::pedantic --warn=clippy::unused_peekable --warn=unsafe_code --warn=unreachable_pub --allow=clippy::unnecessary_debug_formatting --warn=unexpected_cfgs --allow=clippy::too_many_lines --allow=clippy::single_match_else --allow=clippy::similar_names --w",
+              "cpu_s": 1.53
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "304",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 559.67,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.82
+            },
+            {
+              "pid": 16128,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name baml_cli --edition=2024 crates/baml_cli/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::pedantic --warn=clippy::unused_peekable --warn=unsafe_code --warn=unreachable_pub --allow=clippy::unnecessary_debug_formatting --warn=unexpected_cfgs --allow=clippy::too_many_lines --allow=clippy::single_match_else --allow=clippy::similar_names --warn=clippy::rest_",
+              "cpu_s": 8.32
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "304",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 569.8,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.83
+            },
+            {
+              "pid": 16128,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name baml_cli --edition=2024 crates/baml_cli/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::pedantic --warn=clippy::unused_peekable --warn=unsafe_code --warn=unreachable_pub --allow=clippy::unnecessary_debug_formatting --warn=unexpected_cfgs --allow=clippy::too_many_lines --allow=clippy::single_match_else --allow=clippy::similar_names --warn=clippy::rest_",
+              "cpu_s": 18.45
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "304",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 579.9,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.83
+            },
+            {
+              "pid": 16128,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name baml_cli --edition=2024 crates/baml_cli/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::pedantic --warn=clippy::unused_peekable --warn=unsafe_code --warn=unreachable_pub --allow=clippy::unnecessary_debug_formatting --warn=unexpected_cfgs --allow=clippy::too_many_lines --allow=clippy::single_match_else --allow=clippy::similar_names --warn=clippy::rest_",
+              "cpu_s": 28.62
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "304",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 590.01,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.83
+            },
+            {
+              "pid": 16128,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name baml_cli --edition=2024 crates/baml_cli/src/lib.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type lib --emit=dep-info,metadata,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::pedantic --warn=clippy::unused_peekable --warn=unsafe_code --warn=unreachable_pub --allow=clippy::unnecessary_debug_formatting --warn=unexpected_cfgs --allow=clippy::too_many_lines --allow=clippy::single_match_else --allow=clippy::similar_names --warn=clippy::rest_",
+              "cpu_s": 38.75
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "304",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 600.12,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.85
+            },
+            {
+              "pid": 16193,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name baml_cli --edition=2024 crates/baml_cli/src/main.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type bin --emit=dep-info,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::pedantic --warn=clippy::unused_peekable --warn=unsafe_code --warn=unreachable_pub --allow=clippy::unnecessary_debug_formatting --warn=unexpected_cfgs --allow=clippy::too_many_lines --allow=clippy::single_match_else --allow=clippy::similar_names --warn=clippy::rest_pat_in_f",
+              "cpu_s": 0.07
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "304",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 610.21,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.85
+            },
+            {
+              "pid": 16222,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name baml_pack_host --edition=2024 crates/baml_pack_host/src/main.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type bin --emit=dep-info,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::pedantic --warn=clippy::unused_peekable --warn=unsafe_code --warn=unreachable_pub --allow=clippy::unnecessary_debug_formatting --warn=unexpected_cfgs --allow=clippy::too_many_lines --allow=clippy::single_match_else --allow=clippy::similar_names --warn=clippy::r",
+              "cpu_s": 4.69
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "725",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 620.32,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 370,
+              "comm": "bash",
+              "command": "bash /suite/sources/pr35/build.sh ",
+              "cpu_s": 0.0
+            },
+            {
+              "pid": 389,
+              "comm": "cargo",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/cargo build --locked --release -p baml_cli -p baml_pack_host ",
+              "cpu_s": 7.85
+            },
+            {
+              "pid": 16222,
+              "comm": "rustc",
+              "command": "/opt/baml-rust/rustup/toolchains/1.98.0-aarch64-unknown-linux-gnu/bin/rustc --crate-name baml_pack_host --edition=2024 crates/baml_pack_host/src/main.rs --error-format=json --json=diagnostic-rendered-ansi,artifacts,future-incompat --crate-type bin --emit=dep-info,link -C opt-level=3 -C embed-bitcode=no -C codegen-units=16 --warn=clippy::pedantic --warn=clippy::unused_peekable --warn=unsafe_code --warn=unreachable_pub --allow=clippy::unnecessary_debug_formatting --warn=unexpected_cfgs --allow=clippy::too_many_lines --allow=clippy::single_match_else --allow=clippy::similar_names --warn=clippy::r",
+              "cpu_s": 14.83
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "725",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 630.41,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 16280,
+              "comm": "baml-cli",
+              "command": "",
+              "cpu_s": 0.03
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "725",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 640.52,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 16280,
+              "comm": "baml-cli",
+              "command": "",
+              "cpu_s": 0.03
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "725",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 650.62,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 16280,
+              "comm": "baml-cli",
+              "command": "",
+              "cpu_s": 0.03
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "725",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 660.72,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 16280,
+              "comm": "baml-cli",
+              "command": "",
+              "cpu_s": 0.03
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "725",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 670.81,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 16280,
+              "comm": "baml-cli",
+              "command": "",
+              "cpu_s": 0.03
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "725",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 680.91,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 16280,
+              "comm": "baml-cli",
+              "command": "",
+              "cpu_s": 0.03
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "725",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 691.0,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 16280,
+              "comm": "baml-cli",
+              "command": "",
+              "cpu_s": 0.03
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "725",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 701.09,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [
+            {
+              "pid": 16280,
+              "comm": "baml-cli",
+              "command": "",
+              "cpu_s": 0.03
+            }
+          ],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "725",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 711.18,
+          "log_bytes": 35643
+        },
+        {
+          "processes": [],
+          "memory_events": {
+            "low": "0",
+            "high": "0",
+            "max": "725",
+            "oom": "0",
+            "oom_kill": "0",
+            "oom_group_kill": "0",
+            "sock_throttled": "781"
+          },
+          "elapsed_grace_s": 719.38,
+          "log_bytes": 35643
+        }
+      ],
+      "verified_retry_exit_code": 0,
+      "elapsed_s": 753.41
+    },
+    "image": "twelve-current-pr35:2026-10-20",
+    "image_id": "sha256:e4c7cd540f669c200e04088f627262f1a88ffa09aaab18a7b0364764e04faece",
+    "runtime_setup": "runtime-scripts/pr35.sh",
+    "initial_attempt_elapsed_s": 932.13,
+    "timeout_scope": "local_build_environment",
+    "elapsed_s_before_wall_time_correction": 1685.54,
+    "container_started_at": "2026-10-20T10:55:08.470940758Z",
+    "total_elapsed_wall_s": 1710.94,
+    "elapsed_method": "Container start to checked build/image completion, including the gap before bounded continuation."
+  }
+}

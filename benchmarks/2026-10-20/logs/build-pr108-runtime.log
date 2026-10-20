@@ -1,0 +1,3 @@
+Registered /etc/dotnet/install_location_arm64=/usr/local/share/dotnet.
+Runtime lookup verified: Microsoft.AspNetCore.App 10.0.12 and Microsoft.NETCore.App 10.0.12.
+Image sha256:eff82a2f583725d8dedfe87a7be2bc6d3b87f1b9ee96c4f20509610be7bcc659

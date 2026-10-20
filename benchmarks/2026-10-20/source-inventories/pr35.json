@@ -1,0 +1,47 @@
+{
+  "files": {
+    ".gitignore": {
+      "sha256": "706aac20f5fa642d4938a830e29077f82da66cb3de9ee76db9cbc61725500348",
+      "bytes": 20,
+      "physical_lines": 3,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "README.md": {
+      "sha256": "af18425084b6f0d534ba1d1d7cc43f14227c33b23530f58be16f6602e4be454c",
+      "bytes": 3541,
+      "physical_lines": 74,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "baml.toml": {
+      "sha256": "5ffe91367c3b0ad39ebbec81186599e589c7c0523ff40a98ef76d93dbda0bc23",
+      "bytes": 90,
+      "physical_lines": 5,
+      "classification": "own_support"
+    },
+    "build.sh": {
+      "sha256": "6a5dc380a38aae3793acdf42a276fd2e20922708f45c0dd5f39511ebecbc0e36",
+      "bytes": 925,
+      "physical_lines": 22,
+      "classification": "own_support"
+    },
+    "install.sh": {
+      "sha256": "132bff8b007c9f61580e9e028e1ed02b2c425d9964eda84ee9c1bc6dc3c4516d",
+      "bytes": 447,
+      "physical_lines": 8,
+      "classification": "own_support"
+    },
+    "server.baml": {
+      "sha256": "76498b6b87568936b4e33fe2431a1bc14114d0e44f6dd74a27210f82eb4a3873",
+      "bytes": 9828,
+      "physical_lines": 312,
+      "classification": "application"
+    },
+    "start.sh": {
+      "sha256": "d1082a1ea1016a041bb9f7f1a9451c443b5bcbe88eaae10861278539ad48f234",
+      "bytes": 189,
+      "physical_lines": 6,
+      "classification": "own_support"
+    }
+  },
+  "skipped_members": []
+}

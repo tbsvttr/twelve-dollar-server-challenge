@@ -1,0 +1,4 @@
+[
+  "Install exact pinned SQLite 3.54.0 headers in /usr/local/include because the submitted PGO and smoke training compiler commands omit the vendored include path. The unchanged build.sh still compiles and links its own pinned SQLite source.",
+  "Use the recorded narrow seccomp profile to allow io_uring_setup, io_uring_enter, and io_uring_register."
+]

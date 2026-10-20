@@ -1,0 +1,13 @@
+
+$ docker exec twelve-current-build-pr81 bash -c set -e; rm -rf /suite/sources; mkdir -p /suite/sources; cp -a /evidence/sources/pr81 /suite/sources/; cp /evidence/manifest.json /suite/manifest.json; cp /evidence/schema.sql /suite/schema.sql; chown -R bench:bench /suite/sources
+
+$ docker exec twelve-current-build-pr81 bash /evidence/runtime-scripts/pr81.sh
+/tmp/tmp.n5lI0ed6h6/jdk.tar.gz: OK
+/tmp/tmp.n5lI0ed6h6/maven.tar.gz: OK
+openjdk version "26.0.2.1" 2026-08-18
+OpenJDK Runtime Environment Temurin-26.0.2.1+1 (build 26.0.2.1+1)
+OpenJDK 64-Bit Server VM Temurin-26.0.2.1+1 (build 26.0.2.1+1, mixed mode, sharing)
+
+$ docker exec twelve-current-build-pr81 runuser -u bench -- env PATH=/usr/local/go/bin:/opt/twelve-rust/cargo/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 bash /suite/sources/pr81/build.sh
+
+$ docker exec twelve-current-build-pr81 bash -c rm -f /usr/local/bin/nproc; rm -rf /tmp/* /root/.cache /root/.cargo/registry /home/bench/.cache /home/bench/.cargo/registry /home/bench/.npm/_cacache /var/lib/apt/lists/* /var/cache/apt/archives/*.deb; find /suite/sources -type d -path '*/target/release/incremental' -prune -exec rm -rf {} +

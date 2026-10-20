@@ -1,0 +1,360 @@
+Pinned source: 1efb7c92278f65d3209884c723cc87d95a6bc6f7
+1fe2f39407f824252132d9f2609a8df4b733951b27db445f67513e6bcf09a011
+Hit:1 http://ports.ubuntu.com/ubuntu-ports noble InRelease
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble-updates InRelease [126 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble-backports InRelease [126 kB]
+Get:4 http://ports.ubuntu.com/ubuntu-ports noble-security InRelease [126 kB]
+Get:5 http://ports.ubuntu.com/ubuntu-ports noble-updates/restricted arm64 Packages [3251 kB]
+Get:6 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 Packages [1786 kB]
+Get:7 http://ports.ubuntu.com/ubuntu-ports noble-updates/multiverse arm64 Packages [104 kB]
+Get:8 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 Packages [2214 kB]
+Get:9 http://ports.ubuntu.com/ubuntu-ports noble-backports/multiverse arm64 Packages [669 B]
+Get:10 http://ports.ubuntu.com/ubuntu-ports noble-security/restricted arm64 Packages [3129 kB]
+Get:11 http://ports.ubuntu.com/ubuntu-ports noble-security/multiverse arm64 Packages [99.1 kB]
+Get:12 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 Packages [1475 kB]
+Get:13 http://ports.ubuntu.com/ubuntu-ports noble-security/universe arm64 Packages [1638 kB]
+Fetched 14.1 MB in 2s (6481 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+ca-certificates is already the newest version (20260601~24.04.1).
+libssl-dev is already the newest version (3.0.13-0ubuntu3.16).
+zlib1g-dev is already the newest version (1:1.3.dfsg-3.1ubuntu2.2).
+The following additional packages will be installed:
+  cmake-data git-man googletest libarchive13t64 libclang-common-20-dev
+  libclang-cpp20 libclang1-20 libgcc-14-dev libjsoncpp25 libllvm20 librhash0
+  libuv1t64 llvm-20-linker-tools
+Suggested packages:
+  clang-20-doc wasi-libc cmake-doc cmake-format elpa-cmake-mode gettext-base
+  git-daemon-run | git-daemon-sysvinit git-doc git-email git-gui gitk gitweb
+  git-cvs git-mediawiki git-svn lrzip sqlite3-doc libstdc++-14-doc
+Recommended packages:
+  llvm-20-dev clang-tools-20 less ssh-client libclang-rt-20-dev
+The following NEW packages will be installed:
+  clang-20 cmake cmake-data googletest libarchive13t64 libclang-common-20-dev
+  libclang-cpp20 libclang1-20 libgcc-14-dev libgtest-dev libjsoncpp-dev
+  libjsoncpp25 libllvm20 librhash0 libsqlite3-dev libstdc++-14-dev libuv1t64
+  lld-20 llvm-20-linker-tools ninja-build uuid-dev
+The following packages will be upgraded:
+  git git-man
+2 upgraded, 21 newly installed, 0 to remove and 17 not upgraded.
+Need to get 79.7 MB of archives.
+After this operation, 362 MB of additional disk space will be used.
+Get:1 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libuv1t64 arm64 1.48.0-1.1build1 [95.3 kB]
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libllvm20 arm64 1:20.1.2-0ubuntu1~24.04.3 [29.3 MB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 libclang-cpp20 arm64 1:20.1.2-0ubuntu1~24.04.3 [13.9 MB]
+Get:4 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 libclang-common-20-dev arm64 1:20.1.2-0ubuntu1~24.04.3 [782 kB]
+Get:5 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 llvm-20-linker-tools arm64 1:20.1.2-0ubuntu1~24.04.3 [1246 kB]
+Get:6 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 libclang1-20 arm64 1:20.1.2-0ubuntu1~24.04.3 [8020 kB]
+Get:7 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 clang-20 arm64 1:20.1.2-0ubuntu1~24.04.3 [76.3 kB]
+Get:8 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libarchive13t64 arm64 3.7.2-2ubuntu0.9 [378 kB]
+Get:9 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libjsoncpp25 arm64 1.9.5-6build1 [78.2 kB]
+Get:10 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 librhash0 arm64 1.4.3-3build1 [126 kB]
+Get:11 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 cmake-data all 3.28.3-1build7 [2155 kB]
+Get:12 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 cmake arm64 3.28.3-1build7 [10.3 MB]
+Get:13 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 git-man all 1:2.43.0-1ubuntu7.4 [1101 kB]
+Get:14 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 git arm64 1:2.43.0-1ubuntu7.4 [3774 kB]
+Get:15 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 googletest all 1.14.0-1 [521 kB]
+Get:16 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libgcc-14-dev arm64 14.2.0-4ubuntu2~24.04.1 [2612 kB]
+Get:17 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 libgtest-dev arm64 1.14.0-1 [266 kB]
+Get:18 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libsqlite3-dev arm64 3.45.1-1ubuntu2.8 [916 kB]
+Get:19 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 libstdc++-14-dev arm64 14.2.0-4ubuntu2~24.04.1 [2476 kB]
+Get:20 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 lld-20 arm64 1:20.1.2-0ubuntu1~24.04.3 [1425 kB]
+Get:21 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 ninja-build arm64 1.11.1-2 [125 kB]
+Get:22 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libjsoncpp-dev arm64 1.9.5-6build1 [23.0 kB]
+Get:23 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 uuid-dev arm64 2.39.3-9ubuntu6.6 [34.8 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 79.7 MB in 4s (17.8 MB/s)
+Selecting previously unselected package libuv1t64:arm64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 16962 files and directories currently installed.)
+Preparing to unpack .../00-libuv1t64_1.48.0-1.1build1_arm64.deb ...
+Unpacking libuv1t64:arm64 (1.48.0-1.1build1) ...
+Selecting previously unselected package libllvm20:arm64.
+Preparing to unpack .../01-libllvm20_1%3a20.1.2-0ubuntu1~24.04.3_arm64.deb ...
+Unpacking libllvm20:arm64 (1:20.1.2-0ubuntu1~24.04.3) ...
+Selecting previously unselected package libclang-cpp20.
+Preparing to unpack .../02-libclang-cpp20_1%3a20.1.2-0ubuntu1~24.04.3_arm64.deb ...
+Unpacking libclang-cpp20 (1:20.1.2-0ubuntu1~24.04.3) ...
+Selecting previously unselected package libclang-common-20-dev:arm64.
+Preparing to unpack .../03-libclang-common-20-dev_1%3a20.1.2-0ubuntu1~24.04.3_arm64.deb ...
+Unpacking libclang-common-20-dev:arm64 (1:20.1.2-0ubuntu1~24.04.3) ...
+Selecting previously unselected package llvm-20-linker-tools.
+Preparing to unpack .../04-llvm-20-linker-tools_1%3a20.1.2-0ubuntu1~24.04.3_arm64.deb ...
+Unpacking llvm-20-linker-tools (1:20.1.2-0ubuntu1~24.04.3) ...
+Selecting previously unselected package libclang1-20.
+Preparing to unpack .../05-libclang1-20_1%3a20.1.2-0ubuntu1~24.04.3_arm64.deb ...
+Unpacking libclang1-20 (1:20.1.2-0ubuntu1~24.04.3) ...
+Selecting previously unselected package clang-20.
+Preparing to unpack .../06-clang-20_1%3a20.1.2-0ubuntu1~24.04.3_arm64.deb ...
+Unpacking clang-20 (1:20.1.2-0ubuntu1~24.04.3) ...
+Selecting previously unselected package libarchive13t64:arm64.
+Preparing to unpack .../07-libarchive13t64_3.7.2-2ubuntu0.9_arm64.deb ...
+Unpacking libarchive13t64:arm64 (3.7.2-2ubuntu0.9) ...
+Selecting previously unselected package libjsoncpp25:arm64.
+Preparing to unpack .../08-libjsoncpp25_1.9.5-6build1_arm64.deb ...
+Unpacking libjsoncpp25:arm64 (1.9.5-6build1) ...
+Selecting previously unselected package librhash0:arm64.
+Preparing to unpack .../09-librhash0_1.4.3-3build1_arm64.deb ...
+Unpacking librhash0:arm64 (1.4.3-3build1) ...
+Selecting previously unselected package cmake-data.
+Preparing to unpack .../10-cmake-data_3.28.3-1build7_all.deb ...
+Unpacking cmake-data (3.28.3-1build7) ...
+Selecting previously unselected package cmake.
+Preparing to unpack .../11-cmake_3.28.3-1build7_arm64.deb ...
+Unpacking cmake (3.28.3-1build7) ...
+Preparing to unpack .../12-git-man_1%3a2.43.0-1ubuntu7.4_all.deb ...
+Unpacking git-man (1:2.43.0-1ubuntu7.4) over (1:2.43.0-1ubuntu7.3) ...
+Preparing to unpack .../13-git_1%3a2.43.0-1ubuntu7.4_arm64.deb ...
+Unpacking git (1:2.43.0-1ubuntu7.4) over (1:2.43.0-1ubuntu7.3) ...
+Selecting previously unselected package googletest.
+Preparing to unpack .../14-googletest_1.14.0-1_all.deb ...
+Unpacking googletest (1.14.0-1) ...
+Selecting previously unselected package libgcc-14-dev:arm64.
+Preparing to unpack .../15-libgcc-14-dev_14.2.0-4ubuntu2~24.04.1_arm64.deb ...
+Unpacking libgcc-14-dev:arm64 (14.2.0-4ubuntu2~24.04.1) ...
+Selecting previously unselected package libgtest-dev:arm64.
+Preparing to unpack .../16-libgtest-dev_1.14.0-1_arm64.deb ...
+Unpacking libgtest-dev:arm64 (1.14.0-1) ...
+Selecting previously unselected package libsqlite3-dev:arm64.
+Preparing to unpack .../17-libsqlite3-dev_3.45.1-1ubuntu2.8_arm64.deb ...
+Unpacking libsqlite3-dev:arm64 (3.45.1-1ubuntu2.8) ...
+Selecting previously unselected package libstdc++-14-dev:arm64.
+Preparing to unpack .../18-libstdc++-14-dev_14.2.0-4ubuntu2~24.04.1_arm64.deb ...
+Unpacking libstdc++-14-dev:arm64 (14.2.0-4ubuntu2~24.04.1) ...
+Selecting previously unselected package lld-20.
+Preparing to unpack .../19-lld-20_1%3a20.1.2-0ubuntu1~24.04.3_arm64.deb ...
+Unpacking lld-20 (1:20.1.2-0ubuntu1~24.04.3) ...
+Selecting previously unselected package ninja-build.
+Preparing to unpack .../20-ninja-build_1.11.1-2_arm64.deb ...
+Unpacking ninja-build (1.11.1-2) ...
+Selecting previously unselected package libjsoncpp-dev:arm64.
+Preparing to unpack .../21-libjsoncpp-dev_1.9.5-6build1_arm64.deb ...
+Unpacking libjsoncpp-dev:arm64 (1.9.5-6build1) ...
+Selecting previously unselected package uuid-dev:arm64.
+Preparing to unpack .../22-uuid-dev_2.39.3-9ubuntu6.6_arm64.deb ...
+Unpacking uuid-dev:arm64 (2.39.3-9ubuntu6.6) ...
+Setting up libclang-common-20-dev:arm64 (1:20.1.2-0ubuntu1~24.04.3) ...
+Setting up libuv1t64:arm64 (1.48.0-1.1build1) ...
+Setting up googletest (1.14.0-1) ...
+Setting up ninja-build (1.11.1-2) ...
+Setting up libsqlite3-dev:arm64 (3.45.1-1ubuntu2.8) ...
+Setting up uuid-dev:arm64 (2.39.3-9ubuntu6.6) ...
+Setting up libjsoncpp25:arm64 (1.9.5-6build1) ...
+Setting up libllvm20:arm64 (1:20.1.2-0ubuntu1~24.04.3) ...
+Setting up librhash0:arm64 (1.4.3-3build1) ...
+Setting up git-man (1:2.43.0-1ubuntu7.4) ...
+Setting up cmake-data (3.28.3-1build7) ...
+Setting up libgcc-14-dev:arm64 (14.2.0-4ubuntu2~24.04.1) ...
+Setting up libstdc++-14-dev:arm64 (14.2.0-4ubuntu2~24.04.1) ...
+Setting up libarchive13t64:arm64 (3.7.2-2ubuntu0.9) ...
+Setting up libclang1-20 (1:20.1.2-0ubuntu1~24.04.3) ...
+Setting up libjsoncpp-dev:arm64 (1.9.5-6build1) ...
+Setting up libgtest-dev:arm64 (1.14.0-1) ...
+Setting up lld-20 (1:20.1.2-0ubuntu1~24.04.3) ...
+Setting up llvm-20-linker-tools (1:20.1.2-0ubuntu1~24.04.3) ...
+Setting up libclang-cpp20 (1:20.1.2-0ubuntu1~24.04.3) ...
+Setting up git (1:2.43.0-1ubuntu7.4) ...
+Setting up cmake (3.28.3-1build7) ...
+Setting up clang-20 (1:20.1.2-0ubuntu1~24.04.3) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+Ubuntu clang version 20.1.2 (0ubuntu1~24.04.3)
+Target: aarch64-unknown-linux-gnu
+Thread model: posix
+InstalledDir: /usr/lib/llvm-20/bin
+Executing workflow step 1 of 3: configure preset "release"
+
+Preset CMake variables:
+
+  CMAKE_BUILD_TYPE="Release"
+  CMAKE_TOOLCHAIN_FILE:FILEPATH="/suite/sources/pr29/cmake/clang-20.cmake"
+
+-- The CXX compiler identification is Clang 20.1.2
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/lib/llvm-20/bin/clang++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- The C compiler identification is Clang 20.1.2
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/lib/llvm-20/bin/clang-20 - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- compiler: Clang
+-- Performing Test COMPILER_HAS_HIDDEN_VISIBILITY
+-- Performing Test COMPILER_HAS_HIDDEN_VISIBILITY - Success
+-- Performing Test COMPILER_HAS_HIDDEN_INLINE_VISIBILITY
+-- Performing Test COMPILER_HAS_HIDDEN_INLINE_VISIBILITY - Success
+-- Performing Test COMPILER_HAS_DEPRECATED_ATTR
+-- Performing Test COMPILER_HAS_DEPRECATED_ATTR - Success
+-- Looking for C++ include any
+-- Looking for C++ include any - found
+-- Looking for C++ include string_view
+-- Looking for C++ include string_view - found
+-- Looking for C++ include coroutine
+-- Looking for C++ include coroutine - found
+-- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.13")  
+-- Trantor using SSL library: OpenSSL
+-- Could NOT find c-ares (missing: C-ARES_INCLUDE_DIRS C-ARES_LIBRARIES) 
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) 
+-- Looking for C++ include filesystem
+-- Looking for C++ include filesystem - found
+-- Performing Test CXX_FILESYSTEM_NO_LINK_NEEDED
+-- Performing Test CXX_FILESYSTEM_NO_LINK_NEEDED - Success
+-- Found std::filesystem
+-- use c++20
+-- Found Jsoncpp: /usr/include/jsoncpp  
+-- jsoncpp version:1.9.5
+-- yaml-cpp not used
+-- Found UUID: /usr/lib/aarch64-linux-gnu/libuuid.so
+-- Could NOT find BROTLI (missing: BROTLIDEC_LIBRARY BROTLIENC_LIBRARY BROTLICOMMON_LIBRARY BROTLI_INCLUDE_DIR) 
+-- Found ZLIB: /usr/lib/aarch64-linux-gnu/libz.so (found version "1.3")  
+-- Could NOT find Doxygen (missing: DOXYGEN_EXECUTABLE) 
+-- Found SQLite3: /usr/include (found version "3.45.1") 
+-- Found GTest: /usr/lib/aarch64-linux-gnu/cmake/GTest/GTestConfig.cmake (found version "1.14.0")  
+-- Configuring done (9.2s)
+-- Generating done (0.0s)
+-- Build files have been written to: /suite/sources/pr29/build/release
+
+Executing workflow step 2 of 3: build preset "release"
+
+[1/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/CacheFile.cc.o
+[2/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/ConfigAdapterManager.cc.o
+[3/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/DrClassMap.cc.o
+[4/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/Cookie.cc.o
+[5/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/DrTemplateBase.cc.o
+[6/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/AOPAdvice.cc.o
+[7/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/FixedWindowRateLimiter.cc.o
+[8/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/MiddlewaresFunction.cc.o
+[9/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/ConfigLoader.cc.o
+[10/113] Building CXX object CMakeFiles/unit_tests.dir/tests/smoke_test.cpp.o
+[11/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/HttpConnectionLimit.cc.o
+[12/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/HttpBinder.cc.o
+[13/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/Histogram.cc.o
+[14/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/GlobalFilters.cc.o
+[15/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/AccessLogger.cc.o
+[16/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/HttpFileUploadRequest.cc.o
+[17/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/HttpFileImpl.cc.o
+[18/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/HttpControllerBinder.cc.o
+[19/113] Building CXX object CMakeFiles/unit_tests.dir/tests/jwt_test.cpp.o
+[20/113] Building CXX object CMakeFiles/server.dir/src/main.cpp.o
+[21/113] Linking CXX executable unit_tests
+[22/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/HttpAppFrameworkImpl.cc.o
+[23/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/Hodor.cc.o
+[24/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/RequestStream.cc.o
+[25/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/HttpClientImpl.cc.o
+[26/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/HttpRequestParser.cc.o
+[27/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/HttpResponseParser.cc.o
+[28/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/JsonConfigAdapter.cc.o
+[29/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/HttpViewData.cc.o
+[30/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/HttpResponseImpl.cc.o
+[31/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/HttpUtils.cc.o
+/suite/sources/pr29/build/release/_deps/drogon-src/lib/src/HttpUtils.cc:62:10: warning: 'CT_APPLICATION_X_JAVASCRIPT' is deprecated: use CT_TEXT_JAVASCRIPT [-Wdeprecated-declarations]
+   62 |         {CT_APPLICATION_X_JAVASCRIPT,
+      |          ^
+/suite/sources/pr29/build/release/_deps/drogon-src/lib/inc/drogon/HttpTypes.h:106:35: note: 'CT_APPLICATION_X_JAVASCRIPT' has been explicitly marked deprecated here
+  106 |     CT_APPLICATION_X_JAVASCRIPT [[deprecated("use CT_TEXT_JAVASCRIPT")]],
+      |                                   ^
+/suite/sources/pr29/build/release/_deps/drogon-src/lib/src/HttpUtils.cc:733:23: warning: 'CT_APPLICATION_X_JAVASCRIPT' is deprecated: use CT_TEXT_JAVASCRIPT [-Wdeprecated-declarations]
+  733 |         extensionMap_[CT_APPLICATION_X_JAVASCRIPT] =
+      |                       ^
+/suite/sources/pr29/build/release/_deps/drogon-src/lib/inc/drogon/HttpTypes.h:106:35: note: 'CT_APPLICATION_X_JAVASCRIPT' has been explicitly marked deprecated here
+  106 |     CT_APPLICATION_X_JAVASCRIPT [[deprecated("use CT_TEXT_JAVASCRIPT")]],
+      |                                   ^
+2 warnings generated.
+[32/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/HttpControllersRouter.cc.o
+[33/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/MultipartStreamParser.cc.o
+[34/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/PluginsManager.cc.o
+[35/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/IntranetIpFilter.cc.o
+[36/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/RangeParser.cc.o
+[37/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/NotFound.cc.o
+[38/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/HttpRequestImpl.cc.o
+[39/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/ListenerManager.cc.o
+[40/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/LocalHostFilter.cc.o
+[41/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/RateLimiter.cc.o
+[42/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/MultiPart.cc.o
+[43/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/HttpServer.cc.o
+[44/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/SessionManager.cc.o
+[45/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/TaskTimeoutFlag.cc.o
+[46/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/SlidingWindowRateLimiter.cc.o
+[47/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/PromExporter.cc.o
+[48/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/Redirector.cc.o
+[49/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/RealIpResolver.cc.o
+[50/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/YamlConfigAdapter.cc.o
+[51/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/TokenBucketRateLimiter.cc.o
+[52/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/Utilities.cc.o
+[53/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/SlashRemover.cc.o
+[54/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/drogon_test.cc.o
+[55/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/orm_lib/src/ArrayParser.cc.o
+[56/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/RedisClientSkipped.cc.o
+[57/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/RedisResultSkipped.cc.o
+[58/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/StaticFileRouter.cc.o
+[59/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/orm_lib/src/Exception.cc.o
+[60/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/SharedLibManager.cc.o
+[61/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/orm_lib/src/Criteria.cc.o
+[62/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/WebSocketClientImpl.cc.o
+[63/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/WebSocketConnectionImpl.cc.o
+[64/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/orm_lib/src/DbClient.cc.o
+[65/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/orm_lib/src/DbListener.cc.o
+[66/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/orm_lib/src/Field.cc.o
+[67/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/SecureSSLRedirector.cc.o
+[68/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/RedisClientManagerSkipped.cc.o
+[69/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/orm_lib/src/DbConnection.cc.o
+[70/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/orm_lib/src/Result.cc.o
+[71/113] Building CXX object _deps/drogon-build/trantor/CMakeFiles/trantor.dir/trantor/utils/Date.cc.o
+[72/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/orm_lib/src/Row.cc.o
+[73/113] Building CXX object _deps/drogon-build/trantor/CMakeFiles/trantor.dir/trantor/utils/LogStream.cc.o
+[74/113] Building CXX object _deps/drogon-build/trantor/CMakeFiles/trantor.dir/trantor/utils/AsyncFileLogger.cc.o
+[75/113] Building CXX object _deps/drogon-build/trantor/CMakeFiles/trantor.dir/trantor/utils/ConcurrentTaskQueue.cc.o
+[76/113] Building CXX object _deps/drogon-build/trantor/CMakeFiles/trantor.dir/trantor/utils/MsgBuffer.cc.o
+[77/113] Building CXX object _deps/drogon-build/trantor/CMakeFiles/trantor.dir/trantor/utils/Logger.cc.o
+[78/113] Building CXX object _deps/drogon-build/trantor/CMakeFiles/trantor.dir/trantor/utils/Utilities.cc.o
+[79/113] Building CXX object _deps/drogon-build/trantor/CMakeFiles/trantor.dir/trantor/utils/TimingWheel.cc.o
+[80/113] Building CXX object _deps/drogon-build/trantor/CMakeFiles/trantor.dir/trantor/utils/SerialTaskQueue.cc.o
+[81/113] Building CXX object _deps/drogon-build/trantor/CMakeFiles/trantor.dir/trantor/net/EventLoopThread.cc.o
+[82/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/orm_lib/src/TransactionImpl.cc.o
+[83/113] Building CXX object _deps/drogon-build/trantor/CMakeFiles/trantor.dir/trantor/net/InetAddress.cc.o
+[84/113] Building CXX object _deps/drogon-build/trantor/CMakeFiles/trantor.dir/trantor/net/EventLoopThreadPool.cc.o
+[85/113] Building CXX object _deps/drogon-build/trantor/CMakeFiles/trantor.dir/trantor/net/EventLoop.cc.o
+[86/113] Building CXX object _deps/drogon-build/trantor/CMakeFiles/trantor.dir/trantor/net/Channel.cc.o
+[87/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/lib/src/DbClientManagerSkipped.cc.o
+[88/113] Building CXX object _deps/drogon-build/trantor/CMakeFiles/trantor.dir/trantor/net/inner/Poller.cc.o
+[89/113] Building CXX object _deps/drogon-build/trantor/CMakeFiles/trantor.dir/trantor/net/inner/MemBufferNode.cc.o
+[90/113] Building CXX object _deps/drogon-build/trantor/CMakeFiles/trantor.dir/trantor/net/inner/Acceptor.cc.o
+[91/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/orm_lib/src/DbClientImpl.cc.o
+[92/113] Building CXX object _deps/drogon-build/trantor/CMakeFiles/trantor.dir/trantor/net/inner/Socket.cc.o
+[93/113] Building CXX object _deps/drogon-build/trantor/CMakeFiles/trantor.dir/trantor/net/inner/Connector.cc.o
+[94/113] Building CXX object _deps/drogon-build/trantor/CMakeFiles/trantor.dir/trantor/net/inner/AsyncStreamBufferNode.cc.o
+[95/113] Building CXX object _deps/drogon-build/trantor/CMakeFiles/trantor.dir/trantor/net/TcpClient.cc.o
+[96/113] Building CXX object _deps/drogon-build/trantor/CMakeFiles/trantor.dir/trantor/net/inner/StreamBufferNode.cc.o
+[97/113] Building CXX object _deps/drogon-build/trantor/CMakeFiles/trantor.dir/trantor/net/inner/poller/KQueue.cc.o
+[98/113] Building CXX object _deps/drogon-build/trantor/CMakeFiles/trantor.dir/trantor/net/TcpServer.cc.o
+[99/113] Building CXX object _deps/drogon-build/trantor/CMakeFiles/trantor.dir/trantor/net/inner/poller/EpollPoller.cc.o
+[100/113] Building CXX object _deps/drogon-build/trantor/CMakeFiles/trantor.dir/trantor/net/inner/Timer.cc.o
+[101/113] Building CXX object _deps/drogon-build/trantor/CMakeFiles/trantor.dir/trantor/utils/crypto/openssl.cc.o
+[102/113] Building CXX object _deps/drogon-build/trantor/CMakeFiles/trantor.dir/trantor/net/inner/FileBufferNodeUnix.cc.o
+[103/113] Building CXX object _deps/drogon-build/trantor/CMakeFiles/trantor.dir/trantor/net/inner/poller/PollPoller.cc.o
+[104/113] Building CXX object _deps/drogon-build/trantor/CMakeFiles/trantor.dir/trantor/net/inner/TimerQueue.cc.o
+[105/113] Building CXX object _deps/drogon-build/trantor/CMakeFiles/trantor.dir/trantor/net/inner/NormalResolver.cc.o
+[106/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/orm_lib/src/RestfulController.cc.o
+[107/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/orm_lib/src/SqlBinder.cc.o
+[108/113] Building CXX object _deps/drogon-build/trantor/CMakeFiles/trantor.dir/trantor/net/inner/TcpConnectionImpl.cc.o
+[109/113] Building CXX object _deps/drogon-build/CMakeFiles/drogon.dir/orm_lib/src/DbClientLockFree.cc.o
+[110/113] Building CXX object _deps/drogon-build/trantor/CMakeFiles/trantor.dir/trantor/net/inner/tlsprovider/OpenSSLProvider.cc.o
+[111/113] Linking CXX static library _deps/drogon-build/trantor/libtrantor.a
+[112/113] Linking CXX static library _deps/drogon-build/libdrogon.a
+[113/113] Linking CXX executable server
+
+Executing workflow step 3 of 3: test preset "release"
+
+Test project /suite/sources/pr29/build/release
+    Start 1: unit_tests
+1/1 Test #1: unit_tests .......................   Passed    0.00 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   0.00 sec

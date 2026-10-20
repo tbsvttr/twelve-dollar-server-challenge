@@ -1,0 +1,77 @@
+{
+  "files": {
+    ".gitignore": {
+      "sha256": "8c649822e95de786655d21af761a481b82bc1e4b5057d73b30ecd9b2547c00b5",
+      "bytes": 25,
+      "physical_lines": 3,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "README.md": {
+      "sha256": "0eecc12042bd4fc4351e1a40f6e6329af638be7c8829794c933a3383fac68176",
+      "bytes": 5183,
+      "physical_lines": 80,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "build.gradle.kts": {
+      "sha256": "bfe885d20351fa1b2ce4978c4f16f87260c2d92699db0365c6a441304352bc84",
+      "bytes": 611,
+      "physical_lines": 21,
+      "classification": "own_support"
+    },
+    "build.sh": {
+      "sha256": "f2ccc7f9c11beceec96fce4ad91cbe31ee2e18ca0cefff8207b24e26ab9c3dd5",
+      "bytes": 1640,
+      "physical_lines": 27,
+      "classification": "own_support"
+    },
+    "install.sh": {
+      "sha256": "bde26eaf25a0ba7363d3410a1d3766fa5153909f7347f4a15c3bc4268f7d7726",
+      "bytes": 743,
+      "physical_lines": 17,
+      "classification": "own_support"
+    },
+    "settings.gradle.kts": {
+      "sha256": "e7ccb3287fac3794439526cddde486400df1889d60b2ae0a3cc19a56c417add6",
+      "bytes": 28,
+      "physical_lines": 1,
+      "classification": "own_support"
+    },
+    "src/main/kotlin/Db.kt": {
+      "sha256": "c9461175886b0fbe4116d555aba41973ea588d50f57db3b6ebac7fc3f95a08d0",
+      "bytes": 4844,
+      "physical_lines": 132,
+      "classification": "application"
+    },
+    "src/main/kotlin/IdleConnections.kt": {
+      "sha256": "59a7fced32b34be63e66b59a3e84fe5f51b7c6da17862c6b7f2e9913ed305a9b",
+      "bytes": 3323,
+      "physical_lines": 99,
+      "classification": "application"
+    },
+    "src/main/kotlin/JsonOut.kt": {
+      "sha256": "92b015fb6693781a714ec48723d450de3ea8121ed1ad8f22a55196975f9e8dca",
+      "bytes": 1780,
+      "physical_lines": 62,
+      "classification": "application"
+    },
+    "src/main/kotlin/Main.kt": {
+      "sha256": "4d4db50b9c5fb6cfac8ecf6a2ddadc86d0df08227d46a7d522134a4e2c91c851",
+      "bytes": 10203,
+      "physical_lines": 231,
+      "classification": "application"
+    },
+    "src/main/kotlin/Sqlite.kt": {
+      "sha256": "53a82787461982112efe8fc44d049ab4caf4c77d779b84dcb8d839f24c022440",
+      "bytes": 6633,
+      "physical_lines": 135,
+      "classification": "application"
+    },
+    "start.sh": {
+      "sha256": "2a6df7cc7edf1884b5a283a3c2b1a2ccbf907d3ae1354a7834207118bc4ccf19",
+      "bytes": 471,
+      "physical_lines": 10,
+      "classification": "own_support"
+    }
+  },
+  "skipped_members": []
+}

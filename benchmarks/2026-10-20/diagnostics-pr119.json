@@ -1,0 +1,135 @@
+{
+  "case_id": "119",
+  "trial": 1,
+  "diagnostic_only": true,
+  "recorded_at_utc": "2026-10-20T11:55:41.232721+00:00",
+  "method": "Read-only inspection of existing trial evidence and pinned source. No additional HTTP requests, workload, build, or source/fixture edits.",
+  "identity": {
+    "pr": 119,
+    "commit": "7b330d73fc7fdb0bb6d51f176189f1a0f8cc1a3b",
+    "source_sha256": "1be2aa59a97c794fc72aafb78e3cd384315bcac0c6ae031d8d3b182732e03f09",
+    "image_id": "sha256:3fbe80c456d1334f762eb24506af2f6682d7023dccba8218dba7c019bc96f065",
+    "server_ts_sha256": "27e2a07b3c08994e81fc0187a97bd396c9fdb311204d98170b530e0007e44ebf"
+  },
+  "observed": {
+    "requests": 382862,
+    "non_2xx_or_3xx_responses": 20215,
+    "http_error_percent": 5.279970328734636,
+    "socket_errors": {
+      "connect": 0,
+      "read": 0,
+      "write": 0,
+      "timeout": 0
+    },
+    "duration_s": 15.08,
+    "rps": 25392.15,
+    "successful_rps": 24051.63275862069,
+    "database_valid": true,
+    "database_after": {
+      "initial_post_count": 500000,
+      "post_count": 504210,
+      "max_post_id": 504210,
+      "integrity": "ok"
+    },
+    "raw_wrk_log": "logs/bench-119-1.log",
+    "server_log": "server-logs/bench-119-1.log",
+    "server_log_text": "listening on 127.0.0.1:24000 (poller)\nDIAG writes/s 1927 commits/s 210 worst commit 15.0 ms \u00b7 checkpoints 102 (worst 107 ms) \u00b7 WAL log 0 ckpt 0 \u00b7 held max 64\n",
+    "server_log_has_logged_exception_or_commit_failure": false,
+    "limits": "wrk retained only an aggregate non-2xx/non-3xx count. No individual response status, response body, or per-route error breakdown is available."
+  },
+  "source_evidence": [
+    {
+      "file": "sources/pr119/server.ts",
+      "lines": [
+        32,
+        50
+      ],
+      "fact": "Separate writer and read connections; comments explicitly describe the read connection snapshot trailing commits."
+    },
+    {
+      "file": "sources/pr119/server.ts",
+      "lines": [
+        62,
+        70
+      ],
+      "fact": "REFRESH_MS is 20; refreshRead ends/restarts the read transaction."
+    },
+    {
+      "file": "sources/pr119/server.ts",
+      "lines": [
+        98,
+        117
+      ],
+      "fact": "Deferred commit marks pending but does not immediately set wBusy; inline path refreshes reads synchronously."
+    },
+    {
+      "file": "sources/pr119/server.ts",
+      "lines": [
+        281,
+        295
+      ],
+      "fact": "POST /posts inserts on db and calls deferred commit before producing its response."
+    },
+    {
+      "file": "sources/pr119/server.ts",
+      "lines": [
+        350,
+        361
+      ],
+      "fact": "GET /feed selects feedW when wBusy=false; GET /posts/{id} selects postR when wBusy=true and returns HTTP 404 when that connection sees no row."
+    },
+    {
+      "file": "sources/pr119/server.ts",
+      "lines": [
+        589,
+        595
+      ],
+      "fact": "Write responses are held for commit; unrelated read responses may be sent immediately."
+    },
+    {
+      "file": "sources/pr119/server.ts",
+      "lines": [
+        600,
+        630
+      ],
+      "fact": "A landed commit marks rStale; refresh occurs at the 20 ms threshold, while wBusy selects the reader during in-flight commits."
+    },
+    {
+      "file": "sources/pr119/server.ts",
+      "lines": [
+        650,
+        661
+      ],
+      "fact": "Requests in a poller batch are handled before pending writes are handed to the commit thread at batch end."
+    },
+    {
+      "file": "mixed.lua",
+      "lines": [
+        12,
+        16,
+        22,
+        26
+      ],
+      "fact": "The mixed client reuses IDs extracted from compact GET /feed responses for later GET /posts/{id} and POST /posts/{id}/like requests."
+    },
+    {
+      "file": "sources/pr119/server.ts",
+      "lines": [
+        459,
+        461,
+        637,
+        643
+      ],
+      "fact": "Thrown handler exceptions produce logged errors and HTTP 500 responses; the retained log contains no such error output."
+    }
+  ],
+  "inference": {
+    "likely_route": "GET /posts/{fresh_id}",
+    "likely_status": 404,
+    "confidence": "Strong source-supported hypothesis; exact emitted status remains unobserved.",
+    "mechanism": "A /feed response from the writer connection can expose IDs newer than rdb. This includes newly committed rows and, within the same poller batch, potentially uncommitted inserted rows. A subsequent request for one of those IDs may switch to rdb during an in-flight commit; rdb retains an older read transaction until refreshRead, so postR finds no row and returns 404. The live-ID mixed workload repeatedly exercises this inconsistency.",
+    "scope": "Does not assert that all 20,215 observed error responses were 404, or that every error came from this route.",
+    "no_harness_failure_found": true
+  },
+  "classification_implication": "Retain measured_with_errors and exclude from clean ranking unless later retained evidence contradicts the observed aggregate errors."
+}

@@ -1,0 +1,216 @@
+{
+  "schema_version": 1,
+  "case_id": "36",
+  "pr": 36,
+  "primary_trial": 2,
+  "context_trials": [
+    1
+  ],
+  "diagnostic_kind": "offline_existing_evidence_only",
+  "collected_at": "2026-10-20T12:23:58Z",
+  "identity": {
+    "commit": "22a4436e80c275c798cf3d40180fb81acf9fd016",
+    "source_sha256": "ebd98f6795229fe5d6d4f1053035d4d0f6a2bd7f8a6ae2f65d112d2fcff24b73",
+    "image": "twelve-current-pr36:2026-10-20",
+    "image_id": "sha256:d9464ca72892fb9d903d2627281ec018e70d3ffc5f67a2b0f82c8daa97a83a10",
+    "fingerprint": "f0e96cf2ae885e3063296ea03490ef90bb77211eef325668caed8b14b5e57dcd"
+  },
+  "source_identity": {
+    "folder": "kotlin-ktor-jvm-syorito-hatsuki",
+    "source_url": "https://github.com/syorito-hatsuki/twelve-dollar-server-challenge-kotlin/tree/22a4436e80c275c798cf3d40180fb81acf9fd016/submissions/kotlin-ktor-jvm-syorito-hatsuki",
+    "source_hashes_verified": 25,
+    "inventory": "archives/pr36-sha256.json"
+  },
+  "observed_trials": [
+    {
+      "trial": 1,
+      "recorded_at": "2026-10-20T11:59:02Z",
+      "requests": 68578,
+      "duration_s": 15.03,
+      "rps": 4563.77,
+      "p50_ms": 12.27,
+      "p95_ms": 79.594,
+      "p99_ms": 290.14,
+      "http_errors": 0,
+      "socket_errors": {
+        "connect": 0,
+        "read": 0,
+        "write": 0,
+        "timeout": 0
+      },
+      "database_valid": true,
+      "cpu_percent": 99.54972287743355,
+      "rss_mib": 167.94140625
+    },
+    {
+      "trial": 2,
+      "recorded_at": "2026-10-20T12:20:38Z",
+      "requests": 70869,
+      "duration_s": 15.03,
+      "rps": 4714.94,
+      "p50_ms": 11.87,
+      "p95_ms": 96.472,
+      "p99_ms": 367.46,
+      "http_errors": 0,
+      "socket_errors": {
+        "connect": 0,
+        "read": 0,
+        "write": 0,
+        "timeout": 1
+      },
+      "database_valid": true,
+      "cpu_percent": 98.73847071047386,
+      "rss_mib": 169.10546875
+    }
+  ],
+  "evidence": {
+    "measurements_file": "measurements.json",
+    "trial2_record_sha256": "8c9774cd9859ced07eace870be237e62496126479969a6c7114127c1423cccc3",
+    "server_log": "server-logs/bench-36-2.log",
+    "server_log_sha256": "ef69fb44c64f6f3b1303f5d8c7f5176426e5035fdba29e6f19fb3324c4dae570",
+    "server_log_bytes": 7573160,
+    "server_log_lines": 42520,
+    "level_counts": {
+      "INFO": 6,
+      "DEBUG": 42504
+    },
+    "warnings_or_errors": [],
+    "failure_marker_counts": {
+      "SQLITE_BUSY": 0,
+      "database is locked": 0,
+      "OutOfMemory": 0,
+      "TimeoutException": 0,
+      "timed out": 0,
+      "starvation": 0,
+      "GC pause": 0,
+      "Full GC": 0
+    }
+  },
+  "observed_facts": [
+    {
+      "id": "one_client_timeout",
+      "statement": "Trial 2 completed 70869 requests with 0 HTTP errors and exactly 1 socket timeout; connect/read/write error counters are 0. Trial 1 recorded no socket or HTTP errors. This is one observed timeout, not proof of a recurring failure mechanism.",
+      "trial2_output": "Running 15s test @ http://127.0.0.1:24000/feed\n  2 threads and 64 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency    29.43ms   80.78ms   1.95s    95.79%\n    Req/Sec     2.38k   715.03     4.24k    68.90%\n  Latency Distribution\n     50%   11.87ms\n     75%   27.12ms\n     90%   56.47ms\n     99%  367.46ms\n  70869 requests in 15.03s, 116.86MB read\n  Socket errors: connect 0, read 0, write 0, timeout 1\nRequests/sec:   4714.94\nTransfer/sec:      7.77MB\n  95% 96.472000ms\n"
+    },
+    {
+      "id": "cpu_and_tail_latency",
+      "statement": "Trial 2 used 98.74% of its one-core budget. Completed-request maximum latency was 1.95 s; p 95=96.472 ms and p 99=367.46 ms.",
+      "cpu_percent": 98.73847071047386,
+      "rss_mib": 169.10546875,
+      "configuration": {
+        "threads": 2,
+        "connections": 64,
+        "warmup_seconds": 2,
+        "measurement_seconds": 15,
+        "trials": 3
+      },
+      "max_latency_text": "1.95s"
+    },
+    {
+      "id": "observed_pool_pressure",
+      "statement": "Runtime Hikari configuration reports maximumPoolSize=10, minimumIdle=10 and connectionTimeout=30000 ms. Pool diagnostics repeatedly report all 10 connections active and waiting borrowers, with a maximum reported waiting count 55.",
+      "pool_stat_lines": 42394,
+      "maximum_waiting_sample": {
+        "line": 11985,
+        "active": 10,
+        "waiting": 55,
+        "text": "12:20:48.316 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.HikariPool -- HikariPool-1 - Connection not added, stats (total=10/10, idle=0/10, active=10, waiting=55)"
+      },
+      "connection_not_added_lines": 42384,
+      "scope": "Entire startup/warmup/measurement log, not a per-request trace."
+    },
+    {
+      "id": "debug_log_volume",
+      "statement": "The archived run log contains 42504 DEBUG lines and 6 INFO lines (7573160 bytes total), predominantly Hikari connection-adder diagnostics. No WARN or ERROR record was found.",
+      "debug_lines": 42504,
+      "info_lines": 6,
+      "bytes": 7573160
+    },
+    {
+      "id": "source_database_work",
+      "statement": "The pinned code uses Ktor CIO and performs synchronous JDBC operations on Dispatchers.IO through Hikari. Database setup requests WAL, synchronous=NORMAL and busy_timeout=5000 via connectionInitSql; source does not explicitly override Hikari pool size.",
+      "references": [
+        {
+          "file": "sources/pr36/src/main/kotlin/dev/syoritohatsuki/tdsck/main.kt",
+          "line_start": 9,
+          "line_end": 16,
+          "pinned_url": "https://github.com/syorito-hatsuki/twelve-dollar-server-challenge-kotlin/blob/22a4436e80c275c798cf3d40180fb81acf9fd016/submissions/kotlin-ktor-jvm-syorito-hatsuki/src/main/kotlin/dev/syoritohatsuki/tdsck/main.kt#L9-L16"
+        },
+        {
+          "file": "sources/pr36/src/main/kotlin/dev/syoritohatsuki/tdsck/plugins/Database.kt",
+          "line_start": 40,
+          "line_end": 54,
+          "pinned_url": "https://github.com/syorito-hatsuki/twelve-dollar-server-challenge-kotlin/blob/22a4436e80c275c798cf3d40180fb81acf9fd016/submissions/kotlin-ktor-jvm-syorito-hatsuki/src/main/kotlin/dev/syoritohatsuki/tdsck/plugins/Database.kt#L40-L54"
+        },
+        {
+          "file": "sources/pr36/src/main/kotlin/dev/syoritohatsuki/tdsck/plugins/Database.kt",
+          "line_start": 88,
+          "line_end": 115,
+          "pinned_url": "https://github.com/syorito-hatsuki/twelve-dollar-server-challenge-kotlin/blob/22a4436e80c275c798cf3d40180fb81acf9fd016/submissions/kotlin-ktor-jvm-syorito-hatsuki/src/main/kotlin/dev/syoritohatsuki/tdsck/plugins/Database.kt#L88-L115"
+        },
+        {
+          "file": "sources/pr36/src/main/kotlin/dev/syoritohatsuki/tdsck/plugins/Database.kt",
+          "line_start": 148,
+          "line_end": 170,
+          "pinned_url": "https://github.com/syorito-hatsuki/twelve-dollar-server-challenge-kotlin/blob/22a4436e80c275c798cf3d40180fb81acf9fd016/submissions/kotlin-ktor-jvm-syorito-hatsuki/src/main/kotlin/dev/syoritohatsuki/tdsck/plugins/Database.kt#L148-L170"
+        },
+        {
+          "file": "sources/pr36/src/main/kotlin/dev/syoritohatsuki/tdsck/plugins/Database.kt",
+          "line_start": 173,
+          "line_end": 201,
+          "pinned_url": "https://github.com/syorito-hatsuki/twelve-dollar-server-challenge-kotlin/blob/22a4436e80c275c798cf3d40180fb81acf9fd016/submissions/kotlin-ktor-jvm-syorito-hatsuki/src/main/kotlin/dev/syoritohatsuki/tdsck/plugins/Database.kt#L173-L201"
+        }
+      ]
+    },
+    {
+      "id": "database_and_lifecycle",
+      "statement": "Post-stop quick_check returnedok and post count increased. Container remained running and reported no OOM kill. These checks do not identify why one request timed out.",
+      "database_after": {
+        "initial_post_count": 500000,
+        "post_count": 500726,
+        "max_post_id": 500726,
+        "integrity": "ok"
+      },
+      "container": {
+        "Status": "running",
+        "Running": true,
+        "OOMKilled": false,
+        "ExitCode": 0,
+        "Error": ""
+      }
+    },
+    {
+      "id": "no_specific_runtime_error",
+      "statement": "The saved log contains no SQLITE_BUSY/database-is-locked line, timeout exception, OOM message, GC-pause record or Hikari starvation warning. There is no request-level record linking the single client timeout to an endpoint, query, pool wait or JVM event."
+    }
+  ],
+  "inferences": [
+    {
+      "id": "queueing_context_not_proven_cause",
+      "confidence": "consistent with observations, causal attribution not established",
+      "statement": "Near-full CPU usage and observed pool waiting provide plausible queueing context for a rare long request. The substantialDEBUG logging may add work, but the saved evidence does not prove that pool waiting, logging, SQLite locking, JIT/GC, scheduling or any specific component caused this single timeout.",
+      "supporting_fact_ids": [
+        "cpu_and_tail_latency",
+        "observed_pool_pressure",
+        "debug_log_volume"
+      ]
+    }
+  ],
+  "unknowns": [
+    "Which request timed out and its exact duration/deadline.",
+    "The effective wrk timeout is not explicitly set in run.py:220-227 or recorded as a value.",
+    "Whether the timed-out request was waiting for Hikari, SQLite, CPU, socket output or another resource.",
+    "Whether a JVM compilation or GC event occurred; no such trace is captured.",
+    "Whether trial3 will reproduce any error; it has not been used in this diagnostic."
+  ],
+  "conclusion_for_reporting": "Preserve trial2 as measured:0HTTP errors and1socket timeout. Observed pool pressure/high CPU/debug volume are diagnostic context only. No specific cause is established from this single timeout. Do not relabel it as a proven SQLite lock failure, GC pause, deadlock or application crash.",
+  "actions": {
+    "workloads_started": false,
+    "builds_started": false,
+    "container_changes": false,
+    "fixture_edits": false,
+    "submission_source_edits": false,
+    "retries_run_or_requested": false,
+    "only_output_written": "diagnostics-pr36.json"
+  }
+}

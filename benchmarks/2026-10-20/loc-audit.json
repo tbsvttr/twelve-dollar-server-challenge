@@ -1,0 +1,3770 @@
+{
+  "audited_at_utc": "2026-10-20T11:31:59.307468+00:00",
+  "case_count": 119,
+  "source_files_verified": 2523,
+  "method": [
+    "Physical lines include blank lines and comments; application and own/support roles are heuristic.",
+    "Dedicated tests/checks/PGO/development/load-generator directories and exact reviewed root helper names are support source, retained in Own LOC.",
+    "Runtime shell scripts directly executed by start.sh are application source; runtime pressure watchers remain application source.",
+    "Build/configuration scripts are support. Standard lockfiles and generated benchmark/report/inventory JSON are metadata, excluded from Own LOC.",
+    "Recognizable vendored third-party forks and explicit generated-code DO NOT EDIT headers are excluded from both totals."
+  ],
+  "limitations": [
+    "This is a focused role audit, not a manual authorship or executable-line count for every file.",
+    "Entire identifiable third-party forks are excluded, including local patches; authored modifications are not separated.",
+    "The original source-extension and remaining helper-name heuristics still apply. Unknown generated/dependency files may remain.",
+    "Submodules/dependencies absent from pinned regular-file archives are not counted as submitted application source."
+  ],
+  "cases": [
+    {
+      "id": "1",
+      "pr": 1,
+      "folder": "python-fastapi-cknutson12",
+      "old": {
+        "app_loc": 235,
+        "own_loc": 253
+      },
+      "new": {
+        "app_loc": 235,
+        "own_loc": 253
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "2",
+      "pr": 2,
+      "folder": "ruby-rails-gambitboy",
+      "old": {
+        "app_loc": 1284,
+        "own_loc": 1902
+      },
+      "new": {
+        "app_loc": 1284,
+        "own_loc": 1902
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "3",
+      "pr": 3,
+      "folder": "typescript-bun-xxmohamed012",
+      "old": {
+        "app_loc": 534,
+        "own_loc": 563
+      },
+      "new": {
+        "app_loc": 354,
+        "own_loc": 563
+      },
+      "reason": [
+        "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "check.ts",
+          "physical_lines": 180,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "pr": 4,
+      "folder": "typescript-bun-tbsvttr",
+      "old": {
+        "app_loc": 319,
+        "own_loc": 7837
+      },
+      "new": {
+        "app_loc": 130,
+        "own_loc": 1204
+      },
+      "reason": [
+        "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename",
+        "Generated benchmark/validation report or source inventory, not helper source"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "capacity-results.json",
+          "physical_lines": 6633,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Generated benchmark/validation report or source inventory, not helper source"
+        },
+        {
+          "path": "check.ts",
+          "physical_lines": 93,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "verify.py",
+          "physical_lines": 96,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "pr": 5,
+      "folder": "c-fio-tbsvttr",
+      "old": {
+        "app_loc": 630,
+        "own_loc": 8185
+      },
+      "new": {
+        "app_loc": 383,
+        "own_loc": 1534
+      },
+      "reason": [
+        "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename",
+        "Generated benchmark/validation report or source inventory, not helper source"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "capacity-results.json",
+          "physical_lines": 6651,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Generated benchmark/validation report or source inventory, not helper source"
+        },
+        {
+          "path": "check.py",
+          "physical_lines": 125,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "fix-fio.py",
+          "physical_lines": 26,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "verify.py",
+          "physical_lines": 96,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "pr": 6,
+      "folder": "cpp-uwebsockets-tbsvttr",
+      "old": {
+        "app_loc": 743,
+        "own_loc": 8272
+      },
+      "new": {
+        "app_loc": 392,
+        "own_loc": 1668
+      },
+      "reason": [
+        "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename",
+        "Generated benchmark/validation report or source inventory, not helper source"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "capacity-results.json",
+          "physical_lines": 6604,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Generated benchmark/validation report or source inventory, not helper source"
+        },
+        {
+          "path": "check.py",
+          "physical_lines": 125,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "transport_check.py",
+          "physical_lines": 130,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "verify.py",
+          "physical_lines": 96,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        }
+      ]
+    },
+    {
+      "id": "8",
+      "pr": 8,
+      "folder": "cpp-epoll-khalefa-ow",
+      "old": {
+        "app_loc": 1237,
+        "own_loc": 1288
+      },
+      "new": {
+        "app_loc": 1237,
+        "own_loc": 1288
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "9",
+      "pr": 9,
+      "folder": "cpp-epoll_inmem-khalefa-ow",
+      "old": {
+        "app_loc": 1362,
+        "own_loc": 1413
+      },
+      "new": {
+        "app_loc": 1362,
+        "own_loc": 1413
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "10",
+      "pr": 10,
+      "folder": "python-fastapi-tejasnafde",
+      "old": {
+        "app_loc": 312,
+        "own_loc": 330
+      },
+      "new": {
+        "app_loc": 312,
+        "own_loc": 330
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "11",
+      "pr": 11,
+      "folder": "erlang-cowboy-tbsvttr",
+      "old": {
+        "app_loc": 630,
+        "own_loc": 7987
+      },
+      "new": {
+        "app_loc": 283,
+        "own_loc": 1387
+      },
+      "reason": [
+        "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename",
+        "Generated benchmark/validation report or source inventory, not helper source"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "capacity-results.json",
+          "physical_lines": 6600,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Generated benchmark/validation report or source inventory, not helper source"
+        },
+        {
+          "path": "check.py",
+          "physical_lines": 125,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "transport_check.py",
+          "physical_lines": 130,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "verify.py",
+          "physical_lines": 92,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        }
+      ]
+    },
+    {
+      "id": "12",
+      "pr": 12,
+      "folder": "ruby-rails-tbsvttr",
+      "old": {
+        "app_loc": 425,
+        "own_loc": 7926
+      },
+      "new": {
+        "app_loc": 192,
+        "own_loc": 1290
+      },
+      "reason": [
+        "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename",
+        "Generated benchmark/validation report or source inventory, not helper source"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "capacity-results.json",
+          "physical_lines": 6636,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Generated benchmark/validation report or source inventory, not helper source"
+        },
+        {
+          "path": "check.py",
+          "physical_lines": 137,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "verify.py",
+          "physical_lines": 96,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        }
+      ]
+    },
+    {
+      "id": "13",
+      "pr": 13,
+      "folder": "python-granian-tbsvttr",
+      "old": {
+        "app_loc": 424,
+        "own_loc": 9355
+      },
+      "new": {
+        "app_loc": 183,
+        "own_loc": 1273
+      },
+      "reason": [
+        "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename",
+        "Generated benchmark/validation report or source inventory, not helper source"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "capacity-results.json",
+          "physical_lines": 8082,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Generated benchmark/validation report or source inventory, not helper source"
+        },
+        {
+          "path": "check.py",
+          "physical_lines": 145,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "verify.py",
+          "physical_lines": 96,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        }
+      ]
+    },
+    {
+      "id": "14",
+      "pr": 14,
+      "folder": "ruby-iodine-tbsvttr",
+      "old": {
+        "app_loc": 419,
+        "own_loc": 7926
+      },
+      "new": {
+        "app_loc": 178,
+        "own_loc": 1291
+      },
+      "reason": [
+        "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename",
+        "Generated benchmark/validation report or source inventory, not helper source"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "capacity-results.json",
+          "physical_lines": 6635,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Generated benchmark/validation report or source inventory, not helper source"
+        },
+        {
+          "path": "check.py",
+          "physical_lines": 145,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "verify.py",
+          "physical_lines": 96,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        }
+      ]
+    },
+    {
+      "id": "15",
+      "pr": 15,
+      "folder": "cpp-uwebsockets-v2-tbsvttr",
+      "old": {
+        "app_loc": 932,
+        "own_loc": 5248
+      },
+      "new": {
+        "app_loc": 432,
+        "own_loc": 1828
+      },
+      "reason": [
+        "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename",
+        "Generated benchmark/validation report or source inventory, not helper source"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "benchmark-results.json",
+          "physical_lines": 1020,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Generated benchmark/validation report or source inventory, not helper source"
+        },
+        {
+          "path": "capacity-results.json",
+          "physical_lines": 2132,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Generated benchmark/validation report or source inventory, not helper source"
+        },
+        {
+          "path": "check.py",
+          "physical_lines": 125,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "compare.py",
+          "physical_lines": 143,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "scoring.json",
+          "physical_lines": 268,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Generated benchmark/validation report or source inventory, not helper source"
+        },
+        {
+          "path": "transport_check.py",
+          "physical_lines": 140,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "verify.py",
+          "physical_lines": 92,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        }
+      ]
+    },
+    {
+      "id": "16",
+      "pr": 16,
+      "folder": "fortran-microhttpd-tbsvttr",
+      "old": {
+        "app_loc": 1311,
+        "own_loc": 16926
+      },
+      "new": {
+        "app_loc": 750,
+        "own_loc": 2190
+      },
+      "reason": [
+        "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename",
+        "Generated benchmark/validation report or source inventory, not helper source"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "benchmark-results.json",
+          "physical_lines": 1305,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Generated benchmark/validation report or source inventory, not helper source"
+        },
+        {
+          "path": "capacity-results.json",
+          "physical_lines": 2151,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Generated benchmark/validation report or source inventory, not helper source"
+        },
+        {
+          "path": "check.py",
+          "physical_lines": 125,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "compare.py",
+          "physical_lines": 148,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "idle_compare.py",
+          "physical_lines": 56,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "scoring.json",
+          "physical_lines": 314,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Generated benchmark/validation report or source inventory, not helper source"
+        },
+        {
+          "path": "source-inventory.json",
+          "physical_lines": 10949,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Generated benchmark/validation report or source inventory, not helper source"
+        },
+        {
+          "path": "transport_check.py",
+          "physical_lines": 140,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "validation-results.json",
+          "physical_lines": 17,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Generated benchmark/validation report or source inventory, not helper source"
+        },
+        {
+          "path": "verify.py",
+          "physical_lines": 92,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        }
+      ]
+    },
+    {
+      "id": "17",
+      "pr": 17,
+      "folder": "rust-axum-tbsvttr",
+      "old": {
+        "app_loc": 1002,
+        "own_loc": 16610
+      },
+      "new": {
+        "app_loc": 441,
+        "own_loc": 1895
+      },
+      "reason": [
+        "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename",
+        "Generated benchmark/validation report or source inventory, not helper source"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "benchmark-results.json",
+          "physical_lines": 1305,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Generated benchmark/validation report or source inventory, not helper source"
+        },
+        {
+          "path": "capacity-results.json",
+          "physical_lines": 2130,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Generated benchmark/validation report or source inventory, not helper source"
+        },
+        {
+          "path": "check.py",
+          "physical_lines": 125,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "compare.py",
+          "physical_lines": 148,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "idle_compare.py",
+          "physical_lines": 56,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "scoring.json",
+          "physical_lines": 314,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Generated benchmark/validation report or source inventory, not helper source"
+        },
+        {
+          "path": "source-inventory.json",
+          "physical_lines": 10949,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Generated benchmark/validation report or source inventory, not helper source"
+        },
+        {
+          "path": "transport_check.py",
+          "physical_lines": 140,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "validation-results.json",
+          "physical_lines": 17,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Generated benchmark/validation report or source inventory, not helper source"
+        },
+        {
+          "path": "verify.py",
+          "physical_lines": 92,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        }
+      ]
+    },
+    {
+      "id": "18",
+      "pr": 18,
+      "folder": "go-nethttp-tbsvttr",
+      "old": {
+        "app_loc": 979,
+        "own_loc": 25094
+      },
+      "new": {
+        "app_loc": 418,
+        "own_loc": 1853
+      },
+      "reason": [
+        "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename",
+        "Generated benchmark/validation report or source inventory, not helper source"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "benchmark-results.json",
+          "physical_lines": 1305,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Generated benchmark/validation report or source inventory, not helper source"
+        },
+        {
+          "path": "capacity-results.json",
+          "physical_lines": 10656,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Generated benchmark/validation report or source inventory, not helper source"
+        },
+        {
+          "path": "check.py",
+          "physical_lines": 125,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "compare.py",
+          "physical_lines": 148,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "idle_compare.py",
+          "physical_lines": 56,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "scoring.json",
+          "physical_lines": 314,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Generated benchmark/validation report or source inventory, not helper source"
+        },
+        {
+          "path": "source-inventory.json",
+          "physical_lines": 10949,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Generated benchmark/validation report or source inventory, not helper source"
+        },
+        {
+          "path": "transport_check.py",
+          "physical_lines": 140,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "validation-results.json",
+          "physical_lines": 17,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Generated benchmark/validation report or source inventory, not helper source"
+        },
+        {
+          "path": "verify.py",
+          "physical_lines": 92,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        }
+      ]
+    },
+    {
+      "id": "19",
+      "pr": 19,
+      "folder": "rust-epoll-scooter1337",
+      "old": {
+        "app_loc": 2379,
+        "own_loc": 3600
+      },
+      "new": {
+        "app_loc": 2379,
+        "own_loc": 3600
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "20",
+      "pr": 20,
+      "folder": "csharp-aspnetcore-andrexx",
+      "old": {
+        "app_loc": 773,
+        "own_loc": 851
+      },
+      "new": {
+        "app_loc": 603,
+        "own_loc": 798
+      },
+      "reason": [
+        "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename",
+        "Documentation, dependency lock, or metadata file"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "packages.lock.json",
+          "physical_lines": 53,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Documentation, dependency lock, or metadata file"
+        },
+        {
+          "path": "verify.py",
+          "physical_lines": 170,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        }
+      ]
+    },
+    {
+      "id": "21",
+      "pr": 21,
+      "folder": "cpp-epoll-memstore-khalefa-ow",
+      "old": {
+        "app_loc": 2023,
+        "own_loc": 2067
+      },
+      "new": {
+        "app_loc": 2023,
+        "own_loc": 2067
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "23",
+      "pr": 23,
+      "folder": "python-litestar-przwr",
+      "old": {
+        "app_loc": 194,
+        "own_loc": 207
+      },
+      "new": {
+        "app_loc": 194,
+        "own_loc": 207
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "24",
+      "pr": 24,
+      "folder": "php-swoole-mattsplat",
+      "old": {
+        "app_loc": 252,
+        "own_loc": 294
+      },
+      "new": {
+        "app_loc": 252,
+        "own_loc": 294
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "25",
+      "pr": 25,
+      "folder": "zig-usockets-tbsvttr",
+      "old": {
+        "app_loc": 1038,
+        "own_loc": 6161
+      },
+      "new": {
+        "app_loc": 680,
+        "own_loc": 2079
+      },
+      "reason": [
+        "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename",
+        "Generated benchmark/validation report or source inventory, not helper source"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "benchmark-results.json",
+          "physical_lines": 1921,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Generated benchmark/validation report or source inventory, not helper source"
+        },
+        {
+          "path": "capacity-results.json",
+          "physical_lines": 2133,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Generated benchmark/validation report or source inventory, not helper source"
+        },
+        {
+          "path": "check.py",
+          "physical_lines": 125,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "scoring.json",
+          "physical_lines": 28,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Generated benchmark/validation report or source inventory, not helper source"
+        },
+        {
+          "path": "transport_check.py",
+          "physical_lines": 140,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "verify.py",
+          "physical_lines": 93,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        }
+      ]
+    },
+    {
+      "id": "26",
+      "pr": 26,
+      "folder": "c-iouring-raoz",
+      "old": {
+        "app_loc": 2128,
+        "own_loc": 4200
+      },
+      "new": {
+        "app_loc": 2128,
+        "own_loc": 4200
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "27",
+      "pr": 27,
+      "folder": "csharp-aspnetcore-maks-march",
+      "old": {
+        "app_loc": 950,
+        "own_loc": 1029
+      },
+      "new": {
+        "app_loc": 950,
+        "own_loc": 976
+      },
+      "reason": [
+        "Documentation, dependency lock, or metadata file"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "packages.lock.json",
+          "physical_lines": 53,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Documentation, dependency lock, or metadata file"
+        }
+      ]
+    },
+    {
+      "id": "28",
+      "pr": 28,
+      "folder": "php-swoole-tzimpel",
+      "old": {
+        "app_loc": 307,
+        "own_loc": 360
+      },
+      "new": {
+        "app_loc": 307,
+        "own_loc": 360
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "29",
+      "pr": 29,
+      "folder": "cpp-drogon-hendy643",
+      "old": {
+        "app_loc": 457,
+        "own_loc": 658
+      },
+      "new": {
+        "app_loc": 457,
+        "own_loc": 658
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "31",
+      "pr": 31,
+      "folder": "r-plumber2-josiahparry",
+      "old": {
+        "app_loc": 296,
+        "own_loc": 324
+      },
+      "new": {
+        "app_loc": 296,
+        "own_loc": 324
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "32",
+      "pr": 32,
+      "folder": "cpp-eastl-io_uring-pgo-hendy643",
+      "old": {
+        "app_loc": 2542,
+        "own_loc": 4075
+      },
+      "new": {
+        "app_loc": 2380,
+        "own_loc": 4075
+      },
+      "reason": [
+        "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "pgo/train.cpp",
+          "physical_lines": 162,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        }
+      ]
+    },
+    {
+      "id": "33",
+      "pr": 33,
+      "folder": "java-spring-boot-nb-99",
+      "old": {
+        "app_loc": 645,
+        "own_loc": 3229
+      },
+      "new": {
+        "app_loc": 645,
+        "own_loc": 3229
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "34",
+      "pr": 34,
+      "folder": "go-fib-sirkostya009",
+      "old": {
+        "app_loc": 4047,
+        "own_loc": 4114
+      },
+      "new": {
+        "app_loc": 971,
+        "own_loc": 1038
+      },
+      "reason": [
+        "Explicit generated-code DO NOT EDIT header"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "domain/domain_ggen.go",
+          "physical_lines": 2388,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Explicit generated-code DO NOT EDIT header"
+        },
+        {
+          "path": "internal/auth/auth_ggen.go",
+          "physical_lines": 534,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Explicit generated-code DO NOT EDIT header"
+        },
+        {
+          "path": "internal/httpapi/api_gen.go",
+          "physical_lines": 154,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Explicit generated-code DO NOT EDIT header"
+        }
+      ]
+    },
+    {
+      "id": "35",
+      "pr": 35,
+      "folder": "baml-http-hellovai",
+      "old": {
+        "app_loc": 312,
+        "own_loc": 353
+      },
+      "new": {
+        "app_loc": 312,
+        "own_loc": 353
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "36",
+      "pr": 36,
+      "folder": "kotlin-ktor-jvm-syorito-hatsuki",
+      "old": {
+        "app_loc": 625,
+        "own_loc": 667
+      },
+      "new": {
+        "app_loc": 571,
+        "own_loc": 667
+      },
+      "reason": [
+        "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "build.gradle.kts",
+          "physical_lines": 33,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "settings.gradle.kts",
+          "physical_lines": 21,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        }
+      ]
+    },
+    {
+      "id": "38",
+      "pr": 38,
+      "folder": "go-gnet-Haris0059",
+      "old": {
+        "app_loc": 573,
+        "own_loc": 667
+      },
+      "new": {
+        "app_loc": 573,
+        "own_loc": 667
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "39",
+      "pr": 39,
+      "folder": "c-h2o-einhornimmond",
+      "old": {
+        "app_loc": 1441,
+        "own_loc": 1860
+      },
+      "new": {
+        "app_loc": 1441,
+        "own_loc": 1860
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "40",
+      "pr": 40,
+      "folder": "php-symfony-pklebba",
+      "old": {
+        "app_loc": 581,
+        "own_loc": 673
+      },
+      "new": {
+        "app_loc": 581,
+        "own_loc": 673
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "41",
+      "pr": 41,
+      "folder": "python-fastapi-granian-shawal-mbalire",
+      "old": {
+        "app_loc": 1290,
+        "own_loc": 3707
+      },
+      "new": {
+        "app_loc": 1290,
+        "own_loc": 3707
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "42",
+      "pr": 42,
+      "folder": "c-epoll-benclawbot",
+      "old": {
+        "app_loc": 473,
+        "own_loc": 500
+      },
+      "new": {
+        "app_loc": 473,
+        "own_loc": 500
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "43",
+      "pr": 43,
+      "folder": "swift-hummingbird-denizak",
+      "old": {
+        "app_loc": 743,
+        "own_loc": 817
+      },
+      "new": {
+        "app_loc": 743,
+        "own_loc": 817
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "44",
+      "pr": 44,
+      "folder": "go-stdlib-vkrishna03",
+      "old": {
+        "app_loc": 1269,
+        "own_loc": 1311
+      },
+      "new": {
+        "app_loc": 1269,
+        "own_loc": 1311
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "45",
+      "pr": 45,
+      "folder": "kotlin-ktor-C-Hatton",
+      "old": {
+        "app_loc": 681,
+        "own_loc": 735
+      },
+      "new": {
+        "app_loc": 659,
+        "own_loc": 735
+      },
+      "reason": [
+        "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "build.gradle.kts",
+          "physical_lines": 21,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "settings.gradle.kts",
+          "physical_lines": 1,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        }
+      ]
+    },
+    {
+      "id": "46",
+      "pr": 46,
+      "folder": "dart-rawsocket-C-Hatton",
+      "old": {
+        "app_loc": 507,
+        "own_loc": 544
+      },
+      "new": {
+        "app_loc": 507,
+        "own_loc": 544
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "47",
+      "pr": 47,
+      "folder": "csharp-aspnetcore-larsholm",
+      "old": {
+        "app_loc": 195,
+        "own_loc": 292
+      },
+      "new": {
+        "app_loc": 195,
+        "own_loc": 233
+      },
+      "reason": [
+        "Documentation, dependency lock, or metadata file"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "packages.lock.json",
+          "physical_lines": 59,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Documentation, dependency lock, or metadata file"
+        }
+      ]
+    },
+    {
+      "id": "48",
+      "pr": 48,
+      "folder": "go-gnet-kaikegm",
+      "old": {
+        "app_loc": 2249,
+        "own_loc": 2420
+      },
+      "new": {
+        "app_loc": 880,
+        "own_loc": 2420
+      },
+      "reason": [
+        "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "loadgen_pro.go",
+          "physical_lines": 1369,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        }
+      ]
+    },
+    {
+      "id": "49",
+      "pr": 49,
+      "folder": "typescript-effect-SeeThruHead",
+      "old": {
+        "app_loc": 910,
+        "own_loc": 2182
+      },
+      "new": {
+        "app_loc": 910,
+        "own_loc": 1000
+      },
+      "reason": [
+        "Documentation, dependency lock, or metadata file"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "pnpm-lock.yaml",
+          "physical_lines": 1182,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Documentation, dependency lock, or metadata file"
+        }
+      ]
+    },
+    {
+      "id": "50",
+      "pr": 50,
+      "folder": "php-codeigniter-melroy89",
+      "old": {
+        "app_loc": 5749,
+        "own_loc": 6511
+      },
+      "new": {
+        "app_loc": 5676,
+        "own_loc": 5845
+      },
+      "reason": [
+        "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename",
+        "Generated benchmark/validation report or source inventory, not helper source"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "benchmarks/confirmation-18500.json",
+          "physical_lines": 146,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Generated benchmark/validation report or source inventory, not helper source"
+        },
+        {
+          "path": "benchmarks/confirmation-20000.json",
+          "physical_lines": 146,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Generated benchmark/validation report or source inventory, not helper source"
+        },
+        {
+          "path": "benchmarks/results.json",
+          "physical_lines": 228,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Generated benchmark/validation report or source inventory, not helper source"
+        },
+        {
+          "path": "benchmarks/warmup-18500.json",
+          "physical_lines": 146,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Generated benchmark/validation report or source inventory, not helper source"
+        },
+        {
+          "path": "checks/worker.py",
+          "physical_lines": 73,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        }
+      ]
+    },
+    {
+      "id": "51",
+      "pr": 51,
+      "folder": "typescript-fastify-melroy89",
+      "old": {
+        "app_loc": 539,
+        "own_loc": 1124
+      },
+      "new": {
+        "app_loc": 347,
+        "own_loc": 697
+      },
+      "reason": [
+        "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename",
+        "Generated benchmark/validation report or source inventory, not helper source"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "performance-results.json",
+          "physical_lines": 427,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Generated benchmark/validation report or source inventory, not helper source"
+        },
+        {
+          "path": "verify-sockets.mjs",
+          "physical_lines": 97,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "verify.mjs",
+          "physical_lines": 95,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        }
+      ]
+    },
+    {
+      "id": "52",
+      "pr": 52,
+      "folder": "go-epoll-damianoneill",
+      "old": {
+        "app_loc": 1104,
+        "own_loc": 1490
+      },
+      "new": {
+        "app_loc": 999,
+        "own_loc": 1490
+      },
+      "reason": [
+        "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "pgo/train.c",
+          "physical_lines": 105,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        }
+      ]
+    },
+    {
+      "id": "53",
+      "pr": 53,
+      "folder": "kotlin-ktor-graalvm-noamm9",
+      "old": {
+        "app_loc": 600,
+        "own_loc": 933
+      },
+      "new": {
+        "app_loc": 543,
+        "own_loc": 933
+      },
+      "reason": [
+        "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "build.gradle.kts",
+          "physical_lines": 36,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "settings.gradle.kts",
+          "physical_lines": 21,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        }
+      ]
+    },
+    {
+      "id": "54",
+      "pr": 54,
+      "folder": "c-ammarserver-AmmarkoV",
+      "old": {
+        "app_loc": 1271,
+        "own_loc": 1421
+      },
+      "new": {
+        "app_loc": 1271,
+        "own_loc": 1421
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "55",
+      "pr": 55,
+      "folder": "c-iouring-einhornimmond",
+      "old": {
+        "app_loc": 2007,
+        "own_loc": 2209
+      },
+      "new": {
+        "app_loc": 2007,
+        "own_loc": 2209
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "56",
+      "pr": 56,
+      "folder": "go-fasthttp-b3nhard",
+      "old": {
+        "app_loc": 1514,
+        "own_loc": 1549
+      },
+      "new": {
+        "app_loc": 1514,
+        "own_loc": 1549
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "57",
+      "pr": 57,
+      "folder": "java-netty-itsnaveenk",
+      "old": {
+        "app_loc": 1281,
+        "own_loc": 1869
+      },
+      "new": {
+        "app_loc": 1281,
+        "own_loc": 1869
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "59",
+      "pr": 59,
+      "folder": "bun-elysia-shashishsoni",
+      "old": {
+        "app_loc": 539,
+        "own_loc": 704
+      },
+      "new": {
+        "app_loc": 539,
+        "own_loc": 704
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "61",
+      "pr": 61,
+      "folder": "node-fastify-gmr458",
+      "old": {
+        "app_loc": 366,
+        "own_loc": 436
+      },
+      "new": {
+        "app_loc": 366,
+        "own_loc": 436
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "63",
+      "pr": 63,
+      "folder": "java-netty-lfeagan",
+      "old": {
+        "app_loc": 1334,
+        "own_loc": 1488
+      },
+      "new": {
+        "app_loc": 1334,
+        "own_loc": 1488
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "64",
+      "pr": 64,
+      "folder": "c-epoll-TheFirstIstari",
+      "old": {
+        "app_loc": 2785,
+        "own_loc": 3583
+      },
+      "new": {
+        "app_loc": 2093,
+        "own_loc": 3583
+      },
+      "reason": [
+        "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "dev/capgen.c",
+          "physical_lines": 662,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "dev/saturation.js",
+          "physical_lines": 30,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        }
+      ]
+    },
+    {
+      "id": "65",
+      "pr": 65,
+      "folder": "go-epoll-Antheurus",
+      "old": {
+        "app_loc": 2557,
+        "own_loc": 2764
+      },
+      "new": {
+        "app_loc": 2223,
+        "own_loc": 2764
+      },
+      "reason": [
+        "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "loadgen/main.go",
+          "physical_lines": 334,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        }
+      ]
+    },
+    {
+      "id": "66",
+      "pr": 66,
+      "folder": "kotlin-springboot-Mindstorm1750",
+      "old": {
+        "app_loc": 751,
+        "own_loc": 1658
+      },
+      "new": {
+        "app_loc": 700,
+        "own_loc": 1658
+      },
+      "reason": [
+        "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "build.gradle.kts",
+          "physical_lines": 50,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "settings.gradle.kts",
+          "physical_lines": 1,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        }
+      ]
+    },
+    {
+      "id": "67",
+      "pr": 67,
+      "folder": "java-quarkus-wolches",
+      "old": {
+        "app_loc": 845,
+        "own_loc": 2058
+      },
+      "new": {
+        "app_loc": 845,
+        "own_loc": 2058
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "68",
+      "pr": 68,
+      "folder": "c-iouring-27bhd",
+      "old": {
+        "app_loc": 2137,
+        "own_loc": 2187
+      },
+      "new": {
+        "app_loc": 2137,
+        "own_loc": 2187
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "69",
+      "pr": 69,
+      "folder": "v-fasthttp-ulises-jeremias",
+      "old": {
+        "app_loc": 401,
+        "own_loc": 445
+      },
+      "new": {
+        "app_loc": 401,
+        "own_loc": 445
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "70",
+      "pr": 70,
+      "folder": "v-veb-ulises-jeremias",
+      "old": {
+        "app_loc": 318,
+        "own_loc": 361
+      },
+      "new": {
+        "app_loc": 318,
+        "own_loc": 361
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "71",
+      "pr": 71,
+      "folder": "ruby-async-cicloid",
+      "old": {
+        "app_loc": 785,
+        "own_loc": 885
+      },
+      "new": {
+        "app_loc": 785,
+        "own_loc": 885
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "72",
+      "pr": 72,
+      "folder": "go-epoll-MegaPanchamZ",
+      "old": {
+        "app_loc": 2324,
+        "own_loc": 2380
+      },
+      "new": {
+        "app_loc": 1600,
+        "own_loc": 2380
+      },
+      "reason": [
+        "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "pgo/engine.c",
+          "physical_lines": 636,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "pgo/train.c",
+          "physical_lines": 88,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        }
+      ]
+    },
+    {
+      "id": "73",
+      "pr": 73,
+      "folder": "java-quarkus-panama-raisinsfried",
+      "old": {
+        "app_loc": 720,
+        "own_loc": 940
+      },
+      "new": {
+        "app_loc": 720,
+        "own_loc": 940
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "74",
+      "pr": 74,
+      "folder": "csharp-epoll-gichamba",
+      "old": {
+        "app_loc": 1506,
+        "own_loc": 1586
+      },
+      "new": {
+        "app_loc": 1506,
+        "own_loc": 1551
+      },
+      "reason": [
+        "Documentation, dependency lock, or metadata file"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "packages.lock.json",
+          "physical_lines": 35,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Documentation, dependency lock, or metadata file"
+        }
+      ]
+    },
+    {
+      "id": "75",
+      "pr": 75,
+      "folder": "asm-epoll-FlavouredTux",
+      "old": {
+        "app_loc": 3808,
+        "own_loc": 3844
+      },
+      "new": {
+        "app_loc": 3808,
+        "own_loc": 3844
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "76",
+      "pr": 76,
+      "folder": "go-epoll-champ3oy",
+      "old": {
+        "app_loc": 2033,
+        "own_loc": 2077
+      },
+      "new": {
+        "app_loc": 2033,
+        "own_loc": 2077
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "77",
+      "pr": 77,
+      "folder": "csharp-aspnetcore-vijay-highlo",
+      "old": {
+        "app_loc": 667,
+        "own_loc": 715
+      },
+      "new": {
+        "app_loc": 667,
+        "own_loc": 715
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "78",
+      "pr": 78,
+      "folder": "node-net-barrard",
+      "old": {
+        "app_loc": 285,
+        "own_loc": 305
+      },
+      "new": {
+        "app_loc": 285,
+        "own_loc": 305
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "79",
+      "pr": 79,
+      "folder": "pypy-twisted-perkinslr",
+      "old": {
+        "app_loc": 371,
+        "own_loc": 390
+      },
+      "new": {
+        "app_loc": 371,
+        "own_loc": 390
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "80",
+      "pr": 80,
+      "folder": "bun-elysia-brocchirodrigo",
+      "old": {
+        "app_loc": 480,
+        "own_loc": 596
+      },
+      "new": {
+        "app_loc": 480,
+        "own_loc": 596
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "81",
+      "pr": 81,
+      "folder": "java-springboot-brocchirodrigo",
+      "old": {
+        "app_loc": 1561,
+        "own_loc": 1728
+      },
+      "new": {
+        "app_loc": 1561,
+        "own_loc": 1728
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "82",
+      "pr": 82,
+      "folder": "rust-epoll-scooter1337",
+      "old": {
+        "app_loc": 2816,
+        "own_loc": 4508
+      },
+      "new": {
+        "app_loc": 2816,
+        "own_loc": 4508
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "83",
+      "pr": 83,
+      "folder": "kotlin-nio-3x3xX3N0N",
+      "old": {
+        "app_loc": 948,
+        "own_loc": 999
+      },
+      "new": {
+        "app_loc": 918,
+        "own_loc": 999
+      },
+      "reason": [
+        "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "build.gradle.kts",
+          "physical_lines": 29,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "settings.gradle.kts",
+          "physical_lines": 1,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        }
+      ]
+    },
+    {
+      "id": "84",
+      "pr": 84,
+      "folder": "python-pypy-epoll-pranavds-codes",
+      "old": {
+        "app_loc": 630,
+        "own_loc": 1371
+      },
+      "new": {
+        "app_loc": 630,
+        "own_loc": 1371
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "85",
+      "pr": 85,
+      "folder": "java-virtualthreads-Ahosan1Siam",
+      "old": {
+        "app_loc": 988,
+        "own_loc": 1045
+      },
+      "new": {
+        "app_loc": 988,
+        "own_loc": 1045
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "86",
+      "pr": 86,
+      "folder": "asm-nasm-melroy89",
+      "old": {
+        "app_loc": 3530,
+        "own_loc": 6057
+      },
+      "new": {
+        "app_loc": 3530,
+        "own_loc": 5439
+      },
+      "reason": [
+        "Generated benchmark/validation report or source inventory, not helper source"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "research/bench-275000-k6-summary.json",
+          "physical_lines": 146,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Generated benchmark/validation report or source inventory, not helper source"
+        },
+        {
+          "path": "research/qualification-evidence.json",
+          "physical_lines": 170,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Generated benchmark/validation report or source inventory, not helper source"
+        },
+        {
+          "path": "research/source-artifact-manifest.json",
+          "physical_lines": 302,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Generated benchmark/validation report or source inventory, not helper source"
+        }
+      ]
+    },
+    {
+      "id": "88",
+      "pr": 88,
+      "folder": "java-nio-stohirov",
+      "old": {
+        "app_loc": 1534,
+        "own_loc": 1606
+      },
+      "new": {
+        "app_loc": 1534,
+        "own_loc": 1606
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "89",
+      "pr": 89,
+      "folder": "bash-socat-framegrace",
+      "old": {
+        "app_loc": 0,
+        "own_loc": 297
+      },
+      "new": {
+        "app_loc": 269,
+        "own_loc": 297
+      },
+      "reason": [
+        "Runtime script directly executed by start.sh"
+      ],
+      "runtime_application_files": [
+        "worker.sh"
+      ],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "worker.sh",
+          "physical_lines": 269,
+          "old_classification": "own_support",
+          "new_classification": "application",
+          "reason": "Runtime script directly executed by start.sh"
+        }
+      ]
+    },
+    {
+      "id": "90",
+      "pr": 90,
+      "folder": "rust-actix-web-abeni-csa",
+      "old": {
+        "app_loc": 545,
+        "own_loc": 580
+      },
+      "new": {
+        "app_loc": 545,
+        "own_loc": 580
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "91",
+      "pr": 91,
+      "folder": "go-lowlevel-janso123",
+      "old": {
+        "app_loc": 4989,
+        "own_loc": 10132
+      },
+      "new": {
+        "app_loc": 4340,
+        "own_loc": 10132
+      },
+      "reason": [
+        "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "build.py",
+          "physical_lines": 649,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        }
+      ]
+    },
+    {
+      "id": "92",
+      "pr": 92,
+      "folder": "java-vertx-super-horst",
+      "old": {
+        "app_loc": 868,
+        "own_loc": 1029
+      },
+      "new": {
+        "app_loc": 868,
+        "own_loc": 1029
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "94",
+      "pr": 94,
+      "folder": "lua-openresty-yar0slav",
+      "old": {
+        "app_loc": 320,
+        "own_loc": 413
+      },
+      "new": {
+        "app_loc": 320,
+        "own_loc": 413
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "95",
+      "pr": 95,
+      "folder": "csharp-aspnetcore-devv-guru",
+      "old": {
+        "app_loc": 1654,
+        "own_loc": 1815
+      },
+      "new": {
+        "app_loc": 735,
+        "own_loc": 1711
+      },
+      "reason": [
+        "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename",
+        "Documentation, dependency lock, or metadata file"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "checks/integration.py",
+          "physical_lines": 249,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "checks/load-local.js",
+          "physical_lines": 26,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "checks/local-performance.py",
+          "physical_lines": 258,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "checks/monitor-server.py",
+          "physical_lines": 87,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "checks/startup-performance.py",
+          "physical_lines": 139,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "checks/summarize-performance.py",
+          "physical_lines": 111,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "checks/verify-performance.py",
+          "physical_lines": 49,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "packages.lock.json",
+          "physical_lines": 104,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Documentation, dependency lock, or metadata file"
+        }
+      ]
+    },
+    {
+      "id": "98",
+      "pr": 98,
+      "folder": "cpp-iouring-edwin-2024",
+      "old": {
+        "app_loc": 2089,
+        "own_loc": 2152
+      },
+      "new": {
+        "app_loc": 2089,
+        "own_loc": 2152
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "99",
+      "pr": 99,
+      "folder": "go-nethttp-fi5HiE",
+      "old": {
+        "app_loc": 509,
+        "own_loc": 532
+      },
+      "new": {
+        "app_loc": 509,
+        "own_loc": 532
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "100",
+      "pr": 100,
+      "folder": "go-nethttp-mattn-vedic",
+      "old": {
+        "app_loc": 21793,
+        "own_loc": 21880
+      },
+      "new": {
+        "app_loc": 1314,
+        "own_loc": 1397
+      },
+      "reason": [
+        "Dependency/generated directory or provenance-identified third-party subtree"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [
+        {
+          "path": "sqlite3",
+          "reason": "Nested go.mod identifies the github.com/mattn/go-sqlite3 third-party fork; exclude whole subtree, including local patches."
+        }
+      ],
+      "changes": [
+        {
+          "path": "sqlite3/.codecov.yml",
+          "physical_lines": 4,
+          "old_classification": "own_support",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/.gitignore",
+          "physical_lines": 14,
+          "old_classification": "documentation_lock_or_metadata",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/LICENSE",
+          "physical_lines": 21,
+          "old_classification": "other",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/README.md",
+          "physical_lines": 603,
+          "old_classification": "documentation_lock_or_metadata",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/backup.go",
+          "physical_lines": 85,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/callback.go",
+          "physical_lines": 411,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/convert.go",
+          "physical_lines": 299,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/doc.go",
+          "physical_lines": 134,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/error.go",
+          "physical_lines": 150,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/go.mod",
+          "physical_lines": 7,
+          "old_classification": "other",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/go.sum",
+          "physical_lines": 0,
+          "old_classification": "documentation_lock_or_metadata",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/sqlite3-binding.h",
+          "physical_lines": 13526,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/sqlite3.go",
+          "physical_lines": 2366,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/sqlite3_context.go",
+          "physical_lines": 103,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/sqlite3_func_crypt.go",
+          "physical_lines": 120,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/sqlite3_go18.go",
+          "physical_lines": 54,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/sqlite3_libsqlite3.go",
+          "physical_lines": 23,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/sqlite3_load_extension.go",
+          "physical_lines": 85,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/sqlite3_load_extension_omit.go",
+          "physical_lines": 25,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/sqlite3_opt_allow_uri_authority.go",
+          "physical_lines": 16,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/sqlite3_opt_app_armor.go",
+          "physical_lines": 16,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/sqlite3_opt_column_metadata.go",
+          "physical_lines": 22,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/sqlite3_opt_foreign_keys.go",
+          "physical_lines": 16,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/sqlite3_opt_fts5.go",
+          "physical_lines": 15,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/sqlite3_opt_icu.go",
+          "physical_lines": 20,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/sqlite3_opt_introspect.go",
+          "physical_lines": 16,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/sqlite3_opt_math_functions.go",
+          "physical_lines": 15,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/sqlite3_opt_os_trace.go",
+          "physical_lines": 15,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/sqlite3_opt_preupdate.go",
+          "physical_lines": 21,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/sqlite3_opt_preupdate_hook.go",
+          "physical_lines": 113,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/sqlite3_opt_preupdate_omit.go",
+          "physical_lines": 22,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/sqlite3_opt_secure_delete.go",
+          "physical_lines": 16,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/sqlite3_opt_secure_delete_fast.go",
+          "physical_lines": 16,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/sqlite3_opt_serialize.go",
+          "physical_lines": 83,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/sqlite3_opt_serialize_omit.go",
+          "physical_lines": 21,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/sqlite3_opt_stat4.go",
+          "physical_lines": 16,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/sqlite3_opt_unlock_notify.c",
+          "physical_lines": 85,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/sqlite3_opt_unlock_notify.go",
+          "physical_lines": 93,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/sqlite3_opt_userauth.go",
+          "physical_lines": 295,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/sqlite3_opt_userauth_omit.go",
+          "physical_lines": 158,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/sqlite3_opt_vacuum_full.go",
+          "physical_lines": 16,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/sqlite3_opt_vacuum_incr.go",
+          "physical_lines": 16,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/sqlite3_opt_vtable.go",
+          "physical_lines": 721,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/sqlite3_other.go",
+          "physical_lines": 18,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/sqlite3_solaris.go",
+          "physical_lines": 15,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/sqlite3_trace.go",
+          "physical_lines": 288,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/sqlite3_type.go",
+          "physical_lines": 108,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/sqlite3_usleep_windows.go",
+          "physical_lines": 42,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/sqlite3_windows.go",
+          "physical_lines": 18,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/sqlite3ext.h",
+          "physical_lines": 728,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "sqlite3/static_mock.go",
+          "physical_lines": 38,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        }
+      ]
+    },
+    {
+      "id": "101",
+      "pr": 101,
+      "folder": "java-raw-agrison",
+      "old": {
+        "app_loc": 1882,
+        "own_loc": 1998
+      },
+      "new": {
+        "app_loc": 1882,
+        "own_loc": 1998
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "102",
+      "pr": 102,
+      "folder": "node-uwebsockets-zahidcakici",
+      "old": {
+        "app_loc": 335,
+        "own_loc": 450
+      },
+      "new": {
+        "app_loc": 335,
+        "own_loc": 450
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "103",
+      "pr": 103,
+      "folder": "go-gin-lincolng4",
+      "old": {
+        "app_loc": 415,
+        "own_loc": 431
+      },
+      "new": {
+        "app_loc": 415,
+        "own_loc": 431
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "104",
+      "pr": 104,
+      "folder": "haskell-warp-staticfx",
+      "old": {
+        "app_loc": 265,
+        "own_loc": 293
+      },
+      "new": {
+        "app_loc": 265,
+        "own_loc": 293
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "106",
+      "pr": 106,
+      "folder": "go-fasthttp-savak1990",
+      "old": {
+        "app_loc": 1276,
+        "own_loc": 1389
+      },
+      "new": {
+        "app_loc": 1276,
+        "own_loc": 1389
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "107",
+      "pr": 107,
+      "folder": "scala-netty-jacksonhoran",
+      "old": {
+        "app_loc": 957,
+        "own_loc": 1018
+      },
+      "new": {
+        "app_loc": 957,
+        "own_loc": 1018
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "108",
+      "pr": 108,
+      "folder": "fsharp-oxpecker-delneg",
+      "old": {
+        "app_loc": 714,
+        "own_loc": 778
+      },
+      "new": {
+        "app_loc": 714,
+        "own_loc": 778
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "109",
+      "pr": 109,
+      "folder": "python-granian-hoopengo",
+      "old": {
+        "app_loc": 401,
+        "own_loc": 502
+      },
+      "new": {
+        "app_loc": 401,
+        "own_loc": 502
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "111",
+      "pr": 111,
+      "folder": "go-epoll-brady1408",
+      "old": {
+        "app_loc": 1835,
+        "own_loc": 2900
+      },
+      "new": {
+        "app_loc": 1835,
+        "own_loc": 2900
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "112",
+      "pr": 112,
+      "folder": "c-iouring-ssmurfgg04-gif",
+      "old": {
+        "app_loc": 2969,
+        "own_loc": 3273
+      },
+      "new": {
+        "app_loc": 2630,
+        "own_loc": 3273
+      },
+      "reason": [
+        "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "pgo/gen.c",
+          "physical_lines": 175,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "pgo/train.c",
+          "physical_lines": 164,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        }
+      ]
+    },
+    {
+      "id": "113",
+      "pr": 113,
+      "folder": "v-epoll-i098",
+      "old": {
+        "app_loc": 1268,
+        "own_loc": 1311
+      },
+      "new": {
+        "app_loc": 1268,
+        "own_loc": 1311
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "114",
+      "pr": 114,
+      "folder": "rust-axum-mjc",
+      "old": {
+        "app_loc": 3456,
+        "own_loc": 5920
+      },
+      "new": {
+        "app_loc": 3456,
+        "own_loc": 5920
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "115",
+      "pr": 115,
+      "folder": "ailang-native-2paws",
+      "old": {
+        "app_loc": 144,
+        "own_loc": 175
+      },
+      "new": {
+        "app_loc": 144,
+        "own_loc": 175
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "116",
+      "pr": 116,
+      "folder": "java-micronaut-Clickin",
+      "old": {
+        "app_loc": 669,
+        "own_loc": 982
+      },
+      "new": {
+        "app_loc": 479,
+        "own_loc": 982
+      },
+      "reason": [
+        "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "build.gradle.kts",
+          "physical_lines": 29,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "checks/mixed.lua",
+          "physical_lines": 28,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "checks/verify-extra.py",
+          "physical_lines": 69,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "checks/verify-feed.py",
+          "physical_lines": 63,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "settings.gradle.kts",
+          "physical_lines": 1,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        }
+      ]
+    },
+    {
+      "id": "117",
+      "pr": 117,
+      "folder": "asm-epoll-umitaltintas",
+      "old": {
+        "app_loc": 2097,
+        "own_loc": 2129
+      },
+      "new": {
+        "app_loc": 2097,
+        "own_loc": 2129
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "118",
+      "pr": 118,
+      "folder": "python-stdlib-shawal-mbalire",
+      "old": {
+        "app_loc": 2066,
+        "own_loc": 3068
+      },
+      "new": {
+        "app_loc": 2066,
+        "own_loc": 3068
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "119",
+      "pr": 119,
+      "folder": "typescript-deno-JakeAve",
+      "old": {
+        "app_loc": 1561,
+        "own_loc": 1831
+      },
+      "new": {
+        "app_loc": 1561,
+        "own_loc": 1831
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "120",
+      "pr": 120,
+      "folder": "nim-io_uring-NioHast",
+      "old": {
+        "app_loc": 5698,
+        "own_loc": 9679
+      },
+      "new": {
+        "app_loc": 5682,
+        "own_loc": 9679
+      },
+      "reason": [
+        "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "config.nims",
+          "physical_lines": 16,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        }
+      ]
+    },
+    {
+      "id": "121-c-iouring-ssmurfgg04-gif",
+      "pr": 121,
+      "folder": "c-iouring-ssmurfgg04-gif",
+      "old": {
+        "app_loc": 2969,
+        "own_loc": 3273
+      },
+      "new": {
+        "app_loc": 2630,
+        "own_loc": 3273
+      },
+      "reason": [
+        "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "pgo/gen.c",
+          "physical_lines": 175,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "pgo/train.c",
+          "physical_lines": 164,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        }
+      ]
+    },
+    {
+      "id": "121-c-libco-ssmurfgg04-gif",
+      "pr": 121,
+      "folder": "c-libco-ssmurfgg04-gif",
+      "old": {
+        "app_loc": 5493,
+        "own_loc": 5713
+      },
+      "new": {
+        "app_loc": 2148,
+        "own_loc": 2368
+      },
+      "reason": [
+        "Dependency/generated directory or provenance-identified third-party subtree"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [
+        {
+          "path": "src/libco",
+          "reason": "README identifies vendored Tencent libco and documents local patches; exclude whole third-party subtree."
+        }
+      ],
+      "changes": [
+        {
+          "path": "src/libco/co_closure.h",
+          "physical_lines": 97,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "src/libco/co_comm.cpp",
+          "physical_lines": 23,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "src/libco/co_comm.h",
+          "physical_lines": 29,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "src/libco/co_epoll.cpp",
+          "physical_lines": 318,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "src/libco/co_epoll.h",
+          "physical_lines": 93,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "src/libco/co_hook_sys_call.cpp",
+          "physical_lines": 1039,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "src/libco/co_routine.cpp",
+          "physical_lines": 1196,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "src/libco/co_routine.h",
+          "physical_lines": 93,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "src/libco/co_routine_inner.h",
+          "physical_lines": 114,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "src/libco/co_routine_specific.h",
+          "physical_lines": 86,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "src/libco/coctx.cpp",
+          "physical_lines": 132,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "src/libco/coctx.h",
+          "physical_lines": 42,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        },
+        {
+          "path": "src/libco/coctx_swap.S",
+          "physical_lines": 83,
+          "old_classification": "application",
+          "new_classification": "dependency_or_generated",
+          "reason": "Dependency/generated directory or provenance-identified third-party subtree"
+        }
+      ]
+    },
+    {
+      "id": "123-arsd-hybridcgi",
+      "pr": 123,
+      "folder": "d-arsd-hybridcgi-cyrusmsk",
+      "old": {
+        "app_loc": 680,
+        "own_loc": 743
+      },
+      "new": {
+        "app_loc": 680,
+        "own_loc": 736
+      },
+      "reason": [
+        "Documentation, dependency lock, or metadata file"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "dub.selections.json",
+          "physical_lines": 7,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Documentation, dependency lock, or metadata file"
+        }
+      ]
+    },
+    {
+      "id": "123-arsd-threadedcgi",
+      "pr": 123,
+      "folder": "d-arsd-threadedcgi-cyrusmsk",
+      "old": {
+        "app_loc": 680,
+        "own_loc": 741
+      },
+      "new": {
+        "app_loc": 680,
+        "own_loc": 734
+      },
+      "reason": [
+        "Documentation, dependency lock, or metadata file"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "dub.selections.json",
+          "physical_lines": 7,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Documentation, dependency lock, or metadata file"
+        }
+      ]
+    },
+    {
+      "id": "123-vibed",
+      "pr": 123,
+      "folder": "d-vibe-http-cyrusmsk",
+      "old": {
+        "app_loc": 595,
+        "own_loc": 684
+      },
+      "new": {
+        "app_loc": 595,
+        "own_loc": 659
+      },
+      "reason": [
+        "Documentation, dependency lock, or metadata file"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "dub.selections.json",
+          "physical_lines": 25,
+          "old_classification": "own_support",
+          "new_classification": "documentation_lock_or_metadata",
+          "reason": "Documentation, dependency lock, or metadata file"
+        }
+      ]
+    },
+    {
+      "id": "124",
+      "pr": 124,
+      "folder": "java-springboot-bogdan-blaj",
+      "old": {
+        "app_loc": 3593,
+        "own_loc": 3792
+      },
+      "new": {
+        "app_loc": 3593,
+        "own_loc": 3792
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "125",
+      "pr": 125,
+      "folder": "zig-iouring-marler8997",
+      "old": {
+        "app_loc": 3317,
+        "own_loc": 3434
+      },
+      "new": {
+        "app_loc": 2846,
+        "own_loc": 3434
+      },
+      "reason": [
+        "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "src/loadgen.zig",
+          "physical_lines": 471,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        }
+      ]
+    },
+    {
+      "id": "126",
+      "pr": 126,
+      "folder": "lua-lunet-simbo1905",
+      "old": {
+        "app_loc": 417,
+        "own_loc": 543
+      },
+      "new": {
+        "app_loc": 417,
+        "own_loc": 543
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "127",
+      "pr": 127,
+      "folder": "node-httpserver-aliskhanoff",
+      "old": {
+        "app_loc": 970,
+        "own_loc": 997
+      },
+      "new": {
+        "app_loc": 970,
+        "own_loc": 997
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "128",
+      "pr": 128,
+      "folder": "kotlin-trikeshed-jnorthrup",
+      "old": {
+        "app_loc": 4946,
+        "own_loc": 6705
+      },
+      "new": {
+        "app_loc": 3246,
+        "own_loc": 6705
+      },
+      "reason": [
+        "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": [
+        {
+          "path": "build.gradle.kts",
+          "physical_lines": 4,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "components/build.gradle.kts",
+          "physical_lines": 63,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "loadgen/build.gradle.kts",
+          "physical_lines": 44,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "loadgen/src/jvmMain/kotlin/borg/trikeshed/loadgen/Load.kt",
+          "physical_lines": 961,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "loadgen/src/jvmMain/kotlin/borg/trikeshed/loadgen/Main.kt",
+          "physical_lines": 402,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "server/build.gradle.kts",
+          "physical_lines": 80,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "settings.gradle.kts",
+          "physical_lines": 17,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        },
+        {
+          "path": "trikeshed/build.gradle.kts",
+          "physical_lines": 129,
+          "old_classification": "application",
+          "new_classification": "own_support",
+          "reason": "Build/configuration, dedicated test/check/PGO/load-generator directory, or exact auxiliary helper filename"
+        }
+      ]
+    },
+    {
+      "id": "129",
+      "pr": 129,
+      "folder": "go-nethttp-NaveedZahoorKhan",
+      "old": {
+        "app_loc": 1301,
+        "own_loc": 1368
+      },
+      "new": {
+        "app_loc": 1301,
+        "own_loc": 1368
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    },
+    {
+      "id": "130",
+      "pr": 130,
+      "folder": "asm-epoll-HauLTCE",
+      "old": {
+        "app_loc": 2063,
+        "own_loc": 2078
+      },
+      "new": {
+        "app_loc": 2063,
+        "own_loc": 2078
+      },
+      "reason": [
+        "No classification changes"
+      ],
+      "runtime_application_files": [],
+      "dependency_evidence": [],
+      "changes": []
+    }
+  ]
+}

@@ -1,0 +1,209 @@
+{
+  "files": {
+    ".env-sample": {
+      "sha256": "bcfa0eb2441f718e975fc98a5539d09d9725fc2893b9d032ff1d60b437b6b29e",
+      "bytes": 361,
+      "physical_lines": 8,
+      "classification": "other"
+    },
+    ".envrc": {
+      "sha256": "586aa71946e973568808054a6405895a4875970498a5e5515f4674f3f56f9bb8",
+      "bytes": 83,
+      "physical_lines": 2,
+      "classification": "other"
+    },
+    ".gitignore": {
+      "sha256": "6ed74d812fb32afa2a9219017f9c0b3a5d9ed58d3436a0e171e81e8af4804b23",
+      "bytes": 76,
+      "physical_lines": 8,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "Dockerfile": {
+      "sha256": "2b15fd7dcd8873b7858cf97926e2bb4510157a509f89a0a55fce6a768d046240",
+      "bytes": 2719,
+      "physical_lines": 57,
+      "classification": "own_support"
+    },
+    "Dockerfile.dockerignore": {
+      "sha256": "e8722afcb930e5d384e6ef2aecc2484e1d07ba8e263bbda1791be17e7ae02d83",
+      "bytes": 450,
+      "physical_lines": 22,
+      "classification": "other"
+    },
+    "Makefile": {
+      "sha256": "0492e0791c0beb8272f9cc7f5e818886f868ec74cf9337b20733cdbff9f558f1",
+      "bytes": 5132,
+      "physical_lines": 127,
+      "classification": "own_support"
+    },
+    "OPTIMIZATIONS.md": {
+      "sha256": "7cfcc6ef03d406bb37d7392129fa890d9ad8230acda088e1b05e2818b5a184c2",
+      "bytes": 2495,
+      "physical_lines": 26,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "README.md": {
+      "sha256": "7ef9c510771e950058be6ad351f1980a5495609a7a56e0a6fb51ed5e2624b5b5",
+      "bytes": 7334,
+      "physical_lines": 135,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "benchmark.py": {
+      "sha256": "0cdce961f3da31dd49c0d6871d865543efe9ff7cc776a9459a5dc6fd29bf3be8",
+      "bytes": 32442,
+      "physical_lines": 840,
+      "classification": "own_support"
+    },
+    "benchmark_report.py": {
+      "sha256": "4361a8bc525199a1790020187a1b04853c414041de7a35f6bca35d52df8c4234",
+      "bytes": 15413,
+      "physical_lines": 366,
+      "classification": "own_support"
+    },
+    "build.sh": {
+      "sha256": "b46d3bf57adbc2484570eb0782ca96501c439803e5a822e94f034fc37fe5b93e",
+      "bytes": 238,
+      "physical_lines": 7,
+      "classification": "own_support"
+    },
+    "compose.yaml": {
+      "sha256": "b613b52e12e9cda4b287daee368de1b2de7aabf796db36ebdc9eebc463254d31",
+      "bytes": 1762,
+      "physical_lines": 64,
+      "classification": "own_support"
+    },
+    "install.sh": {
+      "sha256": "99042c6baad793553b5930cf021ebce8ce25bad4c552b12900e8729fe929460e",
+      "bytes": 1778,
+      "physical_lines": 42,
+      "classification": "own_support"
+    },
+    "k8s/k6.yaml": {
+      "sha256": "58aa81d4f793e263f0375a729339a418607354170c850ac048fe22b7348f0618",
+      "bytes": 2434,
+      "physical_lines": 75,
+      "classification": "own_support"
+    },
+    "k8s/kustomization.yaml": {
+      "sha256": "ec165749128f07bec14e4af43afaef9eb53ca5ff2a359701a514bbd3d3a2711d",
+      "bytes": 458,
+      "physical_lines": 12,
+      "classification": "own_support"
+    },
+    "k8s/server.yaml": {
+      "sha256": "932a54620e2ff90c8105875fe36780f7bd12e1c6ffbd9716fcdfaa489d064444",
+      "bytes": 2494,
+      "physical_lines": 95,
+      "classification": "own_support"
+    },
+    "maven-settings.xml.template": {
+      "sha256": "cbca90cbf4d38c06731f81def396c88a1f005e222196b3d43fb393c4d45beda8",
+      "bytes": 345,
+      "physical_lines": 12,
+      "classification": "other"
+    },
+    "pom.xml": {
+      "sha256": "398cfe721432a933bf010f5bebb840509a32587668a3c283a0a62e3bd1420ae2",
+      "bytes": 2343,
+      "physical_lines": 63,
+      "classification": "own_support"
+    },
+    "scripts/direct.sh": {
+      "sha256": "c804475e4a20f58613cadae50fcfe55a5d4a0f093a262acf6139837361a5c6ea",
+      "bytes": 3781,
+      "physical_lines": 105,
+      "classification": "own_support"
+    },
+    "scripts/docker.sh": {
+      "sha256": "77e9ea5d8da185278aea9c63f8d0cfe4ec1b0ad54dcdfa195b9243980c4217da",
+      "bytes": 2681,
+      "physical_lines": 79,
+      "classification": "own_support"
+    },
+    "scripts/k8s.sh": {
+      "sha256": "f8b70e924c69497fb9db3b53eb0bcebdf37ea8d70e11e00986fa5bd2ae2cb98f",
+      "bytes": 6033,
+      "physical_lines": 153,
+      "classification": "own_support"
+    },
+    "scripts/lib.sh": {
+      "sha256": "9a3931b099582e0cd3e7a3e9922eaccdf03162ff5676199a428c90f0201f8304",
+      "bytes": 2544,
+      "physical_lines": 64,
+      "classification": "own_support"
+    },
+    "seed-local.sh": {
+      "sha256": "154b623678f11e82aed330466837771679a15af2117597436983cf5c56b147ec",
+      "bytes": 396,
+      "physical_lines": 11,
+      "classification": "own_support"
+    },
+    "src/main/java/challenge/ApiException.java": {
+      "sha256": "a3219e12ac04f761ae60483c73ae62f5d6c2f0574a38935d631e9aa4aa392de1",
+      "bytes": 204,
+      "physical_lines": 10,
+      "classification": "application"
+    },
+    "src/main/java/challenge/Application.java": {
+      "sha256": "c5c905d7af193e21067add8cedf18b108153168c9d9b473e15014ad0eb9b8376",
+      "bytes": 300,
+      "physical_lines": 11,
+      "classification": "application"
+    },
+    "src/main/java/challenge/Authentication.java": {
+      "sha256": "664b2a558520f25028bc41e7ad9f881994e1e5d4eb93ad557d96c966205e1146",
+      "bytes": 3508,
+      "physical_lines": 90,
+      "classification": "application"
+    },
+    "src/main/java/challenge/ErrorHandler.java": {
+      "sha256": "386937b58a491fac7a1eff6182414c5390271e6a2fefe42f1607b23325ac07d8",
+      "bytes": 1392,
+      "physical_lines": 33,
+      "classification": "application"
+    },
+    "src/main/java/challenge/FallbackErrorHandler.java": {
+      "sha256": "36d62a8f7107246e7ede4a1d9f0db18fddfe852ede6f12ef36c4eb2bfccb46ac",
+      "bytes": 2047,
+      "physical_lines": 51,
+      "classification": "application"
+    },
+    "src/main/java/challenge/FeedController.java": {
+      "sha256": "9837288b8fa42d0caca5b09f585b3a8cf20071f8263967c7c23626bef046f1dd",
+      "bytes": 5686,
+      "physical_lines": 139,
+      "classification": "application"
+    },
+    "src/main/java/challenge/PostRepository.java": {
+      "sha256": "779d5589bd6f3cf70280a3b691c9cd18d00fba9a234cff47f3fdc0305d58f1b4",
+      "bytes": 11289,
+      "physical_lines": 290,
+      "classification": "application"
+    },
+    "src/main/java/challenge/Responses.java": {
+      "sha256": "d6b4182af932ee61da0644f58ffb0873231026bb2655a923c8fc56f7907ded80",
+      "bytes": 708,
+      "physical_lines": 21,
+      "classification": "application"
+    },
+    "src/main/resources/application.properties": {
+      "sha256": "976f3f03c694eb054f52c2aec9e331f62cc79ab81578472665d5b0a3eb01259f",
+      "bytes": 375,
+      "physical_lines": 8,
+      "classification": "own_support"
+    },
+    "src/test/java/challenge/ApiTest.java": {
+      "sha256": "16243916e148f0c9800451ac45005214dfa75d092fbe7973469f6528d85d3053",
+      "bytes": 17584,
+      "physical_lines": 410,
+      "classification": "own_support"
+    },
+    "start.sh": {
+      "sha256": "ce2bd99df453fe8bc26da25fe6f0dd0d5447266d30831d875baf3587b4a00868",
+      "bytes": 287,
+      "physical_lines": 6,
+      "classification": "own_support"
+    }
+  },
+  "skipped_members": []
+}

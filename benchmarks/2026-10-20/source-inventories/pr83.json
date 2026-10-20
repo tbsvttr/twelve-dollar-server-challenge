@@ -1,0 +1,77 @@
+{
+  "files": {
+    ".gitignore": {
+      "sha256": "8c649822e95de786655d21af761a481b82bc1e4b5057d73b30ecd9b2547c00b5",
+      "bytes": 25,
+      "physical_lines": 3,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "README.md": {
+      "sha256": "3943a3d12c970867c8d15f08905fa14e2ef2d6416706775dd670bceb6081bd38",
+      "bytes": 6717,
+      "physical_lines": 62,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "build.gradle.kts": {
+      "sha256": "dce9f91c3cf1997cf3bc5c9acca92328fa7018b4ec2f45f8f598ec31fbc3a9f1",
+      "bytes": 766,
+      "physical_lines": 29,
+      "classification": "own_support"
+    },
+    "build.sh": {
+      "sha256": "49bd94f2c98cc6df467a4c7f316bbc3fd60042d0d793f6744ae1ac65f169b396",
+      "bytes": 338,
+      "physical_lines": 9,
+      "classification": "own_support"
+    },
+    "install.sh": {
+      "sha256": "f53eaa2c7bcc6fd2346cbd4e049b749126dd5b7cee0a887e4b9e5aec73a65f52",
+      "bytes": 1013,
+      "physical_lines": 20,
+      "classification": "own_support"
+    },
+    "settings.gradle.kts": {
+      "sha256": "594ca1aca3bee5ccee2c16fa69cd22f16490ac5f4d2ea48f7476c7f7337416ef",
+      "bytes": 32,
+      "physical_lines": 1,
+      "classification": "own_support"
+    },
+    "src/main/kotlin/nio/Db.kt": {
+      "sha256": "2b91b7db178efef38e77b4497f42afe3ba8e29dd4d0eac8b259570fbd193688f",
+      "bytes": 5934,
+      "physical_lines": 135,
+      "classification": "application"
+    },
+    "src/main/kotlin/nio/Json.kt": {
+      "sha256": "796f7bd73242e600cfd453a84772fe540e6b67059b5cebb1e4175e848235d27f",
+      "bytes": 5906,
+      "physical_lines": 173,
+      "classification": "application"
+    },
+    "src/main/kotlin/nio/Jwt.kt": {
+      "sha256": "89db5339ef0e4866f3e2b75ac5c9dc2e34f511e997831e72954664afd7d25268",
+      "bytes": 3888,
+      "physical_lines": 96,
+      "classification": "application"
+    },
+    "src/main/kotlin/nio/Main.kt": {
+      "sha256": "3de55633e87d4f473488015451cd33a445eeac1e9858ce7fe64a32c3185d6d85",
+      "bytes": 532,
+      "physical_lines": 14,
+      "classification": "application"
+    },
+    "src/main/kotlin/nio/Server.kt": {
+      "sha256": "089e89cd116617154dff150b22c17a59a44241701e341dd5fbc1cb31d227f5fa",
+      "bytes": 20817,
+      "physical_lines": 500,
+      "classification": "application"
+    },
+    "start.sh": {
+      "sha256": "2a7c12bfcadb270cf6b32b1a9c1ead0054f763e3ccb25ed3008b67a04e516a6d",
+      "bytes": 844,
+      "physical_lines": 22,
+      "classification": "own_support"
+    }
+  },
+  "skipped_members": []
+}

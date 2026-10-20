@@ -1,0 +1,2 @@
+listening on 127.0.0.1:24000 (poller)
+DIAG writes/s 1729 commits/s 184 worst commit 24.0 ms · checkpoints 96 (worst 62 ms) · WAL log 0 ckpt 0 · held max 64

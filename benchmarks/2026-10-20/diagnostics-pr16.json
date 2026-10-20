@@ -1,0 +1,323 @@
+{
+  "schema_version": 1,
+  "case_id": "16",
+  "pr": 16,
+  "primary_trial": 3,
+  "context_trials": [
+    1,
+    2
+  ],
+  "diagnostic_kind": "offline_existing_evidence_only",
+  "collected_at": "2026-10-20T13:00:52.693682+00:00",
+  "identity": {
+    "commit": "b887fd1fa882f60988d004c75911048b902bf6f7",
+    "source_sha256": "befa7385030e932219433b3e1cf6dd322614cf5e3bbbd3ea3b915587ecfa0294",
+    "image": "twelve-current-pr16:2026-10-20",
+    "image_id": "sha256:2b8e6f7dd374e71331da3810ecc55e11eb403bc2e5f6e9c85784f9e344723b73",
+    "fingerprint": "938e713a7ba7283ad23a4752c4cf9f7f048c9c2b4f667c27df2f3d9a2ed83151"
+  },
+  "source_identity": {
+    "folder": "fortran-microhttpd-tbsvttr",
+    "source_url": "https://github.com/tbsvttr/twelve-dollar-server-challenge/tree/b887fd1fa882f60988d004c75911048b902bf6f7/submissions/fortran-microhttpd-tbsvttr",
+    "source_hashes_verified": 28,
+    "source_hash_mismatches": [],
+    "inventory": "archives/pr16-sha256.json"
+  },
+  "observed_trials": [
+    {
+      "trial": 1,
+      "recorded_at": "2026-10-20T11:59:22Z",
+      "requests": 456451,
+      "duration_s": 15.08,
+      "rps": 30259.08,
+      "p50_ms": 2.01,
+      "p95_ms": 5.144,
+      "p99_ms": 13.48,
+      "http_errors": 0,
+      "socket_errors": {
+        "connect": 0,
+        "read": 0,
+        "write": 0,
+        "timeout": 0
+      },
+      "successful_rps": 30259.08,
+      "cpu_percent": 94.74818535081572,
+      "rss_mib": 39.5234375,
+      "database_valid": true,
+      "valid_duration": true,
+      "completed": true,
+      "container_state": {
+        "Status": "running",
+        "Running": true,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 51349,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-10-20T11:59:22.26903075Z",
+        "FinishedAt": "0001-01-01T00:00:00Z"
+      },
+      "database_after": {
+        "initial_post_count": 500000,
+        "post_count": 504862,
+        "max_post_id": 504862,
+        "integrity": "ok"
+      },
+      "container_host_config": {
+        "CpusetCpus": "0",
+        "NanoCpus": 1000000000,
+        "Memory": 2147483648,
+        "MemorySwap": 2147483648,
+        "Ulimits": [
+          {
+            "Name": "nofile",
+            "Hard": 65535,
+            "Soft": 65535
+          }
+        ]
+      },
+      "processes_before": {
+        "13": {
+          "ppid": 7,
+          "cpu_s": 1.9,
+          "cpu_self_s": 1.9,
+          "cpu_waited_children_s": 0.0,
+          "rss_kib": 37288,
+          "hwm_kib": 37288,
+          "threads": 1
+        }
+      },
+      "processes_after": {
+        "13": {
+          "ppid": 7,
+          "cpu_s": 16.31,
+          "cpu_self_s": 16.31,
+          "cpu_waited_children_s": 0.0,
+          "rss_kib": 40472,
+          "hwm_kib": 40472,
+          "threads": 1
+        }
+      },
+      "wrk_output": "Running 15s test @ http://127.0.0.1:24000/feed\n  2 threads and 64 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     2.38ms    2.07ms  18.33ms   94.46%\n    Req/Sec    15.23k     1.17k   23.63k    68.77%\n  Latency Distribution\n     50%    2.01ms\n     75%    2.41ms\n     90%    2.95ms\n     99%   13.48ms\n  456451 requests in 15.08s, 777.23MB read\nRequests/sec:  30259.08\nTransfer/sec:     51.52MB\n  95% 5.144000ms\n",
+      "warmup_output": "Running 2s test @ http://127.0.0.1:24000/feed\n  2 threads and 64 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     4.31ms   11.00ms  97.44ms   96.34%\n    Req/Sec    14.60k     3.20k   27.58k    90.24%\n  Latency Distribution\n     50%    2.02ms\n     75%    2.47ms\n     90%    4.45ms\n     99%   73.44ms\n  59672 requests in 2.08s, 101.06MB read\nRequests/sec:  28650.90\nTransfer/sec:     48.52MB\n  95% 12.462000ms\n"
+    },
+    {
+      "trial": 2,
+      "recorded_at": "2026-10-20T12:33:21Z",
+      "requests": 405876,
+      "duration_s": 15.06,
+      "rps": 26943.54,
+      "p50_ms": 2.16,
+      "p95_ms": 10.539,
+      "p99_ms": 24.14,
+      "http_errors": 0,
+      "socket_errors": {
+        "connect": 0,
+        "read": 0,
+        "write": 0,
+        "timeout": 0
+      },
+      "successful_rps": 26943.54,
+      "cpu_percent": 93.76243401519395,
+      "rss_mib": 39.25,
+      "database_valid": true,
+      "valid_duration": true,
+      "completed": true,
+      "container_state": {
+        "Status": "running",
+        "Running": true,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 85018,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-10-20T12:33:21.764228416Z",
+        "FinishedAt": "0001-01-01T00:00:00Z"
+      },
+      "database_after": {
+        "initial_post_count": 500000,
+        "post_count": 504430,
+        "max_post_id": 504430,
+        "integrity": "ok"
+      },
+      "container_host_config": {
+        "CpusetCpus": "0",
+        "NanoCpus": 1000000000,
+        "Memory": 2147483648,
+        "MemorySwap": 2147483648,
+        "Ulimits": [
+          {
+            "Name": "nofile",
+            "Hard": 65535,
+            "Soft": 65535
+          }
+        ]
+      },
+      "processes_before": {
+        "13": {
+          "ppid": 7,
+          "cpu_s": 1.92,
+          "cpu_self_s": 1.92,
+          "cpu_waited_children_s": 0.0,
+          "rss_kib": 37172,
+          "hwm_kib": 37172,
+          "threads": 1
+        }
+      },
+      "processes_after": {
+        "13": {
+          "ppid": 7,
+          "cpu_s": 16.17,
+          "cpu_self_s": 16.17,
+          "cpu_waited_children_s": 0.0,
+          "rss_kib": 40192,
+          "hwm_kib": 40192,
+          "threads": 1
+        }
+      },
+      "wrk_output": "Running 15s test @ http://127.0.0.1:24000/feed\n  2 threads and 64 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     3.20ms    4.95ms  86.93ms   93.65%\n    Req/Sec    13.58k     2.78k   19.55k    86.00%\n  Latency Distribution\n     50%    2.16ms\n     75%    2.67ms\n     90%    4.14ms\n     99%   24.14ms\n  405876 requests in 15.06s, 690.80MB read\nRequests/sec:  26943.54\nTransfer/sec:     45.86MB\n  95% 10.539000ms\n",
+      "warmup_output": "Running 2s test @ http://127.0.0.1:24000/feed\n  2 threads and 64 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     3.52ms    7.31ms  73.17ms   94.83%\n    Req/Sec    14.38k     2.30k   23.05k    90.24%\n  Latency Distribution\n     50%    2.07ms\n     75%    2.52ms\n     90%    3.62ms\n     99%   49.71ms\n  58751 requests in 2.08s, 99.51MB read\nRequests/sec:  28227.62\nTransfer/sec:     47.81MB\n  95% 11.048000ms\n"
+    },
+    {
+      "trial": 3,
+      "recorded_at": "2026-10-20T12:57:06Z",
+      "requests": 398237,
+      "duration_s": 15.05,
+      "rps": 26465.55,
+      "p50_ms": 2.13,
+      "p95_ms": 9.46,
+      "p99_ms": 21.91,
+      "http_errors": 0,
+      "socket_errors": {
+        "connect": 0,
+        "read": 0,
+        "write": 0,
+        "timeout": 64
+      },
+      "successful_rps": 26465.55,
+      "cpu_percent": 91.3641004967093,
+      "rss_mib": 39.28125,
+      "database_valid": true,
+      "valid_duration": true,
+      "completed": true,
+      "container_state": {
+        "Status": "running",
+        "Running": true,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 5691,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-10-20T12:57:06.09154734Z",
+        "FinishedAt": "0001-01-01T00:00:00Z"
+      },
+      "database_after": {
+        "initial_post_count": 500000,
+        "post_count": 504313,
+        "max_post_id": 504313,
+        "integrity": "ok"
+      },
+      "container_host_config": {
+        "CpusetCpus": "0",
+        "NanoCpus": 1000000000,
+        "Memory": 2147483648,
+        "MemorySwap": 2147483648,
+        "Ulimits": [
+          {
+            "Name": "nofile",
+            "Hard": 65535,
+            "Soft": 65535
+          }
+        ]
+      },
+      "processes_before": {
+        "13": {
+          "ppid": 7,
+          "cpu_s": 1.81,
+          "cpu_self_s": 1.81,
+          "cpu_waited_children_s": 0.0,
+          "rss_kib": 37020,
+          "hwm_kib": 37020,
+          "threads": 1
+        }
+      },
+      "processes_after": {
+        "13": {
+          "ppid": 7,
+          "cpu_s": 15.74,
+          "cpu_self_s": 15.74,
+          "cpu_waited_children_s": 0.0,
+          "rss_kib": 40224,
+          "hwm_kib": 40224,
+          "threads": 1
+        }
+      },
+      "wrk_output": "Running 15s test @ http://127.0.0.1:24000/feed\n  2 threads and 64 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     3.10ms    4.35ms  74.49ms   93.51%\n    Req/Sec    13.31k     3.10k   17.06k    79.67%\n  Latency Distribution\n     50%    2.13ms\n     75%    2.66ms\n     90%    4.83ms\n     99%   21.91ms\n  398237 requests in 15.05s, 677.43MB read\n  Socket errors: connect 0, read 0, write 0, timeout 64\nRequests/sec:  26465.55\nTransfer/sec:     45.02MB\n  95% 9.460000ms\n",
+      "warmup_output": "Running 2s test @ http://127.0.0.1:24000/feed\n  2 threads and 64 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     9.67ms   29.07ms 187.88ms   93.78%\n    Req/Sec    13.81k     3.11k   23.12k    89.74%\n  Latency Distribution\n     50%    2.12ms\n     75%    2.66ms\n     90%   10.43ms\n     99%  164.82ms\n  54521 requests in 2.09s, 92.22MB read\nRequests/sec:  26102.54\nTransfer/sec:     44.15MB\n  95% 67.607000ms\n"
+    }
+  ],
+  "evidence": {
+    "measurements_file": "measurements.json",
+    "primary_trial_canonical_record_sha256": "4dba2540c3ce35fcb73d6e47706e522f7ddb85d875a8f1685292fb8b472fa8c5",
+    "server_log": "server-logs/bench-16-3.log",
+    "server_log_bytes": 0,
+    "server_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "source_references": [
+      {
+        "path": "bridge.c",
+        "lines": "40-56, 104-131",
+        "url": "https://github.com/tbsvttr/twelve-dollar-server-challenge/blob/b887fd1fa882f60988d004c75911048b902bf6f7/submissions/fortran-microhttpd-tbsvttr/bridge.c#L40",
+        "fact": "The externally driven libmicrohttpd loop invokes app_flush after MHD_run_wait, queues deferred responses and resumes those connections. Its source connection timeout is 75 seconds."
+      },
+      {
+        "path": "server.f90",
+        "lines": "235-256, 279-280",
+        "url": "https://github.com/tbsvttr/twelve-dollar-server-challenge/blob/b887fd1fa882f60988d004c75911048b902bf6f7/submissions/fortran-microhttpd-tbsvttr/server.f90#L235",
+        "fact": "Responses are deferred while a SQLite transaction is active. app_flush commits or rolls back and reports batch success. SQLite is configured for exclusive locking, WAL and synchronous NORMAL."
+      },
+      {
+        "path": "run.py",
+        "lines": "220-227, 237-244",
+        "fact": "Harness uses wrk with 2 threads, 64 connections and no explicit --timeout argument; database_valid checks integrity and increased post count."
+      }
+    ]
+  },
+  "observed_facts": [
+    "The same pinned source hash, immutable image ID, fingerprint and benchmark configuration appear in all three recorded trials. All 28 archived source files still match their pinned hashes.",
+    "Trial 3 reports 398237 completed requests in 15.05 seconds, 0 HTTP errors and socket errors connect 0, read 0, write 0, timeout 64. Trials 1 and 2 report no HTTP or socket errors.",
+    "The trial 3 archived server log is empty. It contains no captured request, database, checkpoint, event-loop, I/O, crash or timeout trace.",
+    "Trial 3 resource snapshots show one server thread before and after measurement, 91.3641 percent CPU and 39.28125 MiB final RSS. The saved container state is running with OOMKilled false, ExitCode 0 and an empty Error field.",
+    "All three containers were limited to CPU 0, 1 CPU and 2147483648 bytes of memory with MemorySwap also 2147483648 bytes and nofile soft/hard limits of 65535.",
+    "Trial 3 post-load database check reports integrity ok, post count 504313 from initial 500000 and max post ID 504313. Trials 1 and 2 also pass the recorded database check.",
+    "The completed-response latency distribution for trial 3 has p95 9.46 ms, p99 21.91 ms and reported maximum 74.49 ms. It does not supply per-timeout timing or a trace of any unanswered request."
+  ],
+  "inferences": [
+    {
+      "confidence": "not established",
+      "statement": "The timeout cause is unknown from the available evidence. The source loop and deferred SQLite commit design describe possible places where processing can wait, but no captured trace connects any particular operation to these 64 timeouts."
+    }
+  ],
+  "unknowns": [
+    "Which requests timed out, their endpoints, and their start/finish times are not captured.",
+    "The 64-timeout count matching the configured 64 connections does not establish that failures occurred simultaneously or identify a common stall.",
+    "No SQLite checkpoint stall, database lock, commit delay, event-loop stall, kernel scheduling delay or storage delay is established by the empty log and aggregate samples.",
+    "The recorded post-load integrity/count check does not establish the outcome of each timed-out write.",
+    "The wrk command does not explicitly configure --timeout; an exact request deadline has not been independently established in this offline diagnostic."
+  ],
+  "conclusion_for_reporting": "Preserve all three trials. Trial 3 has 64 socket timeouts and 0 HTTP errors; trials 1 and 2 are clean. The service remained running without an OOM report and its post-load database check passed. The saved evidence does not identify a specific timeout cause.",
+  "actions": {
+    "new_workload": false,
+    "retry": false,
+    "build": false,
+    "container_change": false,
+    "source_change": false,
+    "fixture_change": false,
+    "only_output_written": "diagnostics-pr16.json"
+  }
+}

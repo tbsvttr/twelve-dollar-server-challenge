@@ -1,0 +1,82 @@
+{
+  "112": {
+    "pr": 112,
+    "id": "112",
+    "commit": "f3afa25403ac5ee2a2030337de1afd635cd6ab65",
+    "base_image": "twelve-unified:2026-10-07",
+    "architecture": "linux/arm64",
+    "log": "logs/build-pr112.log",
+    "substitutions": [
+      "Install exactpinned SQLite3.54.0 headers in /usr/local/include because submitted PGO/smoke training compile omits the vendored -I argument. Uses same checksum-verified amalgamation as submitted build.sh; runtime SQLite still compiled by unchanged submitted build.sh.",
+      "Allow onlyio_uring_setup/io_uring_enter/io_uring_register syscalls with the recorded narrowseccomp profile; no privileged or unconfined container."
+    ],
+    "started_at": "2026-10-20T11:04:41Z",
+    "previous_attempts": [
+      {
+        "pr": 112,
+        "id": "112",
+        "commit": "f3afa25403ac5ee2a2030337de1afd635cd6ab65",
+        "base_image": "twelve-unified:2026-10-07",
+        "architecture": "linux/arm64",
+        "log": "logs/build-pr112-attempt1.log",
+        "substitutions": [],
+        "started_at": "2026-10-20T10:51:22Z",
+        "container": "twelve-current-build-112",
+        "image": "twelve-current-pr112:2026-10-20",
+        "status": "build_failed",
+        "exit_code": 1,
+        "reason": "    2 | #define _GNU_SOURCE\n      | \n<command-line>: note: this is the location of the previous definition\nbuild: PGO build\npgo/train.c:12:10: fatal error: sqlite3.h: No such file or directory\n   12 | #include \"sqlite3.h\"\n      |          ^~~~~~~~~~~\ncompilation terminated.\nlto-wrapper: warning: using serial compilation of 2 LTRANS jobs\nlto-wrapper: note: see the '-flto' option documentation for more information\n/suite/sources/pr112/build.sh: line 102: build/train: No such file or directory\nbuild: PGO build failed; falling back\nbuild: plain build (no PGO)\nbuild: built bin/server (plain)\npgo/train.c:12:10: fatal error: sqlite3.h: No such file or directory\n   12 | #include \"sqlite3.h\"\n      |          ^~~~~~~~~~~\ncompilation terminated.",
+        "elapsed_s": 105.06,
+        "finished_at": "2026-10-20T10:53:07Z"
+      }
+    ],
+    "container": "twelve-current-build-112",
+    "image": "twelve-current-pr112:2026-10-20",
+    "status": "built",
+    "runtime_setup": "runtime-scripts/pr112.sh",
+    "exit_code": 0,
+    "image_id": "sha256:6d6d902dbd8bd2a23f213b0972879439f8b0d5e7db64756fc13b4e710a53dbdb",
+    "elapsed_s": 102.78,
+    "finished_at": "2026-10-20T11:06:24Z"
+  },
+  "121-c-iouring-ssmurfgg04-gif": {
+    "pr": 121,
+    "id": "121-c-iouring-ssmurfgg04-gif",
+    "commit": "315df90113281bfd9e78a62c1999a12e6d671370",
+    "base_image": "twelve-unified:2026-10-07",
+    "architecture": "linux/arm64",
+    "log": "logs/build-pr121-c-iouring-ssmurfgg04-gif.log",
+    "substitutions": [
+      "Install exactpinned SQLite3.54.0 headers in /usr/local/include because submitted PGO/smoke training compile omits the vendored -I argument. Uses same checksum-verified amalgamation as submitted build.sh; runtime SQLite still compiled by unchanged submitted build.sh.",
+      "Allow onlyio_uring_setup/io_uring_enter/io_uring_register syscalls with the recorded narrowseccomp profile; no privileged or unconfined container."
+    ],
+    "started_at": "2026-10-20T11:06:24Z",
+    "previous_attempts": [
+      {
+        "pr": 121,
+        "id": "121-c-iouring-ssmurfgg04-gif",
+        "commit": "315df90113281bfd9e78a62c1999a12e6d671370",
+        "base_image": "twelve-unified:2026-10-07",
+        "architecture": "linux/arm64",
+        "log": "logs/build-pr121-c-iouring-ssmurfgg04-gif-attempt1.log",
+        "substitutions": [],
+        "started_at": "2026-10-20T10:51:33Z",
+        "container": "twelve-current-build-121-c-iouring-ssmurfgg04-gif",
+        "image": "twelve-current-pr121-c-iouring-ssmurfgg04-gif:2026-10-20",
+        "status": "build_failed",
+        "exit_code": 1,
+        "reason": "    2 | #define _GNU_SOURCE\n      | \n<command-line>: note: this is the location of the previous definition\nbuild: PGO build\npgo/train.c:12:10: fatal error: sqlite3.h: No such file or directory\n   12 | #include \"sqlite3.h\"\n      |          ^~~~~~~~~~~\ncompilation terminated.\nlto-wrapper: warning: using serial compilation of 2 LTRANS jobs\nlto-wrapper: note: see the '-flto' option documentation for more information\n/suite/sources/pr121-c-iouring-ssmurfgg04-gif/build.sh: line 102: build/train: No such file or directory\nbuild: PGO build failed; falling back\nbuild: plain build (no PGO)\nbuild: built bin/server (plain)\npgo/train.c:12:10: fatal error: sqlite3.h: No such file or directory\n   12 | #include \"sqlite3.h\"\n      |          ^~~~~~~~~~~\ncompilation terminated.",
+        "elapsed_s": 96.48,
+        "finished_at": "2026-10-20T10:53:10Z"
+      }
+    ],
+    "container": "twelve-current-build-121-c-iouring-ssmurfgg04-gif",
+    "image": "twelve-current-pr121-c-iouring-ssmurfgg04-gif:2026-10-20",
+    "status": "built",
+    "runtime_setup": "runtime-scripts/pr121-c-iouring-ssmurfgg04-gif.sh",
+    "exit_code": 0,
+    "image_id": "sha256:8f5507820adfd2d73640d4c6f1e3721d9a26b4b3ed912c96c66562bbb2fa08ab",
+    "elapsed_s": 84.55,
+    "finished_at": "2026-10-20T11:07:49Z"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "exit_code": 0,
+  "status": "built",
+  "elapsed_s": 49.25,
+  "commit": "80f16f6a293fcac3096d32f9dc4a8dca0c75abf4",
+  "container": "twelve-current-build-31",
+  "log": "logs/build-pr31.log",
+  "base_image": "twelve-unified:2026-10-07",
+  "substitutions": [],
+  "image": "twelve-current-pr31:2026-10-20",
+  "image_id": "sha256:bb39b1daf32ea292be2f3a3b28bc2b8d9fb5a0b7313539639f9f037621fb738a",
+  "runtime_setup": "runtime-scripts/pr31.sh",
+  "repair_log": "logs/repair-pr31.log",
+  "repair_elapsed_s": 6.05,
+  "repair_reason": "Install libwebpmux3 and libuv1t64 required by submitted R production packages."
+}

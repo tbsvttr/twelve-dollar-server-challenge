@@ -1,0 +1,77 @@
+{
+  "files": {
+    ".gitignore": {
+      "sha256": "3044bcd4a2d0b10301b1c3ede1f6e3fa4b966afe239e2fa91a0b849c20f29c4c",
+      "bytes": 35,
+      "physical_lines": 3,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "README.md": {
+      "sha256": "1cf38d6cced94c6c492367313a78115e988e72fe04cd8d132e30a3abc47fb075",
+      "bytes": 4991,
+      "physical_lines": 87,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "auth.go": {
+      "sha256": "6449b2e1e70813f4ae719ec6113db02417711fd2ee05a10633d1f0b574926fe6",
+      "bytes": 3709,
+      "physical_lines": 149,
+      "classification": "application"
+    },
+    "build.sh": {
+      "sha256": "04f8b9924b4856cba42007d1c039cc30396e4eb562eaffe182dd0ef762d7583d",
+      "bytes": 325,
+      "physical_lines": 11,
+      "classification": "own_support"
+    },
+    "db.go": {
+      "sha256": "5e8d14a3127865dcbe8e06f12d8e527b602bc97ad97363b59dc1b2cfa9b6da35",
+      "bytes": 11505,
+      "physical_lines": 452,
+      "classification": "application"
+    },
+    "go.mod": {
+      "sha256": "34dc25772999a6d6307ca15d75ba3528eb6d58731652cf861be11d91f20a2442",
+      "bytes": 254,
+      "physical_lines": 11,
+      "classification": "other"
+    },
+    "go.sum": {
+      "sha256": "77b30feea60888a4a1eb6e358b5426436d12e608c7b8b2ef421fed0860ee8b40",
+      "bytes": 877,
+      "physical_lines": 10,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "install.sh": {
+      "sha256": "29280021451d00095fe9ff7ec9adb94d7131079af1d76ef76189130ee8879318",
+      "bytes": 652,
+      "physical_lines": 18,
+      "classification": "own_support"
+    },
+    "jsonparse.go": {
+      "sha256": "10dfee431854149f26f053eb9cb52200fa499fbdb35d33e988cfe73d44f1fb29",
+      "bytes": 9528,
+      "physical_lines": 538,
+      "classification": "application"
+    },
+    "jsonutil.go": {
+      "sha256": "8891ec149153f06b27e71b7357a9414e39107805e43a346795df8aaafa58da1e",
+      "bytes": 1016,
+      "physical_lines": 41,
+      "classification": "application"
+    },
+    "main.go": {
+      "sha256": "96ee5d43c9a58f8fa8a528e3982c5d11d4dbfd39b3a3dcce079c7ee0a37a235a",
+      "bytes": 8106,
+      "physical_lines": 334,
+      "classification": "application"
+    },
+    "start.sh": {
+      "sha256": "c117eb93831560719006bebd528ca5efcfbe8a9704cbaed8c44b7cef35419770",
+      "bytes": 195,
+      "physical_lines": 6,
+      "classification": "own_support"
+    }
+  },
+  "skipped_members": []
+}

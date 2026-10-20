@@ -1,0 +1,44 @@
+
+$ docker exec twelve-current-build-pr48 bash -c set -e; rm -rf /suite/sources; mkdir -p /suite/sources; cp -a /evidence/sources/pr48 /suite/sources/; cp /evidence/manifest.json /suite/manifest.json; cp /evidence/schema.sql /suite/schema.sql; chown -R bench:bench /suite/sources
+
+$ docker exec twelve-current-build-pr48 bash /evidence/runtime-scripts/pr48.sh
+/tmp/tmp.qHdjJ79O2H: OK
+go version go1.27.2 linux/arm64
+
+$ docker exec twelve-current-build-pr48 runuser -u bench -- env PATH=/usr/local/go/bin:/opt/twelve-rust/cargo/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 bash /suite/sources/pr48/build.sh
+go: downloading github.com/KaikeGM/zerojwt v1.2.0
+go: downloading github.com/panjf2000/gnet/v2 v2.10.0
+go: downloading golang.org/x/sync v0.11.0
+go: downloading golang.org/x/sys v0.30.0
+go: downloading go.uber.org/zap v1.28.0
+go: downloading gopkg.in/natefinch/lumberjack.v2 v2.2.1
+go: downloading github.com/panjf2000/ants/v2 v2.12.1
+go: downloading go.uber.org/multierr v1.11.0
+# go-gnet-kaikegm
+lto-wrapper: warning: using serial compilation of 22 LTRANS jobs
+lto-wrapper: note: see the '-flto' option documentation for more information
+
+$ docker exec twelve-current-build-pr48 bash -c rm -rf /tmp/* /root/.cache /root/.cargo/registry /home/bench/.cache /home/bench/.cargo/registry /home/bench/.npm/_cacache /var/lib/apt/lists/* /var/cache/apt/archives/*.deb; find /suite/sources -type d -path '*/target/release/incremental' -prune -exec rm -rf {} +
+df9a0afaa87e88ba42b75538a41f141b218fcca238318bfca59dc7ca3aa60131
+twelve-current-clean-pr48
+
+Compiler provenance:
+/suite/sources/pr48/bin/server: go1.27.2
+	path	go-gnet-kaikegm
+	mod	go-gnet-kaikegm	(devel)	
+	dep	github.com/KaikeGM/zerojwt	v1.2.0	h1:S+J0SwHk972Mim1y+URSoZ+XwIuWx9mr/1AiUVCATN4=
+	dep	github.com/panjf2000/ants/v2	v2.12.1	h1:BWvU2wHpyXWxhhNXsGB6JXLCNbshyLd1QxvoAmZnu10=
+	dep	github.com/panjf2000/gnet/v2	v2.10.0	h1:rC4jNF+jtXj/FH+8JOIQ3XxjD+yBunYBLKg9TE3dc4g=
+	dep	go.uber.org/multierr	v1.11.0	h1:blXXJkSxSSfBVBlC76pxqeO+LN3aDfLQo+309xJstO0=
+	dep	go.uber.org/zap	v1.28.0	h1:IZzaP1Fv73/T/pBMLk4VutPl36uNC+OSUh3JLG3FIjo=
+	dep	golang.org/x/sync	v0.11.0	h1:GGz8+XQP4FvTTrjZPzNKTMFtSXH80RAzG+5ghFPgK9w=
+	dep	golang.org/x/sys	v0.30.0	h1:QjkSwP/36a20jFYWkSue1YwXzLmsV5Gfq7Eiy72C1uc=
+	dep	gopkg.in/natefinch/lumberjack.v2	v2.2.1	h1:bBRl1b0OH9s/DuPhuXpNl+VtCaJXFZ5/uEFST95x9zc=
+	build	-buildmode=exe
+	build	-compiler=gc
+	build	-pgo=default.pgo
+	build	-trimpath=true
+	build	CGO_ENABLED=1
+	build	GOARCH=arm64
+	build	GOARM64=v8.0
+	build	GOOS=linux

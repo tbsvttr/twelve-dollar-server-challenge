@@ -1,0 +1,62 @@
+Pinned source: 0037443c8ca4d49a426919c4c359993756975760
+a6c5ac84228caa1fed213b9cd13a800f103b9bdf20beb6441e43571b42b3ceb9
+.deps/fio-stl.h: OK
+Patched fio HTTP finish-task ownership: 928b4ba825d37c672637a011fc42fa98cc4135101d5108d5ab840e29b51038e2
+.deps/sqlite.zip: OK
+In file included from .deps/fio-stl-pressure.h:105458,
+                 from server.c:4:
+.deps/fio-stl.h: In function 'fio___p256_scalar_ct_gte_n':
+.deps/fio-stl.h:54494:9: warning: ignoring return value of 'fio_math_subc64' declared with attribute 'warn_unused_result' [-Wunused-result]
+54494 |   (void)fio_math_subc64(a[0], FIO___P256_N[0], 0, &borrow);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.deps/fio-stl.h:54495:9: warning: ignoring return value of 'fio_math_subc64' declared with attribute 'warn_unused_result' [-Wunused-result]
+54495 |   (void)fio_math_subc64(a[1], FIO___P256_N[1], borrow, &borrow);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.deps/fio-stl.h:54496:9: warning: ignoring return value of 'fio_math_subc64' declared with attribute 'warn_unused_result' [-Wunused-result]
+54496 |   (void)fio_math_subc64(a[2], FIO___P256_N[2], borrow, &borrow);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.deps/fio-stl.h:54497:9: warning: ignoring return value of 'fio_math_subc64' declared with attribute 'warn_unused_result' [-Wunused-result]
+54497 |   (void)fio_math_subc64(a[3], FIO___P256_N[3], borrow, &borrow);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.deps/fio-stl.h: In function 'fio___rsa_ct_lt':
+.deps/fio-stl.h:58678:11: warning: ignoring return value of 'fio_math_subc64' declared with attribute 'warn_unused_result' [-Wunused-result]
+58678 |     (void)fio_math_subc64(a_i, b_i, 0, &borrow); /* borrow=1 iff a_i < b_i */
+      |           ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.deps/fio-stl.h: In function 'fio___rsa_private_op_crt':
+.deps/fio-stl.h:59554:9: warning: ignoring return value of 'fio_math_sub' declared with attribute 'warn_unused_result' [-Wunused-result]
+59554 |   (void)fio_math_sub(p_minus_2, p_minus_2, one, p_word_count); /* p-1 */
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.deps/fio-stl.h:59555:9: warning: ignoring return value of 'fio_math_sub' declared with attribute 'warn_unused_result' [-Wunused-result]
+59555 |   (void)fio_math_sub(p_minus_2, p_minus_2, one, p_word_count); /* p-2 */
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.deps/fio-stl.h:59556:9: warning: ignoring return value of 'fio_math_sub' declared with attribute 'warn_unused_result' [-Wunused-result]
+59556 |   (void)fio_math_sub(q_minus_2, q_minus_2, one, q_word_count); /* q-1 */
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.deps/fio-stl.h:59557:9: warning: ignoring return value of 'fio_math_sub' declared with attribute 'warn_unused_result' [-Wunused-result]
+59557 |   (void)fio_math_sub(q_minus_2, q_minus_2, one, q_word_count); /* q-2 */
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.deps/fio-stl.h:59577:9: warning: ignoring return value of 'fio_math_add' declared with attribute 'warn_unused_result' [-Wunused-result]
+59577 |   (void)fio_math_add(diff, diff, p_mask, p_word_count);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.deps/fio-stl.h:59593:9: warning: ignoring return value of 'fio_math_add' declared with attribute 'warn_unused_result' [-Wunused-result]
+59593 |   (void)fio_math_add(result_words, qh, s_q_ext, word_count);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+.deps/fio-stl.h: In function 'fio___rsa_reduce_mod':
+.deps/fio-stl.h:58745:9: warning: ignoring return value of 'fio_math_add' declared with attribute 'warn_unused_result' [-Wunused-result]
+58745 |   (void)fio_math_add(out, out, carry_add, mod_word_count);
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+In function 'fio_memcpy16',
+    inlined from 'fio___ipc_on_attach_cluster' at .deps/fio-stl-pressure.h:109851:3:
+.deps/fio-stl-pressure.h:1741:48: warning: writing 16 bytes into a region of size 8 [-Wstringop-overflow=]
+ 1741 |     FIO_FOR_UNROLL(bytes, 1, i, ((char *)d)[i] = ((const char *)s)[i]);        \
+      |                                 ~~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~
+.deps/fio-stl-pressure.h:1715:9: note: in definition of macro 'FIO_FOR_UNROLL'
+ 1715 |         action;                                                                \
+      |         ^~~~~~
+.deps/fio-stl-pressure.h:1768:1: note: in expansion of macro 'FIO___MAKE_MEMCPY_FIXED'
+ 1768 | FIO___MAKE_MEMCPY_FIXED(16)
+      | ^~~~~~~~~~~~~~~~~~~~~~~
+.deps/fio-stl-pressure.h: In function 'fio___ipc_on_attach_cluster':
+.deps/fio-stl-pressure.h:108237:10: note: destination object 'on_reply' of size 8
+108237 |   void (*on_reply)(struct fio_ipc_s *); /* run on caller (encrypted) */
+       |          ^~~~~~~~

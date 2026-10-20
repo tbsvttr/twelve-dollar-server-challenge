@@ -1,0 +1,112 @@
+
+$ docker exec twelve-current-build-pr79 bash -c set -e; rm -rf /suite/sources; mkdir -p /suite/sources; cp -a /evidence/sources/pr79 /suite/sources/; cp /evidence/manifest.json /suite/manifest.json; cp /evidence/schema.sql /suite/schema.sql; chown -R bench:bench /suite/sources
+
+$ docker exec twelve-current-build-pr79 bash /evidence/runtime-scripts/pr79.sh
+Hit:1 http://ports.ubuntu.com/ubuntu-ports noble InRelease
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble-updates InRelease [126 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble-backports InRelease [126 kB]
+Get:4 http://ports.ubuntu.com/ubuntu-ports noble-security InRelease [126 kB]
+Get:5 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 Packages [1786 kB]
+Get:6 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 Packages [2214 kB]
+Get:7 http://ports.ubuntu.com/ubuntu-ports noble-updates/restricted arm64 Packages [3251 kB]
+Get:8 http://ports.ubuntu.com/ubuntu-ports noble-updates/multiverse arm64 Packages [104 kB]
+Get:9 http://ports.ubuntu.com/ubuntu-ports noble-backports/multiverse arm64 Packages [669 B]
+Get:10 http://ports.ubuntu.com/ubuntu-ports noble-security/universe arm64 Packages [1638 kB]
+Get:11 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 Packages [1475 kB]
+Get:12 http://ports.ubuntu.com/ubuntu-ports noble-security/restricted arm64 Packages [3129 kB]
+Get:13 http://ports.ubuntu.com/ubuntu-ports noble-security/multiverse arm64 Packages [99.1 kB]
+Fetched 14.1 MB in 1s (12.3 MB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  pypy3-lib
+Suggested packages:
+  pypy3-doc pypy3-tk
+The following NEW packages will be installed:
+  pypy3 pypy3-lib pypy3-venv
+0 upgraded, 3 newly installed, 0 to remove and 19 not upgraded.
+Need to get 14.2 MB of archives.
+After this operation, 77.8 MB of additional disk space will be used.
+Get:1 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 pypy3-lib arm64 7.3.15+dfsg-1build3 [3045 kB]
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 pypy3 arm64 7.3.15+dfsg-1build3 [11.1 MB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 pypy3-venv all 7.3.15+dfsg-1build3 [22.6 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 14.2 MB in 1s (13.2 MB/s)
+Selecting previously unselected package pypy3-lib:arm64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 16962 files and directories currently installed.)
+Preparing to unpack .../pypy3-lib_7.3.15+dfsg-1build3_arm64.deb ...
+Unpacking pypy3-lib:arm64 (7.3.15+dfsg-1build3) ...
+Setting up pypy3-lib:arm64 (7.3.15+dfsg-1build3) ...
+Selecting previously unselected package pypy3.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 18220 files and directories currently installed.)
+Preparing to unpack .../pypy3_7.3.15+dfsg-1build3_arm64.deb ...
+Unpacking pypy3 (7.3.15+dfsg-1build3) ...
+Selecting previously unselected package pypy3-venv.
+Preparing to unpack .../pypy3-venv_7.3.15+dfsg-1build3_all.deb ...
+Unpacking pypy3-venv (7.3.15+dfsg-1build3) ...
+Setting up pypy3 (7.3.15+dfsg-1build3) ...
+running pypy3 rtupdate hooks for 7.3
+running pypy3 post-rtupdate hooks for 7.3
+Setting up pypy3-venv (7.3.15+dfsg-1build3) ...
+
+$ docker exec twelve-current-build-pr79 runuser -u bench -- env PATH=/usr/local/go/bin:/opt/twelve-rust/cargo/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 bash /suite/sources/pr79/build.sh
+Collecting attrs==26.1.0 (from -r requirements.txt (line 1))
+  Downloading attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+Collecting Automat==25.4.16 (from -r requirements.txt (line 2))
+  Downloading automat-25.4.16-py3-none-any.whl.metadata (8.4 kB)
+Requirement already satisfied: cffi==1.16.0 in /usr/lib/pypy3.9 (from -r requirements.txt (line 3)) (1.16.0)
+Collecting constantly==23.10.4 (from -r requirements.txt (line 4))
+  Downloading constantly-23.10.4-py3-none-any.whl.metadata (1.8 kB)
+Requirement already satisfied: greenlet==0.4.13 in /usr/lib/pypy3.9 (from -r requirements.txt (line 5)) (0.4.13)
+Requirement already satisfied: hpy==0.9.0 in /usr/lib/pypy3.9 (from -r requirements.txt (line 6)) (0.9.0)
+Collecting hyperlink==21.0.0 (from -r requirements.txt (line 7))
+  Downloading hyperlink-21.0.0-py2.py3-none-any.whl.metadata (1.5 kB)
+Collecting idna==3.20 (from -r requirements.txt (line 8))
+  Using cached idna-3.20-py3-none-any.whl.metadata (7.2 kB)
+Collecting Incremental==24.11.0 (from -r requirements.txt (line 9))
+  Downloading incremental-24.11.0-py3-none-any.whl.metadata (9.5 kB)
+Collecting packaging==26.3 (from -r requirements.txt (line 10))
+  Downloading packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Requirement already satisfied: readline==6.2.4.1 in /usr/lib/pypy3.9 (from -r requirements.txt (line 11)) (6.2.4.1)
+Collecting tomli==2.5.0 (from -r requirements.txt (line 12))
+  Downloading tomli-2.5.0-py3-none-any.whl.metadata (10 kB)
+Collecting Twisted==26.4.0 (from -r requirements.txt (line 13))
+  Downloading twisted-26.4.0-py3-none-any.whl.metadata (15 kB)
+Collecting typing_extensions==4.16.0 (from -r requirements.txt (line 14))
+  Using cached typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting zope.interface==8.0.1 (from -r requirements.txt (line 15))
+  Downloading zope_interface-8.0.1.tar.gz (253 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 253.7/253.7 kB 6.3 MB/s eta 0:00:00
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Getting requirements to build wheel: started
+  Getting requirements to build wheel: finished with status 'done'
+  Preparing metadata (pyproject.toml): started
+  Preparing metadata (pyproject.toml): finished with status 'done'
+Requirement already satisfied: setuptools>=64.0 in ./.venv/lib/pypy3.9/site-packages (from hpy==0.9.0->-r requirements.txt (line 6)) (68.1.2)
+Downloading attrs-26.1.0-py3-none-any.whl (67 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 67.5/67.5 kB 2.0 MB/s eta 0:00:00
+Downloading automat-25.4.16-py3-none-any.whl (42 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 42.8/42.8 kB 5.4 MB/s eta 0:00:00
+Downloading constantly-23.10.4-py3-none-any.whl (13 kB)
+Downloading hyperlink-21.0.0-py2.py3-none-any.whl (74 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 74.6/74.6 kB 15.0 MB/s eta 0:00:00
+Using cached idna-3.20-py3-none-any.whl (69 kB)
+Downloading incremental-24.11.0-py3-none-any.whl (21 kB)
+Using cached packaging-26.3-py3-none-any.whl (129 kB)
+Downloading tomli-2.5.0-py3-none-any.whl (14 kB)
+Downloading twisted-26.4.0-py3-none-any.whl (3.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.2/3.2 MB 19.0 MB/s eta 0:00:00
+Using cached typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+Building wheels for collected packages: zope.interface
+  Building wheel for zope.interface (pyproject.toml): started
+  Building wheel for zope.interface (pyproject.toml): finished with status 'done'
+  Created wheel for zope.interface: filename=zope_interface-8.0.1-py3-none-any.whl size=196714 sha256=5efef406f2f12cb71ea58da36e992d78a50f233a11926249549d963ee374b6bc
+  Stored in directory: /home/bench/.cache/pip/wheels/fe/dc/cd/4cdc3073e48542fafd13ca3f7c1b8c4e5ed0062980550577dd
+Successfully built zope.interface
+Installing collected packages: zope.interface, typing_extensions, tomli, packaging, idna, constantly, attrs, Incremental, hyperlink, Automat, Twisted
+Successfully installed Automat-25.4.16 Incremental-24.11.0 Twisted-26.4.0 attrs-26.1.0 constantly-23.10.4 hyperlink-21.0.0 idna-3.20 packaging-26.3 tomli-2.5.0 typing_extensions-4.16.0 zope.interface-8.0.1
+
+$ docker exec twelve-current-build-pr79 bash -c rm -f /usr/local/bin/nproc; rm -rf /tmp/* /root/.cache /root/.cargo/registry /home/bench/.cache /home/bench/.cargo/registry /home/bench/.npm/_cacache /var/lib/apt/lists/* /var/cache/apt/archives/*.deb; find /suite/sources -type d -path '*/target/release/incremental' -prune -exec rm -rf {} +

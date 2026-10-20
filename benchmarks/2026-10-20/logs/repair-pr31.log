@@ -1,0 +1,33 @@
+Repair native R runtime libraries only; pinned application sources unchanged.
+
+$ docker run -d --name twelve-current-repair-pr31 --cpus 1 --memory 2g --memory-swap 2g --mount type=bind,src=<BENCHMARK_EVIDENCE>,dst=/evidence,readonly sha256:94238732b94844db80df849b096796d65860c00be682d6920131bef77ce94f45 sleep infinity
+da4353075dcd3ca5156a91fe6780e6873b0e44ef47551d27a436778aee4a9f3b
+
+$ docker exec twelve-current-repair-pr31 bash /evidence/runtime-scripts/pr31.sh
+Hit:1 http://ports.ubuntu.com/ubuntu-ports noble InRelease
+Hit:2 http://ports.ubuntu.com/ubuntu-ports noble-updates InRelease
+Hit:3 http://ports.ubuntu.com/ubuntu-ports noble-backports InRelease
+Hit:4 http://ports.ubuntu.com/ubuntu-ports noble-security InRelease
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following NEW packages will be installed:
+  libuv1t64 libwebpmux3
+0 upgraded, 2 newly installed, 0 to remove and 16 not upgraded.
+Need to get 120 kB of archives.
+After this operation, 413 kB of additional disk space will be used.
+Get:1 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libuv1t64 arm64 1.48.0-1.1build1 [95.3 kB]
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libwebpmux3 arm64 1.3.2-0.4build3 [25.0 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 120 kB in 0s (286 kB/s)
+Selecting previously unselected package libuv1t64:arm64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 20945 files and directories currently installed.)
+Preparing to unpack .../libuv1t64_1.48.0-1.1build1_arm64.deb ...
+Unpacking libuv1t64:arm64 (1.48.0-1.1build1) ...
+Selecting previously unselected package libwebpmux3:arm64.
+Preparing to unpack .../libwebpmux3_1.3.2-0.4build3_arm64.deb ...
+Unpacking libwebpmux3:arm64 (1.3.2-0.4build3) ...
+Setting up libuv1t64:arm64 (1.48.0-1.1build1) ...
+Setting up libwebpmux3:arm64 (1.3.2-0.4build3) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.9) ...

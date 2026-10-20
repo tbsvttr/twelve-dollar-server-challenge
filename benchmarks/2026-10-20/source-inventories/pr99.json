@@ -1,0 +1,71 @@
+{
+  "files": {
+    ".gitignore": {
+      "sha256": "c951a4cd2f075a8b5d540a0c5d8d569241c6d904e754bb18c38fd09c0699d0b6",
+      "bytes": 17,
+      "physical_lines": 2,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "README.md": {
+      "sha256": "dce4419e6cfd1b3978a4b798fac1005d3ffaec217a8317f94127f0f93048e2e4",
+      "bytes": 2973,
+      "physical_lines": 44,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "auth.go": {
+      "sha256": "8c4d9047d30a5e891c6455aaa9fbfabe936a94eaf78daf6af19abbc75f7f2e06",
+      "bytes": 1176,
+      "physical_lines": 56,
+      "classification": "application"
+    },
+    "build.sh": {
+      "sha256": "5f22bff44b508d9d8b7e32c9cdad942ffca7f3274ebee3105802a3870ad4e676",
+      "bytes": 260,
+      "physical_lines": 5,
+      "classification": "own_support"
+    },
+    "go.mod": {
+      "sha256": "98002a88c307ccb091da8c5a8080231877a0656225b28abca94675583c414ea3",
+      "bytes": 117,
+      "physical_lines": 8,
+      "classification": "other"
+    },
+    "go.sum": {
+      "sha256": "3cfecb172d550b7c7660e7d71db31e6a06935de4602b83f51ca7976095d3d4d9",
+      "bytes": 352,
+      "physical_lines": 4,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "handlers.go": {
+      "sha256": "6e9f2d52f7f8985b9f43e7b12e2fc9b00016508152cb44b3362df75cce43c786",
+      "bytes": 5184,
+      "physical_lines": 205,
+      "classification": "application"
+    },
+    "install.sh": {
+      "sha256": "e561341240da309c226f6d6a1ed8cc64cb08769a0871953a95e6d30855f0116c",
+      "bytes": 488,
+      "physical_lines": 14,
+      "classification": "own_support"
+    },
+    "main.go": {
+      "sha256": "b8859ca8e72551025b0c30c8f36a723c6a71aabb90750516236205f768dfbd76",
+      "bytes": 1806,
+      "physical_lines": 92,
+      "classification": "application"
+    },
+    "start.sh": {
+      "sha256": "19f40fe2731f5ce29c621f380b7071e3a3fc5f5b16b3868432194b934bd41932",
+      "bytes": 115,
+      "physical_lines": 4,
+      "classification": "own_support"
+    },
+    "store.go": {
+      "sha256": "ce34344555ab50b6f45017f53729cfe8953e62139d0799a7ef045303dd92d6ca",
+      "bytes": 4104,
+      "physical_lines": 156,
+      "classification": "application"
+    }
+  },
+  "skipped_members": []
+}

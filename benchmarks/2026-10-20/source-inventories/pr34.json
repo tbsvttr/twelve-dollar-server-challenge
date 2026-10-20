@@ -1,0 +1,173 @@
+{
+  "files": {
+    ".gitignore": {
+      "sha256": "aaccb1a00557171b31d00a99a6a2666856e417964732490685cdcba9f02de491",
+      "bytes": 5,
+      "physical_lines": 1,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "README.md": {
+      "sha256": "15f6ee33f9d48b82245734f01bc3746d11ae760334e2b22e82d0459984cdc4a0",
+      "bytes": 7171,
+      "physical_lines": 95,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "build.sh": {
+      "sha256": "87684654cf0f21e4569cb84b23eaa0330808ae2eb6ac52b61c31300308746417",
+      "bytes": 441,
+      "physical_lines": 8,
+      "classification": "own_support"
+    },
+    "cmd/server/main.go": {
+      "sha256": "d26b591a6e4c1b015f5a75a87a03b46971fba90cf196e62b4d8c9a3625448b26",
+      "bytes": 1925,
+      "physical_lines": 80,
+      "classification": "application"
+    },
+    "domain/domain_ggen.go": {
+      "sha256": "8d05f78b4b2ac9f6e321e3da4c6b4e37d8165a90ee43786aab0ae698cb457c66",
+      "bytes": 64733,
+      "physical_lines": 2388,
+      "classification": "dependency_or_generated"
+    },
+    "domain/errors.go": {
+      "sha256": "5d28cdf75356dc0546d962559d82005097ad9290bb89780fff91b5784a486d85",
+      "bytes": 848,
+      "physical_lines": 23,
+      "classification": "application"
+    },
+    "domain/health.go": {
+      "sha256": "28df5052df54bf6c05ea9fe9c84a431716a85381a827e7efb0321ea355e59aa8",
+      "bytes": 442,
+      "physical_lines": 19,
+      "classification": "application"
+    },
+    "domain/post.go": {
+      "sha256": "7eb3287d16c98801111a41430c2a8b68749c53ae4f326a06f6ea504c106e4384",
+      "bytes": 1382,
+      "physical_lines": 61,
+      "classification": "application"
+    },
+    "domain/principal.go": {
+      "sha256": "16f3de3aa41e9d030093ce00ccbe6c515a10c778ba15bdaf6a10dceb7296e742",
+      "bytes": 979,
+      "physical_lines": 34,
+      "classification": "application"
+    },
+    "go.mod": {
+      "sha256": "af9003a2e9ca049a46fd04a33c00992ecec90d66d476f78b5cc7fc586e301d28",
+      "bytes": 669,
+      "physical_lines": 23,
+      "classification": "other"
+    },
+    "go.sum": {
+      "sha256": "76f301f3eecc55fe9d1718e15b625bd58d80199f9693bdb63247ff3bb9eedc56",
+      "bytes": 2223,
+      "physical_lines": 22,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "install.sh": {
+      "sha256": "06b7f006f634557221e78cd5022d2c6c19bed90d1e2d6f0a438d34acbac016ab",
+      "bytes": 482,
+      "physical_lines": 11,
+      "classification": "own_support"
+    },
+    "internal/auth/auth_ggen.go": {
+      "sha256": "33c0b47a11efebba89095148317303787541f7208717754b7417fdc3e22a2c7b",
+      "bytes": 12895,
+      "physical_lines": 534,
+      "classification": "dependency_or_generated"
+    },
+    "internal/auth/token.go": {
+      "sha256": "668aa0ee200c78af577903d8b56e8c47dda3bc9c08444ee3d6c8befaf260364d",
+      "bytes": 3697,
+      "physical_lines": 127,
+      "classification": "application"
+    },
+    "internal/auth/token_test.go": {
+      "sha256": "d969b0031501ad0b902b139699ea88e10152bc2834800c1301f540d8985afc44",
+      "bytes": 1051,
+      "physical_lines": 44,
+      "classification": "own_support"
+    },
+    "internal/config/config.go": {
+      "sha256": "fce2c7a87d25959d6b7009eb9a91dd9711f430b4f9e0b3c515c60afb3a5df442",
+      "bytes": 460,
+      "physical_lines": 27,
+      "classification": "application"
+    },
+    "internal/httpapi/api.go": {
+      "sha256": "ae24223b7067414cb2808272e85076a24b6f040a1c1f2d72a01d9bc18fdceb84",
+      "bytes": 202,
+      "physical_lines": 10,
+      "classification": "application"
+    },
+    "internal/httpapi/api_gen.go": {
+      "sha256": "7193ed798d2e3543705aa18772155bbb6327d3df702f45c021e18697be192120",
+      "bytes": 3536,
+      "physical_lines": 154,
+      "classification": "dependency_or_generated"
+    },
+    "internal/httpapi/auth.go": {
+      "sha256": "bfcd4e7bc967148e1e3a16b1dea5abfae030a3e200521cce4c7203fe2cfea475",
+      "bytes": 1012,
+      "physical_lines": 37,
+      "classification": "application"
+    },
+    "internal/httpapi/errors.go": {
+      "sha256": "8fc56192069676ae8163c0ce9c375cc509b81d33181012f1b820c0454c946844",
+      "bytes": 2567,
+      "physical_lines": 84,
+      "classification": "application"
+    },
+    "internal/httpapi/health.go": {
+      "sha256": "5cdbd42a484aee292cfdaaae2a746af96ba83a9a64355b8e5ff20b77f65e467b",
+      "bytes": 616,
+      "physical_lines": 26,
+      "classification": "application"
+    },
+    "internal/httpapi/posts.go": {
+      "sha256": "7c4117560c2e53f011497872aa244ef828a5ee306d49112b2bdbdba72d5b819b",
+      "bytes": 1735,
+      "physical_lines": 65,
+      "classification": "application"
+    },
+    "internal/httpapi/server.go": {
+      "sha256": "1d401a92cb116c902083f2b4fa8ad287538e18f659b21d6710bb59b6dec65e50",
+      "bytes": 1063,
+      "physical_lines": 44,
+      "classification": "application"
+    },
+    "internal/repository/db.go": {
+      "sha256": "a066e2b750120d6b7e3b6978de855d94aaf65b56ad01966d79764da05cda24ad",
+      "bytes": 2275,
+      "physical_lines": 93,
+      "classification": "application"
+    },
+    "internal/repository/repository.go": {
+      "sha256": "9df6b6de3f6189bb489a11f891155620616bb40b4f79e93d0e959cb3cf856b2a",
+      "bytes": 4534,
+      "physical_lines": 175,
+      "classification": "application"
+    },
+    "internal/service/container.go": {
+      "sha256": "4931ceab75062c614ec52fa5ae4a4252cb1fc854b4c4dc510fb18d28e4b11a9a",
+      "bytes": 336,
+      "physical_lines": 13,
+      "classification": "application"
+    },
+    "internal/service/posts.go": {
+      "sha256": "1f60f511e4ef743b53635067e9d683d9c054c7b9a596fc33c3b70e447539a6ad",
+      "bytes": 1704,
+      "physical_lines": 53,
+      "classification": "application"
+    },
+    "start.sh": {
+      "sha256": "4e48ea57f313dce867e1b575b505b1ad2a2c60e4bb5db6b501ff350cac0cdae4",
+      "bytes": 154,
+      "physical_lines": 4,
+      "classification": "own_support"
+    }
+  },
+  "skipped_members": []
+}

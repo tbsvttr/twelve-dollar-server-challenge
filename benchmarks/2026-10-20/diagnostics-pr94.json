@@ -1,0 +1,235 @@
+{
+  "schema_version": 1,
+  "case_id": "94",
+  "pr": 94,
+  "primary_trial": 2,
+  "context_trials": [
+    1
+  ],
+  "diagnostic_kind": "offline_existing_evidence_only",
+  "collected_at": "2026-10-20T12:38:51Z",
+  "identity": {
+    "commit": "fbe2153cf0d8798012b46bbf51c5cbbeaaa79e82",
+    "source_sha256": "40ad959074c584c4954ace13159d1511b6e759d32dfe9a8632a944e658ff8f8f",
+    "image": "twelve-current-pr94:2026-10-20",
+    "image_id": "sha256:66c84eecf322fe96c3c74b55cb74d1d0e1852009d95337da5a3dfe3afaccdfaf",
+    "fingerprint": "caa0b0904d0e6cf9ac5ae2e6e13fe74570d7395a99303afce34ec79803b72c34"
+  },
+  "source_identity": {
+    "folder": "lua-openresty-yar0slav",
+    "source_url": "https://github.com/yar0slav/twelve-dollar-server-challenge/tree/fbe2153cf0d8798012b46bbf51c5cbbeaaa79e82/submissions/lua-openresty-yar0slav",
+    "source_hashes_verified_during_read_only_inspection": 7,
+    "inventory": "archives/pr94-sha256.json"
+  },
+  "observed_trials": [
+    {
+      "trial": 1,
+      "recorded_at": "2026-10-20T11:47:29Z",
+      "requests": 554266,
+      "duration_s": 15.03,
+      "rps": 36865.41,
+      "p95_ms": 7.056,
+      "p99_ms": 14.78,
+      "http_errors": 0,
+      "socket_errors": {
+        "connect": 0,
+        "read": 0,
+        "write": 0,
+        "timeout": 0
+      },
+      "cpu_percent": 91.08161036784863,
+      "rss_mib": 98.87890625,
+      "database_valid": true,
+      "valid_duration": true,
+      "completed": true
+    },
+    {
+      "trial": 2,
+      "recorded_at": "2026-10-20T12:35:16Z",
+      "requests": 564527,
+      "duration_s": 15.03,
+      "rps": 37562.61,
+      "p95_ms": 7.434,
+      "p99_ms": 11.97,
+      "http_errors": 0,
+      "socket_errors": {
+        "connect": 0,
+        "read": 0,
+        "write": 0,
+        "timeout": 63
+      },
+      "cpu_percent": 92.06007992384134,
+      "rss_mib": 99.328125,
+      "database_valid": true,
+      "valid_duration": true,
+      "completed": true
+    }
+  ],
+  "evidence": {
+    "measurements_file": "measurements.json",
+    "trial2_record_sha256": "b1378a8fb8da0d8a382346f571b5573bdb4cead703ba642fe1264281a394ad5e",
+    "server_log": "server-logs/bench-94-2.log",
+    "server_log_bytes": 0,
+    "server_log_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "observed_facts": [
+    {
+      "id": "client_timeouts",
+      "statement": "Trial 2 completed 564527 requests with 0 HTTP errors and 63 socket timeouts; connect/read/write error counters were 0. Trial 1 recorded 554266 requests with no HTTP or socket errors.",
+      "trial2_output": "Running 15s test @ http://127.0.0.1:24000/feed\n  2 threads and 64 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     2.12ms    2.13ms  27.59ms   91.98%\n    Req/Sec    18.89k     1.34k   25.39k    88.00%\n  Latency Distribution\n     50%    1.51ms\n     75%    1.67ms\n     90%    2.47ms\n     99%   11.97ms\n  564527 requests in 15.03s, 0.96GB read\n  Socket errors: connect 0, read 0, write 0, timeout 63\nRequests/sec:  37562.61\nTransfer/sec:     65.62MB\n  95% 7.434000ms\n"
+    },
+    {
+      "id": "same_identity_and_limits",
+      "statement": "Both observed trials use the same commit, source SHA, immutable image ID and fingerprint, with 2 load-generator threads,64 connections,2 seconds warmup and 15 seconds measurement. The server uses CPU 0, a 1 CPU quota and 2 GiB memory/no-swap allowance.",
+      "configuration": {
+        "threads": 2,
+        "connections": 64,
+        "warmup_seconds": 2,
+        "measurement_seconds": 15,
+        "trials": 3
+      },
+      "resource_limits": {
+        "CpusetCpus": "0",
+        "NanoCpus": 1000000000,
+        "Memory": 2147483648,
+        "MemorySwap": 2147483648,
+        "Ulimits": [
+          {
+            "Name": "nofile",
+            "Hard": 65535,
+            "Soft": 65535
+          }
+        ]
+      }
+    },
+    {
+      "id": "empty_log",
+      "statement": "The archived trial 2 server log is empty. The source disables access logging and sets the error-log threshold to WARN. No request trace, error message or stall timing is available from this log.",
+      "references": [
+        {
+          "file": "sources/pr94/nginx.conf",
+          "line_start": 6,
+          "line_end": 6,
+          "pinned_url": "https://github.com/yar0slav/twelve-dollar-server-challenge/blob/fbe2153cf0d8798012b46bbf51c5cbbeaaa79e82/submissions/lua-openresty-yar0slav/nginx.conf#L6"
+        },
+        {
+          "file": "sources/pr94/nginx.conf",
+          "line_start": 17,
+          "line_end": 24,
+          "pinned_url": "https://github.com/yar0slav/twelve-dollar-server-challenge/blob/fbe2153cf0d8798012b46bbf51c5cbbeaaa79e82/submissions/lua-openresty-yar0slav/nginx.conf#L17-L24"
+        }
+      ]
+    },
+    {
+      "id": "database_and_lifecycle",
+      "statement": "Post-stop quick_check returned ok and post count increased from 500000 to 506035 (including warmup writes). The service remained running, reported no OOM kill, and its before/after samples retain the same master/worker PIDs.",
+      "database_after": {
+        "initial_post_count": 500000,
+        "post_count": 506035,
+        "max_post_id": 506035,
+        "integrity": "ok"
+      },
+      "container_state": {
+        "Status": "running",
+        "Running": true,
+        "OOMKilled": false,
+        "ExitCode": 0,
+        "Error": ""
+      },
+      "process_ids_before": [
+        "13",
+        "18"
+      ],
+      "process_ids_after": [
+        "13",
+        "18"
+      ]
+    },
+    {
+      "id": "measured_resources_and_completed_latencies",
+      "statement": "Recorded server CPU was 92.06% and RSS 99.33 MiB. The completed-response latency maximum was 27.59 ms, with p 95=7.434 ms and p 99=11.97 ms. These aggregate values do not identify the timed-out requests.",
+      "cpu_percent": 92.06007992384134,
+      "rss_mib": 99.328125,
+      "maximum_completed_latency_text": "27.59ms"
+    },
+    {
+      "id": "single_worker_and_connection",
+      "statement": "The pinned app configures one OpenResty worker and opens one SQLite handle in init_worker. SQL steps run synchronously through LuaJIT FFI, with a configured 5000 ms busy timeout.",
+      "references": [
+        {
+          "file": "sources/pr94/nginx.conf",
+          "line_start": 2,
+          "line_end": 3,
+          "pinned_url": "https://github.com/yar0slav/twelve-dollar-server-challenge/blob/fbe2153cf0d8798012b46bbf51c5cbbeaaa79e82/submissions/lua-openresty-yar0slav/nginx.conf#L2-L3"
+        },
+        {
+          "file": "sources/pr94/lua/app.lua",
+          "line_start": 63,
+          "line_end": 64,
+          "pinned_url": "https://github.com/yar0slav/twelve-dollar-server-challenge/blob/fbe2153cf0d8798012b46bbf51c5cbbeaaa79e82/submissions/lua-openresty-yar0slav/lua/app.lua#L63-L64"
+        },
+        {
+          "file": "sources/pr94/lua/app.lua",
+          "line_start": 73,
+          "line_end": 91,
+          "pinned_url": "https://github.com/yar0slav/twelve-dollar-server-challenge/blob/fbe2153cf0d8798012b46bbf51c5cbbeaaa79e82/submissions/lua-openresty-yar0slav/lua/app.lua#L73-L91"
+        },
+        {
+          "file": "sources/pr94/lua/app.lua",
+          "line_start": 130,
+          "line_end": 137,
+          "pinned_url": "https://github.com/yar0slav/twelve-dollar-server-challenge/blob/fbe2153cf0d8798012b46bbf51c5cbbeaaa79e82/submissions/lua-openresty-yar0slav/lua/app.lua#L130-L137"
+        }
+      ]
+    },
+    {
+      "id": "configured_connection_limits",
+      "statement": "The source allows 65000 worker connections, keepalive_timeout 75 s and 1000000 requests per keepalive connection, while this measurement uses 64 connections for 15 seconds. The saved configuration does not reveal an obvious configured limit explaining the observed counters.",
+      "references": [
+        {
+          "file": "sources/pr94/nginx.conf",
+          "line_start": 12,
+          "line_end": 24,
+          "pinned_url": "https://github.com/yar0slav/twelve-dollar-server-challenge/blob/fbe2153cf0d8798012b46bbf51c5cbbeaaa79e82/submissions/lua-openresty-yar0slav/nginx.conf#L12-L24"
+        }
+      ]
+    },
+    {
+      "id": "application_errors_logging",
+      "statement": "A Lua routing exception is logged at ERR and mapped to HTTP 500 in the source. The observed trial has no captured HTTP errors and no captured log messages; that does not provide a trace for client-side timeouts.",
+      "references": [
+        {
+          "file": "sources/pr94/lua/app.lua",
+          "line_start": 308,
+          "line_end": 317,
+          "pinned_url": "https://github.com/yar0slav/twelve-dollar-server-challenge/blob/fbe2153cf0d8798012b46bbf51c5cbbeaaa79e82/submissions/lua-openresty-yar0slav/lua/app.lua#L308-L317"
+        }
+      ]
+    }
+  ],
+  "inferences": [
+    {
+      "id": "single_event_loop_is_context_only",
+      "confidence": "possible architectural context; no causal event observed",
+      "statement": "A delay in a single worker could affect multiple connections, but there is no captured evidence establishing that any shared event-loop stall occurred. The count 63, despite a 64-connection workload, does not establish that the failures were simultaneous or identify their cause."
+    }
+  ],
+  "unknowns": [
+    "Which requests timed out and whether those timeout events occurred together.",
+    "Any server-side stall duration or location.",
+    "Whether SQLite I/O/checkpointing, LuaJIT/GC, CPU scheduling, networking, client timing or another factor contributed; none is established by these artifacts.",
+    "The effective wrk timeout is not explicitly configured in run.py:220-227 or stored as a value.",
+    "Per-request response/status timing for timed-out operations; access logging is disabled.",
+    "Trial 3 outcome; this diagnostic uses trials 1 and 2 only."
+  ],
+  "conclusion_for_reporting": "Retain the observed trial 2 counters: 63 socket timeouts and 0 HTTP errors, with valid DB/lifecycle checks and an empty server log. No specific timeout cause is established. Keep the existing trials and let the scheduled third trial run normally.",
+  "actions": {
+    "workloads_started": false,
+    "builds_started": false,
+    "container_changes": false,
+    "fixture_edits": false,
+    "submission_source_edits": false,
+    "retries_run_or_requested": false,
+    "only_output_written": "diagnostics-pr94.json"
+  }
+}

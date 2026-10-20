@@ -1,0 +1,665 @@
+{
+  "files": {
+    ".dockerignore": {
+      "sha256": "b934283c53faedd9a6511bed90226e65c39435e1dff8540d6c2f8e486ac20d8d",
+      "bytes": 890,
+      "physical_lines": 53,
+      "classification": "documentation_lock_or_metadata"
+    },
+    ".github/dependabot.yml": {
+      "sha256": "4a6698dbb7e88418562c06e57b9881d554487ace4060be19d3e7d20a5646a47f",
+      "bytes": 247,
+      "physical_lines": 12,
+      "classification": "own_support"
+    },
+    ".github/workflows/ci.yml": {
+      "sha256": "e3fb7326732405120d9f132ab45e3968464d4955d059e2ec7f22629ed984b41d",
+      "bytes": 3512,
+      "physical_lines": 130,
+      "classification": "own_support"
+    },
+    ".gitignore": {
+      "sha256": "b49fdde10e610e62461f484b6958c96d8038ad7d27f53da5a284d115cde4ef2e",
+      "bytes": 68,
+      "physical_lines": 6,
+      "classification": "documentation_lock_or_metadata"
+    },
+    ".kamal/hooks/docker-setup.sample": {
+      "sha256": "a63cf009b57c9f9e57b4e49bc90e2bcc5d3c2a21e9ae1de7691cca6598fb6ecc",
+      "bytes": 59,
+      "physical_lines": 3,
+      "classification": "other"
+    },
+    ".kamal/hooks/post-app-boot.sample": {
+      "sha256": "becd2ac8c82897ac8690bab641bd3a2cdaf3378e1e95377fa836fd5bea7dfd60",
+      "bytes": 79,
+      "physical_lines": 3,
+      "classification": "other"
+    },
+    ".kamal/hooks/post-deploy.sample": {
+      "sha256": "ee5ba26d4d9c4727eb50b65a54c519c6645fe83ec075c196dfb79313d10e8093",
+      "bytes": 327,
+      "physical_lines": 14,
+      "classification": "other"
+    },
+    ".kamal/hooks/post-proxy-reboot.sample": {
+      "sha256": "e4f07a6e7713cb6584bbff058ffea9bc5540330a2a95ec27b343af70ed11b44a",
+      "bytes": 63,
+      "physical_lines": 3,
+      "classification": "other"
+    },
+    ".kamal/hooks/pre-app-boot.sample": {
+      "sha256": "d541f81d91581168cbad6bb236ac3a2bf55f40ee2fbb104baef64fb7764c4cc6",
+      "bytes": 80,
+      "physical_lines": 3,
+      "classification": "other"
+    },
+    ".kamal/hooks/pre-build.sample": {
+      "sha256": "4b093d53667fd2d075f157e389194b1f83ef50241ec2fa2fb90640c2fd5e3dc9",
+      "bytes": 1111,
+      "physical_lines": 51,
+      "classification": "other"
+    },
+    ".kamal/hooks/pre-connect.sample": {
+      "sha256": "8fde93782c4ad494a837f6f9f457d2346eea5328805526d2dda2b0af44dba95b",
+      "bytes": 1039,
+      "physical_lines": 47,
+      "classification": "other"
+    },
+    ".kamal/hooks/pre-deploy.sample": {
+      "sha256": "9b8075f6612bb0c896dee99b91b54042c884678f82c15422b3c94a5ad79542b5",
+      "bytes": 2833,
+      "physical_lines": 122,
+      "classification": "other"
+    },
+    ".kamal/hooks/pre-proxy-reboot.sample": {
+      "sha256": "e588e589e73426da680f55e2b89f67762a9b6e25266a38632e43c6822be284bc",
+      "bytes": 67,
+      "physical_lines": 3,
+      "classification": "other"
+    },
+    ".kamal/secrets": {
+      "sha256": "e2321d56e437b3914b4e7e94edb3778412dc5882e0d9a14b6b8d9ceed6bde3e3",
+      "bytes": 1165,
+      "physical_lines": 20,
+      "classification": "other"
+    },
+    ".rubocop.yml": {
+      "sha256": "219f8b15ff51dcbad79efd536df6659a2cfbb8cc83a9863a5fcf76e762e6cb5d",
+      "bytes": 218,
+      "physical_lines": 9,
+      "classification": "own_support"
+    },
+    ".ruby-version": {
+      "sha256": "b88d654a66e0da77deccd2efbbbb4ab105a8878cd8902b87f014b47c4e12d61c",
+      "bytes": 11,
+      "physical_lines": 1,
+      "classification": "other"
+    },
+    "CLAUDE.md": {
+      "sha256": "338fb5e4c9d38cef1c611d949878d756affe1aee050cc22cdd8e2031fa29a2e3",
+      "bytes": 2478,
+      "physical_lines": 97,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "Dockerfile": {
+      "sha256": "c07f4ff02561dfae25f04e26815acb372bbffabe430a43abe4891fc34b70ac5a",
+      "bytes": 2857,
+      "physical_lines": 77,
+      "classification": "own_support"
+    },
+    "Gemfile": {
+      "sha256": "c60825e3483ab565699e9e5e3753d993d55ff519c78a949cace4e7c673f3c52b",
+      "bytes": 2458,
+      "physical_lines": 65,
+      "classification": "own_support"
+    },
+    "Gemfile.lock": {
+      "sha256": "8cd64e5f633dabd6cacc21a7667dacb00bba3abf1871260e32bbf229d18684b0",
+      "bytes": 22028,
+      "physical_lines": 524,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "README.md": {
+      "sha256": "05315837510a9754db7d45bce9134f1fc7c07247af46f70a50d6bb36e55fa276",
+      "bytes": 2740,
+      "physical_lines": 51,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "Rakefile": {
+      "sha256": "895c6a69d01c14f0dd437c0eb44914754006ce317807264ca7ffbd1c79a91ebf",
+      "bytes": 227,
+      "physical_lines": 6,
+      "classification": "own_support"
+    },
+    "app/assets/images/.keep": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "physical_lines": 0,
+      "classification": "other"
+    },
+    "app/assets/stylesheets/application.css": {
+      "sha256": "478b66b3effc220e394a0ba1a9065c367d723bd73b2036067ea87f91094b2cdf",
+      "bytes": 491,
+      "physical_lines": 10,
+      "classification": "application"
+    },
+    "app/controllers/application_controller.rb": {
+      "sha256": "02dc1c6391df06a74655ffb07effbb8c6f5efb481e10684a280ab66ce4177403",
+      "bytes": 738,
+      "physical_lines": 28,
+      "classification": "application"
+    },
+    "app/controllers/concerns/.keep": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "physical_lines": 0,
+      "classification": "other"
+    },
+    "app/controllers/concerns/authentication.rb": {
+      "sha256": "ac0a2cf51e357c4e7962f33515105f3fc472b657fcab7b77c5a918087ae229d8",
+      "bytes": 1193,
+      "physical_lines": 43,
+      "classification": "application"
+    },
+    "app/controllers/concerns/post_identifiable.rb": {
+      "sha256": "b5f168907007acc4dc2ca8ea9b97c0ff22a4234814177f0c9e9abc92e3da23ac",
+      "bytes": 214,
+      "physical_lines": 11,
+      "classification": "application"
+    },
+    "app/controllers/errors_controller.rb": {
+      "sha256": "c2604f8146d01698d782f42b6403514256d4260aaf3d13d7f53c3feafe6e5ff2",
+      "bytes": 147,
+      "physical_lines": 7,
+      "classification": "application"
+    },
+    "app/controllers/feeds_controller.rb": {
+      "sha256": "af807cda496be2b36b36f7a0dbb42859dc4793229e93752f234804b13d2dc2d1",
+      "bytes": 214,
+      "physical_lines": 10,
+      "classification": "application"
+    },
+    "app/controllers/health_controller.rb": {
+      "sha256": "59552fefa5d4066df6601ad5727201cc5164845c1e4f16cccf1b471ec28d550e",
+      "bytes": 504,
+      "physical_lines": 16,
+      "classification": "application"
+    },
+    "app/controllers/posts/likes_controller.rb": {
+      "sha256": "e94ed5ca6e263f409d92b786b5b06be472ed8fe1a13c36d7cf94f4eb540ab2e8",
+      "bytes": 367,
+      "physical_lines": 11,
+      "classification": "application"
+    },
+    "app/controllers/posts_controller.rb": {
+      "sha256": "dbd8c09681646e86f533b806466901bb80776bc4dc677ec6381f80c82cd59861",
+      "bytes": 693,
+      "physical_lines": 21,
+      "classification": "application"
+    },
+    "app/helpers/application_helper.rb": {
+      "sha256": "f77fac5ea412dbed92c4524fe0ed180acb2b7239f84daf758da989032301f5c8",
+      "bytes": 29,
+      "physical_lines": 2,
+      "classification": "application"
+    },
+    "app/javascript/application.js": {
+      "sha256": "d3f3d1b31962c4112a529e1f9af3760286edaf0969a4367c7ed90a4c96647650",
+      "bytes": 157,
+      "physical_lines": 3,
+      "classification": "application"
+    },
+    "app/javascript/controllers/application.js": {
+      "sha256": "b5836315bab7b8d055ac3346bf57f933fa8aa8b37e9ea7b704cb2ae2bff129b8",
+      "bytes": 218,
+      "physical_lines": 9,
+      "classification": "application"
+    },
+    "app/javascript/controllers/hello_controller.js": {
+      "sha256": "a85435d6127f62a9dc5bece74854e75586089f18ea7759db1a9a672ef83934e5",
+      "bytes": 157,
+      "physical_lines": 7,
+      "classification": "application"
+    },
+    "app/javascript/controllers/index.js": {
+      "sha256": "a2d8f59d301f2f6ac02171ef63c930e00ea0f0bcf3b6cd8bf0c14a0733414058",
+      "bytes": 272,
+      "physical_lines": 4,
+      "classification": "application"
+    },
+    "app/jobs/application_job.rb": {
+      "sha256": "d51e125007521b0f59765422cf3cf949b59b2054cdac6567a95b4a7aeaf1d722",
+      "bytes": 269,
+      "physical_lines": 7,
+      "classification": "application"
+    },
+    "app/mailers/application_mailer.rb": {
+      "sha256": "51b58ee6215d29f50f4f35b309e849766e40f584016e48ec9ea66558ab352fa7",
+      "bytes": 102,
+      "physical_lines": 4,
+      "classification": "application"
+    },
+    "app/models/application_record.rb": {
+      "sha256": "7c17e31e9b152fc23883e2a6b633fa5421be119917916c07f7bab38efcb24d7c",
+      "bytes": 108,
+      "physical_lines": 5,
+      "classification": "application"
+    },
+    "app/models/concerns/.keep": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "physical_lines": 0,
+      "classification": "other"
+    },
+    "app/models/concerns/post/likeable.rb": {
+      "sha256": "9e11b2b61069c3c4ef0b5675b0e25283834b2ac1fac3d9486eae22c4c34ccf90",
+      "bytes": 224,
+      "physical_lines": 13,
+      "classification": "application"
+    },
+    "app/models/current.rb": {
+      "sha256": "c2576bf44751627984e701292d3e234824af7bd6e12c85e57cdb4cba357f8e7f",
+      "bytes": 85,
+      "physical_lines": 3,
+      "classification": "application"
+    },
+    "app/models/like.rb": {
+      "sha256": "fae83ccf621d9f7ca953eae5c3424e745ed87bcebb5fd500de0f94563b33a372",
+      "bytes": 115,
+      "physical_lines": 6,
+      "classification": "application"
+    },
+    "app/models/post.rb": {
+      "sha256": "5382975fdddb472fa9a2e0bb1b5440047e71e031351a205c9769d584ddfc1951",
+      "bytes": 723,
+      "physical_lines": 24,
+      "classification": "application"
+    },
+    "app/models/user.rb": {
+      "sha256": "2821e95340ebeff72b2a90dd6860ea915c6f80fbafe49e3fc0da6b5accd8c1d7",
+      "bytes": 71,
+      "physical_lines": 4,
+      "classification": "application"
+    },
+    "app/views/layouts/application.html.erb": {
+      "sha256": "bce2521c099189a43ece47958c8964c7ab07179f4fcc824daacf9b1faeb41b13",
+      "bytes": 1003,
+      "physical_lines": 29,
+      "classification": "other"
+    },
+    "app/views/layouts/mailer.html.erb": {
+      "sha256": "3be3ece9c575096f91f8ecc6a4efb0c7ffd509d2ed4b06c3461bd920201bbd37",
+      "bytes": 227,
+      "physical_lines": 13,
+      "classification": "other"
+    },
+    "app/views/layouts/mailer.text.erb": {
+      "sha256": "51353f9de3a26d4b28f7db91152bf56d31cfa9e4bd3c834680772a63cd374698",
+      "bytes": 13,
+      "physical_lines": 1,
+      "classification": "other"
+    },
+    "app/views/pwa/manifest.json.erb": {
+      "sha256": "b037d8464923303bd841564fdfdffbe5bfb906820263e66e224647a248c7e8ff",
+      "bytes": 419,
+      "physical_lines": 22,
+      "classification": "other"
+    },
+    "app/views/pwa/service-worker.js": {
+      "sha256": "54bba97f108ac8d65af816aab152cc1860c9d9809641ba845231131db56d59bf",
+      "bytes": 876,
+      "physical_lines": 26,
+      "classification": "application"
+    },
+    "bin/brakeman": {
+      "sha256": "7825743df15f32a7a7a36b2098aec1dd56767031af0181d288f8a563c2c225b0",
+      "bytes": 139,
+      "physical_lines": 7,
+      "classification": "other"
+    },
+    "bin/bundler-audit": {
+      "sha256": "484ba9033e36465898620184f12f427b014bf91ac61a423d302447ea99cf378d",
+      "bytes": 202,
+      "physical_lines": 6,
+      "classification": "other"
+    },
+    "bin/ci": {
+      "sha256": "ee240fa535e83197c3b79489f56454ec9e1b24f9b7db15eb26c35fc858e12c02",
+      "bytes": 180,
+      "physical_lines": 6,
+      "classification": "other"
+    },
+    "bin/dev": {
+      "sha256": "bdf0071bfce9a25b347076aba2b678e2e90be4388e943ec8da21283b998680ca",
+      "bytes": 56,
+      "physical_lines": 2,
+      "classification": "other"
+    },
+    "bin/docker-entrypoint": {
+      "sha256": "e6f4e69ab211df5b889469d1768a86d1f176a6b3861c20704bf1fcab79578d56",
+      "bytes": 203,
+      "physical_lines": 8,
+      "classification": "other"
+    },
+    "bin/importmap": {
+      "sha256": "aaaf65c0637afc4a2cd13b04660761cfaee83d7f6e81446986a3e3aaafb84da5",
+      "bytes": 91,
+      "physical_lines": 4,
+      "classification": "other"
+    },
+    "bin/kamal": {
+      "sha256": "796c21a2998af4bb3fbf43e45a5dbcbeafee8c323c4b57a2ab45adfe48a4589e",
+      "bytes": 350,
+      "physical_lines": 16,
+      "classification": "other"
+    },
+    "bin/rails": {
+      "sha256": "0862d7bc09d5ed61785d677ef2dba10ce285387d4d5d9e3d90d97630e3f69ab6",
+      "bytes": 141,
+      "physical_lines": 4,
+      "classification": "other"
+    },
+    "bin/rake": {
+      "sha256": "5943c3811dc345727b5f330b599c4c6c45abc04816dd8f4201aeed88cf268cb3",
+      "bytes": 90,
+      "physical_lines": 4,
+      "classification": "other"
+    },
+    "bin/rubocop": {
+      "sha256": "62c9fd75681308e1d161f75e96b6af1a837a2f56c9fc9ddf641f1cebf0d7f717",
+      "bytes": 266,
+      "physical_lines": 8,
+      "classification": "other"
+    },
+    "bin/setup": {
+      "sha256": "0f5b139524ceb07af2e32cca242a2817f4df26f0ecf96c64cec402ebcfaa7294",
+      "bytes": 1069,
+      "physical_lines": 35,
+      "classification": "other"
+    },
+    "bin/thrust": {
+      "sha256": "ed1176b4df355db4b2a67ee37b45ca5c6d7118255d28a07dcdcb6d0fe4ae5c4f",
+      "bytes": 104,
+      "physical_lines": 5,
+      "classification": "other"
+    },
+    "build.sh": {
+      "sha256": "4c33b9bd5d7cb6d4457c4ac93acfaed40159c0c4fa437c29b85f4d52d4b1f101",
+      "bytes": 264,
+      "physical_lines": 8,
+      "classification": "own_support"
+    },
+    "config.ru": {
+      "sha256": "1a5090e57cf9301e8bda3fec3abe4c72fbc001f6cd4909fd80b6cd488ab531b9",
+      "bytes": 160,
+      "physical_lines": 6,
+      "classification": "other"
+    },
+    "config/application.rb": {
+      "sha256": "723302bd46595d0afa3342ab1085522a5a643ad405d7ed381c7013bf22be6459",
+      "bytes": 1592,
+      "physical_lines": 46,
+      "classification": "application"
+    },
+    "config/boot.rb": {
+      "sha256": "bb5a9499136e72c70c557bc3ff4d2661cc9b05dc5b848fb720540e3fe716e4ea",
+      "bytes": 207,
+      "physical_lines": 4,
+      "classification": "application"
+    },
+    "config/bundler-audit.yml": {
+      "sha256": "cf66f718f2c84c0ab6ae50fcb0b1323751c11522de80d0c66e25e4b5680cde55",
+      "bytes": 226,
+      "physical_lines": 5,
+      "classification": "own_support"
+    },
+    "config/cable.yml": {
+      "sha256": "511947c12a8f9a1caad4c6e2dc2ad0378d9784790dd0e4073765eac0cf9a368b",
+      "bytes": 201,
+      "physical_lines": 10,
+      "classification": "own_support"
+    },
+    "config/ci.rb": {
+      "sha256": "ac7709eb3bcfb751062fb259c3e32eb0645249286d43d6886e3a99d5ba0d76d5",
+      "bytes": 885,
+      "physical_lines": 24,
+      "classification": "application"
+    },
+    "config/credentials.yml.enc": {
+      "sha256": "9e95f936347a93ccbf36125a49bb0066978887a342fc2e845354ccfeea0fb02f",
+      "bytes": 548,
+      "physical_lines": 1,
+      "classification": "other"
+    },
+    "config/database.yml": {
+      "sha256": "fa71fa5083785073a14bebf0f1681e46a24ea4b749f2351e999c2460219d47f9",
+      "bytes": 841,
+      "physical_lines": 30,
+      "classification": "own_support"
+    },
+    "config/deploy.yml": {
+      "sha256": "d27362edcd9ac2572dbcdfb9dfd70c9b32f2fafc43d472e2ab69681aa933aa0c",
+      "bytes": 3491,
+      "physical_lines": 111,
+      "classification": "own_support"
+    },
+    "config/environment.rb": {
+      "sha256": "73b2e731e02cedb9dc0335e1a35c3a2b7738032e3aa7e62ac32cbb8432b43c69",
+      "bytes": 128,
+      "physical_lines": 5,
+      "classification": "application"
+    },
+    "config/environments/development.rb": {
+      "sha256": "0d8297c851e8127c69cd5c9269232f0c38dcc84e7fb3176d1fe46655e980872a",
+      "bytes": 2905,
+      "physical_lines": 78,
+      "classification": "application"
+    },
+    "config/environments/production.rb": {
+      "sha256": "1d0081a3b9b612fbec5207396ae37aed8de1b5a39ddf7bbf0ea33e7d5335a1f8",
+      "bytes": 3628,
+      "physical_lines": 88,
+      "classification": "application"
+    },
+    "config/environments/test.rb": {
+      "sha256": "b3208a3cb7383c4383dfa44d815fd0f942d03ca64ca2ca06a104aad9773403e2",
+      "bytes": 2319,
+      "physical_lines": 53,
+      "classification": "own_support"
+    },
+    "config/importmap.rb": {
+      "sha256": "148fdf21d156d2d1274627caa734d3e2d05ce23ae60e6a371fae054933ca30be",
+      "bytes": 285,
+      "physical_lines": 7,
+      "classification": "application"
+    },
+    "config/initializers/assets.rb": {
+      "sha256": "f55d4ce66ec2b48256ff492c99c7105b7cc1726c78789dffdbee2611e193c1a6",
+      "bytes": 296,
+      "physical_lines": 7,
+      "classification": "application"
+    },
+    "config/initializers/content_security_policy.rb": {
+      "sha256": "ce826e17b3fb793bff050c64f2d515da14b0a63b77f0144368646597075fbdd5",
+      "bytes": 1332,
+      "physical_lines": 29,
+      "classification": "application"
+    },
+    "config/initializers/filter_parameter_logging.rb": {
+      "sha256": "f864bd67e7bdaa63a5331b9fc15446613c410c3a314cd70d1b6a7c8b566b6120",
+      "bytes": 468,
+      "physical_lines": 8,
+      "classification": "application"
+    },
+    "config/initializers/inflections.rb": {
+      "sha256": "e2c18b803625a073b25e4ee4460677da33a8bf19bbbcad629718a8e15c58acc2",
+      "bytes": 649,
+      "physical_lines": 16,
+      "classification": "application"
+    },
+    "config/locales/en.yml": {
+      "sha256": "ad72af216ad0a67a1155c685535698fdd2a7138810c7e6dcb5eab7f0cc1c5922",
+      "bytes": 908,
+      "physical_lines": 31,
+      "classification": "own_support"
+    },
+    "config/puma.rb": {
+      "sha256": "c7b117595b8e20f62f4fb6232c7fb2f68398c58405e76f190fd3ab361542bd6e",
+      "bytes": 245,
+      "physical_lines": 9,
+      "classification": "application"
+    },
+    "config/routes.rb": {
+      "sha256": "eecdb56ae6faa872ec84f569f8756af26879d401408b7addb1dba1ff19458ec8",
+      "bytes": 411,
+      "physical_lines": 14,
+      "classification": "application"
+    },
+    "config/storage.yml": {
+      "sha256": "bb472986ec9dd77d0e30e840d8f2b21b9c435aa65e3096aa813e4bc2df658edb",
+      "bytes": 811,
+      "physical_lines": 27,
+      "classification": "own_support"
+    },
+    "db/seeds.rb": {
+      "sha256": "4f24f361a5a875f32518a44f68f2d99a6495fcee5f9c54c30f8c3d7f8614512f",
+      "bytes": 494,
+      "physical_lines": 9,
+      "classification": "own_support"
+    },
+    "install.sh": {
+      "sha256": "1171888a9e077a7acf6237b207768015cab802bba7856c416ea88505e9abc0da",
+      "bytes": 476,
+      "physical_lines": 12,
+      "classification": "own_support"
+    },
+    "lib/tasks/.keep": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "physical_lines": 0,
+      "classification": "other"
+    },
+    "public/400.html": {
+      "sha256": "e4611b7ecd95c05bc42597702de6f2775aa5414c1bec28a8173165e143159371",
+      "bytes": 7054,
+      "physical_lines": 135,
+      "classification": "application"
+    },
+    "public/404.html": {
+      "sha256": "6f48aec35400a1e5fb88b7cef034a18d55ce810653b04f93d7162e02053745d0",
+      "bytes": 5201,
+      "physical_lines": 135,
+      "classification": "application"
+    },
+    "public/406-unsupported-browser.html": {
+      "sha256": "37e250b92c485478422b11e0bf4686d5bcc919f4a6877115aa2bf9e4753c1e08",
+      "bytes": 7283,
+      "physical_lines": 135,
+      "classification": "application"
+    },
+    "public/422.html": {
+      "sha256": "f91269998d46c1b59f51c933cb86d8079e3155f4e48fe1566e2f1a34c946287f",
+      "bytes": 8747,
+      "physical_lines": 135,
+      "classification": "application"
+    },
+    "public/500.html": {
+      "sha256": "0e135e717e9d1a5dd6db932ec70bd9524363064979cd2d8b216ee1c0300e36b5",
+      "bytes": 8283,
+      "physical_lines": 135,
+      "classification": "application"
+    },
+    "public/icon.png": {
+      "sha256": "2e29c62b03e514c5a15f289f8fdc0abca6e22d0e91970503c9e2b7e0552c911c",
+      "bytes": 4166,
+      "physical_lines": 47,
+      "classification": "binary"
+    },
+    "public/icon.svg": {
+      "sha256": "601dfb4db252852f3880ffc355bce0d4507b01afca6879189d10a65470ae6e3a",
+      "bytes": 122,
+      "physical_lines": 3,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "public/robots.txt": {
+      "sha256": "2f15987e4606501202b9d337085439339e53a374e3d194847192c12f85ba78f8",
+      "bytes": 99,
+      "physical_lines": 1,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "script/.keep": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "physical_lines": 0,
+      "classification": "other"
+    },
+    "script/bench": {
+      "sha256": "264578e34f2c235726d855ad9ea1be27b3f6695a740fa51bac48a8d35d24a19f",
+      "bytes": 2213,
+      "physical_lines": 48,
+      "classification": "other"
+    },
+    "start.sh": {
+      "sha256": "92e78df830f0c426f39cd1d0de27c87e2a29ebe6117ec146e6267bdca62ceab6",
+      "bytes": 256,
+      "physical_lines": 8,
+      "classification": "own_support"
+    },
+    "test/controllers/.keep": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "physical_lines": 0,
+      "classification": "other"
+    },
+    "test/fixtures/files/.keep": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "physical_lines": 0,
+      "classification": "other"
+    },
+    "test/helpers/.keep": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "physical_lines": 0,
+      "classification": "other"
+    },
+    "test/integration/.keep": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "physical_lines": 0,
+      "classification": "other"
+    },
+    "test/mailers/.keep": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "physical_lines": 0,
+      "classification": "other"
+    },
+    "test/models/.keep": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "physical_lines": 0,
+      "classification": "other"
+    },
+    "test/test_helper.rb": {
+      "sha256": "9ae153db015fed605e2598c0498577752180eac7cf333cff96c188002b769a26",
+      "bytes": 410,
+      "physical_lines": 15,
+      "classification": "own_support"
+    },
+    "vendor/.keep": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "physical_lines": 0,
+      "classification": "dependency_or_generated"
+    },
+    "vendor/javascript/.keep": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "physical_lines": 0,
+      "classification": "dependency_or_generated"
+    }
+  },
+  "skipped_members": []
+}

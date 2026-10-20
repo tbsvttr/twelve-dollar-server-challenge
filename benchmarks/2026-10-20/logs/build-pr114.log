@@ -1,0 +1,293 @@
+Pinned source: cf07ad80b3defdc528a655b287e945911fd1d370
+
+$ docker run -d --name twelve-current-build-114 --cpus 1.5 --memory 3g --memory-swap 3g --security-opt seccomp=seccomp-io-uring.json --mount type=bind,src=<BENCHMARK_EVIDENCE>,dst=/evidence,readonly twelve-unified:2026-10-07 sleep infinity
+e16b22a5d9d2e036bea1994be1f4fe5fd35ae6207b3271242524b46ca7dc7d51
+
+$ docker exec -i twelve-current-build-114 python3 - 114
+Verified 27 pinned source files
+
+$ docker exec twelve-current-build-114 bash /suite/sources/pr114/install.sh
+debconf: delaying package configuration, since apt-utils is not installed
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 16962 files and directories currently installed.)
+Preparing to unpack .../curl_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking curl (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Preparing to unpack .../libcurl4t64_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking libcurl4t64:arm64 (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Preparing to unpack .../libcurl3t64-gnutls_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking libcurl3t64-gnutls:arm64 (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Setting up libcurl4t64:arm64 (8.5.0-2ubuntu10.16) ...
+Setting up libcurl3t64-gnutls:arm64 (8.5.0-2ubuntu10.16) ...
+Setting up curl (8.5.0-2ubuntu10.16) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0 58  921k   58  542k    0     0   829k      0  0:00:01 --:--:--  0:00:01  828k100  921k  100  921k    0     0  1114k      0 --:--:-- --:--:-- --:--:-- 1114k
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  7  178M    7 14.1M    0     0  17.3M      0  0:00:10 --:--:--  0:00:10 17.3M 20  178M   20 36.3M    0     0  19.9M      0  0:00:08  0:00:01  0:00:07 19.9M 31  178M   31 56.2M    0     0  19.8M      0  0:00:08  0:00:02  0:00:06 19.8M 44  178M   44 78.7M    0     0  20.6M      0  0:00:08  0:00:03  0:00:05 20.6M 58  178M   58  104M    0     0  21.7M      0  0:00:08  0:00:04  0:00:04 21.7M 75  178M   75  134M    0     0  23.0M      0  0:00:07  0:00:05  0:00:02 23.9M 91  178M   91  162M    0     0  23.8M      0  0:00:07  0:00:06  0:00:01 25.3M100  178M  100  178M    0     0  24.3M      0  0:00:07  0:00:07 --:--:-- 27.1M
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   111  100   111    0     0   2393      0 --:--:-- --:--:-- --:--:--  2413
+rust-1.99.1-aarch64-unknown-linux-gnu.tar.xz: OK
+install: creating uninstall script at /opt/rust-stable/lib/rustlib/uninstall.sh
+install: installing component 'rustc'
+install: installing component 'rust-std-aarch64-unknown-linux-gnu'
+install: installing component 'rust-docs-json-preview'
+install: installing component 'cargo'
+install: installing component 'rustfmt-preview'
+install: installing component 'rust-analyzer-preview'
+install: installing component 'llvm-tools-preview'
+install: installing component 'clippy-preview'
+install: installing component 'rust-analysis-aarch64-unknown-linux-gnu'
+install: installing component 'llvm-bitcode-linker-preview'
+
+    rust installed.
+
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  676k    0  676k    0     0   477k      0 --:--:--  0:00:01 --:--:-- 1187k
+    Updating git repository `https://github.com/rui314/mimalloc_rust`
+    Updating git submodule `https://github.com/microsoft/mimalloc`
+    Updating git submodule `https://github.com/microsoft/mimalloc`
+    Updating crates.io index
+ Downloading crates ...
+  Downloaded cfg-if v1.0.4
+  Downloaded memchr v2.8.3
+  Downloaded equivalent v1.0.2
+  Downloaded jobserver v0.1.35
+  Downloaded rustc-demangle v0.1.28
+  Downloaded zstd-safe v7.2.4
+  Downloaded pkg-config v0.3.34
+  Downloaded find-msvc-tools v0.1.11
+  Downloaded xxhash-rust v0.8.18
+  Downloaded shlex v2.0.1
+  Downloaded crossbeam-deque v0.8.7
+  Downloaded foldhash v0.2.0
+  Downloaded constant_time_eq v0.4.2
+  Downloaded either v1.18.0
+  Downloaded memmap2 v0.9.11
+  Downloaded zstd v0.13.3
+  Downloaded crossbeam-utils v0.8.22
+  Downloaded crossbeam-epoch v0.9.20
+  Downloaded arrayvec v0.7.8
+  Downloaded allocator-api2 v0.2.21
+  Downloaded getrandom v0.4.3
+  Downloaded crc32fast v1.5.1
+  Downloaded serde_core v1.0.229
+  Downloaded uuid v1.27.0
+  Downloaded flate2 v1.1.10
+  Downloaded cpp_demangle v0.4.5
+  Downloaded cc v1.4.4
+  Downloaded rayon-core v1.13.0
+  Downloaded hashbrown v0.17.1
+  Downloaded rayon v1.12.0
+  Downloaded portable-atomic v1.15.0
+  Downloaded blake3 v1.8.7
+  Downloaded vcpkg v0.2.15
+  Downloaded bstr v1.13.1
+  Downloaded regex-automata v0.4.18
+  Downloaded libc v0.2.189
+  Downloaded zstd-sys v2.0.16+zstd.1.5.7
+  Downloaded libz-sys v1.1.29
+   Compiling libc v0.2.189
+   Compiling jobserver v0.1.35
+   Compiling find-msvc-tools v0.1.11
+   Compiling shlex v2.0.1
+   Compiling cc v1.4.4
+   Compiling pkg-config v0.3.34
+   Compiling crossbeam-utils v0.8.22
+   Compiling cfg-if v1.0.4
+   Compiling zstd-sys v2.0.16+zstd.1.5.7
+   Compiling crossbeam-epoch v0.9.20
+   Compiling vcpkg v0.2.15
+   Compiling libz-sys v1.1.29
+   Compiling crossbeam-deque v0.8.7
+   Compiling crc32fast v1.5.1
+   Compiling getrandom v0.4.3
+   Compiling rayon-core v1.13.0
+   Compiling zstd-safe v7.2.4
+   Compiling blake3 v1.8.7
+   Compiling cpp_demangle v0.4.5
+   Compiling portable-atomic v1.15.0
+   Compiling mold v3.0.0 (/suite/sources/pr114/.install/mold-3.0.0)
+   Compiling foldhash v0.2.0
+   Compiling constant_time_eq v0.4.2
+   Compiling equivalent v1.0.2
+   Compiling allocator-api2 v0.2.21
+   Compiling arrayvec v0.7.8
+   Compiling either v1.18.0
+   Compiling regex-automata v0.4.18
+   Compiling memchr v2.8.3
+   Compiling bstr v1.13.1
+   Compiling rayon v1.12.0
+   Compiling hashbrown v0.17.1
+   Compiling flate2 v1.1.10
+   Compiling uuid v1.27.0
+   Compiling zstd v0.13.3
+   Compiling memmap2 v0.9.11
+   Compiling xxhash-rust v0.8.18
+   Compiling rustc-demangle v0.1.28
+   Compiling libmimalloc-sys v0.1.49 (https://github.com/rui314/mimalloc_rust?rev=3979460494f1cd1e7f936cb8e10f41e927c9f698#39794604)
+   Compiling mold-cli v3.0.0 (/suite/sources/pr114/.install/mold-3.0.0/cli)
+   Compiling mimalloc v0.1.52 (https://github.com/rui314/mimalloc_rust?rev=3979460494f1cd1e7f936cb8e10f41e927c9f698#39794604)
+   Compiling mold-target-arm32be v3.0.0 (/suite/sources/pr114/.install/mold-3.0.0/arch/arm32be)
+   Compiling mold-target-m68k v3.0.0 (/suite/sources/pr114/.install/mold-3.0.0/arch/m68k)
+   Compiling mold-target-riscv64 v3.0.0 (/suite/sources/pr114/.install/mold-3.0.0/arch/riscv64)
+   Compiling mold-target-x86_64 v3.0.0 (/suite/sources/pr114/.install/mold-3.0.0/arch/x86_64)
+   Compiling mold-target-arm32 v3.0.0 (/suite/sources/pr114/.install/mold-3.0.0/arch/arm32)
+   Compiling mold-target-loongarch64 v3.0.0 (/suite/sources/pr114/.install/mold-3.0.0/arch/loongarch64)
+   Compiling mold-target-riscv32be v3.0.0 (/suite/sources/pr114/.install/mold-3.0.0/arch/riscv32be)
+   Compiling mold-target-sparc64 v3.0.0 (/suite/sources/pr114/.install/mold-3.0.0/arch/sparc64)
+   Compiling mold-target-loongarch32 v3.0.0 (/suite/sources/pr114/.install/mold-3.0.0/arch/loongarch32)
+   Compiling mold-target-riscv32 v3.0.0 (/suite/sources/pr114/.install/mold-3.0.0/arch/riscv32)
+   Compiling mold-target-sh4be v3.0.0 (/suite/sources/pr114/.install/mold-3.0.0/arch/sh4be)
+   Compiling mold-target-i386 v3.0.0 (/suite/sources/pr114/.install/mold-3.0.0/arch/i386)
+   Compiling mold-target-ppc64v2 v3.0.0 (/suite/sources/pr114/.install/mold-3.0.0/arch/ppc64v2)
+   Compiling mold-target-sh4 v3.0.0 (/suite/sources/pr114/.install/mold-3.0.0/arch/sh4)
+   Compiling mold-target-arm64be v3.0.0 (/suite/sources/pr114/.install/mold-3.0.0/arch/arm64be)
+   Compiling mold-target-ppc64v1 v3.0.0 (/suite/sources/pr114/.install/mold-3.0.0/arch/ppc64v1)
+   Compiling mold-target-s390x v3.0.0 (/suite/sources/pr114/.install/mold-3.0.0/arch/s390x)
+   Compiling mold-target-arm64 v3.0.0 (/suite/sources/pr114/.install/mold-3.0.0/arch/arm64)
+   Compiling mold-target-ppc32 v3.0.0 (/suite/sources/pr114/.install/mold-3.0.0/arch/ppc32)
+   Compiling mold-target-riscv64be v3.0.0 (/suite/sources/pr114/.install/mold-3.0.0/arch/riscv64be)
+    Finished `release` profile [optimized] target(s) in 11m 12s
+
+$ docker exec twelve-current-build-114 chown -R bench:bench /suite/sources/pr114
+
+$ docker exec twelve-current-build-114 runuser -u bench -- env PATH=/opt/twelve-rust/cargo/bin:/usr/local/go/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 NIM_JOBS=2 MAKEFLAGS=-j2 bash /suite/sources/pr114/build.sh
+    Updating git repository `https://github.com/mjc/hyper.git`
+    Updating git repository `https://github.com/mjc/tokio.git`
+    Updating crates.io index
+ Downloading crates ...
+  Downloaded lazy_static v1.5.1
+  Downloaded errno v0.3.14
+  Downloaded signal-hook-registry v1.4.8
+  Downloaded zeroize v1.9.1
+  Downloaded serde_json v1.0.154
+  Downloaded smallvec v1.16.3
+  Downloaded unicode-ident v1.0.27
+  Downloaded cc v1.8.0
+  Downloaded syn v3.0.9
+  Downloaded zerocopy v0.8.63
+   Compiling proc-macro2 v1.0.107
+   Compiling unicode-ident v1.0.27
+   Compiling quote v1.0.47
+   Compiling libc v0.2.190
+   Compiling syn v2.0.119
+   Compiling zeroize_derive v1.5.0
+   Compiling zeroize v1.9.1
+   Compiling version_check v0.9.5
+   Compiling generic-array v0.14.9
+   Compiling typenum v1.20.1
+   Compiling const-oid v0.9.6
+   Compiling subtle v2.6.1
+   Compiling cfg-if v1.0.5
+   Compiling getrandom v0.2.17
+   Compiling rand_core v0.6.4
+   Compiling block-buffer v0.10.4
+   Compiling crypto-common v0.1.6
+   Compiling digest v0.10.7
+   Compiling base64ct v1.8.3
+   Compiling pem-rfc7468 v0.7.0
+   Compiling der v0.7.10
+   Compiling spki v0.7.3
+   Compiling pkcs8 v0.10.2
+   Compiling itoa v1.0.18
+   Compiling syn v3.0.9
+   Compiling bytes v1.12.1
+   Compiling shlex v2.0.1
+   Compiling find-msvc-tools v0.1.14
+   Compiling cc v1.8.0
+   Compiling hmac v0.12.1
+   Compiling pin-project-lite v0.2.17
+   Compiling zerocopy v0.8.63
+   Compiling autocfg v1.5.1
+   Compiling libm v0.2.16
+   Compiling num-traits v0.2.19
+   Compiling signature v2.2.0
+   Compiling ff v0.13.1
+   Compiling futures-core v0.3.34
+   Compiling base16ct v0.2.0
+   Compiling serde_core v1.0.229
+   Compiling smallvec v1.16.3
+   Compiling sec1 v0.7.3
+   Compiling group v0.13.0
+   Compiling hkdf v0.12.4
+   Compiling http v1.5.0
+   Compiling crypto-bigint v0.5.5
+   Compiling errno v0.3.14
+   Compiling semver v1.0.28
+   Compiling rustc_version v0.4.1
+   Compiling signal-hook-registry v1.4.8
+   Compiling elliptic-curve v0.13.8
+   Compiling http-body v1.1.0
+   Compiling ppv-lite86 v0.2.21
+   Compiling tokio-macros v2.7.2
+   Compiling mio v1.2.4
+   Compiling socket2 v0.6.5
+   Compiling cpufeatures v0.2.17
+   Compiling httparse v1.10.1
+   Compiling zmij v1.0.23
+   Compiling sha2 v0.10.9
+   Compiling tokio v1.53.3 (https://github.com/mjc/tokio.git?rev=30fa5746845ea20c8908134ee72ac6f43ecc76ac#30fa5746)
+   Compiling rand_chacha v0.3.1
+   Compiling num-integer v0.1.47
+   Compiling curve25519-dalek v4.1.3
+   Compiling rfc6979 v0.4.0
+   Compiling spin v0.9.9
+   Compiling num-bigint-dig v0.8.6
+   Compiling pkg-config v0.3.34
+   Compiling serde_json v1.0.154
+   Compiling tower-service v0.3.3
+   Compiling vcpkg v0.2.15
+   Compiling libsqlite3-sys v0.38.2
+   Compiling lazy_static v1.5.1
+   Compiling ecdsa v0.16.9
+   Compiling num-iter v0.1.46
+   Compiling rand v0.8.8
+   Compiling primeorder v0.13.6
+   Compiling tikv-jemalloc-sys v0.7.1+5.3.1-0-g81034ce1f1373e37dc865038e1bc8eeecf559ce8
+   Compiling slab v0.4.12
+   Compiling tower-layer v0.3.3
+   Compiling foldhash v0.2.0
+   Compiling httpdate v1.0.3
+   Compiling futures-task v0.3.34
+   Compiling sync_wrapper v1.0.2
+   Compiling memchr v2.8.3
+   Compiling atomic-waker v1.1.2
+   Compiling serde v1.0.229
+   Compiling hyper v1.12.0 (https://github.com/mjc/hyper.git?rev=aaf16f787d264aa967e357b07a5781f593d5f230#aaf16f78)
+   Compiling futures-util v0.3.34
+   Compiling hashbrown v0.17.1
+   Compiling http-body-util v0.1.5
+   Compiling ed25519 v2.2.3
+   Compiling serde_derive v1.0.229
+   Compiling pkcs1 v0.7.5
+   Compiling mime v0.3.17
+   Compiling axum-core v0.5.6
+   Compiling rsa v0.9.10
+   Compiling ed25519-dalek v2.2.0
+   Compiling hashlink v0.12.2
+   Compiling tower v0.5.3
+   Compiling hyper-util v0.1.21
+   Compiling p384 v0.13.1
+   Compiling p256 v0.13.2
+   Compiling serde_path_to_error v0.1.20
+   Compiling percent-encoding v2.3.2
+   Compiling bitflags v2.13.2
+   Compiling matchit v0.8.4
+   Compiling fallible-streaming-iterator v0.1.9
+   Compiling fallible-iterator v0.3.0
+   Compiling base64 v0.22.1
+   Compiling jsonwebtoken v11.1.0
+   Compiling rusqlite v0.40.2
+   Compiling axum v0.8.9
+   Compiling tikv-jemallocator v0.7.0
+   Compiling twelve-dollar-server v0.1.0 (/suite/sources/pr114)
+    Finished `release` profile [optimized] target(s) in 3m 00s
+
+$ docker exec twelve-current-build-114 bash -c rm -rf /tmp/* /root/.cache /home/bench/.cache /home/bench/.npm/_cacache /var/lib/apt/lists/* /var/cache/apt/archives/*.deb
+
+$ docker commit twelve-current-build-114 twelve-current-pr114:2026-10-20
+sha256:69d0bccff1544814ac1cd6b6d0ff5cb40ab30c399476f7ec8b2de25663deab8f

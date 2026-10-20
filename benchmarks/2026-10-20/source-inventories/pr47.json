@@ -1,0 +1,77 @@
+{
+  "files": {
+    ".gitignore": {
+      "sha256": "6c5082c7e6de3e350189c67a1aacf757485ecc26e0a3cf96683528565f3e5f12",
+      "bytes": 10,
+      "physical_lines": 2,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "Feed.csproj": {
+      "sha256": "4758666338f2cdc2bb4f956948d40fd861f54bc847a223f45d570f58a93198c3",
+      "bytes": 454,
+      "physical_lines": 15,
+      "classification": "other"
+    },
+    "JwtValidator.cs": {
+      "sha256": "76826e8076eb672d1a1d234e5a301b7b799fec82fd912f8b8b35c879d6c1c7ec",
+      "bytes": 2608,
+      "physical_lines": 61,
+      "classification": "application"
+    },
+    "Models.cs": {
+      "sha256": "bc199ca063a11d79f44fde8d8477b71fff5d443bff0089cce2a6f379c8b23cc2",
+      "bytes": 880,
+      "physical_lines": 24,
+      "classification": "application"
+    },
+    "Program.cs": {
+      "sha256": "97144b85c83c46f9e962abee98f39933c23587931fd9739c6a24e3f06f1c48e3",
+      "bytes": 4729,
+      "physical_lines": 110,
+      "classification": "application"
+    },
+    "README.md": {
+      "sha256": "304608dc2911b7130f9568bb3b1beb4c56915ee572b8ef9ed2c7dcee84fd9428",
+      "bytes": 5483,
+      "physical_lines": 89,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "appsettings.json": {
+      "sha256": "200332b434757a0054a3d356c91cde01f2c48712be8aa2bcb0f3e973619f06e3",
+      "bytes": 151,
+      "physical_lines": 9,
+      "classification": "own_support"
+    },
+    "build.sh": {
+      "sha256": "b66e65befc019c0f0e4d03b4a91bfa992c60256f57ca49a7c1898d34902be250",
+      "bytes": 313,
+      "physical_lines": 6,
+      "classification": "own_support"
+    },
+    "global.json": {
+      "sha256": "9969064a379ad96f0fd9358b4133bf2652018a32c60d44f37a0638168381a90d",
+      "bytes": 75,
+      "physical_lines": 6,
+      "classification": "own_support"
+    },
+    "install.sh": {
+      "sha256": "cd752b9596aaae8f5526a3d659c8f6107feb8a0a252c844bb0dee4ee40a97f35",
+      "bytes": 565,
+      "physical_lines": 12,
+      "classification": "own_support"
+    },
+    "packages.lock.json": {
+      "sha256": "847775802dc7f6820027853c496ace468056318af95078036274ce6c693fd4bc",
+      "bytes": 2127,
+      "physical_lines": 59,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "start.sh": {
+      "sha256": "00a1f41a516ca2e50dfd76838f7b7c7164a69eac802c48ed72ff304560d564f1",
+      "bytes": 174,
+      "physical_lines": 5,
+      "classification": "own_support"
+    }
+  },
+  "skipped_members": []
+}

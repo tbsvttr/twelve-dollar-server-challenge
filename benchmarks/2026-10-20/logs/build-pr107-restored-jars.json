@@ -1,0 +1,72 @@
+[
+  {
+    "path": "/home/bench/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala3-library_3/3.9.0/scala3-library_3-3.9.0.jar",
+    "url": "https://repo1.maven.org/maven2/org/scala-lang/scala3-library_3/3.9.0/scala3-library_3-3.9.0.jar",
+    "published_sha1": "ca71b2166bba365481723d935f6058a213a071fe",
+    "sha256": "9343f9651453945fc6a9b75bb4fd230418ee28a1f88ea28ee429f3ebe0511aba",
+    "bytes": 344
+  },
+  {
+    "path": "/home/bench/.cache/coursier/v1/https/repo1.maven.org/maven2/io/netty/netty-transport/4.2.18.Final/netty-transport-4.2.18.Final.jar",
+    "url": "https://repo1.maven.org/maven2/io/netty/netty-transport/4.2.18.Final/netty-transport-4.2.18.Final.jar",
+    "published_sha1": "14ad66183e0456621161e60b41ca2abdcf9bd15c",
+    "sha256": "eac4f12068db4489e60c6520fad663e5d872f0436a7c641aa9e08db649947863",
+    "bytes": 549970
+  },
+  {
+    "path": "/home/bench/.cache/coursier/v1/https/repo1.maven.org/maven2/io/netty/netty-transport-native-epoll/4.2.18.Final/netty-transport-native-epoll-4.2.18.Final-linux-x86_64.jar",
+    "url": "https://repo1.maven.org/maven2/io/netty/netty-transport-native-epoll/4.2.18.Final/netty-transport-native-epoll-4.2.18.Final-linux-x86_64.jar",
+    "published_sha1": "1e4e4669e1e7b98f898b322f29c9106bb37d7952",
+    "sha256": "32a340971182d901cea513588549cfadc392bb7342f930379a6e34d853a331f0",
+    "bytes": 42392
+  },
+  {
+    "path": "/home/bench/.cache/coursier/v1/https/repo1.maven.org/maven2/io/netty/netty-transport-native-epoll/4.2.18.Final/netty-transport-native-epoll-4.2.18.Final-linux-aarch_64.jar",
+    "url": "https://repo1.maven.org/maven2/io/netty/netty-transport-native-epoll/4.2.18.Final/netty-transport-native-epoll-4.2.18.Final-linux-aarch_64.jar",
+    "published_sha1": "3d0ebc0b58985bd6e27e437733700d583166b4d0",
+    "sha256": "542ec436b3bc5ed6eed946573ce0ad2c8776517badb949817d06c7294b9d023e",
+    "bytes": 43899
+  },
+  {
+    "path": "/home/bench/.cache/coursier/v1/https/repo1.maven.org/maven2/org/scala-lang/scala-library/3.9.0/scala-library-3.9.0.jar",
+    "url": "https://repo1.maven.org/maven2/org/scala-lang/scala-library/3.9.0/scala-library-3.9.0.jar",
+    "published_sha1": "08f3ebf03aa11fa0f422e3430b3401c4f81e688a",
+    "sha256": "b844bf6fb3080c73df6b9c523b7a69b9ef4a980bb15e5c37c35443d1d0b0e0cd",
+    "bytes": 9823422
+  },
+  {
+    "path": "/home/bench/.cache/coursier/v1/https/repo1.maven.org/maven2/io/netty/netty-common/4.2.18.Final/netty-common-4.2.18.Final.jar",
+    "url": "https://repo1.maven.org/maven2/io/netty/netty-common/4.2.18.Final/netty-common-4.2.18.Final.jar",
+    "published_sha1": "aa06ef3310c8ad1e506ec14ab3794f9e26438121",
+    "sha256": "5d97cae5669685872339698efe13f74fe3cdb2dccdb36963b2352bd95acf7070",
+    "bytes": 903757
+  },
+  {
+    "path": "/home/bench/.cache/coursier/v1/https/repo1.maven.org/maven2/io/netty/netty-buffer/4.2.18.Final/netty-buffer-4.2.18.Final.jar",
+    "url": "https://repo1.maven.org/maven2/io/netty/netty-buffer/4.2.18.Final/netty-buffer-4.2.18.Final.jar",
+    "published_sha1": "62e970871a61c58ff7164e076bb8032a1ea444af",
+    "sha256": "fdf236d2b76aa9710684401fdad7dff9dec56e43da5d39172c9a55ba5f14b360",
+    "bytes": 378263
+  },
+  {
+    "path": "/home/bench/.cache/coursier/v1/https/repo1.maven.org/maven2/io/netty/netty-resolver/4.2.18.Final/netty-resolver-4.2.18.Final.jar",
+    "url": "https://repo1.maven.org/maven2/io/netty/netty-resolver/4.2.18.Final/netty-resolver-4.2.18.Final.jar",
+    "published_sha1": "9d21e01c476a1f92b9dc07d968d2a02810b2fba1",
+    "sha256": "68373ec544cf769ba17bf2ef455166d98f2c260dff536edf35ef57067a9c155f",
+    "bytes": 32975
+  },
+  {
+    "path": "/home/bench/.cache/coursier/v1/https/repo1.maven.org/maven2/io/netty/netty-transport-native-unix-common/4.2.18.Final/netty-transport-native-unix-common-4.2.18.Final.jar",
+    "url": "https://repo1.maven.org/maven2/io/netty/netty-transport-native-unix-common/4.2.18.Final/netty-transport-native-unix-common-4.2.18.Final.jar",
+    "published_sha1": "b9dbd51d2802e447630ef2b8bba56bb5aaad1f82",
+    "sha256": "cada7023d09136af128511ca94421d69dc84d0f1f64c9e1f127a1271bb62932a",
+    "bytes": 46877
+  },
+  {
+    "path": "/home/bench/.cache/coursier/v1/https/repo1.maven.org/maven2/io/netty/netty-transport-classes-epoll/4.2.18.Final/netty-transport-classes-epoll-4.2.18.Final.jar",
+    "url": "https://repo1.maven.org/maven2/io/netty/netty-transport-classes-epoll/4.2.18.Final/netty-transport-classes-epoll-4.2.18.Final.jar",
+    "published_sha1": "f8ecad45ec66d1b3b860f78f0e74612fd62c48c3",
+    "sha256": "3677ca998f3db749d3fdb0fb1b1674f9809f4fbe8f819a346f4858dfb16c4d95",
+    "bytes": 159938
+  }
+]

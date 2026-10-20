@@ -1,0 +1,40 @@
+Pinned source: 896434055ff5278bead6112da223c5bb0670f982
+
+$ docker run -d --name twelve-current-build-103 --cpus 1.5 --memory 3g --memory-swap 3g --security-opt seccomp=seccomp-io-uring.json --mount type=bind,src=<BENCHMARK_EVIDENCE>,dst=/evidence,readonly twelve-unified:2026-10-07 sleep infinity
+ae4c786e65f6247177ff553ba69271f4bda17600dd7664a5bb22ddf75b1fc0bb
+
+$ docker exec -i twelve-current-build-103 python3 - 103
+Verified 9 pinned source files
+
+$ docker exec twelve-current-build-103 bash /evidence/runtime-scripts/pr103.sh
+/tmp/go.tgz: OK
+go version go1.27.2 linux/arm64
+
+$ docker exec twelve-current-build-103 chown -R bench:bench /suite/sources/pr103
+
+$ docker exec twelve-current-build-103 runuser -u bench -- env PATH=/opt/twelve-rust/cargo/bin:/usr/local/go/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 NIM_JOBS=2 MAKEFLAGS=-j2 bash /suite/sources/pr103/build.sh
+go: downloading github.com/mattn/go-sqlite3 v1.14.52
+go: downloading github.com/gin-gonic/gin v1.12.0
+go: downloading github.com/gin-contrib/sse v1.1.2
+go: downloading github.com/mattn/go-isatty v0.0.24
+go: downloading github.com/quic-go/quic-go v0.63.0
+go: downloading golang.org/x/net v0.61.0
+go: downloading github.com/go-playground/validator/v10 v10.30.5
+go: downloading github.com/goccy/go-yaml v1.19.2
+go: downloading github.com/pelletier/go-toml/v2 v2.4.3
+go: downloading github.com/ugorji/go/codec v1.3.2
+go: downloading go.mongodb.org/mongo-driver/v2 v2.9.2
+go: downloading google.golang.org/protobuf v1.36.12
+go: downloading golang.org/x/sys v0.49.0
+go: downloading github.com/quic-go/qpack v0.6.0
+go: downloading github.com/gabriel-vasile/mimetype v1.4.15
+go: downloading github.com/go-playground/universal-translator v0.18.2
+go: downloading github.com/leodido/go-urn v1.5.0
+go: downloading golang.org/x/crypto v0.58.0
+go: downloading golang.org/x/text v0.43.0
+go: downloading github.com/go-playground/locales v0.14.2
+
+$ docker exec twelve-current-build-103 bash -c rm -rf /tmp/* /root/.cache /home/bench/.cache /home/bench/.npm/_cacache /var/lib/apt/lists/* /var/cache/apt/archives/*.deb
+
+$ docker commit twelve-current-build-103 twelve-current-pr103:2026-10-20
+sha256:982859ec4835a6102be6d9b33a8d1778d1d1732f696d52d7ce2e0e6d39d61a8d

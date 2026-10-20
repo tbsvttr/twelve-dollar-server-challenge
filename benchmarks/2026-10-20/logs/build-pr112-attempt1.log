@@ -1,0 +1,49 @@
+Pinned source: f3afa25403ac5ee2a2030337de1afd635cd6ab65
+
+$ docker run -d --name twelve-current-build-112 --cpus 1.5 --memory 3g --memory-swap 3g --mount type=bind,src=<BENCHMARK_EVIDENCE>,dst=/evidence,readonly twelve-unified:2026-10-07 sleep infinity
+3880485b8659914f07f4694d652256cafeea134e2f144bd2d407e8cd27370f59
+
+$ docker exec -i twelve-current-build-112 python3 - 112
+Verified 20 pinned source files
+
+$ docker exec twelve-current-build-112 bash /suite/sources/pr112/install.sh
+debconf: delaying package configuration, since apt-utils is not installed
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 16962 files and directories currently installed.)
+Preparing to unpack .../curl_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking curl (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Preparing to unpack .../libcurl4t64_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking libcurl4t64:arm64 (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Preparing to unpack .../libcurl3t64-gnutls_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking libcurl3t64-gnutls:arm64 (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Setting up libcurl4t64:arm64 (8.5.0-2ubuntu10.16) ...
+Setting up libcurl3t64-gnutls:arm64 (8.5.0-2ubuntu10.16) ...
+Setting up curl (8.5.0-2ubuntu10.16) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+
+$ docker exec twelve-current-build-112 chown -R bench:bench /suite/sources/pr112
+
+$ docker exec twelve-current-build-112 runuser -u bench -- env PATH=/opt/twelve-rust/cargo/bin:/usr/local/go/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 NIM_JOBS=2 MAKEFLAGS=-j2 bash /suite/sources/pr112/build.sh
+build: downloading sqlite-amalgamation-3540000.zip
+build: downloading liburing-2.15.tar.gz
+ar: creating liburing.a
+ar: creating liburing-ffi.a
+build: deps ready
+src/util.c:2: warning: "_GNU_SOURCE" redefined
+    2 | #define _GNU_SOURCE
+      | 
+<command-line>: note: this is the location of the previous definition
+build: PGO build
+pgo/train.c:12:10: fatal error: sqlite3.h: No such file or directory
+   12 | #include "sqlite3.h"
+      |          ^~~~~~~~~~~
+compilation terminated.
+lto-wrapper: warning: using serial compilation of 2 LTRANS jobs
+lto-wrapper: note: see the '-flto' option documentation for more information
+/suite/sources/pr112/build.sh: line 102: build/train: No such file or directory
+build: PGO build failed; falling back
+build: plain build (no PGO)
+build: built bin/server (plain)
+pgo/train.c:12:10: fatal error: sqlite3.h: No such file or directory
+   12 | #include "sqlite3.h"
+      |          ^~~~~~~~~~~
+compilation terminated.

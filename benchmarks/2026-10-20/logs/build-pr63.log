@@ -1,0 +1,65 @@
+
+$ docker exec twelve-current-build-pr63 bash -c set -e; rm -rf /suite/sources; mkdir -p /suite/sources; cp -a /evidence/sources/pr63 /suite/sources/; cp /evidence/manifest.json /suite/manifest.json; cp /evidence/schema.sql /suite/schema.sql; chown -R bench:bench /suite/sources
+
+$ docker exec twelve-current-build-pr63 bash /evidence/runtime-scripts/pr63.sh
+Hit:1 http://ports.ubuntu.com/ubuntu-ports noble InRelease
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble-updates InRelease [126 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble-backports InRelease [126 kB]
+Get:4 http://ports.ubuntu.com/ubuntu-ports noble-security InRelease [126 kB]
+Get:5 http://ports.ubuntu.com/ubuntu-ports noble-updates/multiverse arm64 Packages [104 kB]
+Get:6 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 Packages [1786 kB]
+Get:7 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 Packages [2214 kB]
+Get:8 http://ports.ubuntu.com/ubuntu-ports noble-updates/restricted arm64 Packages [3251 kB]
+Get:9 http://ports.ubuntu.com/ubuntu-ports noble-backports/multiverse arm64 Packages [669 B]
+Get:10 http://ports.ubuntu.com/ubuntu-ports noble-security/multiverse arm64 Packages [99.1 kB]
+Get:11 http://ports.ubuntu.com/ubuntu-ports noble-security/restricted arm64 Packages [3129 kB]
+Get:12 http://ports.ubuntu.com/ubuntu-ports noble-security/universe arm64 Packages [1638 kB]
+Get:13 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 Packages [1475 kB]
+Fetched 14.1 MB in 1s (13.2 MB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+ca-certificates is already the newest version (20260601~24.04.1).
+gcc is already the newest version (4:13.2.0-7ubuntu1).
+gcc set to manually installed.
+libc6-dev is already the newest version (2.39-0ubuntu8.9).
+libc6-dev set to manually installed.
+The following additional packages will be installed:
+  libcurl3t64-gnutls libcurl4t64
+The following packages will be upgraded:
+  curl libcurl3t64-gnutls libcurl4t64
+3 upgraded, 0 newly installed, 0 to remove and 16 not upgraded.
+Need to get 890 kB of archives.
+After this operation, 3072 B of additional disk space will be used.
+Get:1 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 curl arm64 8.5.0-2ubuntu10.16 [222 kB]
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 libcurl4t64 arm64 8.5.0-2ubuntu10.16 [337 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 libcurl3t64-gnutls arm64 8.5.0-2ubuntu10.16 [331 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 890 kB in 0s (2475 kB/s)
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 16962 files and directories currently installed.)
+Preparing to unpack .../curl_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking curl (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Preparing to unpack .../libcurl4t64_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking libcurl4t64:arm64 (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Preparing to unpack .../libcurl3t64-gnutls_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking libcurl3t64-gnutls:arm64 (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Setting up libcurl4t64:arm64 (8.5.0-2ubuntu10.16) ...
+Setting up libcurl3t64-gnutls:arm64 (8.5.0-2ubuntu10.16) ...
+Setting up curl (8.5.0-2ubuntu10.16) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+/tmp/tmp.qUhwmmMpfc/jdk.tar.gz: OK
+/tmp/tmp.qUhwmmMpfc/maven.tar.gz: OK
+openjdk version "25.0.4.1" 2026-08-18 LTS
+OpenJDK Runtime Environment Temurin-25.0.4.1+1 (build 25.0.4.1+1-LTS)
+OpenJDK 64-Bit Server VM Temurin-25.0.4.1+1 (build 25.0.4.1+1-LTS, mixed mode, sharing)
+Apache Maven 3.9.16 (2bdd9fddda4b155ebf8000e807eb73fd829a51d5)
+Maven home: /opt/maven
+Java version: 25.0.4.1, vendor: Eclipse Adoptium, runtime: /opt/jdk-25
+Default locale: en_US, platform encoding: UTF-8
+OS name: "linux", version: "7.0.14-linuxkit", arch: "aarch64", family: "unix"
+
+$ docker exec twelve-current-build-pr63 runuser -u bench -- env PATH=/usr/local/go/bin:/opt/twelve-rust/cargo/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 bash /suite/sources/pr63/build.sh
+build/sqlite-autoconf-3540000.tar.gz: OK
+
+$ docker exec twelve-current-build-pr63 bash -c rm -f /usr/local/bin/nproc; rm -rf /tmp/* /root/.cache /root/.cargo/registry /home/bench/.cache /home/bench/.cargo/registry /home/bench/.npm/_cacache /var/lib/apt/lists/* /var/cache/apt/archives/*.deb; find /suite/sources -type d -path '*/target/release/incremental' -prune -exec rm -rf {} +

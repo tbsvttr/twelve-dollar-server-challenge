@@ -1,0 +1,6 @@
+Pinned source: d2ea5d8c7225eb640e07a65cb2c951b271d10e63
+4dce7e300a261b1106307b3240d148b1d7e88cf2381fa9a62a0596b58e9fe1b0
+  Determining projects to restore...
+  Restored /suite/sources/pr20/FeedApi.csproj (in 452 ms).
+  FeedApi -> /suite/sources/pr20/bin/Release/net10.0/FeedApi.dll
+  FeedApi -> /suite/sources/pr20/bin/publish/

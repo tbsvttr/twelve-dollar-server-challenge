@@ -1,0 +1,89 @@
+{
+  "files": {
+    ".gitignore": {
+      "sha256": "f6a1580d9195612fd7dec2573af5c33ffd069f8f9de2a453995c95d6b4cf7e2b",
+      "bytes": 72,
+      "physical_lines": 7,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "README.md": {
+      "sha256": "655741dd6c753d5a43e618c9849766edbf66966a16e5fe434af5d89550baace4",
+      "bytes": 4398,
+      "physical_lines": 63,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "build.sbt": {
+      "sha256": "dfcb24cc5e2399d8f6dcf0807a2f8834d46d858b47646dfbcbd8fcef1e920e30",
+      "bytes": 821,
+      "physical_lines": 20,
+      "classification": "other"
+    },
+    "build.sh": {
+      "sha256": "afc029da6c1c58c910c4580fb27ceda517cd0472fdbe3ffbeb0ca6239402eb43",
+      "bytes": 1380,
+      "physical_lines": 23,
+      "classification": "own_support"
+    },
+    "install.sh": {
+      "sha256": "0fb70fbb383730190e64fe7f6f0748b279f4dd9d959023965b2e2b75c2ebd407",
+      "bytes": 1376,
+      "physical_lines": 24,
+      "classification": "own_support"
+    },
+    "project/build.properties": {
+      "sha256": "2aa36619b308c66c61f629a6fc3d69d03e46ee3a334933819dc6e59adc0e1479",
+      "bytes": 19,
+      "physical_lines": 1,
+      "classification": "own_support"
+    },
+    "src/main/scala/server/App.scala": {
+      "sha256": "1b21cd115167307adb740bb8289fd3d661dcc9a59381f68b02d40d5478556042",
+      "bytes": 9009,
+      "physical_lines": 203,
+      "classification": "application"
+    },
+    "src/main/scala/server/Http.scala": {
+      "sha256": "e0979965ecc7f50a8f74c4ae19cb58f1d81f49a564fc08289ce00417728ff685",
+      "bytes": 13976,
+      "physical_lines": 321,
+      "classification": "application"
+    },
+    "src/main/scala/server/Json.scala": {
+      "sha256": "00e9ead303b521dcdf5c7a0f7d8302b970338df894ff30ee4d0f0b5aa509b1bc",
+      "bytes": 4326,
+      "physical_lines": 125,
+      "classification": "application"
+    },
+    "src/main/scala/server/Jwt.scala": {
+      "sha256": "f90748ee9dd486bb86ec50efb09a5b3ed88d658b71235b71f973cd327280b5e5",
+      "bytes": 3452,
+      "physical_lines": 83,
+      "classification": "application"
+    },
+    "src/main/scala/server/Main.scala": {
+      "sha256": "7e7e03e6aa5610097ba93a0dae7e9dbcd8790acb1ef0308bc18c466323012b86",
+      "bytes": 2381,
+      "physical_lines": 48,
+      "classification": "application"
+    },
+    "src/main/scala/server/Out.scala": {
+      "sha256": "ee9e04dcd730fc17738569413d7b73cfb85ba17228eb73c097a343a71fffdfcc",
+      "bytes": 2685,
+      "physical_lines": 73,
+      "classification": "application"
+    },
+    "src/main/scala/server/Sqlite.scala": {
+      "sha256": "75ef3ad7c3583ffe7638200c33c3c884a0be143e5305995b08e5508dba9ecc88",
+      "bytes": 5481,
+      "physical_lines": 104,
+      "classification": "application"
+    },
+    "start.sh": {
+      "sha256": "b6ef79b3ff4a121a76834d13910363eb09a61c617bf6201f562d908c4a9ad090",
+      "bytes": 728,
+      "physical_lines": 13,
+      "classification": "own_support"
+    }
+  },
+  "skipped_members": []
+}

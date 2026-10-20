@@ -1,0 +1,282 @@
+{
+  "checked_at": "2026-10-20T11:22:39Z",
+  "verified_candidates": 46,
+  "candidates": {
+    "41": {
+      "commit": "2878e8dffddfc2fe36409bb037264048f7486abd",
+      "tracked_files": 51,
+      "verified": true,
+      "inventory_sha256": "03a2c6289699064f46ea839be3d5acb704e794ce6160cb866a101c290f7d1087"
+    },
+    "42": {
+      "commit": "bb05a6f52932e955954393aba5fa681a09f9f780",
+      "tracked_files": 6,
+      "verified": true,
+      "inventory_sha256": "ba47497bbbd083e9cc5d684257fe7724ae07643a9f2d5c993203c4351a0db162"
+    },
+    "43": {
+      "commit": "a23a42696181ebeaf0b93c01e6296325c7e64370",
+      "tracked_files": 15,
+      "verified": true,
+      "inventory_sha256": "dd86d92e02b273859f9feae45827c354b7ec40a76e462a0848dc8f795418c089"
+    },
+    "44": {
+      "commit": "c5eba7b5c9fff27b5e428958bc3e45ebd1dc0375",
+      "tracked_files": 11,
+      "verified": true,
+      "inventory_sha256": "b19d22721703216fac92db35fb75006e6531421fe73a3cf845eda44987b6de57"
+    },
+    "45": {
+      "commit": "a550cad21e1dcca3a3edcdad5a12a87437e5619a",
+      "tracked_files": 12,
+      "verified": true,
+      "inventory_sha256": "6ac8ea9e620d7f931fa9368e3db9eb9ca01dfa9e93f23ff76a0474bd7ab4a3b4"
+    },
+    "46": {
+      "commit": "07ae49d290b3cf94083d562631e82dee45421540",
+      "tracked_files": 8,
+      "verified": true,
+      "inventory_sha256": "1c19c14e7ad349b32898164dc4c9ecda9022d0fb6d0c21d189f01f6c809d7820"
+    },
+    "47": {
+      "commit": "3448cf402a61968143de8de60cfe5b0051218ca8",
+      "tracked_files": 12,
+      "verified": true,
+      "inventory_sha256": "b220a243b62f8814d2b7097f32078b548f18a63040a08552529978b5ba493732"
+    },
+    "48": {
+      "commit": "2a6b703fffa62bfbf2f13c67cc1f317a5d0f6e4c",
+      "tracked_files": 15,
+      "verified": true,
+      "inventory_sha256": "f7dc72b80480f1af8bfeff9f2b6722977af35d5c4edf1c054bc5f21571f45d15"
+    },
+    "49": {
+      "commit": "591507d5c1f73b6b758e8b29c9d8fabbca6c94f1",
+      "tracked_files": 22,
+      "verified": true,
+      "inventory_sha256": "2aee166b789e3862fd34b2d5196b827dd8944c318dcbe08ec92be6162fb5dcd5"
+    },
+    "50": {
+      "commit": "5f602c1602af15e8c190ed1b009bea286318dadc",
+      "tracked_files": 93,
+      "verified": true,
+      "inventory_sha256": "24d44763c8c5c2b29e8815bcc20b68ddca6e3d1c3cc31ae8c3db80c23ea23bf4"
+    },
+    "51": {
+      "commit": "6ba12bd883c0198e48c252ded0f72f72ded99c1a",
+      "tracked_files": 16,
+      "verified": true,
+      "inventory_sha256": "1ac99481f18b8d0174d41022d30c57625e88b6b64423b536b8273dbc50b7becf"
+    },
+    "52": {
+      "commit": "1ca4d830e6a4cf070bca31d0fb6474553fe4c1cd",
+      "tracked_files": 20,
+      "verified": true,
+      "inventory_sha256": "01c5e5f5ddc28bbafa232b3fc7124b039f4dfac1f4f73fe312f39389ad680c4c"
+    },
+    "53": {
+      "commit": "7e92d120fbf4c02b01595143de2f4c5826177ef3",
+      "tracked_files": 26,
+      "verified": true,
+      "inventory_sha256": "68da9be704e383c11c3719d0954057cf79b4975ad09fd33fa4e4b565e9efeaa3"
+    },
+    "54": {
+      "commit": "9310949809dc59759c06fbc0e6ce5ff9d69e8590",
+      "tracked_files": 10,
+      "verified": true,
+      "inventory_sha256": "48a768672b619fe8bdf23c05966a8d198692c99bd15e6a24f2f88b640e404ab0"
+    },
+    "55": {
+      "commit": "98b16d56372f751793a0ca5d518e2940094639e4",
+      "tracked_files": 16,
+      "verified": true,
+      "inventory_sha256": "d509889e952d06496d554749fc4d7f4f6f2a7b8e824dd067b47935ba22c03355"
+    },
+    "56": {
+      "commit": "f320dd37bd7c8b4c279dc49900816bc1a14262ab",
+      "tracked_files": 12,
+      "verified": true,
+      "inventory_sha256": "d1c9b8183ba71143306b8c57bd760356d985f1fa73609d1482f09d7e53b0decd"
+    },
+    "57": {
+      "commit": "6074d0264f46a7ea6421a28fdb51d04b5104e385",
+      "tracked_files": 19,
+      "verified": true,
+      "inventory_sha256": "aa2d64609527a17b0a2d719719c7950e5710a905d7d0fb658f1528bc1cb7c08d"
+    },
+    "59": {
+      "commit": "24eac14fc568b583de67a80ea703320edf990c8b",
+      "tracked_files": 21,
+      "verified": true,
+      "inventory_sha256": "9b5eaef8fbdc745f8f3c36e3ecea9a29092b420611ea8101c328caad2b2ee9fa"
+    },
+    "61": {
+      "commit": "00fc4a9ad89f5d18f968d81dd67a2d8be0715e54",
+      "tracked_files": 15,
+      "verified": true,
+      "inventory_sha256": "91d5910b223c988dd8e581f4ee4770a6d3cf77156fe1784d6456f77fbb353e5c"
+    },
+    "63": {
+      "commit": "4c86f79f4e7df83e9beaddb1d69d6a13461fc867",
+      "tracked_files": 14,
+      "verified": true,
+      "inventory_sha256": "35e78a9f089211103080b7fcdc8246f35acba58cf61cdd27f20ed99fce700a66"
+    },
+    "64": {
+      "commit": "efd2fa8772452142e94b642d490a753390011e64",
+      "tracked_files": 27,
+      "verified": true,
+      "inventory_sha256": "55c34e652b47b1ecb93a4a02efdd7fb5f92dbaf6d3afbfe815bb04c169087bc5"
+    },
+    "65": {
+      "commit": "4aa3ddfaf31a44a8ada275d6fa1ade0149e71fe7",
+      "tracked_files": 18,
+      "verified": true,
+      "inventory_sha256": "0c7d3d1539332dcdf7c9a4d2d9dacc59f9f85cba1d3eb192e1b381632cdf7c04"
+    },
+    "66": {
+      "commit": "536593f87efdfc9440e6c374a86e630a58887cdb",
+      "tracked_files": 48,
+      "verified": true,
+      "inventory_sha256": "74cbc4ec471d343916856359729682dbdbcef2c2394af02b2db14c4c437db82c"
+    },
+    "67": {
+      "commit": "633dedffcbf9a2776e3cacab6235f707df997ef4",
+      "tracked_files": 56,
+      "verified": true,
+      "inventory_sha256": "ab2e51afe6fa625cfbb07a4f23d0259c8e34bed38a4caad00c1a67a1f8c375ae"
+    },
+    "68": {
+      "commit": "34d72571d456727b4b03e994d043db8539fab761",
+      "tracked_files": 9,
+      "verified": true,
+      "inventory_sha256": "a70e6e65eb6cebd0db92d2624c1dbc85f776fd6ab29da9c03e61f99f0ae44761"
+    },
+    "69": {
+      "commit": "913da3f19ba9b7fc7e36d9371d29031999f9e29c",
+      "tracked_files": 6,
+      "verified": true,
+      "inventory_sha256": "38903d3ad7bea8a50676e2fc4e2e4b11809cb9d56fc80af2f102b4a40076e647"
+    },
+    "70": {
+      "commit": "c926201c5fd0d35fda6090486797a4a197e5e453",
+      "tracked_files": 6,
+      "verified": true,
+      "inventory_sha256": "22e0a1c8f4330cd86dc2d62ff0d82914146a51340c36dc02177d3316d61e5a9e"
+    },
+    "71": {
+      "commit": "469957f2bbdd6e7483d567c860378031154e6ac9",
+      "tracked_files": 12,
+      "verified": true,
+      "inventory_sha256": "2960260abd634752284942a3fd01f642f57a5ce064fb994d6abe74cad2ed4a17"
+    },
+    "72": {
+      "commit": "9df7449fe8019051793291029b00db760f19f1fd",
+      "tracked_files": 15,
+      "verified": true,
+      "inventory_sha256": "732f8d4ac5122a2f5e40eb35b794f466a7d1f067e84564f105bff742088acecc"
+    },
+    "73": {
+      "commit": "be4df7fff7dad80aeec4820bcc51f53702df0314",
+      "tracked_files": 17,
+      "verified": true,
+      "inventory_sha256": "7ff9c5eb8ebb17e6a358f5041a8a456199494c6829dfaed50408f6e048388972"
+    },
+    "74": {
+      "commit": "2d589c43441d26dda0e90d4010f04ff5361232cd",
+      "tracked_files": 15,
+      "verified": true,
+      "inventory_sha256": "26068d9f0c3fd835d3b1b76d38bb2448ca5467382cef87bab9721180708fca2c"
+    },
+    "75": {
+      "commit": "4b8ba1cc1bcb412273a0f577a7578da0ec3d3791",
+      "tracked_files": 12,
+      "verified": true,
+      "inventory_sha256": "250f6e833b9335a3590557e9ecddfb9088f67f9d76b1031ab539a33e2e034cc7"
+    },
+    "76": {
+      "commit": "6f72081de1b7708110dda428161339646ebf7e0d",
+      "tracked_files": 17,
+      "verified": true,
+      "inventory_sha256": "b278a8c87e36aa7f2250fbc0799c6e8bee451481c52e0c79fd24c1e17b90a855"
+    },
+    "77": {
+      "commit": "356798f88ca7b9bcb5eb4afe5220f6103f2e7e8a",
+      "tracked_files": 8,
+      "verified": true,
+      "inventory_sha256": "6aeac3f100de7ba7a24d6dc50dd82a4acbe89b148c3ce11d0426dba3661aaefb"
+    },
+    "78": {
+      "commit": "a67c94c309c60381f425045686e1cab0fead8c92",
+      "tracked_files": 9,
+      "verified": true,
+      "inventory_sha256": "b9b45ad990a86c8e89f8fecfbc2e5a1647eee30d82179999990b7d6f98b0d80e"
+    },
+    "79": {
+      "commit": "76fb2198420411f4b5532a63eb559972c8c11f57",
+      "tracked_files": 7,
+      "verified": true,
+      "inventory_sha256": "e06a81326d0963ce9c4187ea0e2526cdbbba9a75f70f9fdb1d05d2191635b7ff"
+    },
+    "80": {
+      "commit": "e39a91b3debb82e265734396b275427572f1841a",
+      "tracked_files": 43,
+      "verified": true,
+      "inventory_sha256": "0f47d8b2360242d55cb089e0baa3d8535ce46c53418076366800e4d0ed3ae83c"
+    },
+    "81": {
+      "commit": "09d7d4342e285663dd3f69c316e90d56737b2b68",
+      "tracked_files": 79,
+      "verified": true,
+      "inventory_sha256": "8bceacbc99f8ded141bbeeb79f762233e24ff5dd0225a83cf35be5d025659ae3"
+    },
+    "82": {
+      "commit": "95aa405a0003599dbc7fb4dfa47a09e8343239df",
+      "tracked_files": 49,
+      "verified": true,
+      "inventory_sha256": "e5b65b7e3baa75e97ba4ec2bfc7c1e1b44f43c6022559a4d1c1168cfbf9e007a"
+    },
+    "83": {
+      "commit": "38eb5434ec0401d09ace2a8f788d4a582bcf2788",
+      "tracked_files": 12,
+      "verified": true,
+      "inventory_sha256": "0f7d9833a38ab944c957de57d25b17a9a0a3bebb7eed8f01aacf1a2b90d6adb8"
+    },
+    "84": {
+      "commit": "87b92833c14d2a993b65a38c429512200dbb4fc5",
+      "tracked_files": 12,
+      "verified": true,
+      "inventory_sha256": "688ef0d025e6a151f29a249eae84080086a97d79d8ba727bf729954f49b8f426"
+    },
+    "85": {
+      "commit": "00f7e75f9dbbfb4ebcb02f7a54aea581a3289bbb",
+      "tracked_files": 10,
+      "verified": true,
+      "inventory_sha256": "188ca85a4eae69544b270c139c60f74af8f8a8f382bf23f8306f69e27b13377f"
+    },
+    "86": {
+      "commit": "61eb6ed7395a1a99209500c7fde8408255c8b791",
+      "tracked_files": 59,
+      "verified": true,
+      "inventory_sha256": "d1a77d9a20edd1857d153eb527f9238194c7097968fb0d879b07ea4d99901db9"
+    },
+    "88": {
+      "commit": "0600708b01e9c550143da51583d240e83efa4614",
+      "tracked_files": 13,
+      "verified": true,
+      "inventory_sha256": "82cf90ce8061e6ec22943c22c3a0eccba1c481e619ecc5acb6348418174e35c2"
+    },
+    "89": {
+      "commit": "b44a32f07428b01a2940cda500f317d17fa75a32",
+      "tracked_files": 6,
+      "verified": true,
+      "inventory_sha256": "c490bce2f249d2e6d1247912faac3863e8fd618a2f8cced308ab19a8137ffd25"
+    },
+    "90": {
+      "commit": "2c1db8a3691a9fbc7e752993b7921be28e1e13ad",
+      "tracked_files": 5,
+      "verified": true,
+      "inventory_sha256": "e095998a42e3eb8448a7379039e50cd360785d0691ade398eb1cae93ad1243d9"
+    }
+  }
+}

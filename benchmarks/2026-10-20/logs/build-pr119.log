@@ -1,0 +1,122 @@
+Pinned source: 7b330d73fc7fdb0bb6d51f176189f1a0f8cc1a3b
+
+$ docker run -d --name twelve-current-build-119 --cpus 1 --memory 2g --memory-swap 2g --security-opt seccomp=seccomp-io-uring.json --mount type=bind,src=<BENCHMARK_EVIDENCE>,dst=/evidence,readonly twelve-unified:2026-10-07 sleep infinity
+72e5a9d736f28fbe9a16921f6b06937c25fef56efa868d956e403ef8e8fa79ae
+
+$ docker exec -i twelve-current-build-119 python3 - 119
+Verified 12 pinned source files
+
+$ docker exec twelve-current-build-119 bash /suite/sources/pr119/install.sh
+Hit:1 http://ports.ubuntu.com/ubuntu-ports noble InRelease
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble-updates InRelease [126 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble-backports InRelease [126 kB]
+Get:4 http://ports.ubuntu.com/ubuntu-ports noble-security InRelease [126 kB]
+Get:5 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 Packages [2214 kB]
+Get:6 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 Packages [1786 kB]
+Get:7 http://ports.ubuntu.com/ubuntu-ports noble-updates/restricted arm64 Packages [3251 kB]
+Get:8 http://ports.ubuntu.com/ubuntu-ports noble-updates/multiverse arm64 Packages [104 kB]
+Get:9 http://ports.ubuntu.com/ubuntu-ports noble-backports/multiverse arm64 Packages [669 B]
+Get:10 http://ports.ubuntu.com/ubuntu-ports noble-security/multiverse arm64 Packages [99.1 kB]
+Get:11 http://ports.ubuntu.com/ubuntu-ports noble-security/restricted arm64 Packages [3129 kB]
+Get:12 http://ports.ubuntu.com/ubuntu-ports noble-security/universe arm64 Packages [1638 kB]
+Get:13 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 Packages [1475 kB]
+Fetched 14.1 MB in 2s (6004 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+unzip is already the newest version (6.0-28ubuntu4.1).
+ca-certificates is already the newest version (20260601~24.04.1).
+build-essential is already the newest version (12.10ubuntu1).
+The following additional packages will be installed:
+  libcurl3t64-gnutls libcurl4t64 libllvm17t64 libstd-rust-1.75 libstd-rust-dev
+Suggested packages:
+  cargo llvm-17 lld-17 clang-17
+The following NEW packages will be installed:
+  libllvm17t64 libstd-rust-1.75 libstd-rust-dev rustc
+The following packages will be upgraded:
+  curl libcurl3t64-gnutls libcurl4t64
+3 upgraded, 4 newly installed, 0 to remove and 16 not upgraded.
+Need to get 88.3 MB of archives.
+After this operation, 387 MB of additional disk space will be used.
+Get:1 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 curl arm64 8.5.0-2ubuntu10.16 [222 kB]
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 libcurl4t64 arm64 8.5.0-2ubuntu10.16 [337 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 libcurl3t64-gnutls arm64 8.5.0-2ubuntu10.16 [331 kB]
+Get:4 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libllvm17t64 arm64 1:17.0.6-9ubuntu1 [25.0 MB]
+Get:5 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libstd-rust-1.75 arm64 1.75.0+dfsg0ubuntu1-0ubuntu7.4 [19.0 MB]
+Get:6 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libstd-rust-dev arm64 1.75.0+dfsg0ubuntu1-0ubuntu7.4 [40.2 MB]
+Get:7 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 rustc arm64 1.75.0+dfsg0ubuntu1-0ubuntu7.4 [3215 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 88.3 MB in 5s (16.6 MB/s)
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 16962 files and directories currently installed.)
+Preparing to unpack .../0-curl_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking curl (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Preparing to unpack .../1-libcurl4t64_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking libcurl4t64:arm64 (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Preparing to unpack .../2-libcurl3t64-gnutls_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking libcurl3t64-gnutls:arm64 (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Selecting previously unselected package libllvm17t64:arm64.
+Preparing to unpack .../3-libllvm17t64_1%3a17.0.6-9ubuntu1_arm64.deb ...
+Unpacking libllvm17t64:arm64 (1:17.0.6-9ubuntu1) ...
+Selecting previously unselected package libstd-rust-1.75:arm64.
+Preparing to unpack .../4-libstd-rust-1.75_1.75.0+dfsg0ubuntu1-0ubuntu7.4_arm64.deb ...
+Unpacking libstd-rust-1.75:arm64 (1.75.0+dfsg0ubuntu1-0ubuntu7.4) ...
+Selecting previously unselected package libstd-rust-dev:arm64.
+Preparing to unpack .../5-libstd-rust-dev_1.75.0+dfsg0ubuntu1-0ubuntu7.4_arm64.deb ...
+Unpacking libstd-rust-dev:arm64 (1.75.0+dfsg0ubuntu1-0ubuntu7.4) ...
+Selecting previously unselected package rustc.
+Preparing to unpack .../6-rustc_1.75.0+dfsg0ubuntu1-0ubuntu7.4_arm64.deb ...
+Unpacking rustc (1.75.0+dfsg0ubuntu1-0ubuntu7.4) ...
+Setting up libcurl4t64:arm64 (8.5.0-2ubuntu10.16) ...
+Setting up libcurl3t64-gnutls:arm64 (8.5.0-2ubuntu10.16) ...
+Setting up libllvm17t64:arm64 (1:17.0.6-9ubuntu1) ...
+Setting up curl (8.5.0-2ubuntu10.16) ...
+Setting up libstd-rust-1.75:arm64 (1.75.0+dfsg0ubuntu1-0ubuntu7.4) ...
+Setting up libstd-rust-dev:arm64 (1.75.0+dfsg0ubuntu1-0ubuntu7.4) ...
+Setting up rustc (1.75.0+dfsg0ubuntu1-0ubuntu7.4) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+#=#=#                                                                          ##                                                                         3.1%#####                                                                      8.0%#########                                                                 12.7%############                                                              17.9%###############                                                           21.6%##################                                                        25.6%#####################                                                     29.6%########################                                                  34.5%###########################                                               38.4%##############################                                            42.3%##################################                                        47.8%######################################                                    53.7%###########################################                               60.6%################################################                          67.7%####################################################                      72.6%#######################################################                   77.5%#############################################################             85.2%#################################################################         90.4%#####################################################################     96.5%######################################################################## 100.0%
+Archive:  /usr/local/bin/deno.zip
+  inflating: /usr/local/bin/deno     
+Deno was installed successfully to /usr/local/bin/deno
+Run 'deno --help' to get started
+
+Stuck? Join our Discord https://discord.gg/deno
+deno 2.9.7 (stable, release, aarch64-unknown-linux-gnu)
+v8 15.0.245.2-rusty
+typescript 6.0.3
+
+$ docker exec twelve-current-build-119 chown -R bench:bench /suite/sources/pr119
+
+$ docker exec twelve-current-build-119 runuser -u bench -- env PATH=/opt/twelve-rust/cargo/bin:/usr/local/go/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 NIM_JOBS=2 MAKEFLAGS=-j2 bash /suite/sources/pr119/build.sh
+warning: suspicious definition of the runtime `read` symbol used by the standard library
+  --> poller.rs:73:5
+   |
+73 |     fn read(fd: c_int, buf: *mut u8, n: usize) -> isize;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: expected `unsafe extern "C" fn(i32, *mut c_void, usize) -> isize` (for the current target)
+           found    `unsafe extern "C" fn(i32, *mut u8, usize) -> isize`
+   = help: either fix the signature or remove any attributes like `#[unsafe(no_mangle)]`, `#[unsafe(export_name = "read")]`, or `#[link_name = "read"]`
+   = help: allow this lint if the signature is compatible
+   = note: `#[warn(suspicious_runtime_symbol_definitions)]` on by default
+
+warning: suspicious definition of the runtime `write` symbol used by the standard library
+  --> poller.rs:74:5
+   |
+74 |     fn write(fd: c_int, buf: *const u8, n: usize) -> isize;
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   |
+   = note: expected `unsafe extern "C" fn(i32, *const c_void, usize) -> isize` (for the current target)
+           found    `unsafe extern "C" fn(i32, *const u8, usize) -> isize`
+   = help: either fix the signature or remove any attributes like `#[unsafe(no_mangle)]`, `#[unsafe(export_name = "write")]`, or `#[link_name = "write"]`
+   = help: allow this lint if the signature is compatible
+
+warning: 2 warnings emitted
+
+[0m[32mCheck[0m server.ts
+
+$ docker exec twelve-current-build-119 bash -c rm -rf /tmp/* /root/.cache /home/bench/.npm/_cacache /var/lib/apt/lists/* /var/cache/apt/archives/*.deb
+
+$ docker commit twelve-current-build-119 twelve-current-pr119:2026-10-20
+sha256:3fbe80c456d1334f762eb24506af2f6682d7023dccba8218dba7c019bc96f065

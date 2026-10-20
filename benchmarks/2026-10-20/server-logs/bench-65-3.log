@@ -1,0 +1,3 @@
+[w0] 2026/10/20 12:47:00.129577 pid 13 listening on 127.0.0.1:24000, fd limit 65535, fills to 56559 connections
+[w1] 2026/10/20 12:47:00.133349 pid 19 listening on 127.0.0.1:24000, fd limit 65535, fills to 56559 connections
+[w2] 2026/10/20 12:47:00.134759 pid 24 listening on 127.0.0.1:24000, fd limit 65535, fills to 56559 connections

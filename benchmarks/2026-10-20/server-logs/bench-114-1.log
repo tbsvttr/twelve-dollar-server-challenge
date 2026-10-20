@@ -1,0 +1,2 @@
+SQLite mmap_size requested=0 bytes effective=0 bytes page_cache_target_kib=32768 wal_autocheckpoint=0 checkpoint_mode=background_passive_when_idle idle_sample_seconds=1
+listening on 127.0.0.1:24000

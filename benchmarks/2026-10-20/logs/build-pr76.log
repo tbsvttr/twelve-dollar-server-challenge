@@ -1,0 +1,50 @@
+
+$ docker exec twelve-current-build-pr76 bash -c set -e; rm -rf /suite/sources; mkdir -p /suite/sources; cp -a /evidence/sources/pr76 /suite/sources/; cp /evidence/manifest.json /suite/manifest.json; cp /evidence/schema.sql /suite/schema.sql; chown -R bench:bench /suite/sources
+
+$ docker exec twelve-current-build-pr76 bash /evidence/runtime-scripts/pr76.sh
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  liburing2
+The following NEW packages will be installed:
+  liburing-dev liburing2
+0 upgraded, 2 newly installed, 0 to remove and 19 not upgraded.
+Need to get 190 kB of archives.
+After this operation, 672 kB of additional disk space will be used.
+Get:1 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 liburing2 arm64 2.5-1build1 [21.7 kB]
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 liburing-dev arm64 2.5-1build1 [169 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 190 kB in 1s (293 kB/s)
+Selecting previously unselected package liburing2:arm64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 16962 files and directories currently installed.)
+Preparing to unpack .../liburing2_2.5-1build1_arm64.deb ...
+Unpacking liburing2:arm64 (2.5-1build1) ...
+Selecting previously unselected package liburing-dev:arm64.
+Preparing to unpack .../liburing-dev_2.5-1build1_arm64.deb ...
+Unpacking liburing-dev:arm64 (2.5-1build1) ...
+Setting up liburing2:arm64 (2.5-1build1) ...
+Setting up liburing-dev:arm64 (2.5-1build1) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+/tmp/tmp.cln1NwMvaz: OK
+go version go1.27.2 linux/arm64
+
+$ docker exec twelve-current-build-pr76 runuser -u bench -- env PATH=/usr/local/go/bin:/opt/twelve-rust/cargo/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 bash /suite/sources/pr76/build.sh
+.sqlite-download/sqlite-amalgamation-3540000.zip: OK
+
+$ docker exec twelve-current-build-pr76 bash -c rm -rf /tmp/* /root/.cache /root/.cargo/registry /home/bench/.cache /home/bench/.cargo/registry /home/bench/.npm/_cacache /var/lib/apt/lists/* /var/cache/apt/archives/*.deb; find /suite/sources -type d -path '*/target/release/incremental' -prune -exec rm -rf {} +
+5ad353afbdb16b400b4949f6f2b85d31203dc37b61045a5bd011f88410c192bc
+twelve-current-clean-pr76
+
+Compiler provenance:
+/suite/sources/pr76/bin/server: go1.27.2
+	path	twelvedollar
+	mod	twelvedollar	(devel)	
+	build	-buildmode=exe
+	build	-compiler=gc
+	build	-trimpath=true
+	build	DefaultGODEBUG=cryptocustomrand=1,httpservecontentmaxranges=1,tlssecpmlkem=0,tracebacklabels=0,urlstrictcolons=0,x509sslcertoverrideplatform=0
+	build	CGO_ENABLED=1
+	build	GOARCH=arm64
+	build	GOOS=linux
+	build	GOARM64=v8.0

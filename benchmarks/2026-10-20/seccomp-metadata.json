@@ -1,0 +1,10 @@
+{
+  "source": "https://github.com/moby/profiles/blob/main/seccomp/default.json",
+  "base_sha256": "6416b47770785a41ac59073cdc77d9fe98517df2799dc83ef207e622de3053f6",
+  "allowed_extra_syscalls": [
+    "io_uring_enter",
+    "io_uring_register",
+    "io_uring_setup"
+  ],
+  "profile_sha256": "4baf3b268185f55527933e7df090e85936003674e34b5f5396461fd9d3efeb17"
+}

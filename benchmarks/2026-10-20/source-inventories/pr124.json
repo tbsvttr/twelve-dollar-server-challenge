@@ -1,0 +1,191 @@
+{
+  "files": {
+    ".gitignore": {
+      "sha256": "e9d5fa1aafef6ee764394539cdd7ff6c4d1d9950d394c6a0d82f1a2850a0e5dc",
+      "bytes": 42,
+      "physical_lines": 6,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "README.md": {
+      "sha256": "b28d3e31f0504ff636e5415419fdb685f0c2c6ebf6607db50af8f7caf6690122",
+      "bytes": 9102,
+      "physical_lines": 121,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "build.sh": {
+      "sha256": "d8c789483fdcc1b705032c6dab799f4a8547690fac24dcabe5f0d13d3eaf6d37",
+      "bytes": 2402,
+      "physical_lines": 47,
+      "classification": "own_support"
+    },
+    "install.sh": {
+      "sha256": "b009e8f19377a6d9ac8822102c0c265f86ea5a15182b63bcc473dbba60e952fc",
+      "bytes": 2230,
+      "physical_lines": 56,
+      "classification": "own_support"
+    },
+    "pom.xml": {
+      "sha256": "61f6f58b522e4f1be31ab08817dc05999dbc65d77768353d188ee0c327a93176",
+      "bytes": 2530,
+      "physical_lines": 75,
+      "classification": "own_support"
+    },
+    "src/main/java/feed/FeedApplication.java": {
+      "sha256": "d87286b8c1535453dfff638a7fc323d518f221da1bbe553a07424c9e939d2e70",
+      "bytes": 923,
+      "physical_lines": 30,
+      "classification": "application"
+    },
+    "src/main/java/feed/FeedProperties.java": {
+      "sha256": "c5b9ded8f3d4b43def37ccb44f31a04171ca04b6f1fc282d55dba14f22f06de8",
+      "bytes": 1369,
+      "physical_lines": 37,
+      "classification": "application"
+    },
+    "src/main/java/feed/auth/Base64Url.java": {
+      "sha256": "a90ee2a3c65026870f757e99021d6e8ea9dcfb037d24ab6759b10a0bb239b931",
+      "bytes": 2899,
+      "physical_lines": 82,
+      "classification": "application"
+    },
+    "src/main/java/feed/auth/JwtVerifier.java": {
+      "sha256": "edfae2eb8673611d0ba88de5a8afa937c04a667d32333d90bd70dfda8e4ece2f",
+      "bytes": 8413,
+      "physical_lines": 213,
+      "classification": "application"
+    },
+    "src/main/java/feed/db/BytesSink.java": {
+      "sha256": "fda2c0b71231250a7872823afc3cc9730440eb5f43743d462f0a12400d828c02",
+      "bytes": 264,
+      "physical_lines": 9,
+      "classification": "application"
+    },
+    "src/main/java/feed/db/DbException.java": {
+      "sha256": "d68b9f904b51e6ae95a9a285fece0cbc4c100299d37c7097a036a5e1317091ad",
+      "bytes": 644,
+      "physical_lines": 22,
+      "classification": "application"
+    },
+    "src/main/java/feed/db/FeedDb.java": {
+      "sha256": "393b063726eb07d719208daa0ccb63ed5e33a6c8770004239b308623bc286fd8",
+      "bytes": 24354,
+      "physical_lines": 666,
+      "classification": "application"
+    },
+    "src/main/java/feed/db/PartsSink.java": {
+      "sha256": "2ff998558e7f243f2450874a6d3e252be3d709b28f4ec694a5120875732ad4cc",
+      "bytes": 517,
+      "physical_lines": 17,
+      "classification": "application"
+    },
+    "src/main/java/feed/db/Sql.java": {
+      "sha256": "39ae6187ad833a71ee46a0a8a55916587db6402d0074ca8e32e034b766cdd8cd",
+      "bytes": 3369,
+      "physical_lines": 70,
+      "classification": "application"
+    },
+    "src/main/java/feed/db/Sqlite.java": {
+      "sha256": "40fbef724bc1e095147fefc6d1725a9e1579be8511ea4ea292ae6064c913cf2f",
+      "bytes": 12487,
+      "physical_lines": 267,
+      "classification": "application"
+    },
+    "src/main/java/feed/http/AcceptErrorHandler.java": {
+      "sha256": "e14e187d8e52dc6b271470dc0a9da8d9ec2427a6e41009579b7391e0c3449cb8",
+      "bytes": 1264,
+      "physical_lines": 33,
+      "classification": "application"
+    },
+    "src/main/java/feed/http/Batch.java": {
+      "sha256": "e3c4420b12d4633f5ff37c2faf270529d1638a7c47e86f8ee2efd232dc956a30",
+      "bytes": 11212,
+      "physical_lines": 316,
+      "classification": "application"
+    },
+    "src/main/java/feed/http/Connections.java": {
+      "sha256": "91eb4a486a0c059bc894a53470cef3df07fb04c2037271ea74046bdb79300625",
+      "bytes": 6998,
+      "physical_lines": 208,
+      "classification": "application"
+    },
+    "src/main/java/feed/http/FeedConfig.java": {
+      "sha256": "5e5f2d946bdff7700e07d7e2fb764051a91f1b3d8fddcb60150bf599585d8f81",
+      "bytes": 1961,
+      "physical_lines": 41,
+      "classification": "application"
+    },
+    "src/main/java/feed/http/FeedContext.java": {
+      "sha256": "53d13e673a11b3d4db032ab0bb5c934088d99586deeff4700c7231dff55103a9",
+      "bytes": 2042,
+      "physical_lines": 53,
+      "classification": "application"
+    },
+    "src/main/java/feed/http/FeedHandler.java": {
+      "sha256": "e775bf47eb5939b6e150993c56d855e1fff4ef3efb9433f161dfc03ce979237f",
+      "bytes": 14051,
+      "physical_lines": 420,
+      "classification": "application"
+    },
+    "src/main/java/feed/http/FeedServer.java": {
+      "sha256": "187a7188e0eac00e9a72eef508b863a8a4e12c1da0e8ff82b2b0a69c3f8c47ee",
+      "bytes": 7106,
+      "physical_lines": 164,
+      "classification": "application"
+    },
+    "src/main/java/feed/http/RateLimit.java": {
+      "sha256": "e9a6bc8f6907eac15866fd143fc340c60b47959bb5e23c88f189b734968c6ef0",
+      "bytes": 815,
+      "physical_lines": 30,
+      "classification": "application"
+    },
+    "src/main/java/feed/http/ResponseSink.java": {
+      "sha256": "75dc22f10ea6f138c124bdf3314c9f69a491770c249a7909285b4eed6504e76a",
+      "bytes": 3189,
+      "physical_lines": 99,
+      "classification": "application"
+    },
+    "src/main/java/feed/http/Responses.java": {
+      "sha256": "cb5224ca2264be31853ea7f0c55db722963604a68c03573b7a5789e2eb71c0ff",
+      "bytes": 9581,
+      "physical_lines": 219,
+      "classification": "application"
+    },
+    "src/main/java/feed/json/BodyParser.java": {
+      "sha256": "79dcb035a343bea074980a5c3408b2503b75577093c14c0bcdbf760e993aab91",
+      "bytes": 2036,
+      "physical_lines": 51,
+      "classification": "application"
+    },
+    "src/main/java/feed/json/JsTrim.java": {
+      "sha256": "51fea17771e6c2471a2baeedf801d4cdc46d35975bca54abbdbad51cbed65070",
+      "bytes": 2012,
+      "physical_lines": 63,
+      "classification": "application"
+    },
+    "src/main/java/feed/json/JsonScanner.java": {
+      "sha256": "f02c15b809480bf56202091cf0e829cdfe486b7c6c8137e1700428880350b5ee",
+      "bytes": 14607,
+      "physical_lines": 403,
+      "classification": "application"
+    },
+    "src/main/java/feed/json/Utf8.java": {
+      "sha256": "e540ba150b313d92515fc7e64d81de2583efb8a7b92854f763a5c3f988e72ddc",
+      "bytes": 3070,
+      "physical_lines": 80,
+      "classification": "application"
+    },
+    "src/main/resources/application.properties": {
+      "sha256": "46a38c14e6d5c33e25e7cec17e7bd408a86e13c42ad3417d58bc01dfad390bc9",
+      "bytes": 136,
+      "physical_lines": 5,
+      "classification": "own_support"
+    },
+    "start.sh": {
+      "sha256": "6b3aa973b716e1546c36c1b198df2cc869c72e440e7e39304e0cf42411989fa1",
+      "bytes": 740,
+      "physical_lines": 16,
+      "classification": "own_support"
+    }
+  },
+  "skipped_members": []
+}

@@ -1,0 +1,165 @@
+{
+  "case_id": "47",
+  "diagnostic_only": true,
+  "recorded_at_utc": "2026-10-20T12:30:11.018331+00:00",
+  "method": "Read-only review of existing measurements, service log and pinned source. No requests, retries, workloads, builds, container operations, or source/fixture changes.",
+  "identity": {
+    "pr": 47,
+    "commit": "3448cf402a61968143de8de60cfe5b0051218ca8",
+    "source_sha256": "1e98a0875814efad1d01b480985b9b3f0bcc19247ea0f5617d0b3f3917c33b56",
+    "image_id": "sha256:f8bbdc5f3f259f83245deb0f1df047f9a4aa0582d18ef570bffaeb0adcb08b20",
+    "pinned_source_files_verified": 12,
+    "source_files": {
+      "Program.cs": "97144b85c83c46f9e962abee98f39933c23587931fd9739c6a24e3f06f1c48e3",
+      "Models.cs": "bc199ca063a11d79f44fde8d8477b71fff5d443bff0089cce2a6f379c8b23cc2",
+      "Feed.csproj": "4758666338f2cdc2bb4f956948d40fd861f54bc847a223f45d570f58a93198c3",
+      "README.md": "304608dc2911b7130f9568bb3b1beb4c56915ee572b8ef9ed2c7dcee84fd9428"
+    }
+  },
+  "observed": {
+    "trial_2": {
+      "trial": 2,
+      "requests": 74608,
+      "duration_s": 15.1,
+      "rps": 4941.7,
+      "successful_rps": 4941.7,
+      "http_errors": 0,
+      "socket_errors": {
+        "connect": 0,
+        "read": 0,
+        "write": 0,
+        "timeout": 1
+      },
+      "p50_ms": 8.07,
+      "p95_ms": 286.64,
+      "p99_ms": 514.31,
+      "rss_mib": 115.234375,
+      "cpu_percent": 48.01821843325104,
+      "database_valid": true,
+      "error": null,
+      "database_after": {
+        "initial_post_count": 500000,
+        "post_count": 500884,
+        "max_post_id": 500884,
+        "integrity": "ok"
+      }
+    },
+    "trial_1_comparison": {
+      "trial": 1,
+      "requests": 83770,
+      "duration_s": 15.05,
+      "rps": 5565.49,
+      "successful_rps": 5565.49,
+      "http_errors": 0,
+      "socket_errors": {
+        "connect": 0,
+        "read": 0,
+        "write": 0,
+        "timeout": 0
+      },
+      "p50_ms": 7.6,
+      "p95_ms": 238.395,
+      "p99_ms": 375.33,
+      "rss_mib": 116.36328125,
+      "cpu_percent": 44.837015575961686,
+      "database_valid": true,
+      "error": null,
+      "database_after": {
+        "initial_post_count": 500000,
+        "post_count": 500982,
+        "max_post_id": 500982,
+        "integrity": "ok"
+      }
+    },
+    "service_threads_before": 17,
+    "service_threads_after": 29,
+    "reported_container_oom_killed": false,
+    "runtime_limits": {
+      "CpusetCpus": "0",
+      "NanoCpus": 1000000000,
+      "Memory": 2147483648,
+      "MemorySwap": 2147483648
+    },
+    "wrk_log": "logs/bench-47-2.log",
+    "server_log": "server-logs/bench-47-2.log",
+    "server_log_text": "info: Microsoft.Hosting.Lifetime[14]\n      Now listening on: http://127.0.0.1:24000\ninfo: Microsoft.Hosting.Lifetime[0]\n      Application started. Press Ctrl+C to shut down.\ninfo: Microsoft.Hosting.Lifetime[0]\n      Hosting environment: Production\ninfo: Microsoft.Hosting.Lifetime[0]\n      Content root path: /suite/sources/pr47\ninfo: Microsoft.Hosting.Lifetime[0]\n      Application is shutting down...\n",
+    "server_log_contains_exception_or_lock_diagnostic": false,
+    "limits": "The retained output identifies one socket timeout but provides no request route, request identifier, individual timed-out duration, response body, or causal runtime trace. Completed-request latency statistics do not describe the timed-out request."
+  },
+  "source_evidence": [
+    {
+      "file": "sources/pr47/Program.cs",
+      "lines": [
+        13,
+        18
+      ],
+      "fact": "Uses a SQLite connection string containing the supplied database path, with no explicit request-pool or writer-queue configuration in this setup."
+    },
+    {
+      "file": "sources/pr47/Models.cs",
+      "lines": [
+        20,
+        23
+      ],
+      "fact": "Each request gets a SqliteConnection through Db.Connect; source comments describe provider connection pooling."
+    },
+    {
+      "file": "sources/pr47/Program.cs",
+      "lines": [
+        49,
+        62
+      ],
+      "fact": "GET /feed and GET /posts/{id} await Dapper SQLite queries on request-scoped connections."
+    },
+    {
+      "file": "sources/pr47/Program.cs",
+      "lines": [
+        78,
+        97
+      ],
+      "fact": "POST /posts and POST /posts/{id}/like execute SQLite INSERT operations on request-scoped connections without an explicit application-level writer queue."
+    },
+    {
+      "file": "sources/pr47/README.md",
+      "lines": [
+        26,
+        31
+      ],
+      "fact": "The author documents default thread-pool/runtime settings and no extra SQLite pragmas."
+    },
+    {
+      "file": "sources/pr47/README.md",
+      "lines": [
+        64,
+        69
+      ],
+      "fact": "The author separately describes historical long-tail latency and proposes SQLite lock waits blocking worker threads and thread-pool starvation, explicitly saying the hypothesis was not verified. Historical capacity figures are not current-trial evidence."
+    },
+    {
+      "file": "run.py",
+      "lines": [
+        220,
+        227
+      ],
+      "fact": "All candidates use the same wrk invocation with no per-case timeout override."
+    }
+  ],
+  "hypotheses": [
+    {
+      "mechanism": "SQLite write contention or blocking provider work combined with default .NET thread-pool scheduling could queue an occasional request long enough for wrk to time out.",
+      "support": "Request-scoped pooled connections and concurrent SQLite INSERT paths in source; elevated completion tail latency; CPU below the one-core budget; author independently identifies this as an unverified design concern.",
+      "confidence": "Plausible, not established by retained evidence. Async provider internals and actual thread-pool queue state were not traced. Total process threads increasing 17 to 29 is not a thread-pool-specific measurement."
+    },
+    {
+      "mechanism": "A transient storage/fsync, runtime pause or scheduler delay could also produce one isolated timeout.",
+      "confidence": "Possible alternatives only; no per-request disk, GC, scheduling, or lock traces identify the cause."
+    }
+  ],
+  "conclusion": {
+    "exact_route": "unknown",
+    "exact_cause": "unresolved from retained evidence",
+    "http_status_for_timed_out_request": "unknown; no non-2xx/non-3xx responses were recorded",
+    "harness_failure_found": false,
+    "classification": "Keep measured_with_errors and exclude from the zero-error ranking. Trial 3 should run unchanged; a clean later trial does not erase the recorded trial-2 timeout."
+  }
+}

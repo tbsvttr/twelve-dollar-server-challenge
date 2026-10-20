@@ -1,0 +1,18 @@
+
+$ docker exec twelve-current-build-pr74 bash -c set -e; rm -rf /suite/sources; mkdir -p /suite/sources; cp -a /evidence/sources/pr74 /suite/sources/; cp /evidence/manifest.json /suite/manifest.json; cp /evidence/schema.sql /suite/schema.sql; chown -R bench:bench /suite/sources
+
+$ docker exec twelve-current-build-pr74 bash /evidence/runtime-scripts/pr74.sh
+10.0.401
+
+$ docker exec twelve-current-build-pr74 runuser -u bench -- env PATH=/usr/local/go/bin:/opt/twelve-rust/cargo/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 bash /suite/sources/pr74/build.sh
+obj/sqlite/sqlite.tar.gz: OK
+  Determining projects to restore...
+  Restored /suite/sources/pr74/Feed.csproj (in 9.48 sec).
+  Feed -> /suite/sources/pr74/bin/Release/net10.0/linux-x64/feed.dll
+  Generating native code
+EXEC : error : Instruction set 'native' not supported when cross-compiling to a different architecture. [/suite/sources/pr74/Feed.csproj]
+  System.CommandLine.CommandLineException: Instruction set 'native' not supported when cross-compiling to a different architecture.
+     at System.CommandLine.Helpers.ConfigureInstructionSetSupport(String, Int32, Boolean, TargetArchitecture, TargetOS, String, String, Logger, Boolean) + 0x95c
+     at ILCompiler.Program.Run() + 0x6c8
+     at ILCompiler.ILCompilerRootCommand.<>c__DisplayClass261_0.<.ctor>b__0(ParseResult) + 0x2f8
+/home/bench/.nuget/packages/microsoft.dotnet.ilcompiler/10.0.12/build/Microsoft.NETCore.Native.targets(330,5): error MSB3073: The command ""/home/bench/.nuget/packages/runtime.linux-arm64.microsoft.dotnet.ilcompiler/10.0.12/tools/ilc" @"obj/Release/net10.0/linux-x64/native/feed.ilc.rsp"" exited with code 1. [/suite/sources/pr74/Feed.csproj]

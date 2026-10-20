@@ -1,0 +1,233 @@
+{
+  "files": {
+    ".gitignore": {
+      "sha256": "8c649822e95de786655d21af761a481b82bc1e4b5057d73b30ecd9b2547c00b5",
+      "bytes": 25,
+      "physical_lines": 3,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "README.md": {
+      "sha256": "c7405ffa12e05cda780bba032bd59496eef883b6c16416938e2d62cce65dd214",
+      "bytes": 10710,
+      "physical_lines": 125,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "build.gradle.kts": {
+      "sha256": "cb494da344f7f3102aa7e4323d871033077cf87f2d7a3f36a8c00d9ae012bac3",
+      "bytes": 133,
+      "physical_lines": 4,
+      "classification": "own_support"
+    },
+    "build.sh": {
+      "sha256": "2408b86a5d7cbddfacfe1a401d045c8cef5e2869424b800f36ef20b178b69eed",
+      "bytes": 1210,
+      "physical_lines": 18,
+      "classification": "own_support"
+    },
+    "components/build.gradle.kts": {
+      "sha256": "0429d35b6ed467591b891b513925edcf3f19f127ee95138bdf7c3d458605ded3",
+      "bytes": 2883,
+      "physical_lines": 63,
+      "classification": "own_support"
+    },
+    "components/sources.txt": {
+      "sha256": "010a3a2c585c4cc83f8453bf19652e042de9bc03e6ba0aa97d832af7d8f6ac2a",
+      "bytes": 227,
+      "physical_lines": 3,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "components/src/commonMain/kotlin/borg/trikeshed/components/ComponentBench.kt": {
+      "sha256": "3f02275764e345cd9a41d736a13cfbc235aee3cf1df3b06b133f6c4c96e6ceb7",
+      "bytes": 3892,
+      "physical_lines": 83,
+      "classification": "own_support"
+    },
+    "components/src/jvmMain/kotlin/borg/trikeshed/components/Platform.jvm.kt": {
+      "sha256": "836c4520cfd8444e338f0f763575d6c3d9be578e3375c072829c7ebbd3f9ce85",
+      "bytes": 894,
+      "physical_lines": 22,
+      "classification": "application"
+    },
+    "components/src/nativeMain/kotlin/borg/trikeshed/components/Platform.native.kt": {
+      "sha256": "4229fd116800aa7737c518b62b94cd385f19ad85615bba47374529973474161c",
+      "bytes": 1836,
+      "physical_lines": 42,
+      "classification": "application"
+    },
+    "components/src/wasmWasiMain/kotlin/borg/trikeshed/components/Platform.wasmWasi.kt": {
+      "sha256": "3ede7f4db530af95a9e8c7932f24611abbd950203a7737e15483bfe64d180158",
+      "bytes": 429,
+      "physical_lines": 9,
+      "classification": "application"
+    },
+    "gradle.properties": {
+      "sha256": "2c74f20f4c1236cebcfe1c06ef62ada02dbc47b759bd8ff67ee8b3280d50a26f",
+      "bytes": 581,
+      "physical_lines": 14,
+      "classification": "own_support"
+    },
+    "install.sh": {
+      "sha256": "5f55b8e011089257c51d14d657a6aab0a0a046c7644b9ecb3469066244c1b1b5",
+      "bytes": 1861,
+      "physical_lines": 37,
+      "classification": "own_support"
+    },
+    "loadgen/build.gradle.kts": {
+      "sha256": "908748ddab5c6b3d6be9d3da6a258a84fcfe1fa296fa3d8d11a5160d17f21777",
+      "bytes": 1432,
+      "physical_lines": 44,
+      "classification": "own_support"
+    },
+    "loadgen/src/jvmMain/kotlin/borg/trikeshed/loadgen/Load.kt": {
+      "sha256": "4bc5641317e40c63f3aee60b8647609efb44aa2781dbb30ca074ae32049b1fb1",
+      "bytes": 39708,
+      "physical_lines": 961,
+      "classification": "own_support"
+    },
+    "loadgen/src/jvmMain/kotlin/borg/trikeshed/loadgen/Main.kt": {
+      "sha256": "dde367d5315413aad4196c1af4927619cf54663e82d1378d0a074fc5e1608fb4",
+      "bytes": 26304,
+      "physical_lines": 402,
+      "classification": "own_support"
+    },
+    "loadgen/src/jvmTest/kotlin/borg/trikeshed/loadgen/RxPlacesTest.kt": {
+      "sha256": "a2abf9e948a2019dd9b87e397715b020ba2b9614a202367195dd3da4da9c065d",
+      "bytes": 1982,
+      "physical_lines": 51,
+      "classification": "own_support"
+    },
+    "loadgen/src/jvmTest/kotlin/borg/trikeshed/loadgen/TinyRxReconnectTest.kt": {
+      "sha256": "ab57b1f3fb21f02979bc17f64b42fabc8293bbf95f363210cc052987dee6a62c",
+      "bytes": 5192,
+      "physical_lines": 100,
+      "classification": "own_support"
+    },
+    "server/build.gradle.kts": {
+      "sha256": "a1786a72550968478f04a5ffee8506851c2d2afe77beb0ff4f3505ac92801aa7",
+      "bytes": 3481,
+      "physical_lines": 80,
+      "classification": "own_support"
+    },
+    "server/src/commonMain/kotlin/borg/trikeshed/feed/Feed.kt": {
+      "sha256": "29219d4a97801341fd8f6231dd695c7679c115df2c76efe2a0f3f19ae2b57e3a",
+      "bytes": 7415,
+      "physical_lines": 176,
+      "classification": "application"
+    },
+    "server/src/commonMain/kotlin/borg/trikeshed/feed/Http.kt": {
+      "sha256": "f84dc97a9cf1031fd46822fb03ebcddcd3e4da6885eb5cd3b2d7df5c4750e472",
+      "bytes": 5821,
+      "physical_lines": 141,
+      "classification": "application"
+    },
+    "server/src/commonMain/kotlin/borg/trikeshed/feed/Json.kt": {
+      "sha256": "9e6b984e39a16abf90b32f03a747ff62e8db2e8857718ef59cd696777f7c146e",
+      "bytes": 7414,
+      "physical_lines": 219,
+      "classification": "application"
+    },
+    "server/src/commonMain/kotlin/borg/trikeshed/feed/Jwt.kt": {
+      "sha256": "ddca1d1f03499c6a587934dfd6d0afe8f1217302603bc1efed5d668b80c02392",
+      "bytes": 4402,
+      "physical_lines": 109,
+      "classification": "application"
+    },
+    "server/src/commonMain/kotlin/borg/trikeshed/feed/Out.kt": {
+      "sha256": "de34206ec33064e4bdb0da028881c17e140f91ca479803433a1edac3765b2a81",
+      "bytes": 2540,
+      "physical_lines": 86,
+      "classification": "application"
+    },
+    "server/src/commonMain/kotlin/borg/trikeshed/feed/Xio.kt": {
+      "sha256": "136baae81af5efac612aab581754788c5134c5e413fa69fbc4e9176bb13f7f41",
+      "bytes": 18782,
+      "physical_lines": 486,
+      "classification": "application"
+    },
+    "server/src/jvmMain/kotlin/borg/trikeshed/feed/Main.kt": {
+      "sha256": "9990616d21d8ec4aae85a70bfa63abfedaddeed666b2d70e35713cd8dcbcca1f",
+      "bytes": 653,
+      "physical_lines": 16,
+      "classification": "application"
+    },
+    "server/src/jvmMain/kotlin/borg/trikeshed/feed/ParseBench.kt": {
+      "sha256": "e4fa5e1456e356a5cdc8227775add6c46c7e7fe350995e4a068a3d47f525fce5",
+      "bytes": 6267,
+      "physical_lines": 107,
+      "classification": "own_support"
+    },
+    "server/src/jvmMain/kotlin/borg/trikeshed/feed/Poller.kt": {
+      "sha256": "54512c5f1543c1e74811ed261f934907064718e88f7d29a66b09e72d365ee095",
+      "bytes": 19603,
+      "physical_lines": 490,
+      "classification": "application"
+    },
+    "server/src/jvmMain/kotlin/borg/trikeshed/feed/RingMain.kt": {
+      "sha256": "c4a7f49a6a0f94c4e7d8e6a0edad61c0a4cf484e25232c23bf1e8ba48b983f60",
+      "bytes": 8258,
+      "physical_lines": 158,
+      "classification": "application"
+    },
+    "server/src/jvmMain/kotlin/borg/trikeshed/feed/RingServer.kt": {
+      "sha256": "19531ebced4ce3d616d2e12dbad5970c3d01651662d30df860911177e37a1681",
+      "bytes": 40353,
+      "physical_lines": 1013,
+      "classification": "application"
+    },
+    "server/src/jvmMain/kotlin/borg/trikeshed/feed/Sqlite.kt": {
+      "sha256": "69e77df3e6a0ab7e1a087218171122d7889658325e0cfd6ba68363b47d5564aa",
+      "bytes": 10784,
+      "physical_lines": 254,
+      "classification": "application"
+    },
+    "server/src/jvmMain/kotlin/borg/trikeshed/feed/SqliteSource.kt": {
+      "sha256": "5f9570996ad79997b1c74a9c157dea90a2f1b89b016b5392699d8686acdff5c1",
+      "bytes": 1072,
+      "physical_lines": 25,
+      "classification": "application"
+    },
+    "server/src/jvmTest/kotlin/borg/trikeshed/feed/KnownSchemaLawTest.kt": {
+      "sha256": "fba9a12b40efb8ef6eba1301a069835603f773e71bced5e2633bc42d3d6482b0",
+      "bytes": 15036,
+      "physical_lines": 276,
+      "classification": "own_support"
+    },
+    "server/src/jvmTest/kotlin/borg/trikeshed/feed/RingServerTest.kt": {
+      "sha256": "7dc9f452658c34479ca89958c9d34bb9b1a223a047a2179b51f732f6a5996d46",
+      "bytes": 35882,
+      "physical_lines": 721,
+      "classification": "own_support"
+    },
+    "settings.gradle.kts": {
+      "sha256": "1196ea6aebf615c69f1b047853c9b9d85c110dc0c51f0614402d42575439c735",
+      "bytes": 357,
+      "physical_lines": 17,
+      "classification": "own_support"
+    },
+    "start.sh": {
+      "sha256": "2af50c509151623d686db99b46894e01d1f40e76a10af408627e8f06fa9957d5",
+      "bytes": 519,
+      "physical_lines": 9,
+      "classification": "own_support"
+    },
+    "tester.sh": {
+      "sha256": "7645699b80d8878b2bbf30ea758962e9e3856729277784db07c17c777d08c48f",
+      "bytes": 17058,
+      "physical_lines": 343,
+      "classification": "own_support"
+    },
+    "trikeshed/build.gradle.kts": {
+      "sha256": "a2fb4f060629e8fa9997c35839c591adf21520eb0e59dbe1e85d64a885369488",
+      "bytes": 6672,
+      "physical_lines": 129,
+      "classification": "own_support"
+    },
+    "trikeshed/sources.txt": {
+      "sha256": "e5cd03005153d034505abfc62ba76913a3d5b12078f17edaaf3499229258d0df",
+      "bytes": 16455,
+      "physical_lines": 235,
+      "classification": "documentation_lock_or_metadata"
+    }
+  },
+  "skipped_members": []
+}

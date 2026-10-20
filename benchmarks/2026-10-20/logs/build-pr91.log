@@ -1,0 +1,1 @@
+build.py requires Linux/amd64, GOARCH=amd64 and x86-64 PGO profiles; native platform is ARM64.

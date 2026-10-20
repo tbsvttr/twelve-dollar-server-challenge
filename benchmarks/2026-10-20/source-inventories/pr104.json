@@ -1,0 +1,53 @@
+{
+  "files": {
+    ".gitignore": {
+      "sha256": "28f3699ae44ddbe97b578e614bd2de30eb03ac8e36b757aaec291fc71ecd5f42",
+      "bytes": 20,
+      "physical_lines": 2,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "Main.hs": {
+      "sha256": "0ab141c014b0b1c16e1bb10eef4d9e30c6182569850a8d3bbd5b9ff762f0c325",
+      "bytes": 11984,
+      "physical_lines": 265,
+      "classification": "application"
+    },
+    "README.md": {
+      "sha256": "2060807aed70a98f9e510c73bba4891f2bb393df0a894e90c2810bfc9794f03d",
+      "bytes": 3262,
+      "physical_lines": 52,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "build.sh": {
+      "sha256": "9c7f2108d4780ea43fd91f67599fcc82286ca11227ce8a7da42f6bcb9e259d08",
+      "bytes": 306,
+      "physical_lines": 7,
+      "classification": "own_support"
+    },
+    "cabal.project": {
+      "sha256": "eb85dc0e40721af39aa8a737f3bd54708f797e9815ae7b03d9258f5d8d171495",
+      "bytes": 139,
+      "physical_lines": 3,
+      "classification": "other"
+    },
+    "install.sh": {
+      "sha256": "98526c266f41716fbe6625dc1150f2e01282af65793bb1dff0509de91b61c817",
+      "bytes": 901,
+      "physical_lines": 17,
+      "classification": "own_support"
+    },
+    "server.cabal": {
+      "sha256": "1118d837fa85cb4d7be363d5fca479494d1a469aa319ef16c973e500616a80f1",
+      "bytes": 728,
+      "physical_lines": 22,
+      "classification": "other"
+    },
+    "start.sh": {
+      "sha256": "4e48ea57f313dce867e1b575b505b1ad2a2c60e4bb5db6b501ff350cac0cdae4",
+      "bytes": 154,
+      "physical_lines": 4,
+      "classification": "own_support"
+    }
+  },
+  "skipped_members": []
+}

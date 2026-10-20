@@ -1,0 +1,30 @@
+{
+  "85": {
+    "pr": 85,
+    "commit": "00f7e75f9dbbfb4ebcb02f7a54aea581a3289bbb",
+    "base": "twelve-unified:2026-10-07",
+    "architecture": "linux/arm64",
+    "image": "twelve-current-pr85:2026-10-20",
+    "source_hashes_verified": true,
+    "state": "built",
+    "log": "logs/build-pr85.log",
+    "seccomp_profile_sha256": "4baf3b268185f55527933e7df090e85936003674e34b5f5396461fd9d3efeb17",
+    "runtime_integrity": "official checksums or pinned apt packages; see setup log",
+    "started_at": "2026-10-20T11:18:19Z",
+    "runtime_setup": "runtime-scripts/pr85.sh",
+    "exit_code": 0,
+    "image_id": "sha256:7749c1cf6d7701f71cb5f299f3d49253d8e7aaea0f19e428b20a8fe12d48b490",
+    "elapsed_s": 34.32,
+    "finished_at": "2026-10-20T11:18:53Z",
+    "runtime_adapter": "JDK21 minimum installer satisfied with Temurin25.0.4.1+1, required by original -XX:+UseCompactObjectHeaders flag; application/build/start scripts unchanged.",
+    "runtime_reuse": {
+      "source_pr": 88,
+      "source_image_id": "sha256:75406c11e9c4f7e9d766877cdf6ed5fc4ae4c43fbf816aa786e15728163f95aa",
+      "sdk_path": "/opt/jdk",
+      "version": "25.0.4.1+1",
+      "arm64_archive_sha256": "69df11a02cfa3ef7d7ca645e03edce6778ec090e100f6ae2b42097865730ac52"
+    },
+    "runtime_repair_elapsed_s": 9.71,
+    "runtime_repair_log": "logs/runtime-repair-pr85.log"
+  }
+}

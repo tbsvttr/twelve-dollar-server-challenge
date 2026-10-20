@@ -1,0 +1,20 @@
+{
+  "71": {
+    "pr": 71,
+    "commit": "469957f2bbdd6e7483d567c860378031154e6ac9",
+    "base": "twelve-unified:2026-10-07",
+    "architecture": "linux/arm64",
+    "image": "twelve-current-pr71:2026-10-20",
+    "source_hashes_verified": true,
+    "state": "built",
+    "log": "logs/build-pr71.log",
+    "seccomp_profile_sha256": "4baf3b268185f55527933e7df090e85936003674e34b5f5396461fd9d3efeb17",
+    "runtime_integrity": "official checksums or pinned apt packages; see setup log",
+    "started_at": "2026-10-20T11:02:59Z",
+    "runtime_setup": "runtime-scripts/pr71.sh",
+    "exit_code": 0,
+    "image_id": "sha256:103300bc4c4442b6f373b1480d8b24b50472e54ca54050db2657d00bbc8a9fa4",
+    "elapsed_s": 482.48,
+    "finished_at": "2026-10-20T11:11:02Z"
+  }
+}

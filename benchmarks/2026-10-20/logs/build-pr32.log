@@ -1,0 +1,302 @@
+Pinned source: 647f962dc2eab8fc64e2f112728ac5dfb20154c5
+60590769cf41c116ff22e40d0be16521de1a40f7cd09aa7a0807c6fd3cf8371e
+Hit:1 http://ports.ubuntu.com/ubuntu-ports noble InRelease
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble-updates InRelease [126 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble-backports InRelease [126 kB]
+Get:4 http://ports.ubuntu.com/ubuntu-ports noble-security InRelease [126 kB]
+Get:5 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 Packages [1786 kB]
+Get:6 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 Packages [2214 kB]
+Get:7 http://ports.ubuntu.com/ubuntu-ports noble-updates/multiverse arm64 Packages [104 kB]
+Get:8 http://ports.ubuntu.com/ubuntu-ports noble-updates/restricted arm64 Packages [3251 kB]
+Get:9 http://ports.ubuntu.com/ubuntu-ports noble-backports/multiverse arm64 Packages [669 B]
+Get:10 http://ports.ubuntu.com/ubuntu-ports noble-security/universe arm64 Packages [1638 kB]
+Get:11 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 Packages [1475 kB]
+Get:12 http://ports.ubuntu.com/ubuntu-ports noble-security/restricted arm64 Packages [3129 kB]
+Get:13 http://ports.ubuntu.com/ubuntu-ports noble-security/multiverse arm64 Packages [99.1 kB]
+Fetched 14.1 MB in 1s (12.0 MB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+gcc is already the newest version (4:13.2.0-7ubuntu1).
+gcc set to manually installed.
+g++ is already the newest version (4:13.2.0-7ubuntu1).
+g++ set to manually installed.
+ca-certificates is already the newest version (20260601~24.04.1).
+libssl-dev is already the newest version (3.0.13-0ubuntu3.16).
+The following additional packages will be installed:
+  cmake-data git-man googletest libarchive13t64 libjsoncpp25 librhash0
+  liburing2 libuv1t64
+Suggested packages:
+  cmake-doc cmake-format elpa-cmake-mode gettext-base git-daemon-run
+  | git-daemon-sysvinit git-doc git-email git-gui gitk gitweb git-cvs
+  git-mediawiki git-svn lrzip
+Recommended packages:
+  less ssh-client
+The following NEW packages will be installed:
+  cmake cmake-data googletest libarchive13t64 libgtest-dev libjsoncpp25
+  librhash0 liburing-dev liburing2 libuv1t64 ninja-build
+The following packages will be upgraded:
+  git git-man
+2 upgraded, 11 newly installed, 0 to remove and 17 not upgraded.
+Need to get 19.1 MB of archives.
+After this operation, 52.5 MB of additional disk space will be used.
+Get:1 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libuv1t64 arm64 1.48.0-1.1build1 [95.3 kB]
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libarchive13t64 arm64 3.7.2-2ubuntu0.9 [378 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libjsoncpp25 arm64 1.9.5-6build1 [78.2 kB]
+Get:4 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 librhash0 arm64 1.4.3-3build1 [126 kB]
+Get:5 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 cmake-data all 3.28.3-1build7 [2155 kB]
+Get:6 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 cmake arm64 3.28.3-1build7 [10.3 MB]
+Get:7 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 git-man all 1:2.43.0-1ubuntu7.4 [1101 kB]
+Get:8 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 git arm64 1:2.43.0-1ubuntu7.4 [3774 kB]
+Get:9 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 googletest all 1.14.0-1 [521 kB]
+Get:10 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 libgtest-dev arm64 1.14.0-1 [266 kB]
+Get:11 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 liburing2 arm64 2.5-1build1 [21.7 kB]
+Get:12 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 liburing-dev arm64 2.5-1build1 [169 kB]
+Get:13 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 ninja-build arm64 1.11.1-2 [125 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 19.1 MB in 1s (17.9 MB/s)
+Selecting previously unselected package libuv1t64:arm64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 16962 files and directories currently installed.)
+Preparing to unpack .../00-libuv1t64_1.48.0-1.1build1_arm64.deb ...
+Unpacking libuv1t64:arm64 (1.48.0-1.1build1) ...
+Selecting previously unselected package libarchive13t64:arm64.
+Preparing to unpack .../01-libarchive13t64_3.7.2-2ubuntu0.9_arm64.deb ...
+Unpacking libarchive13t64:arm64 (3.7.2-2ubuntu0.9) ...
+Selecting previously unselected package libjsoncpp25:arm64.
+Preparing to unpack .../02-libjsoncpp25_1.9.5-6build1_arm64.deb ...
+Unpacking libjsoncpp25:arm64 (1.9.5-6build1) ...
+Selecting previously unselected package librhash0:arm64.
+Preparing to unpack .../03-librhash0_1.4.3-3build1_arm64.deb ...
+Unpacking librhash0:arm64 (1.4.3-3build1) ...
+Selecting previously unselected package cmake-data.
+Preparing to unpack .../04-cmake-data_3.28.3-1build7_all.deb ...
+Unpacking cmake-data (3.28.3-1build7) ...
+Selecting previously unselected package cmake.
+Preparing to unpack .../05-cmake_3.28.3-1build7_arm64.deb ...
+Unpacking cmake (3.28.3-1build7) ...
+Preparing to unpack .../06-git-man_1%3a2.43.0-1ubuntu7.4_all.deb ...
+Unpacking git-man (1:2.43.0-1ubuntu7.4) over (1:2.43.0-1ubuntu7.3) ...
+Preparing to unpack .../07-git_1%3a2.43.0-1ubuntu7.4_arm64.deb ...
+Unpacking git (1:2.43.0-1ubuntu7.4) over (1:2.43.0-1ubuntu7.3) ...
+Selecting previously unselected package googletest.
+Preparing to unpack .../08-googletest_1.14.0-1_all.deb ...
+Unpacking googletest (1.14.0-1) ...
+Selecting previously unselected package libgtest-dev:arm64.
+Preparing to unpack .../09-libgtest-dev_1.14.0-1_arm64.deb ...
+Unpacking libgtest-dev:arm64 (1.14.0-1) ...
+Selecting previously unselected package liburing2:arm64.
+Preparing to unpack .../10-liburing2_2.5-1build1_arm64.deb ...
+Unpacking liburing2:arm64 (2.5-1build1) ...
+Selecting previously unselected package liburing-dev:arm64.
+Preparing to unpack .../11-liburing-dev_2.5-1build1_arm64.deb ...
+Unpacking liburing-dev:arm64 (2.5-1build1) ...
+Selecting previously unselected package ninja-build.
+Preparing to unpack .../12-ninja-build_1.11.1-2_arm64.deb ...
+Unpacking ninja-build (1.11.1-2) ...
+Setting up libuv1t64:arm64 (1.48.0-1.1build1) ...
+Setting up googletest (1.14.0-1) ...
+Setting up ninja-build (1.11.1-2) ...
+Setting up libjsoncpp25:arm64 (1.9.5-6build1) ...
+Setting up librhash0:arm64 (1.4.3-3build1) ...
+Setting up git-man (1:2.43.0-1ubuntu7.4) ...
+Setting up cmake-data (3.28.3-1build7) ...
+Setting up liburing2:arm64 (2.5-1build1) ...
+Setting up libarchive13t64:arm64 (3.7.2-2ubuntu0.9) ...
+Setting up liburing-dev:arm64 (2.5-1build1) ...
+Setting up libgtest-dev:arm64 (1.14.0-1) ...
+Setting up git (1:2.43.0-1ubuntu7.4) ...
+Setting up cmake (3.28.3-1build7) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+Executing workflow step 1 of 3: configure preset "release"
+
+Preset CMake variables:
+
+  CMAKE_BUILD_TYPE="Release"
+  CMAKE_TOOLCHAIN_FILE:FILEPATH="/suite/sources/pr32/cmake/gcc.cmake"
+
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Performing Test EASTL_HAS_FCHAR8T_FLAG
+-- Performing Test EASTL_HAS_FCHAR8T_FLAG - Success
+-- Performing Test EASTL_HAS_ZCCHAR8T_FLAG
+-- Performing Test EASTL_HAS_ZCCHAR8T_FLAG - Failed
+CMake Deprecation Warning at build/release/_deps/eabase-src/CMakeLists.txt:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+-- The C compiler identification is GNU 13.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Looking for stdint.h
+-- Looking for stdint.h - found
+-- Looking for stdbool.h
+-- Looking for stdbool.h - found
+-- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.13")  
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Found GTest: /usr/lib/aarch64-linux-gnu/cmake/GTest/GTestConfig.cmake (found version "1.14.0")  
+-- Configuring done (9.1s)
+-- Generating done (0.0s)
+-- Build files have been written to: /suite/sources/pr32/build/release
+
+Executing workflow step 2 of 3: build preset "release"
+
+[1/36] Building CXX object _deps/eastl-build/CMakeFiles/EASTL.dir/source/allocator_eastl.cpp.o
+[2/36] Building CXX object _deps/eastl-build/CMakeFiles/EASTL.dir/source/numeric_limits.cpp.o
+[3/36] Building CXX object _deps/eastl-build/CMakeFiles/EASTL.dir/source/red_black_tree.cpp.o
+[4/36] Building CXX object _deps/eastl-build/CMakeFiles/EASTL.dir/source/string.cpp.o
+[5/36] Building CXX object _deps/eastl-build/CMakeFiles/EASTL.dir/source/assert.cpp.o
+[6/36] Building CXX object _deps/eastl-build/CMakeFiles/EASTL.dir/source/hashtable.cpp.o
+[7/36] Building CXX object _deps/eastl-build/CMakeFiles/EASTL.dir/source/thread_support.cpp.o
+[8/36] Building CXX object _deps/eastl-build/CMakeFiles/EASTL.dir/source/intrusive_list.cpp.o
+[9/36] Building CXX object _deps/eastl-build/CMakeFiles/EASTL.dir/source/atomic.cpp.o
+[10/36] Building CXX object _deps/eastl-build/CMakeFiles/EASTL.dir/source/fixed_pool.cpp.o
+[11/36] Linking CXX static library _deps/eastl-build/libEASTL.a
+[12/36] Building C object _deps/yyjson-build/CMakeFiles/yyjson.dir/src/yyjson.c.o
+[13/36] Linking C static library _deps/yyjson-build/libyyjson.a
+[14/36] Building SQLite with profile-guided optimization
+trained on 60000 iterations (checksum 124008095859)
+[15/36] Building CXX object CMakeFiles/core.dir/src/eastl_hooks.cpp.o
+[16/36] Building CXX object CMakeFiles/core.dir/src/json.cpp.o
+FAILED: CMakeFiles/core.dir/src/json.cpp.o 
+/usr/bin/g++ -DOPENSSL_SUPPRESS_DEPRECATED -I/suite/sources/pr32/build/release/_deps/eastl-src/include -I/suite/sources/pr32/build/release/_deps/eabase-src/include/Common -isystem /suite/sources/pr32/build/release/_deps/sqlite-src -O3 -march=native -flto=auto -DNDEBUG -O3 -DNDEBUG -std=c++23 -Wall -Wextra -MD -MT CMakeFiles/core.dir/src/json.cpp.o -MF CMakeFiles/core.dir/src/json.cpp.o.d -o CMakeFiles/core.dir/src/json.cpp.o -c /suite/sources/pr32/src/json.cpp
+/suite/sources/pr32/src/json.cpp:3:10: fatal error: emmintrin.h: No such file or directory
+    3 | #include <emmintrin.h>
+      |          ^~~~~~~~~~~~~
+compilation terminated.
+[17/36] Building CXX object CMakeFiles/core.dir/src/http.cpp.o
+FAILED: CMakeFiles/core.dir/src/http.cpp.o 
+/usr/bin/g++ -DOPENSSL_SUPPRESS_DEPRECATED -I/suite/sources/pr32/build/release/_deps/eastl-src/include -I/suite/sources/pr32/build/release/_deps/eabase-src/include/Common -isystem /suite/sources/pr32/build/release/_deps/sqlite-src -O3 -march=native -flto=auto -DNDEBUG -O3 -DNDEBUG -std=c++23 -Wall -Wextra -MD -MT CMakeFiles/core.dir/src/http.cpp.o -MF CMakeFiles/core.dir/src/http.cpp.o.d -o CMakeFiles/core.dir/src/http.cpp.o -c /suite/sources/pr32/src/http.cpp
+/suite/sources/pr32/src/http.cpp:3:10: fatal error: emmintrin.h: No such file or directory
+    3 | #include <emmintrin.h>
+      |          ^~~~~~~~~~~~~
+compilation terminated.
+[18/36] Building CXX object CMakeFiles/core.dir/src/db.cpp.o
+FAILED: CMakeFiles/core.dir/src/db.cpp.o 
+/usr/bin/g++ -DOPENSSL_SUPPRESS_DEPRECATED -I/suite/sources/pr32/build/release/_deps/eastl-src/include -I/suite/sources/pr32/build/release/_deps/eabase-src/include/Common -isystem /suite/sources/pr32/build/release/_deps/sqlite-src -O3 -march=native -flto=auto -DNDEBUG -O3 -DNDEBUG -std=c++23 -Wall -Wextra -MD -MT CMakeFiles/core.dir/src/db.cpp.o -MF CMakeFiles/core.dir/src/db.cpp.o.d -o CMakeFiles/core.dir/src/db.cpp.o -c /suite/sources/pr32/src/db.cpp
+In file included from /suite/sources/pr32/src/db.hpp:9,
+                 from /suite/sources/pr32/src/db.cpp:1:
+/suite/sources/pr32/src/writer.hpp:4:10: fatal error: emmintrin.h: No such file or directory
+    4 | #include <emmintrin.h>
+      |          ^~~~~~~~~~~~~
+compilation terminated.
+[19/36] Building CXX object CMakeFiles/core.dir/src/app.cpp.o
+FAILED: CMakeFiles/core.dir/src/app.cpp.o 
+/usr/bin/g++ -DOPENSSL_SUPPRESS_DEPRECATED -I/suite/sources/pr32/build/release/_deps/eastl-src/include -I/suite/sources/pr32/build/release/_deps/eabase-src/include/Common -isystem /suite/sources/pr32/build/release/_deps/sqlite-src -O3 -march=native -flto=auto -DNDEBUG -O3 -DNDEBUG -std=c++23 -Wall -Wextra -MD -MT CMakeFiles/core.dir/src/app.cpp.o -MF CMakeFiles/core.dir/src/app.cpp.o.d -o CMakeFiles/core.dir/src/app.cpp.o -c /suite/sources/pr32/src/app.cpp
+In file included from /suite/sources/pr32/src/db.hpp:9,
+                 from /suite/sources/pr32/src/app.hpp:7,
+                 from /suite/sources/pr32/src/app.cpp:1:
+/suite/sources/pr32/src/writer.hpp:4:10: fatal error: emmintrin.h: No such file or directory
+    4 | #include <emmintrin.h>
+      |          ^~~~~~~~~~~~~
+compilation terminated.
+[20/36] Building CXX object CMakeFiles/server.dir/src/main.cpp.o
+FAILED: CMakeFiles/server.dir/src/main.cpp.o 
+/usr/bin/g++ -DOPENSSL_SUPPRESS_DEPRECATED -I/suite/sources/pr32/build/release/_deps/eastl-src/include -I/suite/sources/pr32/build/release/_deps/eabase-src/include/Common -isystem /suite/sources/pr32/build/release/_deps/sqlite-src -O3 -march=native -flto=auto -DNDEBUG -O3 -DNDEBUG -std=c++23 -MD -MT CMakeFiles/server.dir/src/main.cpp.o -MF CMakeFiles/server.dir/src/main.cpp.o.d -o CMakeFiles/server.dir/src/main.cpp.o -c /suite/sources/pr32/src/main.cpp
+In file included from /suite/sources/pr32/src/db.hpp:9,
+                 from /suite/sources/pr32/src/app.hpp:7,
+                 from /suite/sources/pr32/src/main.cpp:13:
+/suite/sources/pr32/src/writer.hpp:4:10: fatal error: emmintrin.h: No such file or directory
+    4 | #include <emmintrin.h>
+      |          ^~~~~~~~~~~~~
+compilation terminated.
+[21/36] Building CXX object CMakeFiles/core.dir/src/server.cpp.o
+FAILED: CMakeFiles/core.dir/src/server.cpp.o 
+/usr/bin/g++ -DOPENSSL_SUPPRESS_DEPRECATED -I/suite/sources/pr32/build/release/_deps/eastl-src/include -I/suite/sources/pr32/build/release/_deps/eabase-src/include/Common -isystem /suite/sources/pr32/build/release/_deps/sqlite-src -O3 -march=native -flto=auto -DNDEBUG -O3 -DNDEBUG -std=c++23 -Wall -Wextra -MD -MT CMakeFiles/core.dir/src/server.cpp.o -MF CMakeFiles/core.dir/src/server.cpp.o.d -o CMakeFiles/core.dir/src/server.cpp.o -c /suite/sources/pr32/src/server.cpp
+In file included from /suite/sources/pr32/src/db.hpp:9,
+                 from /suite/sources/pr32/src/app.hpp:7,
+                 from /suite/sources/pr32/src/server.hpp:10,
+                 from /suite/sources/pr32/src/server.cpp:1:
+/suite/sources/pr32/src/writer.hpp:4:10: fatal error: emmintrin.h: No such file or directory
+    4 | #include <emmintrin.h>
+      |          ^~~~~~~~~~~~~
+compilation terminated.
+[22/36] Building CXX object CMakeFiles/unit_tests.dir/tests/db_test.cpp.o
+FAILED: CMakeFiles/unit_tests.dir/tests/db_test.cpp.o 
+/usr/bin/g++ -DOPENSSL_SUPPRESS_DEPRECATED -I/suite/sources/pr32/src -I/suite/sources/pr32/build/release/_deps/eastl-src/include -I/suite/sources/pr32/build/release/_deps/eabase-src/include/Common -I/suite/sources/pr32/build/release/_deps/yyjson-src/src -isystem /suite/sources/pr32/build/release/_deps/sqlite-src -O3 -march=native -flto=auto -DNDEBUG -O3 -DNDEBUG -std=c++23 -DGTEST_HAS_PTHREAD=1 -MD -MT CMakeFiles/unit_tests.dir/tests/db_test.cpp.o -MF CMakeFiles/unit_tests.dir/tests/db_test.cpp.o.d -o CMakeFiles/unit_tests.dir/tests/db_test.cpp.o -c /suite/sources/pr32/tests/db_test.cpp
+In file included from /suite/sources/pr32/src/db.hpp:9,
+                 from /suite/sources/pr32/tests/db_test.cpp:8:
+/suite/sources/pr32/src/writer.hpp:4:10: fatal error: emmintrin.h: No such file or directory
+    4 | #include <emmintrin.h>
+      |          ^~~~~~~~~~~~~
+compilation terminated.
+[23/36] Building CXX object CMakeFiles/unit_tests.dir/tests/app_test.cpp.o
+FAILED: CMakeFiles/unit_tests.dir/tests/app_test.cpp.o 
+/usr/bin/g++ -DOPENSSL_SUPPRESS_DEPRECATED -I/suite/sources/pr32/src -I/suite/sources/pr32/build/release/_deps/eastl-src/include -I/suite/sources/pr32/build/release/_deps/eabase-src/include/Common -I/suite/sources/pr32/build/release/_deps/yyjson-src/src -isystem /suite/sources/pr32/build/release/_deps/sqlite-src -O3 -march=native -flto=auto -DNDEBUG -O3 -DNDEBUG -std=c++23 -DGTEST_HAS_PTHREAD=1 -MD -MT CMakeFiles/unit_tests.dir/tests/app_test.cpp.o -MF CMakeFiles/unit_tests.dir/tests/app_test.cpp.o.d -o CMakeFiles/unit_tests.dir/tests/app_test.cpp.o -c /suite/sources/pr32/tests/app_test.cpp
+In file included from /suite/sources/pr32/src/db.hpp:9,
+                 from /suite/sources/pr32/src/app.hpp:7,
+                 from /suite/sources/pr32/tests/app_test.cpp:9:
+/suite/sources/pr32/src/writer.hpp:4:10: fatal error: emmintrin.h: No such file or directory
+    4 | #include <emmintrin.h>
+      |          ^~~~~~~~~~~~~
+compilation terminated.
+[24/36] Building CXX object CMakeFiles/core.dir/src/response.cpp.o
+In file included from /suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/string_view.h:20,
+                 from /suite/sources/pr32/src/response.hpp:3,
+                 from /suite/sources/pr32/src/response.cpp:1:
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const wchar_t*&, const wchar_t*, wchar_t*&, wchar_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:104:179: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  104 |                         return DecodePart(reinterpret_cast<const char*&>(pSrc), reinterpret_cast<const char*>(pSrcEnd), reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                                                                                   ^~~~~~~~
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const char8_t*&, const char8_t*, char8_t*&, char8_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:165:175: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  165 |                     return DecodePart(reinterpret_cast<const char*&>(pSrc), reinterpret_cast<const char*>(pSrcEnd), reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                                                                               ^~~~~~~~
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const char*&, const char*, char8_t*&, char8_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:185:116: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  185 |                         return DecodePart(pSrc, pSrcEnd, reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                    ^~~~~~~~
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const char16_t*&, const char16_t*, char8_t*&, char8_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:190:116: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  190 |                         return DecodePart(pSrc, pSrcEnd, reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                    ^~~~~~~~
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const char32_t*&, const char32_t*, char8_t*&, char8_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:195:116: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  195 |                         return DecodePart(pSrc, pSrcEnd, reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                    ^~~~~~~~
+[25/36] Building CXX object CMakeFiles/core.dir/src/jwt.cpp.o
+In file included from /suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/string.h:133,
+                 from /suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/fixed_string.h:16,
+                 from /suite/sources/pr32/src/jwt.hpp:3,
+                 from /suite/sources/pr32/src/jwt.cpp:1:
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const wchar_t*&, const wchar_t*, wchar_t*&, wchar_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:104:179: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  104 |                         return DecodePart(reinterpret_cast<const char*&>(pSrc), reinterpret_cast<const char*>(pSrcEnd), reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                                                                                   ^~~~~~~~
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const char8_t*&, const char8_t*, char8_t*&, char8_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:165:175: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  165 |                     return DecodePart(reinterpret_cast<const char*&>(pSrc), reinterpret_cast<const char*>(pSrcEnd), reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                                                                               ^~~~~~~~
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const char*&, const char*, char8_t*&, char8_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:185:116: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  185 |                         return DecodePart(pSrc, pSrcEnd, reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                    ^~~~~~~~
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const char16_t*&, const char16_t*, char8_t*&, char8_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:190:116: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  190 |                         return DecodePart(pSrc, pSrcEnd, reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                    ^~~~~~~~
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const char32_t*&, const char32_t*, char8_t*&, char8_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:195:116: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  195 |                         return DecodePart(pSrc, pSrcEnd, reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                    ^~~~~~~~
+[26/36] Building CXX object CMakeFiles/unit_tests.dir/tests/http_test.cpp.o
+[27/36] Building CXX object CMakeFiles/unit_tests.dir/tests/http_fuzz_test.cpp.o
+ninja: build stopped: subcommand failed.

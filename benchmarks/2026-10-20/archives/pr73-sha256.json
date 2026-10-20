@@ -1,0 +1,19 @@
+{
+  ".gitignore": "b53ee26e6ff1da219b0563333a76d2c9ec19eec713d6ee54e11a1edacb0e9f3d",
+  "README.md": "98aec58d4d7a7600e5b51c6d4a6b2b5928a8b978a758213dee9529c44b5edd89",
+  "build.sh": "27075f6763ce693af5b3aa0dba8a95eedc90aa784cf4c15ce954082e30a0e4a4",
+  "env.sh": "3456a3825b004dbd3e4949a48425b40044112346c264885c6f4a02d5f6f9ea0f",
+  "install.sh": "47ca0e460de5aa376ef1a930df54cf4d6da4af49415a4d1659aadfef4ddd7bd2",
+  "pom.xml": "fa3f2793c9386060afba67e8f48346d0fdb7ce6f962fedcd4a7bc0e53c405cf3",
+  "src/main/java/feed/ApiError.java": "965e7cd08fe367b4db44992bcb8e1249f8f2c73890b447d1d86eee960ebd3177",
+  "src/main/java/feed/Database.java": "e246eda7f36a3a43031f9d61448ade112ac60f91b2936a1ff94b391b765946b5",
+  "src/main/java/feed/ErrorMappers.java": "fa9aa55e7806aa81b3aaf957cdd9dffc31f541bb7836e4a0ae220d67e7e41d06",
+  "src/main/java/feed/FeedResource.java": "abddf47a3677a97589c4b3fb11040d63c6658b416092627c86b97d1e4a40de9f",
+  "src/main/java/feed/JacksonSetup.java": "ee82a9211fcb454af0cdf28d71d576db4793c64161b1aaa87aebf7ee6430f838",
+  "src/main/java/feed/Jwt.java": "bb23b21f2ccb7981e3461f267c19753dae77832d9c5294967a81d4e5d28df412",
+  "src/main/java/feed/Model.java": "bfb10cce4276ca90dca1cbdf4ba015348d71ff3d153be196e0c48ed366822b06",
+  "src/main/java/feed/NativeDb.java": "5d865d5a5d71383f9a1733c6b05129455cd55e13961b64c2912ffd5544ec4edc",
+  "src/main/java/feed/Sqlite.java": "2c8a72a30ac580f44c82d78a60942ef2ce79b96079437fa0cd06cb162789680a",
+  "src/main/resources/application.properties": "6d1bcf206026b5e20f4f3c1f76b27a5f1b6ab438314bd9558a2f3fd04382e749",
+  "start.sh": "a3841aed38817327ca55694c6479a267dad52c46613afb3ddd9229c423747843"
+}

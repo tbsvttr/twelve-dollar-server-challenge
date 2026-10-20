@@ -1,0 +1,2598 @@
+
+$ docker exec twelve-current-build-pr71 bash -c set -e; rm -rf /suite/sources; mkdir -p /suite/sources; cp -a /evidence/sources/pr71 /suite/sources/; cp /evidence/manifest.json /suite/manifest.json; cp /evidence/schema.sql /suite/schema.sql; chown -R bench:bench /suite/sources
+
+$ docker exec twelve-current-build-pr71 bash /evidence/runtime-scripts/pr71.sh
+Hit:1 http://ports.ubuntu.com/ubuntu-ports noble InRelease
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble-updates InRelease [126 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble-backports InRelease [126 kB]
+Get:4 http://ports.ubuntu.com/ubuntu-ports noble-security InRelease [126 kB]
+Get:5 http://ports.ubuntu.com/ubuntu-ports noble-updates/restricted arm64 Packages [3251 kB]
+Get:6 http://ports.ubuntu.com/ubuntu-ports noble-updates/multiverse arm64 Packages [104 kB]
+Get:7 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 Packages [1786 kB]
+Get:8 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 Packages [2214 kB]
+Get:9 http://ports.ubuntu.com/ubuntu-ports noble-backports/multiverse arm64 Packages [669 B]
+Get:10 http://ports.ubuntu.com/ubuntu-ports noble-security/restricted arm64 Packages [3129 kB]
+Get:11 http://ports.ubuntu.com/ubuntu-ports noble-security/multiverse arm64 Packages [99.1 kB]
+Get:12 http://ports.ubuntu.com/ubuntu-ports noble-security/universe arm64 Packages [1638 kB]
+Get:13 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 Packages [1475 kB]
+Fetched 14.1 MB in 3s (5016 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+build-essential is already the newest version (12.10ubuntu1).
+ca-certificates is already the newest version (20260601~24.04.1).
+pkg-config is already the newest version (1.8.1-2build1).
+libssl-dev is already the newest version (3.0.13-0ubuntu3.16).
+libyaml-dev is already the newest version (0.2.5-1build1).
+zlib1g-dev is already the newest version (1:1.3.dfsg-3.1ubuntu2.2).
+libffi-dev is already the newest version (3.4.6-1build1).
+libgmp-dev is already the newest version (2:6.3.0+dfsg-2ubuntu6.1).
+unzip is already the newest version (6.0-28ubuntu4.1).
+The following additional packages will be installed:
+  libcurl3t64-gnutls libcurl4t64 libjemalloc2 libllvm17t64 libstd-rust-1.75
+  libstd-rust-dev liburing2
+Suggested packages:
+  cargo llvm-17 lld-17 clang-17
+The following NEW packages will be installed:
+  libjemalloc-dev libjemalloc2 libllvm17t64 libstd-rust-1.75 libstd-rust-dev
+  liburing-dev liburing2 rustc
+The following packages will be upgraded:
+  curl libcurl3t64-gnutls libcurl4t64
+3 upgraded, 8 newly installed, 0 to remove and 16 not upgraded.
+Need to get 89.1 MB of archives.
+After this operation, 391 MB of additional disk space will be used.
+Get:1 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 curl arm64 8.5.0-2ubuntu10.16 [222 kB]
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 libcurl4t64 arm64 8.5.0-2ubuntu10.16 [337 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 libcurl3t64-gnutls arm64 8.5.0-2ubuntu10.16 [331 kB]
+Get:4 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 libjemalloc2 arm64 5.3.0-2build1 [204 kB]
+Get:5 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libllvm17t64 arm64 1:17.0.6-9ubuntu1 [25.0 MB]
+Get:6 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libstd-rust-1.75 arm64 1.75.0+dfsg0ubuntu1-0ubuntu7.4 [19.0 MB]
+Get:7 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 liburing2 arm64 2.5-1build1 [21.7 kB]
+Get:8 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 liburing-dev arm64 2.5-1build1 [169 kB]
+Get:9 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 libjemalloc-dev arm64 5.3.0-2build1 [377 kB]
+Get:10 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libstd-rust-dev arm64 1.75.0+dfsg0ubuntu1-0ubuntu7.4 [40.2 MB]
+Get:11 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 rustc arm64 1.75.0+dfsg0ubuntu1-0ubuntu7.4 [3215 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 89.1 MB in 4s (20.8 MB/s)
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 16962 files and directories currently installed.)
+Preparing to unpack .../00-curl_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking curl (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Preparing to unpack .../01-libcurl4t64_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking libcurl4t64:arm64 (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Preparing to unpack .../02-libcurl3t64-gnutls_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking libcurl3t64-gnutls:arm64 (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Selecting previously unselected package libjemalloc2:arm64.
+Preparing to unpack .../03-libjemalloc2_5.3.0-2build1_arm64.deb ...
+Unpacking libjemalloc2:arm64 (5.3.0-2build1) ...
+Selecting previously unselected package libllvm17t64:arm64.
+Preparing to unpack .../04-libllvm17t64_1%3a17.0.6-9ubuntu1_arm64.deb ...
+Unpacking libllvm17t64:arm64 (1:17.0.6-9ubuntu1) ...
+Selecting previously unselected package libstd-rust-1.75:arm64.
+Preparing to unpack .../05-libstd-rust-1.75_1.75.0+dfsg0ubuntu1-0ubuntu7.4_arm64.deb ...
+Unpacking libstd-rust-1.75:arm64 (1.75.0+dfsg0ubuntu1-0ubuntu7.4) ...
+Selecting previously unselected package liburing2:arm64.
+Preparing to unpack .../06-liburing2_2.5-1build1_arm64.deb ...
+Unpacking liburing2:arm64 (2.5-1build1) ...
+Selecting previously unselected package liburing-dev:arm64.
+Preparing to unpack .../07-liburing-dev_2.5-1build1_arm64.deb ...
+Unpacking liburing-dev:arm64 (2.5-1build1) ...
+Selecting previously unselected package libjemalloc-dev.
+Preparing to unpack .../08-libjemalloc-dev_5.3.0-2build1_arm64.deb ...
+Unpacking libjemalloc-dev (5.3.0-2build1) ...
+Selecting previously unselected package libstd-rust-dev:arm64.
+Preparing to unpack .../09-libstd-rust-dev_1.75.0+dfsg0ubuntu1-0ubuntu7.4_arm64.deb ...
+Unpacking libstd-rust-dev:arm64 (1.75.0+dfsg0ubuntu1-0ubuntu7.4) ...
+Selecting previously unselected package rustc.
+Preparing to unpack .../10-rustc_1.75.0+dfsg0ubuntu1-0ubuntu7.4_arm64.deb ...
+Unpacking rustc (1.75.0+dfsg0ubuntu1-0ubuntu7.4) ...
+Setting up libcurl4t64:arm64 (8.5.0-2ubuntu10.16) ...
+Setting up libcurl3t64-gnutls:arm64 (8.5.0-2ubuntu10.16) ...
+Setting up libjemalloc2:arm64 (5.3.0-2build1) ...
+Setting up libjemalloc-dev (5.3.0-2build1) ...
+Setting up libllvm17t64:arm64 (1:17.0.6-9ubuntu1) ...
+Setting up curl (8.5.0-2ubuntu10.16) ...
+Setting up liburing2:arm64 (2.5-1build1) ...
+Setting up liburing-dev:arm64 (2.5-1build1) ...
+Setting up libstd-rust-1.75:arm64 (1.75.0+dfsg0ubuntu1-0ubuntu7.4) ...
+Setting up libstd-rust-dev:arm64 (1.75.0+dfsg0ubuntu1-0ubuntu7.4) ...
+Setting up rustc (1.75.0+dfsg0ubuntu1-0ubuntu7.4) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+/tmp/tmp.jYvqmhXyuU/sqlite.zip: OK
+/tmp/tmp.jYvqmhXyuU/sodium.tar.gz: OK
+checking build system type... aarch64-unknown-linux-gnu
+checking host system type... aarch64-unknown-linux-gnu
+checking target system type... aarch64-unknown-linux-gnu
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether sleep supports fractional seconds... yes
+checking filesystem timestamp resolution... 0.01
+checking whether build environment is sane... yes
+checking for a race-free mkdir -p... /usr/bin/mkdir -p
+checking for gawk... no
+checking for mawk... mawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking xargs -n works... yes
+checking whether UID '0' is supported by ustar format... yes
+checking whether GID '0' is supported by ustar format... yes
+checking how to create a ustar tar archive... gnutar
+checking whether to enable maintainer-specific portions of Makefiles... no
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether the compiler supports GNU C... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to enable C23 features... unsupported
+checking for gcc option to enable C11 features... none needed
+checking whether gcc understands -c and -o together... yes
+checking whether make supports the include directive... yes (GNU style)
+checking dependency style of gcc... gcc3
+checking dependency style of gcc... gcc3
+checking for stdio.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for strings.h... yes
+checking for sys/stat.h... yes
+checking for sys/types.h... yes
+checking for unistd.h... yes
+checking for wchar.h... yes
+checking for minix/config.h... no
+checking whether it is safe to define __EXTENSIONS__... yes
+checking whether _XOPEN_SOURCE should be defined... no
+checking if we are using FilC... no
+checking for a sed that does not truncate output... /usr/bin/sed
+checking how to run the C preprocessor... gcc -E
+checking for egrep -e... /usr/bin/grep -E
+checking whether gcc is Clang... no
+checking whether pthreads work with "-pthread" and "-lpthread"... yes
+checking for joinable pthread attribute... PTHREAD_CREATE_JOINABLE
+checking whether more special flags are required for pthreads... no
+checking for PTHREAD_PRIO_INHERIT... yes
+checking for variable-length arrays... yes
+checking for __wasi__ defined... no
+checking whether C compiler accepts -Werror... yes
+checking whether to add -D_FORTIFY_SOURCE=3 to CPPFLAGS... no
+checking whether to add -D_FORTIFY_SOURCE=2 to CPPFLAGS... no
+checking whether C compiler accepts -fvisibility=hidden... yes
+checking whether C compiler accepts -fPIC... yes
+checking whether C compiler accepts -fPIE... yes
+checking whether the linker accepts -pie... yes
+checking whether C compiler accepts -fno-strict-aliasing... yes
+checking whether C compiler accepts -fno-strict-overflow... yes
+checking whether C compiler accepts -fstack-protector... yes
+checking whether the linker accepts -fstack-protector... yes
+checking whether C compiler accepts -O3  -pthread -fvisibility=hidden -fPIC -fPIE -fno-strict-aliasing -fno-strict-overflow -fstack-protector -Wall... yes
+checking whether C compiler accepts -O3  -pthread -fvisibility=hidden -fPIC -fPIE -fno-strict-aliasing -fno-strict-overflow -fstack-protector -Wno-deprecated-declarations... yes
+checking whether C compiler accepts -O3  -pthread -fvisibility=hidden -fPIC -fPIE -fno-strict-aliasing -fno-strict-overflow -fstack-protector -Wno-deprecated-declarations -Wno-unknown-pragmas... yes
+checking for clang... no
+checking whether C compiler accepts -O3  -pthread -fvisibility=hidden -fPIC -fPIE -fno-strict-aliasing -fno-strict-overflow -fstack-protector -Wall -Wextra... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2 -Wlogical-op... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2 -Wlogical-op -Wmaybe-uninitialized... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2 -Wlogical-op -Wmaybe-uninitialized -Wmisleading-indentation... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2 -Wlogical-op -Wmaybe-uninitialized -Wmisleading-indentation -Wmissing-declarations... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2 -Wlogical-op -Wmaybe-uninitialized -Wmisleading-indentation -Wmissing-declarations -Wmissing-prototypes... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2 -Wlogical-op -Wmaybe-uninitialized -Wmisleading-indentation -Wmissing-declarations -Wmissing-prototypes -Wnested-externs... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2 -Wlogical-op -Wmaybe-uninitialized -Wmisleading-indentation -Wmissing-declarations -Wmissing-prototypes -Wnested-externs -Wno-type-limits... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2 -Wlogical-op -Wmaybe-uninitialized -Wmisleading-indentation -Wmissing-declarations -Wmissing-prototypes -Wnested-externs -Wno-type-limits -Wno-unknown-pragmas... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2 -Wlogical-op -Wmaybe-uninitialized -Wmisleading-indentation -Wmissing-declarations -Wmissing-prototypes -Wnested-externs -Wno-type-limits -Wno-unknown-pragmas -Wnormalized=id... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2 -Wlogical-op -Wmaybe-uninitialized -Wmisleading-indentation -Wmissing-declarations -Wmissing-prototypes -Wnested-externs -Wno-type-limits -Wno-unknown-pragmas -Wnormalized=id -Wnull-dereference... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2 -Wlogical-op -Wmaybe-uninitialized -Wmisleading-indentation -Wmissing-declarations -Wmissing-prototypes -Wnested-externs -Wno-type-limits -Wno-unknown-pragmas -Wnormalized=id -Wnull-dereference -Wold-style-declaration... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2 -Wlogical-op -Wmaybe-uninitialized -Wmisleading-indentation -Wmissing-declarations -Wmissing-prototypes -Wnested-externs -Wno-type-limits -Wno-unknown-pragmas -Wnormalized=id -Wnull-dereference -Wold-style-declaration -Wpointer-arith... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2 -Wlogical-op -Wmaybe-uninitialized -Wmisleading-indentation -Wmissing-declarations -Wmissing-prototypes -Wnested-externs -Wno-type-limits -Wno-unknown-pragmas -Wnormalized=id -Wnull-dereference -Wold-style-declaration -Wpointer-arith -Wredundant-decls... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2 -Wlogical-op -Wmaybe-uninitialized -Wmisleading-indentation -Wmissing-declarations -Wmissing-prototypes -Wnested-externs -Wno-type-limits -Wno-unknown-pragmas -Wnormalized=id -Wnull-dereference -Wold-style-declaration -Wpointer-arith -Wredundant-decls -Wrestrict... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2 -Wlogical-op -Wmaybe-uninitialized -Wmisleading-indentation -Wmissing-declarations -Wmissing-prototypes -Wnested-externs -Wno-type-limits -Wno-unknown-pragmas -Wnormalized=id -Wnull-dereference -Wold-style-declaration -Wpointer-arith -Wredundant-decls -Wrestrict -Wshorten-64-to-32... no
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2 -Wlogical-op -Wmaybe-uninitialized -Wmisleading-indentation -Wmissing-declarations -Wmissing-prototypes -Wnested-externs -Wno-type-limits -Wno-unknown-pragmas -Wnormalized=id -Wnull-dereference -Wold-style-declaration -Wpointer-arith -Wredundant-decls -Wrestrict -Wsometimes-uninitialized... no
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2 -Wlogical-op -Wmaybe-uninitialized -Wmisleading-indentation -Wmissing-declarations -Wmissing-prototypes -Wnested-externs -Wno-type-limits -Wno-unknown-pragmas -Wnormalized=id -Wnull-dereference -Wold-style-declaration -Wpointer-arith -Wredundant-decls -Wrestrict -Wstrict-prototypes... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2 -Wlogical-op -Wmaybe-uninitialized -Wmisleading-indentation -Wmissing-declarations -Wmissing-prototypes -Wnested-externs -Wno-type-limits -Wno-unknown-pragmas -Wnormalized=id -Wnull-dereference -Wold-style-declaration -Wpointer-arith -Wredundant-decls -Wrestrict -Wstrict-prototypes -Wswitch-enum... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2 -Wlogical-op -Wmaybe-uninitialized -Wmisleading-indentation -Wmissing-declarations -Wmissing-prototypes -Wnested-externs -Wno-type-limits -Wno-unknown-pragmas -Wnormalized=id -Wnull-dereference -Wold-style-declaration -Wpointer-arith -Wredundant-decls -Wrestrict -Wstrict-prototypes -Wswitch-enum -Wvariable-decl... no
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2 -Wlogical-op -Wmaybe-uninitialized -Wmisleading-indentation -Wmissing-declarations -Wmissing-prototypes -Wnested-externs -Wno-type-limits -Wno-unknown-pragmas -Wnormalized=id -Wnull-dereference -Wold-style-declaration -Wpointer-arith -Wredundant-decls -Wrestrict -Wstrict-prototypes -Wswitch-enum -Wwrite-strings... yes
+checking whether the linker accepts -Wl,-z,relro... yes
+checking whether the linker accepts -Wl,-z,now... yes
+checking whether the linker accepts -Wl,-z,noexecstack... yes
+checking whether segmentation violations can be caught... yes
+checking whether SIGABRT can be caught... yes
+checking for thread local storage (TLS) class... _Thread_local
+thread local storage is supported
+checking whether C compiler accepts -ftls-model=global-dynamic... yes
+checking how to print strings... printf
+checking for a sed that does not truncate output... (cached) /usr/bin/sed
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for fgrep... /usr/bin/grep -F
+checking for ld used by gcc... /usr/bin/ld
+checking if the linker (/usr/bin/ld) is GNU ld... yes
+checking for BSD- or MS-compatible name lister (nm)... /usr/bin/nm -B
+checking the name lister (/usr/bin/nm -B) interface... BSD nm
+checking whether ln -s works... yes
+checking the maximum length of command line arguments... 1572864
+checking how to convert aarch64-unknown-linux-gnu file names to aarch64-unknown-linux-gnu format... func_convert_file_noop
+checking how to convert aarch64-unknown-linux-gnu file names to toolchain format... func_convert_file_noop
+checking for /usr/bin/ld option to reload object files... -r
+checking for file... file
+checking for objdump... objdump
+checking how to recognize dependent libraries... pass_all
+checking for dlltool... no
+checking how to associate runtime and link libraries... printf %s\n
+checking for ranlib... ranlib
+checking for ar... ar
+checking for archiver @FILE support... @
+checking for strip... strip
+checking command to parse /usr/bin/nm -B output from gcc object... ok
+checking for sysroot... no
+checking for a working dd... /usr/bin/dd
+checking how to truncate binary pipes... /usr/bin/dd bs=4096 count=1
+checking for mt... no
+checking if : is a manifest tool... no
+checking for dlfcn.h... yes
+checking for objdir... .libs
+checking if gcc supports -fno-rtti -fno-exceptions... no
+checking for gcc option to produce PIC... -fPIC -DPIC
+checking if gcc PIC flag -fPIC -DPIC works... yes
+checking if gcc static flag -static works... yes
+checking if gcc supports -c -o file.o... yes
+checking if gcc supports -c -o file.o... (cached) yes
+checking whether the gcc linker (/usr/bin/ld) supports shared libraries... yes
+checking whether -lc should be explicitly linked in... no
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... yes
+checking whether to build static libraries... no
+checking if we are using CompCert... no
+checking for ar... (cached) ar
+checking for ARM64 target... yes
+checking for ARM crypto instructions set... yes
+checking whether C compiler accepts -mmmx... no
+checking for MMX instructions set... no
+checking whether C compiler accepts -msse2... no
+checking for SSE2 instructions set... no
+checking whether C compiler accepts -msse3... no
+checking for SSE3 instructions set... no
+checking whether C compiler accepts -mssse3... no
+checking for SSSE3 instructions set... no
+checking whether C compiler accepts -msse4.1... no
+checking for SSE4.1 instructions set... no
+checking whether C compiler accepts -mavx... no
+checking for AVX instructions set... no
+checking whether C compiler accepts -mavx2... no
+checking for AVX2 instructions set... no
+checking whether C compiler accepts -mavx512f... no
+checking for AVX512F instructions set... no
+checking whether C compiler accepts -O3  -pthread -fvisibility=hidden -fPIC -fPIE -fno-strict-aliasing -fno-strict-overflow -fstack-protector -Wno-deprecated-declarations -Wno-unknown-pragmas -ftls-model=global-dynamic -mno-avx512f... no
+checking whether C compiler accepts -maes... no
+checking whether C compiler accepts -mpclmul... no
+checking for AESNI instructions set and PCLMULQDQ... no
+checking whether C compiler accepts -mrdrnd... no
+checking for RDRAND... no
+checking for sys/mman.h... yes
+checking for sys/param.h... yes
+checking for sys/random.h... yes
+checking for intrin.h... no
+checking for sys/auxv.h... yes
+checking for CommonCrypto/CommonRandom.h... no
+checking for cet.h... no
+checking for threads.h... yes
+checking if _xgetbv() is available... no
+checking for inline... inline
+checking whether byte ordering is bigendian... no
+checking whether __STDC_LIMIT_MACROS is required... no
+checking whether we can use inline asm code... yes
+no
+checking whether we can use x86_64 asm code... no
+checking whether we can assemble AVX opcodes... no
+checking for 128-bit arithmetic... yes
+checking for cpuid instruction... no
+checking if the .private_extern asm directive is supported... no
+checking if the .hidden asm directive is supported... yes
+checking if weak symbols are supported... yes
+checking if atomic operations are supported... yes
+checking if C11 memory fences are supported... yes
+checking if gcc memory fences are supported... yes
+checking for size_t... yes
+checking for working alloca.h... yes
+checking for alloca... yes
+checking for arc4random... yes
+checking for arc4random_buf... yes
+checking for mmap... yes
+checking for mlock... yes
+checking for madvise... yes
+checking for mprotect... yes
+checking for raise... yes
+checking for sysconf... yes
+checking for getrandom with a standard API... yes
+checking for getrandom... yes
+checking for getentropy with a standard API... yes
+checking for getentropy... yes
+checking for getpid... yes
+checking for getauxval... yes
+checking for elf_aux_info... no
+checking for posix_memalign... yes
+checking for nanosleep... yes
+checking for clock_gettime... yes
+checking for memset_s... no
+checking for explicit_bzero... yes
+checking for memset_explicit... no
+checking for explicit_memset... no
+checking if gcc/ld supports -Wl,--output-def... no
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating builds/Makefile
+config.status: creating contrib/Makefile
+config.status: creating dist-build/Makefile
+config.status: creating libsodium.pc
+config.status: creating libsodium-uninstalled.pc
+config.status: creating src/Makefile
+config.status: creating src/libsodium/Makefile
+config.status: creating src/libsodium/include/Makefile
+config.status: creating src/libsodium/include/sodium/version.h
+config.status: creating test/default/Makefile
+config.status: creating test/Makefile
+config.status: executing depfiles commands
+config.status: executing libtool commands
+Making all in builds
+make[1]: Entering directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/builds'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/builds'
+Making all in contrib
+make[1]: Entering directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/contrib'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/contrib'
+Making all in dist-build
+make[1]: Entering directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/dist-build'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/dist-build'
+Making all in src
+make[1]: Entering directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/src'
+Making all in libsodium
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/src/libsodium'
+Making all in include
+make[3]: Entering directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/src/libsodium/include'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/src/libsodium/include'
+make[3]: Entering directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/src/libsodium'
+  CC       crypto_shorthash/siphash24/libsodium_la-shorthash_siphashx24.lo
+  CC       crypto_shorthash/siphash24/ref/libsodium_la-shorthash_siphashx24_ref.lo
+  CC       crypto_sign/ed25519/ref10/libsodium_la-obsolete.lo
+  CC       crypto_aead/aegis128l/libaesni_la-aegis128l_aesni.lo
+  CC       crypto_aead/aegis256/libaesni_la-aegis256_aesni.lo
+  CC       crypto_ipcrypt/libaesni_la-ipcrypt_aesni.lo
+  CC       crypto_aead/aegis128l/libarmcrypto_la-aegis128l_armcrypto.lo
+  CC       crypto_aead/aegis256/libarmcrypto_la-aegis256_armcrypto.lo
+  CC       crypto_ipcrypt/libarmcrypto_la-ipcrypt_armcrypto.lo
+  CC       crypto_pwhash/argon2/libarmcrypto_la-argon2-fill-block-neon.lo
+  CC       crypto_generichash/blake2b/ref/libssse3_la-blake2b-compress-ssse3.lo
+  CC       crypto_pwhash/argon2/libssse3_la-argon2-fill-block-ssse3.lo
+  CC       crypto_generichash/blake2b/ref/libsse41_la-blake2b-compress-sse41.lo
+  CC       crypto_generichash/blake2b/ref/libavx2_la-blake2b-compress-avx2.lo
+  CC       crypto_pwhash/argon2/libavx2_la-argon2-fill-block-avx2.lo
+  CC       crypto_stream/chacha20/dolbeau/libavx2_la-chacha20_dolbeau-avx2.lo
+  CC       crypto_stream/salsa20/xmm6int/libavx2_la-salsa20_xmm6int-avx2.lo
+  CC       crypto_pwhash/argon2/libavx512f_la-argon2-fill-block-avx512f.lo
+  CC       crypto_aead/aegis128l/libsodium_la-aead_aegis128l.lo
+  CC       crypto_aead/aegis128l/libsodium_la-aegis128l_soft.lo
+  CC       crypto_aead/aegis256/libsodium_la-aead_aegis256.lo
+  CC       crypto_aead/aegis256/libsodium_la-aegis256_soft.lo
+  CC       crypto_aead/aes256gcm/libsodium_la-aead_aes256gcm.lo
+  CC       crypto_aead/chacha20poly1305/libsodium_la-aead_chacha20poly1305.lo
+  CC       crypto_aead/xchacha20poly1305/libsodium_la-aead_xchacha20poly1305.lo
+  CC       crypto_auth/libsodium_la-crypto_auth.lo
+  CC       crypto_auth/hmacsha256/libsodium_la-auth_hmacsha256.lo
+  CC       crypto_auth/hmacsha512/libsodium_la-auth_hmacsha512.lo
+  CC       crypto_auth/hmacsha512256/libsodium_la-auth_hmacsha512256.lo
+  CC       crypto_box/libsodium_la-crypto_box.lo
+  CC       crypto_box/libsodium_la-crypto_box_easy.lo
+  CC       crypto_box/libsodium_la-crypto_box_seal.lo
+  CC       crypto_box/curve25519xsalsa20poly1305/libsodium_la-box_curve25519xsalsa20poly1305.lo
+  CC       crypto_core/ed25519/ref10/libsodium_la-ed25519_ref10.lo
+  CC       crypto_core/hchacha20/libsodium_la-core_hchacha20.lo
+  CC       crypto_core/hsalsa20/ref2/libsodium_la-core_hsalsa20_ref2.lo
+  CC       crypto_core/hsalsa20/libsodium_la-core_hsalsa20.lo
+  CC       crypto_core/keccak1600/libsodium_la-keccak1600.lo
+  CC       crypto_core/keccak1600/ref/libsodium_la-keccak1600_ref.lo
+  CC       crypto_core/keccak1600/armsha3/libsodium_la-keccak1600_armsha3.lo
+  CC       crypto_core/salsa/ref/libsodium_la-core_salsa_ref.lo
+  CC       crypto_core/softaes/libsodium_la-softaes.lo
+  CC       crypto_generichash/libsodium_la-crypto_generichash.lo
+  CC       crypto_generichash/blake2b/libsodium_la-generichash_blake2.lo
+  CC       crypto_generichash/blake2b/ref/libsodium_la-blake2b-compress-ref.lo
+  CC       crypto_generichash/blake2b/ref/libsodium_la-blake2b-ref.lo
+  CC       crypto_generichash/blake2b/ref/libsodium_la-generichash_blake2b.lo
+  CC       crypto_hash/libsodium_la-crypto_hash.lo
+  CC       crypto_hash/sha256/libsodium_la-hash_sha256.lo
+  CC       crypto_hash/sha256/cp/libsodium_la-hash_sha256_cp.lo
+  CC       crypto_hash/sha512/libsodium_la-hash_sha512.lo
+  CC       crypto_hash/sha512/cp/libsodium_la-hash_sha512_cp.lo
+  CC       crypto_hash/sha3/libsodium_la-hash_sha3.lo
+  CC       crypto_ipcrypt/libsodium_la-crypto_ipcrypt.lo
+  CC       crypto_ipcrypt/libsodium_la-ipcrypt_soft.lo
+  CC       crypto_kdf/blake2b/libsodium_la-kdf_blake2b.lo
+  CC       crypto_kdf/libsodium_la-crypto_kdf.lo
+  CC       crypto_kdf/hkdf/libsodium_la-kdf_hkdf_sha256.lo
+  CC       crypto_kdf/hkdf/libsodium_la-kdf_hkdf_sha512.lo
+  CC       crypto_kem/libsodium_la-crypto_kem.lo
+  CC       crypto_kem/mlkem768/libsodium_la-kem_mlkem768.lo
+  CC       crypto_kem/mlkem768/ref/libsodium_la-kem_mlkem768_ref.lo
+  CC       crypto_kem/xwing/libsodium_la-kem_xwing.lo
+  CC       crypto_kx/libsodium_la-crypto_kx.lo
+  CC       crypto_onetimeauth/libsodium_la-crypto_onetimeauth.lo
+  CC       crypto_onetimeauth/poly1305/libsodium_la-onetimeauth_poly1305.lo
+  CC       crypto_onetimeauth/poly1305/donna/libsodium_la-poly1305_donna.lo
+  CC       crypto_pwhash/argon2/libsodium_la-argon2-core.lo
+  CC       crypto_pwhash/argon2/libsodium_la-argon2-encoding.lo
+  CC       crypto_pwhash/argon2/libsodium_la-argon2-fill-block-ref.lo
+  CC       crypto_pwhash/argon2/libsodium_la-argon2-fill-block-wasm32.lo
+  CC       crypto_pwhash/argon2/libsodium_la-argon2.lo
+  CC       crypto_pwhash/argon2/libsodium_la-blake2b-long.lo
+  CC       crypto_pwhash/argon2/libsodium_la-pwhash_argon2i.lo
+  CC       crypto_pwhash/argon2/libsodium_la-pwhash_argon2id.lo
+  CC       crypto_pwhash/libsodium_la-crypto_pwhash.lo
+  CC       crypto_scalarmult/libsodium_la-crypto_scalarmult.lo
+  CC       crypto_scalarmult/curve25519/ref10/libsodium_la-x25519_ref10.lo
+  CC       crypto_scalarmult/curve25519/libsodium_la-scalarmult_curve25519.lo
+  CC       crypto_secretbox/libsodium_la-crypto_secretbox.lo
+  CC       crypto_secretbox/libsodium_la-crypto_secretbox_easy.lo
+  CC       crypto_secretbox/xsalsa20poly1305/libsodium_la-secretbox_xsalsa20poly1305.lo
+  CC       crypto_secretstream/xchacha20poly1305/libsodium_la-secretstream_xchacha20poly1305.lo
+  CC       crypto_shorthash/libsodium_la-crypto_shorthash.lo
+  CC       crypto_shorthash/siphash24/libsodium_la-shorthash_siphash24.lo
+  CC       crypto_shorthash/siphash24/ref/libsodium_la-shorthash_siphash24_ref.lo
+  CC       crypto_sign/libsodium_la-crypto_sign.lo
+  CC       crypto_sign/ed25519/libsodium_la-sign_ed25519.lo
+  CC       crypto_sign/ed25519/ref10/libsodium_la-keypair.lo
+  CC       crypto_sign/ed25519/ref10/libsodium_la-open.lo
+  CC       crypto_sign/ed25519/ref10/libsodium_la-sign.lo
+  CC       crypto_stream/chacha20/libsodium_la-stream_chacha20.lo
+  CC       crypto_stream/chacha20/ref/libsodium_la-chacha20_ref.lo
+  CC       crypto_stream/libsodium_la-crypto_stream.lo
+  CC       crypto_stream/salsa20/libsodium_la-stream_salsa20.lo
+  CC       crypto_stream/xsalsa20/libsodium_la-stream_xsalsa20.lo
+  CC       crypto_verify/libsodium_la-verify.lo
+  CC       crypto_xof/shake128/libsodium_la-xof_shake128.lo
+  CC       crypto_xof/shake128/ref/libsodium_la-shake128_ref.lo
+  CC       crypto_xof/shake256/libsodium_la-xof_shake256.lo
+  CC       crypto_xof/shake256/ref/libsodium_la-shake256_ref.lo
+  CC       crypto_xof/turboshake128/libsodium_la-xof_turboshake128.lo
+  CC       crypto_xof/turboshake128/ref/libsodium_la-turboshake128_ref.lo
+  CC       crypto_xof/turboshake256/libsodium_la-xof_turboshake256.lo
+  CC       crypto_xof/turboshake256/ref/libsodium_la-turboshake256_ref.lo
+  CC       randombytes/libsodium_la-randombytes.lo
+  CC       sodium/libsodium_la-codecs.lo
+  CC       sodium/libsodium_la-core.lo
+  CC       sodium/libsodium_la-runtime.lo
+  CC       sodium/libsodium_la-utils.lo
+  CC       sodium/libsodium_la-version.lo
+  CC       crypto_stream/salsa20/ref/libsodium_la-salsa20_ref.lo
+  CC       crypto_box/curve25519xchacha20poly1305/libsodium_la-box_curve25519xchacha20poly1305.lo
+  CC       crypto_box/curve25519xchacha20poly1305/libsodium_la-box_seal_curve25519xchacha20poly1305.lo
+  CC       crypto_core/ed25519/libsodium_la-core_ed25519.lo
+  CC       crypto_core/ed25519/libsodium_la-core_ristretto255.lo
+  CC       crypto_pwhash/scryptsalsa208sha256/libsodium_la-crypto_scrypt-common.lo
+  CC       crypto_pwhash/scryptsalsa208sha256/libsodium_la-scrypt_platform.lo
+  CC       crypto_pwhash/scryptsalsa208sha256/libsodium_la-pbkdf2-sha256.lo
+  CC       crypto_pwhash/scryptsalsa208sha256/libsodium_la-pwhash_scryptsalsa208sha256.lo
+  CC       crypto_pwhash/scryptsalsa208sha256/nosse/libsodium_la-pwhash_scryptsalsa208sha256_nosse.lo
+  CC       crypto_scalarmult/ed25519/ref10/libsodium_la-scalarmult_ed25519_ref10.lo
+  CC       crypto_scalarmult/ristretto255/ref10/libsodium_la-scalarmult_ristretto255_ref10.lo
+  CC       crypto_secretbox/xchacha20poly1305/libsodium_la-secretbox_xchacha20poly1305.lo
+  CC       crypto_stream/salsa2012/ref/libsodium_la-stream_salsa2012_ref.lo
+  CC       crypto_stream/salsa2012/libsodium_la-stream_salsa2012.lo
+  CC       crypto_stream/salsa208/ref/libsodium_la-stream_salsa208_ref.lo
+  CC       crypto_stream/salsa208/libsodium_la-stream_salsa208.lo
+  CC       crypto_stream/xchacha20/libsodium_la-stream_xchacha20.lo
+  CC       randombytes/sysrandom/libsodium_la-randombytes_sysrandom.lo
+  CC       crypto_aead/aes256gcm/aesni/libaesni_la-aead_aes256gcm_aesni.lo
+  CC       crypto_aead/aes256gcm/armcrypto/libarmcrypto_la-aead_aes256gcm_armcrypto.lo
+  CC       crypto_onetimeauth/poly1305/sse2/libsse2_la-poly1305_sse2.lo
+  CC       crypto_pwhash/scryptsalsa208sha256/sse/libsse2_la-pwhash_scryptsalsa208sha256_sse.lo
+  CC       crypto_stream/salsa20/xmm6int/libsse2_la-salsa20_xmm6int-sse2.lo
+  CC       crypto_stream/chacha20/dolbeau/libssse3_la-chacha20_dolbeau-ssse3.lo
+  CCLD     libsse41.la
+libtool: warning: '-version-info/-version-number' is ignored for convenience libraries
+  CCLD     libavx2.la
+libtool: warning: '-version-info/-version-number' is ignored for convenience libraries
+  CCLD     libavx512f.la
+libtool: warning: '-version-info/-version-number' is ignored for convenience libraries
+  CC       randombytes/internal/librdrand_la-randombytes_internal_random.lo
+  CCLD     libaesni.la
+libtool: warning: '-version-info/-version-number' is ignored for convenience libraries
+  CCLD     libsse2.la
+libtool: warning: '-version-info/-version-number' is ignored for convenience libraries
+  CCLD     libssse3.la
+  CCLD     librdrand.la
+libtool: warning: '-version-info/-version-number' is ignored for convenience libraries
+libtool: warning: '-version-info/-version-number' is ignored for convenience libraries
+  CCLD     libarmcrypto.la
+libtool: warning: '-version-info/-version-number' is ignored for convenience libraries
+  CCLD     libsodium.la
+make[3]: Leaving directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/src/libsodium'
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/src/libsodium'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/src'
+make[2]: Nothing to be done for 'all-am'.
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/src'
+make[1]: Leaving directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/src'
+Making all in test
+make[1]: Entering directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/test'
+Making all in default
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/test/default'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/test/default'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/test'
+make[2]: Nothing to be done for 'all-am'.
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/test'
+make[1]: Leaving directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/test'
+make[1]: Entering directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22'
+make[1]: Nothing to be done for 'all-am'.
+make[1]: Leaving directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22'
+Making install in builds
+make[1]: Entering directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/builds'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/builds'
+make[2]: Nothing to be done for 'install-exec-am'.
+make[2]: Nothing to be done for 'install-data-am'.
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/builds'
+make[1]: Leaving directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/builds'
+Making install in contrib
+make[1]: Entering directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/contrib'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/contrib'
+make[2]: Nothing to be done for 'install-exec-am'.
+make[2]: Nothing to be done for 'install-data-am'.
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/contrib'
+make[1]: Leaving directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/contrib'
+Making install in dist-build
+make[1]: Entering directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/dist-build'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/dist-build'
+make[2]: Nothing to be done for 'install-exec-am'.
+make[2]: Nothing to be done for 'install-data-am'.
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/dist-build'
+make[1]: Leaving directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/dist-build'
+Making install in src
+make[1]: Entering directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/src'
+Making install in libsodium
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/src/libsodium'
+Making install in include
+make[3]: Entering directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/src/libsodium/include'
+make[4]: Entering directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/src/libsodium/include'
+make[4]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/usr/local/include'
+ /usr/bin/mkdir -p '/usr/local/include/sodium'
+ /usr/bin/install -c -m 644  sodium/core.h sodium/crypto_aead_aes256gcm.h sodium/crypto_aead_aegis128l.h sodium/crypto_aead_aegis256.h sodium/crypto_aead_chacha20poly1305.h sodium/crypto_aead_xchacha20poly1305.h sodium/crypto_auth.h sodium/crypto_auth_hmacsha256.h sodium/crypto_auth_hmacsha512.h sodium/crypto_auth_hmacsha512256.h sodium/crypto_box.h sodium/crypto_box_curve25519xchacha20poly1305.h sodium/crypto_box_curve25519xsalsa20poly1305.h sodium/crypto_core_ed25519.h sodium/crypto_core_ristretto255.h sodium/crypto_core_hchacha20.h sodium/crypto_core_hsalsa20.h sodium/crypto_core_keccak1600.h sodium/crypto_core_salsa20.h sodium/crypto_core_salsa2012.h sodium/crypto_core_salsa208.h sodium/crypto_generichash.h sodium/crypto_generichash_blake2b.h sodium/crypto_hash.h sodium/crypto_hash_sha256.h sodium/crypto_hash_sha3.h sodium/crypto_hash_sha512.h sodium/crypto_ipcrypt.h sodium/crypto_kdf.h sodium/crypto_kdf_hkdf_sha256.h sodium/crypto_kdf_hkdf_sha512.h sodium/crypto_kdf_blake2b.h sodium/crypto_kem.h sodium/crypto_kem_mlkem768.h sodium/crypto_kem_xwing.h sodium/crypto_kx.h sodium/crypto_onetimeauth.h sodium/crypto_onetimeauth_poly1305.h sodium/crypto_pwhash.h sodium/crypto_pwhash_argon2i.h '/usr/local/include/sodium'
+ /usr/bin/mkdir -p '/usr/local/include/sodium'
+ /usr/bin/install -c -m 644  sodium/crypto_pwhash_argon2id.h sodium/crypto_pwhash_scryptsalsa208sha256.h sodium/crypto_scalarmult.h sodium/crypto_scalarmult_curve25519.h sodium/crypto_scalarmult_ed25519.h sodium/crypto_scalarmult_ristretto255.h sodium/crypto_secretbox.h sodium/crypto_secretbox_xchacha20poly1305.h sodium/crypto_secretbox_xsalsa20poly1305.h sodium/crypto_secretstream_xchacha20poly1305.h sodium/crypto_shorthash.h sodium/crypto_shorthash_siphash24.h sodium/crypto_sign.h sodium/crypto_sign_ed25519.h sodium/crypto_sign_edwards25519sha512batch.h sodium/crypto_stream.h sodium/crypto_stream_chacha20.h sodium/crypto_stream_salsa20.h sodium/crypto_stream_salsa2012.h sodium/crypto_stream_salsa208.h sodium/crypto_stream_xchacha20.h sodium/crypto_stream_xsalsa20.h sodium/crypto_verify_16.h sodium/crypto_verify_32.h sodium/crypto_verify_64.h sodium/crypto_xof_shake128.h sodium/crypto_xof_shake256.h sodium/crypto_xof_turboshake128.h sodium/crypto_xof_turboshake256.h sodium/export.h sodium/randombytes.h sodium/randombytes_internal_random.h sodium/randombytes_sysrandom.h sodium/runtime.h sodium/utils.h '/usr/local/include/sodium'
+ /usr/bin/install -c -m 644  sodium.h '/usr/local/include/.'
+ /usr/bin/mkdir -p '/usr/local/include'
+ /usr/bin/mkdir -p '/usr/local/include/sodium'
+ /usr/bin/install -c -m 644  sodium/version.h '/usr/local/include/sodium'
+make[4]: Leaving directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/src/libsodium/include'
+make[3]: Leaving directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/src/libsodium/include'
+make[3]: Entering directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/src/libsodium'
+make[4]: Entering directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/src/libsodium'
+ /usr/bin/mkdir -p '/usr/local/lib'
+ /bin/bash ../../libtool   --mode=install /usr/bin/install -c   libsodium.la '/usr/local/lib'
+libtool: install: /usr/bin/install -c .libs/libsodium.so.26.4.0 /usr/local/lib/libsodium.so.26.4.0
+libtool: install: (cd /usr/local/lib && { ln -s -f libsodium.so.26.4.0 libsodium.so.26 || { rm -f libsodium.so.26 && ln -s libsodium.so.26.4.0 libsodium.so.26; }; })
+libtool: install: (cd /usr/local/lib && { ln -s -f libsodium.so.26.4.0 libsodium.so || { rm -f libsodium.so && ln -s libsodium.so.26.4.0 libsodium.so; }; })
+libtool: install: /usr/bin/install -c .libs/libsodium.lai /usr/local/lib/libsodium.la
+libtool: finish: PATH="/opt/twelve-rust/cargo/bin:/opt/ruby/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/sbin" ldconfig -n /usr/local/lib
+----------------------------------------------------------------------
+Libraries have been installed in:
+   /usr/local/lib
+
+If you ever happen to want to link against installed libraries
+in a given directory, LIBDIR, you must either use libtool, and
+specify the full pathname of the library, or use the '-LLIBDIR'
+flag during linking and do at least one of the following:
+   - add LIBDIR to the 'LD_LIBRARY_PATH' environment variable
+     during execution
+   - add LIBDIR to the 'LD_RUN_PATH' environment variable
+     during linking
+   - use the '-Wl,-rpath -Wl,LIBDIR' linker flag
+   - have your system administrator add LIBDIR to '/etc/ld.so.conf'
+
+See any operating system documentation about shared libraries for
+more information, such as the ld(1) and ld.so(8) manual pages.
+----------------------------------------------------------------------
+make[4]: Nothing to be done for 'install-data-am'.
+make[4]: Leaving directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/src/libsodium'
+make[3]: Leaving directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/src/libsodium'
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/src/libsodium'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/src'
+make[3]: Entering directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/src'
+make[3]: Nothing to be done for 'install-exec-am'.
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/src'
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/src'
+make[1]: Leaving directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/src'
+Making install in test
+make[1]: Entering directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/test'
+Making install in default
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/test/default'
+make[3]: Entering directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/test/default'
+make[3]: Nothing to be done for 'install-exec-am'.
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/test/default'
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/test/default'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/test'
+make[3]: Entering directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/test'
+make[3]: Nothing to be done for 'install-exec-am'.
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/test'
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/test'
+make[1]: Leaving directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22/test'
+make[1]: Entering directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22'
+make[2]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/usr/local/lib/pkgconfig'
+ /usr/bin/install -c -m 644 libsodium.pc '/usr/local/lib/pkgconfig'
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22'
+make[1]: Leaving directory '/tmp/tmp.jYvqmhXyuU/libsodium-1.0.22'
+/tmp/tmp.jYvqmhXyuU/ruby.tar.gz: OK
+checking for ruby... /opt/ruby/bin/ruby
+tool/config.guess already exists
+tool/config.sub already exists
+checking build system type... aarch64-unknown-linux-gnu
+checking host system type... aarch64-unknown-linux-gnu
+checking target system type... aarch64-unknown-linux-gnu
+checking for gcc... gcc
+checking for ld... ld
+checking for gcc-ar... gcc-ar
+checking for g++... g++
+checking for gcc-nm... gcc-nm
+checking for gcc-ranlib... gcc-ranlib
+checking for gcc... (cached) gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether the compiler supports GNU C... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to enable C11 features... none needed
+checking whether the compiler supports GNU C++... yes
+checking whether g++ accepts -g... yes
+checking for g++ option to enable C++11 features... none needed
+checking how to run the C preprocessor... gcc -E
+checking for gas... no
+checking for as... as
+checking for gobjcopy... no
+checking for objcopy... objcopy
+checking for gobjdump... no
+checking for objdump... objdump
+checking for gstrip... no
+checking for strip... strip
+checking for stdio.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for strings.h... yes
+checking for sys/stat.h... yes
+checking for sys/types.h... yes
+checking for unistd.h... yes
+checking for wchar.h... yes
+checking for minix/config.h... no
+checking for vfork.h... no
+checking whether it is safe to define __EXTENSIONS__... yes
+checking whether _XOPEN_SOURCE should be defined... no
+checking whether the linker is GNU ld... yes
+checking whether gcc -E accepts -o... yes
+checking for gcc-ar flags... rcD
+checking whether ln -s works... yes
+checking whether make sets $(MAKE)... yes
+checking for a BSD-compatible install... /usr/bin/install -c
+checking for a race-free mkdir -p... /usr/bin/mkdir -p
+checking for dtrace... no
+checking for dot... no
+checking for doxygen... no
+checking for pkg-config... pkg-config
+checking whether it is Android... no
+checking for cd using physical directory... cd -P
+checking if make is GNU make... yes
+checking whether CFLAGS is valid... yes
+checking whether LDFLAGS is valid... yes
+checking whether ELF binaries are produced... yes
+checking whether -Wl,-rpath,. is accepted as LDFLAGS... yes
+checking whether -fdeclspec is accepted as LDFLAGS... no
+checking whether -fdeclspec is accepted as CXXFLAGS... no
+checking whether -Wextra-tokens is accepted as CFLAGS... no
+checking whether -Wdeprecated-declarations is accepted as CFLAGS... yes
+checking whether -Wdivision-by-zero is accepted as CFLAGS... no
+checking whether -Wdiv-by-zero is accepted as CFLAGS... yes
+checking whether -Wduplicated-cond is accepted as CFLAGS... yes
+checking whether -Wimplicit-function-declaration is accepted as CFLAGS... yes
+checking whether -Wimplicit-int is accepted as CFLAGS... yes
+checking whether -Wpointer-arith is accepted as CFLAGS... yes
+checking whether -Wshorten-64-to-32 is accepted as CFLAGS... no
+checking whether -Wwrite-strings is accepted as CFLAGS... yes
+checking whether -Wold-style-definition is accepted as CFLAGS... yes
+checking whether -Wimplicit-fallthrough=0 is accepted as CFLAGS... yes
+checking whether -Wmissing-noreturn is accepted as CFLAGS... yes
+checking whether -Wno-cast-function-type is accepted as CFLAGS... yes
+checking whether -Wno-constant-logical-operand is accepted as CFLAGS... yes
+checking whether -Wno-long-long is accepted as CFLAGS... yes
+checking whether -Wno-missing-field-initializers is accepted as CFLAGS... yes
+checking whether -Wno-overlength-strings is accepted as CFLAGS... yes
+checking whether -Wno-packed-bitfield-compat is accepted as CFLAGS... yes
+checking whether -Wno-parentheses-equality is accepted as CFLAGS... yes
+checking whether -Wno-self-assign is accepted as CFLAGS... yes
+checking whether -Wno-tautological-compare is accepted as CFLAGS... yes
+checking whether -Wno-unused-parameter is accepted as CFLAGS... yes
+checking whether -Wno-unused-value is accepted as CFLAGS... yes
+checking whether -Wsuggest-attribute=format is accepted as CFLAGS... yes
+checking whether -Wsuggest-attribute=noreturn is accepted as CFLAGS... yes
+checking whether -Wunused-variable is accepted as CFLAGS... yes
+checking whether -diag-disable=175,188,1684,2259,2312 is accepted as CFLAGS... no
+checking whether -Wmisleading-indentation is accepted as CFLAGS... yes
+checking whether -Wundef is accepted as CFLAGS... yes
+checking whether -Wall -Wextra is accepted as CFLAGS... yes
+checking whether -Qunused-arguments is accepted as CFLAGS... no
+checking whether -O3 -D_FORTIFY_SOURCE=2 is accepted as CFLAGS... yes
+checking whether -fstack-protector-strong is accepted as CFLAGS... yes
+checking whether -fstack-protector-strong is accepted as LDFLAGS... yes
+checking for -fstack-protector... -fstack-protector-strong
+checking for a broken LLVM libunwind that cannot unwind code with RA signing... no
+checking whether -mbranch-protection=pac-ret is accepted as CFLAGS... yes
+checking whether -Wl,--compress-debug-sections=zlib is accepted as LDFLAGS... yes
+checking whether -fno-strict-overflow is accepted as CFLAGS... yes
+checking whether -ggdb3 is accepted as LDFLAGS... yes
+checking whether -fvisibility=hidden is accepted as CFLAGS... yes
+checking whether -fno-fast-math is accepted as CFLAGS... yes
+checking whether -fexcess-precision=standard is accepted as CFLAGS... yes
+checking whether -fp-model precise is accepted as CFLAGS... no
+checking whether compiler has statement and declarations in expressions... yes
+checking for pthread.h... yes
+checking for pthread_create in -lthr... no
+checking for pthread_create in -lpthread... yes
+checking for pthread_np.h... no
+checking thread model... pthread
+checking whether CXXFLAGS is valid... yes
+checking for crypt in -lcrypt... yes
+checking for dlopen in -ldl... yes
+checking for shutdown in -lsocket... no
+checking for dirent.h that defines DIR... yes
+checking for library containing opendir... none required
+checking for _Bool... yes
+checking for stdbool.h that conforms to C99... yes
+checking for sys/wait.h that is POSIX.1 compatible... yes
+checking for afunix.h... no
+checking for atomic.h... no
+checking for copyfile.h... no
+checking for direct.h... no
+checking for grp.h... yes
+checking for fcntl.h... yes
+checking for float.h... yes
+checking for ieeefp.h... no
+checking for intrinsics.h... no
+checking for langinfo.h... yes
+checking for limits.h... yes
+checking for locale.h... yes
+checking for malloc.h... yes
+checking for malloc/malloc.h... no
+checking for malloc_np.h... no
+checking for net/socket.h... no
+checking for process.h... no
+checking for pwd.h... yes
+checking for sanitizer/asan_interface.h... yes
+checking for sanitizer/msan_interface.h... no
+checking for sanitizer/tsan_interface.h... yes
+checking for setjmpex.h... no
+checking for stdalign.h... yes
+checking for stdio.h... (cached) yes
+checking for sys/attr.h... no
+checking for sys/eventfd.h... yes
+checking for sys/fcntl.h... yes
+checking for sys/file.h... yes
+checking for sys/id.h... no
+checking for sys/ioctl.h... yes
+checking for sys/mkdev.h... no
+checking for sys/param.h... yes
+checking for sys/prctl.h... yes
+checking for sys/random.h... yes
+checking for sys/resource.h... yes
+checking for sys/select.h... yes
+checking for sys/sendfile.h... yes
+checking for sys/socket.h... yes
+checking for sys/syscall.h... yes
+checking for sys/sysmacros.h... yes
+checking for sys/time.h... yes
+checking for sys/times.h... yes
+checking for sys/uio.h... yes
+checking for sys/utime.h... no
+checking for syscall.h... yes
+checking for time.h... yes
+checking for ucontext.h... yes
+checking for utime.h... yes
+checking for sys/epoll.h... yes
+checking for sys/event.h... no
+checking for stdckdint.h... no
+checking for stdatomic.h... yes
+checking for gmp.h... yes
+checking for library containing __gmpz_init... -lgmp
+checking for jemalloc/jemalloc.h... yes
+checking for jemalloc library... -ljemalloc
+checking for special C compiler options needed for large files... no
+checking for _FILE_OFFSET_BITS value needed for large files... no
+checking whether byte ordering is bigendian... no
+checking for an ANSI C-conforming const... yes
+checking whether char is unsigned... yes
+checking for inline... inline
+checking for working volatile... yes
+checking for typeof syntax and keyword spelling... typeof
+checking for C/C++ restrict keyword... __restrict__
+checking for long long... yes
+checking for off_t... yes
+checking char bit... 8
+checking size of int... 4
+checking size of short... 2
+checking size of long... 8
+checking size of long long... 8
+checking size of __int64... 0
+checking size of __int128... 16
+checking size of off_t... 8
+checking size of void*... 8
+checking size of float... 4
+checking size of double... 8
+checking size of time_t... 8
+checking size of clock_t... 8
+checking word size... 8
+checking packed struct attribute... x __attribute__((packed))
+checking whether -Wno-address-of-packed-member is accepted as CFLAGS... yes
+checking for printf prefix for long long... ll
+checking for pid_t... yes
+checking for convertible type of pid_t... INT
+checking for uid_t... yes
+checking for convertible type of uid_t... UINT
+checking for gid_t... yes
+checking for convertible type of gid_t... UINT
+checking for time_t... yes
+checking for convertible type of time_t... LONG
+checking for dev_t... yes
+checking for convertible type of dev_t... ULONG
+checking for mode_t... yes
+checking for convertible type of mode_t... UINT
+checking for rlim_t... yes
+checking for convertible type of rlim_t... ULONG
+checking for off_t... (cached) yes
+checking for convertible type of off_t... LONG
+checking for clockid_t... yes
+checking for convertible type of clockid_t... INT
+checking for variable length macro... yes
+checking if _Alignof() works... yes
+checking for CONSTFUNC function attribute... __attribute__ ((__const__)) x
+checking for PUREFUNC function attribute... __attribute__ ((__pure__)) x
+checking for NORETURN function attribute... __attribute__ ((__noreturn__)) x
+checking for DEPRECATED function attribute... __attribute__ ((__deprecated__)) x
+checking for DEPRECATED_BY function attribute... __attribute__ ((__deprecated__("by "#n))) x
+checking for NOINLINE function attribute... __attribute__ ((__noinline__)) x
+checking for ALWAYS_INLINE function attribute... __attribute__ ((__always_inline__)) x
+checking for NO_SANITIZE function attribute... __attribute__ ((__no_sanitize__(san))) x
+checking for NO_SANITIZE_ADDRESS function attribute... __attribute__ ((__no_sanitize_address__)) x
+checking for NO_ADDRESS_SAFETY_ANALYSIS function attribute... __attribute__ ((__no_address_safety_analysis__)) x
+checking for WARN_UNUSED_RESULT function attribute... __attribute__ ((__warn_unused_result__)) x
+checking for MAYBE_UNUSED function attribute... __attribute__ ((__unused__)) x
+checking for ERRORFUNC function attribute... __attribute__ ((__error__ mesg)) x
+checking for WARNINGFUNC function attribute... __attribute__ ((__warning__ mesg)) x
+checking for WEAK function attribute... __attribute__ ((__weak__)) x
+checking for std::nullptr_t... yes
+checking for FUNC_STDCALL function attribute... x
+checking for FUNC_CDECL function attribute... x
+checking for FUNC_FASTCALL function attribute... x
+checking for FUNC_UNOPTIMIZED function attribute... __attribute__ ((__optimize__("O0"))) x
+checking for FUNC_MINIMIZED function attribute... __attribute__ ((__optimize__("-Os","-fomit-frame-pointer"))) x
+checking for function alias... alias
+checking for __atomic builtins... yes
+checking for 64bit __atomic builtins... yes
+checking for __sync builtins... yes
+checking for __builtin_unreachable... yes
+checking for __assume... no
+checking for exported function attribute... __attribute__ ((__visibility__("default")))
+checking for RUBY_FUNC_NONNULL function attribute... __attribute__ ((__nonnull__(n))) x
+checking for function name string predefined identifier... __func__
+checking if enum over int is allowed... yes
+checking for gcc options needed to detect all undeclared functions... none needed
+checking whether sys_nerr is declared... no
+checking whether getenv is declared... yes
+checking for size_t... yes
+checking size of size_t... 8
+checking size of ptrdiff_t... 8
+checking size of dev_t... 8
+checking for printf prefix for size_t... z
+checking for printf prefix for ptrdiff_t... t
+checking for struct stat.st_blksize... yes
+checking for struct stat.st_blocks... yes
+checking for struct stat.st_rdev... yes
+checking size of struct stat.st_size... SIZEOF_OFF_T
+checking size of struct stat.st_blocks... SIZEOF_OFF_T
+checking size of struct stat.st_ino... SIZEOF_LONG
+checking size of struct stat.st_dev... SIZEOF_DEV_T
+checking size of struct stat.st_rdev... SIZEOF_DEV_T
+checking for struct stat.st_atim... yes
+checking for struct stat.st_atimespec... no
+checking for struct stat.st_atimensec... no
+checking for struct stat.st_mtim... yes
+checking for struct stat.st_mtimespec... no
+checking for struct stat.st_mtimensec... no
+checking for struct stat.st_ctim... yes
+checking for struct stat.st_ctimespec... no
+checking for struct stat.st_ctimensec... no
+checking for struct stat.st_birthtimespec... no
+checking for struct statx.stx_btime... yes
+checking for struct timeval... yes
+checking size of struct timeval.tv_sec... SIZEOF_TIME_T
+checking for struct timespec... yes
+checking for struct timezone... yes
+checking for fd_mask... yes
+checking for int8_t... yes
+checking size of int8_t... 1
+checking for uint8_t... yes
+checking size of uint8_t... 1
+checking for int16_t... yes
+checking size of int16_t... 2
+checking for uint16_t... yes
+checking size of uint16_t... 2
+checking for int32_t... yes
+checking size of int32_t... 4
+checking for uint32_t... yes
+checking size of uint32_t... 4
+checking for int64_t... yes
+checking size of int64_t... 8
+checking for uint64_t... yes
+checking size of uint64_t... 8
+checking for int128_t... __int128
+checking for uint128_t... unsigned __int128
+checking for intptr_t... yes
+checking size of intptr_t... 8
+checking for uintptr_t... yes
+checking size of uintptr_t... 8
+checking for printf prefix for intptr_t... NONE
+checking for ssize_t... yes
+checking size of ssize_t... 8
+checking for printf prefix for int64_t... NONE
+checking for stack end address... __libc_stack_end
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for uid_t in sys/types.h... (cached) yes
+checking type of array argument to getgroups... gid_t
+checking for working alloca.h... yes
+checking for alloca... yes
+checking for dynamic size alloca... ok
+checking for working memcmp... yes
+checking for dup... yes
+checking for dup2... yes
+checking for acosh... yes
+checking for cbrt... yes
+checking for crypt... yes
+checking for erf... yes
+checking for explicit_bzero... yes
+checking for ffs... yes
+checking for flock... yes
+checking for hypot... yes
+checking for lgamma_r... yes
+checking for memmove... yes
+checking for nan... yes
+checking for nextafter... yes
+checking for setproctitle... no
+checking for strchr... yes
+checking for strerror... yes
+checking for strlcat... yes
+checking for strlcpy... yes
+checking for strstr... yes
+checking for tgamma... yes
+checking for sys/pstat.h... no
+checking for pid_t... (cached) yes
+checking for fork... yes
+checking for vfork... yes
+checking for working fork... yes
+checking for working vfork... (cached) yes
+checking for __syscall... no
+checking for _longjmp... yes
+checking for arc4random_buf... yes
+checking for atan2l... yes
+checking for atan2f... yes
+checking whether atomic_signal_fence is declared... yes
+checking for chmod... yes
+checking for chown... yes
+checking for chroot... yes
+checking for chsize... no
+checking for clock_gettime... yes
+checking for copy_file_range... yes
+checking for cosh... yes
+checking for crypt_r... yes
+checking for daemon... (cached) no
+checking for dirfd... yes
+checking for dl_iterate_phdr... yes
+checking for dlopen... yes
+checking for dladdr... yes
+checking for dup3... yes
+checking for eaccess... yes
+checking for endgrent... yes
+checking for eventfd... yes
+checking for execl... yes
+checking for execle... yes
+checking for execv... yes
+checking for execve... yes
+checking for explicit_memset... no
+checking for fcopyfile... no
+checking for fchdir... yes
+checking for fchmod... yes
+checking for fchown... yes
+checking for fcntl... yes
+checking for fdatasync... yes
+checking for fdopendir... yes
+checking for fgetattrlist... no
+checking for fmod... yes
+checking for fstatat... yes
+checking for fsync... yes
+checking for ftruncate... yes
+checking for ftruncate64... yes
+checking for getattrlist... no
+checking for getcwd... yes
+checking for getegid... yes
+checking for getentropy... yes
+checking for geteuid... yes
+checking for getgid... yes
+checking for getgidx... no
+checking for getgrnam... yes
+checking for getgrnam_r... yes
+checking for getgroups... yes
+checking for getlogin... yes
+checking for getlogin_r... yes
+checking for getpgid... yes
+checking for getpgrp... yes
+checking for getppid... yes
+checking for getpriority... yes
+checking for getpwnam... yes
+checking for getpwnam_r... yes
+checking for getpwuid... yes
+checking for getpwuid_r... yes
+checking for getrandom... yes
+checking for getresgid... yes
+checking for getresuid... yes
+checking for getrlimit... yes
+checking for getsid... yes
+checking for gettimeofday... yes
+checking for getuid... yes
+checking for getuidx... no
+checking for gmtime_r... yes
+checking for initgroups... yes
+checking for ioctl... yes
+checking for isfinite... no
+checking for issetugid... no
+checking for kill... yes
+checking for killpg... yes
+checking for lchmod... yes
+checking for lchown... yes
+checking for link... yes
+checking for llabs... yes
+checking for lockf... yes
+checking for log2... yes
+checking for lstat... yes
+checking for lutimes... yes
+checking for malloc_usable_size... (cached) yes
+checking for malloc_size... no
+checking for malloc_trim... yes
+checking for mblen... yes
+checking for memalign... yes
+checking for memset_s... no
+checking for writev... yes
+checking for memrchr... yes
+checking for memmem... yes
+checking for mkfifo... yes
+checking for mknod... yes
+checking for mktime... yes
+checking for mmap... yes
+checking for mremap... yes
+checking for openat... yes
+checking for pclose... yes
+checking for pipe... yes
+checking for pipe2... yes
+checking for poll... yes
+checking for popen... yes
+checking for posix_fadvise... yes
+checking for posix_madvise... yes
+checking for posix_memalign... yes
+checking for ppoll... yes
+checking for pread... yes
+checking for pwrite... yes
+checking for qsort_r... yes
+checking for qsort_s... no
+checking for readlink... yes
+checking for realpath... yes
+checking for round... yes
+checking for sched_getaffinity... yes
+checking for seekdir... yes
+checking for select_large_fdset... no
+checking for sendfile... yes
+checking for setegid... yes
+checking for setenv... yes
+checking for seteuid... yes
+checking for setgid... yes
+checking for setgroups... yes
+checking for setpgid... yes
+checking for setpgrp... yes
+checking for setregid... yes
+checking for setresgid... yes
+checking for setresuid... yes
+checking for setreuid... yes
+checking for setrgid... no
+checking for setrlimit... yes
+checking for setruid... no
+checking for setsid... yes
+checking for setuid... yes
+checking for shutdown... yes
+checking for sigaction... yes
+checking for sigaltstack... yes
+checking for sigprocmask... yes
+checking for sinh... yes
+checking for snprintf... yes
+checking for spawnv... no
+checking for symlink... yes
+checking for syscall... yes
+checking for sysconf... yes
+checking for system... yes
+checking for tanh... yes
+checking for telldir... yes
+checking for timegm... yes
+checking for times... yes
+checking for truncate... yes
+checking for truncate64... yes
+checking for tzset... yes
+checking for umask... yes
+checking for unsetenv... yes
+checking for utimensat... yes
+checking for utimes... yes
+checking for wait4... yes
+checking for waitpid... yes
+checking for __cospi... no
+checking for __sinpi... no
+checking for statx... yes
+checking if getcwd allocates buffer if NULL is given... yes
+checking for crypt.h... yes
+checking for struct crypt_data.initialized... yes
+checking for __builtin_alloca_with_align... yes
+checking for __builtin_assume_aligned... yes
+checking for __builtin_bswap16... yes
+checking for __builtin_bswap32... yes
+checking for __builtin_bswap64... yes
+checking for __builtin_popcount... yes
+checking for __builtin_popcountll... yes
+checking for __builtin_clz... yes
+checking for __builtin_clzl... yes
+checking for __builtin_clzll... yes
+checking for __builtin_ctz... yes
+checking for __builtin_ctzll... yes
+checking for __builtin_constant_p... yes
+checking for __builtin_choose_expr... yes
+checking for __builtin_choose_expr_constant_p... yes
+checking for __builtin_types_compatible_p... yes
+checking for __builtin_trap... yes
+checking for __builtin_expect... yes
+checking for __builtin_add_overflow... yes
+checking for __builtin_add_overflow_p... yes
+checking for __builtin_add_overflow with long long arguments... yes
+checking for __builtin_sub_overflow... yes
+checking for __builtin_sub_overflow_p... yes
+checking for __builtin_sub_overflow with long long arguments... yes
+checking for __builtin_mul_overflow... yes
+checking for __builtin_mul_overflow_p... yes
+checking for __builtin_mul_overflow with long long arguments... yes
+checking whether qsort_r is GNU version... yes
+checking whether qsort_r is BSD version... no
+checking whether atan2 handles Inf as C99... yes
+checking for clock_getres... yes
+checking for timer_create in -lrt... yes
+checking for timer_settime in -lrt... yes
+checking for unsetenv returns a value... yes
+checking whether struct tm is in sys/time.h or time.h... time.h
+checking for struct tm.tm_zone... yes
+checking for struct tm.tm_gmtoff... yes
+checking for external int daylight... yes
+checking for negative time_t for gmtime(3)... yes
+checking for localtime(3) overflow correctly... yes
+checking for sig_t... yes
+checking whether right shift preserve sign bit... yes
+checking whether _SC_CLK_TCK is supported... yes
+checking stack growing direction on aarch64... -1
+checking native coroutine implementation for aarch64-linux... arm64
+checking whether pthread_t is scalar type... yes
+checking for sched_yield... yes
+checking for pthread_attr_setinheritsched... yes
+checking for pthread_attr_get_np... no
+checking for pthread_attr_getstack... yes
+checking for pthread_attr_getguardsize... yes
+checking for pthread_get_stackaddr_np... no
+checking for pthread_get_stacksize_np... no
+checking for thr_stksegment... no
+checking for pthread_stackseg_np... no
+checking for pthread_getthrds_np... no
+checking for pthread_condattr_setclock... yes
+checking for pthread_setname_np... yes
+checking for pthread_set_name_np... no
+checking for pthread_sigmask... yes
+checking for pthread_getattr_np... yes
+checking arguments of pthread_setname_np... (pthread_self(), name)
+checking for thread-local storage specifier... _Thread_local
+checking if mcontext_t is a pointer... no
+checking for getcontext... yes
+checking for setcontext... yes
+checking if fork works with pthread... yes
+checking for sys/user.h... yes
+checking whether PAGE_SIZE is compile-time const... no
+checking ioctl request type... unsigned long
+checking for elf.h... yes
+checking for elf_abi.h... no
+checking for uncompress in -lz... yes
+checking for mach-o/loader.h... no
+checking whether OS depend dynamic link works... yes
+checking for backtrace... yes
+checking for broken backtrace... no
+checking for valgrind/memcheck.h... no
+checking for strip flags... -S -x
+checking whether -fPIE is accepted as CFLAGS... yes
+checking whether -pie is accepted as LDFLAGS... yes
+checking whether wrapper for LD_LIBRARY_PATH is needed... no
+checking whether dtrace USDT is available... no
+checking for __builtin_setjmp... (cached) no
+checking for _setjmpex as a macro or function... no
+checking for _setjmp as a macro or function... yes
+checking for setjmp type... _setjmp
+checking if building with modular GC support... no
+checking for rustc... rustc
+checking whether rustc works for YJIT... yes
+checking prerequisites for ZJIT... yes
+checking for prefix of external symbols... NONE
+.ext/include/aarch64-linux/ruby/config.h updated
+configure: ruby library version = 4.0.0
+configure: creating ./config.status
+config.status: creating GNUmakefile
+config.status: creating Makefile
+---
+Configuration summary for ruby version 4.0.7
+
+   * Installation prefix: /opt/ruby
+   * exec prefix:         ${prefix}
+   * arch:                aarch64-linux
+   * site arch:           ${arch}
+   * RUBY_BASE_NAME:      ruby
+   * ruby lib prefix:     ${libdir}/${RUBY_BASE_NAME}
+   * site libraries path: ${rubylibprefix}/${sitearch}
+   * vendor path:         ${rubylibprefix}/vendor_ruby
+   * target OS:           linux
+   * compiler:            gcc
+   * with thread:         pthread
+   * with coroutine:      arm64
+   * with modular GC:     no
+   * enable shared libs:  no
+   * dynamic library ext: so
+   * CFLAGS:              ${hardenflags}  ${optflags} ${debugflags} \
+                          ${warnflags}
+   * LDFLAGS:             -L. -fstack-protector-strong -rdynamic \
+                          -Wl,-export-dynamic
+   * DLDFLAGS:            -Wl,--compress-debug-sections=zlib
+   * optflags:            -O3 -fno-fast-math
+   * debugflags:          -ggdb3
+   * warnflags:           -Wall -Wextra -Wdeprecated-declarations \
+                          -Wdiv-by-zero -Wduplicated-cond \
+                          -Wimplicit-function-declaration -Wimplicit-int \
+                          -Wpointer-arith -Wwrite-strings \
+                          -Wold-style-definition -Wimplicit-fallthrough=0 \
+                          -Wmissing-noreturn -Wno-cast-function-type \
+                          -Wno-constant-logical-operand -Wno-long-long \
+                          -Wno-missing-field-initializers \
+                          -Wno-overlength-strings \
+                          -Wno-packed-bitfield-compat \
+                          -Wno-parentheses-equality -Wno-self-assign \
+                          -Wno-tautological-compare -Wno-unused-parameter \
+                          -Wno-unused-value -Wsuggest-attribute=format \
+                          -Wsuggest-attribute=noreturn -Wunused-variable \
+                          -Wmisleading-indentation -Wundef
+   * hardenflags:         -mbranch-protection=pac-ret \
+                          -fstack-protector-strong -U_FORTIFY_SOURCE \
+                          -D_FORTIFY_SOURCE=2
+   * strip command:       strip -S -x
+   * install doc:         no
+   * YJIT support:        yes
+   * ZJIT support:        yes
+   * man page type:       man
+   * BASERUBY -v:         ruby 4.0.5 (2026-05-20 revision 64336ffd0e) \
+                          +PRISM [aarch64-linux]
+
+---
+file2lastrev.rb: does not seem to be under a vcs: .
+sed -f ./tool/prereq.status ./common.mk ./prism/srcs.mk ./depend > uncommon.mk
+file2lastrev.rb: does not seem to be under a vcs: .
+	BASERUBY = /opt/ruby/bin/ruby --disable=gems
+	CC = gcc
+	LD = ld
+	LDSHARED = gcc -shared
+	CFLAGS = -mbranch-protection=pac-ret -fstack-protector-strong -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2  -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wdiv-by-zero -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wold-style-definition -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable -Wmisleading-indentation -Wundef  
+	XCFLAGS = -fno-strict-overflow -fvisibility=hidden -fexcess-precision=standard -DRUBY_EXPORT -fPIE -I. -I.ext/include/aarch64-linux -I.ext/include -I./include -I. -I./prism -I./enc/unicode/17.0.0   -Dmodular_gc_dir=
+	CPPFLAGS =   
+	DLDFLAGS = -Wl,--compress-debug-sections=zlib -fstack-protector-strong -pie  
+	SOLIBS = -lz -lrt -lrt -ljemalloc -lgmp -ldl -lcrypt -lm -lpthread 
+	LANG = 
+	LC_ALL = 
+	LC_CTYPE = 
+	MFLAGS = -j2 --jobserver-auth=4,5
+	RUSTC = rustc
+	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=rlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/target/release/' './yjit/src/lib.rs'
+	ZJIT_RUSTC_ARGS = --crate-name=zjit --crate-type=rlib --edition=2024 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/target/release/' './zjit/src/lib.rs'
+gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+compiling ./main.c
+compiling dmydln.c
+compiling miniinit.c
+making dummy probes.h
+compiling ast.c
+compiling bignum.c
+compiling box.c
+compiling class.c
+In file included from ./include/ruby/internal/core/rarray.h:32,
+                 from ./include/ruby/internal/core.h:23,
+                 from ./include/ruby/ruby.h:29,
+                 from constant.h:13,
+                 from class.c:20:
+In function 'rb_obj_write',
+    inlined from 'RCLASS_WRITE_SUPER' at internal/class.h:505:5,
+    inlined from 'class_associate_super.constprop' at class.c:718:9:
+./include/ruby/internal/gc.h:820:11: warning: array subscript 1 is outside array bounds of 'rb_classext_t[0]' {aka 'struct rb_classext_struct[]'} [-Warray-bounds=]
+  820 |     *slot = b;
+      |     ~~~~~~^~~
+In function 'class_associate_super.constprop':
+cc1: note: source object is likely at address zero
+In function 'rb_obj_write',
+    inlined from 'RCLASS_WRITE_SUPER' at internal/class.h:505:5,
+    inlined from 'class_associate_super' at class.c:718:9,
+    inlined from 'rb_class_set_super' at class.c:727:12:
+./include/ruby/internal/gc.h:820:11: warning: array subscript 1 is outside array bounds of 'rb_classext_t[0]' {aka 'struct rb_classext_struct[]'} [-Warray-bounds=]
+  820 |     *slot = b;
+      |     ~~~~~~^~~
+In function 'rb_class_set_super':
+cc1: note: source object is likely at address zero
+At top level:
+cc1: note: unrecognized command-line option '-Wno-self-assign' may have been intended to silence earlier diagnostics
+cc1: note: unrecognized command-line option '-Wno-parentheses-equality' may have been intended to silence earlier diagnostics
+cc1: note: unrecognized command-line option '-Wno-constant-logical-operand' may have been intended to silence earlier diagnostics
+compiling compar.c
+compiling compile.c
+compiling complex.c
+compiling concurrent_set.c
+compiling cont.c
+compiling debug.c
+compiling debug_counter.c
+compiling dir.c
+compiling dln_find.c
+compiling encoding.c
+compiling enum.c
+compiling enumerator.c
+compiling error.c
+compiling eval.c
+compiling file.c
+compiling gc.c
+compiling hash.c
+compiling imemo.c
+compiling inits.c
+compiling io.c
+compiling io_buffer.c
+compiling iseq.c
+compiling load.c
+compiling marshal.c
+compiling math.c
+compiling memory_view.c
+compiling node.c
+compiling node_dump.c
+compiling numeric.c
+compiling object.c
+compiling pack.c
+compiling pathname.c
+compiling parse.c
+compiling parser_st.c
+compiling proc.c
+compiling process.c
+compiling ractor.c
+compiling random.c
+compiling range.c
+compiling rational.c
+compiling re.c
+compiling regcomp.c
+compiling regenc.c
+compiling regerror.c
+compiling regexec.c
+compiling regparse.c
+compiling regsyntax.c
+compiling ruby.c
+compiling ruby_parser.c
+compiling scheduler.c
+compiling set.c
+compiling shape.c
+compiling signal.c
+compiling sprintf.c
+compiling st.c
+compiling strftime.c
+compiling string.c
+compiling struct.c
+compiling symbol.c
+compiling thread.c
+compiling time.c
+compiling transcode.c
+compiling util.c
+compiling variable.c
+revision.h unchanged
+compiling vm.c
+compiling vm_backtrace.c
+compiling vm_dump.c
+compiling vm_sync.c
+compiling vm_trace.c
+compiling weakmap.c
+compiling yjit.c
+compiling zjit.c
+compiling jit.c
+building libjit.rlib
+compiling ./missing/setproctitle.c
+compiling addr2line.c
+/bin/sh ./tool/ifchange "--timestamp=.rbconfig.time" rbconfig.rb rbconfig.tmp
+rbconfig.rb updated
+compiling dln.c
+compiling localeinit.c
+creating verconf.h
+verconf.h updated
+compiling dmyext.c
+compiling dmyenc.c
+compiling array.c
+compiling version.c
+compiling prism/api_node.c
+compiling prism/api_pack.c
+compiling prism/diagnostic.c
+compiling prism/encoding.c
+compiling prism/extension.c
+compiling prism/node.c
+compiling prism/options.c
+compiling prism/pack.c
+compiling prism/prettyprint.c
+compiling prism/regexp.c
+compiling prism/serialize.c
+compiling prism/static_literals.c
+compiling prism/token_type.c
+compiling prism/util/pm_buffer.c
+compiling prism/util/pm_char.c
+compiling prism/util/pm_constant_pool.c
+compiling prism/util/pm_integer.c
+compiling prism/util/pm_list.c
+compiling prism/util/pm_memchr.c
+compiling prism/util/pm_newline_list.c
+compiling prism/util/pm_string.c
+compiling prism/util/pm_strncasecmp.c
+compiling prism/util/pm_strpbrk.c
+compiling prism/prism.c
+compiling prism_init.c
+building libyjit.rlib
+building libzjit.rlib
+assembling coroutine/arm64/Context.S
+compiling enc/ascii.c
+compiling enc/us_ascii.c
+compiling enc/unicode.c
+compiling enc/utf_8.c
+compiling enc/trans/newline.c
+generating encdb.h
+encdb.h updated
+generating aarch64-linux-fake.rb
+aarch64-linux-fake.rb updated
+compiling loadpath.c
+generating enc.mk
+making srcs under enc
+make[1]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7'
+make[1]: Nothing to be done for 'srcs'.
+make[1]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7'
+generating transdb.h
+transdb.h updated
+building libruby.a
+partial linking /tmp/tmp.jYvqmhXyuU/ruby-4.0.7/target/release/libruby.a into /tmp/tmp.jYvqmhXyuU/ruby-4.0.7/target/release/libruby.o
+linking miniruby
+builtin_binary.rbbin updated
+2cd3d5699146cdc8371850db3f993dcb936435d7d5c5de1dadeb4f55e26bcf4a  builtin_binary.rbbin
+compiling builtin.c
+linking static-library libruby-static.a
+generating makefiles ext/configure-ext.mk
+making enc
+make[1]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7'
+compiling ./enc/big5.c
+compiling ./enc/cesu_8.c
+ext/configure-ext.mk updated
+making trans
+make[1]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7'
+compiling ./enc/trans/transdb.c
+compiling ./enc/cp949.c
+compiling ./enc/trans/big5.c
+compiling ./enc/emacs_mule.c
+compiling ./enc/euc_jp.c
+compiling ./enc/euc_kr.c
+compiling ./enc/euc_tw.c
+compiling ./enc/gb2312.c
+compiling ./enc/gb18030.c
+compiling ./enc/gbk.c
+compiling ./enc/iso_8859_1.c
+compiling ./enc/trans/cesu_8.c
+compiling ./enc/iso_8859_2.c
+compiling ./enc/trans/chinese.c
+compiling ./enc/iso_8859_3.c
+compiling ./enc/iso_8859_4.c
+compiling ./enc/iso_8859_5.c
+compiling ./enc/iso_8859_6.c
+compiling ./enc/trans/ebcdic.c
+compiling ./enc/iso_8859_7.c
+compiling ./enc/trans/emoji.c
+compiling ./enc/iso_8859_8.c
+compiling ./enc/iso_8859_9.c
+compiling ./enc/trans/emoji_iso2022_kddi.c
+compiling ./enc/iso_8859_10.c
+compiling ./enc/iso_8859_11.c
+compiling ./enc/trans/emoji_sjis_docomo.c
+compiling ./enc/iso_8859_13.c
+compiling ./enc/iso_8859_14.c
+compiling ./enc/iso_8859_15.c
+compiling ./enc/trans/emoji_sjis_kddi.c
+compiling ./enc/iso_8859_16.c
+compiling ./enc/koi8_r.c
+compiling ./enc/trans/emoji_sjis_softbank.c
+compiling ./enc/koi8_u.c
+compiling ./enc/shift_jis.c
+compiling ./enc/utf_16be.c
+compiling ./enc/trans/escape.c
+compiling ./enc/trans/gb18030.c
+compiling ./enc/utf_16le.c
+compiling ./enc/utf_32be.c
+compiling ./enc/utf_32le.c
+compiling ./enc/windows_31j.c
+compiling ./enc/trans/gbk.c
+compiling ./enc/windows_1250.c
+compiling ./enc/windows_1251.c
+compiling ./enc/windows_1252.c
+compiling ./enc/windows_1253.c
+compiling ./enc/trans/iso2022.c
+compiling ./enc/windows_1254.c
+compiling ./enc/trans/japanese.c
+compiling ./enc/windows_1257.c
+compiling ./enc/trans/japanese_euc.c
+compiling ./enc/encdb.c
+linking encoding big5.so
+linking encoding cesu_8.so
+linking encoding cp949.so
+linking encoding emacs_mule.so
+linking encoding euc_jp.so
+linking encoding euc_kr.so
+linking encoding euc_tw.so
+linking encoding gb2312.so
+linking encoding gb18030.so
+linking encoding gbk.so
+linking encoding iso_8859_1.so
+linking encoding iso_8859_2.so
+linking encoding iso_8859_3.so
+linking encoding iso_8859_4.so
+linking encoding iso_8859_5.so
+linking encoding iso_8859_6.so
+linking encoding iso_8859_7.so
+linking encoding iso_8859_8.so
+linking encoding iso_8859_9.so
+compiling ./enc/trans/japanese_sjis.c
+linking encoding iso_8859_10.so
+linking encoding iso_8859_11.so
+linking encoding iso_8859_13.so
+linking encoding iso_8859_14.so
+linking encoding iso_8859_15.so
+linking encoding iso_8859_16.so
+linking encoding koi8_r.so
+linking encoding koi8_u.so
+linking encoding shift_jis.so
+linking encoding utf_16be.so
+linking encoding utf_16le.so
+compiling ./enc/trans/korean.c
+linking encoding utf_32be.so
+linking encoding utf_32le.so
+linking encoding windows_31j.so
+linking encoding windows_1250.so
+linking encoding windows_1251.so
+linking encoding windows_1252.so
+linking encoding windows_1253.so
+linking encoding windows_1254.so
+linking encoding windows_1257.so
+linking encoding encdb.so
+make[1]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7'
+make[1]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7'
+configuring -test-/RUBY_ALIGNOF
+compiling ./enc/trans/single_byte.c
+configuring -test-/abi
+configuring -test-/arith_seq/beg_len_step
+configuring -test-/arith_seq/extract
+configuring -test-/array/concat
+configuring -test-/array/resize
+configuring -test-/bignum
+configuring -test-/box/yay1
+configuring -test-/box/yay2
+configuring -test-/bug-14834
+configuring -test-/bug-3571
+configuring -test-/bug-5832
+configuring -test-/bug_reporter
+configuring -test-/class
+configuring -test-/cxxanyargs
+compiling ./enc/trans/utf8_mac.c
+configuring -test-/debug
+configuring -test-/dln/empty
+configuring -test-/econv
+configuring -test-/ensure_and_callcc
+configuring -test-/enumerator_kw
+configuring -test-/eval
+configuring -test-/exception
+configuring -test-/fatal
+configuring -test-/file
+compiling ./enc/trans/utf_16_32.c
+linking transcoder transdb.so
+linking transcoder big5.so
+linking transcoder cesu_8.so
+linking transcoder chinese.so
+linking transcoder ebcdic.so
+linking transcoder emoji.so
+linking transcoder emoji_iso2022_kddi.so
+linking transcoder emoji_sjis_docomo.so
+linking transcoder emoji_sjis_kddi.so
+linking transcoder emoji_sjis_softbank.so
+linking transcoder escape.so
+linking transcoder gb18030.so
+linking transcoder gbk.so
+linking transcoder iso2022.so
+linking transcoder japanese.so
+linking transcoder japanese_euc.so
+configuring -test-/float
+configuring -test-/funcall
+configuring -test-/gvl/call_without_gvl
+configuring -test-/hash
+configuring -test-/integer
+configuring -test-/iseq_load
+configuring -test-/iter
+configuring -test-/load/dot.dot
+configuring -test-/load/protect
+configuring -test-/load/resolve_symbol_resolver
+configuring -test-/load/resolve_symbol_target
+configuring -test-/load/stringify_symbols
+configuring -test-/load/stringify_target
+configuring -test-/marshal/compat
+configuring -test-/marshal/internal_ivar
+configuring -test-/marshal/usr
+configuring -test-/memory_status
+configuring -test-/memory_view
+configuring -test-/method
+configuring -test-/notimplement
+configuring -test-/num2int
+linking transcoder japanese_sjis.so
+configuring -test-/path_to_class
+configuring -test-/popen_deadlock
+configuring -test-/postponed_job
+configuring -test-/printf
+configuring -test-/proc
+configuring -test-/public_header_warnings
+linking transcoder korean.so
+linking transcoder single_byte.so
+linking transcoder utf8_mac.so
+linking transcoder utf_16_32.so
+configuring -test-/random
+configuring -test-/rational
+configuring -test-/rb_call_super_kw
+configuring -test-/recursion
+configuring -test-/regexp
+configuring -test-/sanitizers
+configuring -test-/scan_args
+configuring -test-/scheduler
+configuring -test-/st/foreach
+configuring -test-/st/numhash
+configuring -test-/st/update
+configuring -test-/stack
+configuring -test-/string
+configuring -test-/struct
+configuring -test-/symbol
+make[1]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7'
+making encs
+make[1]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7'
+make[1]: Nothing to be done for 'encs'.
+make[1]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7'
+configuring cgi/escape
+configuring continuation
+configuring coverage
+configuring date
+configuring -test-/thread/id
+configuring -test-/thread/instrumentation
+configuring -test-/thread/lock_native_thread
+configuring -test-/time
+configuring -test-/tracepoint
+configuring -test-/typeddata
+configuring -test-/vm
+configuring -test-/wait
+configuring digest
+configuring digest/bubblebabble
+configuring digest/md5
+configuring digest/rmd160
+configuring digest/sha1
+configuring digest/sha2
+configuring erb/escape
+configuring etc
+configuring fcntl
+configuring io/console
+configuring json
+configuring json/generator
+configuring json/parser
+configuring monitor
+configuring objspace
+configuring openssl
+configuring io/nonblock
+configuring io/wait
+configuring psych
+configuring pty
+configuring rbconfig/sizeof
+configuring ripper
+configuring rubyvm
+configuring socket
+configuring stringio
+configuring strscan
+configuring zlib
+configuring bigdecimal-4.0.1/ext/bigdecimal
+configuring debug-1.11.1/ext/debug
+configuring fiddle-1.1.8/ext/fiddle
+libffi_version: 3.4.6
+configuring nkf-0.2.0/ext/nkf
+configuring racc-1.8.1/ext/racc/cparse
+configuring rbs-3.10.0/ext/rbs_extension
+configuring syslog-0.3.0/ext/syslog
+make[1]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7'
+generating makefile exts.mk
+exts.mk updated
+make[1]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/RUBY_ALIGNOF'
+compiling c.c
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/arith_seq/beg_len_step'
+compiling beg_len_step.c
+compiling cpp.cpp
+linking shared-object -test-/arith_seq/beg_len_step.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/arith_seq/beg_len_step'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/arith_seq/extract'
+compiling extract.c
+linking shared-object -test-/arith_seq/extract.so
+linking shared-object -test-/RUBY_ALIGNOF.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/arith_seq/extract'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/array/concat'
+compiling to_ary_concat.c
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/RUBY_ALIGNOF'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/array/resize'
+compiling resize.c
+linking shared-object -test-/array/to_ary_concat.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/array/concat'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/bignum'
+compiling big2str.c
+linking shared-object -test-/array/resize.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/array/resize'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/box/yay1'
+compiling yay1.c
+compiling bigzero.c
+linking shared-object -test-/box/yay1.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/box/yay1'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/box/yay2'
+compiling yay2.c
+compiling div.c
+linking shared-object -test-/box/yay2.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/box/yay2'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/bug-14834'
+compiling bug-14834.c
+compiling init.c
+linking shared-object -test-/bug_14834.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/bug-14834'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/bug-3571'
+compiling bug.c
+compiling intpack.c
+linking shared-object -test-/bug_3571.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/bug-3571'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/bug-5832'
+compiling bug.c
+compiling mul.c
+linking shared-object -test-/bug_5832.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/bug-5832'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/bug_reporter'
+compiling bug_reporter.c
+compiling str2big.c
+linking shared-object -test-/bug_reporter.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/bug_reporter'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/class'
+compiling class2name.c
+linking shared-object -test-/bignum.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/bignum'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/cxxanyargs'
+compiling cxxanyargs.cpp
+compiling init.c
+linking shared-object -test-/class.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/class'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/debug'
+compiling init.c
+compiling inspector.c
+compiling profile_frames.c
+linking shared-object -test-/debug.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/debug'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/dln/empty'
+compiling empty.c
+linking shared-object -test-/dln/empty.so
+linking shared-object -test-/cxxanyargs.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/dln/empty'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/econv'
+compiling append.c
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/cxxanyargs'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/ensure_and_callcc'
+compiling ensure_and_callcc.c
+compiling init.c
+linking shared-object -test-/ensure_and_callcc.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/ensure_and_callcc'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/enumerator_kw'
+compiling enumerator_kw.c
+linking shared-object -test-/econv.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/econv'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/eval'
+compiling eval.c
+linking shared-object -test-/enumerator_kw.so
+linking shared-object -test-/eval.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/enumerator_kw'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/exception'
+compiling dataerror.c
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/eval'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/fatal'
+compiling init.c
+compiling enc_raise.c
+compiling invalid.c
+compiling ensured.c
+compiling rb_fatal.c
+compiling init.c
+linking shared-object -test-/fatal.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/fatal'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/file'
+compiling fs.c
+linking shared-object -test-/exception.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/exception'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/float'
+compiling init.c
+compiling init.c
+compiling nextafter.c
+compiling newline_conv.c
+linking shared-object -test-/float.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/float'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/funcall'
+compiling funcall.c
+compiling stat.c
+linking shared-object -test-/funcall.so
+linking shared-object -test-/file.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/funcall'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/gvl/call_without_gvl'
+compiling call_without_gvl.c
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/file'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/hash'
+compiling delete.c
+linking shared-object -test-/gvl/call_without_gvl.so
+compiling init.c
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/gvl/call_without_gvl'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/integer'
+compiling core_ext.c
+linking shared-object -test-/hash.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/hash'
+compiling init.c
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/iseq_load'
+compiling iseq_load.c
+compiling my_integer.c
+linking shared-object -test-/iseq_load.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/iseq_load'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/iter'
+compiling break.c
+linking shared-object -test-/integer.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/integer'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/load/dot.dot'
+compiling dot.dot.c
+compiling init.c
+compiling yield.c
+linking shared-object -test-/load/dot.dot.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/load/dot.dot'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/load/protect'
+compiling protect.c
+linking shared-object -test-/iter.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/iter'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/load/resolve_symbol_resolver'
+compiling resolve_symbol_resolver.c
+linking shared-object -test-/load/protect.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/load/protect'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/load/resolve_symbol_target'
+compiling resolve_symbol_target.c
+linking shared-object -test-/load/resolve_symbol_resolver.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/load/resolve_symbol_resolver'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/load/stringify_symbols'
+compiling stringify_symbols.c
+linking shared-object -test-/load/resolve_symbol_target.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/load/resolve_symbol_target'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/load/stringify_target'
+compiling stringify_target.c
+linking shared-object -test-/load/stringify_symbols.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/load/stringify_symbols'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/marshal/compat'
+compiling usrcompat.c
+linking shared-object -test-/load/stringify_target.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/load/stringify_target'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/marshal/internal_ivar'
+compiling internal_ivar.c
+linking shared-object -test-/marshal/compat.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/marshal/compat'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/marshal/usr'
+compiling usrmarshal.c
+linking shared-object -test-/marshal/internal_ivar.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/marshal/internal_ivar'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/memory_view'
+compiling memory_view.c
+linking shared-object -test-/marshal/usr.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/marshal/usr'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/method'
+compiling arity.c
+compiling init.c
+linking shared-object -test-/method.so
+linking shared-object -test-/memory_view.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/method'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/notimplement'
+compiling bug.c
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/memory_view'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/num2int'
+compiling num2int.c
+linking shared-object -test-/notimplement.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/notimplement'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/path_to_class'
+compiling path_to_class.c
+linking shared-object -test-/num2int.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/num2int'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/popen_deadlock'
+compiling infinite_loop_dlsym.c
+linking shared-object -test-/path_to_class.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/path_to_class'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/postponed_job'
+compiling postponed_job.c
+linking shared-object -test-/popen_deadlock/infinite_loop_dlsym.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/popen_deadlock'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/printf'
+compiling printf.c
+linking shared-object -test-/postponed_job.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/postponed_job'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/proc'
+compiling init.c
+compiling receiver.c
+linking shared-object -test-/printf.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/printf'
+compiling super.c
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/random'
+compiling bad_version.c
+linking shared-object -test-/proc.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/proc'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/rational'
+compiling rat.c
+compiling init.c
+compiling loop.c
+linking shared-object -test-/rational.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/rational'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/rb_call_super_kw'
+compiling rb_call_super_kw.c
+linking shared-object -test-/random.so
+linking shared-object -test-/rb_call_super_kw.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/random'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/recursion'
+compiling recursion.c
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/rb_call_super_kw'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/regexp'
+compiling init.c
+linking shared-object -test-/recursion.so
+compiling parse_depth_limit.c
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/recursion'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/sanitizers'
+compiling sanitizers.c
+linking shared-object -test-/regexp.so
+linking shared-object -test-/sanitizers.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/regexp'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/scan_args'
+compiling scan_args.c
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/sanitizers'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/scheduler'
+compiling scheduler.c
+linking shared-object -test-/scheduler.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/scheduler'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/st/foreach'
+compiling foreach.c
+linking shared-object -test-/st/foreach.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/st/foreach'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/st/numhash'
+compiling numhash.c
+linking shared-object -test-/st/numhash.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/st/numhash'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/st/update'
+compiling update.c
+linking shared-object -test-/scan_args.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/scan_args'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/stack'
+compiling stack.c
+linking shared-object -test-/st/update.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/st/update'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/string'
+compiling capacity.c
+linking shared-object -test-/stack.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/stack'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/struct'
+compiling data.c
+compiling coderange.c
+compiling duplicate.c
+compiling cstr.c
+compiling init.c
+compiling ellipsize.c
+compiling len.c
+compiling enc_associate.c
+compiling member.c
+compiling enc_dummy.c
+linking shared-object -test-/struct.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/struct'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/symbol'
+compiling init.c
+compiling enc_str_buf_cat.c
+compiling type.c
+compiling fstring.c
+linking shared-object -test-/symbol.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/symbol'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/thread/id'
+compiling id.c
+compiling init.c
+linking shared-object -test-/thread/id.so
+compiling modify.c
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/thread/id'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/thread/instrumentation'
+compiling instrumentation.c
+compiling new.c
+compiling nofree.c
+linking shared-object -test-/thread/instrumentation.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/thread/instrumentation'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/thread/lock_native_thread'
+compiling lock_native_thread.c
+compiling normalize.c
+linking shared-object -test-/thread/lock_native_thread.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/thread/lock_native_thread'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/time'
+compiling init.c
+compiling qsort.c
+compiling new.c
+compiling rb_interned_str.c
+linking shared-object -test-/time.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/time'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/tracepoint'
+compiling gc_hook.c
+compiling rb_str_dup.c
+compiling set_len.c
+compiling tracepoint.c
+linking shared-object -test-/string.so
+linking shared-object -test-/tracepoint.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/string'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/typeddata'
+compiling typeddata.c
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/tracepoint'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/vm'
+compiling at_exit.c
+linking shared-object -test-/typeddata.so
+linking shared-object -test-/vm/at_exit.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/typeddata'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/wait'
+compiling wait.c
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/vm'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/cgi/escape'
+compiling escape.c
+linking shared-object -test-/wait.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/wait'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/continuation'
+compiling continuation.c
+linking shared-object continuation.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/continuation'
+linking shared-object cgi/escape.so
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/coverage'
+compiling coverage.c
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/cgi/escape'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/date'
+compiling date_core.c
+installing default coverage libraries
+linking shared-object coverage.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/coverage'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/digest'
+compiling digest.c
+linking shared-object digest.so
+installing digest libraries
+installing default digest libraries
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/digest'
+compiling date_parse.c
+compiling date_strftime.c
+compiling date_strptime.c
+installing default date_core libraries
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/erb/escape'
+compiling escape.c
+linking shared-object erb/escape.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/erb/escape'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/etc'
+compiling etc.c
+linking shared-object etc.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/etc'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/fcntl'
+compiling fcntl.c
+linking shared-object fcntl.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/fcntl'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/io/console'
+compiling console.c
+linking shared-object date_core.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/date'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/io/nonblock'
+compiling nonblock.c
+linking shared-object io/nonblock.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/io/nonblock'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/io/wait'
+compiling wait.c
+linking shared-object io/wait.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/io/wait'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/json'
+linking shared-object io/console.so
+installing default console libraries
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/io/console'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/monitor'
+compiling monitor.c
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/json'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/objspace'
+compiling object_tracing.c
+installing default monitor libraries
+linking shared-object monitor.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/monitor'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/openssl'
+compiling ossl.c
+compiling objspace.c
+compiling objspace_dump.c
+compiling ossl_asn1.c
+linking shared-object objspace.so
+compiling ossl_bio.c
+installing default objspace libraries
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/objspace'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/psych'
+compiling psych.c
+compiling psych_emitter.c
+compiling ossl_bn.c
+compiling psych_parser.c
+compiling psych_to_ruby.c
+compiling psych_yaml_tree.c
+compiling ossl_cipher.c
+linking shared-object psych.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/psych'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/pty'
+compiling pty.c
+installing default pty libraries
+linking shared-object pty.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/pty'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/rbconfig/sizeof'
+compiling sizes.c
+compiling ossl_config.c
+compiling limits.c
+linking shared-object rbconfig/sizeof.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/rbconfig/sizeof'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/ripper'
+compiling eventids1.c
+compiling ossl_digest.c
+compiling eventids2.c
+compiling ossl_engine.c
+compiling ripper.c
+compiling ossl_hmac.c
+compiling ossl_kdf.c
+compiling ossl_ns_spki.c
+compiling ossl_ocsp.c
+compiling ossl_pkcs12.c
+compiling ossl_pkcs7.c
+compiling ossl_pkey.c
+compiling ossl_pkey_dh.c
+compiling ossl_pkey_dsa.c
+compiling ossl_pkey_ec.c
+compiling ossl_pkey_rsa.c
+compiling ossl_provider.c
+compiling ossl_rand.c
+compiling ossl_ssl.c
+compiling ossl_ssl_session.c
+compiling ossl_ts.c
+compiling ossl_x509.c
+compiling ossl_x509attr.c
+compiling ossl_x509cert.c
+compiling ossl_x509crl.c
+compiling ossl_x509ext.c
+compiling ossl_x509name.c
+compiling ripper_init.c
+compiling ossl_x509req.c
+checking ../.././parse.y and ../.././ext/ripper/eventids2.c
+linking shared-object ripper.so
+installing default ripper libraries
+compiling ossl_x509revoked.c
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/ripper'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/rubyvm'
+installing default libraries
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/rubyvm'
+compiling ossl_x509store.c
+installing default openssl libraries
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/socket'
+compiling init.c
+linking shared-object openssl.so
+compiling constants.c
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/openssl'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/stringio'
+compiling stringio.c
+linking shared-object stringio.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/stringio'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/strscan'
+compiling strscan.c
+linking shared-object strscan.so
+installing default strscan libraries
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/strscan'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/zlib'
+compiling zlib.c
+compiling basicsocket.c
+compiling socket.c
+compiling ipsocket.c
+compiling tcpsocket.c
+compiling tcpserver.c
+linking shared-object zlib.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/zlib'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/.bundle/gems/bigdecimal-4.0.1/ext/bigdecimal'
+compiling bigdecimal.c
+compiling sockssocket.c
+compiling udpsocket.c
+compiling unixsocket.c
+compiling unixserver.c
+compiling option.c
+compiling ancdata.c
+compiling raddrinfo.c
+compiling missing.c
+linking shared-object bigdecimal.so
+compiling ifaddr.c
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/.bundle/gems/bigdecimal-4.0.1/ext/bigdecimal'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/.bundle/gems/debug-1.11.1/ext/debug'
+compiling debug.c
+installing default socket libraries
+linking shared-object socket.so
+compiling iseq_collector.c
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/socket'
+linking shared-object debug/debug.so
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/.bundle/gems/fiddle-1.1.8/ext/fiddle'
+compiling closure.c
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/.bundle/gems/debug-1.11.1/ext/debug'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/.bundle/gems/nkf-0.2.0/ext/nkf'
+compiling nkf.c
+compiling conversions.c
+compiling fiddle.c
+compiling function.c
+compiling handle.c
+compiling memory_view.c
+compiling pinned.c
+compiling pointer.c
+linking shared-object nkf.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/.bundle/gems/nkf-0.2.0/ext/nkf'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/.bundle/gems/racc-1.8.1/ext/racc/cparse'
+compiling cparse.c
+linking shared-object fiddle.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/.bundle/gems/fiddle-1.1.8/ext/fiddle'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/.bundle/gems/rbs-3.10.0/ext/rbs_extension'
+compiling ../../../../.././.bundle/gems/rbs-3.10.0/ext/rbs_extension/../../src/ast.c
+linking shared-object racc/cparse.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/.bundle/gems/racc-1.8.1/ext/racc/cparse'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/.bundle/gems/syslog-0.3.0/ext/syslog'
+compiling syslog.c
+compiling ../../../../.././.bundle/gems/rbs-3.10.0/ext/rbs_extension/../../src/lexer.c
+linking shared-object syslog_ext.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/.bundle/gems/syslog-0.3.0/ext/syslog'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/digest/bubblebabble'
+compiling bubblebabble.c
+linking shared-object digest/bubblebabble.so
+compiling ../../../../.././.bundle/gems/rbs-3.10.0/ext/rbs_extension/../../src/lexstate.c
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/digest/bubblebabble'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/digest/md5'
+compiling md5init.c
+compiling ../../../../.././.bundle/gems/rbs-3.10.0/ext/rbs_extension/../../src/location.c
+compiling ../../../../.././.bundle/gems/rbs-3.10.0/ext/rbs_extension/../../src/parser.c
+compiling md5.c
+linking shared-object digest/md5.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/digest/md5'
+compiling ../../../../.././.bundle/gems/rbs-3.10.0/ext/rbs_extension/../../src/string.c
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/digest/rmd160'
+compiling rmd160init.c
+compiling rmd160.c
+linking shared-object digest/rmd160.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/digest/rmd160'
+compiling ../../../../.././.bundle/gems/rbs-3.10.0/ext/rbs_extension/../../src/util/rbs_allocator.c
+compiling ../../../../.././.bundle/gems/rbs-3.10.0/ext/rbs_extension/../../src/util/rbs_assert.c
+compiling ../../../../.././.bundle/gems/rbs-3.10.0/ext/rbs_extension/../../src/util/rbs_buffer.c
+compiling ../../../../.././.bundle/gems/rbs-3.10.0/ext/rbs_extension/../../src/util/rbs_constant_pool.c
+compiling ../../../../.././.bundle/gems/rbs-3.10.0/ext/rbs_extension/../../src/util/rbs_encoding.c
+compiling ../../../../.././.bundle/gems/rbs-3.10.0/ext/rbs_extension/../../src/util/rbs_unescape.c
+compiling ast_translation.c
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/digest/sha1'
+compiling sha1init.c
+compiling sha1.c
+compiling class_constants.c
+linking shared-object digest/sha1.so
+compiling legacy_location.c
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/digest/sha1'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/digest/sha2'
+compiling sha2init.c
+compiling sha2.c
+compiling main.c
+linking shared-object digest/sha2.so
+compiling rbs_string_bridging.c
+installing default sha2 libraries
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/digest/sha2'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/json/generator'
+compiling generator.c
+linking shared-object rbs_extension.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/.bundle/gems/rbs-3.10.0/ext/rbs_extension'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/json/parser'
+compiling parser.c
+linking shared-object json/ext/parser.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/json/parser'
+linking shared-object json/ext/generator.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/json/generator'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7'
+file2lastrev.rb: does not seem to be under a vcs: .
+revision.h unchanged
+linking ruby
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7'
+make[1]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7'
+make[1]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7'
+make[1]: Nothing to be done for 'note'.
+make[1]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7'
+file2lastrev.rb: does not seem to be under a vcs: .
+revision.h unchanged
+generating aarch64-linux-fake.rb
+aarch64-linux-fake.rb updated
+	BASERUBY = /opt/ruby/bin/ruby --disable=gems
+	CC = gcc
+	LD = ld
+	LDSHARED = gcc -shared
+	CFLAGS = -mbranch-protection=pac-ret -fstack-protector-strong -U_FORTIFY_SOURCE -D_FORTIFY_SOURCE=2  -O3 -fno-fast-math -ggdb3 -Wall -Wextra -Wdeprecated-declarations -Wdiv-by-zero -Wduplicated-cond -Wimplicit-function-declaration -Wimplicit-int -Wpointer-arith -Wwrite-strings -Wold-style-definition -Wimplicit-fallthrough=0 -Wmissing-noreturn -Wno-cast-function-type -Wno-constant-logical-operand -Wno-long-long -Wno-missing-field-initializers -Wno-overlength-strings -Wno-packed-bitfield-compat -Wno-parentheses-equality -Wno-self-assign -Wno-tautological-compare -Wno-unused-parameter -Wno-unused-value -Wsuggest-attribute=format -Wsuggest-attribute=noreturn -Wunused-variable -Wmisleading-indentation -Wundef  
+	XCFLAGS = -fno-strict-overflow -fvisibility=hidden -fexcess-precision=standard -DRUBY_EXPORT -fPIE -I. -I.ext/include/aarch64-linux -I.ext/include -I./include -I. -I./prism -I./enc/unicode/17.0.0   -Dmodular_gc_dir=
+	CPPFLAGS =   
+	DLDFLAGS = -Wl,--compress-debug-sections=zlib -fstack-protector-strong -pie  
+	SOLIBS = -lz -lrt -lrt -ljemalloc -lgmp -ldl -lcrypt -lm -lpthread 
+	LANG = 
+	LC_ALL = 
+	LC_CTYPE = 
+	MFLAGS = 
+	RUSTC = rustc
+	YJIT_RUSTC_ARGS = --crate-name=yjit --crate-type=rlib --edition=2021 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/target/release/' './yjit/src/lib.rs'
+	ZJIT_RUSTC_ARGS = --crate-name=zjit --crate-type=rlib --edition=2024 -g -C lto=thin -C opt-level=3 -C overflow-checks=on '--out-dir=/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/target/release/' './zjit/src/lib.rs'
+gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+generating enc.mk
+making srcs under enc
+make[1]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7'
+make[1]: Nothing to be done for 'srcs'.
+make[1]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7'
+generating transdb.h
+transdb.h unchanged
+generating makefiles ext/configure-ext.mk
+ext/configure-ext.mk updated
+make[1]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7'
+make[1]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7'
+generating makefile exts.mk
+exts.mk unchanged
+make[1]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/array/concat'
+linking shared-object -test-/array/to_ary_concat.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/array/concat'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/marshal/compat'
+linking shared-object -test-/marshal/compat.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/-test-/marshal/compat'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/coverage'
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/coverage'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/date'
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/date'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/digest'
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/digest'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/digest/sha2'
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/digest/sha2'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/io/console'
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/io/console'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/io/nonblock'
+linking shared-object io/nonblock.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/io/nonblock'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/io/wait'
+linking shared-object io/wait.so
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/io/wait'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/json'
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/json'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/monitor'
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/monitor'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/objspace'
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/objspace'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/openssl'
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/openssl'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/psych'
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/psych'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/pty'
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/pty'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/ripper'
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/ripper'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/rubyvm'
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/rubyvm'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/socket'
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/socket'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/strscan'
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7/ext/strscan'
+make[2]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7'
+file2lastrev.rb: does not seem to be under a vcs: .
+revision.h unchanged
+make[2]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7'
+make[1]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7'
+make[1]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7'
+make[1]: Nothing to be done for 'note'.
+make[1]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7'
+making enc
+make[1]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7'
+make[1]: Nothing to be done for 'enc'.
+make[1]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7'
+making trans
+make[1]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7'
+make[1]: Nothing to be done for 'trans'.
+make[1]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7'
+making encs
+make[1]: Entering directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7'
+make[1]: Nothing to be done for 'encs'.
+make[1]: Leaving directory '/tmp/tmp.jYvqmhXyuU/ruby-4.0.7'
+./miniruby -I./lib -I. -I.ext/common  ./tool/runruby.rb --extout=.ext  -- --disable-gems -r./aarch64-linux-fake ./tool/rbinstall.rb --make="make" --dest-dir="" --extout=".ext" --ext-build-dir="./ext" --mflags="" --make-flags="" --data-mode=0644 --prog-mode=0755 --installed-list .installed.list --mantype="man"  --gnumake --install=all --exclude=doc
+installing binary commands:         /opt/ruby/bin
+installing base libraries:          /opt/ruby/lib
+installing arch files:              /opt/ruby/lib/ruby/4.0.0/aarch64-linux
+installing pkgconfig data:          /opt/ruby/lib/pkgconfig
+installing extension objects:       /opt/ruby/lib/ruby/4.0.0/aarch64-linux
+installing extension objects:       /opt/ruby/lib/ruby/site_ruby/4.0.0/aarch64-linux
+installing extension objects:       /opt/ruby/lib/ruby/vendor_ruby/4.0.0/aarch64-linux
+installing extension headers:       /opt/ruby/include/ruby-4.0.0/aarch64-linux
+installing extension scripts:       /opt/ruby/lib/ruby/4.0.0
+installing extension scripts:       /opt/ruby/lib/ruby/site_ruby/4.0.0
+installing extension scripts:       /opt/ruby/lib/ruby/vendor_ruby/4.0.0
+installing extension headers:       /opt/ruby/include/ruby-4.0.0/ruby
+installing command scripts:         /opt/ruby/bin
+installing library scripts:         /opt/ruby/lib/ruby/4.0.0
+installing common headers:          /opt/ruby/include/ruby-4.0.0
+installing manpages:                /opt/ruby/share/man/man1
+installing default gems from lib:   /opt/ruby/lib/ruby/gems/4.0.0
+                                    bundler 4.0.20
+                                    delegate 0.6.1
+                                    did_you_mean 2.0.0
+                                    english 0.8.1
+                                    erb 6.0.7
+                                    error_highlight 0.7.2
+                                    fileutils 1.8.0
+                                    find 0.2.0
+                                    forwardable 1.4.0
+                                    ipaddr 1.2.8
+                                    net-http 0.9.1
+                                    net-protocol 0.2.2
+                                    open-uri 0.5.0
+                                    open3 0.2.1
+                                    optparse 0.8.1
+                                    pp 0.6.3
+                                    prettyprint 0.2.0
+                                    prism 1.8.1
+                                    resolv 0.7.2
+                                    ruby2_keywords 0.0.5
+                                    securerandom 0.4.1
+                                    shellwords 0.2.2
+                                    singleton 0.3.0
+                                    syntax_suggest 2.0.3
+                                    tempfile 0.3.1
+                                    time 0.4.2
+                                    timeout 0.6.0
+                                    tmpdir 0.3.1
+                                    tsort 0.2.0
+                                    un 0.3.0
+                                    uri 1.1.1
+                                    weakref 0.1.4
+                                    yaml 0.4.0
+installing default gems from ext:   /opt/ruby/lib/ruby/gems/4.0.0
+                                    date 3.5.1
+                                    digest 3.2.1
+                                    etc 1.4.6
+                                    fcntl 1.3.0
+                                    io-console 0.8.2
+                                    io-nonblock 0.3.2
+                                    io-wait 0.4.0
+                                    json 2.18.0
+                                    openssl 4.0.2
+                                    psych 5.3.1
+                                    stringio 3.2.0
+                                    strscan 3.1.6
+                                    zlib 3.2.3
+installing bundled gems:            /opt/ruby/lib/ruby/gems/4.0.0
+                                    minitest 6.0.0
+                                    power_assert 3.0.1
+                                    rake 13.3.1
+                                    test-unit 3.7.5
+                                    rexml 3.4.4
+                                    rss 0.3.2
+                                    net-ftp 0.3.9
+                                    net-imap 0.6.4.1
+                                    net-pop 0.1.2
+                                    net-smtp 0.5.1
+                                    matrix 0.4.3
+                                    prime 0.1.4
+                                    rbs 3.10.0
+                                    typeprof 0.31.1
+                                    debug 1.11.1
+                                    racc 1.8.1
+                                    mutex_m 0.3.0
+                                    getoptlong 0.2.1
+                                    base64 0.3.0
+                                    bigdecimal 4.0.1
+                                    observer 0.1.2
+                                    abbrev 0.1.2
+                                    resolv-replace 0.1.1
+                                    rinda 0.2.0
+                                    drb 2.2.3
+                                    nkf 0.2.0
+                                    syslog 0.3.0
+                                    csv 3.3.5
+                                    repl_type_completor 0.1.12
+                                    ostruct 0.6.3
+                                    pstore 0.2.1
+                                    benchmark 0.5.0
+                                    logger 1.7.0
+                                    rdoc 7.0.4
+                                    irb 1.16.0
+                                    reline 0.6.3
+                                    readline 0.0.4
+                                    fiddle 1.1.8
+installing bundled gem cache:       /opt/ruby/lib/ruby/gems/4.0.0/cache
+skipped bundled gems:
+    win32ole-1.9.2.gem              extensions not found or build failed win32ole-1.9.2
+ruby 4.0.7 (2026-09-15 revision 229531a6cf) +YJIT +PRISM [aarch64-linux]
+
+$ docker exec twelve-current-build-pr71 runuser -u bench -- env PATH=/usr/local/go/bin:/opt/twelve-rust/cargo/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 bash /suite/sources/pr71/build.sh
+Fetching gem metadata from https://rubygems.org/....
+Fetching fiber-storage 1.0.1
+Fetching fiber-annotation 0.2.0
+Fetching json 3.1.0
+Fetching fiber-local 1.1.0
+Fetching console 1.38.0
+Fetching io-event 1.22.1
+Fetching async 2.46.0
+Fetching extralite 3.1.3
+Installing io-event 1.22.1 with native extensions
+Fetching ffi 1.17.4
+Installing extralite 3.1.3 with native extensions
+Installing json 3.1.0 with native extensions
+Installing ffi 1.17.4 with native extensions
+Fetching rbnacl 7.1.2
+Installing fiber-annotation 0.2.0
+Installing fiber-local 1.1.0
+Installing console 1.38.0
+Installing async 2.46.0
+Installing fiber-storage 1.0.1
+Installing rbnacl 7.1.2
+Bundle complete! 5 Gemfile dependencies, 10 gems now installed.
+Bundled gems are installed into `./vendor/bundle`
+1 installed gem you directly depend on is looking for funding.
+  Run `bundle fund` for details
+
+$ docker exec twelve-current-build-pr71 bash -c rm -f /usr/local/bin/nproc; rm -rf /tmp/* /root/.cache /root/.cargo/registry /home/bench/.cache /home/bench/.cargo/registry /home/bench/.npm/_cacache /var/lib/apt/lists/* /var/cache/apt/archives/*.deb; find /suite/sources -type d -path '*/target/release/incremental' -prune -exec rm -rf {} +

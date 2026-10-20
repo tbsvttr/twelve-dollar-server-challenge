@@ -1,0 +1,6 @@
+Pinned source: 35cc55c85fa837cd703367a740e0b8eeb6b825b4
+b097137438d397162360ebfe3550582718b0e01ce3874509ec9ca0e8df6e6ce3
+ar: creating liburing.a
+lto-wrapper: warning: using serial compilation of 21 LTRANS jobs
+lto-wrapper: note: see the '-flto' option documentation for more information
+built bin/server

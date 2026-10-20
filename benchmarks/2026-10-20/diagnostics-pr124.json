@@ -1,0 +1,349 @@
+{
+  "schema_version": 1,
+  "case_id": "124",
+  "pr": 124,
+  "primary_trial": 3,
+  "context_trials": [
+    1,
+    2
+  ],
+  "diagnostic_kind": "offline_existing_evidence_only",
+  "collected_at": "2026-10-20T13:03:10.603718+00:00",
+  "identity": {
+    "commit": "87bc21cbdb03bd2470c75c0a3a697c4ccd51ebf8",
+    "source_sha256": "027a08dec9b7e2317c12e0470abe4174700656867446e97bfadd1d6ad5779a8a",
+    "image": "twelve-current-pr124:2026-10-20",
+    "image_id": "sha256:f4d0a066c19734eaa9e421fa97cc0bd54890fe4cdd7b4404a4ada8cad00a2a47",
+    "fingerprint": "452ee7f9171044985b34d8e860e328fdb1d1728c501d5a237b03565cd41eadd3"
+  },
+  "source_identity": {
+    "folder": "java-springboot-bogdan-blaj",
+    "source_url": "https://github.com/Bogdan-Blaj/twelve-dollar-server-challenge/tree/87bc21cbdb03bd2470c75c0a3a697c4ccd51ebf8/submissions/java-springboot-bogdan-blaj",
+    "source_hashes_verified": 31,
+    "source_hash_mismatches": [],
+    "inventory": "archives/pr124-sha256.json"
+  },
+  "observed_trials": [
+    {
+      "trial": 1,
+      "recorded_at": "2026-10-20T12:06:15Z",
+      "requests": 923794,
+      "duration_s": 15.08,
+      "rps": 61245.84,
+      "p50_ms": 0.845,
+      "p95_ms": 7.19,
+      "p99_ms": 11.54,
+      "http_errors": 0,
+      "socket_errors": {
+        "connect": 0,
+        "read": 0,
+        "write": 0,
+        "timeout": 0
+      },
+      "successful_rps": 61245.84,
+      "cpu_percent": 90.90354098302043,
+      "rss_mib": 907.55859375,
+      "database_valid": true,
+      "valid_duration": true,
+      "completed": true,
+      "container_state": {
+        "Status": "running",
+        "Running": true,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 61434,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-10-20T12:06:15.684158886Z",
+        "FinishedAt": "0001-01-01T00:00:00Z"
+      },
+      "database_after": {
+        "initial_post_count": 500000,
+        "post_count": 509156,
+        "max_post_id": 509156,
+        "integrity": "ok"
+      },
+      "container_host_config": {
+        "CpusetCpus": "0",
+        "NanoCpus": 1000000000,
+        "Memory": 2147483648,
+        "MemorySwap": 2147483648,
+        "Ulimits": [
+          {
+            "Name": "nofile",
+            "Hard": 65535,
+            "Soft": 65535
+          }
+        ]
+      },
+      "processes_before": {
+        "13": {
+          "ppid": 7,
+          "cpu_s": 4.16,
+          "cpu_self_s": 4.16,
+          "cpu_waited_children_s": 0.0,
+          "rss_kib": 921028,
+          "hwm_kib": 921028,
+          "threads": 15
+        }
+      },
+      "processes_after": {
+        "13": {
+          "ppid": 7,
+          "cpu_s": 17.99,
+          "cpu_self_s": 17.99,
+          "cpu_waited_children_s": 0.0,
+          "rss_kib": 929340,
+          "hwm_kib": 929556,
+          "threads": 15
+        }
+      },
+      "wrk_output": "Running 15s test @ http://127.0.0.1:24000/feed\n  2 threads and 64 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     1.52ms    2.24ms  27.53ms   91.07%\n    Req/Sec    30.82k     3.82k   48.10k    86.71%\n  Latency Distribution\n     50%  845.00us\n     75%    1.00ms\n     90%    3.09ms\n     99%   11.54ms\n  923794 requests in 15.08s, 1.51GB read\nRequests/sec:  61245.84\nTransfer/sec:    102.56MB\n  95% 7.190000ms\n",
+      "warmup_output": "Running 2s test @ http://127.0.0.1:24000/feed\n  2 threads and 64 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     6.21ms   19.99ms 228.73ms   95.92%\n    Req/Sec    15.77k    10.55k   47.41k    72.50%\n  Latency Distribution\n     50%    1.11ms\n     75%    4.08ms\n     90%    8.61ms\n     99%  123.09ms\n  62849 requests in 2.08s, 104.40MB read\nRequests/sec:  30215.49\nTransfer/sec:     50.19MB\n  95% 19.199000ms\n"
+    },
+    {
+      "trial": 2,
+      "recorded_at": "2026-10-20T12:21:16Z",
+      "requests": 990399,
+      "duration_s": 15.09,
+      "rps": 65645.98,
+      "p50_ms": 0.794,
+      "p95_ms": 7.728,
+      "p99_ms": 11.86,
+      "http_errors": 0,
+      "socket_errors": {
+        "connect": 0,
+        "read": 0,
+        "write": 0,
+        "timeout": 0
+      },
+      "successful_rps": 65645.98,
+      "cpu_percent": 91.18723324783046,
+      "rss_mib": 901.375,
+      "database_valid": true,
+      "valid_duration": true,
+      "completed": true,
+      "container_state": {
+        "Status": "running",
+        "Running": true,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 76557,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-10-20T12:21:16.552668512Z",
+        "FinishedAt": "0001-01-01T00:00:00Z"
+      },
+      "database_after": {
+        "initial_post_count": 500000,
+        "post_count": 509872,
+        "max_post_id": 509872,
+        "integrity": "ok"
+      },
+      "container_host_config": {
+        "CpusetCpus": "0",
+        "NanoCpus": 1000000000,
+        "Memory": 2147483648,
+        "MemorySwap": 2147483648,
+        "Ulimits": [
+          {
+            "Name": "nofile",
+            "Hard": 65535,
+            "Soft": 65535
+          }
+        ]
+      },
+      "processes_before": {
+        "13": {
+          "ppid": 7,
+          "cpu_s": 4.06,
+          "cpu_self_s": 4.06,
+          "cpu_waited_children_s": 0.0,
+          "rss_kib": 919220,
+          "hwm_kib": 919220,
+          "threads": 15
+        }
+      },
+      "processes_after": {
+        "13": {
+          "ppid": 7,
+          "cpu_s": 17.93,
+          "cpu_self_s": 17.93,
+          "cpu_waited_children_s": 0.0,
+          "rss_kib": 923008,
+          "hwm_kib": 923404,
+          "threads": 15
+        }
+      },
+      "wrk_output": "Running 15s test @ http://127.0.0.1:24000/feed\n  2 threads and 64 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     1.50ms    2.32ms  16.63ms   91.00%\n    Req/Sec    33.04k     2.31k   49.07k    85.38%\n  Latency Distribution\n     50%  794.00us\n     75%    0.92ms\n     90%    3.00ms\n     99%   11.86ms\n  990399 requests in 15.09s, 1.62GB read\nRequests/sec:  65645.98\nTransfer/sec:    109.98MB\n  95% 7.728000ms\n",
+      "warmup_output": "Running 2s test @ http://127.0.0.1:24000/feed\n  2 threads and 64 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     4.55ms   15.10ms 192.90ms   96.89%\n    Req/Sec    18.98k    10.34k   40.64k    60.98%\n  Latency Distribution\n     50%    0.95ms\n     75%    3.10ms\n     90%    6.58ms\n     99%   93.02ms\n  77470 requests in 2.08s, 129.02MB read\nRequests/sec:  37186.89\nTransfer/sec:     61.93MB\n  95% 11.833000ms\n"
+    },
+    {
+      "trial": 3,
+      "recorded_at": "2026-10-20T13:00:33Z",
+      "requests": 702814,
+      "duration_s": 15.08,
+      "rps": 46621.13,
+      "p50_ms": 0.92,
+      "p95_ms": 8.218,
+      "p99_ms": 19.57,
+      "http_errors": 0,
+      "socket_errors": {
+        "connect": 0,
+        "read": 0,
+        "write": 0,
+        "timeout": 64
+      },
+      "successful_rps": 46621.13,
+      "cpu_percent": 86.26926940794434,
+      "rss_mib": 900.85546875,
+      "database_valid": true,
+      "valid_duration": true,
+      "completed": true,
+      "container_state": {
+        "Status": "running",
+        "Running": true,
+        "Paused": false,
+        "Restarting": false,
+        "OOMKilled": false,
+        "Dead": false,
+        "Pid": 8060,
+        "ExitCode": 0,
+        "Error": "",
+        "StartedAt": "2026-10-20T13:00:34.068390339Z",
+        "FinishedAt": "0001-01-01T00:00:00Z"
+      },
+      "database_after": {
+        "initial_post_count": 500000,
+        "post_count": 506784,
+        "max_post_id": 506784,
+        "integrity": "ok"
+      },
+      "container_host_config": {
+        "CpusetCpus": "0",
+        "NanoCpus": 1000000000,
+        "Memory": 2147483648,
+        "MemorySwap": 2147483648,
+        "Ulimits": [
+          {
+            "Name": "nofile",
+            "Hard": 65535,
+            "Soft": 65535
+          }
+        ]
+      },
+      "processes_before": {
+        "13": {
+          "ppid": 7,
+          "cpu_s": 6.06,
+          "cpu_self_s": 6.06,
+          "cpu_waited_children_s": 0.0,
+          "rss_kib": 919536,
+          "hwm_kib": 919536,
+          "threads": 15
+        }
+      },
+      "processes_after": {
+        "13": {
+          "ppid": 7,
+          "cpu_s": 19.2,
+          "cpu_self_s": 19.2,
+          "cpu_waited_children_s": 0.0,
+          "rss_kib": 922476,
+          "hwm_kib": 922564,
+          "threads": 15
+        }
+      },
+      "wrk_output": "Running 15s test @ http://127.0.0.1:24000/feed\n  2 threads and 64 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     2.04ms    3.59ms  54.27ms   92.60%\n    Req/Sec    23.48k     9.45k   36.90k    65.67%\n  Latency Distribution\n     50%    0.92ms\n     75%    1.57ms\n     90%    4.14ms\n     99%   19.57ms\n  702814 requests in 15.08s, 1.15GB read\n  Socket errors: connect 0, read 0, write 0, timeout 64\nRequests/sec:  46621.13\nTransfer/sec:     78.00MB\n  95% 8.218000ms\n",
+      "warmup_output": "Running 2s test @ http://127.0.0.1:24000/feed\n  2 threads and 64 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency    10.60ms   27.03ms 298.05ms   94.53%\n    Req/Sec     6.88k     5.41k   27.73k    85.00%\n  Latency Distribution\n     50%    3.67ms\n     75%    8.05ms\n     90%   18.97ms\n     99%  162.29ms\n  27542 requests in 2.08s, 45.87MB read\nRequests/sec:  13241.98\nTransfer/sec:     22.06MB\n  95% 40.294000ms\n"
+    }
+  ],
+  "evidence": {
+    "measurements_file": "measurements.json",
+    "primary_trial_canonical_record_sha256": "47193ae0f616e67ffdc11e31e4f116c6ab43f2eb90c5228fa67bcddf85c3a7a9",
+    "server_log": "server-logs/bench-124-3.log",
+    "server_log_bytes": 1797,
+    "server_log_sha256": "23cd41402c1f4e7aa813bfcc76a67cb02367ddfc6ce50d4427d0cd7ab5192e2b",
+    "server_log_content": "2026-10-20T13:00:38.093Z  INFO 13 --- [  feed-loop-1-1] feed.db.FeedDb                           : query plan feed:\nSCAN p USING INDEX posts_created_at_id_idx\nSEARCH u USING INTEGER PRIMARY KEY (rowid=?)\nCORRELATED SCALAR SUBQUERY 1\n  SEARCH l USING COVERING INDEX likes_post_id_idx (post_id=?)\n2026-10-20T13:00:38.102Z  INFO 13 --- [  feed-loop-1-1] feed.db.FeedDb                           : query plan post:\nSEARCH p USING INTEGER PRIMARY KEY (rowid=?)\nSEARCH u USING INTEGER PRIMARY KEY (rowid=?)\nCORRELATED SCALAR SUBQUERY 1\n  SEARCH l USING COVERING INDEX likes_post_id_idx (post_id=?)\n2026-10-20T13:00:38.102Z  INFO 13 --- [  feed-loop-1-1] feed.db.FeedDb                           : query plan create:\nSEARCH likes USING COVERING INDEX likes_post_id_idx (post_id=?)\n2026-10-20T13:00:38.102Z  INFO 13 --- [  feed-loop-1-1] feed.db.FeedDb                           : query plan like:\nSEARCH posts EXISTS USING INTEGER PRIMARY KEY (rowid=?)\n2026-10-20T13:00:38.102Z  INFO 13 --- [  feed-loop-1-1] feed.db.FeedDb                           : query plan postExists:\nSEARCH posts USING INTEGER PRIMARY KEY (rowid=?)\n2026-10-20T13:00:38.306Z  INFO 13 --- [  feed-loop-1-1] feed.db.FeedDb                           : prewarm: read 238 MiB in 89 ms, index scans 111 ms, statements 2 ms\n2026-10-20T13:00:38.306Z  INFO 13 --- [  feed-loop-1-1] feed.db.FeedDb                           : opened /tmp/current-pr124-eda2njc6/feed.db (sqlite 3.53.4, wal, exclusive): setup 46 ms, prewarm 204 ms\n2026-10-20T13:00:38.413Z  INFO 13 --- [           main] feed.http.FeedServer                     : listening on 127.0.0.1:24000 (epoll, sqlite 3.53.4, hasUnsafe=true, startup 3675 ms; ckptFrames=1000, maxOpen=65000, idleTimeoutSec=120; connection limit 65000 (feed.maxOpen=65000, fd limit 65535, reserve 512))\n",
+    "source_references": [
+      {
+        "path": "src/main/java/feed/http/FeedServer.java",
+        "lines": "32-35, 90-96",
+        "url": "https://github.com/Bogdan-Blaj/twelve-dollar-server-challenge/blob/87bc21cbdb03bd2470c75c0a3a697c4ccd51ebf8/submissions/java-springboot-bogdan-blaj/src/main/java/feed/http/FeedServer.java#L32",
+        "fact": "One Netty event-loop thread accepts connections, serves requests and makes SQLite calls."
+      },
+      {
+        "path": "src/main/java/feed/http/Batch.java",
+        "lines": "177-255",
+        "url": "https://github.com/Bogdan-Blaj/twelve-dollar-server-challenge/blob/87bc21cbdb03bd2470c75c0a3a697c4ccd51ebf8/submissions/java-springboot-bogdan-blaj/src/main/java/feed/http/Batch.java#L177",
+        "fact": "Tail task commits a transaction, writes held responses and may perform a synchronous checkpoint; optional slow-pass logging includes commit/checkpoint timing."
+      },
+      {
+        "path": "src/main/java/feed/db/FeedDb.java",
+        "lines": "490-505",
+        "url": "https://github.com/Bogdan-Blaj/twelve-dollar-server-challenge/blob/87bc21cbdb03bd2470c75c0a3a697c4ccd51ebf8/submissions/java-springboot-bogdan-blaj/src/main/java/feed/db/FeedDb.java#L490",
+        "fact": "checkpoint calls sqlite3_wal_checkpoint_v2 in RESTART mode on the event loop and measures elapsed time."
+      },
+      {
+        "path": "src/main/java/feed/http/FeedConfig.java",
+        "lines": "7-25",
+        "url": "https://github.com/Bogdan-Blaj/twelve-dollar-server-challenge/blob/87bc21cbdb03bd2470c75c0a3a697c4ccd51ebf8/submissions/java-springboot-bogdan-blaj/src/main/java/feed/http/FeedConfig.java#L7",
+        "fact": "Default checkpoint threshold is 1000 frames; slow-pass logging defaults off; idle timeout defaults to 120 seconds."
+      },
+      {
+        "path": "src/main/java/feed/http/Connections.java",
+        "lines": "29, 146-176",
+        "url": "https://github.com/Bogdan-Blaj/twelve-dollar-server-challenge/blob/87bc21cbdb03bd2470c75c0a3a697c4ccd51ebf8/submissions/java-springboot-bogdan-blaj/src/main/java/feed/http/Connections.java#L29",
+        "fact": "Aggregate commit/checkpoint statistics are logged every 60 seconds."
+      },
+      {
+        "path": "start.sh",
+        "lines": "4-16",
+        "url": "https://github.com/Bogdan-Blaj/twelve-dollar-server-challenge/blob/87bc21cbdb03bd2470c75c0a3a697c4ccd51ebf8/submissions/java-springboot-bogdan-blaj/start.sh#L4",
+        "fact": "Startup requests SerialGC, a 640 MiB heap and 160 MiB young generation, without GC logging or a feed.stallLogMs override."
+      }
+    ]
+  },
+  "observed_facts": [
+    "All three recorded trials use the same pinned commit, source hash, immutable image ID, fingerprint and configuration (2 wrk threads, 64 connections, 2 second warmup, 15 second measurement). All 31 archived source files match their frozen hashes.",
+    "Trial 3 reports 702814 requests in 15.08 seconds at 46621.13 requests per second, 0 HTTP errors, and socket errors connect 0, read 0, write 0, timeout 64. Trials 1 and 2 report no HTTP or socket errors, at 61245.84 and 65645.98 requests per second respectively.",
+    "The 1797 byte trial 3 server log contains query-plan, prewarm, database-open and listening startup information only. It has no WARN/ERROR, slow-pass, GC-pause or checkpoint-duration record.",
+    "The startup log reports epoll transport, SQLite 3.53.4 with WAL and exclusive locking, checkpoint threshold 1000 frames, maxOpen 65000 and idleTimeoutSec 120.",
+    "The source config defaults slow-pass logging to off, the unchanged start.sh does not override it, and the listening line does not report an enabled stallLogMs option. Aggregate connection/commit/checkpoint statistics are scheduled every 60 seconds; none appear in the archived log.",
+    "Trial 3 saved container state is running with OOMKilled false, ExitCode 0 and no Error string. CPU is 86.2693 percent and final RSS 900.85546875 MiB. Before and after process snapshots each report 15 JVM threads.",
+    "All three saved host configurations pin CPU 0 with a 1 CPU quota, memory limit 2147483648 bytes, MemorySwap 2147483648 bytes, and nofile soft/hard limits of 65535.",
+    "Trial 3 post-load database check reports integrity ok and 506784 posts from initial 500000, with max post ID 506784. Trials 1 and 2 also pass the recorded database check.",
+    "Trial 3 completed-response latency output reports p95 8.218 ms, p99 19.57 ms and maximum 54.27 ms. Warmup completed 27542 requests at 13241.98 requests per second, versus 30215.49 and 37186.89 for earlier warmups. These are aggregate observations without request-specific timeout timing."
+  ],
+  "inferences": [
+    {
+      "confidence": "architectural possibility only",
+      "statement": "Synchronous request/database work, commits and checkpoints share a single event loop, so a sufficiently slow operation there could delay connection processing. This source property does not identify an observed slow operation or connect it to the reported timeout count."
+    },
+    {
+      "confidence": "not established",
+      "statement": "The saved log and aggregate resource samples do not establish whether checkpointing, commit I/O, GC, request processing, host scheduling or load-generator behavior contributed. The timeout cause remains unknown."
+    }
+  ],
+  "unknowns": [
+    "No request IDs, endpoint-specific timeout counts or per-timeout timestamps identify affected operations.",
+    "No event-loop timing, GC log, checkpoint/commit duration or host scheduling trace covers the observation.",
+    "No specific SQLite checkpoint stall, lock, GC pause or storage delay is established.",
+    "The post-load database integrity/count check does not establish the outcome of each affected write.",
+    "Offline wrk counter semantics are being investigated separately; this diagnostic records the raw counters without interpreting equality between the 64 timeout count and 64 configured connections."
+  ],
+  "conclusion_for_reporting": "Preserve all three trials. Trial 3 reports 64 socket timeouts and 0 HTTP errors; trials 1 and 2 are clean. The service remained running without an OOM report and its post-load database check passed. Startup-only logging and aggregate samples do not establish a specific timeout cause.",
+  "actions": {
+    "new_workload": false,
+    "retry": false,
+    "build": false,
+    "container_change": false,
+    "source_change": false,
+    "fixture_change": false,
+    "only_output_written": "diagnostics-pr124.json"
+  }
+}

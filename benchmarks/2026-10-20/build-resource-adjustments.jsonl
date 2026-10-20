@@ -1,0 +1,1 @@
+{"at_utc": "2026-10-20T11:14:45Z", "id": "118", "cpu_quota": 2.5, "memory": "3g", "phase": "build_only", "reason": "Parent authorized bounded CPU increase while hostactualCPUbelow9of10."}

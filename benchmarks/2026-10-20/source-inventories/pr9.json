@@ -1,0 +1,41 @@
+{
+  "files": {
+    ".gitignore": {
+      "sha256": "075a9cd0d1cf1eff773dc93498de200dd4b65aac060e23c4122823dacfde1c90",
+      "bytes": 13,
+      "physical_lines": 2,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "README.md": {
+      "sha256": "f55c5799e6afac426d63ff2c85623fe524eea9d321c63e592bc119f987c3d610",
+      "bytes": 5859,
+      "physical_lines": 91,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "build.sh": {
+      "sha256": "792ebf8f3556f4cb87770ada315ec21744ee1db17442baa12a5eb1e0a2b5c529",
+      "bytes": 1737,
+      "physical_lines": 41,
+      "classification": "own_support"
+    },
+    "install.sh": {
+      "sha256": "359aeb0008b067eb15435f81bafcf17fae488181728132356a5066d908aae1f9",
+      "bytes": 310,
+      "physical_lines": 7,
+      "classification": "own_support"
+    },
+    "src/main.cpp": {
+      "sha256": "cbaf2a57beed08884f44d7df5e6a34e6d395010c7cc938140f004c68c346be4b",
+      "bytes": 47911,
+      "physical_lines": 1362,
+      "classification": "application"
+    },
+    "start.sh": {
+      "sha256": "7b4e0410a968eeb1326876f5f35a64845f09141d9337cb64355e04e591060d1c",
+      "bytes": 136,
+      "physical_lines": 3,
+      "classification": "own_support"
+    }
+  },
+  "skipped_members": []
+}

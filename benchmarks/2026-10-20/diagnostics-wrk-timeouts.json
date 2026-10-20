@@ -1,0 +1,330 @@
+{
+  "recorded_at": "2026-10-20T13:04:53.303523+00:00",
+  "scope": "Read-only inspection of retained measurements, controller/configuration, installation log, image history metadata and official upstream wrk source. No requests, workloads, builds, containers, fixture or application changes.",
+  "provenance": {
+    "load_image": "twelve-unified:2026-10-07",
+    "load_image_id": "sha256:901ab577025cfdcf7abc716fb4158774615b881383529bb77163b5f07f963898",
+    "installation_log": "results/unified-comparison-2026-10-07/base-install.log",
+    "installation_log_sha256": "2bc9c1469e4cce345f099bb641e75355ad0d1eb9daf6b3f5205b4e5179a4c52e",
+    "installation_log_evidence": [
+      {
+        "line": 295,
+        "text": "Get:181 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 wrk arm64 4.1.0-4build2 [54.8 kB]"
+      },
+      {
+        "line": 856,
+        "text": "Unpacking wrk (4.1.0-4build2) ..."
+      },
+      {
+        "line": 1047,
+        "text": "Setting up wrk (4.1.0-4build2) ..."
+      }
+    ],
+    "package_identified_by_retained_install_log": "Ubuntu ARM64 wrk 4.1.0-4build2",
+    "invocation": {
+      "controller": "run.py:220-227",
+      "arguments": [
+        "wrk",
+        "-t2",
+        "-c64",
+        "--latency",
+        "-s",
+        "/evidence/mixed.lua",
+        "-d15s",
+        "http://127.0.0.1:24000/feed"
+      ],
+      "explicit_timeout_argument": false
+    },
+    "direct_installed_binary_verification": {
+      "artifact": "results/current-2026-10-20/wrk-binary-provenance.json",
+      "raw_log": "results/current-2026-10-20/logs/wrk-binary-provenance.log",
+      "resolved_path": "/usr/bin/wrk",
+      "binary_sha256": "55157ab26d15f39e68d80ed3e16240dcdcb1722abf0fa7d74bfd3e20dd50254c",
+      "version_output": "wrk debian/4.1.0-4build2 [epoll] Copyright (C) 2012 Will Glozer",
+      "package_version": {
+        "argv": [
+          "dpkg-query",
+          "-W",
+          "-f",
+          "${Package}\t${Version}\t${Architecture}\t${Status}\n",
+          "wrk"
+        ],
+        "exit_code": 0,
+        "stdout": "wrk\t4.1.0-4build2\tarm64\tinstall ok installed\n",
+        "stderr": ""
+      },
+      "dpkg_verify": {
+        "argv": [
+          "dpkg",
+          "-V",
+          "wrk"
+        ],
+        "exit_code": 0,
+        "stdout": "missing     /usr/share/doc/wrk/NOTICE.gz\nmissing     /usr/share/doc/wrk/README.md\nmissing     /usr/share/doc/wrk/SCRIPTING.gz\nmissing     /usr/share/doc/wrk/examples/scripts/addr.lua\nmissing     /usr/share/doc/wrk/examples/scripts/auth.lua\nmissing     /usr/share/doc/wrk/examples/scripts/counter.lua\nmissing     /usr/share/doc/wrk/examples/scripts/delay.lua\nmissing     /usr/share/doc/wrk/examples/scripts/pipeline.lua\nmissing     /usr/share/doc/wrk/examples/scripts/post.lua\nmissing     /usr/share/doc/wrk/examples/scripts/report.lua\nmissing     /usr/share/doc/wrk/examples/scripts/setup.lua\nmissing     /usr/share/doc/wrk/examples/scripts/stop.lua\nmissing     /usr/share/man/man1/wrk.1.gz\n",
+        "stderr": ""
+      },
+      "dpkg_verify_interpretation": {
+        "executable_discrepancy": false,
+        "missing_documentation_examples_and_manpages": [
+          "/usr/share/doc/wrk/NOTICE.gz",
+          "/usr/share/doc/wrk/README.md",
+          "/usr/share/doc/wrk/SCRIPTING.gz",
+          "/usr/share/doc/wrk/examples/scripts/addr.lua",
+          "/usr/share/doc/wrk/examples/scripts/auth.lua",
+          "/usr/share/doc/wrk/examples/scripts/counter.lua",
+          "/usr/share/doc/wrk/examples/scripts/delay.lua",
+          "/usr/share/doc/wrk/examples/scripts/pipeline.lua",
+          "/usr/share/doc/wrk/examples/scripts/post.lua",
+          "/usr/share/doc/wrk/examples/scripts/report.lua",
+          "/usr/share/doc/wrk/examples/scripts/setup.lua",
+          "/usr/share/doc/wrk/examples/scripts/stop.lua",
+          "/usr/share/man/man1/wrk.1.gz"
+        ],
+        "other_discrepancies": [],
+        "scope": "dpkg -V validates installed package files against local package metadata; it is not an independent reproducible build."
+      },
+      "binary_matches_package_md5_manifest": true,
+      "load_image_id": "sha256:901ab577025cfdcf7abc716fb4158774615b881383529bb77163b5f07f963898",
+      "complete": true
+    },
+    "source_to_binary_limit": "The immutable load image now has direct PATH/version/SHA256/package ownership and executable-package-manifest verification. Its package version matches the official Ubuntu4.1.0-4build2 source whose timeout-critical semantics were checked. Package verification reports missing documentation/examples/manpage only. This is package/source provenance, not a reproducible rebuild of the executable.",
+    "reviewed_upstream_versions": [
+      "4.1.0",
+      "4.2.0"
+    ],
+    "relevant_semantics_match_across_reviewed_versions": true,
+    "downstream_source_patchset_verified": true
+  },
+  "primary_sources": [
+    {
+      "url": "https://github.com/wg/wrk/blob/4.1.0/src/wrk.c",
+      "evidence": [
+        {
+          "lines": "84",
+          "meaning": "Latency histogram allocated with cfg.timeout multiplied by 1000 (microseconds)."
+        },
+        {
+          "lines": "151-154",
+          "meaning": "Requests/sec calculated from completed response count divided by runtime."
+        },
+        {
+          "lines": "302-325",
+          "meaning": "response_complete increments complete and requests before histogram insertion. A rejected insertion increments errors.timeout; the response is already complete and remains in throughput."
+        },
+        {
+          "lines": "358-388",
+          "meaning": "Per-connection start timestamp set before sending a new request; elapsed measured at response completion."
+        },
+        {
+          "lines": "421-425",
+          "meaning": "Upstream elapsed timing uses gettimeofday; the counter does not identify the physical cause of a large measured elapsed interval."
+        },
+        {
+          "lines": "450-482",
+          "meaning": "Default timeout comes from SOCKET_TIMEOUT_MS; --timeout can override it."
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/wg/wrk/blob/4.1.0/src/stats.c",
+      "evidence": [
+        {
+          "lines": "8-27",
+          "meaning": "Histogram limit is maximum plus one; n at or above limit is rejected without updating count, min or max."
+        },
+        {
+          "lines": "29-39",
+          "meaning": "Coordinated-omission correction adds in-range histogram samples; it does not restore rejected samples."
+        },
+        {
+          "lines": "73-80",
+          "meaning": "Percentiles use retained histogram samples."
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/wg/wrk/blob/4.1.0/src/wrk.h#L18-L22",
+      "evidence": [
+        {
+          "lines": "18-22",
+          "meaning": "SOCKET_TIMEOUT_MS default is 2000 milliseconds."
+        }
+      ]
+    },
+    {
+      "url": "https://github.com/wg/wrk/blob/4.2.0/src/wrk.c",
+      "evidence": [
+        {
+          "lines": "302-325",
+          "meaning": "Cross-check: same completion and timeout-counter behavior as 4.1.0."
+        }
+      ]
+    }
+  ],
+  "source_verified_meaning": {
+    "timeout_counter": "In reviewed upstream source, the timeout counter counts completed response latencies rejected by the bounded histogram. It is not a counter of requests cancelled by a timer.",
+    "throughput": "Those completed responses still count in total requests and Requests/sec. HTTP status errors are tracked separately and can overlap with timeout counts.",
+    "latency": "Reported maximum and percentiles summarize retained, corrected histogram samples. They are not an upper bound over every completed response when timeout is nonzero.",
+    "incomplete_requests": "This increment occurs only at response completion; unfinished requests left when the run ends do not automatically increment this counter.",
+    "counter_64": "No special counter cap or automatic end-of-test increment of 64 appears in the reviewed code. Equality with the configured 64 connections does not identify a cause or prove one event per connection.",
+    "successful_rps_label": "Current controller subtracts only HTTP status errors from raw RPS; completed over-limit responses remain in successful_rps if their HTTP status is successful. Zero-wrk-error ranking remains a separate, existing inclusion condition.",
+    "default_boundary_confirmed_for_verified_package": "The verified Ubuntu ARM64 wrk4.1.0-4build2 source/binary provenance establishes the default histogram ceiling used by this benchmark (no --timeout): elapsed integer microseconds through2000000 inclusive are retained, larger samples increment timeout and are omitted.",
+    "default_boundary_conditional_on_installed_binary_match": "Without --timeout, reviewed upstream source accepts elapsed integer microseconds up to 2000000 inclusive; larger values increment timeout and are omitted from histogram statistics. Direct installed-binary identity has now been verified; see provenance artifact."
+  },
+  "observed_examples": [
+    {
+      "case_id": "94",
+      "trial": 2,
+      "recorded_at": "2026-10-20T12:35:16Z",
+      "requests": 564527,
+      "duration_s": 15.03,
+      "rps": 37562.61,
+      "successful_rps": 37562.61,
+      "http_errors": 0,
+      "socket_errors": {
+        "connect": 0,
+        "read": 0,
+        "write": 0,
+        "timeout": 63
+      },
+      "p50_ms": 1.51,
+      "p95_ms": 7.434,
+      "p99_ms": 11.97,
+      "displayed_histogram_max": "27.59ms",
+      "raw_wrk_output": "Running 15s test @ http://127.0.0.1:24000/feed\n  2 threads and 64 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     2.12ms    2.13ms  27.59ms   91.98%\n    Req/Sec    18.89k     1.34k   25.39k    88.00%\n  Latency Distribution\n     50%    1.51ms\n     75%    1.67ms\n     90%    2.47ms\n     99%   11.97ms\n  564527 requests in 15.03s, 0.96GB read\n  Socket errors: connect 0, read 0, write 0, timeout 63\nRequests/sec:  37562.61\nTransfer/sec:     65.62MB\n  95% 7.434000ms\n"
+    },
+    {
+      "case_id": "16",
+      "trial": 3,
+      "recorded_at": "2026-10-20T12:57:06Z",
+      "requests": 398237,
+      "duration_s": 15.05,
+      "rps": 26465.55,
+      "successful_rps": 26465.55,
+      "http_errors": 0,
+      "socket_errors": {
+        "connect": 0,
+        "read": 0,
+        "write": 0,
+        "timeout": 64
+      },
+      "p50_ms": 2.13,
+      "p95_ms": 9.46,
+      "p99_ms": 21.91,
+      "displayed_histogram_max": "74.49ms",
+      "raw_wrk_output": "Running 15s test @ http://127.0.0.1:24000/feed\n  2 threads and 64 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     3.10ms    4.35ms  74.49ms   93.51%\n    Req/Sec    13.31k     3.10k   17.06k    79.67%\n  Latency Distribution\n     50%    2.13ms\n     75%    2.66ms\n     90%    4.83ms\n     99%   21.91ms\n  398237 requests in 15.05s, 677.43MB read\n  Socket errors: connect 0, read 0, write 0, timeout 64\nRequests/sec:  26465.55\nTransfer/sec:     45.02MB\n  95% 9.460000ms\n"
+    },
+    {
+      "case_id": "124",
+      "trial": 3,
+      "recorded_at": "2026-10-20T13:00:33Z",
+      "requests": 702814,
+      "duration_s": 15.08,
+      "rps": 46621.13,
+      "successful_rps": 46621.13,
+      "http_errors": 0,
+      "socket_errors": {
+        "connect": 0,
+        "read": 0,
+        "write": 0,
+        "timeout": 64
+      },
+      "p50_ms": 0.92,
+      "p95_ms": 8.218,
+      "p99_ms": 19.57,
+      "displayed_histogram_max": "54.27ms",
+      "raw_wrk_output": "Running 15s test @ http://127.0.0.1:24000/feed\n  2 threads and 64 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     2.04ms    3.59ms  54.27ms   92.60%\n    Req/Sec    23.48k     9.45k   36.90k    65.67%\n  Latency Distribution\n     50%    0.92ms\n     75%    1.57ms\n     90%    4.14ms\n     99%   19.57ms\n  702814 requests in 15.08s, 1.15GB read\n  Socket errors: connect 0, read 0, write 0, timeout 64\nRequests/sec:  46621.13\nTransfer/sec:     78.00MB\n  95% 8.218000ms\n"
+    }
+  ],
+  "supported_inference": "The displayed maxima below two seconds in these retained examples are compatible with positive timeout counters because over-limit completed samples are excluded from the histogram. This is a statement about accounting, not a diagnosis of the elapsed-time cause.",
+  "unresolved_limits": [
+    "No per-request route, status, timestamp, connection identity or rejected-latency values are retained for these counters.",
+    "These aggregate records cannot distinguish service delay, client scheduling, host/VM behavior, network behavior or clock behavior. No cause is assigned.",
+    "No evidence here establishes a harness fault or authorizes a change to the fixed ranking rule."
+  ],
+  "changes": "Only this new diagnostic JSON was written. Measurement records, classifiers, application source, controller and shared fixtures were left unchanged.",
+  "downstream_source_review": {
+    "recorded_at": "2026-10-20T13:07:04.205195+00:00",
+    "source_version": "Ubuntu 4.1.0-4build2",
+    "official_archive_index": "https://archive.ubuntu.com/ubuntu/pool/universe/w/wrk/",
+    "downloads": [
+      {
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/w/wrk/wrk_4.1.0-4build2.dsc",
+        "bytes": 1918,
+        "sha256": "52c2901729d02b1c348be18bf4ebf8a061f07e0dfdb27e2c84aa515235f5d0d2"
+      },
+      {
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/w/wrk/wrk_4.1.0-4build2.debian.tar.xz",
+        "bytes": 8216,
+        "sha256": "3bbc69e3f1a50086110632f0e8e329a4240388e2e2477e70087a50f4b644c54e",
+        "matches_dsc_size_and_sha256": true
+      },
+      {
+        "url": "https://archive.ubuntu.com/ubuntu/pool/universe/w/wrk/wrk_4.1.0.orig.tar.gz",
+        "bytes": 58494,
+        "sha256": "d8f1ba8b70ae5e10aef63ef4d5b6520bc0da103f7f1c59c79f50e2efd6810f8f",
+        "matches_dsc_size_and_sha256": true
+      }
+    ],
+    "integrity_limit": "Both source tar archives match SHA256 and byte sizes listed by the .dsc fetched over HTTPS from the official Ubuntu archive. The .dsc OpenPGP signature was not independently validated in this review.",
+    "orig_comparisons": [
+      {
+        "file": "src/wrk.c",
+        "orig_member": "wrk-4.1.0/src/wrk.c",
+        "orig_sha256": "35598eb21cd21d0b4247ae1d7acbf4492f8cbca92f414ddab0fdfada996867a9",
+        "upstream_url": "https://raw.githubusercontent.com/wg/wrk/4.1.0/src/wrk.c",
+        "upstream_sha256": "35598eb21cd21d0b4247ae1d7acbf4492f8cbca92f414ddab0fdfada996867a9",
+        "orig_and_upstream_byte_identical": true,
+        "touched_by_downstream_patch": false
+      },
+      {
+        "file": "src/wrk.h",
+        "orig_member": "wrk-4.1.0/src/wrk.h",
+        "orig_sha256": "e24694a5785238be8e59e256db08a4e2c2cdefe3fe7f61348282b69c3b823b6d",
+        "upstream_url": "https://raw.githubusercontent.com/wg/wrk/4.1.0/src/wrk.h",
+        "upstream_sha256": "e24694a5785238be8e59e256db08a4e2c2cdefe3fe7f61348282b69c3b823b6d",
+        "orig_and_upstream_byte_identical": true,
+        "touched_by_downstream_patch": false
+      },
+      {
+        "file": "src/stats.c",
+        "orig_member": "wrk-4.1.0/src/stats.c",
+        "orig_sha256": "1f954e1f22a3a97a061e743e4cbacf801358d63427fec1ee5c13b315b0b40e03",
+        "upstream_url": "https://raw.githubusercontent.com/wg/wrk/4.1.0/src/stats.c",
+        "upstream_sha256": "1f954e1f22a3a97a061e743e4cbacf801358d63427fec1ee5c13b315b0b40e03",
+        "orig_and_upstream_byte_identical": true,
+        "touched_by_downstream_patch": true
+      }
+    ],
+    "patch_series": [
+      "debian-changes"
+    ],
+    "patches": [
+      {
+        "file": "debian/patches/debian-changes",
+        "sha256": "987c0d331e5d1fa01c3bca64317542446c96e0aa4172421b8c0f09c3e4a1459b",
+        "touched_files": [
+          "Makefile",
+          "src/script.c",
+          "src/stats.c"
+        ],
+        "content": "Subject: Collected Debian patches for wrk\nAuthor: Robert Edmonds <edmonds@debian.org>\n\nThe wrk package is maintained in Git rather than maintaining\npatches as separate files, and separating the patches doesn't seem to\nbe worth the effort.  They are therefore all included in this single\nDebian patch.\n\nFor full commit history and separated commits, see the packaging Git\nrepository.\n--- wrk-4.1.0.orig/Makefile\n+++ wrk-4.1.0/Makefile\n@@ -1,5 +1,6 @@\n+PKG_CONFIG ?= pkg-config\n CFLAGS  += -std=c99 -Wall -O2 -D_REENTRANT\n-LIBS    := -lpthread -lm -lssl -lcrypto\n+LIBS    += -lpthread -lm -lssl -lcrypto\n \n TARGET  := $(shell uname -s | tr '[A-Z]' '[a-z]' 2>/dev/null || echo unknown)\n \n@@ -17,6 +18,11 @@ else ifeq ($(TARGET), freebsd)\n \tLDFLAGS += -Wl,-E\n endif\n \n+CFLAGS   += $(shell $(PKG_CONFIG) --cflags luajit)\n+LIBS     += $(shell $(PKG_CONFIG) --libs luajit)\n+\n+CFLAGS   += $(CPPFLAGS)\n+\n SRC  := wrk.c net.c ssl.c aprintf.c stats.c script.c units.c \\\n \t\tae.c zmalloc.c http_parser.c\n BIN  := wrk\n@@ -51,8 +57,7 @@ clean:\n \t$(RM) -rf $(BIN) obj/*\n \n $(BIN): $(OBJ)\n-\t@echo LINK $(BIN)\n-\t@$(CC) $(LDFLAGS) -o $@ $^ $(LIBS)\n+\t$(CC) $(LDFLAGS) -o $@ $^ $(LIBS)\n \n $(OBJ): config.h Makefile $(DEPS) | $(ODIR)\n \n@@ -60,15 +65,13 @@ $(ODIR):\n \t@mkdir -p $@\n \n $(ODIR)/bytecode.o: src/wrk.lua\n-\t@echo LUAJIT $<\n-\t@$(SHELL) -c 'PATH=obj/bin:$(PATH) luajit -b $(CURDIR)/$< $(CURDIR)/$@'\n+\t$(SHELL) -c 'PATH=obj/bin:$(PATH) luajit -b $(CURDIR)/$< $(CURDIR)/$@'\n \n $(ODIR)/version.o:\n \t@echo 'const char *VERSION=\"$(VER)\";' | $(CC) -xc -c -o $@ -\n \n $(ODIR)/%.o : %.c\n-\t@echo CC $<\n-\t@$(CC) $(CFLAGS) -c -o $@ $<\n+\t$(CC) $(CFLAGS) -c -o $@ $<\n \n # Dependencies\n \n--- wrk-4.1.0.orig/src/script.c\n+++ wrk-4.1.0/src/script.c\n@@ -6,6 +6,10 @@\n #include \"http_parser.h\"\n #include \"zmalloc.h\"\n \n+#ifndef luaL_reg\n+#define luaL_reg luaL_Reg\n+#endif\n+\n typedef struct {\n     char *name;\n     int   type;\n--- wrk-4.1.0.orig/src/stats.c\n+++ wrk-4.1.0/src/stats.c\n@@ -21,12 +21,21 @@ void stats_free(stats *stats) {\n \n int stats_record(stats *stats, uint64_t n) {\n     if (n >= stats->limit) return 0;\n-    __sync_fetch_and_add(&stats->data[n], 1);\n-    __sync_fetch_and_add(&stats->count, 1);\n+    __atomic_fetch_add(&stats->data[n], 1, __ATOMIC_SEQ_CST);\n+    __atomic_fetch_add(&stats->count, 1, __ATOMIC_SEQ_CST);\n     uint64_t min = stats->min;\n     uint64_t max = stats->max;\n-    while (n < min) min = __sync_val_compare_and_swap(&stats->min, min, n);\n-    while (n > max) max = __sync_val_compare_and_swap(&stats->max, max, n);\n+    while (n < min) {\n+        __atomic_compare_exchange(&stats->min, &min, &n, false,\n+                                  __ATOMIC_SEQ_CST, __ATOMIC_SEQ_CST);\n+        min = stats->min;\n+    }\n+    while (n > max) {\n+        __atomic_compare_exchange(&stats->max, &max, &n, false,\n+                                  __ATOMIC_SEQ_CST, __ATOMIC_SEQ_CST);\n+        max = stats->max;\n+    }\n+\n     return 1;\n }\n \n"
+      }
+    ],
+    "build_rules": {
+      "file": "debian/rules",
+      "sha256": "92f2fd3f0f603f105df1ec6847aff5d872394853d6ab13faadb5dfa41901c234",
+      "content": "#!/usr/bin/make -f\n\ninclude /usr/share/dpkg/architecture.mk\ninclude /usr/share/dpkg/pkg-info.mk\n\nBINDIR=$(CURDIR)/debian/wrk/usr/bin\n\nifneq (,$(filter $(DEB_HOST_ARCH), armel mips mipsel powerpc))\n\tLIBS += -latomic\n\texport LIBS\nendif\n\nexport DEB_BUILD_MAINT_OPTIONS = hardening=+all\n\n%:\n\tdh $@\n\noverride_dh_auto_build:\n\tdh_auto_build -- WITH_LUAJIT=/usr WITH_OPENSSL=/usr VER=debian/$(DEB_VERSION)\n\noverride_dh_installman:\n\thelp2man --no-info --name=\"a modern HTTP benchmarking tool\" --version-string=$(DEB_VERSION_UPSTREAM) $(BINDIR)/wrk > debian/wrk.1\n\tdh_installman\n"
+    },
+    "critical_findings": [
+      "Official Ubuntu orig src/wrk.c, src/wrk.h and src/stats.c are byte-identical to upstream tag 4.1.0.",
+      "The single downstream patch does not change src/wrk.c or src/wrk.h: response-completion accounting, default 2000ms timeout, histogram allocation, elapsed timing and RPS formula are unchanged.",
+      "The stats.c patch replaces legacy atomic operations with sequentially consistent __atomic operations for histogram counts and min/max updates. The rejection condition n >= stats->limit and zero return remain unchanged; successful in-range insertion still returns one.",
+      "Other patch changes concern Makefile system libraries/build flags and a Lua API type alias in src/script.c; neither changes timeout accounting.",
+      "debian/rules uses system LuaJIT/OpenSSL, hardening flags and a Debian package version string. No timeout/default-limit or completion-accounting override appears in the inspected package rules."
+    ],
+    "conclusion": "The inspected Ubuntu 4.1.0-4build2 source package preserves the previously described timeout-counter semantics and default two-second histogram ceiling. This source check still does not prove which installed executable PATH resolves to in the benchmark image.",
+    "resource_scope": "Small HTTPS downloads (about 69KB compressed package metadata/source plus three upstream text files); archives inspected in memory. No extraction into application trees, builds, containers or workloads."
+  },
+  "installed_binary_verification_completed_at": "2026-10-20T13:15:01.638035+00:00"
+}

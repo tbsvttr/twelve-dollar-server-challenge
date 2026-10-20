@@ -1,0 +1,47 @@
+Pinned source: 315df90113281bfd9e78a62c1999a12e6d671370
+
+$ docker run -d --name twelve-current-build-121-c-libco-ssmurfgg04-gif --cpus 1.5 --memory 3g --memory-swap 3g --mount type=bind,src=<BENCHMARK_EVIDENCE>,dst=/evidence,readonly twelve-unified:2026-10-07 sleep infinity
+71f4ad98a9216f6e30135bcb7d05cdfc6aeedc183e6ff9fabbf764e290ab1be2
+
+$ docker exec -i twelve-current-build-121-c-libco-ssmurfgg04-gif python3 - 121-c-libco-ssmurfgg04-gif
+Verified 32 pinned source files
+
+$ docker exec twelve-current-build-121-c-libco-ssmurfgg04-gif bash /suite/sources/pr121-c-libco-ssmurfgg04-gif/install.sh
+debconf: delaying package configuration, since apt-utils is not installed
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 16962 files and directories currently installed.)
+Preparing to unpack .../curl_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking curl (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Preparing to unpack .../libcurl4t64_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking libcurl4t64:arm64 (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Preparing to unpack .../libcurl3t64-gnutls_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking libcurl3t64-gnutls:arm64 (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Setting up libcurl4t64:arm64 (8.5.0-2ubuntu10.16) ...
+Setting up libcurl3t64-gnutls:arm64 (8.5.0-2ubuntu10.16) ...
+Setting up curl (8.5.0-2ubuntu10.16) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+
+$ docker exec twelve-current-build-121-c-libco-ssmurfgg04-gif chown -R bench:bench /suite/sources/pr121-c-libco-ssmurfgg04-gif
+
+$ docker exec twelve-current-build-121-c-libco-ssmurfgg04-gif runuser -u bench -- env PATH=/opt/twelve-rust/cargo/bin:/usr/local/go/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 NIM_JOBS=2 MAKEFLAGS=-j2 bash /suite/sources/pr121-c-libco-ssmurfgg04-gif/build.sh
+== sqlite3
+== libco (vendored)
+== server
+src/http.c:2: warning: "_GNU_SOURCE" redefined
+    2 | #define _GNU_SOURCE
+      | 
+<command-line>: note: this is the location of the previous definition
+src/util.c:2: warning: "_GNU_SOURCE" redefined
+    2 | #define _GNU_SOURCE
+      | 
+<command-line>: note: this is the location of the previous definition
+/usr/bin/ld: build/co_routine.o: in function `co_resume(stCoRoutine_t*)':
+co_routine.cpp:(.text+0x724): undefined reference to `coctx_make(coctx_t*, void* (*)(void*, void*), void const*, void const*)'
+/usr/bin/ld: build/co_routine.o: in function `OnPollProcessEvent(stTimeoutItem_t*)':
+co_routine.cpp:(.text+0x814): undefined reference to `coctx_make(coctx_t*, void* (*)(void*, void*), void const*, void const*)'
+/usr/bin/ld: build/co_routine.o: in function `OnSignalProcessEvent(stTimeoutItem_t*)':
+co_routine.cpp:(.text+0x894): undefined reference to `coctx_make(coctx_t*, void* (*)(void*, void*), void const*, void const*)'
+/usr/bin/ld: build/co_routine.o: in function `OnCoroutineEvent(stTimeoutItem_t*)':
+co_routine.cpp:(.text+0xcc4): undefined reference to `coctx_make(coctx_t*, void* (*)(void*, void*), void const*, void const*)'
+/usr/bin/ld: build/co_routine.o: in function `co_init_curr_thread_env()':
+co_routine.cpp:(.text+0xe4c): undefined reference to `coctx_init(coctx_t*)'
+collect2: error: ld returned 1 exit status

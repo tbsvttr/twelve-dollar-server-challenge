@@ -1,0 +1,104 @@
+
+$ docker exec twelve-current-build-pr51 bash -c set -e; rm -rf /suite/sources; mkdir -p /suite/sources; cp -a /evidence/sources/pr51 /suite/sources/; cp /evidence/manifest.json /suite/manifest.json; cp /evidence/schema.sql /suite/schema.sql; chown -R bench:bench /suite/sources
+
+$ docker exec twelve-current-build-pr51 bash /evidence/runtime-scripts/pr51.sh
+node-v26.11.1-linux-arm64.tar.xz: OK
+v26.11.1
+
+$ docker exec twelve-current-build-pr51 runuser -u bench -- env PATH=/usr/local/go/bin:/opt/twelve-rust/cargo/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 bash /suite/sources/pr51/build.sh
+
+added 92 packages in 4s
+npm notice
+npm notice New major version of npm available! 11.20.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice
+gyp info it worked if it ends with ok
+gyp info using node-gyp@13.1.0
+gyp info using node@26.11.1 | linux | arm64
+gyp info chdir node_modules/better-sqlite3
+gyp info find Python using Python version 3.12.3 found at "/usr/bin/python3"
+
+gyp http GET https://nodejs.org/download/release/v26.11.1/node-v26.11.1-headers.tar.gz
+gyp http 200 https://nodejs.org/download/release/v26.11.1/node-v26.11.1-headers.tar.gz
+gyp http GET https://nodejs.org/download/release/v26.11.1/SHASUMS256.txt
+gyp http 200 https://nodejs.org/download/release/v26.11.1/SHASUMS256.txt
+gyp info spawn /usr/bin/python3
+gyp info spawn args [
+gyp info spawn args '/suite/sources/pr51/node_modules/node-gyp/gyp/gyp_main.py',
+gyp info spawn args 'binding.gyp',
+gyp info spawn args '-f',
+gyp info spawn args 'make',
+gyp info spawn args '-I',
+gyp info spawn args '/suite/sources/pr51/node_modules/better-sqlite3/build/config.gypi',
+gyp info spawn args '-I',
+gyp info spawn args '/suite/sources/pr51/node_modules/node-gyp/addon.gypi',
+gyp info spawn args '-I',
+gyp info spawn args '/home/bench/.cache/node-gyp/26.11.1/include/node/common.gypi',
+gyp info spawn args '-Dlibrary=shared_library',
+gyp info spawn args '-Dvisibility=default',
+gyp info spawn args '-Dnode_root_dir=/home/bench/.cache/node-gyp/26.11.1',
+gyp info spawn args '-Dnode_gyp_dir=/suite/sources/pr51/node_modules/node-gyp',
+gyp info spawn args '-Dnode_lib_file=/home/bench/.cache/node-gyp/26.11.1/<(target_arch)/node.lib',
+gyp info spawn args '-Dmodule_root_dir=/suite/sources/pr51/node_modules/better-sqlite3',
+gyp info spawn args '-Dnode_engine=v8',
+gyp info spawn args '--depth=.',
+gyp info spawn args '--no-parallel',
+gyp info spawn args '--generator-output',
+gyp info spawn args 'build',
+gyp info spawn args '-Goutput_dir=.'
+gyp info spawn args ]
+gyp info spawn make
+gyp info spawn args [ 'BUILDTYPE=Release', '-C', 'build' ]
+make: Entering directory '/suite/sources/pr51/node_modules/better-sqlite3/build'
+  TOUCH 4292fa9a667d77b27488aa109b010a85bce8e4e7a1c7aa0370cea902395c3866.intermediate
+  ACTION deps_sqlite3_gyp_locate_sqlite3_target_copy_builtin_sqlite3 4292fa9a667d77b27488aa109b010a85bce8e4e7a1c7aa0370cea902395c3866.intermediate
+  TOUCH Release/obj.target/deps/locate_sqlite3.stamp
+  CC(target) Release/obj.target/sqlite3/gen/sqlite3/sqlite3.o
+rm -f Release/obj.target/deps/sqlite3.a Release/obj.target/deps/sqlite3.a.ar-file-list; mkdir -p `dirname Release/obj.target/deps/sqlite3.a`
+ar crs Release/obj.target/deps/sqlite3.a @Release/obj.target/deps/sqlite3.a.ar-file-list
+  COPY Release/sqlite3.a
+  CXX(target) Release/obj.target/better_sqlite3/src/better_sqlite3.o
+In file included from ../src/better_sqlite3.cpp:35:
+../src/util/data.cpp: In function 'Napi::Value Data::GetValueJS(Napi::Env, sqlite3_stmt*, int, bool)':
+../src/util/data.cpp:37:17: warning: this statement may fall through [-Wimplicit-fallthrough=]
+   37 |                 if (safe_ints) {                                                       \
+      |                 ^~
+../src/util/data.cpp:74:17: note: in expansion of macro 'SQLITE_VALUE_TO_JS'
+   74 |                 SQLITE_VALUE_TO_JS(column, env, safe_ints, handle, column);
+      |                 ^~~~~~~~~~~~~~~~~~
+../src/util/data.cpp:43:9: note: here
+   43 |         case SQLITE_FLOAT:                                                         \
+      |         ^~~~
+../src/util/data.cpp:74:17: note: in expansion of macro 'SQLITE_VALUE_TO_JS'
+   74 |                 SQLITE_VALUE_TO_JS(column, env, safe_ints, handle, column);
+      |                 ^~~~~~~~~~~~~~~~~~
+../src/util/data.cpp: In function 'Napi::Value Data::GetValueJS(Napi::Env, sqlite3_value*, bool)':
+../src/util/data.cpp:37:17: warning: this statement may fall through [-Wimplicit-fallthrough=]
+   37 |                 if (safe_ints) {                                                       \
+      |                 ^~
+../src/util/data.cpp:78:17: note: in expansion of macro 'SQLITE_VALUE_TO_JS'
+   78 |                 SQLITE_VALUE_TO_JS(value, env, safe_ints, value);
+      |                 ^~~~~~~~~~~~~~~~~~
+../src/util/data.cpp:43:9: note: here
+   43 |         case SQLITE_FLOAT:                                                         \
+      |         ^~~~
+../src/util/data.cpp:78:17: note: in expansion of macro 'SQLITE_VALUE_TO_JS'
+   78 |                 SQLITE_VALUE_TO_JS(value, env, safe_ints, value);
+      |                 ^~~~~~~~~~~~~~~~~~
+  SOLINK_MODULE(target) Release/obj.target/better_sqlite3.node
+lto-wrapper: warning: using serial compilation of 3 LTRANS jobs
+lto-wrapper: note: see the '-flto' option documentation for more information
+  COPY Release/better_sqlite3.node
+  CC(target) Release/obj.target/test_extension/deps/test_extension.o
+  SOLINK_MODULE(target) Release/obj.target/test_extension.node
+  COPY Release/test_extension.node
+rm 4292fa9a667d77b27488aa109b010a85bce8e4e7a1c7aa0370cea902395c3866.intermediate
+make: Leaving directory '/suite/sources/pr51/node_modules/better-sqlite3/build'
+gyp info ok 
+
+> build
+> tsc
+
+
+$ docker exec twelve-current-build-pr51 bash -c rm -f /usr/local/bin/nproc; rm -rf /tmp/* /root/.cache /root/.cargo/registry /home/bench/.cache /home/bench/.cargo/registry /home/bench/.npm/_cacache /var/lib/apt/lists/* /var/cache/apt/archives/*.deb; find /suite/sources -type d -path '*/target/release/incremental' -prune -exec rm -rf {} +

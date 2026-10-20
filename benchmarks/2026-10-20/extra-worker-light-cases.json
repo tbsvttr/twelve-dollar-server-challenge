@@ -1,0 +1,73 @@
+{
+  "119": {
+    "pr": 119,
+    "id": "119",
+    "commit": "7b330d73fc7fdb0bb6d51f176189f1a0f8cc1a3b",
+    "base_image": "twelve-unified:2026-10-07",
+    "architecture": "linux/arm64",
+    "log": "logs/build-pr119.log",
+    "substitutions": [],
+    "started_at": "2026-10-20T11:11:17Z",
+    "container": "twelve-current-build-119",
+    "image": "twelve-current-pr119:2026-10-20",
+    "status": "built",
+    "exit_code": 0,
+    "image_id": "sha256:3fbe80c456d1334f762eb24506af2f6682d7023dccba8218dba7c019bc96f065",
+    "elapsed_s": 148.38,
+    "finished_at": "2026-10-20T11:13:45Z"
+  },
+  "125": {
+    "pr": 125,
+    "id": "125",
+    "commit": "a08923d7ea1cdfa5ccf9b4d4985380caaa4d43b4",
+    "base_image": "twelve-unified:2026-10-07",
+    "architecture": "linux/arm64",
+    "log": "logs/build-pr125.log",
+    "substitutions": [],
+    "started_at": "2026-10-20T11:13:45Z",
+    "container": "twelve-current-build-125",
+    "image": "twelve-current-pr125:2026-10-20",
+    "status": "unsupported_architecture",
+    "exit_code": 1,
+    "reason": "Native ARM64 compilation fails because src/UringIo.zig hardcodes x86 fiber context fields rsp/rbp/rip and x86 mxcsr/register clobbers. Official ARM64 anyzig/compiler installs correctly; application changes would be required. Full compiler errors retained in log.",
+    "elapsed_s": 137.37,
+    "finished_at": "2026-10-20T11:16:02Z"
+  },
+  "126": {
+    "pr": 126,
+    "id": "126",
+    "commit": "b6dbe28e6e2c21349bd344183df729a0574acba3",
+    "base_image": "twelve-unified:2026-10-07",
+    "architecture": "linux/arm64",
+    "log": "logs/build-pr126.log",
+    "substitutions": [],
+    "started_at": "2026-10-20T11:16:02Z",
+    "container": "twelve-current-build-126",
+    "image": "twelve-current-pr126:2026-10-20",
+    "status": "built",
+    "exit_code": 0,
+    "image_id": "sha256:e5f1068b86fbddf7c2e5204e9d1a629f6c422bc862019081b8b7eb10ecd8ab92",
+    "elapsed_s": 10.47,
+    "finished_at": "2026-10-20T11:16:13Z"
+  },
+  "129": {
+    "pr": 129,
+    "id": "129",
+    "commit": "bbce0e83003b47b5bd6f8dde0bf180b46607cf1e",
+    "base_image": "twelve-unified:2026-10-07",
+    "architecture": "linux/arm64",
+    "log": "logs/build-pr129.log",
+    "substitutions": [
+      "Install official native ARM64 Go 1.24.4 rather than submitted AMD64 artifact; checksum from https://go.dev/dl/?mode=json&include=all."
+    ],
+    "started_at": "2026-10-20T11:16:13Z",
+    "container": "twelve-current-build-129",
+    "image": "twelve-current-pr129:2026-10-20",
+    "status": "built",
+    "runtime_setup": "runtime-scripts/pr129.sh",
+    "exit_code": 0,
+    "image_id": "sha256:35152f683a55f68b692932d3e2a1053dda4f4d79830c3c179fe96b7e8f8ee7e8",
+    "elapsed_s": 77.82,
+    "finished_at": "2026-10-20T11:17:31Z"
+  }
+}

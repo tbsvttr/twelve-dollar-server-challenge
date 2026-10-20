@@ -1,0 +1,89 @@
+{
+  "diagnostic_only": true,
+  "case_id": "79",
+  "image_id": "sha256:457af6b445ade76d574054eae669ba32c4c965152038353501223f35feaac30d",
+  "service": {
+    "ready": true,
+    "roots": [
+      13
+    ],
+    "port": 24000,
+    "log": "/tmp/current-pr79-24000.log",
+    "nginx": false,
+    "initial_post_count": 500000,
+    "source_files_verified": 7,
+    "source_sha256": "4fa9d60ffe1c969687f3b8de7a31a7b83de0f91ebd17fab09c6933f9791f515e",
+    "start_script": "/suite/sources/pr79/start.sh"
+  },
+  "before": {
+    "database_path": "/tmp/current-pr79-7hvm8i4d/feed.db",
+    "independent_post_count": 500000,
+    "independent_max_post_id": 500000,
+    "api_top_post_id": 500000
+  },
+  "semantic": {
+    "passed_all": true,
+    "checks": [
+      {
+        "check": "fresh unpredictable post is created and trimmed",
+        "passed": true
+      },
+      {
+        "check": "created post reads back exactly",
+        "passed": true
+      },
+      {
+        "check": "new post can be liked",
+        "passed": true
+      },
+      {
+        "check": "repeat like is idempotent",
+        "passed": true
+      },
+      {
+        "check": "fresh like count reads back",
+        "passed": true
+      },
+      {
+        "check": "fresh post and like count appear in feed",
+        "passed": true
+      }
+    ]
+  },
+  "after_acknowledged_write_before_shutdown": {
+    "database_path": "/tmp/current-pr79-7hvm8i4d/feed.db",
+    "independent_post_count": 500000,
+    "independent_max_post_id": 500000,
+    "api_top_post_id": 500001
+  },
+  "metrics": {
+    "monotonic": 157952.101096926,
+    "processes": {
+      "13": {
+        "ppid": 7,
+        "cpu_s": 0.3,
+        "cpu_self_s": 0.3,
+        "cpu_waited_children_s": 0.0,
+        "rss_kib": 103444,
+        "hwm_kib": 103444,
+        "threads": 1
+      }
+    },
+    "cpu_s": 0.3,
+    "cpu_self_s": 0.3,
+    "cpu_waited_children_s": 0.0,
+    "rss_kib": 103444,
+    "hwm_kib": 103444
+  },
+  "final": [
+    {
+      "database_after": {
+        "initial_post_count": 500000,
+        "post_count": 500000,
+        "max_post_id": 500000,
+        "integrity": "ok"
+      }
+    }
+  ],
+  "uncommitted_write_confirmed": true
+}

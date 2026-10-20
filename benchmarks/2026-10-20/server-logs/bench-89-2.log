@@ -1,0 +1,68 @@
+wal
+2026/10/20 12:17:11 socat[133] E write(6, 0xffff8d17f000, 4055): Broken pipe
+2026/10/20 12:17:11 socat[130] E write(6, 0xffff8d17f000, 4055): Broken pipe
+2026/10/20 12:17:27 socat[30] E read(6, 0xffff8d17f000, 65536): Connection reset by peer
+2026/10/20 12:17:27 socat[75] E write(6, 0xffff8d17f000, 22): Broken pipe
+2026/10/20 12:17:27 socat[24] E read(6, 0xffff8d17f000, 65536): Connection reset by peer
+2026/10/20 12:17:27 socat[67] E read(6, 0xffff8d17f000, 65536): Connection reset by peer
+2026/10/20 12:17:27 socat[139] E read(6, 0xffff8d17f000, 65536): Connection reset by peer
+2026/10/20 12:17:27 socat[563] E read(6, 0xffff8d17f000, 65536): Connection reset by peer
+2026/10/20 12:17:27 socat[126] E read(6, 0xffff8d17f000, 65536): Connection reset by peer
+2026/10/20 12:17:27 socat[28] E read(6, 0xffff8d17f000, 65536): Connection reset by peer
+2026/10/20 12:17:27 socat[570] E read(6, 0xffff8d17f000, 65536): Connection reset by peer
+2026/10/20 12:17:27 socat[137] E write(6, 0xffff8d17f000, 3500): Broken pipe
+2026/10/20 12:17:27 socat[113] E write(6, 0xffff8d17f000, 3499): Broken pipe
+2026/10/20 12:17:27 socat[112] E read(6, 0xffff8d17f000, 65536): Connection reset by peer
+2026/10/20 12:17:27 socat[13] W exiting on signal 15
+2026/10/20 12:17:27 socat[25] W exiting on signal 15
+2026/10/20 12:17:27 socat[108] W exiting on signal 15
+2026/10/20 12:17:27 socat[19] W exiting on signal 15
+2026/10/20 12:17:27 socat[34] W exiting on signal 15
+2026/10/20 12:17:27 socat[36] W exiting on signal 15
+2026/10/20 12:17:27 socat[31] W exiting on signal 15
+2026/10/20 12:17:27 socat[32] W exiting on signal 15
+2026/10/20 12:17:27 socat[39] W exiting on signal 15
+2026/10/20 12:17:27 socat[33] W exiting on signal 15
+2026/10/20 12:17:27 socat[35] W exiting on signal 15
+2026/10/20 12:17:27 socat[135] W exiting on signal 15
+2026/10/20 12:17:27 socat[116] W exiting on signal 15
+2026/10/20 12:17:27 socat[37] W exiting on signal 15
+2026/10/20 12:17:27 socat[65] W exiting on signal 15
+2026/10/20 12:17:27 socat[66] W exiting on signal 15
+2026/10/20 12:17:27 socat[69] W exiting on signal 15
+2026/10/20 12:17:27 socat[70] W exiting on signal 15
+2026/10/20 12:17:27 socat[127] W exiting on signal 15
+2026/10/20 12:17:27 socat[72] W exiting on signal 15
+2026/10/20 12:17:27 socat[71] W exiting on signal 15
+2026/10/20 12:17:27 socat[74] W exiting on signal 15
+2026/10/20 12:17:27 socat[76] W exiting on signal 15
+2026/10/20 12:17:27 socat[122] W exiting on signal 15
+2026/10/20 12:17:27 socat[107] W exiting on signal 15
+2026/10/20 12:17:27 socat[132] W exiting on signal 15
+2026/10/20 12:17:27 socat[106] W exiting on signal 15
+2026/10/20 12:17:27 socat[109] W exiting on signal 15
+2026/10/20 12:17:27 socat[552] W exiting on signal 15
+2026/10/20 12:17:27 socat[125] W exiting on signal 15
+2026/10/20 12:17:27 socat[119] W exiting on signal 15
+2026/10/20 12:17:27 socat[118] W exiting on signal 15
+2026/10/20 12:17:27 socat[121] W exiting on signal 15
+2026/10/20 12:17:27 socat[128] W exiting on signal 15
+2026/10/20 12:17:27 socat[129] W exiting on signal 15
+2026/10/20 12:17:27 socat[134] W exiting on signal 15
+2026/10/20 12:17:27 socat[131] W exiting on signal 15
+2026/10/20 12:17:27 socat[543] W exiting on signal 15
+2026/10/20 12:17:27 socat[546] W exiting on signal 15
+2026/10/20 12:17:27 socat[568] W exiting on signal 15
+2026/10/20 12:17:27 socat[553] W exiting on signal 15
+2026/10/20 12:17:27 socat[565] W exiting on signal 15
+2026/10/20 12:17:27 socat[551] W exiting on signal 15
+2026/10/20 12:17:27 socat[554] W exiting on signal 15
+2026/10/20 12:17:27 socat[564] W exiting on signal 15
+2026/10/20 12:17:27 socat[567] W exiting on signal 15
+2026/10/20 12:17:27 socat[566] W exiting on signal 15
+2026/10/20 12:17:27 socat[569] W exiting on signal 15
+2026/10/20 12:17:27 socat[571] W exiting on signal 15
+2026/10/20 12:17:27 socat[574] W exiting on signal 15
+2026/10/20 12:17:27 socat[573] W exiting on signal 15
+2026/10/20 12:17:27 socat[572] W exiting on signal 15
+2026/10/20 12:17:27 socat[575] W exiting on signal 15

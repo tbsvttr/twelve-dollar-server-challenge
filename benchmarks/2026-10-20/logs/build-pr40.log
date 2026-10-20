@@ -1,0 +1,101 @@
+Pinned source: d7d5d1aa99fff179238d2be1495118316d44c4b9
+87e02dae166e907fa1982932adead36eb6acd414aa1485acffa05c046572bd4b
+/usr/local/bin/frankenphp: OK
+/usr/local/lib/composer/composer.phar: OK
+FrankenPHP vv1.13.0 PHP 8.5.11 Caddy v2.11.7 h1:yj0Y4fYZGPkSvibBJ1sTWE33xC0fxztVyXEW5iIdUT4=
+Composer version 2.10.3 2026-08-27 13:34:23
+PHP version 8.5.11 (/usr/local/bin/frankenphp)
+Run the "diagnose" command to get more detailed diagnostics output.
+Installing dependencies from lock file
+Verifying lock file contents can be installed on current platform.
+Package operations: 41 installs, 0 updates, 0 removals
+  - Downloading psr/log (3.0.2)
+  - Downloading psr/cache (3.0.0)
+  - Downloading doctrine/deprecations (1.1.6)
+  - Downloading doctrine/dbal (4.5.0)
+  - Downloading psr/clock (1.0.0)
+  - Downloading symfony/cache-contracts (v3.7.1)
+  - Downloading symfony/polyfill-mbstring (v1.43.0)
+  - Downloading symfony/polyfill-intl-normalizer (v1.43.0)
+  - Downloading symfony/polyfill-intl-grapheme (v1.43.0)
+  - Downloading symfony/polyfill-ctype (v1.37.0)
+  - Downloading symfony/string (v8.1.7)
+  - Downloading symfony/deprecation-contracts (v3.7.1)
+  - Downloading psr/container (2.0.2)
+  - Downloading symfony/service-contracts (v3.7.3)
+  - Downloading symfony/polyfill-php85 (v1.43.0)
+  - Downloading symfony/console (v8.1.8)
+  - Downloading psr/event-dispatcher (1.0.0)
+  - Downloading symfony/event-dispatcher-contracts (v3.7.1)
+  - Downloading symfony/polyfill-deepclone (v1.43.1)
+  - Downloading symfony/var-exporter (v8.1.6)
+  - Downloading symfony/routing (v8.1.8)
+  - Downloading symfony/http-foundation (v8.1.8)
+  - Downloading symfony/event-dispatcher (v8.1.5)
+  - Downloading symfony/var-dumper (v8.1.7)
+  - Downloading symfony/error-handler (v8.1.8)
+  - Downloading symfony/http-kernel (v8.1.8)
+  - Downloading symfony/finder (v8.1.8)
+  - Downloading symfony/filesystem (v8.1.6)
+  - Downloading symfony/dependency-injection (v8.1.8)
+  - Downloading symfony/config (v8.1.5)
+  - Downloading symfony/cache (v8.1.8)
+  - Downloading symfony/framework-bundle (v8.1.8)
+  - Downloading symfony/type-info (v8.1.8)
+  - Downloading symfony/property-info (v8.1.8)
+  - Downloading symfony/password-hasher (v8.1.0)
+  - Downloading symfony/security-core (v8.1.8)
+  - Downloading symfony/property-access (v8.1.4)
+  - Downloading symfony/security-http (v8.1.8)
+  - Downloading symfony/security-csrf (v8.1.0)
+  - Downloading symfony/clock (v8.1.0)
+  - Downloading symfony/security-bundle (v8.1.8)
+  - Installing psr/log (3.0.2): Extracting archive
+  - Installing psr/cache (3.0.0): Extracting archive
+  - Installing doctrine/deprecations (1.1.6): Extracting archive
+  - Installing doctrine/dbal (4.5.0): Extracting archive
+  - Installing psr/clock (1.0.0): Extracting archive
+  - Installing symfony/cache-contracts (v3.7.1): Extracting archive
+  - Installing symfony/polyfill-mbstring (v1.43.0): Extracting archive
+  - Installing symfony/polyfill-intl-normalizer (v1.43.0): Extracting archive
+  - Installing symfony/polyfill-intl-grapheme (v1.43.0): Extracting archive
+  - Installing symfony/polyfill-ctype (v1.37.0): Extracting archive
+  - Installing symfony/string (v8.1.7): Extracting archive
+  - Installing symfony/deprecation-contracts (v3.7.1): Extracting archive
+  - Installing psr/container (2.0.2): Extracting archive
+  - Installing symfony/service-contracts (v3.7.3): Extracting archive
+  - Installing symfony/polyfill-php85 (v1.43.0): Extracting archive
+  - Installing symfony/console (v8.1.8): Extracting archive
+  - Installing psr/event-dispatcher (1.0.0): Extracting archive
+  - Installing symfony/event-dispatcher-contracts (v3.7.1): Extracting archive
+  - Installing symfony/polyfill-deepclone (v1.43.1): Extracting archive
+  - Installing symfony/var-exporter (v8.1.6): Extracting archive
+  - Installing symfony/routing (v8.1.8): Extracting archive
+  - Installing symfony/http-foundation (v8.1.8): Extracting archive
+  - Installing symfony/event-dispatcher (v8.1.5): Extracting archive
+  - Installing symfony/var-dumper (v8.1.7): Extracting archive
+  - Installing symfony/error-handler (v8.1.8): Extracting archive
+  - Installing symfony/http-kernel (v8.1.8): Extracting archive
+  - Installing symfony/finder (v8.1.8): Extracting archive
+  - Installing symfony/filesystem (v8.1.6): Extracting archive
+  - Installing symfony/dependency-injection (v8.1.8): Extracting archive
+  - Installing symfony/config (v8.1.5): Extracting archive
+  - Installing symfony/cache (v8.1.8): Extracting archive
+  - Installing symfony/framework-bundle (v8.1.8): Extracting archive
+  - Installing symfony/type-info (v8.1.8): Extracting archive
+  - Installing symfony/property-info (v8.1.8): Extracting archive
+  - Installing symfony/password-hasher (v8.1.0): Extracting archive
+  - Installing symfony/security-core (v8.1.8): Extracting archive
+  - Installing symfony/property-access (v8.1.4): Extracting archive
+  - Installing symfony/security-http (v8.1.8): Extracting archive
+  - Installing symfony/security-csrf (v8.1.0): Extracting archive
+  - Installing symfony/clock (v8.1.0): Extracting archive
+  - Installing symfony/security-bundle (v8.1.8): Extracting archive
+Generating optimized autoload files
+35 packages you are using are looking for funding.
+Use the `composer fund` command to find out more!
+
+ // Warming up the cache for the prod environment with debug false              
+
+ [OK] Cache for the "prod" environment (debug=false) was successfully warmed.   
+

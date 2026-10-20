@@ -1,0 +1,83 @@
+{
+  "files": {
+    ".gitignore": {
+      "sha256": "181314065df2f2fdaf920b1a8b5311daa216a2d6489a06ada5b49cc514d89417",
+      "bytes": 7,
+      "physical_lines": 1,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "README.md": {
+      "sha256": "74bb18e92dfe167f829b0303d0f7747ebc445cc5ce75e3432c42118f985c70d8",
+      "bytes": 7168,
+      "physical_lines": 108,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "build.sh": {
+      "sha256": "f42b739ef3388b4609d391f653e22cbd83827f1b7cf97cb8e6597ade2175c8e0",
+      "bytes": 1935,
+      "physical_lines": 39,
+      "classification": "own_support"
+    },
+    "install.sh": {
+      "sha256": "3420c6cfbefef283fd745dee02f925b86735ece7b39a1f8dd6250411d03f4ac0",
+      "bytes": 835,
+      "physical_lines": 22,
+      "classification": "own_support"
+    },
+    "src/challenge/Db.java": {
+      "sha256": "fead89d496361fbe0cedb50a76ba3210ce45987baf9e4e88db7ec46789902bf0",
+      "bytes": 7751,
+      "physical_lines": 220,
+      "classification": "application"
+    },
+    "src/challenge/Json.java": {
+      "sha256": "058bfdd8322917e7993b665250089461dae072d3f5e848de539183fbad988d2b",
+      "bytes": 6645,
+      "physical_lines": 190,
+      "classification": "application"
+    },
+    "src/challenge/Jwt.java": {
+      "sha256": "c9f1e42ffc7d79fbd3db3ca349fb86fd09a9abed42cc158e4b9770214a254429",
+      "bytes": 4527,
+      "physical_lines": 114,
+      "classification": "application"
+    },
+    "src/challenge/Main.java": {
+      "sha256": "910706bb22b9e8c00316f263226ed96d3f3f0fdd8d6c95af4f4c2c0b238b3bb0",
+      "bytes": 1205,
+      "physical_lines": 35,
+      "classification": "application"
+    },
+    "src/challenge/Out.java": {
+      "sha256": "5cd7d12aae86c79b25b7f2feb116f78845083dd7018defae64db42268e3ee23d",
+      "bytes": 2160,
+      "physical_lines": 77,
+      "classification": "application"
+    },
+    "src/challenge/Server.java": {
+      "sha256": "b5e2e2aab4a1215a9c870d90455985793425aa1b3df9415b6c33b2771627578c",
+      "bytes": 22754,
+      "physical_lines": 599,
+      "classification": "application"
+    },
+    "src/challenge/Sqlite.java": {
+      "sha256": "4ff1eeabeec4e22a23cbeed20b091b6e7eba67fc029b89e9acd9025dc8dece4b",
+      "bytes": 6042,
+      "physical_lines": 125,
+      "classification": "application"
+    },
+    "src/challenge/Sys.java": {
+      "sha256": "a8d42bd0499a4c1710ccb5ab4e9ecd0eee6a51d3e5d50d18b66954b7fffc61ec",
+      "bytes": 8737,
+      "physical_lines": 174,
+      "classification": "application"
+    },
+    "start.sh": {
+      "sha256": "b630246607ff2a0bf927f12b11e6921270f9ea7483a7aeb87002f76d1d77a20d",
+      "bytes": 528,
+      "physical_lines": 11,
+      "classification": "own_support"
+    }
+  },
+  "skipped_members": []
+}

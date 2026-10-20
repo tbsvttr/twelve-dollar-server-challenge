@@ -1,0 +1,39 @@
+
+$ docker exec twelve-current-build-pr82 bash -c set -e; rm -rf /suite/sources; mkdir -p /suite/sources; cp -a /evidence/sources/pr82 /suite/sources/; cp /evidence/manifest.json /suite/manifest.json; cp /evidence/schema.sql /suite/schema.sql; chown -R bench:bench /suite/sources
+
+$ docker exec twelve-current-build-pr82 bash /evidence/runtime-scripts/pr82.sh
+1.93.0-aarch64-unknown-linux-gnu
+1.94.0-aarch64-unknown-linux-gnu
+1.99.0-aarch64-unknown-linux-gnu (active, default)
+
+$ docker exec twelve-current-build-pr82 runuser -u bench -- env PATH=/usr/local/go/bin:/opt/twelve-rust/cargo/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 bash /suite/sources/pr82/build.sh
+vendor/sqlite.tar.gz: OK
+ Downloading crates ...
+  Downloaded io-uring v0.7.15
+   Compiling version_check v0.9.5
+   Compiling typenum v1.20.1
+   Compiling generic-array v0.14.7
+   Compiling libc v0.2.183
+   Compiling block-buffer v0.10.4
+   Compiling crypto-common v0.1.7
+   Compiling shlex v1.3.0
+   Compiling subtle v2.6.1
+   Compiling find-msvc-tools v0.1.14
+   Compiling cc v1.2.56
+   Compiling digest v0.10.7
+   Compiling httparse v1.10.1
+   Compiling cfg-if v1.0.5
+   Compiling io-uring v0.7.15
+   Compiling cpufeatures v0.2.17
+   Compiling bitflags v2.13.2
+   Compiling twelve-rust-poll v0.1.0 (/suite/sources/pr82)
+   Compiling sha2 v0.10.9
+   Compiling hmac v0.12.1
+   Compiling base64 v0.22.1
+   Compiling itoa v1.0.18
+   Compiling memchr v2.8.0
+    Finished `release` profile [optimized] target(s) in 1m 24s
+
+$ docker exec twelve-current-build-pr82 bash -c rm -rf /tmp/* /root/.cache /root/.cargo/registry /home/bench/.cache /home/bench/.cargo/registry /home/bench/.npm/_cacache /var/lib/apt/lists/* /var/cache/apt/archives/*.deb; find /suite/sources -type d -path '*/target/release/incremental' -prune -exec rm -rf {} +
+8714c491722bcab17e28c5fd9a4ab2c485c9b213a3343b090d3094094cfadc27
+twelve-current-clean-pr82

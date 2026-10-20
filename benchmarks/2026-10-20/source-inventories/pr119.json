@@ -1,0 +1,77 @@
+{
+  "files": {
+    ".gitignore": {
+      "sha256": "d9401e353b6bc1cefce0e240ce079ec6e8c3152628e092891cade7aafdbc1a4d",
+      "bytes": 65,
+      "physical_lines": 8,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "README.md": {
+      "sha256": "d176a0b86bab928d9a1b55b7390db6d38274d37a7d0daf09e3f8c7dbc8a9609d",
+      "bytes": 8292,
+      "physical_lines": 127,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "bench/pgo.ts": {
+      "sha256": "e78dafde63cf87c199662cb854e6091f58d8f459fcc55390c4c561fc69d7f6b3",
+      "bytes": 3205,
+      "physical_lines": 75,
+      "classification": "own_support"
+    },
+    "build.sh": {
+      "sha256": "7070e95da167bebbd10a98e1741b2a273f38e30e0768cb3dbb91b9c7351dc964",
+      "bytes": 2443,
+      "physical_lines": 40,
+      "classification": "own_support"
+    },
+    "deno.json": {
+      "sha256": "458e150638ed8da7e678cb0a5d47151b166539221d46667e6403ee67444397ac",
+      "bytes": 235,
+      "physical_lines": 6,
+      "classification": "own_support"
+    },
+    "install.sh": {
+      "sha256": "392859b1442621953c8626bd0395db47407719e34f841467d219e19e6d56f29a",
+      "bytes": 347,
+      "physical_lines": 6,
+      "classification": "own_support"
+    },
+    "poller.rs": {
+      "sha256": "de608060b0f48ede4ba26e3a4f221d4132d67e2b98c0080a5a9b1f50dd6d913a",
+      "bytes": 13988,
+      "physical_lines": 380,
+      "classification": "application"
+    },
+    "render.c": {
+      "sha256": "8d846796a840f270c5862cefbceacaed6abb7be98231736697a6d1ac966d1b3d",
+      "bytes": 11787,
+      "physical_lines": 263,
+      "classification": "application"
+    },
+    "render.test.ts": {
+      "sha256": "f1630def1f93f642020d883baf445d8490ed9b951f2c49a4b1c83c4ea3bf0bbf",
+      "bytes": 4282,
+      "physical_lines": 116,
+      "classification": "own_support"
+    },
+    "server.ts": {
+      "sha256": "27e2a07b3c08994e81fc0187a97bd396c9fdb311204d98170b530e0007e44ebf",
+      "bytes": 25781,
+      "physical_lines": 702,
+      "classification": "application"
+    },
+    "sqlite.ts": {
+      "sha256": "436358062a76170d2dbb522c3dd8d9b1e42d9c43ad655b316fddb301700ba787",
+      "bytes": 7780,
+      "physical_lines": 216,
+      "classification": "application"
+    },
+    "start.sh": {
+      "sha256": "37c55098df0e33de0e973c5e055e4aae57d12fb73b148d1124a0f3451a14b7c8",
+      "bytes": 1199,
+      "physical_lines": 27,
+      "classification": "own_support"
+    }
+  },
+  "skipped_members": []
+}

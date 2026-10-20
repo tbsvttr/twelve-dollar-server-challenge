@@ -1,0 +1,11 @@
+Pinned source: e3d3e0e036fcfc924a3200a7227a2467d6817a7a
+30336e4ad53925fa9efc5de76088bc58123d777fae8d0621f051695771beb2fd
+build/swoole.tar.gz: OK
+configure.ac:165: warning: The macro `AC_PROG_LIBTOOL' is obsolete.
+configure.ac:165: You should run autoupdate.
+build/libtool.m4:100: AC_PROG_LIBTOOL is expanded from...
+configure.ac:165: the top level
+/suite/sources/pr28/build/src/src/os/async_thread.cc: In member function 'void swoole::async::ThreadPool::release_thread(std::thread::id)':
+/suite/sources/pr28/build/src/src/os/async_thread.cc:191:16: warning: variable 'remaining_thread_num' set but not used [-Wunused-but-set-variable]
+  191 |         size_t remaining_thread_num = 0;
+      |                ^~~~~~~~~~~~~~~~~~~~

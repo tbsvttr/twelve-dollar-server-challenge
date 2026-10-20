@@ -1,0 +1,7 @@
+{
+  "captured_at_utc": "2026-10-20T10:46:21.471234+00:00",
+  "upstream": "arjaythedev/twelve-dollar-server-challenge",
+  "pr_count": 126,
+  "selection": "All open server submission PRs and merged submission PRs in API snapshot; closed unmerged and non-server contributions are excluded.",
+  "loc_unit": "Physical source lines including blank/comment lines."
+}

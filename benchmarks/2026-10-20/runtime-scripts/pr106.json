@@ -1,0 +1,3 @@
+[
+  "Use already installed native ARM64 Go 1.27.1 at /usr/local/go instead of the submitted AMD64 installer; exact Go version preserved."
+]

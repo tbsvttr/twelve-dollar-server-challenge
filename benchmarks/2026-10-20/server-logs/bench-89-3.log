@@ -1,0 +1,75 @@
+wal
+2026/10/20 12:42:32 socat[59] E read(6, 0xffff92adf000, 65536): Connection reset by peer
+2026/10/20 12:42:32 socat[150] E read(6, 0xffff92adf000, 65536): Connection reset by peer
+2026/10/20 12:42:32 socat[28] E read(6, 0xffff92adf000, 65536): Connection reset by peer
+2026/10/20 12:42:32 socat[50] E read(6, 0xffff92adf000, 65536): Connection reset by peer
+2026/10/20 12:42:32 socat[44] E read(6, 0xffff92adf000, 65536): Connection reset by peer
+2026/10/20 12:42:32 socat[39] E read(6, 0xffff92adf000, 65536): Connection reset by peer
+2026/10/20 12:42:32 socat[53] E read(6, 0xffff92adf000, 65536): Connection reset by peer
+2026/10/20 12:42:32 socat[154] E read(6, 0xffff92adf000, 65536): Connection reset by peer
+2026/10/20 12:42:32 socat[167] E read(6, 0xffff92adf000, 65536): Connection reset by peer
+2026/10/20 12:42:47 socat[58] W exiting on signal 15
+2026/10/20 12:42:47 socat[146] W exiting on signal 15
+2026/10/20 12:42:47 socat[25] W exiting on signal 15
+2026/10/20 12:42:47 socat[13] W exiting on signal 15
+2026/10/20 12:42:47 socat[22] W exiting on signal 15
+2026/10/20 12:42:47 socat[19] W exiting on signal 15
+2026/10/20 12:42:47 socat[24] W exiting on signal 15
+2026/10/20 12:42:47 socat[30] W exiting on signal 15
+2026/10/20 12:42:47 socat[40] W exiting on signal 15
+2026/10/20 12:42:47 socat[157] W exiting on signal 15
+2026/10/20 12:42:47 socat[147] W exiting on signal 15
+2026/10/20 12:42:47 socat[52] W exiting on signal 15
+2026/10/20 12:42:47 socat[38] W exiting on signal 15
+2026/10/20 12:42:47 socat[46] W exiting on signal 15
+2026/10/20 12:42:47 socat[41] W exiting on signal 15
+2026/10/20 12:42:47 socat[43] W exiting on signal 15
+2026/10/20 12:42:47 socat[49] W exiting on signal 15
+2026/10/20 12:42:47 socat[47] W exiting on signal 15
+2026/10/20 12:42:47 socat[48] W exiting on signal 15
+2026/10/20 12:42:47 socat[51] W exiting on signal 15
+2026/10/20 12:42:47 socat[54] W exiting on signal 15
+2026/10/20 12:42:47 socat[55] W exiting on signal 15
+2026/10/20 12:42:47 socat[144] W exiting on signal 15
+2026/10/20 12:42:47 socat[552] W exiting on signal 15
+2026/10/20 12:42:47 socat[60] W exiting on signal 15
+2026/10/20 12:42:47 socat[118] W exiting on signal 15
+2026/10/20 12:42:47 socat[117] W exiting on signal 15
+2026/10/20 12:42:47 socat[121] W exiting on signal 15
+2026/10/20 12:42:47 socat[119] W exiting on signal 15
+2026/10/20 12:42:47 socat[120] W exiting on signal 15
+2026/10/20 12:42:47 socat[553] W exiting on signal 15
+2026/10/20 12:42:47 socat[153] W exiting on signal 15
+2026/10/20 12:42:47 socat[123] W exiting on signal 15
+2026/10/20 12:42:47 socat[145] W exiting on signal 15
+2026/10/20 12:42:47 socat[122] W exiting on signal 15
+2026/10/20 12:42:47 socat[164] W exiting on signal 15
+2026/10/20 12:42:47 socat[152] W exiting on signal 15
+2026/10/20 12:42:47 socat[158] W exiting on signal 15
+2026/10/20 12:42:47 socat[155] W exiting on signal 15
+2026/10/20 12:42:47 socat[159] W exiting on signal 15
+2026/10/20 12:42:47 socat[151] W exiting on signal 15
+2026/10/20 12:42:47 socat[160] W exiting on signal 15
+2026/10/20 12:42:47 socat[162] W exiting on signal 15
+2026/10/20 12:42:47 socat[544] W exiting on signal 15
+2026/10/20 12:42:47 socat[163] W exiting on signal 15
+2026/10/20 12:42:47 socat[166] W exiting on signal 15
+2026/10/20 12:42:47 socat[549] W exiting on signal 15
+2026/10/20 12:42:47 socat[543] W exiting on signal 15
+2026/10/20 12:42:47 socat[551] W exiting on signal 15
+2026/10/20 12:42:47 socat[548] W exiting on signal 15
+2026/10/20 12:42:47 socat[545] W exiting on signal 15
+2026/10/20 12:42:47 socat[546] W exiting on signal 15
+2026/10/20 12:42:47 socat[550] W exiting on signal 15
+2026/10/20 12:42:47 socat[547] W exiting on signal 15
+2026/10/20 12:42:47 socat[555] W exiting on signal 15
+2026/10/20 12:42:47 socat[556] W exiting on signal 15
+2026/10/20 12:42:47 socat[557] W exiting on signal 15
+2026/10/20 12:42:47 socat[554] W exiting on signal 15
+2026/10/20 12:42:47 socat[558] W exiting on signal 15
+2026/10/20 12:42:47 socat[597] W exiting on signal 15
+2026/10/20 12:42:47 socat[598] W exiting on signal 15
+2026/10/20 12:42:47 socat[595] W exiting on signal 15
+2026/10/20 12:42:47 socat[596] W exiting on signal 15
+2026/10/20 12:42:47 socat[620] W exiting on signal 15
+2026/10/20 12:42:47 socat[599] W exiting on signal 15

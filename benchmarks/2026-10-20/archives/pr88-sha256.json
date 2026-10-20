@@ -1,0 +1,15 @@
+{
+  ".gitignore": "181314065df2f2fdaf920b1a8b5311daa216a2d6489a06ada5b49cc514d89417",
+  "README.md": "74bb18e92dfe167f829b0303d0f7747ebc445cc5ce75e3432c42118f985c70d8",
+  "build.sh": "f42b739ef3388b4609d391f653e22cbd83827f1b7cf97cb8e6597ade2175c8e0",
+  "install.sh": "3420c6cfbefef283fd745dee02f925b86735ece7b39a1f8dd6250411d03f4ac0",
+  "src/challenge/Db.java": "fead89d496361fbe0cedb50a76ba3210ce45987baf9e4e88db7ec46789902bf0",
+  "src/challenge/Json.java": "058bfdd8322917e7993b665250089461dae072d3f5e848de539183fbad988d2b",
+  "src/challenge/Jwt.java": "c9f1e42ffc7d79fbd3db3ca349fb86fd09a9abed42cc158e4b9770214a254429",
+  "src/challenge/Main.java": "910706bb22b9e8c00316f263226ed96d3f3f0fdd8d6c95af4f4c2c0b238b3bb0",
+  "src/challenge/Out.java": "5cd7d12aae86c79b25b7f2feb116f78845083dd7018defae64db42268e3ee23d",
+  "src/challenge/Server.java": "b5e2e2aab4a1215a9c870d90455985793425aa1b3df9415b6c33b2771627578c",
+  "src/challenge/Sqlite.java": "4ff1eeabeec4e22a23cbeed20b091b6e7eba67fc029b89e9acd9025dc8dece4b",
+  "src/challenge/Sys.java": "a8d42bd0499a4c1710ccb5ab4e9ecd0eee6a51d3e5d50d18b66954b7fffc61ec",
+  "start.sh": "b630246607ff2a0bf927f12b11e6921270f9ea7483a7aeb87002f76d1d77a20d"
+}

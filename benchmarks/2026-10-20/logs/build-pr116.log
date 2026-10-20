@@ -1,0 +1,113 @@
+Pinned source: dec93c5cd7745765c2a784949344789ebc69fd93
+
+$ docker run -d --name twelve-current-build-116 --cpus 1.5 --memory 3g --memory-swap 3g --security-opt seccomp=seccomp-io-uring.json --mount type=bind,src=<BENCHMARK_EVIDENCE>,dst=/evidence,readonly twelve-unified:2026-10-07 sleep infinity
+868778581c82b91ebe6a92b7204e5ea91ae15ad0fe3532bd20d4dbb35b99e2c5
+
+$ docker exec -i twelve-current-build-116 python3 - 116
+Verified 28 pinned source files
+
+$ docker exec twelve-current-build-116 bash /suite/sources/pr116/install.sh
+Hit:1 http://ports.ubuntu.com/ubuntu-ports noble InRelease
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble-updates InRelease [126 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble-backports InRelease [126 kB]
+Get:4 http://ports.ubuntu.com/ubuntu-ports noble-security InRelease [126 kB]
+Get:5 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 Packages [1786 kB]
+Get:6 http://ports.ubuntu.com/ubuntu-ports noble-updates/multiverse arm64 Packages [104 kB]
+Get:7 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 Packages [2214 kB]
+Get:8 http://ports.ubuntu.com/ubuntu-ports noble-updates/restricted arm64 Packages [3251 kB]
+Get:9 http://ports.ubuntu.com/ubuntu-ports noble-backports/multiverse arm64 Packages [669 B]
+Get:10 http://ports.ubuntu.com/ubuntu-ports noble-security/universe arm64 Packages [1638 kB]
+Get:11 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 Packages [1475 kB]
+Get:12 http://ports.ubuntu.com/ubuntu-ports noble-security/multiverse arm64 Packages [99.1 kB]
+Get:13 http://ports.ubuntu.com/ubuntu-ports noble-security/restricted arm64 Packages [3129 kB]
+Fetched 14.1 MB in 4s (3289 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+ca-certificates is already the newest version (20260601~24.04.1).
+tar is already the newest version (1.35+dfsg-3ubuntu0.4).
+unzip is already the newest version (6.0-28ubuntu4.1).
+The following additional packages will be installed:
+  libcurl3t64-gnutls libcurl4t64
+The following packages will be upgraded:
+  curl libcurl3t64-gnutls libcurl4t64
+3 upgraded, 0 newly installed, 0 to remove and 16 not upgraded.
+Need to get 890 kB of archives.
+After this operation, 3072 B of additional disk space will be used.
+Get:1 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 curl arm64 8.5.0-2ubuntu10.16 [222 kB]
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 libcurl4t64 arm64 8.5.0-2ubuntu10.16 [337 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 libcurl3t64-gnutls arm64 8.5.0-2ubuntu10.16 [331 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 890 kB in 2s (559 kB/s)
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 16962 files and directories currently installed.)
+Preparing to unpack .../curl_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking curl (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Preparing to unpack .../libcurl4t64_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking libcurl4t64:arm64 (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Preparing to unpack .../libcurl3t64-gnutls_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking libcurl3t64-gnutls:arm64 (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Setting up libcurl4t64:arm64 (8.5.0-2ubuntu10.16) ...
+Setting up libcurl3t64-gnutls:arm64 (8.5.0-2ubuntu10.16) ...
+Setting up curl (8.5.0-2ubuntu10.16) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0  133M    0  844k    0     0  1491k      0  0:01:31 --:--:--  0:01:31 1491k 20  133M   20 27.0M    0     0  17.3M      0  0:00:07  0:00:01  0:00:06 26.3M 42  133M   42 56.0M    0     0  21.8M      0  0:00:06  0:00:02  0:00:04 27.6M 64  133M   64 85.7M    0     0  24.0M      0  0:00:05  0:00:03  0:00:02 28.3M 87  133M   87  116M    0     0  25.6M      0  0:00:05  0:00:04  0:00:01 29.0M100  133M  100  133M    0     0  26.0M      0  0:00:05  0:00:05 --:--:-- 29.0M
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100   120  100   120    0     0    197      0 --:--:-- --:--:-- --:--:--   816
+OpenJDK25U-jdk_aarch64_linux_hotspot_25.0.2_10.tar.gz: OK
+update-alternatives: using /opt/temurin-25.0.2/bin/java to provide /usr/bin/java (java) in auto mode
+update-alternatives: using /opt/temurin-25.0.2/bin/javac to provide /usr/bin/javac (javac) in auto mode
+openjdk version "25.0.2" 2026-01-20 LTS
+OpenJDK Runtime Environment Temurin-25.0.2+10 (build 25.0.2+10-LTS)
+OpenJDK 64-Bit Server VM Temurin-25.0.2+10 (build 25.0.2+10-LTS, mixed mode, sharing)
+
+$ docker exec twelve-current-build-116 chown -R bench:bench /suite/sources/pr116
+
+$ docker exec twelve-current-build-116 runuser -u bench -- env PATH=/opt/twelve-rust/cargo/bin:/usr/local/go/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 NIM_JOBS=2 MAKEFLAGS=-j2 bash /suite/sources/pr116/build.sh
+Fetching distribution.
+Downloading https://services.gradle.org/distributions/gradle-9.5.0-bin.zip
+.............10%.............20%..............30%.............40%.............50%..............60%.............70%..............80%.............90%.............100%
+
+Welcome to Gradle 9.5.0!
+
+Here are the highlights of this release:
+ - Task provenance in reports and failure messages
+ - Type-safe accessors for precompiled Kotlin Settings plugins
+
+For more details see https://docs.gradle.org/9.5.0/release-notes.html
+
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.5.0/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+
+> Task :compileJava
+Note: Some input files use unchecked or unsafe operations.
+Note: Recompile with -Xlint:unchecked for details.
+
+> Task :processResources
+> Task :classes
+> Task :shadowJar
+> Task :compileTestJava
+> Task :processTestResources NO-SOURCE
+> Task :testClasses
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by org.sqlite.SQLiteJDBCLoader in an unnamed module (file:/home/bench/.gradle/caches/modules-2/files-2.1/org.xerial/sqlite-jdbc/3.53.4.0/47e21dd53efe1524fe0df6965cb65003ffe17172/sqlite-jdbc-3.53.4.0.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+> Task :test
+
+[Incubating] Problems report is available at: file:///suite/sources/pr116/build/reports/problems/problems-report.html
+
+BUILD SUCCESSFUL in 1m 28s
+5 actionable tasks: 5 executed
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.5.0/userguide/configuration_cache_enabling.html
+
+$ docker exec twelve-current-build-116 bash -c rm -rf /tmp/* /root/.cache /home/bench/.cache /home/bench/.npm/_cacache /var/lib/apt/lists/* /var/cache/apt/archives/*.deb
+
+$ docker commit twelve-current-build-116 twelve-current-pr116:2026-10-20
+sha256:57180bb9cb47181bb75a8d115e33cdf3583cd21707735ae599d65bdc28abc88c

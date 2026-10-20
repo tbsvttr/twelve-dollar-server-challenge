@@ -1,0 +1,74 @@
+STDOUT
+{
+  "PATH": "/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+  "uid": 0,
+  "gid": 0,
+  "resolved_path": "/usr/bin/wrk",
+  "real_path": "/usr/bin/wrk",
+  "binary_bytes": 133792,
+  "binary_sha256": "55157ab26d15f39e68d80ed3e16240dcdcb1722abf0fa7d74bfd3e20dd50254c",
+  "binary_md5": "ab24d546a92beaa1c67fa8cc695e1873",
+  "version": {
+    "argv": [
+      "/usr/bin/wrk",
+      "--version"
+    ],
+    "exit_code": 1,
+    "stdout": "wrk debian/4.1.0-4build2 [epoll] Copyright (C) 2012 Will Glozer\nUsage: wrk <options> <url>                            \n  Options:                                            \n    -c, --connections <N>  Connections to keep open   \n    -d, --duration    <T>  Duration of test           \n    -t, --threads     <N>  Number of threads to use   \n                                                      \n    -s, --script      <S>  Load Lua script file       \n    -H, --header      <H>  Add header to request      \n        --latency          Print latency statistics   \n        --timeout     <T>  Socket/request timeout     \n    -v, --version          Print version details      \n                                                      \n  Numeric arguments may include a SI unit (1k, 1M, 1G)\n  Time arguments may include a time unit (2s, 2m, 2h)\n",
+    "stderr": ""
+  },
+  "package_owner": {
+    "argv": [
+      "dpkg-query",
+      "-S",
+      "/usr/bin/wrk"
+    ],
+    "exit_code": 0,
+    "stdout": "wrk: /usr/bin/wrk\n",
+    "stderr": ""
+  },
+  "package_version": {
+    "argv": [
+      "dpkg-query",
+      "-W",
+      "-f",
+      "${Package}\t${Version}\t${Architecture}\t${Status}\n",
+      "wrk"
+    ],
+    "exit_code": 0,
+    "stdout": "wrk\t4.1.0-4build2\tarm64\tinstall ok installed\n",
+    "stderr": ""
+  },
+  "dpkg_verify": {
+    "argv": [
+      "dpkg",
+      "-V",
+      "wrk"
+    ],
+    "exit_code": 0,
+    "stdout": "missing     /usr/share/doc/wrk/NOTICE.gz\nmissing     /usr/share/doc/wrk/README.md\nmissing     /usr/share/doc/wrk/SCRIPTING.gz\nmissing     /usr/share/doc/wrk/examples/scripts/addr.lua\nmissing     /usr/share/doc/wrk/examples/scripts/auth.lua\nmissing     /usr/share/doc/wrk/examples/scripts/counter.lua\nmissing     /usr/share/doc/wrk/examples/scripts/delay.lua\nmissing     /usr/share/doc/wrk/examples/scripts/pipeline.lua\nmissing     /usr/share/doc/wrk/examples/scripts/post.lua\nmissing     /usr/share/doc/wrk/examples/scripts/report.lua\nmissing     /usr/share/doc/wrk/examples/scripts/setup.lua\nmissing     /usr/share/doc/wrk/examples/scripts/stop.lua\nmissing     /usr/share/man/man1/wrk.1.gz\n",
+    "stderr": ""
+  },
+  "file": {
+    "argv": [
+      "file",
+      "/usr/bin/wrk"
+    ],
+    "exit_code": 0,
+    "stdout": "/usr/bin/wrk: ELF 64-bit LSB pie executable, ARM aarch64, version 1 (SYSV), dynamically linked, interpreter /lib/ld-linux-aarch64.so.1, BuildID[sha1]=b768847397ae704c772b054c1d70c20aa8c7bec5, for GNU/Linux 3.7.0, stripped\n",
+    "stderr": ""
+  },
+  "package_md5_manifest": {
+    "argv": [
+      "cat",
+      "/var/lib/dpkg/info/wrk.md5sums"
+    ],
+    "exit_code": 0,
+    "stdout": "ab24d546a92beaa1c67fa8cc695e1873  usr/bin/wrk\n0f7e9d71a148ddd2665532b1f5ce9483  usr/share/doc/wrk/NOTICE.gz\na4953a7fdf3809236e2c1c039d87e285  usr/share/doc/wrk/README.md\n3fba71b33e317932b27f79b88a01c8e1  usr/share/doc/wrk/SCRIPTING.gz\n73d950c6ab4ae2bcd0dee6c2fac97239  usr/share/doc/wrk/changelog.Debian.gz\nfa9b5734f4920f949d32cf34b7ec9849  usr/share/doc/wrk/copyright\n0f7a211c4dbaaa53489d55aaa55bee55  usr/share/doc/wrk/examples/scripts/addr.lua\na47aa7f516bb291e3321637a86118df6  usr/share/doc/wrk/examples/scripts/auth.lua\n2a96bb5e7dcc54223a2724623d853f08  usr/share/doc/wrk/examples/scripts/counter.lua\nb49188850b11da1ef31b08de0f109428  usr/share/doc/wrk/examples/scripts/delay.lua\n18bc75d928ea40d8b9d3d5ca7ff7e08c  usr/share/doc/wrk/examples/scripts/pipeline.lua\nee2d2c007c010c8bffcf2bb2e7bbeb15  usr/share/doc/wrk/examples/scripts/post.lua\n87dd82a8554404ebd2bc442edfac9a19  usr/share/doc/wrk/examples/scripts/report.lua\nc3f79ec44d30085de6cba57b7a15a370  usr/share/doc/wrk/examples/scripts/setup.lua\nbedd7259929cf1bad14371ffd4d63019  usr/share/doc/wrk/examples/scripts/stop.lua\nbb05cd75aba172a5fcc4a0ae4d9aa4fc  usr/share/man/man1/wrk.1.gz\n",
+    "stderr": ""
+  }
+}
+
+STDERR
+
+EXIT_CODE 0

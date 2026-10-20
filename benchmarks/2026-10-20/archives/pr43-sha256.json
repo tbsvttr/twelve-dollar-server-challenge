@@ -1,0 +1,17 @@
+{
+  ".gitignore": "09a4dc71967e005bca917fa34762fda6064d163a83fb48beee24afc2cc3ba088",
+  "Package.resolved": "b34fdda9ccf5ee4a15ce689f2822fb91067561a935d27160b838c748e8cc7fc1",
+  "Package.swift": "d6d0d5bed601d51e4c42b01314777cebb8bc73a269a756fe0736d1cc2e919dc0",
+  "README.md": "977e5b10c13a080404d49b08d0f0c22f4bd54fb65f99d71c94330e4d7e17c7c3",
+  "Sources/App/Database.swift": "d25452ef100d0e982b6b426794bffa915667a76d07050caac25a350fc9235163",
+  "Sources/App/ErrorMapperMiddleware.swift": "ed616b14d9eef362bebfc03dfe5a823d90b2b5fd6da706e9024512458017fe16",
+  "Sources/App/JSONWriter.swift": "63efa3450926567501424548949edbd912b5279a33952ca2ab0c8d340491e819",
+  "Sources/App/JWT.swift": "959bbbc56fb6d1ccdbb9acd5ffac4265f60b506ec1f524e04892532a531d5923",
+  "Sources/App/Responses.swift": "8509798294c4bac8a9e2f3a413c4533e287129b4e8e2321b9c759f9c447d8ced",
+  "Sources/App/main.swift": "60b7ba0054349eb946727826fa78378869b97db154679cbe86b3df6442f820e1",
+  "Sources/CSQLite3/module.modulemap": "5511372b39d3b6f843723fe4d25f0dae40aa93e5ddf2f89c4f4055273019338b",
+  "Sources/CSQLite3/shim.h": "b052d8e561e942f97b503033ecd2eaa2b35213bdbf374983efe9e68eabdfc024",
+  "build.sh": "c0dda179f864556123ca916c43cd87bab4e56c08c7c247832991e28558ffade5",
+  "install.sh": "629f5f2a5cae959e5b4af609be20e24398ad98e19aab82b6009c78510cfdce8e",
+  "start.sh": "2870d7b30fac4c5d7f8445896b725b8195191f591bfda6e3d10f7b79a4d4fa7b"
+}

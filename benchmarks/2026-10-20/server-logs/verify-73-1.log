@@ -1,0 +1,6 @@
+[0.008s][warning][gc,ergo] NewSize (393216k) is greater than the initial heap size (262144k). A new NewSize of 262144k will be used.
+11:29:40.820 INFO  [Database] SQLite 3.45.1 (libsqlite3.so.0): 2 read connections + 1 write connection
+11:29:40.929 INFO  [quarkus] feed-quarkus 1.0.0 on JVM (powered by Quarkus 3.40.1) started in 0.981s. Listening on: http://127.0.0.1:24000
+11:29:40.929 INFO  [quarkus] Profile prod activated. 
+11:29:40.929 INFO  [quarkus] Installed features: [cdi, rest, rest-jackson, smallrye-context-propagation, vertx]
+11:29:42.087 INFO  [quarkus] feed-quarkus stopped in 0.153s

@@ -1,0 +1,8 @@
+11:30:57.902 [main] INFO io.ktor.server.Application - Autoreload is disabled because the development mode is off.
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by org.sqlite.SQLiteJDBCLoader in an unnamed module (file:/suite/sources/pr53/build/native/nativeCompile/velox)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+11:30:57.934 [main] INFO io.ktor.server.Application - Application started in 0.033 seconds.
+11:30:57.936 [DefaultDispatcher-worker-4] INFO io.ktor.server.Application - Responding at http://127.0.0.1:24000

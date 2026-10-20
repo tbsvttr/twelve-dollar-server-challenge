@@ -1,0 +1,59 @@
+{
+  "files": {
+    ".gitignore": {
+      "sha256": "4d56952b0fb13bf8f9b6c13a6d4c34a075bac3af447636a1df4335d7576e2f97",
+      "bytes": 14,
+      "physical_lines": 1,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "README.md": {
+      "sha256": "44ff649643eb90d12d12e02f7f384912e2a10152ee6fb3992d2dcfbc0aa67c39",
+      "bytes": 7504,
+      "physical_lines": 118,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "build.sh": {
+      "sha256": "7d15459e705c2de79faf9a02c3f9e0f87922ca3de32dd789be3e1366ed3432ef",
+      "bytes": 172,
+      "physical_lines": 5,
+      "classification": "own_support"
+    },
+    "charts/cpu-per-request.svg": {
+      "sha256": "994fb5b1dca88c2407de3d8c6cd4f35d8dae3f830efbd515a0be63fa6b08ffa5",
+      "bytes": 2367,
+      "physical_lines": 15,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "charts/latency.svg": {
+      "sha256": "cf0aee3f094394fada64bbbdb2bcd7b1615926982255f7630a6c180634010583",
+      "bytes": 8407,
+      "physical_lines": 15,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "charts/memory.svg": {
+      "sha256": "6fac20b87baf1e2dc4797586aa5aff3522585de6f2c3dcd8742e40593e15b6d2",
+      "bytes": 8024,
+      "physical_lines": 15,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "index.js": {
+      "sha256": "5005c14db89572da69f4d809988e4a4ff4090671ded5c347bd5aa22967ca49c0",
+      "bytes": 12028,
+      "physical_lines": 285,
+      "classification": "application"
+    },
+    "install.sh": {
+      "sha256": "0aef8740824ebfb861867046510e02a5019a1ede6108ea0bacc7c55afb38aef8",
+      "bytes": 442,
+      "physical_lines": 10,
+      "classification": "own_support"
+    },
+    "start.sh": {
+      "sha256": "88bf7efe7ef3531d166e9a373fb2411aafb02ec15cbe6e52163f8f6eefcfc18b",
+      "bytes": 198,
+      "physical_lines": 5,
+      "classification": "own_support"
+    }
+  },
+  "skipped_members": []
+}

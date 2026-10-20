@@ -1,0 +1,21 @@
+Pinned source: e1a5f05a78167e02b160398141b4115d955cd439
+
+$ docker run -d --name twelve-current-build-99 --cpus 1.5 --memory 3g --memory-swap 3g --mount type=bind,src=<BENCHMARK_EVIDENCE>,dst=/evidence,readonly twelve-unified:2026-10-07 sleep infinity
+0c33bbfa30a62a8d4ae50bd54c9b4c65cd93e7af6632b2db236ec6c4e488728a
+
+$ docker exec -i twelve-current-build-99 python3 - 99
+Verified 11 pinned source files
+
+$ docker exec twelve-current-build-99 bash /evidence/runtime-scripts/pr99.sh
+go version go1.27.1 linux/arm64
+
+$ docker exec twelve-current-build-99 chown -R bench:bench /suite/sources/pr99
+
+$ docker exec twelve-current-build-99 runuser -u bench -- env PATH=/opt/twelve-rust/cargo/bin:/usr/local/go/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 NIM_JOBS=2 MAKEFLAGS=-j2 bash /suite/sources/pr99/build.sh
+go: downloading github.com/golang-jwt/jwt/v5 v5.3.1
+go: downloading github.com/mattn/go-sqlite3 v1.14.52
+
+$ docker exec twelve-current-build-99 bash -c rm -rf /tmp/* /root/.cache /home/bench/.cache /home/bench/.npm/_cacache /var/lib/apt/lists/* /var/cache/apt/archives/*.deb
+
+$ docker commit twelve-current-build-99 twelve-current-pr99:2026-10-20
+sha256:84d5d45bc2cae8b683dbcf4c7c907f57e6c7fd44f7cf8dc87870bdf192bfef97

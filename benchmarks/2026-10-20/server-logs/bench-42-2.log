@@ -1,0 +1,2 @@
+cache=8192KiB mmap=0MiB
+experimental C/epoll server listening at 127.0.0.1:24000; sqlite=3.45.1, descriptors=65535

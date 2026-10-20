@@ -1,0 +1,27 @@
+
+$ docker create --name twelve-current-jdk25-for85 sha256:75406c11e9c4f7e9d766877cdf6ed5fc4ae4c43fbf816aa786e15728163f95aa
+91912d01bbb1201a8e96bb492b4759701c65e4cdc4eeb0854db4fbeb5f834106
+
+$ docker cp twelve-current-jdk25-for85:/opt/jdk runtime-cache/jdk25-for85
+
+$ docker rm twelve-current-jdk25-for85
+twelve-current-jdk25-for85
+
+$ docker run -d --name twelve-current-repair85 --cpus 2 --memory 3g --memory-swap 3g --mount type=bind,src=<BENCHMARK_EVIDENCE>,dst=/evidence,readonly sha256:527f00acbbe7091b4ed1e5fe3686ff8528a387df2bdc60b959851abe2e6a8512 sleep infinity
+e2e6580c8ec5a6c90f11ddbfd48b75f6e59b91c6ec262af8497800cab4d2b7cc
+
+$ docker cp runtime-cache/jdk25-for85 twelve-current-repair85:/opt/jdk-25
+
+$ docker exec twelve-current-repair85 bash -c for name in java javac jar; do ln -sf /opt/jdk-25/bin/$name /usr/local/bin/$name; done; java -version; java -XX:+UseCompactObjectHeaders -version
+openjdk version "25.0.4.1" 2026-08-18 LTS
+OpenJDK Runtime Environment Temurin-25.0.4.1+1 (build 25.0.4.1+1-LTS)
+OpenJDK 64-Bit Server VM Temurin-25.0.4.1+1 (build 25.0.4.1+1-LTS, mixed mode, sharing)
+openjdk version "25.0.4.1" 2026-08-18 LTS
+OpenJDK Runtime Environment Temurin-25.0.4.1+1 (build 25.0.4.1+1-LTS)
+OpenJDK 64-Bit Server VM Temurin-25.0.4.1+1 (build 25.0.4.1+1-LTS, mixed mode, sharing)
+
+$ docker exec twelve-current-repair85 runuser -u bench -- env PATH=/usr/local/go/bin:/opt/twelve-rust/cargo/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 JAVA_HOME=/opt/jdk-25 bash /suite/sources/pr85/build.sh
+Build complete: /suite/sources/pr85/build/server.jar
+
+$ docker rm -f twelve-current-repair85
+twelve-current-repair85

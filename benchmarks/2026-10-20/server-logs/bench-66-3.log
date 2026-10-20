@@ -1,0 +1,28 @@
+2026-10-20T13:05:58.668Z  INFO 13 --- [feed] [           main] challenge.feed.FeedApplicationKt         : Starting FeedApplicationKt v1.0.0 using Java 25.0.4 with PID 13 (/suite/sources/pr66/build/libs/feed-1.0.0.jar started by bench in /suite/sources/pr66)
+2026-10-20T13:05:58.674Z  INFO 13 --- [feed] [           main] challenge.feed.FeedApplicationKt         : No active profile set, falling back to 1 default profile: "default"
+2026-10-20T13:05:59.883Z  INFO 13 --- [feed] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat initialized with port 24000 (http)
+2026-10-20T13:05:59.901Z  INFO 13 --- [feed] [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-10-20T13:05:59.901Z  INFO 13 --- [feed] [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/11.0.24]
+2026-10-20T13:05:59.983Z  INFO 13 --- [feed] [           main] b.w.c.s.WebApplicationContextInitializer : Root WebApplicationContext: initialization completed in 1217 ms
+2026-10-20T13:06:00.126Z  INFO 13 --- [feed] [           main] com.zaxxer.hikari.HikariDataSource       : reader - Starting...
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by org.sqlite.SQLiteJDBCLoader in an unnamed module (jar:nested:/suite/sources/pr66/build/libs/feed-1.0.0.jar/!BOOT-INF/lib/sqlite-jdbc-3.53.2.1.jar!/)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+2026-10-20T13:06:00.267Z  INFO 13 --- [feed] [           main] com.zaxxer.hikari.pool.HikariPool        : reader - Added connection challenge.feed.config.CachingConnection@4f9a6c2d
+2026-10-20T13:06:00.268Z  INFO 13 --- [feed] [           main] com.zaxxer.hikari.HikariDataSource       : reader - Start completed.
+2026-10-20T13:06:00.286Z  INFO 13 --- [feed] [           main] com.zaxxer.hikari.HikariDataSource       : writer - Starting...
+2026-10-20T13:06:00.289Z  INFO 13 --- [feed] [           main] com.zaxxer.hikari.pool.HikariPool        : writer - Added connection challenge.feed.config.CachingConnection@2b960a7
+2026-10-20T13:06:00.290Z  INFO 13 --- [feed] [           main] com.zaxxer.hikari.HikariDataSource       : writer - Start completed.
+2026-10-20T13:06:00.621Z  INFO 13 --- [feed] [           main] o.s.boot.tomcat.TomcatWebServer          : Tomcat started on port 24000 (http) with context path '/'
+2026-10-20T13:06:00.637Z  INFO 13 --- [feed] [           main] challenge.feed.FeedApplicationKt         : Started FeedApplicationKt in 2.489 seconds (process running for 3.132)
+2026-10-20T13:06:00.678Z  INFO 13 --- [feed] [omcat-handler-0] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-10-20T13:06:00.682Z  INFO 13 --- [feed] [omcat-handler-0] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-10-20T13:06:00.683Z  INFO 13 --- [feed] [omcat-handler-0] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2026-10-20T13:06:18.226Z  INFO 13 --- [feed] [ionShutdownHook] o.s.boot.tomcat.GracefulShutdown         : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-20T13:06:18.238Z  INFO 13 --- [feed] [tomcat-shutdown] o.s.boot.tomcat.GracefulShutdown         : Graceful shutdown complete
+2026-10-20T13:06:18.239Z  INFO 13 --- [feed] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : writer - Shutdown initiated...
+2026-10-20T13:06:18.245Z  INFO 13 --- [feed] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : writer - Shutdown completed.
+2026-10-20T13:06:18.245Z  INFO 13 --- [feed] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : reader - Shutdown initiated...
+2026-10-20T13:06:18.246Z  INFO 13 --- [feed] [ionShutdownHook] com.zaxxer.hikari.HikariDataSource       : reader - Shutdown completed.

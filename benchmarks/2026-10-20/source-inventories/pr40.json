@@ -1,0 +1,167 @@
+{
+  "files": {
+    ".gitignore": {
+      "sha256": "efdab6a9fccf8cbcaddc4ae2ccaf2058c520b352e13aaba50941fb171f8e3644",
+      "bytes": 15,
+      "physical_lines": 2,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "Caddyfile": {
+      "sha256": "e8680d510d17666d8cab75fce1db6adc7cc9eba9dbaaab46157f49aaa58e5c98",
+      "bytes": 1026,
+      "physical_lines": 53,
+      "classification": "other"
+    },
+    "README.md": {
+      "sha256": "6f0f7da296e7f2ed4bc96d2cef6ba28e3d594f74aa1b66017740c32083e976fd",
+      "bytes": 6889,
+      "physical_lines": 93,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "bin/console": {
+      "sha256": "0815e2bfe30884d2f3227cdc3ec69d19565581bfbba821d90e7af3fd08e9c989",
+      "bytes": 728,
+      "physical_lines": 24,
+      "classification": "other"
+    },
+    "build.sh": {
+      "sha256": "59a12cc0c240183c71c9c8a6a06239ef6ea1822299b905d9d613186e01ccf747",
+      "bytes": 464,
+      "physical_lines": 10,
+      "classification": "own_support"
+    },
+    "composer.json": {
+      "sha256": "139259877fa5569188653518809338ef3352a2f32a60ae248eb5b6c5c1a128c5",
+      "bytes": 774,
+      "physical_lines": 31,
+      "classification": "own_support"
+    },
+    "composer.lock": {
+      "sha256": "51bedb36250bb76ecf5cb4cbd0c5216ab8082ee04179a04ec43bd93e41878978",
+      "bytes": 120923,
+      "physical_lines": 3331,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "config/bundles.php": {
+      "sha256": "93340b2a8a6d6991382476f065f46f3d341b25a9df39d56c4aec85006c1235ae",
+      "bytes": 173,
+      "physical_lines": 6,
+      "classification": "application"
+    },
+    "config/packages/framework.php": {
+      "sha256": "aaea86d240b186d09544cd4c80ab3dbdc63c51e7f375e87d6a6c30750a5ac883",
+      "bytes": 467,
+      "physical_lines": 15,
+      "classification": "dependency_or_generated"
+    },
+    "config/packages/security.php": {
+      "sha256": "53078764546081bcec058736705e9f832104e439b2cbe53bcd30f8fb7fc328d3",
+      "bytes": 912,
+      "physical_lines": 28,
+      "classification": "dependency_or_generated"
+    },
+    "config/routes.php": {
+      "sha256": "bd3d0198853d6b8c55d97a887d7c9d7c0c6f5ec9dc22c786724e71ec50487653",
+      "bytes": 225,
+      "physical_lines": 9,
+      "classification": "application"
+    },
+    "config/services.php": {
+      "sha256": "01fab6886aefdb8341f9b95d431455955232a0ae083d5797454526b13c44f4b7",
+      "bytes": 487,
+      "physical_lines": 19,
+      "classification": "application"
+    },
+    "install.sh": {
+      "sha256": "1955c919aeedc511ed24e4842acc14c96183368f992651f88a504b770400921b",
+      "bytes": 1736,
+      "physical_lines": 42,
+      "classification": "own_support"
+    },
+    "public/index.php": {
+      "sha256": "bf6588eb8d35dd243e83f32eb4fcab68d045666c0cbb531698546a732a14c69c",
+      "bytes": 1012,
+      "physical_lines": 40,
+      "classification": "application"
+    },
+    "src/Controller/HealthController.php": {
+      "sha256": "9eb9dbcdbaba402976d1b6a381aa6cb4ed1d3eeab863bb60e43ca4a4bc335d38",
+      "bytes": 841,
+      "physical_lines": 32,
+      "classification": "application"
+    },
+    "src/Controller/PostController.php": {
+      "sha256": "6f19d816e7f1b032cf36ca156813cbf6bb55dcbaa3a0db016f0edaae9b1b5fed",
+      "bytes": 3224,
+      "physical_lines": 94,
+      "classification": "application"
+    },
+    "src/Db/Db.php": {
+      "sha256": "8ce85e12e6ae4e3c6115920d359385c325a37c238e0dbbbcf402e64251c5cdd6",
+      "bytes": 1517,
+      "physical_lines": 57,
+      "classification": "application"
+    },
+    "src/Db/PostRepository.php": {
+      "sha256": "26a6c3797cb7d2ae4e9f02fb2cb4c3f77d594d976c067b0adeaf7c9325fd36e0",
+      "bytes": 3100,
+      "physical_lines": 92,
+      "classification": "application"
+    },
+    "src/EventListener/ExceptionListener.php": {
+      "sha256": "a17b11b0a0b031897a3d0c559a98c7b3b7571808074c03cd09dc3b8c65a170de",
+      "bytes": 1116,
+      "physical_lines": 33,
+      "classification": "application"
+    },
+    "src/Http/Json.php": {
+      "sha256": "2951712fb5797283585798fc11a0b039b4419f3cec2ba28d89b94e8d41892942",
+      "bytes": 650,
+      "physical_lines": 22,
+      "classification": "application"
+    },
+    "src/Kernel.php": {
+      "sha256": "970d8d47dc9f25225ada07f4544d736549bf63a9b2d761b832394e2ccc974413",
+      "bytes": 457,
+      "physical_lines": 21,
+      "classification": "application"
+    },
+    "src/Security/AuthEntryPoint.php": {
+      "sha256": "6458e1afcab75d5204f05a0719d64e19226c81689acc68bf9b87d7c9b56bb419",
+      "bytes": 684,
+      "physical_lines": 20,
+      "classification": "application"
+    },
+    "src/Security/AuthError.php": {
+      "sha256": "1a9fe3c9af5f3fff1cfc7273095a94cb8d9e85aed5452c5558e873aa145315d7",
+      "bytes": 369,
+      "physical_lines": 16,
+      "classification": "application"
+    },
+    "src/Security/AuthFailureHandler.php": {
+      "sha256": "a3b00c6442a99414ac4450d9e2a266319783de4fdaa7e4dc69435ad5651d92d9",
+      "bytes": 805,
+      "physical_lines": 22,
+      "classification": "application"
+    },
+    "src/Security/JwtTokenHandler.php": {
+      "sha256": "57121a8a3b8b25b0e9b533df2b44efa0bd6b8e4bfd71375d559332e724ba7d63",
+      "bytes": 2750,
+      "physical_lines": 71,
+      "classification": "application"
+    },
+    "src/Security/JwtUser.php": {
+      "sha256": "8f9874de97d07e1f4f2da08f21ed02a42e8389bfa59f43e36dbff12c7dfc8540",
+      "bytes": 576,
+      "physical_lines": 27,
+      "classification": "application"
+    },
+    "start.sh": {
+      "sha256": "4f929a2cfcc2b5b404437a6efddb46a11989895aa672aa847d057787c332bb39",
+      "bytes": 446,
+      "physical_lines": 9,
+      "classification": "own_support"
+    }
+  },
+  "skipped_members": []
+}

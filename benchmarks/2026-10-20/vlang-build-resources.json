@@ -1,0 +1,11 @@
+{
+  "architecture": "linux/arm64",
+  "build_memory_allowance_gib": 6,
+  "server_memory_limit_gib": 2,
+  "observed_peak_bytes": 4462714880,
+  "sampled_at": "2026-10-20T11:24:47Z",
+  "oom_events_during_repair": 0,
+  "gc_commit": "c1a45b9ad86f7449509a86360a6c0746615d8c97",
+  "native_gc_archive_sha256": "1f616a417db9de508fc2f93a6cf26533b417d44709f9a208be28e82586a455de",
+  "note": "Observed compiler-bootstrap peak, not an official 2 GiB build proof; final servers use uniform 2 GiB limit."
+}

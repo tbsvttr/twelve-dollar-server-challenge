@@ -1,0 +1,8 @@
+Initializing JWT auth...
+Initializing SQLite database at: /tmp/current-pr85-ndpn_5zi/feed.db
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by org.sqlite.SQLiteJDBCLoader in an unnamed module (file:/suite/sources/pr85/build/server.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+Server listening on 127.0.0.1:24000 with Java Virtual Threads.

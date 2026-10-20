@@ -1,0 +1,470 @@
+Pinned source: ef2e06222218d6bac1956ff6d4d21a7c62da1fb2
+
+$ docker run -d --name twelve-current-build-104 --cpus 1.5 --memory 3g --memory-swap 3g --security-opt seccomp=seccomp-io-uring.json --mount type=bind,src=<BENCHMARK_EVIDENCE>,dst=/evidence,readonly twelve-unified:2026-10-07 sleep infinity
+a5062b99da98dd282667052ba3a2de343f61643d8259b2e73b5f9df015b3af1c
+
+$ docker exec -i twelve-current-build-104 python3 - 104
+Verified 8 pinned source files
+
+$ docker exec twelve-current-build-104 bash /suite/sources/pr104/install.sh
+Hit:1 http://ports.ubuntu.com/ubuntu-ports noble InRelease
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble-updates InRelease [126 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble-backports InRelease [126 kB]
+Get:4 http://ports.ubuntu.com/ubuntu-ports noble-security InRelease [126 kB]
+Get:5 http://ports.ubuntu.com/ubuntu-ports noble-updates/multiverse arm64 Packages [104 kB]
+Get:6 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 Packages [2214 kB]
+Get:7 http://ports.ubuntu.com/ubuntu-ports noble-updates/restricted arm64 Packages [3251 kB]
+Get:8 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 Packages [1786 kB]
+Get:9 http://ports.ubuntu.com/ubuntu-ports noble-backports/multiverse arm64 Packages [669 B]
+Get:10 http://ports.ubuntu.com/ubuntu-ports noble-security/multiverse arm64 Packages [99.1 kB]
+Get:11 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 Packages [1475 kB]
+Get:12 http://ports.ubuntu.com/ubuntu-ports noble-security/restricted arm64 Packages [3129 kB]
+Get:13 http://ports.ubuntu.com/ubuntu-ports noble-security/universe arm64 Packages [1638 kB]
+Fetched 14.1 MB in 1s (10.8 MB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+build-essential is already the newest version (12.10ubuntu1).
+ca-certificates is already the newest version (20260601~24.04.1).
+xz-utils is already the newest version (5.6.1+really5.4.5-1ubuntu0.3).
+xz-utils set to manually installed.
+libgmp-dev is already the newest version (2:6.3.0+dfsg-2ubuntu6.1).
+libffi-dev is already the newest version (3.4.6-1build1).
+libncurses-dev is already the newest version (6.4+20240113-1ubuntu2.2).
+zlib1g-dev is already the newest version (1:1.3.dfsg-3.1ubuntu2.2).
+The following additional packages will be installed:
+  libcurl3t64-gnutls libcurl4t64
+The following packages will be upgraded:
+  curl libcurl3t64-gnutls libcurl4t64
+3 upgraded, 0 newly installed, 0 to remove and 16 not upgraded.
+Need to get 890 kB of archives.
+After this operation, 3072 B of additional disk space will be used.
+Get:1 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 curl arm64 8.5.0-2ubuntu10.16 [222 kB]
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 libcurl4t64 arm64 8.5.0-2ubuntu10.16 [337 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 libcurl3t64-gnutls arm64 8.5.0-2ubuntu10.16 [331 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 890 kB in 0s (2600 kB/s)
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 16962 files and directories currently installed.)
+Preparing to unpack .../curl_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking curl (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Preparing to unpack .../libcurl4t64_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking libcurl4t64:arm64 (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Preparing to unpack .../libcurl3t64-gnutls_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking libcurl3t64-gnutls:arm64 (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Setting up libcurl4t64:arm64 (8.5.0-2ubuntu10.16) ...
+Setting up libcurl3t64-gnutls:arm64 (8.5.0-2ubuntu10.16) ...
+Setting up curl (8.5.0-2ubuntu10.16) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+[1m[92m[ Info  ][0m[0m downloading: https://raw.githubusercontent.com/haskell/ghcup-metadata/master/ghcup-0.1.0.yaml as file /opt/.ghcup/cache/ghcup-0.1.0.yaml
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100  657k  100  657k    0     0  6067k      0 --:--:-- --:--:-- --:--:-- 6088k
+[1m[92m[ Info  ][0m[0m downloading: https://downloads.haskell.org/~ghc/9.10.3/ghc-9.10.3-aarch64-deb10-linux.tar.xz as file /opt/.ghcup/tmp/ghcup-d8e10bab7e36aefc/ghc-9.10.3-aarch64-deb10-linux.tar.xz
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0  210M    0  412k    0     0  3776k      0  0:00:56 --:--:--  0:00:56 3753k 12  210M   12 25.3M    0     0  22.7M      0  0:00:09  0:00:01  0:00:08 22.7M 24  210M   24 51.9M    0     0  24.6M      0  0:00:08  0:00:02  0:00:06 24.5M 38  210M   38 81.7M    0     0  26.2M      0  0:00:07  0:00:03  0:00:04 26.2M 53  210M   53  112M    0     0  27.4M      0  0:00:07  0:00:04  0:00:03 27.4M 69  210M   69  145M    0     0  28.5M      0  0:00:07  0:00:05  0:00:02 29.0M 83  210M   83  176M    0     0  28.8M      0  0:00:07  0:00:06  0:00:01 30.2M 97  210M   97  205M    0     0  28.9M      0  0:00:07  0:00:07 --:--:-- 30.7M100  210M  100  210M    0     0  28.9M      0  0:00:07  0:00:07 --:--:-- 30.8M
+[1m[92m[ Info  ][0m[0m verifying digest of: ghc-9.10.3-aarch64-deb10-linux.tar.xz
+[1m[92m[ Info  ][0m[0m Unpacking: ghc-9.10.3-aarch64-deb10-linux.tar.xz to /opt/.ghcup/tmp/ghcup-04146c3f869d7b06
+[1m[92m[ Info  ][0m[0m Installing ghc
+
+
+
+
+
+
+[6A[0J
+
+
+
+
+
+[6A[0J[1m[92m[ Info  ][0m[0m ghc installation successful
+[1m[93m[ Warn  ][0m[0m New ghc version available. If you want to install this latest version, run 'ghcup install ghc 9.14.1-r0
+[1m[93m[ ...   ] [0m[0mTo skip this check in the future, export GHCUP_SKIP_UPDATE_CHECK=1
+[1m[92m[ Info  ][0m[0m downloading: https://downloads.haskell.org/~ghcup/unofficial-bindists/cabal/3.16.1.0/cabal-install-3.16.1.0-aarch64-linux-deb10.tar.xz as file /opt/.ghcup/tmp/ghcup-fd28d159440385f6/cabal-install-3.16.1.0-aarch64-linux-deb10.tar.xz
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  1 10.5M    1  127k    0     0   279k      0  0:00:38 --:--:--  0:00:38  279k100 10.5M  100 10.5M    0     0  8332k      0  0:00:01  0:00:01 --:--:-- 8338k
+[1m[92m[ Info  ][0m[0m verifying digest of: cabal-install-3.16.1.0-aarch64-linux-deb10.tar.xz
+[1m[92m[ Info  ][0m[0m Unpacking: cabal-install-3.16.1.0-aarch64-linux-deb10.tar.xz to /opt/.ghcup/tmp/ghcup-fd502065290cf34f
+[1m[92m[ Info  ][0m[0m Installing cabal
+[1m[92m[ Info  ][0m[0m cabal installation successful
+[1m[93m[ Warn  ][0m[0m New cabal version available. If you want to install this latest version, run 'ghcup install cabal 3.18.2.0-r0
+[1m[93m[ ...   ] [0m[0mNew ghc version available. If you want to install this latest version, run 'ghcup install ghc 9.14.1-r0
+[1m[93m[ ...   ] [0m[0mTo skip this check in the future, export GHCUP_SKIP_UPDATE_CHECK=1
+The Glorious Glasgow Haskell Compilation System, version 9.10.3
+cabal-install version 3.16.1.0 
+compiled using version 3.16.1.0 of the Cabal library (in-tree)
+
+$ docker exec twelve-current-build-104 chown -R bench:bench /suite/sources/pr104
+
+$ docker exec twelve-current-build-104 runuser -u bench -- env PATH=/opt/twelve-rust/cargo/bin:/usr/local/go/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 NIM_JOBS=2 MAKEFLAGS=-j2 bash /suite/sources/pr104/build.sh
+Config file path source is default config file.
+Config file not found: /home/bench/.config/cabal/config
+Writing default configuration to /home/bench/.config/cabal/config
+Downloading the latest package list from hackage.haskell.org
+Package list of hackage.haskell.org has been updated.
+The index-state is set to 2026-10-15T11:34:24Z.
+Resolving dependencies...
+Build profile: -w ghc-9.10.3 -O1
+In order, the following will be built (use -v for more details):
+ - appar-0.1.8 (lib:appar) (requires download & build)
+ - attoparsec-0.14.4 (lib:attoparsec-internal) (requires download & build)
+ - auto-update-0.2.8 (lib) (requires download & build)
+ - base64-bytestring-1.2.1.0 (lib) (requires download & build)
+ - bsb-http-chunked-0.0.0.4 (lib) (requires download & build)
+ - byteorder-1.0.4 (lib:byteorder) (requires download & build)
+ - cryptohash-sha256-0.11.102.1 (lib) (requires download & build)
+ - hashable-1.5.1.0 (lib) (requires download & build)
+ - hsc2hs-0.68.10 (exe:hsc2hs) (requires download & build)
+ - integer-logarithms-1.0.5 (lib) (requires download & build)
+ - network-byte-order-0.1.8 (lib) (requires download & build)
+ - primitive-0.9.1.0 (lib) (requires download & build)
+ - ram-0.22.1 (lib) (requires download & build)
+ - splitmix-0.1.3.2 (lib) (requires download & build)
+ - time-hourglass-0.3.0 (lib) (requires download & build)
+ - time-manager-0.3.2 (lib) (requires download & build)
+ - utf8-string-1.0.2 (lib) (requires download & build)
+ - word8-0.1.3 (lib) (requires download & build)
+ - unordered-containers-0.2.21 (lib) (requires download & build)
+ - text-short-0.1.6.1 (lib) (requires download & build)
+ - psqueues-0.2.8.3 (lib) (requires download & build)
+ - case-insensitive-1.2.1.0 (lib) (requires download & build)
+ - zlib-0.7.1.1 (lib) (requires download & build)
+ - unix-time-0.5.0 (lib) (requires download & build)
+ - network-3.2.9.0 (lib) (requires download & build)
+ - direct-sqlite-2.3.29 (lib) (requires download & build)
+ - scientific-0.3.9.0 (lib) (requires download & build)
+ - random-1.3.1 (lib) (requires download & build)
+ - vault-0.3.2.0 (lib) (requires download & build)
+ - async-2.2.6 (lib) (requires download & build)
+ - base64-2.0 (lib) (requires download & build)
+ - base16-1.0 (lib) (requires download & build)
+ - http-types-0.12.6 (lib) (requires download & build)
+ - network-control-0.1.7 (lib) (requires download & build)
+ - simple-sendfile-0.2.32 (lib) (requires download & build)
+ - recv-0.1.2 (lib) (requires download & build)
+ - iproute-1.7.15 (lib) (requires download & build)
+ - attoparsec-0.14.4 (lib) (requires download & build)
+ - streaming-commons-0.2.3.1 (lib) (requires download & build)
+ - crypton-pem-0.3.0 (lib) (requires download & build)
+ - crypton-asn1-types-0.4.1 (lib) (requires download & build)
+ - crypton-2.2.0 (lib) (requires download & build)
+ - wai-3.2.5 (lib) (requires download & build)
+ - http-semantics-0.4.1 (lib) (requires download & build)
+ - http-date-0.0.11 (lib) (requires download & build)
+ - crypton-asn1-parse-0.10.0 (lib) (requires download & build)
+ - crypton-asn1-encoding-0.10.0 (lib) (requires download & build)
+ - http2-5.4.8 (lib) (requires download & build)
+ - crypton-x509-1.10.0 (lib) (requires download & build)
+ - warp-3.4.16 (lib) (requires download & build)
+ - server-0.1.0.0 (exe:server) (first run)
+Downloading  byteorder-1.0.4
+Downloaded   byteorder-1.0.4
+Downloading  word8-0.1.3
+Downloaded   word8-0.1.3
+Downloading  base64-bytestring-1.2.1.0
+Downloaded   base64-bytestring-1.2.1.0
+Downloading  bsb-http-chunked-0.0.0.4
+Downloaded   bsb-http-chunked-0.0.0.4
+Downloading  cryptohash-sha256-0.11.102.1
+Downloaded   cryptohash-sha256-0.11.102.1
+Downloading  network-byte-order-0.1.8
+Downloaded   network-byte-order-0.1.8
+Downloading  utf8-string-1.0.2
+Downloaded   utf8-string-1.0.2
+Downloading  primitive-0.9.1.0
+Downloaded   primitive-0.9.1.0
+Downloading  ram-0.22.1
+Downloaded   ram-0.22.1
+Downloading  splitmix-0.1.3.2
+Downloaded   splitmix-0.1.3.2
+Downloading  random-1.3.1
+Downloaded   random-1.3.1
+Downloading  time-hourglass-0.3.0
+Downloaded   time-hourglass-0.3.0
+Downloading  integer-logarithms-1.0.5
+Downloaded   integer-logarithms-1.0.5
+Downloading  auto-update-0.2.8
+Downloaded   auto-update-0.2.8
+Downloading  hsc2hs-0.68.10
+Downloaded   hsc2hs-0.68.10
+Downloading  unix-time-0.5.0
+Downloaded   unix-time-0.5.0
+Downloading  zlib-0.7.1.1
+Downloaded   zlib-0.7.1.1
+Downloading  network-3.2.9.0
+Downloaded   network-3.2.9.0
+Downloading  recv-0.1.2
+Downloaded   recv-0.1.2
+Downloading  simple-sendfile-0.2.32
+Downloaded   simple-sendfile-0.2.32
+Downloading  time-manager-0.3.2
+Downloaded   time-manager-0.3.2
+Downloading  attoparsec-0.14.4
+Downloaded   attoparsec-0.14.4
+Downloading  direct-sqlite-2.3.29
+Starting     attoparsec-0.14.4 (lib:attoparsec-internal)
+Downloaded   direct-sqlite-2.3.29
+Downloading  hashable-1.5.1.0
+Building     attoparsec-0.14.4 (lib:attoparsec-internal)
+Downloaded   hashable-1.5.1.0
+Downloading  case-insensitive-1.2.1.0
+Downloaded   case-insensitive-1.2.1.0
+Downloading  psqueues-0.2.8.3
+Downloaded   psqueues-0.2.8.3
+Downloading  network-control-0.1.7
+Downloaded   network-control-0.1.7
+Downloading  unordered-containers-0.2.21
+Downloaded   unordered-containers-0.2.21
+Downloading  async-2.2.6
+Installing   attoparsec-0.14.4 (lib:attoparsec-internal)
+Completed    attoparsec-0.14.4 (lib:attoparsec-internal)
+Starting     auto-update-0.2.8 (lib)
+Downloaded   async-2.2.6
+Downloading  vault-0.3.2.0
+Downloaded   vault-0.3.2.0
+Downloading  http-types-0.12.6
+Building     auto-update-0.2.8 (lib)
+Downloaded   http-types-0.12.6
+Downloading  http-semantics-0.4.1
+Downloaded   http-semantics-0.4.1
+Downloading  scientific-0.3.9.0
+Downloaded   scientific-0.3.9.0
+Downloading  http-date-0.0.11
+Downloaded   http-date-0.0.11
+Downloading  streaming-commons-0.2.3.1
+Installing   auto-update-0.2.8 (lib)
+Downloaded   streaming-commons-0.2.3.1
+Downloading  text-short-0.1.6.1
+Completed    auto-update-0.2.8 (lib)
+Starting     base64-bytestring-1.2.1.0 (lib)
+Building     base64-bytestring-1.2.1.0 (lib)
+Downloaded   text-short-0.1.6.1
+Downloading  base16-1.0
+Downloaded   base16-1.0
+Downloading  crypton-2.2.0
+Installing   base64-bytestring-1.2.1.0 (lib)
+Downloaded   crypton-2.2.0
+Downloading  crypton-asn1-types-0.4.1
+Completed    base64-bytestring-1.2.1.0 (lib)
+Starting     bsb-http-chunked-0.0.0.4 (lib)
+Downloaded   crypton-asn1-types-0.4.1
+Downloading  crypton-asn1-encoding-0.10.0
+Building     bsb-http-chunked-0.0.0.4 (lib)
+Downloaded   crypton-asn1-encoding-0.10.0
+Downloading  crypton-asn1-parse-0.10.0
+Downloaded   crypton-asn1-parse-0.10.0
+Downloading  base64-2.0
+Installing   bsb-http-chunked-0.0.0.4 (lib)
+Completed    bsb-http-chunked-0.0.0.4 (lib)
+Starting     byteorder-1.0.4 (all, legacy fallback: cabal-version is less than 1.8)
+Downloaded   base64-2.0
+Downloading  crypton-pem-0.3.0
+Downloaded   crypton-pem-0.3.0
+Downloading  crypton-x509-1.10.0
+Building     byteorder-1.0.4 (all, legacy fallback: cabal-version is less than 1.8)
+Downloaded   crypton-x509-1.10.0
+Downloading  wai-3.2.5
+Installing   byteorder-1.0.4 (all, legacy fallback: cabal-version is less than 1.8)
+Downloaded   wai-3.2.5
+Downloading  appar-0.1.8
+Completed    byteorder-1.0.4 (all, legacy fallback: cabal-version is less than 1.8)
+Starting     cryptohash-sha256-0.11.102.1 (lib)
+Building     cryptohash-sha256-0.11.102.1 (lib)
+Downloaded   appar-0.1.8
+Downloading  iproute-1.7.15
+Starting     appar-0.1.8 (all, legacy fallback: cabal-version is less than 1.8)
+Downloaded   iproute-1.7.15
+Downloading  http2-5.4.8
+Building     appar-0.1.8 (all, legacy fallback: cabal-version is less than 1.8)
+Downloaded   http2-5.4.8
+Downloading  warp-3.4.16
+Downloaded   warp-3.4.16
+Installing   appar-0.1.8 (all, legacy fallback: cabal-version is less than 1.8)
+Completed    appar-0.1.8 (all, legacy fallback: cabal-version is less than 1.8)
+Starting     hashable-1.5.1.0 (lib)
+Installing   cryptohash-sha256-0.11.102.1 (lib)
+Completed    cryptohash-sha256-0.11.102.1 (lib)
+Starting     hsc2hs-0.68.10 (exe:hsc2hs)
+Building     hashable-1.5.1.0 (lib)
+Building     hsc2hs-0.68.10 (exe:hsc2hs)
+Installing   hashable-1.5.1.0 (lib)
+Completed    hashable-1.5.1.0 (lib)
+Starting     integer-logarithms-1.0.5 (lib)
+Building     integer-logarithms-1.0.5 (lib)
+Installing   integer-logarithms-1.0.5 (lib)
+Completed    integer-logarithms-1.0.5 (lib)
+Starting     network-byte-order-0.1.8 (lib)
+Building     network-byte-order-0.1.8 (lib)
+Installing   hsc2hs-0.68.10 (exe:hsc2hs)
+Completed    hsc2hs-0.68.10 (exe:hsc2hs)
+Starting     primitive-0.9.1.0 (lib)
+Installing   network-byte-order-0.1.8 (lib)
+Completed    network-byte-order-0.1.8 (lib)
+Starting     ram-0.22.1 (lib)
+Building     primitive-0.9.1.0 (lib)
+Building     ram-0.22.1 (lib)
+Installing   ram-0.22.1 (lib)
+Completed    ram-0.22.1 (lib)
+Starting     splitmix-0.1.3.2 (lib)
+Building     splitmix-0.1.3.2 (lib)
+Installing   splitmix-0.1.3.2 (lib)
+Completed    splitmix-0.1.3.2 (lib)
+Starting     time-hourglass-0.3.0 (lib)
+Building     time-hourglass-0.3.0 (lib)
+Installing   primitive-0.9.1.0 (lib)
+Completed    primitive-0.9.1.0 (lib)
+Starting     time-manager-0.3.2 (lib)
+Building     time-manager-0.3.2 (lib)
+Installing   time-manager-0.3.2 (lib)
+Completed    time-manager-0.3.2 (lib)
+Starting     utf8-string-1.0.2 (lib)
+Building     utf8-string-1.0.2 (lib)
+Installing   utf8-string-1.0.2 (lib)
+Completed    utf8-string-1.0.2 (lib)
+Starting     word8-0.1.3 (lib)
+Building     word8-0.1.3 (lib)
+Installing   time-hourglass-0.3.0 (lib)
+Completed    time-hourglass-0.3.0 (lib)
+Starting     unordered-containers-0.2.21 (lib)
+Installing   word8-0.1.3 (lib)
+Building     unordered-containers-0.2.21 (lib)
+Completed    word8-0.1.3 (lib)
+Starting     text-short-0.1.6.1 (lib)
+Building     text-short-0.1.6.1 (lib)
+Installing   text-short-0.1.6.1 (lib)
+Completed    text-short-0.1.6.1 (lib)
+Starting     psqueues-0.2.8.3 (lib)
+Building     psqueues-0.2.8.3 (lib)
+Installing   psqueues-0.2.8.3 (lib)
+Completed    psqueues-0.2.8.3 (lib)
+Starting     case-insensitive-1.2.1.0 (lib)
+Building     case-insensitive-1.2.1.0 (lib)
+Installing   case-insensitive-1.2.1.0 (lib)
+Completed    case-insensitive-1.2.1.0 (lib)
+Starting     zlib-0.7.1.1 (lib)
+Building     zlib-0.7.1.1 (lib)
+Installing   unordered-containers-0.2.21 (lib)
+Completed    unordered-containers-0.2.21 (lib)
+Starting     unix-time-0.5.0 (lib)
+Installing   zlib-0.7.1.1 (lib)
+Completed    zlib-0.7.1.1 (lib)
+Starting     network-3.2.9.0 (lib)
+Building     unix-time-0.5.0 (lib)
+Installing   unix-time-0.5.0 (lib)
+Completed    unix-time-0.5.0 (lib)
+Starting     direct-sqlite-2.3.29 (lib)
+Building     network-3.2.9.0 (lib)
+Building     direct-sqlite-2.3.29 (lib)
+Installing   network-3.2.9.0 (lib)
+Completed    network-3.2.9.0 (lib)
+Starting     random-1.3.1 (lib)
+Building     random-1.3.1 (lib)
+Installing   random-1.3.1 (lib)
+Completed    random-1.3.1 (lib)
+Starting     scientific-0.3.9.0 (lib)
+Building     scientific-0.3.9.0 (lib)
+Installing   scientific-0.3.9.0 (lib)
+Completed    scientific-0.3.9.0 (lib)
+Starting     base64-2.0 (lib)
+Building     base64-2.0 (lib)
+Installing   base64-2.0 (lib)
+Completed    base64-2.0 (lib)
+Starting     base16-1.0 (lib)
+Building     base16-1.0 (lib)
+Installing   base16-1.0 (lib)
+Completed    base16-1.0 (lib)
+Starting     http-types-0.12.6 (lib)
+Building     http-types-0.12.6 (lib)
+Installing   http-types-0.12.6 (lib)
+Completed    http-types-0.12.6 (lib)
+Starting     vault-0.3.2.0 (lib)
+Building     vault-0.3.2.0 (lib)
+Installing   vault-0.3.2.0 (lib)
+Completed    vault-0.3.2.0 (lib)
+Starting     async-2.2.6 (lib)
+Building     async-2.2.6 (lib)
+Installing   async-2.2.6 (lib)
+Completed    async-2.2.6 (lib)
+Starting     network-control-0.1.7 (lib)
+Building     network-control-0.1.7 (lib)
+Installing   network-control-0.1.7 (lib)
+Completed    network-control-0.1.7 (lib)
+Starting     simple-sendfile-0.2.32 (lib)
+Building     simple-sendfile-0.2.32 (lib)
+Installing   simple-sendfile-0.2.32 (lib)
+Completed    simple-sendfile-0.2.32 (lib)
+Starting     recv-0.1.2 (lib)
+Building     recv-0.1.2 (lib)
+Installing   recv-0.1.2 (lib)
+Completed    recv-0.1.2 (lib)
+Starting     iproute-1.7.15 (lib)
+Building     iproute-1.7.15 (lib)
+Installing   direct-sqlite-2.3.29 (lib)
+Completed    direct-sqlite-2.3.29 (lib)
+Starting     attoparsec-0.14.4 (lib)
+Building     attoparsec-0.14.4 (lib)
+Installing   iproute-1.7.15 (lib)
+Completed    iproute-1.7.15 (lib)
+Starting     crypton-pem-0.3.0 (lib)
+Building     crypton-pem-0.3.0 (lib)
+Installing   crypton-pem-0.3.0 (lib)
+Completed    crypton-pem-0.3.0 (lib)
+Starting     crypton-asn1-types-0.4.1 (lib)
+Building     crypton-asn1-types-0.4.1 (lib)
+Installing   crypton-asn1-types-0.4.1 (lib)
+Completed    crypton-asn1-types-0.4.1 (lib)
+Starting     crypton-2.2.0 (lib)
+Building     crypton-2.2.0 (lib)
+Installing   attoparsec-0.14.4 (lib)
+Completed    attoparsec-0.14.4 (lib)
+Starting     http-semantics-0.4.1 (lib)
+Building     http-semantics-0.4.1 (lib)
+Installing   http-semantics-0.4.1 (lib)
+Completed    http-semantics-0.4.1 (lib)
+Starting     wai-3.2.5 (lib)
+Building     wai-3.2.5 (lib)
+Installing   wai-3.2.5 (lib)
+Completed    wai-3.2.5 (lib)
+Starting     streaming-commons-0.2.3.1 (lib)
+Building     streaming-commons-0.2.3.1 (lib)
+Installing   streaming-commons-0.2.3.1 (lib)
+Completed    streaming-commons-0.2.3.1 (lib)
+Starting     crypton-asn1-parse-0.10.0 (lib)
+Building     crypton-asn1-parse-0.10.0 (lib)
+Installing   crypton-asn1-parse-0.10.0 (lib)
+Completed    crypton-asn1-parse-0.10.0 (lib)
+Starting     crypton-asn1-encoding-0.10.0 (lib)
+Building     crypton-asn1-encoding-0.10.0 (lib)
+Installing   crypton-asn1-encoding-0.10.0 (lib)
+Completed    crypton-asn1-encoding-0.10.0 (lib)
+Starting     http-date-0.0.11 (lib)
+Building     http-date-0.0.11 (lib)
+Installing   http-date-0.0.11 (lib)
+Completed    http-date-0.0.11 (lib)
+Starting     http2-5.4.8 (lib)
+Building     http2-5.4.8 (lib)
+Installing   http2-5.4.8 (lib)
+Completed    http2-5.4.8 (lib)
+Installing   crypton-2.2.0 (lib)
+Completed    crypton-2.2.0 (lib)
+Starting     crypton-x509-1.10.0 (lib)
+Building     crypton-x509-1.10.0 (lib)
+Installing   crypton-x509-1.10.0 (lib)
+Completed    crypton-x509-1.10.0 (lib)
+Starting     warp-3.4.16 (lib)
+Building     warp-3.4.16 (lib)
+Installing   warp-3.4.16 (lib)
+Completed    warp-3.4.16 (lib)
+Configuring executable 'server' for server-0.1.0.0...
+Preprocessing executable 'server' for server-0.1.0.0...
+Building executable 'server' for server-0.1.0.0...
+[1 of 1] Compiling Main             ( Main.hs, dist-newstyle/build/aarch64-linux/ghc-9.10.3/server-0.1.0.0/x/server/build/server/server-tmp/Main.o )
+[2 of 2] Linking dist-newstyle/build/aarch64-linux/ghc-9.10.3/server-0.1.0.0/x/server/build/server/server
+
+$ docker exec twelve-current-build-104 bash -c rm -rf /tmp/* /root/.cache /home/bench/.cache /home/bench/.npm/_cacache /var/lib/apt/lists/* /var/cache/apt/archives/*.deb
+
+$ docker commit twelve-current-build-104 twelve-current-pr104:2026-10-20
+sha256:48013a9f5ed65807d13079cddaa66abd7bfb3463698b892a5400dfff54f1fec8

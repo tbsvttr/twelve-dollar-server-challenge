@@ -1,0 +1,35 @@
+{
+  "files": {
+    ".gitignore": {
+      "sha256": "44c92e3a70ad3307b7056871c2bdb096d8bfa9373f5bf06a79bb6324a20ff2fb",
+      "bytes": 8,
+      "physical_lines": 1,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "Cargo.lock": {
+      "sha256": "9dc07c97d79df8ec694283144af9f6ace65a1336b18add72b31fa8c2fd371076",
+      "bytes": 42855,
+      "physical_lines": 1715,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "Cargo.toml": {
+      "sha256": "566f598410e6e5eb6f223116ddc90930f575a53735bffea2f41b80e379b0698c",
+      "bytes": 645,
+      "physical_lines": 35,
+      "classification": "own_support"
+    },
+    "README.md": {
+      "sha256": "b1869c37ece8298ef52cf3269fb401c4a6e2597d260dc89e6c7a6be7def57d68",
+      "bytes": 10449,
+      "physical_lines": 167,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "src/main.rs": {
+      "sha256": "ecada8b7b1624b929a138966389f95ee0035075ed223de58003fc3d2c184f778",
+      "bytes": 17021,
+      "physical_lines": 545,
+      "classification": "application"
+    }
+  },
+  "skipped_members": []
+}

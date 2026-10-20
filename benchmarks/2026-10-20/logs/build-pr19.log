@@ -1,0 +1,8 @@
+Pinned source: bd517fa7c8a57b135579ae02fdddb6196b4cd9a4
+bdcc616aa53389228578aaf61c7bd765008ede5027f0ef6ff3ea9ca0a1f49796
+ Downloading crates ...
+  Downloaded io-uring v0.7.15
+   Compiling io-uring v0.7.15
+   Compiling twelve-rust-poll v0.1.0 (/suite/sources/pr19)
+   Compiling bitflags v2.13.2
+    Finished `release` profile [optimized] target(s) in 1m 12s

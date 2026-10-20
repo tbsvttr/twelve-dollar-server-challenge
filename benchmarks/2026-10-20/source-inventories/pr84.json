@@ -1,0 +1,77 @@
+{
+  "files": {
+    ".gitignore": {
+      "sha256": "21cfec9feb395a592d35195901afa1ed2217f702b20186b80287c97763192bb6",
+      "bytes": 35,
+      "physical_lines": 2,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "README.md": {
+      "sha256": "66d620fa10d8ae02fa27214b90a056a5c2cf1a372ed86ca9a3d4bde9e3b0e818",
+      "bytes": 10728,
+      "physical_lines": 150,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "bench/capacity.sh": {
+      "sha256": "15cd943587f14b83e9a06e83669688759ac26494ee2bc3d83ef07405af307f4e",
+      "bytes": 2819,
+      "physical_lines": 44,
+      "classification": "own_support"
+    },
+    "bench/connection_load.c": {
+      "sha256": "c75620cd63641cd6301560597cf035f06b0efa4375dfeeee6039ff27f2187fc4",
+      "bytes": 18115,
+      "physical_lines": 383,
+      "classification": "own_support"
+    },
+    "bench/http_edge.py": {
+      "sha256": "b5ae5a5028157520325eac32b9b16882b100a970393a6820361055214344e0a5",
+      "bytes": 7976,
+      "physical_lines": 222,
+      "classification": "own_support"
+    },
+    "bench/idleconns.py": {
+      "sha256": "ec77a11bfeafc776854815d2f9bd49dda9748f74a6e94bec99aa25f0407bc8be",
+      "bytes": 527,
+      "physical_lines": 12,
+      "classification": "own_support"
+    },
+    "bench/mix.lua": {
+      "sha256": "45b88aef80172b42a791445abca0badf865aa884db6a98021d245c9f6fb9ea5f",
+      "bytes": 2025,
+      "physical_lines": 35,
+      "classification": "own_support"
+    },
+    "bench/throughput.sh": {
+      "sha256": "2e1473f41cc97b992e4c8215962531b9a34d87cd5ff3f2aa1cb2658f2198428f",
+      "bytes": 1904,
+      "physical_lines": 25,
+      "classification": "own_support"
+    },
+    "build.sh": {
+      "sha256": "5a0ac222bc3b183ea6d9f2a9ff5ee9e9555ed1146ae7781ee9e5fdd475be7029",
+      "bytes": 267,
+      "physical_lines": 6,
+      "classification": "own_support"
+    },
+    "install.sh": {
+      "sha256": "1bde7cc0dc04b231ca0244c82a7911dc4f2d738597f5e4656a28d86e8596e127",
+      "bytes": 378,
+      "physical_lines": 8,
+      "classification": "own_support"
+    },
+    "server.py": {
+      "sha256": "5823985ab2b5b4bcf953e3a7e4eef89bafffd5b302282fb748dedf358372df25",
+      "bytes": 22146,
+      "physical_lines": 630,
+      "classification": "application"
+    },
+    "start.sh": {
+      "sha256": "34e9f958d2fde3800f78753d7bd0d69ae37f3b77ba14a4ca8906de524691224a",
+      "bytes": 189,
+      "physical_lines": 6,
+      "classification": "own_support"
+    }
+  },
+  "skipped_members": []
+}

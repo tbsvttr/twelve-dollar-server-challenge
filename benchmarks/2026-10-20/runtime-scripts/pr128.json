@@ -1,0 +1,4 @@
+[
+  "Install the same Oracle GraalVM 25.4.4.1.1 release from its official Linux AArch64 archive. Oracle provides no checksum sidecar; this run recorded SHA-256 780d5784d3db9bbcff77775c4d026e4a0e21a041ba9dba7c59135949ea5234a4 and java -version. The retained adapter now pins that digest for repeat runs. Preserve the Gradle 9.6.1 pin and checksum.",
+  "Restore the Git index gitlink omitted by the source tarball: TrikeShed 17c7180dd2303280e5889abb2a3f690064a55bf8, verified at the pinned submission commit through GitHub contents API. Application sources and build.sh are unchanged."
+]

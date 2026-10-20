@@ -1,0 +1,6 @@
+Pinned source: cfe31fc20f89836c4e432b660c689c19dea97d27
+cb43a843cbf3fc598f102de22b15444f803bdd03865f38c08e89bf7895fca416
+/tmp/tmp.1peF8ambJZ: OK
+1.4.3
+   [2ms]  bundle  1 modules
+  [96ms] compile  bin/server

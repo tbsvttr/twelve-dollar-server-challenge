@@ -1,0 +1,28 @@
+Pinned source: 6cb31d973d197c366585514f274ebfad6b58daf0
+
+$ docker run -d --name twelve-current-build-106 --cpus 1.5 --memory 3g --memory-swap 3g --mount type=bind,src=<BENCHMARK_EVIDENCE>,dst=/evidence,readonly twelve-unified:2026-10-07 sleep infinity
+3c1214a2e47ce3ffc086540e517966fe45449fa687fb78129262c30d15a389d1
+
+$ docker exec -i twelve-current-build-106 python3 - 106
+Verified 20 pinned source files
+
+$ docker exec twelve-current-build-106 bash /evidence/runtime-scripts/pr106.sh
+go version go1.27.1 linux/arm64
+
+$ docker exec twelve-current-build-106 chown -R bench:bench /suite/sources/pr106
+
+$ docker exec twelve-current-build-106 runuser -u bench -- env PATH=/opt/twelve-rust/cargo/bin:/usr/local/go/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 NIM_JOBS=2 MAKEFLAGS=-j2 bash /suite/sources/pr106/build.sh
+build: fetching SQLite 3540000
+build: gcc PGO profile applied (gcc 13)
+build: compiling sqlite3.c (gcc)
+build: Go PGO profile applied (default.pgo)
+go: downloading github.com/valyala/fasthttp v1.75.0
+go: downloading github.com/klauspost/compress v1.20.1
+go: downloading github.com/molecule-man/go-brrr v1.1.1
+go: downloading github.com/valyala/bytebufferpool v1.0.0
+build: bin/server ready
+
+$ docker exec twelve-current-build-106 bash -c rm -rf /tmp/* /root/.cache /home/bench/.cache /home/bench/.npm/_cacache /var/lib/apt/lists/* /var/cache/apt/archives/*.deb
+
+$ docker commit twelve-current-build-106 twelve-current-pr106:2026-10-20
+sha256:87683e22ebb05e55db0f0d4cad2c489a014777cf7da88d7ae84f5021bd0d1ae4

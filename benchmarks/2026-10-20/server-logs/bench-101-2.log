@@ -1,0 +1,2 @@
+sqlite 3.54.0 journal_mode=wal readers=4 outs=64
+listening on 127.0.0.1:24000

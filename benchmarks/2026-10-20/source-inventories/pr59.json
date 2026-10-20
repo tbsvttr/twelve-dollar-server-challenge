@@ -1,0 +1,131 @@
+{
+  "files": {
+    ".gitattributes": {
+      "sha256": "13cb7f5e12dd469dc5c88afcf0cd035abe6cd1fc2f30afe224991e66b4262222",
+      "bytes": 29,
+      "physical_lines": 2,
+      "classification": "other"
+    },
+    ".gitignore": {
+      "sha256": "9614818bd8c2adccd7f2b9399091d32a4ff067ede8f0bca2eb337366716e741e",
+      "bytes": 48,
+      "physical_lines": 6,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "README.md": {
+      "sha256": "ad0291a4b54cb3289430430c8c42d18a39c7100a6fe11913c38f5100eb41f30c",
+      "bytes": 6786,
+      "physical_lines": 54,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "build.sh": {
+      "sha256": "e02743d5f8376aeb3c5b5bd2a664cd11f2c1becc576e0912a14d88bbbf87d4fc",
+      "bytes": 163,
+      "physical_lines": 5,
+      "classification": "own_support"
+    },
+    "bun.lock": {
+      "sha256": "83b3f88e792acf3a3aa0e6d054a28828412d860f8bce498b537a97f01342bedd",
+      "bytes": 4497,
+      "physical_lines": 58,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "install.sh": {
+      "sha256": "04585f861dd36a3f8a074ea9f9bfe61a8720f7632d934c0bba89ced7abcd75d3",
+      "bytes": 488,
+      "physical_lines": 10,
+      "classification": "own_support"
+    },
+    "package.json": {
+      "sha256": "017eccba262cb6e9cd837324604f1a36d321f17cb52efeb0eec398cb40e6b3dd",
+      "bytes": 336,
+      "physical_lines": 17,
+      "classification": "own_support"
+    },
+    "src/auth.ts": {
+      "sha256": "ee1081fdbc4de7edeb0dbb8e3da2d7397f2f55b548344bf4a261d6f544b54ee3",
+      "bytes": 3223,
+      "physical_lines": 98,
+      "classification": "application"
+    },
+    "src/checkpoint.ts": {
+      "sha256": "6950679ffe24085607edee8b3e9a982ddb025f2eeb2755675cd113e00d970eb3",
+      "bytes": 462,
+      "physical_lines": 17,
+      "classification": "application"
+    },
+    "src/config.ts": {
+      "sha256": "39e69dd6c15e24e57591829eb9b67578dd87000ef35e09a0a34eddc28d75ce49",
+      "bytes": 1591,
+      "physical_lines": 44,
+      "classification": "application"
+    },
+    "src/connections.ts": {
+      "sha256": "75ec607638bbcf22b2bca559b20db26a465743f98033ac85ee7c35d670197a9a",
+      "bytes": 1186,
+      "physical_lines": 46,
+      "classification": "application"
+    },
+    "src/db.ts": {
+      "sha256": "b23cb31e1ee5d7149ebd3b6433a20e81204b1c44216c61df6977905ea31d53f7",
+      "bytes": 3700,
+      "physical_lines": 111,
+      "classification": "application"
+    },
+    "src/errors.ts": {
+      "sha256": "dbd03a0fce190ca136bc0015632c9c807b9c608ed1174d647c0ed93f89ae3beb",
+      "bytes": 1022,
+      "physical_lines": 44,
+      "classification": "application"
+    },
+    "src/http.ts": {
+      "sha256": "2040c4696f51fe22a987fc39002cca9cc66679e50f1f018da2473275525d32a7",
+      "bytes": 710,
+      "physical_lines": 19,
+      "classification": "application"
+    },
+    "src/index.ts": {
+      "sha256": "a4c505713993b7468d1c61ada64864a8d086b03ea1982d2b4ab793edb6d48f2e",
+      "bytes": 3499,
+      "physical_lines": 110,
+      "classification": "application"
+    },
+    "src/validation.ts": {
+      "sha256": "1cefa3e5175040a6a3696267102226ecacb914c32d25590b0ba8641f9a8c5f3f",
+      "bytes": 1686,
+      "physical_lines": 50,
+      "classification": "application"
+    },
+    "start.sh": {
+      "sha256": "9d11e30c54bcbeb170c5cee076d6e2ac0b9022b2e15b077f349dc90008c44578",
+      "bytes": 155,
+      "physical_lines": 5,
+      "classification": "own_support"
+    },
+    "tests/auth.test.ts": {
+      "sha256": "f3381aebe5790f6cba5293141e3ee7d02d413e60e7c2b1df5ffa696d9a0e4305",
+      "bytes": 1863,
+      "physical_lines": 44,
+      "classification": "own_support"
+    },
+    "tests/connections.test.ts": {
+      "sha256": "98b0d9e8f091d1d28aa4f42ab3ccb1991c4ee44980400d411e0205754e2431fc",
+      "bytes": 1175,
+      "physical_lines": 34,
+      "classification": "own_support"
+    },
+    "tests/validation.test.ts": {
+      "sha256": "7530d629a4cef7674f6513eebe8aeb8ce77a5b2324162176371e1613c9c80103",
+      "bytes": 1156,
+      "physical_lines": 33,
+      "classification": "own_support"
+    },
+    "tsconfig.json": {
+      "sha256": "c9460e90884256f244003e55ac307c1cd5d80f250532c64984b8277bac2ead7d",
+      "bytes": 404,
+      "physical_lines": 17,
+      "classification": "own_support"
+    }
+  },
+  "skipped_members": []
+}

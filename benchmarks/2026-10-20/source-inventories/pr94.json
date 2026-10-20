@@ -1,0 +1,47 @@
+{
+  "files": {
+    ".gitignore": {
+      "sha256": "ec439a9a9910a57da38141f9a12d9183ee1abfed1ea58fa97d7d31423ec53da0",
+      "bytes": 5,
+      "physical_lines": 1,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "README.md": {
+      "sha256": "3c3db44710bf5ce4a47e055c78fde8177d09449347d523f584fa12f0cf350611",
+      "bytes": 8507,
+      "physical_lines": 141,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "build.sh": {
+      "sha256": "a659a6d584e7d7f9d9e4229f8bd06c28cad310132eefdd3c6856073ea0d49f42",
+      "bytes": 438,
+      "physical_lines": 8,
+      "classification": "own_support"
+    },
+    "install.sh": {
+      "sha256": "0887ac31cf79c4ef453982e367a71ca81dad017080f32e3df4e68fe1fb1ae4fa",
+      "bytes": 1186,
+      "physical_lines": 25,
+      "classification": "own_support"
+    },
+    "lua/app.lua": {
+      "sha256": "a2cfa34eeabc9250cb4799355c6fb3e8fc5a9b586efc8bdaee8c990f1fc48d30",
+      "bytes": 11257,
+      "physical_lines": 320,
+      "classification": "application"
+    },
+    "nginx.conf": {
+      "sha256": "c72cb947f5d1df806074f762ab2fec33e2a9020fea943e9c756792b9b00012a5",
+      "bytes": 1359,
+      "physical_lines": 47,
+      "classification": "own_support"
+    },
+    "start.sh": {
+      "sha256": "ee984fbe2939bd4946d48be8e5b0be17fe062b97f1d261850a2880c683132ee4",
+      "bytes": 651,
+      "physical_lines": 13,
+      "classification": "own_support"
+    }
+  },
+  "skipped_members": []
+}

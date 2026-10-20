@@ -1,0 +1,10 @@
+
+$ docker exec twelve-current-build-pr69 bash -c set -e; rm -rf /suite/sources; mkdir -p /suite/sources; cp -a /evidence/sources/pr69 /suite/sources/; cp /evidence/manifest.json /suite/manifest.json; cp /evidence/schema.sql /suite/schema.sql; chown -R bench:bench /suite/sources
+
+$ docker exec twelve-current-build-pr69 bash /evidence/runtime-scripts/pr69.sh
+{"V_COMMIT":"c36172591e766668cf8aa7cc307f05764b6a0d49","VC_COMMIT":"bcfdc7f33e7b7908ee40f76d059c0e2894fb4a3b","TCC_COMMIT":"d6e7ac1b1bcc98aed734a6ecbfa8509f24606c74","native_gc_commit":"c1a45b9ad86f7449509a86360a6c0746615d8c97","native_gc_config":"USE_MMAP=1 plus existing USE_MUNMAP=1"}
+V 0.5.2 
+
+$ docker exec twelve-current-build-pr69 runuser -u bench -- env PATH=/usr/local/go/bin:/opt/twelve-rust/cargo/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 V_MACOS_V3_NO_FALLBACK=1 bash /suite/sources/pr69/build.sh
+
+$ docker exec twelve-current-build-pr69 bash -c rm -f /usr/local/bin/nproc; rm -rf /tmp/* /root/.cache /root/.cargo/registry /home/bench/.cache /home/bench/.cargo/registry /home/bench/.npm/_cacache /var/lib/apt/lists/* /var/cache/apt/archives/*.deb; find /suite/sources -type d -path '*/target/release/incremental' -prune -exec rm -rf {} +

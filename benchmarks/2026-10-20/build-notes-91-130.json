@@ -1,0 +1,12 @@
+{
+  "114": {
+    "toolchain": "rustc 1.99.1 (58cf8f9c3 2026-10-13) and pinned mold 3.0.0 built from source",
+    "note": "The submitted installer selects current official stable Rust rather than a fixed Rust version."
+  },
+  "123-arsd-hybridcgi": {
+    "reason": "DUB targetName is server, but submitted build.sh copies nonexistent feed-server to bin/server after successful compilation and linking."
+  },
+  "120": {
+    "reason": "Unconditional x86 SSE2 intrinsics in emitted C (src/jsonbuf.nim:44), with no ARM64 implementation. Architecture limitation identified before toolchain installation."
+  }
+}

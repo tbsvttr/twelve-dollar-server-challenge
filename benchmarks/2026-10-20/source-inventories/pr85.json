@@ -1,0 +1,65 @@
+{
+  "files": {
+    "README.md": {
+      "sha256": "4a1314450fe2c178e24a4f03904619c44cf36e06d552e6481f5118c8522c6c45",
+      "bytes": 4442,
+      "physical_lines": 67,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "build.sh": {
+      "sha256": "e27fd64b87a7b13337ec1a973a37ebc74f23ed213b358e9699c148e0c9ddcdf7",
+      "bytes": 694,
+      "physical_lines": 24,
+      "classification": "own_support"
+    },
+    "install.sh": {
+      "sha256": "4e21e984e773726b68f5ef2bd9de32d9cdd61e98a0adec3f3231a729a25ab7c9",
+      "bytes": 610,
+      "physical_lines": 19,
+      "classification": "own_support"
+    },
+    "src/server/ConnectionTracker.java": {
+      "sha256": "b624995400ef270038fc8376f6de2fbaed3d7937898a3db201faacfd8373cfbf",
+      "bytes": 1537,
+      "physical_lines": 49,
+      "classification": "application"
+    },
+    "src/server/Database.java": {
+      "sha256": "6c06b794914438173122bcf7c6d5be7e2355006663f74d63360c67252ffc5462",
+      "bytes": 11656,
+      "physical_lines": 299,
+      "classification": "application"
+    },
+    "src/server/HttpHandler.java": {
+      "sha256": "5746ab7105e99c73ae768b76dc097c5aa9d2db59f17fdd59371a617ad16b0a6c",
+      "bytes": 11689,
+      "physical_lines": 270,
+      "classification": "application"
+    },
+    "src/server/JsonUtil.java": {
+      "sha256": "97cddf8a25186a619c8c00b22caa00bbfe0571eb61003ebf894cabbc6e2017f2",
+      "bytes": 5527,
+      "physical_lines": 170,
+      "classification": "application"
+    },
+    "src/server/JwtAuth.java": {
+      "sha256": "dabda9bfebadbee99e7d634552cf03fdd1ca4e2581b93824114ce820f4bb25c9",
+      "bytes": 5785,
+      "physical_lines": 155,
+      "classification": "application"
+    },
+    "src/server/Server.java": {
+      "sha256": "9d8b40947b1b67afeb0f0cb8d746526253a8b5d281451e7d14589995c3eaa737",
+      "bytes": 1773,
+      "physical_lines": 45,
+      "classification": "application"
+    },
+    "start.sh": {
+      "sha256": "1d3d9283ce39c31838ddb90b9aefd9bebac2991af99995345572413974d31f61",
+      "bytes": 310,
+      "physical_lines": 14,
+      "classification": "own_support"
+    }
+  },
+  "skipped_members": []
+}

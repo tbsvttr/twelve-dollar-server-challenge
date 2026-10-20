@@ -1,0 +1,408 @@
+
+$ docker exec twelve-current-build-pr85 bash -c set -e; rm -rf /suite/sources; mkdir -p /suite/sources; cp -a /evidence/sources/pr85 /suite/sources/; cp /evidence/manifest.json /suite/manifest.json; cp /evidence/schema.sql /suite/schema.sql; chown -R bench:bench /suite/sources
+
+$ docker exec twelve-current-build-pr85 bash /evidence/runtime-scripts/pr85.sh
+Hit:1 http://ports.ubuntu.com/ubuntu-ports noble InRelease
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble-updates InRelease [126 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble-backports InRelease [126 kB]
+Get:4 http://ports.ubuntu.com/ubuntu-ports noble-security InRelease [126 kB]
+Get:5 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 Packages [1786 kB]
+Get:6 http://ports.ubuntu.com/ubuntu-ports noble-updates/multiverse arm64 Packages [104 kB]
+Get:7 http://ports.ubuntu.com/ubuntu-ports noble-updates/restricted arm64 Packages [3251 kB]
+Get:8 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 Packages [2214 kB]
+Get:9 http://ports.ubuntu.com/ubuntu-ports noble-backports/multiverse arm64 Packages [669 B]
+Get:10 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 Packages [1475 kB]
+Get:11 http://ports.ubuntu.com/ubuntu-ports noble-security/multiverse arm64 Packages [99.1 kB]
+Get:12 http://ports.ubuntu.com/ubuntu-ports noble-security/universe arm64 Packages [1638 kB]
+Get:13 http://ports.ubuntu.com/ubuntu-ports noble-security/restricted arm64 Packages [3129 kB]
+Fetched 14.1 MB in 2s (5701 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  adduser alsa-topology-conf alsa-ucm-conf ca-certificates-java dbus dbus-bin
+  dbus-daemon dbus-session-bus-common dbus-system-bus-common fontconfig-config
+  fonts-dejavu-core fonts-dejavu-mono java-common libapparmor1 libasound2-data
+  libasound2t64 libavahi-client3 libavahi-common-data libavahi-common3
+  libcups2t64 libdbus-1-3 libfontconfig1 libfreetype6 libglib2.0-0t64
+  libglib2.0-data libgraphite2-3 libharfbuzz0b libjpeg-turbo8 libjpeg8
+  liblcms2-2 libnspr4 libnss3 libpcsclite1 libpng16-16t64
+  openjdk-21-jre-headless shared-mime-info xdg-user-dirs
+Suggested packages:
+  liblocale-gettext-perl cron quota ecryptfs-utils default-dbus-session-bus
+  | dbus-session-bus default-jre alsa-utils libasound2-plugins cups-common
+  low-memory-monitor liblcms2-utils pcscd openjdk-21-demo openjdk-21-source
+  libnss-mdns fonts-dejavu-extra fonts-ipafont-gothic fonts-ipafont-mincho
+  fonts-wqy-microhei | fonts-wqy-zenhei fonts-indic
+The following NEW packages will be installed:
+  adduser alsa-topology-conf alsa-ucm-conf ca-certificates-java dbus dbus-bin
+  dbus-daemon dbus-session-bus-common dbus-system-bus-common fontconfig-config
+  fonts-dejavu-core fonts-dejavu-mono java-common libapparmor1 libasound2-data
+  libasound2t64 libavahi-client3 libavahi-common-data libavahi-common3
+  libcups2t64 libdbus-1-3 libfontconfig1 libfreetype6 libglib2.0-0t64
+  libglib2.0-data libgraphite2-3 libharfbuzz0b libjpeg-turbo8 libjpeg8
+  liblcms2-2 libnspr4 libnss3 libpcsclite1 libpng16-16t64
+  openjdk-21-jdk-headless openjdk-21-jre-headless shared-mime-info
+  xdg-user-dirs
+0 upgraded, 38 newly installed, 0 to remove and 19 not upgraded.
+Need to get 136 MB of archives.
+After this operation, 328 MB of additional disk space will be used.
+Get:1 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 adduser all 3.137ubuntu1 [101 kB]
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libdbus-1-3 arm64 1.14.10-4ubuntu4.1 [210 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 dbus-bin arm64 1.14.10-4ubuntu4.1 [38.8 kB]
+Get:4 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 dbus-session-bus-common all 1.14.10-4ubuntu4.1 [80.5 kB]
+Get:5 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libapparmor1 arm64 4.0.1really4.0.1-0ubuntu0.24.04.9 [51.9 kB]
+Get:6 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 dbus-daemon arm64 1.14.10-4ubuntu4.1 [115 kB]
+Get:7 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 dbus-system-bus-common all 1.14.10-4ubuntu4.1 [81.6 kB]
+Get:8 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 dbus arm64 1.14.10-4ubuntu4.1 [23.9 kB]
+Get:9 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libglib2.0-0t64 arm64 2.80.0-6ubuntu3.9 [1533 kB]
+Get:10 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libglib2.0-data all 2.80.0-6ubuntu3.9 [50.1 kB]
+Get:11 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 shared-mime-info arm64 2.4-4 [472 kB]
+Get:12 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 xdg-user-dirs arm64 0.18-1build1 [18.4 kB]
+Get:13 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libpng16-16t64 arm64 1.6.43-5ubuntu0.7 [187 kB]
+Get:14 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 alsa-topology-conf all 1.2.5.1-2 [15.5 kB]
+Get:15 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libasound2-data all 1.2.11-1ubuntu0.3 [21.4 kB]
+Get:16 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libasound2t64 arm64 1.2.11-1ubuntu0.3 [387 kB]
+Get:17 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 alsa-ucm-conf all 1.2.10-1ubuntu5.15 [70.5 kB]
+Get:18 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 ca-certificates-java all 20240118 [11.6 kB]
+Get:19 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 fonts-dejavu-mono all 2.37-8 [502 kB]
+Get:20 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 fonts-dejavu-core all 2.37-8 [835 kB]
+Get:21 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 fontconfig-config arm64 2.15.0-1.1ubuntu2 [37.4 kB]
+Get:22 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 java-common all 0.75+exp1 [6798 B]
+Get:23 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libavahi-common-data arm64 0.8-13ubuntu6.2 [30.0 kB]
+Get:24 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libavahi-common3 arm64 0.8-13ubuntu6.2 [23.3 kB]
+Get:25 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libavahi-client3 arm64 0.8-13ubuntu6.2 [27.3 kB]
+Get:26 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libcups2t64 arm64 2.4.7-1.2ubuntu7.14 [277 kB]
+Get:27 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libfreetype6 arm64 2.13.2+dfsg-1ubuntu0.2 [393 kB]
+Get:28 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libfontconfig1 arm64 2.15.0-1.1ubuntu2 [142 kB]
+Get:29 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libgraphite2-3 arm64 1.3.14-2ubuntu0.24.04.1 [71.1 kB]
+Get:30 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libharfbuzz0b arm64 8.3.0-2build2 [463 kB]
+Get:31 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libjpeg-turbo8 arm64 2.1.5-2ubuntu2 [163 kB]
+Get:32 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libjpeg8 arm64 8c-2ubuntu11 [2148 B]
+Get:33 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 liblcms2-2 arm64 2.14-2ubuntu0.1 [161 kB]
+Get:34 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libnspr4 arm64 2:4.35-1.1build1 [114 kB]
+Get:35 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libnss3 arm64 2:3.98-1ubuntu0.2 [1406 kB]
+Get:36 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libpcsclite1 arm64 2.0.3-1build1 [21.8 kB]
+Get:37 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 openjdk-21-jre-headless arm64 21.0.12.1+1-1~24.04.4 [45.8 MB]
+Get:38 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 openjdk-21-jdk-headless arm64 21.0.12.1+1-1~24.04.4 [81.9 MB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 136 MB in 6s (22.3 MB/s)
+Selecting previously unselected package adduser.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 16962 files and directories currently installed.)
+Preparing to unpack .../adduser_3.137ubuntu1_all.deb ...
+Unpacking adduser (3.137ubuntu1) ...
+Setting up adduser (3.137ubuntu1) ...
+Selecting previously unselected package libdbus-1-3:arm64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 17010 files and directories currently installed.)
+Preparing to unpack .../00-libdbus-1-3_1.14.10-4ubuntu4.1_arm64.deb ...
+Unpacking libdbus-1-3:arm64 (1.14.10-4ubuntu4.1) ...
+Selecting previously unselected package dbus-bin.
+Preparing to unpack .../01-dbus-bin_1.14.10-4ubuntu4.1_arm64.deb ...
+Unpacking dbus-bin (1.14.10-4ubuntu4.1) ...
+Selecting previously unselected package dbus-session-bus-common.
+Preparing to unpack .../02-dbus-session-bus-common_1.14.10-4ubuntu4.1_all.deb ...
+Unpacking dbus-session-bus-common (1.14.10-4ubuntu4.1) ...
+Selecting previously unselected package libapparmor1:arm64.
+Preparing to unpack .../03-libapparmor1_4.0.1really4.0.1-0ubuntu0.24.04.9_arm64.deb ...
+Unpacking libapparmor1:arm64 (4.0.1really4.0.1-0ubuntu0.24.04.9) ...
+Selecting previously unselected package dbus-daemon.
+Preparing to unpack .../04-dbus-daemon_1.14.10-4ubuntu4.1_arm64.deb ...
+Unpacking dbus-daemon (1.14.10-4ubuntu4.1) ...
+Selecting previously unselected package dbus-system-bus-common.
+Preparing to unpack .../05-dbus-system-bus-common_1.14.10-4ubuntu4.1_all.deb ...
+Unpacking dbus-system-bus-common (1.14.10-4ubuntu4.1) ...
+Selecting previously unselected package dbus.
+Preparing to unpack .../06-dbus_1.14.10-4ubuntu4.1_arm64.deb ...
+Unpacking dbus (1.14.10-4ubuntu4.1) ...
+Selecting previously unselected package libglib2.0-0t64:arm64.
+Preparing to unpack .../07-libglib2.0-0t64_2.80.0-6ubuntu3.9_arm64.deb ...
+Unpacking libglib2.0-0t64:arm64 (2.80.0-6ubuntu3.9) ...
+Selecting previously unselected package libglib2.0-data.
+Preparing to unpack .../08-libglib2.0-data_2.80.0-6ubuntu3.9_all.deb ...
+Unpacking libglib2.0-data (2.80.0-6ubuntu3.9) ...
+Selecting previously unselected package shared-mime-info.
+Preparing to unpack .../09-shared-mime-info_2.4-4_arm64.deb ...
+Unpacking shared-mime-info (2.4-4) ...
+Selecting previously unselected package xdg-user-dirs.
+Preparing to unpack .../10-xdg-user-dirs_0.18-1build1_arm64.deb ...
+Unpacking xdg-user-dirs (0.18-1build1) ...
+Selecting previously unselected package libpng16-16t64:arm64.
+Preparing to unpack .../11-libpng16-16t64_1.6.43-5ubuntu0.7_arm64.deb ...
+Unpacking libpng16-16t64:arm64 (1.6.43-5ubuntu0.7) ...
+Selecting previously unselected package alsa-topology-conf.
+Preparing to unpack .../12-alsa-topology-conf_1.2.5.1-2_all.deb ...
+Unpacking alsa-topology-conf (1.2.5.1-2) ...
+Selecting previously unselected package libasound2-data.
+Preparing to unpack .../13-libasound2-data_1.2.11-1ubuntu0.3_all.deb ...
+Unpacking libasound2-data (1.2.11-1ubuntu0.3) ...
+Selecting previously unselected package libasound2t64:arm64.
+Preparing to unpack .../14-libasound2t64_1.2.11-1ubuntu0.3_arm64.deb ...
+Unpacking libasound2t64:arm64 (1.2.11-1ubuntu0.3) ...
+Selecting previously unselected package alsa-ucm-conf.
+Preparing to unpack .../15-alsa-ucm-conf_1.2.10-1ubuntu5.15_all.deb ...
+Unpacking alsa-ucm-conf (1.2.10-1ubuntu5.15) ...
+Selecting previously unselected package ca-certificates-java.
+Preparing to unpack .../16-ca-certificates-java_20240118_all.deb ...
+Unpacking ca-certificates-java (20240118) ...
+Selecting previously unselected package fonts-dejavu-mono.
+Preparing to unpack .../17-fonts-dejavu-mono_2.37-8_all.deb ...
+Unpacking fonts-dejavu-mono (2.37-8) ...
+Selecting previously unselected package fonts-dejavu-core.
+Preparing to unpack .../18-fonts-dejavu-core_2.37-8_all.deb ...
+Unpacking fonts-dejavu-core (2.37-8) ...
+Selecting previously unselected package fontconfig-config.
+Preparing to unpack .../19-fontconfig-config_2.15.0-1.1ubuntu2_arm64.deb ...
+Unpacking fontconfig-config (2.15.0-1.1ubuntu2) ...
+Selecting previously unselected package java-common.
+Preparing to unpack .../20-java-common_0.75+exp1_all.deb ...
+Unpacking java-common (0.75+exp1) ...
+Selecting previously unselected package libavahi-common-data:arm64.
+Preparing to unpack .../21-libavahi-common-data_0.8-13ubuntu6.2_arm64.deb ...
+Unpacking libavahi-common-data:arm64 (0.8-13ubuntu6.2) ...
+Selecting previously unselected package libavahi-common3:arm64.
+Preparing to unpack .../22-libavahi-common3_0.8-13ubuntu6.2_arm64.deb ...
+Unpacking libavahi-common3:arm64 (0.8-13ubuntu6.2) ...
+Selecting previously unselected package libavahi-client3:arm64.
+Preparing to unpack .../23-libavahi-client3_0.8-13ubuntu6.2_arm64.deb ...
+Unpacking libavahi-client3:arm64 (0.8-13ubuntu6.2) ...
+Selecting previously unselected package libcups2t64:arm64.
+Preparing to unpack .../24-libcups2t64_2.4.7-1.2ubuntu7.14_arm64.deb ...
+Unpacking libcups2t64:arm64 (2.4.7-1.2ubuntu7.14) ...
+Selecting previously unselected package libfreetype6:arm64.
+Preparing to unpack .../25-libfreetype6_2.13.2+dfsg-1ubuntu0.2_arm64.deb ...
+Unpacking libfreetype6:arm64 (2.13.2+dfsg-1ubuntu0.2) ...
+Selecting previously unselected package libfontconfig1:arm64.
+Preparing to unpack .../26-libfontconfig1_2.15.0-1.1ubuntu2_arm64.deb ...
+Unpacking libfontconfig1:arm64 (2.15.0-1.1ubuntu2) ...
+Selecting previously unselected package libgraphite2-3:arm64.
+Preparing to unpack .../27-libgraphite2-3_1.3.14-2ubuntu0.24.04.1_arm64.deb ...
+Unpacking libgraphite2-3:arm64 (1.3.14-2ubuntu0.24.04.1) ...
+Selecting previously unselected package libharfbuzz0b:arm64.
+Preparing to unpack .../28-libharfbuzz0b_8.3.0-2build2_arm64.deb ...
+Unpacking libharfbuzz0b:arm64 (8.3.0-2build2) ...
+Selecting previously unselected package libjpeg-turbo8:arm64.
+Preparing to unpack .../29-libjpeg-turbo8_2.1.5-2ubuntu2_arm64.deb ...
+Unpacking libjpeg-turbo8:arm64 (2.1.5-2ubuntu2) ...
+Selecting previously unselected package libjpeg8:arm64.
+Preparing to unpack .../30-libjpeg8_8c-2ubuntu11_arm64.deb ...
+Unpacking libjpeg8:arm64 (8c-2ubuntu11) ...
+Selecting previously unselected package liblcms2-2:arm64.
+Preparing to unpack .../31-liblcms2-2_2.14-2ubuntu0.1_arm64.deb ...
+Unpacking liblcms2-2:arm64 (2.14-2ubuntu0.1) ...
+Selecting previously unselected package libnspr4:arm64.
+Preparing to unpack .../32-libnspr4_2%3a4.35-1.1build1_arm64.deb ...
+Unpacking libnspr4:arm64 (2:4.35-1.1build1) ...
+Selecting previously unselected package libnss3:arm64.
+Preparing to unpack .../33-libnss3_2%3a3.98-1ubuntu0.2_arm64.deb ...
+Unpacking libnss3:arm64 (2:3.98-1ubuntu0.2) ...
+Selecting previously unselected package libpcsclite1:arm64.
+Preparing to unpack .../34-libpcsclite1_2.0.3-1build1_arm64.deb ...
+Unpacking libpcsclite1:arm64 (2.0.3-1build1) ...
+Selecting previously unselected package openjdk-21-jre-headless:arm64.
+Preparing to unpack .../35-openjdk-21-jre-headless_21.0.12.1+1-1~24.04.4_arm64.deb ...
+Unpacking openjdk-21-jre-headless:arm64 (21.0.12.1+1-1~24.04.4) ...
+Selecting previously unselected package openjdk-21-jdk-headless:arm64.
+Preparing to unpack .../36-openjdk-21-jdk-headless_21.0.12.1+1-1~24.04.4_arm64.deb ...
+Unpacking openjdk-21-jdk-headless:arm64 (21.0.12.1+1-1~24.04.4) ...
+Setting up libgraphite2-3:arm64 (1.3.14-2ubuntu0.24.04.1) ...
+Setting up liblcms2-2:arm64 (2.14-2ubuntu0.1) ...
+Setting up libapparmor1:arm64 (4.0.1really4.0.1-0ubuntu0.24.04.9) ...
+Setting up java-common (0.75+exp1) ...
+Setting up xdg-user-dirs (0.18-1build1) ...
+Setting up libasound2-data (1.2.11-1ubuntu0.3) ...
+Setting up libglib2.0-0t64:arm64 (2.80.0-6ubuntu3.9) ...
+No schema files found: doing nothing.
+Setting up libglib2.0-data (2.80.0-6ubuntu3.9) ...
+Setting up libasound2t64:arm64 (1.2.11-1ubuntu0.3) ...
+Setting up libnspr4:arm64 (2:4.35-1.1build1) ...
+Setting up libavahi-common-data:arm64 (0.8-13ubuntu6.2) ...
+Setting up libdbus-1-3:arm64 (1.14.10-4ubuntu4.1) ...
+Setting up shared-mime-info (2.4-4) ...
+Setting up fonts-dejavu-mono (2.37-8) ...
+Setting up libpng16-16t64:arm64 (1.6.43-5ubuntu0.7) ...
+Setting up fonts-dejavu-core (2.37-8) ...
+Setting up libpcsclite1:arm64 (2.0.3-1build1) ...
+Setting up libjpeg-turbo8:arm64 (2.1.5-2ubuntu2) ...
+Setting up alsa-topology-conf (1.2.5.1-2) ...
+Setting up dbus-session-bus-common (1.14.10-4ubuntu4.1) ...
+Setting up ca-certificates-java (20240118) ...
+No JRE found. Skipping Java certificates setup.
+Setting up dbus-system-bus-common (1.14.10-4ubuntu4.1) ...
+Setting up dbus-bin (1.14.10-4ubuntu4.1) ...
+Setting up libjpeg8:arm64 (8c-2ubuntu11) ...
+Setting up alsa-ucm-conf (1.2.10-1ubuntu5.15) ...
+Setting up fontconfig-config (2.15.0-1.1ubuntu2) ...
+Setting up libavahi-common3:arm64 (0.8-13ubuntu6.2) ...
+Setting up libnss3:arm64 (2:3.98-1ubuntu0.2) ...
+Setting up dbus-daemon (1.14.10-4ubuntu4.1) ...
+Setting up libfreetype6:arm64 (2.13.2+dfsg-1ubuntu0.2) ...
+Setting up dbus (1.14.10-4ubuntu4.1) ...
+Setting up libharfbuzz0b:arm64 (8.3.0-2build2) ...
+Setting up libfontconfig1:arm64 (2.15.0-1.1ubuntu2) ...
+Setting up libavahi-client3:arm64 (0.8-13ubuntu6.2) ...
+Setting up openjdk-21-jre-headless:arm64 (21.0.12.1+1-1~24.04.4) ...
+update-alternatives: using /usr/lib/jvm/java-21-openjdk-arm64/bin/java to provide /usr/bin/java (java) in auto mode
+update-alternatives: using /usr/lib/jvm/java-21-openjdk-arm64/bin/jpackage to provide /usr/bin/jpackage (jpackage) in auto mode
+update-alternatives: using /usr/lib/jvm/java-21-openjdk-arm64/bin/keytool to provide /usr/bin/keytool (keytool) in auto mode
+update-alternatives: using /usr/lib/jvm/java-21-openjdk-arm64/bin/rmiregistry to provide /usr/bin/rmiregistry (rmiregistry) in auto mode
+update-alternatives: using /usr/lib/jvm/java-21-openjdk-arm64/lib/jexec to provide /usr/bin/jexec (jexec) in auto mode
+Setting up libcups2t64:arm64 (2.4.7-1.2ubuntu7.14) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+Processing triggers for ca-certificates-java (20240118) ...
+Adding debian:ACCVRAIZ1.pem
+Adding debian:AC_RAIZ_FNMT-RCM.pem
+Adding debian:AC_RAIZ_FNMT-RCM_SERVIDORES_SEGUROS.pem
+Adding debian:ANF_Secure_Server_Root_CA.pem
+Adding debian:Actalis_Authentication_Root_CA.pem
+Adding debian:Amazon_Root_CA_1.pem
+Adding debian:Amazon_Root_CA_2.pem
+Adding debian:Amazon_Root_CA_3.pem
+Adding debian:Amazon_Root_CA_4.pem
+Adding debian:Atos_TrustedRoot_2011.pem
+Adding debian:Atos_TrustedRoot_Root_CA_ECC_TLS_2021.pem
+Adding debian:Atos_TrustedRoot_Root_CA_RSA_TLS_2021.pem
+Adding debian:Autoridad_de_Certificacion_Firmaprofesional_CIF_A62634068.pem
+Adding debian:BJCA_Global_Root_CA1.pem
+Adding debian:BJCA_Global_Root_CA2.pem
+Adding debian:Buypass_Class_2_Root_CA.pem
+Adding debian:Buypass_Class_3_Root_CA.pem
+Adding debian:CA_Disig_Root_R2.pem
+Adding debian:CFCA_EV_ROOT.pem
+Adding debian:COMODO_ECC_Certification_Authority.pem
+Adding debian:COMODO_RSA_Certification_Authority.pem
+Adding debian:Certainly_Root_E1.pem
+Adding debian:Certainly_Root_R1.pem
+Adding debian:Certigna_Root_CA.pem
+Adding debian:Certum_EC-384_CA.pem
+Adding debian:Certum_Trusted_Network_CA.pem
+Adding debian:Certum_Trusted_Network_CA_2.pem
+Adding debian:Certum_Trusted_Root_CA.pem
+Adding debian:D-TRUST_BR_Root_CA_1_2020.pem
+Adding debian:D-TRUST_BR_Root_CA_2_2023.pem
+Adding debian:D-TRUST_EV_Root_CA_1_2020.pem
+Adding debian:D-TRUST_EV_Root_CA_2_2023.pem
+Adding debian:D-TRUST_Root_Class_3_CA_2_2009.pem
+Adding debian:D-TRUST_Root_Class_3_CA_2_EV_2009.pem
+Adding debian:DigiCert_Assured_ID_Root_G2.pem
+Adding debian:DigiCert_Assured_ID_Root_G3.pem
+Adding debian:DigiCert_Global_Root_G2.pem
+Adding debian:DigiCert_Global_Root_G3.pem
+Adding debian:DigiCert_TLS_ECC_P384_Root_G5.pem
+Adding debian:DigiCert_TLS_RSA4096_Root_G5.pem
+Adding debian:DigiCert_Trusted_Root_G4.pem
+Adding debian:Entrust_Root_Certification_Authority.pem
+Adding debian:GDCA_TrustAUTH_R5_ROOT.pem
+Adding debian:GTS_Root_R1.pem
+Adding debian:GTS_Root_R3.pem
+Adding debian:GTS_Root_R4.pem
+Adding debian:GlobalSign_ECC_Root_CA_-_R4.pem
+Adding debian:GlobalSign_ECC_Root_CA_-_R5.pem
+Adding debian:GlobalSign_Root_CA_-_R3.pem
+Adding debian:GlobalSign_Root_CA_-_R6.pem
+Adding debian:GlobalSign_Root_E46.pem
+Adding debian:GlobalSign_Root_R46.pem
+Adding debian:Go_Daddy_Root_Certificate_Authority_-_G2.pem
+Adding debian:HARICA_TLS_ECC_Root_CA_2021.pem
+Adding debian:HARICA_TLS_RSA_Root_CA_2021.pem
+Adding debian:Hellenic_Academic_and_Research_Institutions_ECC_RootCA_2015.pem
+Adding debian:Hellenic_Academic_and_Research_Institutions_RootCA_2015.pem
+Adding debian:HiPKI_Root_CA_-_G1.pem
+Adding debian:Hongkong_Post_Root_CA_3.pem
+Adding debian:ISRG_Root_X1.pem
+Adding debian:ISRG_Root_X2.pem
+Adding debian:IdenTrust_Commercial_Root_CA_1.pem
+Adding debian:IdenTrust_Public_Sector_Root_CA_1.pem
+Adding debian:Izenpe.com.pem
+Adding debian:Microsec_e-Szigno_Root_CA_2009.pem
+Adding debian:Microsoft_ECC_Root_Certificate_Authority_2017.pem
+Adding debian:Microsoft_RSA_Root_Certificate_Authority_2017.pem
+Adding debian:NAVER_Global_Root_Certification_Authority.pem
+Adding debian:NetLock_Arany_=Class_Gold=_Főtanúsítvány.pem
+Adding debian:OISTE_Server_Root_ECC_G1.pem
+Adding debian:OISTE_Server_Root_RSA_G1.pem
+Adding debian:OISTE_WISeKey_Global_Root_GB_CA.pem
+Adding debian:OISTE_WISeKey_Global_Root_GC_CA.pem
+Adding debian:QuoVadis_Root_CA_1_G3.pem
+Adding debian:QuoVadis_Root_CA_2_G3.pem
+Adding debian:QuoVadis_Root_CA_3_G3.pem
+Adding debian:SSL.com_EV_Root_Certification_Authority_ECC.pem
+Adding debian:SSL.com_EV_Root_Certification_Authority_RSA_R2.pem
+Adding debian:SSL.com_Root_Certification_Authority_ECC.pem
+Adding debian:SSL.com_Root_Certification_Authority_RSA.pem
+Adding debian:SSL.com_TLS_ECC_Root_CA_2022.pem
+Adding debian:SSL.com_TLS_RSA_Root_CA_2022.pem
+Adding debian:SZAFIR_ROOT_CA2.pem
+Adding debian:Sectigo_Public_Server_Authentication_Root_E46.pem
+Adding debian:Sectigo_Public_Server_Authentication_Root_R46.pem
+Adding debian:SecureSign_Root_CA12.pem
+Adding debian:SecureSign_Root_CA14.pem
+Adding debian:SecureSign_Root_CA15.pem
+Adding debian:Security_Communication_ECC_RootCA1.pem
+Adding debian:Security_Communication_RootCA2.pem
+Adding debian:Starfield_Root_Certificate_Authority_-_G2.pem
+Adding debian:Starfield_Services_Root_Certificate_Authority_-_G2.pem
+Adding debian:SwissSign_RSA_TLS_Root_CA_2022_-_1.pem
+Adding debian:T-TeleSec_GlobalRoot_Class_2.pem
+Adding debian:T-TeleSec_GlobalRoot_Class_3.pem
+Adding debian:TUBITAK_Kamu_SM_SSL_Kok_Sertifikasi_-_Surum_1.pem
+Adding debian:TWCA_CYBER_Root_CA.pem
+Adding debian:TWCA_Global_Root_CA.pem
+Adding debian:TWCA_Root_Certification_Authority.pem
+Adding debian:Telekom_Security_TLS_ECC_Root_2020.pem
+Adding debian:Telekom_Security_TLS_RSA_Root_2023.pem
+Adding debian:Telia_Root_CA_v2.pem
+Adding debian:TrustAsia_Global_Root_CA_G3.pem
+Adding debian:TrustAsia_Global_Root_CA_G4.pem
+Adding debian:TrustAsia_TLS_ECC_Root_CA.pem
+Adding debian:TrustAsia_TLS_RSA_Root_CA.pem
+Adding debian:TunTrust_Root_CA.pem
+Adding debian:UCA_Extended_Validation_Root.pem
+Adding debian:UCA_Global_G2_Root.pem
+Adding debian:USERTrust_ECC_Certification_Authority.pem
+Adding debian:USERTrust_RSA_Certification_Authority.pem
+Adding debian:certSIGN_Root_CA_G2.pem
+Adding debian:e-Szigno_Root_CA_2017.pem
+Adding debian:e-Szigno_TLS_Root_CA_2023.pem
+Adding debian:ePKI_Root_Certification_Authority.pem
+Adding debian:emSign_ECC_Root_CA_-_C3.pem
+Adding debian:emSign_ECC_Root_CA_-_G3.pem
+Adding debian:emSign_Root_CA_-_C1.pem
+Adding debian:emSign_Root_CA_-_G1.pem
+Adding debian:vTrus_ECC_Root_CA.pem
+Adding debian:vTrus_Root_CA.pem
+done.
+Setting up openjdk-21-jdk-headless:arm64 (21.0.12.1+1-1~24.04.4) ...
+update-alternatives: using /usr/lib/jvm/java-21-openjdk-arm64/bin/jar to provide /usr/bin/jar (jar) in auto mode
+update-alternatives: using /usr/lib/jvm/java-21-openjdk-arm64/bin/jarsigner to provide /usr/bin/jarsigner (jarsigner) in auto mode
+update-alternatives: using /usr/lib/jvm/java-21-openjdk-arm64/bin/javac to provide /usr/bin/javac (javac) in auto mode
+update-alternatives: using /usr/lib/jvm/java-21-openjdk-arm64/bin/javadoc to provide /usr/bin/javadoc (javadoc) in auto mode
+update-alternatives: using /usr/lib/jvm/java-21-openjdk-arm64/bin/javap to provide /usr/bin/javap (javap) in auto mode
+update-alternatives: using /usr/lib/jvm/java-21-openjdk-arm64/bin/jcmd to provide /usr/bin/jcmd (jcmd) in auto mode
+update-alternatives: using /usr/lib/jvm/java-21-openjdk-arm64/bin/jdb to provide /usr/bin/jdb (jdb) in auto mode
+update-alternatives: using /usr/lib/jvm/java-21-openjdk-arm64/bin/jdeprscan to provide /usr/bin/jdeprscan (jdeprscan) in auto mode
+update-alternatives: using /usr/lib/jvm/java-21-openjdk-arm64/bin/jdeps to provide /usr/bin/jdeps (jdeps) in auto mode
+update-alternatives: using /usr/lib/jvm/java-21-openjdk-arm64/bin/jfr to provide /usr/bin/jfr (jfr) in auto mode
+update-alternatives: using /usr/lib/jvm/java-21-openjdk-arm64/bin/jimage to provide /usr/bin/jimage (jimage) in auto mode
+update-alternatives: using /usr/lib/jvm/java-21-openjdk-arm64/bin/jinfo to provide /usr/bin/jinfo (jinfo) in auto mode
+update-alternatives: using /usr/lib/jvm/java-21-openjdk-arm64/bin/jlink to provide /usr/bin/jlink (jlink) in auto mode
+update-alternatives: using /usr/lib/jvm/java-21-openjdk-arm64/bin/jmap to provide /usr/bin/jmap (jmap) in auto mode
+update-alternatives: using /usr/lib/jvm/java-21-openjdk-arm64/bin/jmod to provide /usr/bin/jmod (jmod) in auto mode
+update-alternatives: using /usr/lib/jvm/java-21-openjdk-arm64/bin/jps to provide /usr/bin/jps (jps) in auto mode
+update-alternatives: using /usr/lib/jvm/java-21-openjdk-arm64/bin/jrunscript to provide /usr/bin/jrunscript (jrunscript) in auto mode
+update-alternatives: using /usr/lib/jvm/java-21-openjdk-arm64/bin/jshell to provide /usr/bin/jshell (jshell) in auto mode
+update-alternatives: using /usr/lib/jvm/java-21-openjdk-arm64/bin/jstack to provide /usr/bin/jstack (jstack) in auto mode
+update-alternatives: using /usr/lib/jvm/java-21-openjdk-arm64/bin/jstat to provide /usr/bin/jstat (jstat) in auto mode
+update-alternatives: using /usr/lib/jvm/java-21-openjdk-arm64/bin/jstatd to provide /usr/bin/jstatd (jstatd) in auto mode
+update-alternatives: using /usr/lib/jvm/java-21-openjdk-arm64/bin/jwebserver to provide /usr/bin/jwebserver (jwebserver) in auto mode
+update-alternatives: using /usr/lib/jvm/java-21-openjdk-arm64/bin/serialver to provide /usr/bin/serialver (serialver) in auto mode
+update-alternatives: using /usr/lib/jvm/java-21-openjdk-arm64/bin/jhsdb to provide /usr/bin/jhsdb (jhsdb) in auto mode
+Downloading sqlite-jdbc...
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0100 13.6M  100 13.6M    0     0  22.1M      0 --:--:-- --:--:-- --:--:-- 22.1M
+
+$ docker exec twelve-current-build-pr85 runuser -u bench -- env PATH=/usr/local/go/bin:/opt/twelve-rust/cargo/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 bash /suite/sources/pr85/build.sh
+Build complete: /suite/sources/pr85/build/server.jar
+
+$ docker exec twelve-current-build-pr85 bash -c rm -f /usr/local/bin/nproc; rm -rf /tmp/* /root/.cache /root/.cargo/registry /home/bench/.cache /home/bench/.cargo/registry /home/bench/.npm/_cacache /var/lib/apt/lists/* /var/cache/apt/archives/*.deb; find /suite/sources -type d -path '*/target/release/incremental' -prune -exec rm -rf {} +

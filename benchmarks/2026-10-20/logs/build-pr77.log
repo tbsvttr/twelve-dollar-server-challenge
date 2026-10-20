@@ -1,0 +1,17 @@
+
+$ docker exec twelve-current-build-pr77 bash -c set -e; rm -rf /suite/sources; mkdir -p /suite/sources; cp -a /evidence/sources/pr77 /suite/sources/; cp /evidence/manifest.json /suite/manifest.json; cp /evidence/schema.sql /suite/schema.sql; chown -R bench:bench /suite/sources
+
+$ docker exec twelve-current-build-pr77 bash /evidence/runtime-scripts/pr77.sh
+10.0.401
+
+$ docker exec twelve-current-build-pr77 runuser -u bench -- env PATH=/usr/local/go/bin:/opt/twelve-rust/cargo/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 bash /suite/sources/pr77/build.sh
+native/sqlite.tar.gz: OK
+  Determining projects to restore...
+  Restored /suite/sources/pr77/Server.csproj (in 8.22 sec).
+  Server -> /suite/sources/pr77/bin/Release/net10.0/linux-arm64/Server.dll
+  Generating native code
+  Server -> /suite/sources/pr77/out/
+
+$ docker exec twelve-current-build-pr77 bash -c rm -rf /tmp/* /root/.cache /root/.cargo/registry /home/bench/.cache /home/bench/.cargo/registry /home/bench/.npm/_cacache /var/lib/apt/lists/* /var/cache/apt/archives/*.deb; find /suite/sources -type d -path '*/target/release/incremental' -prune -exec rm -rf {} +
+a164add6a19cc9ceb314e0c7061a1466ad85ab1a12eac803fca56a14982f92b8
+twelve-current-clean-pr77

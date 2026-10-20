@@ -1,0 +1,13 @@
+Pinned source: 83a51a2dd6b82434d01da25c9471725946e741a9
+309231ed9f6ea81887cd14c54204287ede7ed2177f246821d3a588ceb6eff13d
+.deps/cowboy.tar.gz: OK
+.deps/cowlib.tar.gz: OK
+.deps/ranch.tar.gz: OK
+.deps/esqlite.tar.gz: OK
+.deps/sqlite.zip: OK
+.deps/ranch/src/ranch_conns_sup.erl:80:2: Warning: 'catch ...' is deprecated; please use 'try ... catch ... end' instead.
+Compile directive 'nowarn_deprecated_catch' can be used to suppress
+warnings in selected modules.
+%   80| 	catch erlang:send(SupPid, {?MODULE, active_connections, self(), Tag},
+%     | 	^
+

@@ -1,0 +1,790 @@
+
+$ docker exec twelve-current-build-pr43 bash -c set -e; rm -rf /suite/sources; mkdir -p /suite/sources; cp -a /evidence/sources/pr43 /suite/sources/; cp /evidence/manifest.json /suite/manifest.json; cp /evidence/schema.sql /suite/schema.sql; chown -R bench:bench /suite/sources
+
+$ docker exec twelve-current-build-pr43 bash /evidence/runtime-scripts/pr43.sh
+Hit:1 http://ports.ubuntu.com/ubuntu-ports noble InRelease
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble-updates InRelease [126 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble-backports InRelease [126 kB]
+Get:4 http://ports.ubuntu.com/ubuntu-ports noble-security InRelease [126 kB]
+Get:5 http://ports.ubuntu.com/ubuntu-ports noble-updates/multiverse arm64 Packages [104 kB]
+Get:6 http://ports.ubuntu.com/ubuntu-ports noble-updates/restricted arm64 Packages [3251 kB]
+Get:7 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 Packages [2214 kB]
+Get:8 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 Packages [1786 kB]
+Get:9 http://ports.ubuntu.com/ubuntu-ports noble-backports/multiverse arm64 Packages [669 B]
+Get:10 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 Packages [1475 kB]
+Get:11 http://ports.ubuntu.com/ubuntu-ports noble-security/restricted arm64 Packages [3129 kB]
+Get:12 http://ports.ubuntu.com/ubuntu-ports noble-security/multiverse arm64 Packages [99.1 kB]
+Get:13 http://ports.ubuntu.com/ubuntu-ports noble-security/universe arm64 Packages [1638 kB]
+Fetched 14.1 MB in 2s (6750 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+binutils is already the newest version (2.42-4ubuntu2.10).
+binutils set to manually installed.
+ca-certificates is already the newest version (20260601~24.04.1).
+libc6-dev is already the newest version (2.39-0ubuntu8.9).
+libc6-dev set to manually installed.
+libedit2 is already the newest version (3.1-20230828-1build1).
+libedit2 set to manually installed.
+libgcc-13-dev is already the newest version (13.3.0-6ubuntu2~24.04.1).
+libgcc-13-dev set to manually installed.
+libncurses-dev is already the newest version (6.4+20240113-1ubuntu2.2).
+libsqlite3-0 is already the newest version (3.45.1-1ubuntu2.8).
+libsqlite3-0 set to manually installed.
+libstdc++-13-dev is already the newest version (13.3.0-6ubuntu2~24.04.1).
+libstdc++-13-dev set to manually installed.
+pkg-config is already the newest version (1.8.1-2build1).
+unzip is already the newest version (6.0-28ubuntu4.1).
+zlib1g-dev is already the newest version (1:1.3.dfsg-3.1ubuntu2.2).
+build-essential is already the newest version (12.10ubuntu1).
+The following additional packages will be installed:
+  adduser dirmngr git-man gnupg gnupg-utils gpg gpg-agent gpgconf gpgsm
+  icu-devtools keyboxd libcurl3t64-gnutls libcurl4t64 libexpat1-dev libicu-dev
+  libksba8 libpython3.12-dev libpython3.12t64 libxml2 libz3-4 pinentry-curses
+Suggested packages:
+  liblocale-gettext-perl cron quota ecryptfs-utils dbus-user-session
+  libpam-systemd pinentry-gnome3 tor gettext-base git-daemon-run
+  | git-daemon-sysvinit git-doc git-email git-gui gitk gitweb git-cvs
+  git-mediawiki git-svn parcimonie xloadimage gpg-wks-server scdaemon
+  libcurl4-doc libidn-dev libkrb5-dev libldap2-dev librtmp-dev libssh2-1-dev
+  icu-doc sqlite3-doc pinentry-doc
+Recommended packages:
+  less ssh-client gnupg-l10n gpg-wks-client
+The following NEW packages will be installed:
+  adduser dirmngr gnupg gnupg-utils gnupg2 gpg gpg-agent gpgconf gpgsm
+  icu-devtools keyboxd libcurl4-openssl-dev libexpat1-dev libicu-dev libksba8
+  libpython3-dev libpython3.12-dev libpython3.12t64 libsqlite3-dev libxml2-dev
+  libz3-4 libz3-dev pinentry-curses zip
+The following packages will be upgraded:
+  curl git git-man libcurl3t64-gnutls libcurl4t64 libxml2 tzdata
+7 upgraded, 24 newly installed, 0 to remove and 12 not upgraded.
+Need to get 37.0 MB of archives.
+After this operation, 120 MB of additional disk space will be used.
+Get:1 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 adduser all 3.137ubuntu1 [101 kB]
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libxml2 arm64 2.9.14+dfsg-1.3ubuntu3.10 [736 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 tzdata all 2026e-0ubuntu0.24.04.1 [282 kB]
+Get:4 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 curl arm64 8.5.0-2ubuntu10.16 [222 kB]
+Get:5 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 libcurl4t64 arm64 8.5.0-2ubuntu10.16 [337 kB]
+Get:6 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 gpgconf arm64 2.4.4-2ubuntu17.6 [103 kB]
+Get:7 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libksba8 arm64 1.6.6-1build1 [119 kB]
+Get:8 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 dirmngr arm64 2.4.4-2ubuntu17.6 [316 kB]
+Get:9 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 libcurl3t64-gnutls arm64 8.5.0-2ubuntu10.16 [331 kB]
+Get:10 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 git-man all 1:2.43.0-1ubuntu7.4 [1101 kB]
+Get:11 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 git arm64 1:2.43.0-1ubuntu7.4 [3774 kB]
+Get:12 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 gnupg-utils arm64 2.4.4-2ubuntu17.6 [107 kB]
+Get:13 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 gpg arm64 2.4.4-2ubuntu17.6 [549 kB]
+Get:14 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 pinentry-curses arm64 1.2.1-3ubuntu5 [34.3 kB]
+Get:15 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 gpg-agent arm64 2.4.4-2ubuntu17.6 [221 kB]
+Get:16 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 gpgsm arm64 2.4.4-2ubuntu17.6 [225 kB]
+Get:17 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 keyboxd arm64 2.4.4-2ubuntu17.6 [75.9 kB]
+Get:18 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 gnupg all 2.4.4-2ubuntu17.6 [359 kB]
+Get:19 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 icu-devtools arm64 74.2-1ubuntu3.1 [209 kB]
+Get:20 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 libcurl4-openssl-dev arm64 8.5.0-2ubuntu10.16 [456 kB]
+Get:21 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libexpat1-dev arm64 2.6.1-2ubuntu0.6 [134 kB]
+Get:22 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libicu-dev arm64 74.2-1ubuntu3.1 [11.9 MB]
+Get:23 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libpython3.12t64 arm64 3.12.3-1ubuntu0.17 [2280 kB]
+Get:24 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libpython3.12-dev arm64 3.12.3-1ubuntu0.17 [5539 kB]
+Get:25 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libpython3-dev arm64 3.12.3-0ubuntu2.1 [10.4 kB]
+Get:26 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libsqlite3-dev arm64 3.45.1-1ubuntu2.8 [916 kB]
+Get:27 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libxml2-dev arm64 2.9.14+dfsg-1.3ubuntu3.10 [800 kB]
+Get:28 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 zip arm64 3.0-13ubuntu0.2 [171 kB]
+Get:29 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 gnupg2 all 2.4.4-2ubuntu17.6 [4748 B]
+Get:30 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 libz3-4 arm64 4.8.12-3.1build1 [5492 kB]
+Get:31 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 libz3-dev arm64 4.8.12-3.1build1 [72.2 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 37.0 MB in 3s (14.2 MB/s)
+Selecting previously unselected package adduser.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 16962 files and directories currently installed.)
+Preparing to unpack .../adduser_3.137ubuntu1_all.deb ...
+Unpacking adduser (3.137ubuntu1) ...
+Setting up adduser (3.137ubuntu1) ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 17010 files and directories currently installed.)
+Preparing to unpack .../00-libxml2_2.9.14+dfsg-1.3ubuntu3.10_arm64.deb ...
+Unpacking libxml2:arm64 (2.9.14+dfsg-1.3ubuntu3.10) over (2.9.14+dfsg-1.3ubuntu3.9) ...
+Preparing to unpack .../01-tzdata_2026e-0ubuntu0.24.04.1_all.deb ...
+Unpacking tzdata (2026e-0ubuntu0.24.04.1) over (2026c-0ubuntu0.24.04.1) ...
+Preparing to unpack .../02-curl_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking curl (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Preparing to unpack .../03-libcurl4t64_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking libcurl4t64:arm64 (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Selecting previously unselected package gpgconf.
+Preparing to unpack .../04-gpgconf_2.4.4-2ubuntu17.6_arm64.deb ...
+Unpacking gpgconf (2.4.4-2ubuntu17.6) ...
+Selecting previously unselected package libksba8:arm64.
+Preparing to unpack .../05-libksba8_1.6.6-1build1_arm64.deb ...
+Unpacking libksba8:arm64 (1.6.6-1build1) ...
+Selecting previously unselected package dirmngr.
+Preparing to unpack .../06-dirmngr_2.4.4-2ubuntu17.6_arm64.deb ...
+Unpacking dirmngr (2.4.4-2ubuntu17.6) ...
+Preparing to unpack .../07-libcurl3t64-gnutls_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking libcurl3t64-gnutls:arm64 (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Preparing to unpack .../08-git-man_1%3a2.43.0-1ubuntu7.4_all.deb ...
+Unpacking git-man (1:2.43.0-1ubuntu7.4) over (1:2.43.0-1ubuntu7.3) ...
+Preparing to unpack .../09-git_1%3a2.43.0-1ubuntu7.4_arm64.deb ...
+Unpacking git (1:2.43.0-1ubuntu7.4) over (1:2.43.0-1ubuntu7.3) ...
+Selecting previously unselected package gnupg-utils.
+Preparing to unpack .../10-gnupg-utils_2.4.4-2ubuntu17.6_arm64.deb ...
+Unpacking gnupg-utils (2.4.4-2ubuntu17.6) ...
+Selecting previously unselected package gpg.
+Preparing to unpack .../11-gpg_2.4.4-2ubuntu17.6_arm64.deb ...
+Unpacking gpg (2.4.4-2ubuntu17.6) ...
+Selecting previously unselected package pinentry-curses.
+Preparing to unpack .../12-pinentry-curses_1.2.1-3ubuntu5_arm64.deb ...
+Unpacking pinentry-curses (1.2.1-3ubuntu5) ...
+Selecting previously unselected package gpg-agent.
+Preparing to unpack .../13-gpg-agent_2.4.4-2ubuntu17.6_arm64.deb ...
+Unpacking gpg-agent (2.4.4-2ubuntu17.6) ...
+Selecting previously unselected package gpgsm.
+Preparing to unpack .../14-gpgsm_2.4.4-2ubuntu17.6_arm64.deb ...
+Unpacking gpgsm (2.4.4-2ubuntu17.6) ...
+Selecting previously unselected package keyboxd.
+Preparing to unpack .../15-keyboxd_2.4.4-2ubuntu17.6_arm64.deb ...
+Unpacking keyboxd (2.4.4-2ubuntu17.6) ...
+Selecting previously unselected package gnupg.
+Preparing to unpack .../16-gnupg_2.4.4-2ubuntu17.6_all.deb ...
+Unpacking gnupg (2.4.4-2ubuntu17.6) ...
+Selecting previously unselected package icu-devtools.
+Preparing to unpack .../17-icu-devtools_74.2-1ubuntu3.1_arm64.deb ...
+Unpacking icu-devtools (74.2-1ubuntu3.1) ...
+Selecting previously unselected package libcurl4-openssl-dev:arm64.
+Preparing to unpack .../18-libcurl4-openssl-dev_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking libcurl4-openssl-dev:arm64 (8.5.0-2ubuntu10.16) ...
+Selecting previously unselected package libexpat1-dev:arm64.
+Preparing to unpack .../19-libexpat1-dev_2.6.1-2ubuntu0.6_arm64.deb ...
+Unpacking libexpat1-dev:arm64 (2.6.1-2ubuntu0.6) ...
+Selecting previously unselected package libicu-dev:arm64.
+Preparing to unpack .../20-libicu-dev_74.2-1ubuntu3.1_arm64.deb ...
+Unpacking libicu-dev:arm64 (74.2-1ubuntu3.1) ...
+Selecting previously unselected package libpython3.12t64:arm64.
+Preparing to unpack .../21-libpython3.12t64_3.12.3-1ubuntu0.17_arm64.deb ...
+Unpacking libpython3.12t64:arm64 (3.12.3-1ubuntu0.17) ...
+Selecting previously unselected package libpython3.12-dev:arm64.
+Preparing to unpack .../22-libpython3.12-dev_3.12.3-1ubuntu0.17_arm64.deb ...
+Unpacking libpython3.12-dev:arm64 (3.12.3-1ubuntu0.17) ...
+Selecting previously unselected package libpython3-dev:arm64.
+Preparing to unpack .../23-libpython3-dev_3.12.3-0ubuntu2.1_arm64.deb ...
+Unpacking libpython3-dev:arm64 (3.12.3-0ubuntu2.1) ...
+Selecting previously unselected package libsqlite3-dev:arm64.
+Preparing to unpack .../24-libsqlite3-dev_3.45.1-1ubuntu2.8_arm64.deb ...
+Unpacking libsqlite3-dev:arm64 (3.45.1-1ubuntu2.8) ...
+Selecting previously unselected package libxml2-dev:arm64.
+Preparing to unpack .../25-libxml2-dev_2.9.14+dfsg-1.3ubuntu3.10_arm64.deb ...
+Unpacking libxml2-dev:arm64 (2.9.14+dfsg-1.3ubuntu3.10) ...
+Selecting previously unselected package zip.
+Preparing to unpack .../26-zip_3.0-13ubuntu0.2_arm64.deb ...
+Unpacking zip (3.0-13ubuntu0.2) ...
+Selecting previously unselected package gnupg2.
+Preparing to unpack .../27-gnupg2_2.4.4-2ubuntu17.6_all.deb ...
+Unpacking gnupg2 (2.4.4-2ubuntu17.6) ...
+Selecting previously unselected package libz3-4:arm64.
+Preparing to unpack .../28-libz3-4_4.8.12-3.1build1_arm64.deb ...
+Unpacking libz3-4:arm64 (4.8.12-3.1build1) ...
+Selecting previously unselected package libz3-dev:arm64.
+Preparing to unpack .../29-libz3-dev_4.8.12-3.1build1_arm64.deb ...
+Unpacking libz3-dev:arm64 (4.8.12-3.1build1) ...
+Setting up libksba8:arm64 (1.6.6-1build1) ...
+Setting up pinentry-curses (1.2.1-3ubuntu5) ...
+Setting up libcurl4t64:arm64 (8.5.0-2ubuntu10.16) ...
+Setting up libcurl3t64-gnutls:arm64 (8.5.0-2ubuntu10.16) ...
+Setting up tzdata (2026e-0ubuntu0.24.04.1) ...
+
+Current default time zone: 'Etc/UTC'
+Local time is now:      Tue Oct 20 10:57:40 UTC 2026.
+Universal Time is now:  Tue Oct 20 10:57:40 UTC 2026.
+Run 'dpkg-reconfigure tzdata' if you wish to change it.
+
+Setting up libpython3.12t64:arm64 (3.12.3-1ubuntu0.17) ...
+Setting up zip (3.0-13ubuntu0.2) ...
+Setting up libz3-4:arm64 (4.8.12-3.1build1) ...
+Setting up libexpat1-dev:arm64 (2.6.1-2ubuntu0.6) ...
+Setting up libsqlite3-dev:arm64 (3.45.1-1ubuntu2.8) ...
+Setting up libcurl4-openssl-dev:arm64 (8.5.0-2ubuntu10.16) ...
+Setting up icu-devtools (74.2-1ubuntu3.1) ...
+Setting up gpgconf (2.4.4-2ubuntu17.6) ...
+Setting up git-man (1:2.43.0-1ubuntu7.4) ...
+Setting up curl (8.5.0-2ubuntu10.16) ...
+Setting up libicu-dev:arm64 (74.2-1ubuntu3.1) ...
+Setting up libxml2:arm64 (2.9.14+dfsg-1.3ubuntu3.10) ...
+Setting up gpg (2.4.4-2ubuntu17.6) ...
+Setting up gnupg-utils (2.4.4-2ubuntu17.6) ...
+Setting up libz3-dev:arm64 (4.8.12-3.1build1) ...
+Setting up gpg-agent (2.4.4-2ubuntu17.6) ...
+Setting up gpgsm (2.4.4-2ubuntu17.6) ...
+Setting up libpython3.12-dev:arm64 (3.12.3-1ubuntu0.17) ...
+Setting up dirmngr (2.4.4-2ubuntu17.6) ...
+Setting up libxml2-dev:arm64 (2.9.14+dfsg-1.3ubuntu3.10) ...
+Setting up keyboxd (2.4.4-2ubuntu17.6) ...
+Setting up git (1:2.43.0-1ubuntu7.4) ...
+Setting up gnupg (2.4.4-2ubuntu17.6) ...
+Setting up gnupg2 (2.4.4-2ubuntu17.6) ...
+Setting up libpython3-dev:arm64 (3.12.3-0ubuntu2.1) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+downloading https://download.swift.org/swift-6.2.1-release/ubuntu2404-aarch64/swift-6.2.1-RELEASE/swift-6.2.1-RELEASE-ubuntu24.04-aarch64.tar.gz
+Swift version 6.2.1 (swift-6.2.1-RELEASE)
+Target: aarch64-unknown-linux-gnu
+
+$ docker exec twelve-current-build-pr43 runuser -u bench -- env PATH=/usr/local/go/bin:/opt/twelve-rust/cargo/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 bash /suite/sources/pr43/build.sh
+Fetching https://github.com/swift-server/async-http-client.git
+Fetching https://github.com/apple/swift-async-algorithms.git
+Fetching https://github.com/apple/swift-nio.git
+Fetching https://github.com/swift-server/swift-service-lifecycle.git
+Fetching https://github.com/apple/swift-atomics.git
+Fetching https://github.com/apple/swift-configuration.git
+Fetching https://github.com/apple/swift-nio-http2.git
+[1/4115] Fetching swift-configuration
+[2/6004] Fetching swift-configuration, swift-atomics
+[239/8884] Fetching swift-configuration, swift-atomics, swift-service-lifecycle
+[240/15705] Fetching swift-configuration, swift-atomics, swift-service-lifecycle, swift-async-algorithms
+[1025/27999] Fetching swift-configuration, swift-atomics, swift-service-lifecycle, swift-async-algorithms, swift-nio-http2
+[12338/44472] Fetching swift-configuration, swift-atomics, swift-service-lifecycle, swift-async-algorithms, swift-nio-http2, async-http-client
+Fetched https://github.com/apple/swift-atomics.git from cache (1.51s)
+Fetching https://github.com/apple/swift-nio-ssl.git
+[13479/42583] Fetching swift-configuration, swift-service-lifecycle, swift-async-algorithms, swift-nio-http2, async-http-client
+[20106/129185] Fetching swift-configuration, swift-service-lifecycle, swift-async-algorithms, swift-nio-http2, async-http-client, swift-nio
+[42689/146073] Fetching swift-configuration, swift-service-lifecycle, swift-async-algorithms, swift-nio-http2, async-http-client, swift-nio, swift-nio-ssl
+Fetched https://github.com/swift-server/async-http-client.git from cache (2.54s)
+Fetching https://github.com/apple/swift-http-types.git
+[29300/129600] Fetching swift-configuration, swift-service-lifecycle, swift-async-algorithms, swift-nio-http2, swift-nio, swift-nio-ssl
+[62500/131561] Fetching swift-configuration, swift-service-lifecycle, swift-async-algorithms, swift-nio-http2, swift-nio, swift-nio-ssl, swift-http-types
+Fetched https://github.com/apple/swift-http-types.git from cache (2.04s)
+[98383/129600] Fetching swift-configuration, swift-service-lifecycle, swift-async-algorithms, swift-nio-http2, swift-nio, swift-nio-ssl
+Fetching https://github.com/apple/swift-nio-extras.git
+Fetched https://github.com/apple/swift-nio-ssl.git from cache (4.25s)
+Fetching https://github.com/apple/swift-metrics.git
+[91021/112712] Fetching swift-configuration, swift-service-lifecycle, swift-async-algorithms, swift-nio-http2, swift-nio
+[92754/119417] Fetching swift-configuration, swift-service-lifecycle, swift-async-algorithms, swift-nio-http2, swift-nio, swift-nio-extras
+[117969/122997] Fetching swift-configuration, swift-service-lifecycle, swift-async-algorithms, swift-nio-http2, swift-nio, swift-nio-extras, swift-metrics
+Fetched https://github.com/apple/swift-nio-extras.git from cache (2.72s)
+Fetching https://github.com/apple/swift-numerics.git
+[115786/116292] Fetching swift-configuration, swift-service-lifecycle, swift-async-algorithms, swift-nio-http2, swift-nio, swift-metrics
+Fetched https://github.com/apple/swift-metrics.git from cache (1.74s)
+Fetching https://github.com/hummingbird-project/hummingbird.git
+[112672/119468] Fetching swift-configuration, swift-service-lifecycle, swift-async-algorithms, swift-nio-http2, swift-nio, swift-numerics
+[115713/148439] Fetching swift-configuration, swift-service-lifecycle, swift-async-algorithms, swift-nio-http2, swift-nio, swift-numerics, hummingbird
+Fetched https://github.com/apple/swift-numerics.git from cache (1.63s)
+Fetching https://github.com/apple/swift-system
+[114699/141683] Fetching swift-configuration, swift-service-lifecycle, swift-async-algorithms, swift-nio-http2, swift-nio, hummingbird
+Fetched https://github.com/swift-server/swift-service-lifecycle.git from cache (9.60s)
+[127174/138803] Fetching swift-configuration, swift-async-algorithms, swift-nio-http2, swift-nio, hummingbird
+Fetched https://github.com/apple/swift-async-algorithms.git from cache (9.61s)
+[120933/131982] Fetching swift-configuration, swift-nio-http2, swift-nio, hummingbird
+Fetching https://github.com/apple/swift-http-structured-headers.git
+Fetched https://github.com/apple/swift-nio-http2.git from cache (9.61s)
+[109218/119688] Fetching swift-configuration, swift-nio, hummingbird
+Fetching https://github.com/apple/swift-distributed-tracing.git
+Fetching https://github.com/apple/swift-certificates.git
+Fetched https://github.com/apple/swift-configuration.git from cache (9.67s)
+[111518/115573] Fetching swift-nio, hummingbird
+Fetching https://github.com/apple/swift-nio-transport-services.git
+Fetched https://github.com/apple/swift-nio.git from cache (9.71s)
+Fetching https://github.com/apple/swift-asn1.git
+Fetched https://github.com/hummingbird-project/hummingbird.git from cache (2.65s)
+Fetching https://github.com/apple/swift-algorithms.git
+[1/7331] Fetching swift-system
+[221/8615] Fetching swift-system, swift-http-structured-headers
+[933/10666] Fetching swift-system, swift-http-structured-headers, swift-asn1
+[934/13533] Fetching swift-system, swift-http-structured-headers, swift-asn1, swift-nio-transport-services
+[1315/21134] Fetching swift-system, swift-http-structured-headers, swift-asn1, swift-nio-transport-services, swift-certificates
+[1316/27801] Fetching swift-system, swift-http-structured-headers, swift-asn1, swift-nio-transport-services, swift-certificates, swift-distributed-tracing
+Fetched https://github.com/apple/swift-http-structured-headers.git from cache (1.19s)
+Fetching https://github.com/apple/swift-service-context.git
+[12261/26517] Fetching swift-system, swift-asn1, swift-nio-transport-services, swift-certificates, swift-distributed-tracing
+Fetched https://github.com/apple/swift-system from cache (1.91s)
+Fetching https://github.com/apple/swift-collections.git
+[8573/19186] Fetching swift-asn1, swift-nio-transport-services, swift-certificates, swift-distributed-tracing
+Fetched https://github.com/apple/swift-asn1.git from cache (1.21s)
+Fetching https://github.com/apple/swift-crypto.git
+[6598/17135] Fetching swift-nio-transport-services, swift-certificates, swift-distributed-tracing
+Fetched https://github.com/apple/swift-nio-transport-services.git from cache (1.30s)
+[4939/20427] Fetching swift-certificates, swift-distributed-tracing, swift-algorithms
+Fetching https://github.com/apple/swift-log.git
+Fetched https://github.com/apple/swift-certificates.git from cache (1.61s)
+[4637/12826] Fetching swift-distributed-tracing, swift-algorithms
+[10179/14368] Fetching swift-distributed-tracing, swift-algorithms, swift-service-context
+Fetched https://github.com/apple/swift-distributed-tracing.git from cache (1.86s)
+[3835/7701] Fetching swift-algorithms, swift-service-context
+Fetched https://github.com/apple/swift-algorithms.git from cache (1.43s)
+[216/1542] Fetching swift-service-context
+[557/20244] Fetching swift-service-context, swift-crypto
+[773/28571] Fetching swift-service-context, swift-crypto, swift-log
+Fetched https://github.com/apple/swift-service-context.git from cache (1.08s)
+[272/27029] Fetching swift-crypto, swift-log
+[2146/55933] Fetching swift-crypto, swift-log, swift-collections
+Fetched https://github.com/apple/swift-log.git from cache (1.51s)
+[2739/47606] Fetching swift-crypto, swift-collections
+Fetched https://github.com/apple/swift-crypto.git from cache (3.07s)
+[5781/28904] Fetching swift-collections
+Fetched https://github.com/apple/swift-collections.git from cache (4.82s)
+Creating working copy for https://github.com/apple/swift-nio-ssl.git
+Creating working copy for https://github.com/apple/swift-configuration.git
+Creating working copy for https://github.com/apple/swift-log.git
+Creating working copy for https://github.com/apple/swift-nio-transport-services.git
+Creating working copy for https://github.com/apple/swift-async-algorithms.git
+Creating working copy for https://github.com/swift-server/async-http-client.git
+Creating working copy for https://github.com/hummingbird-project/hummingbird.git
+Creating working copy for https://github.com/apple/swift-http-types.git
+Creating working copy for https://github.com/apple/swift-nio-http2.git
+Working copy of https://github.com/apple/swift-nio-transport-services.git resolved at 1.28.0
+Creating working copy for https://github.com/apple/swift-http-structured-headers.git
+Working copy of https://github.com/apple/swift-log.git resolved at 1.16.1
+Creating working copy for https://github.com/apple/swift-numerics.git
+Working copy of https://github.com/apple/swift-async-algorithms.git resolved at 1.1.7
+Creating working copy for https://github.com/apple/swift-distributed-tracing.git
+Working copy of https://github.com/apple/swift-configuration.git resolved at 1.2.2
+Creating working copy for https://github.com/apple/swift-collections.git
+Working copy of https://github.com/swift-server/async-http-client.git resolved at 1.36.2
+Creating working copy for https://github.com/apple/swift-certificates.git
+Working copy of https://github.com/apple/swift-http-types.git resolved at 1.8.0
+Creating working copy for https://github.com/apple/swift-metrics.git
+Working copy of https://github.com/hummingbird-project/hummingbird.git resolved at 2.26.0
+Creating working copy for https://github.com/apple/swift-system
+Working copy of https://github.com/apple/swift-http-structured-headers.git resolved at 1.7.0
+Working copy of https://github.com/apple/swift-numerics.git resolved at 1.1.1
+Creating working copy for https://github.com/apple/swift-nio.git
+Working copy of https://github.com/apple/swift-distributed-tracing.git resolved at 1.7.0
+Working copy of https://github.com/apple/swift-metrics.git resolved at 2.12.0
+Creating working copy for https://github.com/apple/swift-crypto.git
+Working copy of https://github.com/apple/swift-system resolved at 1.8.1
+Creating working copy for https://github.com/apple/swift-asn1.git
+Creating working copy for https://github.com/apple/swift-service-context.git
+Creating working copy for https://github.com/apple/swift-nio-extras.git
+Working copy of https://github.com/apple/swift-certificates.git resolved at 1.21.0
+Creating working copy for https://github.com/apple/swift-atomics.git
+Working copy of https://github.com/apple/swift-service-context.git resolved at 1.5.0
+Creating working copy for https://github.com/apple/swift-algorithms.git
+Working copy of https://github.com/apple/swift-asn1.git resolved at 1.7.3
+Working copy of https://github.com/apple/swift-nio-ssl.git resolved at 2.37.5
+Working copy of https://github.com/apple/swift-nio-extras.git resolved at 1.35.1
+Working copy of https://github.com/apple/swift-algorithms.git resolved at 1.2.1
+Working copy of https://github.com/apple/swift-atomics.git resolved at 1.3.1
+Working copy of https://github.com/apple/swift-nio-http2.git resolved at 1.46.0
+Working copy of https://github.com/apple/swift-collections.git resolved at 1.7.1
+Creating working copy for https://github.com/swift-server/swift-service-lifecycle.git
+Working copy of https://github.com/apple/swift-nio.git resolved at 2.104.0
+Working copy of https://github.com/apple/swift-crypto.git resolved at 3.12.3
+Working copy of https://github.com/swift-server/swift-service-lifecycle.git resolved at 2.12.1
+Building for production...
+[0/416] Compiling cpu_aarch64_fuchsia.cc
+[0/416] Write sources
+[5/416] Compiling a_d2i_fp.cc
+[5/416] Write sources
+[5/416] Compiling a_dup.cc
+[5/416] Write sources
+[5/416] Compiling _AtomicsShims.c
+[39/416] Compiling e_chacha20poly1305.cc
+[40/416] Compiling i2d_pr.cc
+[41/416] Compiling a_bitstr.cc
+[42/416] Compiling CNIOWindows shim.c
+[43/416] Compiling CNIOWASI CNIOWASI.c
+[44/416] Compiling CNIOWindows WSAStartup.c
+[45/416] Compiling CNIOOpenBSD shim.c
+[46/416] Compiling CNIOPosix event_loop_id.c
+[47/416] Compiling e_aesgcmsiv.cc
+[48/416] Write swift-version-6A52383ED409C6A7.txt
+[49/416] Compiling CNIOFreeBSD shim.c
+[50/416] Compiling CNIOLinux liburing_shims.c
+[51/416] Compiling CNIODarwin shim.c
+[52/416] Compiling CNIOLLHTTP c_nio_http.c
+[53/417] Compiling CSystem shims.c
+[53/417] Compiling e_des.cc
+[55/419] Compiling CNIOLinux shim.c
+[56/420] Compiling a_bool.cc
+[57/421] Compiling CNIOLLHTTP c_nio_api.c
+[59/425] Compiling _NIOBase64 Base64.swift
+[60/425] Compiling ConcurrencyHelpers Lock.swift
+[60/425] Compiling CNIOLLHTTP c_nio_llhttp.c
+[62/426] Compiling Instrumentation Instrument.swift
+[62/426] Compiling c-nioatomics.c
+[64/427] Compiling _NIODataStructures Heap.swift
+[65/427] Compiling ServiceContextModule ServiceContextModule.swift
+[65/427] Compiling fiat_p256_adx_sqr.S
+[66/427] Compiling CCryptoBoringSSLShims shims.c
+[67/427] Compiling fiat_curve25519_adx_square.S
+[68/427] Compiling fiat_p256_adx_mul.S
+[69/427] Compiling fiat_curve25519_adx_mul.S
+[70/428] Compiling md5-x86_64-linux.S
+[71/428] Compiling md5-x86_64-apple.S
+[72/428] Compiling md5-586-linux.S
+[73/428] Compiling md5-586-apple.S
+[74/428] Compiling chacha20_poly1305_x86_64-linux.S
+[75/428] Compiling chacha20_poly1305_x86_64-apple.S
+[76/428] Compiling chacha20_poly1305_armv8-win.S
+[77/428] Compiling err_data.cc
+[78/428] Compiling c-atomics.c
+[79/428] Compiling chacha20_poly1305_armv8-linux.S
+[80/428] Compiling chacha20_poly1305_armv8-apple.S
+[81/428] Compiling chacha-x86_64-linux.S
+[82/429] Compiling chacha-x86_64-apple.S
+[83/429] Compiling chacha-x86-linux.S
+[84/429] Compiling chacha-x86-apple.S
+[86/429] Compiling InternalCollectionsUtilities BorrowingIteratorProtocol+Equality.swift
+[86/429] Compiling chacha-armv8-linux.S
+[87/429] Compiling chacha-armv8-win.S
+[88/429] Compiling chacha-armv8-apple.S
+[89/430] Compiling chacha-armv4-linux.S
+[91/430] Compiling SpanPreview InputSpan.swift
+[92/431] Compiling UnixSignals UnixSignal.swift
+[92/431] Compiling aes128gcmsiv-x86_64-linux.S
+[93/431] Compiling aes128gcmsiv-x86_64-apple.S
+[94/432] Compiling x86_64-mont5-linux.S
+[95/432] Compiling x86_64-mont5-apple.S
+[96/432] Compiling x86_64-mont-linux.S
+[97/432] Compiling x86_64-mont-apple.S
+[98/432] Compiling x86-mont-linux.S
+[99/432] Compiling x86-mont-apple.S
+[100/432] Compiling vpaes-x86_64-linux.S
+[102/432] Compiling CoreMetrics Locks.swift
+[102/432] Compiling vpaes-x86-linux.S
+[103/432] Compiling vpaes-x86-apple.S
+[104/432] Compiling vpaes-x86_64-apple.S
+[105/433] Compiling vpaes-armv8-win.S
+[106/433] Compiling vpaes-armv8-linux.S
+[107/433] Compiling vpaes-armv8-apple.S
+[108/433] Compiling vpaes-armv7-linux.S
+[109/433] Compiling sha512-x86_64-linux.S
+[110/433] Compiling sha512-armv8-win.S
+[111/433] Compiling sha512-x86_64-apple.S
+[112/433] Compiling sha512-armv8-apple.S
+[113/433] Compiling sha512-armv8-linux.S
+[114/433] Compiling sha512-586-linux.S
+[115/433] Compiling sha512-armv4-linux.S
+[116/433] Compiling sha256-x86_64-linux.S
+[117/433] Compiling sha512-586-apple.S
+[118/433] Compiling sha256-x86_64-apple.S
+[119/433] Compiling sha256-armv8-win.S
+[120/433] Compiling sha256-armv8-linux.S
+[121/433] Compiling sha256-armv8-apple.S
+[122/433] Compiling sha256-586-linux.S
+[123/433] Compiling sha256-armv4-linux.S
+[124/433] Compiling sha256-586-apple.S
+[126/433] Compiling Metrics Metrics.swift
+[126/433] Compiling sha1-x86_64-linux.S
+[127/433] Compiling sha1-x86_64-apple.S
+[128/433] Compiling sha1-armv8-win.S
+[129/433] Compiling sha1-armv8-linux.S
+[130/433] Compiling sha1-armv8-apple.S
+[131/433] Compiling sha1-armv4-large-linux.S
+[132/433] Compiling rsaz-avx2-linux.S
+[133/433] Compiling sha1-586-apple.S
+[134/433] Compiling sha1-586-linux.S
+[135/433] Compiling rsaz-avx2-apple.S
+[137/433] Compiling Logging MultiplexLogHandler.swift
+[138/433] Compiling Tracing InstrumentationSystem+Tracing.swift
+[138/433] Compiling rdrand-x86_64-apple.S
+[139/433] Compiling rdrand-x86_64-linux.S
+[140/433] Compiling p256_beeu-x86_64-asm-linux.S
+[141/433] Compiling p256_beeu-armv8-asm-linux.S
+[142/433] Compiling p256_beeu-x86_64-asm-apple.S
+[143/433] Compiling p256-x86_64-asm-linux.S
+[144/433] Compiling p256_beeu-armv8-asm-apple.S
+[145/433] Compiling p256-x86_64-asm-apple.S
+[146/433] Compiling p256_beeu-armv8-asm-win.S
+[147/433] Compiling ghashv8-armv8-win.S
+[148/433] Compiling p256-armv8-asm-win.S
+[149/433] Compiling p256-armv8-asm-apple.S
+[150/433] Compiling ghashv8-armv8-linux.S
+[151/433] Compiling ghashv8-armv8-apple.S
+[152/433] Compiling p256-armv8-asm-linux.S
+[153/433] Compiling ghash-x86_64-linux.S
+[154/433] Compiling ghashv8-armv7-linux.S
+[155/433] Compiling ghash-x86-apple.S
+[156/433] Compiling ghash-x86-linux.S
+[157/433] Compiling ghash-ssse3-x86_64-linux.S
+[158/433] Compiling ghash-x86_64-apple.S
+[159/433] Compiling ghash-neon-armv8-win.S
+[160/433] Compiling ghash-ssse3-x86-apple.S
+[161/433] Compiling ghash-ssse3-x86_64-apple.S
+[162/433] Compiling ghash-neon-armv8-linux.S
+[163/433] Compiling ghash-ssse3-x86-linux.S
+[164/433] Compiling ghash-neon-armv8-apple.S
+[165/433] Compiling ghash-armv4-linux.S
+[166/433] Compiling co-586-linux.S
+[167/433] Compiling co-586-apple.S
+[168/433] Compiling bsaes-armv7-linux.S
+[169/433] Compiling bn-armv8-win.S
+[170/433] Compiling bn-armv8-linux.S
+[171/433] Compiling bn-armv8-apple.S
+[172/433] Compiling bn-586-apple.S
+[173/433] Compiling armv8-mont-win.S
+[174/433] Compiling armv8-mont-apple.S
+[175/433] Compiling bn-586-linux.S
+[176/433] Compiling armv8-mont-linux.S
+[177/433] Compiling armv4-mont-linux.S
+[179/433] Compiling NIOConcurrencyHelpers NIOAtomic.swift
+[179/433] Compiling aesv8-gcm-armv8-win.S
+[180/433] Compiling aesv8-gcm-armv8-apple.S
+[181/433] Compiling aesv8-armv8-linux.S
+[182/433] Compiling aesv8-gcm-armv8-linux.S
+[183/433] Compiling aesni-x86_64-linux.S
+[184/433] Compiling aesv8-armv8-apple.S
+[185/433] Compiling aesv8-armv7-linux.S
+[186/433] Compiling aesv8-armv8-win.S
+[187/433] Compiling aesni-x86_64-apple.S
+[188/433] Compiling aesni-x86-apple.S
+[189/433] Compiling aesni-x86-linux.S
+[190/433] Compiling aes-gcm-avx10-x86_64-linux.S
+[191/433] Compiling aesni-gcm-x86_64-apple.S
+[192/433] Compiling aesni-gcm-x86_64-linux.S
+[193/433] Compiling aes-gcm-avx10-x86_64-apple.S
+[194/433] Compiling x_x509.cc
+[195/433] Compiling x_x509a.cc
+[196/433] Compiling x_sig.cc
+[197/433] Compiling x_req.cc
+[198/433] Compiling x_val.cc
+[199/433] Compiling x_pubkey.cc
+[200/433] Compiling x_exten.cc
+[200/433] Compiling x_spki.cc
+[202/433] Compiling x_name.cc
+[203/433] Compiling x_all.cc
+[204/433] Compiling x_crl.cc
+[205/433] Compiling x_attrib.cc
+[206/433] Compiling x_algor.cc
+[207/433] Compiling x509spki.cc
+[208/433] Compiling x509rset.cc
+[209/433] Compiling x509name.cc
+[210/433] Compiling x509cset.cc
+[211/433] Compiling x509_vpm.cc
+[212/433] Compiling x509_txt.cc
+[213/433] Compiling x509_vfy.cc
+[214/433] Compiling x509_req.cc
+[215/433] Compiling x509_v3.cc
+[216/433] Compiling x509_ext.cc
+[217/433] Compiling x509_trs.cc
+[218/433] Compiling x509_obj.cc
+[219/433] Compiling DequeModule Deque+Codable.swift
+[220/433] Compiling x509_set.cc
+[221/433] Compiling x509_d2.cc
+[222/433] Compiling x509_def.cc
+[223/433] Compiling x509_lu.cc
+[224/433] Compiling x509.cc
+[225/433] Compiling v3_skey.cc
+[226/433] Compiling v3_prn.cc
+[227/433] Compiling x509_cmp.cc
+[228/433] Compiling x509_att.cc
+[229/433] Compiling v3_pmaps.cc
+[230/433] Compiling v3_pcons.cc
+[231/433] Compiling v3_utl.cc
+[232/433] Compiling v3_ocsp.cc
+[233/433] Compiling v3_purp.cc
+[234/433] Compiling v3_info.cc
+[235/433] Compiling v3_int.cc
+[236/433] Compiling v3_ia5.cc
+[237/433] Compiling v3_ncons.cc
+[239/433] Compiling HTTPTypes HTTP2ErrorCode.swift
+[239/433] Compiling v3_genn.cc
+[240/433] Compiling v3_lib.cc
+[241/433] Compiling v3_crld.cc
+[242/433] Compiling v3_extku.cc
+[243/433] Compiling v3_enum.cc
+[244/433] Compiling v3_bcons.cc
+[245/433] Compiling v3_bitst.cc
+[246/433] Compiling v3_conf.cc
+[247/433] Compiling v3_cpols.cc
+[248/433] Compiling v3_alt.cc
+[250/433] Compiling OrderedCollections _HashTable+Bucket.swift
+[251/433] Compiling SystemPackage Errno.swift
+[251/433] Compiling t_req.cc
+[252/433] Compiling v3_akeya.cc
+[253/433] Compiling t_crl.cc
+[254/433] Compiling rsa_pss.cc
+[255/434] Compiling v3_akey.cc
+[256/434] Compiling t_x509.cc
+[257/434] Compiling policy.cc
+[258/434] Compiling t_x509a.cc
+[259/434] Compiling algorithm.cc
+[260/434] Compiling by_dir.cc
+[261/434] Compiling name_print.cc
+[262/434] Compiling voprf.cc
+[263/434] Compiling a_verify.cc
+[264/434] Compiling asn1_gen.cc
+[265/434] Compiling a_digest.cc
+[266/434] Compiling by_file.cc
+[267/434] Compiling thread_none.cc
+[268/434] Compiling trust_token.cc
+[269/434] Compiling thread_pthread.cc
+[270/434] Compiling thread.cc
+[271/434] Compiling a_sign.cc
+[272/434] Compiling stack.cc
+[272/434] Compiling thash.cc
+[274/434] Compiling pmbtoken.cc
+[275/434] Compiling slhdsa.cc
+[276/434] Compiling fors.cc
+[277/434] Compiling sha512.cc
+[278/434] Compiling wots.cc
+[279/434] Compiling siphash.cc
+[280/434] Compiling sha256.cc
+[281/434] Compiling merkle.cc
+[282/434] Compiling sha1.cc
+[283/434] Compiling rc4.cc
+[284/434] Compiling thread_win.cc
+[285/434] Compiling windows.cc
+[286/434] Compiling rsa_crypt.cc
+[287/434] Compiling refcount.cc
+[288/434] Compiling rsa_print.cc
+[289/434] Compiling rsa_asn1.cc
+[290/434] Compiling rsa_extra.cc
+[291/434] Compiling trusty.cc
+[292/434] Compiling ios.cc
+[293/434] Compiling rand_extra.cc
+[294/434] Compiling passive.cc
+[295/434] Compiling poly1305_arm_asm.S
+[296/434] Compiling urandom.cc
+[296/434] Compiling getentropy.cc
+[298/434] Compiling fork_detect.cc
+[298/434] Compiling poly1305_vec.cc
+[300/434] Compiling deterministic.cc
+[301/434] Compiling forkunsafe.cc
+[302/434] Compiling pool.cc
+[303/434] Compiling poly1305_arm.cc
+[304/434] Compiling pem_xaux.cc
+[305/434] Compiling poly1305.cc
+[306/434] Compiling pkcs7_x509.cc
+[307/434] Compiling pkcs7.cc
+[308/434] Compiling pem_pkey.cc
+[309/434] Compiling pem_x509.cc
+[310/434] Compiling pkcs8_x509.cc
+[311/434] Compiling pkcs8.cc
+[312/434] Compiling pem_lib.cc
+[313/434] Compiling pem_all.cc
+[314/434] Compiling pem_oth.cc
+[315/434] Compiling p5_pbev2.cc
+[316/434] Compiling pem_info.cc
+[317/434] Compiling obj_xref.cc
+[318/434] Compiling lhash.cc
+[319/434] Compiling pem_pk8.cc
+[320/434] Compiling mldsa.cc
+[321/434] Compiling md4.cc
+[322/434] Compiling fips_shared_support.cc
+[323/434] Compiling poly_rq_mul.S
+[324/434] Compiling md5.cc
+[325/434] Compiling mem.cc
+[326/434] Compiling sign.cc
+[327/434] Compiling obj.cc
+[328/434] Compiling ex_data.cc
+[329/434] Compiling pbkdf.cc
+[330/434] Compiling print.cc
+[331/434] Compiling hpke.cc
+[332/434] Compiling mlkem.cc
+[333/434] Compiling p_x25519_asn1.cc
+[334/434] Compiling scrypt.cc
+[335/434] Compiling kyber.cc
+[336/434] Compiling p_rsa_asn1.cc
+[337/434] Compiling p_x25519.cc
+[338/434] Compiling p_hkdf.cc
+[339/434] Compiling hrss.cc
+[340/434] Compiling p_rsa.cc
+[341/434] Compiling p_ec_asn1.cc
+[342/434] Compiling p_ed25519_asn1.cc
+[343/434] Compiling p_ec.cc
+[344/434] Compiling p_ed25519.cc
+[345/434] Compiling p_dh_asn1.cc
+[346/434] Compiling evp.cc
+[347/434] Compiling err.cc
+[348/434] Compiling evp_ctx.cc
+[349/434] Compiling p_dh.cc
+[350/434] Compiling ecdsa_asn1.cc
+[351/434] Compiling evp_asn1.cc
+[352/434] Compiling engine.cc
+[353/434] Compiling p_dsa_asn1.cc
+[354/434] Compiling ecdh_extra.cc
+[355/434] Compiling dsa_asn1.cc
+[356/434] Compiling hash_to_curve.cc
+[357/434] Compiling dsa.cc
+[358/434] Compiling dh_asn1.cc
+[359/434] Compiling ec_derive.cc
+[360/434] Compiling ec_asn1.cc
+[361/434] Compiling x25519-asm-arm.S
+[362/434] Compiling params.cc
+[363/434] Compiling curve25519_64_adx.cc
+[364/434] Compiling digest_extra.cc
+[365/434] Compiling cpu_intel.cc
+[366/434] Compiling cpu_arm_linux.cc
+[367/434] Compiling cpu_arm_freebsd.cc
+[368/434] Compiling crypto.cc
+[369/434] Compiling cpu_aarch64_win.cc
+[370/434] Compiling des.cc
+[371/434] Compiling cpu_aarch64_linux.cc
+[372/434] Compiling cpu_aarch64_openbsd.cc
+[373/434] Compiling cpu_aarch64_sysreg.cc
+[374/434] Compiling spake25519.cc
+[375/434] Compiling e_rc4.cc
+[376/434] Compiling cpu_aarch64_apple.cc
+[377/434] Compiling curve25519.cc
+[378/434] Compiling conf.cc
+[379/434] Compiling e_tls.cc
+[380/434] Compiling e_rc2.cc
+[381/434] Compiling derive_key.cc
+[382/434] Compiling cipher_extra.cc
+[383/434] Compiling e_aesctrhmac.cc
+[384/434] Compiling e_null.cc
+[385/434] Compiling chacha.cc
+[386/434] Compiling unicode.cc
+[387/434] Compiling buf.cc
+[388/434] Compiling tls_cbc.cc
+[389/434] Compiling cbs.cc
+[390/434] Compiling ber.cc
+[391/434] Compiling bn_asn1.cc
+[392/434] Compiling asn1_compat.cc
+[393/434] Compiling cbb.cc
+[394/434] Compiling convert.cc
+[395/434] Compiling blake2.cc
+[396/434] Compiling hexdump.cc
+[397/434] Compiling printf.cc
+[398/434] Compiling errno.cc
+[399/434] Compiling fd.cc
+[400/434] Compiling bio.cc
+[401/434] Compiling pair.cc
+[402/434] Compiling file.cc
+[403/434] Compiling bio_mem.cc
+[404/434] Compiling base64.cc
+[405/434] Compiling tasn_fre.cc
+[406/434] Compiling tasn_utl.cc
+[407/434] Compiling f_string.cc
+[408/434] Compiling tasn_typ.cc
+[409/434] Compiling posix_time.cc
+[410/434] Compiling tasn_dec.cc
+[411/434] Compiling f_int.cc
+[412/434] Compiling tasn_new.cc
+[413/434] Compiling asn1_par.cc
+[414/434] Compiling tasn_enc.cc
+[414/434] Compiling asn_pack.cc
+[416/434] Compiling a_type.cc
+[417/434] Compiling a_time.cc
+[418/434] Compiling a_octet.cc
+[419/434] Compiling asn1_lib.cc
+[420/434] Compiling a_strnid.cc
+[420/434] Write sources
+[423/434] Compiling a_strex.cc
+[424/434] Compiling a_i2d_fp.cc
+[425/436] Compiling a_mbstr.cc
+[426/436] Compiling a_int.cc
+[427/436] Compiling a_utctm.cc
+[428/436] Compiling a_gentm.cc
+[429/436] Compiling a_object.cc
+[431/436] Compiling Atomics OptionalRawRepresentable.swift
+[432/437] Compiling Configuration AccessReporter.swift
+[432/437] Compiling bcm.cc
+[434/438] Compiling AsyncAlgorithms AsyncAdjacentPairsSequence.swift
+[435/439] Compiling CryptoBoringWrapper BoringSSLAEAD.swift
+[436/440] Compiling ServiceLifecycle AsyncCancelOnGracefulShutdownSequence.swift
+[437/440] Compiling Crypto AES-GCM.swift
+[438/440] Compiling NIOCore AddressedEnvelope.swift
+[439/444] Compiling NIOHTTPTypes NIOHTTPTypes.swift
+[440/444] Compiling NIOFoundationEssentialsCompat ByteBuffer-foundation.swift
+[441/444] Compiling NIOEmbedded AsyncTestingChannel.swift
+[442/444] Compiling NIOPosix BSDSocketAPICommon.swift
+[443/446] Compiling NIO Exports.swift
+[444/447] Compiling NIOHTTP1 ByteCollectionUtils.swift
+[445/449] Compiling _NIOFileSystem Array+FileSystem.swift
+[446/450] Compiling NIOFileSystem Exports.swift
+[447/450] Compiling NIOHTTPTypesHTTP1 HTTP1ToHTTPCodec.swift
+[448/450] Compiling NIOExtras DebugInboundEventsHandler.swift
+[449/451] Compiling HummingbirdCore Deprecations.swift
+[450/452] Compiling Hummingbird Application+ConfigReader.swift
+[451/453] Compiling server Database.swift
+[451/453] Write Objects.LinkFileList
+[452/453] Linking server
+Build of product 'server' complete! (204.91s)
+
+$ docker exec twelve-current-build-pr43 bash -c rm -f /usr/local/bin/nproc; rm -rf /tmp/* /root/.cache /root/.cargo/registry /home/bench/.cache /home/bench/.cargo/registry /home/bench/.npm/_cacache /var/lib/apt/lists/* /var/cache/apt/archives/*.deb; find /suite/sources -type d -path '*/target/release/incremental' -prune -exec rm -rf {} +

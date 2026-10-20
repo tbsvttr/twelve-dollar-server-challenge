@@ -1,0 +1,50 @@
+Pinned source: f3afa25403ac5ee2a2030337de1afd635cd6ab65
+
+$ docker run -d --name twelve-current-build-112 --cpus 1 --memory 2g --memory-swap 2g --security-opt seccomp=seccomp-io-uring.json --mount type=bind,src=<BENCHMARK_EVIDENCE>,dst=/evidence,readonly twelve-unified:2026-10-07 sleep infinity
+0e30a510715c39e8ebd844b69820e6a542cc31a2c635e69cb82e28a5288ec4b0
+
+$ docker exec -i twelve-current-build-112 python3 - 112
+Verified 20 pinned source files
+
+$ docker exec twelve-current-build-112 bash /evidence/runtime-scripts/pr112.sh
+/usr/bin/gcc
+/usr/bin/curl
+/usr/bin/unzip
+/tmp/sqlite-headers.zip: OK
+
+$ docker exec twelve-current-build-112 chown -R bench:bench /suite/sources/pr112
+
+$ docker exec twelve-current-build-112 runuser -u bench -- env PATH=/opt/twelve-rust/cargo/bin:/usr/local/go/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 NIM_JOBS=2 MAKEFLAGS=-j2 bash /suite/sources/pr112/build.sh
+build: downloading sqlite-amalgamation-3540000.zip
+build: downloading liburing-2.15.tar.gz
+ar: creating liburing.a
+ar: creating liburing-ffi.a
+build: deps ready
+src/util.c:2: warning: "_GNU_SOURCE" redefined
+    2 | #define _GNU_SOURCE
+      | 
+<command-line>: note: this is the location of the previous definition
+build: PGO build
+pgo/train.c: In function 'main':
+pgo/train.c:80:91: warning: '%s' directive output may be truncated writing up to 599 bytes into a region of size between 198 and 203 [-Wformat-truncation=]
+   80 |         snprintf(sql, sizeof sql, "INSERT INTO posts (id, user_id, body) VALUES (%d, %d, '%s')",
+      |                                                                                           ^~
+   81 |                  i, 1 + i % 200, body);
+      |                                  ~~~~                                                      
+pgo/train.c:80:9: note: 'snprintf' output between 56 and 660 bytes into a destination of size 256
+   80 |         snprintf(sql, sizeof sql, "INSERT INTO posts (id, user_id, body) VALUES (%d, %d, '%s')",
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   81 |                  i, 1 + i % 200, body);
+      |                  ~~~~~~~~~~~~~~~~~~~~~
+lto-wrapper: warning: using serial compilation of 2 LTRANS jobs
+lto-wrapper: note: see the '-flto' option documentation for more information
+train: ok (build/train.db kept)
+gen: 78192 request rounds
+build: built bin/server (PGO)
+build: smoke test ok
+-rwxr-xr-x 1 bench bench 1159000 Oct 20 11:06 bin/server
+
+$ docker exec twelve-current-build-112 bash -c rm -rf /tmp/* /root/.cache /home/bench/.cache /home/bench/.npm/_cacache /var/lib/apt/lists/* /var/cache/apt/archives/*.deb
+
+$ docker commit twelve-current-build-112 twelve-current-pr112:2026-10-20
+sha256:6d6d902dbd8bd2a23f213b0972879439f8b0d5e7db64756fc13b4e710a53dbdb

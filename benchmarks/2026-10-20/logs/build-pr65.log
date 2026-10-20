@@ -1,0 +1,25 @@
+
+$ docker exec twelve-current-build-pr65 bash -c set -e; rm -rf /suite/sources; mkdir -p /suite/sources; cp -a /evidence/sources/pr65 /suite/sources/; cp /evidence/manifest.json /suite/manifest.json; cp /evidence/schema.sql /suite/schema.sql; chown -R bench:bench /suite/sources
+
+$ docker exec twelve-current-build-pr65 bash /evidence/runtime-scripts/pr65.sh
+/tmp/tmp.cV1e6OBpEW: OK
+go version go1.27.2 linux/arm64
+
+$ docker exec twelve-current-build-pr65 runuser -u bench -- env PATH=/usr/local/go/bin:/opt/twelve-rust/cargo/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 bash /suite/sources/pr65/build.sh
+/tmp/tmp.YMsXlivfYY/sqlite.zip: OK
+
+$ docker exec twelve-current-build-pr65 bash -c rm -rf /tmp/* /root/.cache /root/.cargo/registry /home/bench/.cache /home/bench/.cargo/registry /home/bench/.npm/_cacache /var/lib/apt/lists/* /var/cache/apt/archives/*.deb; find /suite/sources -type d -path '*/target/release/incremental' -prune -exec rm -rf {} +
+2f82b65a0d0a710565e12c033b400806cb3e005b538e10054030ba6f84f9755f
+twelve-current-clean-pr65
+
+Compiler provenance:
+/suite/sources/pr65/bin/server: go1.27.2
+	path	github.com/Antheurus/twelve-dollar-go-epoll
+	mod	github.com/Antheurus/twelve-dollar-go-epoll	(devel)	
+	build	-buildmode=exe
+	build	-compiler=gc
+	build	-trimpath=true
+	build	CGO_ENABLED=1
+	build	GOARCH=arm64
+	build	GOOS=linux
+	build	GOARM64=v8.0

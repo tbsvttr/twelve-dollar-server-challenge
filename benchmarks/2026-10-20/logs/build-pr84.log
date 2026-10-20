@@ -1,0 +1,53 @@
+
+$ docker exec twelve-current-build-pr84 bash -c set -e; rm -rf /suite/sources; mkdir -p /suite/sources; cp -a /evidence/sources/pr84 /suite/sources/; cp /evidence/manifest.json /suite/manifest.json; cp /evidence/schema.sql /suite/schema.sql; chown -R bench:bench /suite/sources
+
+$ docker exec twelve-current-build-pr84 bash /evidence/runtime-scripts/pr84.sh
+Hit:1 http://ports.ubuntu.com/ubuntu-ports noble InRelease
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble-updates InRelease [126 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble-backports InRelease [126 kB]
+Get:4 http://ports.ubuntu.com/ubuntu-ports noble-security InRelease [126 kB]
+Get:5 http://ports.ubuntu.com/ubuntu-ports noble-updates/restricted arm64 Packages [3251 kB]
+Get:6 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 Packages [1786 kB]
+Get:7 http://ports.ubuntu.com/ubuntu-ports noble-updates/multiverse arm64 Packages [104 kB]
+Get:8 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 Packages [2214 kB]
+Get:9 http://ports.ubuntu.com/ubuntu-ports noble-backports/multiverse arm64 Packages [669 B]
+Get:10 http://ports.ubuntu.com/ubuntu-ports noble-security/restricted arm64 Packages [3129 kB]
+Get:11 http://ports.ubuntu.com/ubuntu-ports noble-security/universe arm64 Packages [1638 kB]
+Get:12 http://ports.ubuntu.com/ubuntu-ports noble-security/multiverse arm64 Packages [99.1 kB]
+Get:13 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 Packages [1475 kB]
+Fetched 14.1 MB in 2s (5847 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  pypy3-lib
+Suggested packages:
+  pypy3-doc pypy3-tk
+The following NEW packages will be installed:
+  pypy3 pypy3-lib
+0 upgraded, 2 newly installed, 0 to remove and 19 not upgraded.
+Need to get 14.2 MB of archives.
+After this operation, 77.7 MB of additional disk space will be used.
+Get:1 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 pypy3-lib arm64 7.3.15+dfsg-1build3 [3045 kB]
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 pypy3 arm64 7.3.15+dfsg-1build3 [11.1 MB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 14.2 MB in 2s (7962 kB/s)
+Selecting previously unselected package pypy3-lib:arm64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 16962 files and directories currently installed.)
+Preparing to unpack .../pypy3-lib_7.3.15+dfsg-1build3_arm64.deb ...
+Unpacking pypy3-lib:arm64 (7.3.15+dfsg-1build3) ...
+Setting up pypy3-lib:arm64 (7.3.15+dfsg-1build3) ...
+Selecting previously unselected package pypy3.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 18220 files and directories currently installed.)
+Preparing to unpack .../pypy3_7.3.15+dfsg-1build3_arm64.deb ...
+Unpacking pypy3 (7.3.15+dfsg-1build3) ...
+Setting up pypy3 (7.3.15+dfsg-1build3) ...
+running pypy3 rtupdate hooks for 7.3
+running pypy3 post-rtupdate hooks for 7.3
+Python 3.9.18 (7.3.15+dfsg-1build3, Mar 31 2024, 07:19:21)
+[PyPy 7.3.15 with GCC 13.2.0]
+
+$ docker exec twelve-current-build-pr84 runuser -u bench -- env PATH=/usr/local/go/bin:/opt/twelve-rust/cargo/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 bash /suite/sources/pr84/build.sh
+
+$ docker exec twelve-current-build-pr84 bash -c rm -f /usr/local/bin/nproc; rm -rf /tmp/* /root/.cache /root/.cargo/registry /home/bench/.cache /home/bench/.cargo/registry /home/bench/.npm/_cacache /var/lib/apt/lists/* /var/cache/apt/archives/*.deb; find /suite/sources -type d -path '*/target/release/incremental' -prune -exec rm -rf {} +

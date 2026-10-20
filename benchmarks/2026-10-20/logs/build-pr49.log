@@ -1,0 +1,48 @@
+
+$ docker exec twelve-current-build-pr49 bash -c set -e; rm -rf /suite/sources; mkdir -p /suite/sources; cp -a /evidence/sources/pr49 /suite/sources/; cp /evidence/manifest.json /suite/manifest.json; cp /evidence/schema.sql /suite/schema.sql; chown -R bench:bench /suite/sources
+
+$ docker exec twelve-current-build-pr49 bash /evidence/runtime-scripts/pr49.sh
+node-v24.21.0-linux-arm64.tar.xz: OK
+v24.21.0
+
+added 1 package in 2s
+
+1 package is looking for funding
+  run `npm fund` for details
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.0
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.0
+npm notice To update run: npm install -g npm@12.2.0
+npm notice
+
+$ docker exec twelve-current-build-pr49 runuser -u bench -- env PATH=/usr/local/go/bin:/opt/twelve-rust/cargo/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 bash /suite/sources/pr49/build.sh
+Lockfile is up to date, resolution step is skipped
+Progress: resolved 1, reused 0, downloaded 0, added 0
+Packages: +21
++++++++++++++++++++++
+
+   ╭──────────────────────────────────────────╮
+   │                                          │
+   │   Update available! 10.33.0 → 12.14.0.   │
+   │   Changelog: https://pnpm.io/v/12.14.0   │
+   │     To update, run: pnpm add -g pnpm     │
+   │                                          │
+   ╰──────────────────────────────────────────╯
+
+Progress: resolved 21, reused 0, downloaded 18, added 18
+Progress: resolved 21, reused 0, downloaded 19, added 19
+Progress: resolved 21, reused 0, downloaded 20, added 19
+Progress: resolved 21, reused 0, downloaded 21, added 21, done
+
+dependencies:
++ @effect/platform-bun 4.0.4
++ @effect/platform-node 4.0.4
++ better-sqlite3 13.0.3
++ drizzle-orm 0.45.4
++ effect 4.0.4
+
+devDependencies: skipped
+
+Done in 6.2s using pnpm v10.33.0
+
+$ docker exec twelve-current-build-pr49 bash -c rm -f /usr/local/bin/nproc; rm -rf /tmp/* /root/.cache /root/.cargo/registry /home/bench/.cache /home/bench/.cargo/registry /home/bench/.npm/_cacache /var/lib/apt/lists/* /var/cache/apt/archives/*.deb; find /suite/sources -type d -path '*/target/release/incremental' -prune -exec rm -rf {} +

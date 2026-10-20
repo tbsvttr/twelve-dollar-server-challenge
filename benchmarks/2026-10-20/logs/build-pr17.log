@@ -1,0 +1,5 @@
+Pinned source: bc776417d1ef8ef5d99037adec7d172c8038098c
+1964b63bbde0eeff495c026b29272a2096540d2bd99b1e1563e926b30eb9f46e
+.deps/sqlite.zip: OK
+   Compiling twelve-rust-axum v0.1.0 (/suite/sources/pr17)
+    Finished `release` profile [optimized] target(s) in 7.52s

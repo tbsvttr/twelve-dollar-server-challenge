@@ -1,0 +1,53 @@
+{
+  "files": {
+    ".gitignore": {
+      "sha256": "075a9cd0d1cf1eff773dc93498de200dd4b65aac060e23c4122823dacfde1c90",
+      "bytes": 13,
+      "physical_lines": 2,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "README.md": {
+      "sha256": "ea83c82197ddcc89cffbac4e444ee517c4749e1f7d1fee4eaa35c5c09f5ecd0d",
+      "bytes": 8166,
+      "physical_lines": 137,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "build.sh": {
+      "sha256": "0dad21decb445a16d16db231e6614e9408f588899dcc00e7f4def83566536dd5",
+      "bytes": 1454,
+      "physical_lines": 29,
+      "classification": "own_support"
+    },
+    "install.sh": {
+      "sha256": "359aeb0008b067eb15435f81bafcf17fae488181728132356a5066d908aae1f9",
+      "bytes": 310,
+      "physical_lines": 7,
+      "classification": "own_support"
+    },
+    "src/import.cpp": {
+      "sha256": "249b89138ccdae5f8dcedc1974f5d24124b6fbd5d35505f5279a356116cd18e3",
+      "bytes": 3302,
+      "physical_lines": 90,
+      "classification": "application"
+    },
+    "src/server.cpp": {
+      "sha256": "24cd6890acd1ffa8ea6fbda7b59cf070f106159a98bf8732de488ac9bc7c01cd",
+      "bytes": 48714,
+      "physical_lines": 1402,
+      "classification": "application"
+    },
+    "src/store.hpp": {
+      "sha256": "e8a516070fc3741e33e4f9baf7f2ead3bea6ced9c36d07cde0324fb938b01bb2",
+      "bytes": 18406,
+      "physical_lines": 531,
+      "classification": "application"
+    },
+    "start.sh": {
+      "sha256": "400d4a747e67e92b155a78327b2142a81ebd77dba1b27b414b548443bf51f854",
+      "bytes": 459,
+      "physical_lines": 8,
+      "classification": "own_support"
+    }
+  },
+  "skipped_members": []
+}

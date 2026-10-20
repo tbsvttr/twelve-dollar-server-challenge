@@ -1,0 +1,16 @@
+{
+  ".gitignore": "a850e6f839426a21884e29e09012607524be133f957f38fdefb28f4ffdad6154",
+  "NOTES.md": "203121b32050b8d0165393b5f70990af3c0955073f3b630b0295e68ae1298983",
+  "README.md": "57e47ac392a89dff332fbc6a2e42cf7b8a962d1e19f659003a7811c6fb8cde9b",
+  "build.sh": "ced82bbdc4c7f34060fceae6e9ffd67e60fc4cc38c97c8367411c87e43a5f4ea",
+  "install.sh": "b37b83ac5eeeed477165a281c25a59ab1913f847face4bdf5f6578eaef935aef",
+  "pom.xml": "ae06ad8ca319e96c5b7af1de808d93475173e3a039becdab561fa9d573b51025",
+  "src/main/java/challenge/App.java": "228b7bf3258c7ed08416f6b076f2d201d94f77a1522904afeee8150a4bb819b7",
+  "src/main/java/challenge/Db.java": "c9b2976af58f30427f9e112a1bc64482d52a108c6c35c08b04c064276360ea2b",
+  "src/main/java/challenge/HttpHandler.java": "342a71dd19fd5c0468d8cd8284874f0a48350adfc0f24a88b5e7e010f3e6ea60",
+  "src/main/java/challenge/Json.java": "a5f8e87c91952dd7d967599085914735d99f3cb0bc06944bffbd4ffb14bfe0c7",
+  "src/main/java/challenge/Jwt.java": "3800e94bfc351b9895d602a586d78806a47602f4866756957ad4d056b34e6510",
+  "src/main/java/challenge/Server.java": "c0a6389244cac08c4a79a988af16a528da74cc91babadd916779eec15d79a71c",
+  "src/main/java/challenge/Sqlite.java": "d2fdf247a25baf7a6309d8849e8a48dc930fc137d33413282eb95b109c589106",
+  "start.sh": "59370c47a06477ac01982a648f3d0d9ee2e995ec3d850d4ced84d4883641a3f1"
+}

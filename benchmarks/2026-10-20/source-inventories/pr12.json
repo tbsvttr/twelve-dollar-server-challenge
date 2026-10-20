@@ -1,0 +1,119 @@
+{
+  "files": {
+    ".gitignore": {
+      "sha256": "68ec40a576adfe0f22aa51dbe06f4096abf02a36cb5e22490ecb7b810ee26428",
+      "bytes": 31,
+      "physical_lines": 4,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "Gemfile": {
+      "sha256": "52289900e4d975399ab3b88bb1e896b5ee86584f77200e7ef76564a3034ff84f",
+      "bytes": 113,
+      "physical_lines": 5,
+      "classification": "own_support"
+    },
+    "Gemfile.lock": {
+      "sha256": "d6575789a773b62b12ca4fc2b1684ef6c99b885ded7244041f482eaf5d07b585",
+      "bytes": 12838,
+      "physical_lines": 312,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "README.md": {
+      "sha256": "29b82644516ffadba788c6862e2c6cd23f190ac0ee0f41fcf3881427f675df9b",
+      "bytes": 10181,
+      "physical_lines": 173,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "app.rb": {
+      "sha256": "bed7800ae28db6ce562a8140f2f89d92a89821b81c85c6c2519a39fa1fe9de70",
+      "bytes": 6596,
+      "physical_lines": 161,
+      "classification": "application"
+    },
+    "build.sh": {
+      "sha256": "f7058e7d8efec4bcad31f21388f0d83985a9f18f517af5395f7eb6d38ff6de79",
+      "bytes": 159,
+      "physical_lines": 6,
+      "classification": "own_support"
+    },
+    "capacity-results.json": {
+      "sha256": "dec303d03a2c1963084e72ca782423647d1d4be91eec33952c7daf55d9772074",
+      "bytes": 179743,
+      "physical_lines": 6636,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "check.py": {
+      "sha256": "94e1aed9a85da45c65012c394d780ebb988be7eb8c0df69ebb0dea81cc7e6bcf",
+      "bytes": 6448,
+      "physical_lines": 137,
+      "classification": "own_support"
+    },
+    "config.ru": {
+      "sha256": "765adfce92685c638a568f145b236979bbfc57ac8a024d0685578fd5b6651cd8",
+      "bytes": 35,
+      "physical_lines": 2,
+      "classification": "other"
+    },
+    "connection_pressure.rb": {
+      "sha256": "c8916d69e6b1a1094f5016fd375e76bd6d0a6e831704febdbe137672008524b7",
+      "bytes": 774,
+      "physical_lines": 25,
+      "classification": "application"
+    },
+    "install.sh": {
+      "sha256": "1c6b8c1039f9715c9a4549eab2c07487b2f3ca1edc8c1ae960784d4d6991c04e",
+      "bytes": 715,
+      "physical_lines": 17,
+      "classification": "own_support"
+    },
+    "puma.rb": {
+      "sha256": "e616b2c5fb3a75693ca8f69a20953b74b2462af237aefb5898885d539e707aff",
+      "bytes": 292,
+      "physical_lines": 6,
+      "classification": "application"
+    },
+    "start.sh": {
+      "sha256": "b0890a407f1686796fbf1659dd49bc7e8b358b3850f9d8ebeb6c95f5d1bf3e73",
+      "bytes": 193,
+      "physical_lines": 6,
+      "classification": "own_support"
+    },
+    "tests/connection_check.py": {
+      "sha256": "0267b99ad3be38df602272732343a16f4f0839ad5efe47ddb6a2e9a88a3a8ec3",
+      "bytes": 8019,
+      "physical_lines": 177,
+      "classification": "own_support"
+    },
+    "tests/connection_load.c": {
+      "sha256": "306b28b67bd3a0e724c0f103a15b980e585826a1f167696a91dd495d2943e2b7",
+      "bytes": 17947,
+      "physical_lines": 381,
+      "classification": "own_support"
+    },
+    "tests/fd_exhaustion.py": {
+      "sha256": "3d6929d8e7e54e0d0f3e19e65c5ec07830d70b4c43ab96ae04c52e4d1208c352",
+      "bytes": 1593,
+      "physical_lines": 41,
+      "classification": "own_support"
+    },
+    "tests/pressure_regression.py": {
+      "sha256": "4192961d8ead1e8568e6412587d1896e15a292977a834a2c39a54ae8685598db",
+      "bytes": 3887,
+      "physical_lines": 92,
+      "classification": "own_support"
+    },
+    "tests/transport_check.py": {
+      "sha256": "60b40beb7874ca8d0185660da8d53a586519af9901e106d2b50645fbd5f7a58e",
+      "bytes": 5298,
+      "physical_lines": 140,
+      "classification": "own_support"
+    },
+    "verify.py": {
+      "sha256": "f3bee0c79cc90bdfefea3939b88acce56e93c27e1e7419ecd9e0e624ff509e91",
+      "bytes": 4465,
+      "physical_lines": 96,
+      "classification": "own_support"
+    }
+  },
+  "skipped_members": []
+}

@@ -1,0 +1,24 @@
+feedapi: descriptor limit 65535 ( about 65519 connections )
+feedapi: AmmarServer 0.42.962.4954 , sqlite 3.53.0 , serving /tmp/current-pr54-ntdkt13x/feed.db on 127.0.0.1:24000
+Binding AmmarServer v0.42.962.4954 to 127.0.0.1:24000
+Current working dir: /suite/sources/pr54
+
+
+DISCLAIMER : 
+Please note that this server version is not thoroughly
+ pen-tested so it is not meant for production deployment..
+Bug reports and feedback are very welcome.. 
+via https://github.com/AmmarkoV/AmmarServer/issues
+
+Access logged @ log/feedapi_access.log , Errors logged @ log/feedapi_error.log 
+ [33m WARNING MESSAGE : PreSpawning Threads is disabled , call executable with -prefork X ( with X more than 0 ) to enable them if you target heavy loads..
+[0mTODO: Implement download resume capabilities ( range head request ) ..
+TODO: require the Host: header from HTTP 1.1 clients
+TODO: accept absolute URL's in a request
+TODO: accept requests with chunked data
+TODO: use the "100 Continue" response appropriately
+TODO: handle requests with If-Modified-Since: or If-Unmodified-Since: headers
+TODO: Add configuration file ammServ.conf parsing..
+Randomizing cache ETag , ETags will from now on be 6960XXXXXXXX 
+Trying to bind to 127.0.0.1:24000 Binding (127.0.0.1:24000) / pid 13 uid 1001.. 
+.SSL accept loop: serversock=6 sslserversock=-1 sslAvailable=0

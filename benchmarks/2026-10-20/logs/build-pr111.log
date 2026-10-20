@@ -1,0 +1,21 @@
+Pinned source: 3f3703cf020f48fdd9c9f42108c6903f437edd48
+
+$ docker run -d --name twelve-current-build-111 --cpus 1.5 --memory 3g --memory-swap 3g --security-opt seccomp=seccomp-io-uring.json --mount type=bind,src=<BENCHMARK_EVIDENCE>,dst=/evidence,readonly twelve-unified:2026-10-07 sleep infinity
+c8c4d98666b79b9bad99520ad436d7bfd055c083c2912f0ac7ff86346846bd53
+
+$ docker exec -i twelve-current-build-111 python3 - 111
+Verified 26 pinned source files
+
+$ docker exec twelve-current-build-111 bash /evidence/runtime-scripts/pr111.sh
+/tmp/go.tgz: OK
+go version go1.27.2 linux/arm64
+
+$ docker exec twelve-current-build-111 chown -R bench:bench /suite/sources/pr111
+
+$ docker exec twelve-current-build-111 runuser -u bench -- env PATH=/opt/twelve-rust/cargo/bin:/usr/local/go/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 NIM_JOBS=2 MAKEFLAGS=-j2 bash /suite/sources/pr111/build.sh
+.deps/sqlite.zip: OK
+
+$ docker exec twelve-current-build-111 bash -c rm -rf /tmp/* /root/.cache /home/bench/.cache /home/bench/.npm/_cacache /var/lib/apt/lists/* /var/cache/apt/archives/*.deb
+
+$ docker commit twelve-current-build-111 twelve-current-pr111:2026-10-20
+sha256:d87e9b263e283cb79d885fb9e705fd5a713c7febab6546a75a6bab0902d87481

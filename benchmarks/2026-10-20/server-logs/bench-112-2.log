@@ -1,0 +1,25 @@
+listening on 127.0.0.1:24000 (io_uring)
+worker 0: ready (65535 slots)
+worker 1: ready (65535 slots)
+worker 2: ready (65535 slots)
+worker 3: ready (65535 slots)
+worker 4: ready (65535 slots)
+worker 5: ready (65535 slots)
+worker 6: ready (65535 slots)
+worker 7: ready (65535 slots)
+dbstats: feed n=43645 avg=0.0ms max=0.2ms busy=0 | post n=0 avg=0.0ms busy=0 | wal=0KB
+dbstats: req n=95039 avg=0.0ms max=4.1ms
+dbstats: feed n=88167 avg=0.0ms max=0.2ms busy=0 | post n=0 avg=0.0ms busy=0 | wal=0KB
+dbstats: req n=191943 avg=0.0ms max=133.4ms
+dbstats: feed n=137742 avg=0.0ms max=0.2ms busy=0 | post n=0 avg=0.0ms busy=0 | wal=0KB
+dbstats: req n=299843 avg=0.0ms max=133.4ms
+dbstats: feed n=187229 avg=0.0ms max=0.2ms busy=0 | post n=0 avg=0.0ms busy=0 | wal=0KB
+dbstats: req n=408008 avg=0.0ms max=187.6ms
+dbstats: feed n=236957 avg=0.0ms max=0.2ms busy=0 | post n=0 avg=0.0ms busy=0 | wal=0KB
+dbstats: req n=515717 avg=0.0ms max=187.6ms
+dbstats: feed n=286698 avg=0.0ms max=0.2ms busy=0 | post n=0 avg=0.0ms busy=0 | wal=0KB
+dbstats: req n=623436 avg=0.0ms max=187.6ms
+dbstats: feed n=336518 avg=0.0ms max=0.2ms busy=0 | post n=0 avg=0.0ms busy=0 | wal=0KB
+dbstats: req n=730586 avg=0.0ms max=187.6ms
+dbstats: feed n=385929 avg=0.0ms max=2.0ms busy=0 | post n=0 avg=0.0ms busy=0 | wal=0KB
+dbstats: req n=837405 avg=0.0ms max=187.6ms

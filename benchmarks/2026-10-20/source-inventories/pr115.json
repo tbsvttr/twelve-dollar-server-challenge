@@ -1,0 +1,149 @@
+{
+  "files": {
+    ".gitignore": {
+      "sha256": "39aa9dee100569c5e1dfb1ea300ca55d5310011593009bbe0dadaece9bd4d2c4",
+      "bytes": 43,
+      "physical_lines": 3,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "Librarys/Library.Arena.ailang": {
+      "sha256": "3bea24d0ceea9d0de71f10b82c477f18bc68253326a2603e1c810b1aa03fdb85",
+      "bytes": 65940,
+      "physical_lines": 2129,
+      "classification": "other"
+    },
+    "Librarys/Library.Array.ailang": {
+      "sha256": "3bac498d3e82c3eef57854f18897ef4e974edd999ea55a8abc8826b1b153b0a7",
+      "bytes": 22459,
+      "physical_lines": 656,
+      "classification": "other"
+    },
+    "Librarys/Library.Arrays.ailang": {
+      "sha256": "86800335ab1f48d3f8b67d44b57a5a91f930341b730cfba882f65b08064bf024",
+      "bytes": 28157,
+      "physical_lines": 951,
+      "classification": "other"
+    },
+    "Librarys/Library.Crypto.ailang": {
+      "sha256": "34689b71acc48ff115b8606a527555590271ca0fa7f5b388a97162b1bedf686c",
+      "bytes": 24657,
+      "physical_lines": 778,
+      "classification": "other"
+    },
+    "Librarys/Library.Env.ailang": {
+      "sha256": "4c0a4bbbc0cf7c30d09c1b923e0e43178530922d307c9cc3299e4c34328bf6bb",
+      "bytes": 3504,
+      "physical_lines": 122,
+      "classification": "other"
+    },
+    "Librarys/Library.HTTP1.ailang": {
+      "sha256": "04799684ced06ecb3bac55f373d1e841dc691cc5cbeba9c7fabc53996d251c56",
+      "bytes": 28145,
+      "physical_lines": 844,
+      "classification": "other"
+    },
+    "Librarys/Library.Hash.ailang": {
+      "sha256": "fda6e71590bc7c33171b484db106890067f540af259160b91495700b265324aa",
+      "bytes": 30950,
+      "physical_lines": 1005,
+      "classification": "other"
+    },
+    "Librarys/Library.JSON.ailang": {
+      "sha256": "4d5c3fe3d27ae670c556e2b3a1c449b441caaa1433d11966bfdce3a7dfc327f7",
+      "bytes": 36119,
+      "physical_lines": 1127,
+      "classification": "other"
+    },
+    "Librarys/Library.SQLite.ailang": {
+      "sha256": "4d1d1c9a47388b75815c05d87a6af72ccf9ff168ee0481cdb6b692267dcd2b56",
+      "bytes": 99459,
+      "physical_lines": 3070,
+      "classification": "other"
+    },
+    "Librarys/Library.Socket.ailang": {
+      "sha256": "e9e91f9d2cc53bd99428e592eea3a39dfa7c210f87f3049c581183e4e7c9a54e",
+      "bytes": 18035,
+      "physical_lines": 649,
+      "classification": "other"
+    },
+    "Librarys/Library.StringUtils.ailang": {
+      "sha256": "c77cb722eb1eb5954793ea33d8bb9f43ac07d43266921175f7f2b61002ddd1c5",
+      "bytes": 12736,
+      "physical_lines": 386,
+      "classification": "other"
+    },
+    "README.md": {
+      "sha256": "864a5de7aa85aa3a06c1be5a3e9b5e74e6c632c6abcf79cfeca0bb7a0f3bccc1",
+      "bytes": 6517,
+      "physical_lines": 97,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "build.sh": {
+      "sha256": "49ab6a8918bdaa0957c3021064827676d467d6462e1b374e9e9c10b5f6a5db78",
+      "bytes": 569,
+      "physical_lines": 13,
+      "classification": "own_support"
+    },
+    "compiler/ailang-opt11.x": {
+      "sha256": "eb705f6e60ece1bca1c1e8d3103b1a65be162b6fc63c690d85e1675f2efca407",
+      "bytes": 6492317,
+      "physical_lines": 22347,
+      "classification": "binary"
+    },
+    "feed_server.ailang": {
+      "sha256": "e98f6a5becffa4c8a1c1fb0dcf6f96dc5696a7ae97abca09233e8a4c78ac47b5",
+      "bytes": 28032,
+      "physical_lines": 891,
+      "classification": "other"
+    },
+    "install.sh": {
+      "sha256": "9d8c02a19f3efb626aa73e8293a69032c03696f92caf9c03469b9148e95f7e8f",
+      "bytes": 218,
+      "physical_lines": 5,
+      "classification": "own_support"
+    },
+    "start.sh": {
+      "sha256": "a9bcb97bcecd619752234f195a6aa4fe5afcb5f4154885b2e2df80b1cb778eac",
+      "bytes": 570,
+      "physical_lines": 13,
+      "classification": "own_support"
+    },
+    "triumvirate-engineering/README.md": {
+      "sha256": "aa030698f825be195f309dc84cd08a93a67101e46ea2cc0d15d5a9b6f5f64332",
+      "bytes": 126,
+      "physical_lines": 1,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "triumvirate-engineering/skill_1_feature_implementer.md": {
+      "sha256": "de332f38a846ea236a7be7bc9df88e68935bbbc427ee6ed1a7b547d3cf30a548",
+      "bytes": 3408,
+      "physical_lines": 104,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "triumvirate-engineering/skill_2_performance_compliance.md": {
+      "sha256": "8d0e0548857c9333ca12ffa2ec933ddbb3d6af513106c9fb64599c01c5b71413",
+      "bytes": 3622,
+      "physical_lines": 110,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "triumvirate-engineering/skill_3_code_reducer.md": {
+      "sha256": "4d75397c2d9c9880bee1719cc8692c73c0956fecad1ab5e4004501f4f38d78af",
+      "bytes": 3706,
+      "physical_lines": 113,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "triumvirate-engineering/triumvirate_architecture_overview.md": {
+      "sha256": "4fa02212c5753d163b20c3269950fa1a7456f2082b2517ffc48bad2305fa4fe0",
+      "bytes": 4417,
+      "physical_lines": 55,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "triumvirate-engineering/triumvirate_orchestrator.py": {
+      "sha256": "07b93cac6d792899ce24ab929fffd36ebf13a1230034183e3f8d8be115e849f8",
+      "bytes": 6307,
+      "physical_lines": 144,
+      "classification": "application"
+    }
+  },
+  "skipped_members": []
+}

@@ -1,0 +1,179 @@
+Pinned source: fbe2153cf0d8798012b46bbf51c5cbbeaaa79e82
+
+$ docker run -d --name twelve-current-build-94 --cpus 1.5 --memory 3g --memory-swap 3g --security-opt seccomp=seccomp-io-uring.json --mount type=bind,src=<BENCHMARK_EVIDENCE>,dst=/evidence,readonly twelve-unified:2026-10-07 sleep infinity
+e129ec47b1e3f683e2067dcb73350b908046341c8475070f7c27c2cd3504527a
+
+$ docker exec -i twelve-current-build-94 python3 - 94
+Verified 7 pinned source files
+
+$ docker exec twelve-current-build-94 bash /suite/sources/pr94/install.sh
+Hit:1 http://ports.ubuntu.com/ubuntu-ports noble InRelease
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble-updates InRelease [126 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble-backports InRelease [126 kB]
+Get:4 http://ports.ubuntu.com/ubuntu-ports noble-security InRelease [126 kB]
+Get:5 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 Packages [2214 kB]
+Get:6 http://ports.ubuntu.com/ubuntu-ports noble-updates/restricted arm64 Packages [3251 kB]
+Get:7 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 Packages [1786 kB]
+Get:8 http://ports.ubuntu.com/ubuntu-ports noble-updates/multiverse arm64 Packages [104 kB]
+Get:9 http://ports.ubuntu.com/ubuntu-ports noble-backports/multiverse arm64 Packages [669 B]
+Get:10 http://ports.ubuntu.com/ubuntu-ports noble-security/multiverse arm64 Packages [99.1 kB]
+Get:11 http://ports.ubuntu.com/ubuntu-ports noble-security/universe arm64 Packages [1638 kB]
+Get:12 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 Packages [1475 kB]
+Get:13 http://ports.ubuntu.com/ubuntu-ports noble-security/restricted arm64 Packages [3129 kB]
+Fetched 14.1 MB in 2s (5711 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+ca-certificates is already the newest version (20260601~24.04.1).
+libsqlite3-0 is already the newest version (3.45.1-1ubuntu2.8).
+libsqlite3-0 set to manually installed.
+The following additional packages will be installed:
+  adduser dirmngr gnupg-utils gpg gpg-agent gpgconf gpgsm keyboxd
+  libcurl3t64-gnutls libcurl4t64 libksba8 pinentry-curses
+Suggested packages:
+  liblocale-gettext-perl cron quota ecryptfs-utils dbus-user-session
+  libpam-systemd pinentry-gnome3 tor parcimonie xloadimage gpg-wks-server
+  scdaemon pinentry-doc
+Recommended packages:
+  gnupg-l10n gpg-wks-client
+The following NEW packages will be installed:
+  adduser dirmngr gnupg gnupg-utils gpg gpg-agent gpgconf gpgsm keyboxd
+  libksba8 pinentry-curses
+The following packages will be upgraded:
+  curl libcurl3t64-gnutls libcurl4t64
+3 upgraded, 11 newly installed, 0 to remove and 16 not upgraded.
+Need to get 3101 kB of archives.
+After this operation, 5869 kB of additional disk space will be used.
+Get:1 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 adduser all 3.137ubuntu1 [101 kB]
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 curl arm64 8.5.0-2ubuntu10.16 [222 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 libcurl4t64 arm64 8.5.0-2ubuntu10.16 [337 kB]
+Get:4 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 gpgconf arm64 2.4.4-2ubuntu17.6 [103 kB]
+Get:5 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libksba8 arm64 1.6.6-1build1 [119 kB]
+Get:6 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 dirmngr arm64 2.4.4-2ubuntu17.6 [316 kB]
+Get:7 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 gnupg-utils arm64 2.4.4-2ubuntu17.6 [107 kB]
+Get:8 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 gpg arm64 2.4.4-2ubuntu17.6 [549 kB]
+Get:9 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 pinentry-curses arm64 1.2.1-3ubuntu5 [34.3 kB]
+Get:10 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 gpg-agent arm64 2.4.4-2ubuntu17.6 [221 kB]
+Get:11 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 gpgsm arm64 2.4.4-2ubuntu17.6 [225 kB]
+Get:12 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 keyboxd arm64 2.4.4-2ubuntu17.6 [75.9 kB]
+Get:13 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 gnupg all 2.4.4-2ubuntu17.6 [359 kB]
+Get:14 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 libcurl3t64-gnutls arm64 8.5.0-2ubuntu10.16 [331 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 3101 kB in 1s (2446 kB/s)
+Selecting previously unselected package adduser.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 16962 files and directories currently installed.)
+Preparing to unpack .../adduser_3.137ubuntu1_all.deb ...
+Unpacking adduser (3.137ubuntu1) ...
+Setting up adduser (3.137ubuntu1) ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 17010 files and directories currently installed.)
+Preparing to unpack .../00-curl_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking curl (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Preparing to unpack .../01-libcurl4t64_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking libcurl4t64:arm64 (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Selecting previously unselected package gpgconf.
+Preparing to unpack .../02-gpgconf_2.4.4-2ubuntu17.6_arm64.deb ...
+Unpacking gpgconf (2.4.4-2ubuntu17.6) ...
+Selecting previously unselected package libksba8:arm64.
+Preparing to unpack .../03-libksba8_1.6.6-1build1_arm64.deb ...
+Unpacking libksba8:arm64 (1.6.6-1build1) ...
+Selecting previously unselected package dirmngr.
+Preparing to unpack .../04-dirmngr_2.4.4-2ubuntu17.6_arm64.deb ...
+Unpacking dirmngr (2.4.4-2ubuntu17.6) ...
+Selecting previously unselected package gnupg-utils.
+Preparing to unpack .../05-gnupg-utils_2.4.4-2ubuntu17.6_arm64.deb ...
+Unpacking gnupg-utils (2.4.4-2ubuntu17.6) ...
+Selecting previously unselected package gpg.
+Preparing to unpack .../06-gpg_2.4.4-2ubuntu17.6_arm64.deb ...
+Unpacking gpg (2.4.4-2ubuntu17.6) ...
+Selecting previously unselected package pinentry-curses.
+Preparing to unpack .../07-pinentry-curses_1.2.1-3ubuntu5_arm64.deb ...
+Unpacking pinentry-curses (1.2.1-3ubuntu5) ...
+Selecting previously unselected package gpg-agent.
+Preparing to unpack .../08-gpg-agent_2.4.4-2ubuntu17.6_arm64.deb ...
+Unpacking gpg-agent (2.4.4-2ubuntu17.6) ...
+Selecting previously unselected package gpgsm.
+Preparing to unpack .../09-gpgsm_2.4.4-2ubuntu17.6_arm64.deb ...
+Unpacking gpgsm (2.4.4-2ubuntu17.6) ...
+Selecting previously unselected package keyboxd.
+Preparing to unpack .../10-keyboxd_2.4.4-2ubuntu17.6_arm64.deb ...
+Unpacking keyboxd (2.4.4-2ubuntu17.6) ...
+Selecting previously unselected package gnupg.
+Preparing to unpack .../11-gnupg_2.4.4-2ubuntu17.6_all.deb ...
+Unpacking gnupg (2.4.4-2ubuntu17.6) ...
+Preparing to unpack .../12-libcurl3t64-gnutls_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking libcurl3t64-gnutls:arm64 (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Setting up libksba8:arm64 (1.6.6-1build1) ...
+Setting up pinentry-curses (1.2.1-3ubuntu5) ...
+Setting up libcurl4t64:arm64 (8.5.0-2ubuntu10.16) ...
+Setting up libcurl3t64-gnutls:arm64 (8.5.0-2ubuntu10.16) ...
+Setting up gpgconf (2.4.4-2ubuntu17.6) ...
+Setting up curl (8.5.0-2ubuntu10.16) ...
+Setting up gpg (2.4.4-2ubuntu17.6) ...
+Setting up gnupg-utils (2.4.4-2ubuntu17.6) ...
+Setting up gpg-agent (2.4.4-2ubuntu17.6) ...
+Setting up gpgsm (2.4.4-2ubuntu17.6) ...
+Setting up dirmngr (2.4.4-2ubuntu17.6) ...
+Setting up keyboxd (2.4.4-2ubuntu17.6) ...
+Setting up gnupg (2.4.4-2ubuntu17.6) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+Hit:1 http://ports.ubuntu.com/ubuntu-ports noble InRelease
+Hit:2 http://ports.ubuntu.com/ubuntu-ports noble-updates InRelease
+Hit:3 http://ports.ubuntu.com/ubuntu-ports noble-backports InRelease
+Hit:4 http://ports.ubuntu.com/ubuntu-ports noble-security InRelease
+Get:5 https://openresty.org/package/arm64/ubuntu noble InRelease [2516 B]
+Get:6 https://openresty.org/package/arm64/ubuntu noble/main arm64 Packages [43.1 kB]
+Fetched 45.6 kB in 1s (36.5 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+The following additional packages will be installed:
+  openresty-openssl3 openresty-pcre2 openresty-zlib
+Suggested packages:
+  openresty-restydoc
+Recommended packages:
+  openresty-resty openresty-opm
+The following NEW packages will be installed:
+  openresty openresty-openssl3 openresty-pcre2 openresty-zlib
+0 upgraded, 4 newly installed, 0 to remove and 16 not upgraded.
+Need to get 5141 kB of archives.
+After this operation, 16.4 MB of additional disk space will be used.
+Get:1 https://openresty.org/package/arm64/ubuntu noble/main arm64 openresty-zlib arm64 1.3.2-1~noble1 [57.2 kB]
+Get:2 https://openresty.org/package/arm64/ubuntu noble/main arm64 openresty-openssl3 arm64 3.5.7-1~noble1 [2981 kB]
+Get:3 https://openresty.org/package/arm64/ubuntu noble/main arm64 openresty-pcre2 arm64 10.48-1~noble1 [538 kB]
+Get:4 https://openresty.org/package/arm64/ubuntu noble/main arm64 openresty arm64 1.31.1.1-1~noble1 [1565 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 5141 kB in 2s (3247 kB/s)
+Selecting previously unselected package openresty-zlib.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 17164 files and directories currently installed.)
+Preparing to unpack .../openresty-zlib_1.3.2-1~noble1_arm64.deb ...
+Unpacking openresty-zlib (1.3.2-1~noble1) ...
+Selecting previously unselected package openresty-openssl3.
+Preparing to unpack .../openresty-openssl3_3.5.7-1~noble1_arm64.deb ...
+Unpacking openresty-openssl3 (3.5.7-1~noble1) ...
+Selecting previously unselected package openresty-pcre2.
+Preparing to unpack .../openresty-pcre2_10.48-1~noble1_arm64.deb ...
+Unpacking openresty-pcre2 (10.48-1~noble1) ...
+Selecting previously unselected package openresty.
+Preparing to unpack .../openresty_1.31.1.1-1~noble1_arm64.deb ...
+Unpacking openresty (1.31.1.1-1~noble1) ...
+Setting up openresty-zlib (1.3.2-1~noble1) ...
+Setting up openresty-pcre2 (10.48-1~noble1) ...
+Setting up openresty-openssl3 (3.5.7-1~noble1) ...
+Setting up openresty (1.31.1.1-1~noble1) ...
+invoke-rc.d: could not determine current runlevel
+invoke-rc.d: policy-rc.d denied execution of start.
+Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+openresty set on hold.
+nginx version: openresty/1.31.1.1
+
+$ docker exec twelve-current-build-94 chown -R bench:bench /suite/sources/pr94
+
+$ docker exec twelve-current-build-94 runuser -u bench -- env PATH=/opt/twelve-rust/cargo/bin:/usr/local/go/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 NIM_JOBS=2 MAKEFLAGS=-j2 bash /suite/sources/pr94/build.sh
+build ok
+
+$ docker exec twelve-current-build-94 bash -c rm -rf /tmp/* /root/.cache /home/bench/.cache /home/bench/.npm/_cacache /var/lib/apt/lists/* /var/cache/apt/archives/*.deb
+
+$ docker commit twelve-current-build-94 twelve-current-pr94:2026-10-20
+sha256:66c84eecf322fe96c3c74b55cb74d1d0e1852009d95337da5a3dfe3afaccdfaf

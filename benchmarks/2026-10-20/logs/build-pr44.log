@@ -1,0 +1,24 @@
+
+$ docker exec twelve-current-build-pr44 bash -c set -e; rm -rf /suite/sources; mkdir -p /suite/sources; cp -a /evidence/sources/pr44 /suite/sources/; cp /evidence/manifest.json /suite/manifest.json; cp /evidence/schema.sql /suite/schema.sql; chown -R bench:bench /suite/sources
+
+$ docker exec twelve-current-build-pr44 bash /evidence/runtime-scripts/pr44.sh
+/tmp/tmp.6hQcI0HdHZ: OK
+go version go1.27.2 linux/arm64
+
+$ docker exec twelve-current-build-pr44 runuser -u bench -- env PATH=/usr/local/go/bin:/opt/twelve-rust/cargo/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 bash /suite/sources/pr44/build.sh
+
+$ docker exec twelve-current-build-pr44 bash -c rm -rf /tmp/* /root/.cache /root/.cargo/registry /home/bench/.cache /home/bench/.cargo/registry /home/bench/.npm/_cacache /var/lib/apt/lists/* /var/cache/apt/archives/*.deb; find /suite/sources -type d -path '*/target/release/incremental' -prune -exec rm -rf {} +
+a25f34558f0024a3a74744978044e337b9e505f7fa367280f205d776d47fb0a5
+twelve-current-clean-pr44
+
+Compiler provenance:
+/suite/sources/pr44/bin/server: go1.27.2
+	path	feedserver
+	mod	feedserver	(devel)	
+	build	-buildmode=exe
+	build	-compiler=gc
+	build	-trimpath=true
+	build	CGO_ENABLED=1
+	build	GOARCH=arm64
+	build	GOOS=linux
+	build	GOARM64=v8.0

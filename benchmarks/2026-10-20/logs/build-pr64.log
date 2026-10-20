@@ -1,0 +1,19 @@
+
+$ docker exec twelve-current-build-pr64 bash -c set -e; rm -rf /suite/sources; mkdir -p /suite/sources; cp -a /evidence/sources/pr64 /suite/sources/; cp /evidence/manifest.json /suite/manifest.json; cp /evidence/schema.sql /suite/schema.sql; chown -R bench:bench /suite/sources
+
+$ docker exec twelve-current-build-pr64 runuser -u bench -- env PATH=/usr/local/go/bin:/opt/twelve-rust/cargo/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 bash /suite/sources/pr64/build.sh
+pgo-train done: build/train.db
+lto-wrapper: warning: using serial compilation of 22 LTRANS jobs
+lto-wrapper: note: see the '-flto' option documentation for more information
+In function 'sqlite3Strlen30',
+    inlined from 'sqlite3ColumnSetColl' at deps/sqlite/sqlite3.c:127273:0:
+deps/sqlite/sqlite3.c:36482: warning: 'strlen' reading 1 or more bytes from a region of size 0 [-Wstringop-overread]
+36482 |   return 0x3fffffff & (int)strlen(z);
+      | 
+In function 'sqlite3ColumnSetColl':
+lto1: note: source object is likely at address zero
+built bin/server
+
+$ docker exec twelve-current-build-pr64 bash -c rm -rf /tmp/* /root/.cache /root/.cargo/registry /home/bench/.cache /home/bench/.cargo/registry /home/bench/.npm/_cacache /var/lib/apt/lists/* /var/cache/apt/archives/*.deb; find /suite/sources -type d -path '*/target/release/incremental' -prune -exec rm -rf {} +
+a21b4e5753a154034790e1d25db2c10fa6eaad2a4f02ae5a423328244d622db8
+twelve-current-clean-pr64

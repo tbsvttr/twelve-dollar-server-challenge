@@ -1,0 +1,28 @@
+Pinned source: 60f3d3f0a61b2e15e2045218c966b742b9ab024b
+
+$ docker run -d --name twelve-current-build-108 --cpus 1.5 --memory 3g --memory-swap 3g --mount type=bind,src=<BENCHMARK_EVIDENCE>,dst=/evidence,readonly twelve-unified:2026-10-07 sleep infinity
+8e91cdb854289c129b211e05a8d757658b8bab000dfd09dc733bcc92547799e2
+
+$ docker exec -i twelve-current-build-108 python3 - 108
+Verified 12 pinned source files
+
+$ docker exec twelve-current-build-108 bash /evidence/runtime-scripts/pr108.sh
+10.0.401 [/usr/local/share/dotnet/sdk]
+
+$ docker exec twelve-current-build-108 chown -R bench:bench /suite/sources/pr108
+
+$ docker exec twelve-current-build-108 runuser -u bench -- env PATH=/opt/twelve-rust/cargo/bin:/usr/local/go/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 NIM_JOBS=2 MAKEFLAGS=-j2 bash /suite/sources/pr108/build.sh
+native/sqlite.tar.gz: OK
+  Determining projects to restore...
+  Restored /suite/sources/pr108/oxpecker/src/Oxpecker.ViewEngine/Oxpecker.ViewEngine.fsproj (in 3.88 sec).
+  Restored /suite/sources/pr108/oxpecker/src/Oxpecker/Oxpecker.fsproj (in 4.01 sec).
+  Restored /suite/sources/pr108/Server.fsproj (in 2.65 sec).
+  Oxpecker.ViewEngine -> /suite/sources/pr108/oxpecker/src/Oxpecker.ViewEngine/bin/Release/net10.0/linux-arm64/Oxpecker.ViewEngine.dll
+  Oxpecker -> /suite/sources/pr108/oxpecker/src/Oxpecker/bin/Release/net10.0/linux-arm64/Oxpecker.dll
+  Server -> /suite/sources/pr108/bin/Release/net10.0/linux-arm64/Server.dll
+  Server -> /suite/sources/pr108/out/
+
+$ docker exec twelve-current-build-108 bash -c rm -rf /tmp/* /root/.cache /home/bench/.cache /home/bench/.npm/_cacache /var/lib/apt/lists/* /var/cache/apt/archives/*.deb
+
+$ docker commit twelve-current-build-108 twelve-current-pr108:2026-10-20
+sha256:6b763f93417a875cfc96f508664330dc1999368b9ebd95f33fa69c9557888318

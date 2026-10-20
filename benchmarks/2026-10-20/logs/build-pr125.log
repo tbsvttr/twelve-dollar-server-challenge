@@ -1,0 +1,55 @@
+Pinned source: a08923d7ea1cdfa5ccf9b4d4985380caaa4d43b4
+
+$ docker run -d --name twelve-current-build-125 --cpus 1 --memory 2g --memory-swap 2g --security-opt seccomp=seccomp-io-uring.json --mount type=bind,src=<BENCHMARK_EVIDENCE>,dst=/evidence,readonly twelve-unified:2026-10-07 sleep infinity
+834a4a668ef28619d5b5a01a6840bd610eea7e7bd5b848679f3fcd37b602f3fc
+
+$ docker exec -i twelve-current-build-125 python3 - 125
+Verified 17 pinned source files
+
+$ docker exec twelve-current-build-125 bash /suite/sources/pr125/install.sh
+
+$ docker exec twelve-current-build-125 chown -R bench:bench /suite/sources/pr125
+
+$ docker exec twelve-current-build-125 runuser -u bench -- env PATH=/opt/twelve-rust/cargo/bin:/usr/local/go/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 NIM_JOBS=2 MAKEFLAGS=-j2 bash /suite/sources/pr125/build.sh
+install
++- install server
+   +- compile exe server fast native 4 errors
+src/UringIo.zig:360:24: error: no field named 'rsp' in struct 'Io.fiber.Context__struct_23'
+        .context = .{ .rsp = closure_addr - 8, .rbp = 0, .rip = @intFromPtr(&Closure.entry) },
+                       ^~~
+.zig-cache/o/f88eeb5eb5abf95b7c78d824327f99a6/patched/Io/fiber.zig:8:24: note: struct declared here
+    .aarch64 => extern struct {
+                ~~~~~~~^~~~~~
+referenced by:
+    run__func_42: src/UringIo.zig:195:13
+    main: src/main.zig:30:25
+    4 reference(s) hidden; use '-freference-trace=6' to see all references
+src/UringIo.zig:484:59: error: no field named 'rsp' in struct 'Io.fiber.Context__struct_23'
+    const top = std.mem.alignBackward(usize, io.scheduler.rsp - 64, 16);
+                                                          ^~~
+.zig-cache/o/f88eeb5eb5abf95b7c78d824327f99a6/patched/Io/fiber.zig:8:24: note: struct declared here
+    .aarch64 => extern struct {
+                ~~~~~~~^~~~~~
+src/UringIo.zig:484:59: error: no field named 'rsp' in struct 'Io.fiber.Context__struct_23'
+    const top = std.mem.alignBackward(usize, io.scheduler.rsp - 64, 16);
+                                                          ^~~
+.zig-cache/o/f88eeb5eb5abf95b7c78d824327f99a6/patched/Io/fiber.zig:8:24: note: struct declared here
+    .aarch64 => extern struct {
+                ~~~~~~~^~~~~~
+src/UringIo.zig:528:89: error: no field named 'mxcsr' in struct 'lang.assembly.Clobbers__struct_67'
+    var c: std.lang.assembly.Clobbers = .{ .memory = true, .fpsr = true, .fpcr = true, .mxcsr = true, .rflags = true, .dirflag = true };
+                                                                                        ^~~~~
+.zig-cache/o/f88eeb5eb5abf95b7c78d824327f99a6/patched/lang/assembly.zig:204:37: note: struct declared here
+    .aarch64, .aarch64_be => packed struct {
+                             ~~~~~~~^~~~~~
+src/UringIo.zig:521:33: note: called at comptime here
+const switch_clobbers = clobbers(&.{ "rax", "rcx", "rdx", "rbx", "rsi", "rdi", "r8", "r9", "r10", "r11", "r12", "r13", "r14", "r15" });
+                        ~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+error: 4 compilation errors
+failed command: /home/bench/.local/share/anyzig/zig/0.17.0/zig build-exe -cflags -DSQLITE_THREADSAFE=2 -DSQLITE_DEFAULT_MEMSTATUS=0 -DSQLITE_DEFAULT_WAL_SYNCHRONOUS=1 -DSQLITE_DQS=0 -DSQLITE_LIKE_DOESNT_MATCH_BLOBS -DSQLITE_MAX_EXPR_DEPTH=0 -DSQLITE_OMIT_DEPRECATED -DSQLITE_OMIT_LOAD_EXTENSION -DSQLITE_OMIT_PROGRESS_CALLBACK -DSQLITE_OMIT_SHARED_CACHE -DSQLITE_OMIT_AUTOINIT -DSQLITE_OMIT_DECLTYPE -DSQLITE_USE_ALLOCA -DSQLITE_TEMP_STORE=3 -DHAVE_USLEEP=1 -- zig-pkg/N-V-__8AAETTsABEodUZZFAyfdAm9hEyqBXuLw9pRSO0vFh9/sqlite3.c -mno-red-zone -Ofast -I zig-pkg/N-V-__8AAETTsABEodUZZFAyfdAm9hEyqBXuLw9pRSO0vFh9 --dep std -Mroot=src/main.zig -Mstd=.zig-cache/o/f88eeb5eb5abf95b7c78d824327f99a6/patched/std.zig -lc --cache-dir .zig-cache --global-cache-dir /home/bench/.cache/zig --build-root . --name server --zig-lib-dir /home/bench/.local/share/anyzig/zig/0.17.0/lib/ --listen=-
+
+Build Summary: 2/5 steps succeeded (1 failed)
+install transitive failure
++- install server transitive failure
+   +- compile exe server fast native 4 errors
+

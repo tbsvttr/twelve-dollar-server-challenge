@@ -1,0 +1,77 @@
+{
+  "files": {
+    ".gitignore": {
+      "sha256": "c1a693ce06a124cdfcf7c8e375964e0287d59f7b14e99e46dd2313b65cb0ada2",
+      "bytes": 40,
+      "physical_lines": 5,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "README.md": {
+      "sha256": "ec3912780fe563d3f04ef0818d91e03fe9b0a794ae8ff931e98a575594766025",
+      "bytes": 4989,
+      "physical_lines": 81,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "app/auth.lua": {
+      "sha256": "79b4298e5eb1482811b14b61dbe41e742ab301fa368522a88765aef4f6f128a0",
+      "bytes": 1505,
+      "physical_lines": 43,
+      "classification": "application"
+    },
+    "app/config.lua": {
+      "sha256": "a8cbaa057c87a038184e51b18bdc5cb17385d8c28c4337f3bda7e056eb8a82ed",
+      "bytes": 548,
+      "physical_lines": 14,
+      "classification": "application"
+    },
+    "app/db.lua": {
+      "sha256": "2b857f0cb73b934ea39e58ec736f5851af359d3e75698cee0d638b891e7ee9e7",
+      "bytes": 2724,
+      "physical_lines": 76,
+      "classification": "application"
+    },
+    "app/health.lua": {
+      "sha256": "08c1e5106a26d87b77dae2204db0c632bc9001de687cbcfbb52fa28223c158a8",
+      "bytes": 792,
+      "physical_lines": 24,
+      "classification": "application"
+    },
+    "app/posts.lua": {
+      "sha256": "6357a4a5c8af0af2b4fee451340857b742049ba7012f8badef904e965b48bf2e",
+      "bytes": 5601,
+      "physical_lines": 170,
+      "classification": "application"
+    },
+    "bin/dev.sh": {
+      "sha256": "ae57527c8cfd74800dde3ed0026d89211697db35ad88f0ff5580a28c4f56f9ec",
+      "bytes": 2277,
+      "physical_lines": 60,
+      "classification": "own_support"
+    },
+    "build.sh": {
+      "sha256": "5a2f557aaf2a8b1e335a36626868b32f934e8da777ef6454965d439d5b17a8c2",
+      "bytes": 1492,
+      "physical_lines": 40,
+      "classification": "own_support"
+    },
+    "install.sh": {
+      "sha256": "cc82a2ae0f1e35c215d4e706d113f88a5d0b97cbf3ed50b88788ddf4273a9448",
+      "bytes": 436,
+      "physical_lines": 10,
+      "classification": "own_support"
+    },
+    "server.lua": {
+      "sha256": "358e4a28e1476aa204bcee888322887c3337f2c51ededeb6b90d18fc35375660",
+      "bytes": 3123,
+      "physical_lines": 90,
+      "classification": "application"
+    },
+    "start.sh": {
+      "sha256": "b076fb050e3ce45f6f709b7eb0c606e5325bc7db46b6c18ce6c2e6a54a43f4c0",
+      "bytes": 634,
+      "physical_lines": 16,
+      "classification": "own_support"
+    }
+  },
+  "skipped_members": []
+}

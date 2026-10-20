@@ -1,0 +1,3 @@
+[
+  "Install official native ARM64 Go 1.24.4 rather than submitted AMD64 artifact; checksum from https://go.dev/dl/?mode=json&include=all."
+]

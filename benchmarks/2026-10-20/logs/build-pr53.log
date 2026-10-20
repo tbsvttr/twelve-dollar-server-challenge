@@ -1,0 +1,109 @@
+
+$ docker exec twelve-current-build-pr53 bash -c set -e; rm -rf /suite/sources; mkdir -p /suite/sources; cp -a /evidence/sources/pr53 /suite/sources/; cp /evidence/manifest.json /suite/manifest.json; cp /evidence/schema.sql /suite/schema.sql; chown -R bench:bench /suite/sources
+
+$ docker exec twelve-current-build-pr53 bash /evidence/runtime-scripts/pr53.sh
+/tmp/tmp.1ONXSQtmxp/graal.tar.gz: OK
+openjdk version "25.0.4.1.1" 2026-08-18
+OpenJDK Runtime Environment GraalVM CE 25.4.4.1.1+1.1 (build 25.0.4.1.1+1-jvmci-25.4-b23)
+OpenJDK 64-Bit Server VM GraalVM CE 25.4.4.1.1+1.1 (build 25.0.4.1.1+1-jvmci-25.4-b23, mixed mode, sharing)
+
+$ docker exec twelve-current-build-pr53 runuser -u bench -- env PATH=/usr/local/go/bin:/opt/twelve-rust/cargo/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 bash /suite/sources/pr53/build.sh
+Fetching distribution.
+Downloading https://services.gradle.org/distributions/gradle-9.8.0-bin.zip
+..............10%..............20%...............30%..............40%...............50%..............60%...............70%..............80%...............90%..............100%
+
+Welcome to Gradle 9.8.0!
+
+Here are the highlights of this release:
+ - Java 27 support
+ - Maven mirror settings reuse
+ - Linked problem locations in build output
+
+For more details see https://docs.gradle.org/9.8.0/release-notes.html
+
+To honour the JVM settings for this build a single-use Daemon process will be forked. For more on this, please refer to https://docs.gradle.org/9.8.0/userguide/gradle_daemon.html#sec:disabling_the_daemon in the Gradle documentation.
+Daemon will be stopped at the end of the build 
+> Task :clean UP-TO-DATE
+> Task :checkKotlinGradlePluginConfigurationErrors SKIPPED
+> Task :processResources
+> Task :compileKotlin
+> Task :compileJava NO-SOURCE
+> Task :classes
+> Task :jar
+> Task :startScripts
+> Task :installDist
+
+BUILD SUCCESSFUL in 1m 36s
+6 actionable tasks: 5 executed, 1 up-to-date
+Consider enabling configuration cache to speed up this build: https://docs.gradle.org/9.8.0/userguide/configuration_cache_enabling.html
+Warning: Using a deprecated option --enable-url-protocols= from 'META-INF/native-image/org.xerial/sqlite-jdbc/native-image.properties' in 'file:///suite/sources/pr53/build/install/velox/lib/sqlite-jdbc-3.53.4.0.jar'. Use reachability metadata instead.
+========================================================================================================================
+GraalVM Native Image: Generating 'velox' (executable)...
+========================================================================================================================
+For detailed information and explanations on the build output, visit:
+https://github.com/oracle/graal/blob/master/docs/reference-manual/native-image/BuildOutput.md
+------------------------------------------------------------------------------------------------------------------------
+[1/8] Initializing...                                                                                   (7.4s @ 0.23GiB)
+ Builder configuration:
+ - Java version: 25.0.4.1.1+1, vendor version: GraalVM CE 25.4.4.1.1+1.1
+ - Graal compiler: optimization level: 2, target machine: armv8.1-a
+ - C compiler: gcc (linux, aarch64, 13.3.0)
+ - Assertions: disabled, system assertions: disabled
+ - 1 user-specific feature(s):
+   - org.sqlite.nativeimage.SqliteJdbcFeature
+ Image configuration:
+ - Garbage collector: Serial GC (max heap size: 80% of RAM)
+ - Assertions: disabled (class-specific config may apply), system assertions: disabled
+------------------------------------------------------------------------------------------------------------------------
+Build resources:
+ - 1.12GiB of memory (37.4% of system memory, set via '-Xmx1150m')
+ - 2 thread(s) (100.0% of 2 available processor(s), determined at start)
+[2/8] Performing analysis...  [*****]                                                                  (46.9s @ 0.73GiB)
+    7,672 types,   9,901 fields, and  34,849 methods found reachable
+      420 types,     112 fields, and     751 methods registered for reflection
+       71 types,      68 fields, and      70 methods registered for JNI access
+       61 resource accesses registered with 1.23MiB total size
+        4 native libraries: dl, pthread, rt, z
+[3/8] Building universe...                                                                             (25.0s @ 0.72GiB)
+GC warning: 18.5s spent in 24 GCs during the last stage, taking up 73.34% of the time.
+            Please ensure more than 1.27GiB of memory is available for Native Image
+            to reduce GC overhead and improve image build time.
+[4/8] Parsing methods...      [***]                                                                     (5.7s @ 0.78GiB)
+[5/8] Inlining methods...     [***]                                                                     (4.3s @ 0.67GiB)
+[6/8] Compiling methods...    [*********]                                                              (88.8s @ 0.82GiB)
+[7/8] Laying out methods...   [***]                                                                     (7.2s @ 0.78GiB)
+[8/8] Creating image...       [***]                                                                     (7.1s @ 0.88GiB)
+  10.04MiB (36.72%) for code area:    21,353 compilation units
+  15.00MiB (54.83%) for image heap:  223,986 objects and 10 resources
+   2.31MiB ( 8.45%) for other data
+  27.35MiB in total image size, 25.56MiB in total file size
+------------------------------------------------------------------------------------------------------------------------
+Top 10 origins of code area:                                Top 10 object types in image heap:
+ 806.34KiB java.base/java.util                                 3.51MiB byte[] for string data
+ 455.20KiB java.base/java.lang                                 2.57MiB byte[] for code metadata
+ 367.91KiB io.ktor.openapi                                     1.66MiB java.base/java.lang.String
+ 328.22KiB o.g.n.runtime/com.oracle.svm.core.code              1.23MiB byte[] for embedded resources
+ 310.16KiB java.base/com.sun.crypto.provider                 950.86KiB java.base/java.lang.Class
+ 275.70KiB java.base/java.util.concurrent                    839.13KiB o.g.n.runtime/c.o.s.core.hub.DynamicHubCompanion
+ 259.82KiB java.base/sun.security.x509                       803.67KiB byte[] for reflection metadata
+ 249.14KiB java.base/sun.security.provider                   799.02KiB byte[] for general heap data
+ 246.73KiB java.base/java.text                               340.45KiB java.base/java.lang.Object[]
+ 197.65KiB java.base/java.util.stream                        258.15KiB java.base/java.lang.String[]
+   6.63MiB for 300 more packages                               2.13MiB for 1822 more object types
+------------------------------------------------------------------------------------------------------------------------
+Recommendations:
+ FUTR: Use '--future-defaults=all' to prepare for future releases.
+ HEAP: Set max heap for improved and more predictable memory usage.
+ CPU:  Enable more CPU features with '-march=native' for improved performance.
+------------------------------------------------------------------------------------------------------------------------
+                      45.8s (23.0% of total time) in 534 GCs | Peak RSS: 1.43GiB | CPU load: 1.97
+------------------------------------------------------------------------------------------------------------------------
+Build artifacts:
+ /suite/sources/pr53/build/native/nativeCompile/velox (executable, 25.56MiB)
+========================================================================================================================
+Finished generating 'velox' in 3m 18s.
+
+The build process encountered 1 warning.
+
+
+$ docker exec twelve-current-build-pr53 bash -c rm -f /usr/local/bin/nproc; rm -rf /tmp/* /root/.cache /root/.cargo/registry /home/bench/.cache /home/bench/.cargo/registry /home/bench/.npm/_cacache /var/lib/apt/lists/* /var/cache/apt/archives/*.deb; find /suite/sources -type d -path '*/target/release/incremental' -prune -exec rm -rf {} +

@@ -1,0 +1,11 @@
+2026-10-20T11:26:22.728Z  INFO 13 --- [           main] challenge.Application                    : Starting Application v1.0.0 using Java 25.0.1 with PID 13 (/suite/sources/pr33/target/server.jar started by bench in /suite/sources/pr33)
+2026-10-20T11:26:22.734Z  INFO 13 --- [           main] challenge.Application                    : No active profile set, falling back to 1 default profile: "default"
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by org.sqlite.SQLiteJDBCLoader in an unnamed module (jar:nested:/suite/sources/pr33/target/server.jar/!BOOT-INF/lib/sqlite-jdbc-3.53.4.0.jar!/)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+2026-10-20T11:26:24.763Z  INFO 13 --- [           main] o.s.boot.reactor.netty.NettyWebServer    : Netty started on port 24000 (http)
+2026-10-20T11:26:24.772Z  INFO 13 --- [           main] challenge.Application                    : Started Application in 3.296 seconds (process running for 5.868)
+2026-10-20T11:26:25.886Z  INFO 13 --- [ionShutdownHook] o.s.boot.reactor.netty.GracefulShutdown  : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-20T11:26:25.889Z  INFO 13 --- [ netty-shutdown] o.s.boot.reactor.netty.GracefulShutdown  : Graceful shutdown complete

@@ -1,0 +1,136 @@
+Pinned source: 5300ca9105fca097ba8839a51cb7e6d86b61ed37
+538da8ce799a3c59648865d0df7b6c26b1b67650ed91fbf18368d341391d49be
+Hit:1 http://ports.ubuntu.com/ubuntu-ports noble InRelease
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble-updates InRelease [126 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble-backports InRelease [126 kB]
+Get:4 http://ports.ubuntu.com/ubuntu-ports noble-security InRelease [126 kB]
+Get:5 http://ports.ubuntu.com/ubuntu-ports noble-updates/multiverse arm64 Packages [104 kB]
+Get:6 http://ports.ubuntu.com/ubuntu-ports noble-updates/restricted arm64 Packages [3251 kB]
+Get:7 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 Packages [2214 kB]
+Get:8 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 Packages [1786 kB]
+Get:9 http://ports.ubuntu.com/ubuntu-ports noble-backports/multiverse arm64 Packages [669 B]
+Get:10 http://ports.ubuntu.com/ubuntu-ports noble-security/restricted arm64 Packages [3129 kB]
+Get:11 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 Packages [1475 kB]
+Get:12 http://ports.ubuntu.com/ubuntu-ports noble-security/multiverse arm64 Packages [99.1 kB]
+Get:13 http://ports.ubuntu.com/ubuntu-ports noble-security/universe arm64 Packages [1638 kB]
+Fetched 14.1 MB in 2s (7429 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+ca-certificates is already the newest version (20260601~24.04.1).
+tar is already the newest version (1.35+dfsg-3ubuntu0.4).
+gzip is already the newest version (1.12-1ubuntu3.2).
+The following additional packages will be installed:
+  libcurl3t64-gnutls libcurl4t64
+The following packages will be upgraded:
+  curl libcurl3t64-gnutls libcurl4t64
+3 upgraded, 0 newly installed, 0 to remove and 16 not upgraded.
+Need to get 890 kB of archives.
+After this operation, 3072 B of additional disk space will be used.
+Get:1 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 curl arm64 8.5.0-2ubuntu10.16 [222 kB]
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 libcurl4t64 arm64 8.5.0-2ubuntu10.16 [337 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 libcurl3t64-gnutls arm64 8.5.0-2ubuntu10.16 [331 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 890 kB in 1s (679 kB/s)
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 16962 files and directories currently installed.)
+Preparing to unpack .../curl_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking curl (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Preparing to unpack .../libcurl4t64_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking libcurl4t64:arm64 (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Preparing to unpack .../libcurl3t64-gnutls_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking libcurl3t64-gnutls:arm64 (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Setting up libcurl4t64:arm64 (8.5.0-2ubuntu10.16) ...
+Setting up libcurl3t64-gnutls:arm64 (8.5.0-2ubuntu10.16) ...
+Setting up curl (8.5.0-2ubuntu10.16) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0  133M    0  704k    0     0   491k      0  0:04:37  0:00:01  0:04:36  706k  0  133M    0 1247k    0     0   512k      0  0:04:26  0:00:02  0:04:24  623k  1  133M    1 1695k    0     0   491k      0  0:04:37  0:00:03  0:04:34  561k  1  133M    1 2255k    0     0   506k      0  0:04:29  0:00:04  0:04:25  560k  2  133M    2 3615k    0     0   665k      0  0:03:24  0:00:05  0:03:19  723k  3  133M    3 4815k    0     0   748k      0  0:03:02  0:00:06  0:02:56  822k  5  133M    5 7288k    0     0   980k      0  0:02:19  0:00:07  0:02:12 1208k  7  133M    7 10.6M    0     0  1289k      0  0:01:45  0:00:08  0:01:37 1843k 10  133M   10 14.3M    0     0  1554k      0  0:01:27  0:00:09  0:01:18 2493k 12  133M   12 16.1M    0     0  1579k      0  0:01:26  0:00:10  0:01:16 2569k 17  133M   17 22.7M    0     0  2040k      0  0:01:06  0:00:11  0:00:55 3702k 23  133M   23 30.9M    0     0  2550k      0  0:00:53  0:00:12  0:00:41 4886k 29  133M   29 38.8M    0     0  2963k      0  0:00:46  0:00:13  0:00:33 5785k 38  133M   38 51.9M    0     0  3680k      0  0:00:37  0:00:14  0:00:23 7689k 56  133M   56 74.9M    0     0  4970k      0  0:00:27  0:00:15  0:00:12 11.7M 75  133M   75  100M    0     0  6241k      0  0:00:21  0:00:16  0:00:05 15.4M 95  133M   95  127M    0     0  7484k      0  0:00:18  0:00:17  0:00:01 19.2M100  133M  100  133M    0     0  7726k      0  0:00:17  0:00:17 --:--:-- 22.3M
+/tmp/tmp.BkaHLGsCbr/java.tar.gz: OK
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0 79 8946k   79 7123k    0     0  13.9M      0 --:--:-- --:--:-- --:--:-- 13.9M100 8946k  100 8946k    0     0  15.2M      0 --:--:-- --:--:-- --:--:-- 15.2M
+/tmp/tmp.BkaHLGsCbr/maven.tar.gz: OK
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::staticFieldBase has been called by com.google.inject.internal.aop.HiddenClassDefiner (file:/opt/maven-challenge-3.9.11/lib/guice-5.1.0-classes.jar)
+WARNING: Please consider reporting this to the maintainers of class com.google.inject.internal.aop.HiddenClassDefiner
+WARNING: sun.misc.Unsafe::staticFieldBase will be removed in a future release
+[INFO] Scanning for projects...
+[INFO] 
+[INFO] -----------------------< challenge:feed-server >------------------------
+[INFO] Building feed-server 1.0.0
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- clean:3.5.0:clean (default-clean) @ feed-server ---
+[INFO] 
+[INFO] --- spotless:3.1.0:check (default) @ feed-server ---
+[INFO] Index file does not exist. Fallback to an empty index
+[INFO] Spotless.Java is keeping 9 files clean - 0 needs changes to be clean, 9 were already clean, 0 were skipped because caching determined they were already clean
+[INFO] 
+[INFO] --- resources:3.3.1:resources (default-resources) @ feed-server ---
+[INFO] Copying 1 resource from src/main/resources to target/classes
+[INFO] Copying 0 resource from src/main/resources to target/classes
+[INFO] 
+[INFO] --- compiler:3.14.1:compile (default-compile) @ feed-server ---
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 8 source files with javac [debug parameters release 25] to target/classes
+[INFO] 
+[INFO] --- resources:3.3.1:testResources (default-testResources) @ feed-server ---
+[INFO] skip non existing resourceDirectory /suite/sources/pr33/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.14.1:testCompile (default-testCompile) @ feed-server ---
+[INFO] Recompiling the module because of changed dependency.
+[INFO] Compiling 1 source file with javac [debug parameters release 25] to target/test-classes
+[INFO] 
+[INFO] --- surefire:3.5.4:test (default-test) @ feed-server ---
+[INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[INFO] 
+[INFO] -------------------------------------------------------
+[INFO]  T E S T S
+[INFO] -------------------------------------------------------
+[INFO] Running challenge.ApiTest
+10:55:02.267 [main] INFO org.springframework.test.context.support.AnnotationConfigContextLoaderUtils -- Could not detect default configuration classes for test class [challenge.ApiTest]: ApiTest does not declare any static, non-private, non-final, nested classes annotated with @Configuration.
+10:55:02.425 [main] INFO org.springframework.boot.test.context.SpringBootTestContextBootstrapper -- Found @SpringBootConfiguration challenge.Application for test class challenge.ApiTest
+WARNING: A restricted method in java.lang.System has been called
+WARNING: java.lang.System::load has been called by org.sqlite.SQLiteJDBCLoader in an unnamed module (file:/home/bench/.m2/repository/org/xerial/sqlite-jdbc/3.53.4.0/sqlite-jdbc-3.53.4.0.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+2026-10-20T10:55:03.224Z  INFO 317 --- [           main] challenge.ApiTest                        : Starting ApiTest using Java 25.0.1 with PID 317 (started by bench in /suite/sources/pr33)
+2026-10-20T10:55:03.226Z  INFO 317 --- [           main] challenge.ApiTest                        : No active profile set, falling back to 1 default profile: "default"
+2026-10-20T10:55:04.331Z  INFO 317 --- [           main] o.s.boot.reactor.netty.NettyWebServer    : Netty started on port 37447 (http)
+2026-10-20T10:55:04.341Z  INFO 317 --- [           main] challenge.ApiTest                        : Started ApiTest in 1.342 seconds (process running for 2.951)
+Mockito is currently self-attaching to enable the inline-mock-maker. This will no longer work in future releases of the JDK. Please add Mockito as an agent to your build as described in Mockito's documentation: https://javadoc.io/doc/org.mockito/mockito-core/latest/org.mockito/org/mockito/Mockito.html#0.3
+OpenJDK 64-Bit Server VM warning: Sharing is only supported for boot loader classes because bootstrap classpath has been appended
+WARNING: A Java agent has been loaded dynamically (/home/bench/.m2/repository/net/bytebuddy/byte-buddy-agent/1.17.8/byte-buddy-agent-1.17.8.jar)
+WARNING: If a serviceability tool is in use, please run with -XX:+EnableDynamicAgentLoading to hide this warning
+WARNING: If a serviceability tool is not in use, please run with -Djdk.instrument.traceUsage for more information
+WARNING: Dynamic loading of agents will be disallowed by default in a future release
+2026-10-20T10:55:05.486Z  INFO 317 --- [           main] o.s.boot.reactor.netty.GracefulShutdown  : Commencing graceful shutdown. Waiting for active requests to complete
+2026-10-20T10:55:05.489Z  INFO 317 --- [ netty-shutdown] o.s.boot.reactor.netty.GracefulShutdown  : Graceful shutdown complete
+2026-10-20T10:55:07.552Z  INFO 317 --- [           main] challenge.ApiTest                        : Starting ApiTest using Java 25.0.1 with PID 317 (started by bench in /suite/sources/pr33)
+2026-10-20T10:55:07.552Z  INFO 317 --- [           main] challenge.ApiTest                        : No active profile set, falling back to 1 default profile: "default"
+2026-10-20T10:55:07.684Z  INFO 317 --- [           main] o.s.boot.reactor.netty.NettyWebServer    : Netty started on port 46499 (http)
+2026-10-20T10:55:07.686Z  INFO 317 --- [           main] challenge.ApiTest                        : Started ApiTest in 0.162 seconds (process running for 6.296)
+[INFO] Tests run: 27, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 5.880 s -- in challenge.ApiTest
+[INFO] 
+[INFO] Results:
+[INFO] 
+[INFO] Tests run: 27, Failures: 0, Errors: 0, Skipped: 0
+[INFO] 
+[INFO] 
+[INFO] --- jar:3.4.2:jar (default-jar) @ feed-server ---
+[INFO] Building jar: /suite/sources/pr33/target/server.jar
+[INFO] 
+[INFO] --- spring-boot:4.0.3:repackage (repackage) @ feed-server ---
+[INFO] Replacing main artifact /suite/sources/pr33/target/server.jar with repackaged archive, adding nested dependencies in BOOT-INF/.
+[INFO] The original artifact has been renamed to /suite/sources/pr33/target/server.jar.original
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  41.766 s
+[INFO] Finished at: 2026-10-20T10:55:17Z
+[INFO] ------------------------------------------------------------------------

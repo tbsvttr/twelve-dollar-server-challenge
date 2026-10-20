@@ -1,0 +1,113 @@
+{
+  "files": {
+    ".gitignore": {
+      "sha256": "01f3105c92bd4ccc745d513b3e748f2b095e1858f19810db8354265a3e55a435",
+      "bytes": 19,
+      "physical_lines": 2,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "Gemfile": {
+      "sha256": "4ea339a50cae7a589609019bd53c0b406c5e3d277413b9c7753a695c0c7760a0",
+      "bytes": 96,
+      "physical_lines": 4,
+      "classification": "own_support"
+    },
+    "Gemfile.lock": {
+      "sha256": "4f59335e03b8875e1a1f1a7c2a8f049fbcb6478322168294c3619285d33224b5",
+      "bytes": 1997,
+      "physical_lines": 51,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "README.md": {
+      "sha256": "40f339f93c34055a832545150a6a22584c42b7daefa54a2f65b283e6d1cc41f4",
+      "bytes": 11298,
+      "physical_lines": 168,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "app.rb": {
+      "sha256": "6ae4366efe218f0139c0ac1cd8650b06ed4a3572ce4362ca080d96bf079d8285",
+      "bytes": 6351,
+      "physical_lines": 143,
+      "classification": "application"
+    },
+    "build.sh": {
+      "sha256": "f7058e7d8efec4bcad31f21388f0d83985a9f18f517af5395f7eb6d38ff6de79",
+      "bytes": 159,
+      "physical_lines": 6,
+      "classification": "own_support"
+    },
+    "capacity-results.json": {
+      "sha256": "0bdbdf4e43251a951743269a15dc3deb9dc419ecf0d8999d04d38d67f22c0e73",
+      "bytes": 168499,
+      "physical_lines": 6635,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "check.py": {
+      "sha256": "df412f62337f7d5f69051b8ea67a068b6121d267e793118a224fa17210a665af",
+      "bytes": 7157,
+      "physical_lines": 145,
+      "classification": "own_support"
+    },
+    "connection_pressure.rb": {
+      "sha256": "c8916d69e6b1a1094f5016fd375e76bd6d0a6e831704febdbe137672008524b7",
+      "bytes": 774,
+      "physical_lines": 25,
+      "classification": "application"
+    },
+    "install.sh": {
+      "sha256": "1c6b8c1039f9715c9a4549eab2c07487b2f3ca1edc8c1ae960784d4d6991c04e",
+      "bytes": 715,
+      "physical_lines": 17,
+      "classification": "own_support"
+    },
+    "server.rb": {
+      "sha256": "56c99bf18a90736d5cf91dc333a4b238ae7e93cbb370ee094f32d9f47f1ff74a",
+      "bytes": 311,
+      "physical_lines": 10,
+      "classification": "application"
+    },
+    "start.sh": {
+      "sha256": "1b90a4b5ec456910613b0cf28e25273fd06f0e8d46607f852506e0e057db4371",
+      "bytes": 171,
+      "physical_lines": 6,
+      "classification": "own_support"
+    },
+    "tests/connection_check.py": {
+      "sha256": "0267b99ad3be38df602272732343a16f4f0839ad5efe47ddb6a2e9a88a3a8ec3",
+      "bytes": 8019,
+      "physical_lines": 177,
+      "classification": "own_support"
+    },
+    "tests/connection_load.c": {
+      "sha256": "311676da3a505216316092673a156291522ebff318ac6b5a263f76f51bf40056",
+      "bytes": 18359,
+      "physical_lines": 389,
+      "classification": "own_support"
+    },
+    "tests/fd_exhaustion.py": {
+      "sha256": "3d6929d8e7e54e0d0f3e19e65c5ec07830d70b4c43ab96ae04c52e4d1208c352",
+      "bytes": 1593,
+      "physical_lines": 41,
+      "classification": "own_support"
+    },
+    "tests/pressure_regression.py": {
+      "sha256": "4192961d8ead1e8568e6412587d1896e15a292977a834a2c39a54ae8685598db",
+      "bytes": 3887,
+      "physical_lines": 92,
+      "classification": "own_support"
+    },
+    "tests/transport_check.py": {
+      "sha256": "60b40beb7874ca8d0185660da8d53a586519af9901e106d2b50645fbd5f7a58e",
+      "bytes": 5298,
+      "physical_lines": 140,
+      "classification": "own_support"
+    },
+    "verify.py": {
+      "sha256": "f3bee0c79cc90bdfefea3939b88acce56e93c27e1e7419ecd9e0e624ff509e91",
+      "bytes": 4465,
+      "physical_lines": 96,
+      "classification": "own_support"
+    }
+  },
+  "skipped_members": []
+}

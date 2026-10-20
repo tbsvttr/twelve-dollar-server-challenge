@@ -1,0 +1,77 @@
+{
+  "files": {
+    ".gitignore": {
+      "sha256": "e7cc95067fa8155f7a88da2fc1e54bf802436ce000a1e6398e4e75fb04f9caa2",
+      "bytes": 19,
+      "physical_lines": 3,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "Makefile": {
+      "sha256": "d6a13e58676ad6b3d449bc48e297e78f0035e0d04284db7229782a31d2eaf4a5",
+      "bytes": 399,
+      "physical_lines": 22,
+      "classification": "own_support"
+    },
+    "README.md": {
+      "sha256": "f6504640e2258e3c3e5404e9e9a67f9e955bb28b974372a8bc22e73c4853aaee",
+      "bytes": 3309,
+      "physical_lines": 45,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "build.sh": {
+      "sha256": "4eeb4d1753c479eae3478c3e63710587c21335ab6f79097b3bbd87dd05644bfb",
+      "bytes": 76,
+      "physical_lines": 6,
+      "classification": "own_support"
+    },
+    "install.sh": {
+      "sha256": "4a0443b1440a4824defeff1c25ce9fb45af86cc7cf596f9f5e794be8edf9021b",
+      "bytes": 123,
+      "physical_lines": 4,
+      "classification": "own_support"
+    },
+    "src/common.inc": {
+      "sha256": "993678a410437a22e4bc5e600c5e12e10d67e2d4378a012728082f299afd6f5f",
+      "bytes": 1615,
+      "physical_lines": 60,
+      "classification": "other"
+    },
+    "src/db.asm": {
+      "sha256": "c35e060ac5ac1ed4c227166daea6f6ef2d453048fdf80a331f02390c1ae8de36",
+      "bytes": 19364,
+      "physical_lines": 903,
+      "classification": "application"
+    },
+    "src/http.asm": {
+      "sha256": "6fe0c711ded5dbfd8d834e61551d785e0fb297fea270eb168561ba0facc51e01",
+      "bytes": 24087,
+      "physical_lines": 992,
+      "classification": "application"
+    },
+    "src/json.asm": {
+      "sha256": "ff268442f33f0120c93a412004a99fa9de14a6e42a6f4aeb8a0c2b724becc835",
+      "bytes": 12606,
+      "physical_lines": 609,
+      "classification": "application"
+    },
+    "src/jwt.asm": {
+      "sha256": "98331776220702c251d9d5e6a1468b1704119ac2d02717367e6e7601fcbce581",
+      "bytes": 16815,
+      "physical_lines": 744,
+      "classification": "application"
+    },
+    "src/main.asm": {
+      "sha256": "5fe2e66db6a65303faf2255f34bd707d74218ffcc75c1112ff929f676b45a12f",
+      "bytes": 13098,
+      "physical_lines": 560,
+      "classification": "application"
+    },
+    "start.sh": {
+      "sha256": "a679a4625af7e190e5ae35cefe30dd533d335b4d4c39730cf5229608016ae40f",
+      "bytes": 69,
+      "physical_lines": 4,
+      "classification": "own_support"
+    }
+  },
+  "skipped_members": []
+}

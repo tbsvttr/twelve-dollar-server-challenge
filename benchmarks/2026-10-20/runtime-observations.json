@@ -1,0 +1,9 @@
+{
+  "11": {
+    "runtime": "Erlang/OTP",
+    "version": "29.1.1",
+    "version_file": "/opt/erlang/29.1.1/lib/erlang/releases/29/OTP_VERSION",
+    "image": "twelve-current-pr11:2026-10-20",
+    "observed_at": "2026-10-20T10:56:24.249985+00:00"
+  }
+}

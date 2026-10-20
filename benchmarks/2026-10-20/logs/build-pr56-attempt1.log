@@ -1,0 +1,16 @@
+
+$ docker exec twelve-current-build-pr56 bash -c set -e; rm -rf /suite/sources; mkdir -p /suite/sources; cp -a /evidence/sources/pr56 /suite/sources/; cp /evidence/manifest.json /suite/manifest.json; cp /evidence/schema.sql /suite/schema.sql; chown -R bench:bench /suite/sources
+
+$ docker exec twelve-current-build-pr56 bash /evidence/runtime-scripts/pr56.sh
+go version go1.27.1 linux/arm64
+
+$ docker exec twelve-current-build-pr56 runuser -u bench -- env PATH=/usr/local/go/bin:/opt/twelve-rust/cargo/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 bash /suite/sources/pr56/build.sh
+go: downloading github.com/valyala/fasthttp v1.75.0
+go: downloading github.com/klauspost/compress v1.20.1
+go: downloading github.com/molecule-man/go-brrr v1.1.1
+go: downloading github.com/valyala/bytebufferpool v1.0.0
+# twelve-dollar-server
+./db.go:6:10: fatal error: sqlite3.h: No such file or directory
+    6 | #include <sqlite3.h>
+      |          ^~~~~~~~~~~
+compilation terminated.

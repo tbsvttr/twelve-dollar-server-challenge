@@ -1,0 +1,89 @@
+{
+  "files": {
+    "app/.gitignore": {
+      "sha256": "7f0ad749d6db7b63ca85eac636e697235773616ca1b3aab877a7e8a5f3912c8a",
+      "bytes": 59,
+      "physical_lines": 8,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "app/README.md": {
+      "sha256": "d934de185305d1ca3b23583ab62671012809ab041281331a0e13ddb0859f79b4",
+      "bytes": 19,
+      "physical_lines": 1,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "app/pom.xml": {
+      "sha256": "84c0c41529fcc6c47a04585d7313b7d4161b6e042ba13c317a6ee62cbb54e9b8",
+      "bytes": 5032,
+      "physical_lines": 132,
+      "classification": "own_support"
+    },
+    "app/src/main/java/tds/challenge/Main.java": {
+      "sha256": "3b92baf6c02b4f2eb0918c7aca27125294253f9b57a572e7becd2aba60f3e5b7",
+      "bytes": 1022,
+      "physical_lines": 30,
+      "classification": "application"
+    },
+    "app/src/main/java/tds/challenge/MainVerticle.java": {
+      "sha256": "d2708ea5ebcd4b555a71be88e9fdfb27a78a1dae4475745ab04a1f73ac1a92eb",
+      "bytes": 3232,
+      "physical_lines": 85,
+      "classification": "application"
+    },
+    "app/src/main/java/tds/challenge/db/DbThread.java": {
+      "sha256": "11c2b4dd67700aa9593616fa218131f9b0c6a0f0d2f413b7adaac38c3cf14997",
+      "bytes": 11307,
+      "physical_lines": 339,
+      "classification": "application"
+    },
+    "app/src/main/java/tds/challenge/db/RowMapper.java": {
+      "sha256": "9189e82c59df8c2a00e58f57c338776386b358d3df3bb241abd000a695da2f2f",
+      "bytes": 1118,
+      "physical_lines": 34,
+      "classification": "application"
+    },
+    "app/src/main/java/tds/challenge/db/UncheckedSQLException.java": {
+      "sha256": "bb58ee739cd620c3a6eb81333da40ca61f80f6cac4905a2b6722a0fb15950522",
+      "bytes": 432,
+      "physical_lines": 18,
+      "classification": "application"
+    },
+    "app/src/main/java/tds/challenge/repository/PostRepository.java": {
+      "sha256": "33aee72a4bef94db58a1f6079d8697f7938a77be83cc89223d2206bd1311dff2",
+      "bytes": 3354,
+      "physical_lines": 94,
+      "classification": "application"
+    },
+    "app/src/main/java/tds/challenge/web/ApiHandler.java": {
+      "sha256": "78c9db1b0685b30f5bd2751d3e60e2be5015e94150e69c79d2cb0784b1c4ca5f",
+      "bytes": 5443,
+      "physical_lines": 185,
+      "classification": "application"
+    },
+    "app/src/main/java/tds/challenge/web/Routes.java": {
+      "sha256": "8f33ca4e4788fe58b69d7551ad79b939366cf9ead4d5dac54fe57295ca3e3a42",
+      "bytes": 3240,
+      "physical_lines": 83,
+      "classification": "application"
+    },
+    "build.sh": {
+      "sha256": "9a6a847195c9cd55775bb5500d0032dd132eb32a66e1fd3150cde40c4d0728af",
+      "bytes": 236,
+      "physical_lines": 10,
+      "classification": "own_support"
+    },
+    "install.sh": {
+      "sha256": "637adddde1f7a8c84c718b883cb47fda4bd8db3fdc95756cbb5ecefa081f2cfa",
+      "bytes": 149,
+      "physical_lines": 7,
+      "classification": "own_support"
+    },
+    "start.sh": {
+      "sha256": "8aec82cf58c938851615b50ce7ad2c8ae21edc330d86e36c68233cad8b5e14c3",
+      "bytes": 405,
+      "physical_lines": 12,
+      "classification": "own_support"
+    }
+  },
+  "skipped_members": []
+}

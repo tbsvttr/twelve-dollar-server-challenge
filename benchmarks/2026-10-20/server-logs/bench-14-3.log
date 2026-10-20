@@ -1,0 +1,19 @@
+INFO: Listening on port 24000
+INFO: Starting up Iodine:
+ * Iodine 0.7.59
+ * Ruby 4.0.5
+ * facil.io 0.7.7 (epoll)
+ * 1 Workers X 1 Threads per worker.
+ * Maximum 65519 open files / sockets per worker.
+ * Master (root) process: 13.
+
+INFO: Server is running 1 worker X 1 thread with facil.io 0.7.7 (epoll)
+* Linked to OpenSSL 3.0.13 30 Jan 2024
+* Detected capacity: 65519 open file limit
+* Root pid: 13
+* Press ^C to stop
+
+INFO: (13) detected exit signal.
+INFO:    ---  Shutdown Complete  ---
+
+

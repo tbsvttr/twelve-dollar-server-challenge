@@ -1,0 +1,4 @@
+src/jsonbuf.nim:44 unconditionally emits <emmintrin.h>, __m128i and SSE2 _mm_loadu_si128/_mm_min_epu8/_mm_movemask_epi8 intrinsics. NativeARM64 has no SSE2 implementation; source explicitly assumes baseline x86_64. No application changes or emulation attempted.
+Pinned source: 98c56b9012cd582774a949623bbbed627c1d564b
+Native platform: linux/arm64
+Toolchain adapter prepared but not executed because application source requires x86 SSE2.

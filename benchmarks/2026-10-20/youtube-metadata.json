@@ -1,0 +1,12 @@
+{
+  "videoId": "QGWKCaglSBI",
+  "title": "I Asked Expert Programmers to Max Out a $12 Server",
+  "author": "Arjay McCandless",
+  "channelId": "UCdSsl5RM4Tne4MhDRz2HjWw",
+  "lengthSeconds": "1376",
+  "publishDate": "2026-10-13T07:00:33-07:00",
+  "uploadDate": "2026-10-13T07:00:33-07:00",
+  "ownerChannelName": "Arjay McCandless",
+  "description_sha256": "fbbd07face1f1fbc6ef41162ae96d1efdb04d90bfbdca05dea8cbc395c6d223c",
+  "description_summary": "The creator reports reaching 64,000 concurrent users on a 1-vCPU, 2-GB server. His earlier best was 14,050 users. The description links this repository and identifies chapters for rules, load testing, language results, takeaways, and trade-offs."
+}

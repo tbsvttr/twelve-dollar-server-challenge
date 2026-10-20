@@ -1,0 +1,49 @@
+{
+  "diagnostic_only": true,
+  "checks": {
+    "reaped_child_cpu_retained": true,
+    "total_equals_self_plus_waited": true
+  },
+  "passed_all": true,
+  "before": {
+    "monotonic": 157466.610280452,
+    "processes": {
+      "1": {
+        "ppid": 0,
+        "cpu_s": 0.06,
+        "cpu_self_s": 0.06,
+        "cpu_waited_children_s": 0.0,
+        "rss_kib": 20072,
+        "hwm_kib": 20072,
+        "threads": 1
+      }
+    },
+    "cpu_s": 0.06,
+    "cpu_self_s": 0.06,
+    "cpu_waited_children_s": 0.0,
+    "rss_kib": 20072,
+    "hwm_kib": 20072
+  },
+  "after": {
+    "monotonic": 157466.919623619,
+    "processes": {
+      "1": {
+        "ppid": 0,
+        "cpu_s": 0.36,
+        "cpu_self_s": 0.06,
+        "cpu_waited_children_s": 0.3,
+        "rss_kib": 20080,
+        "hwm_kib": 20080,
+        "threads": 1
+      }
+    },
+    "cpu_s": 0.36,
+    "cpu_self_s": 0.06,
+    "cpu_waited_children_s": 0.3,
+    "rss_kib": 20080,
+    "hwm_kib": 20080
+  },
+  "delta_self_s": 0.0,
+  "delta_waited_children_s": 0.3,
+  "delta_total_s": 0.3
+}

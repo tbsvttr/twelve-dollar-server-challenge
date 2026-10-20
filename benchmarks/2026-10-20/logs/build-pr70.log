@@ -1,0 +1,546 @@
+
+$ docker exec twelve-current-build-pr70 bash -c set -e; rm -rf /suite/sources; mkdir -p /suite/sources; cp -a /evidence/sources/pr70 /suite/sources/; cp /evidence/manifest.json /suite/manifest.json; cp /evidence/schema.sql /suite/schema.sql; chown -R bench:bench /suite/sources
+
+$ docker exec twelve-current-build-pr70 bash /evidence/runtime-scripts/pr70.sh
+Hit:1 http://ports.ubuntu.com/ubuntu-ports noble InRelease
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble-updates InRelease [126 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble-backports InRelease [126 kB]
+Get:4 http://ports.ubuntu.com/ubuntu-ports noble-security InRelease [126 kB]
+Get:5 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 Packages [1786 kB]
+Get:6 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 Packages [2214 kB]
+Get:7 http://ports.ubuntu.com/ubuntu-ports noble-updates/multiverse arm64 Packages [104 kB]
+Get:8 http://ports.ubuntu.com/ubuntu-ports noble-updates/restricted arm64 Packages [3251 kB]
+Get:9 http://ports.ubuntu.com/ubuntu-ports noble-backports/multiverse arm64 Packages [669 B]
+Get:10 http://ports.ubuntu.com/ubuntu-ports noble-security/universe arm64 Packages [1638 kB]
+Get:11 http://ports.ubuntu.com/ubuntu-ports noble-security/multiverse arm64 Packages [99.1 kB]
+Get:12 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 Packages [1475 kB]
+Get:13 http://ports.ubuntu.com/ubuntu-ports noble-security/restricted arm64 Packages [3129 kB]
+Fetched 14.1 MB in 1s (11.5 MB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+build-essential is already the newest version (12.10ubuntu1).
+ca-certificates is already the newest version (20260601~24.04.1).
+pkg-config is already the newest version (1.8.1-2build1).
+The following additional packages will be installed:
+  libcurl3t64-gnutls libcurl4t64
+Suggested packages:
+  sqlite3-doc
+The following NEW packages will be installed:
+  libsqlite3-dev
+The following packages will be upgraded:
+  curl libcurl3t64-gnutls libcurl4t64
+3 upgraded, 1 newly installed, 0 to remove and 16 not upgraded.
+Need to get 1807 kB of archives.
+After this operation, 3471 kB of additional disk space will be used.
+Get:1 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 curl arm64 8.5.0-2ubuntu10.16 [222 kB]
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 libcurl4t64 arm64 8.5.0-2ubuntu10.16 [337 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 libcurl3t64-gnutls arm64 8.5.0-2ubuntu10.16 [331 kB]
+Get:4 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libsqlite3-dev arm64 3.45.1-1ubuntu2.8 [916 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 1807 kB in 1s (3486 kB/s)
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 16962 files and directories currently installed.)
+Preparing to unpack .../curl_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking curl (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Preparing to unpack .../libcurl4t64_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking libcurl4t64:arm64 (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Preparing to unpack .../libcurl3t64-gnutls_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking libcurl3t64-gnutls:arm64 (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Selecting previously unselected package libsqlite3-dev:arm64.
+Preparing to unpack .../libsqlite3-dev_3.45.1-1ubuntu2.8_arm64.deb ...
+Unpacking libsqlite3-dev:arm64 (3.45.1-1ubuntu2.8) ...
+Setting up libcurl4t64:arm64 (8.5.0-2ubuntu10.16) ...
+Setting up libcurl3t64-gnutls:arm64 (8.5.0-2ubuntu10.16) ...
+Setting up libsqlite3-dev:arm64 (3.45.1-1ubuntu2.8) ...
+Setting up curl (8.5.0-2ubuntu10.16) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+autoconf is already the newest version (2.71-3).
+automake is already the newest version (1:1.16.5-1.3ubuntu1).
+automake set to manually installed.
+libtool is already the newest version (2.4.7-7build1).
+libtool set to manually installed.
+The following additional packages will be installed:
+  git-man
+Suggested packages:
+  gettext-base git-daemon-run | git-daemon-sysvinit git-doc git-email git-gui
+  gitk gitweb git-cvs git-mediawiki git-svn
+Recommended packages:
+  less ssh-client
+The following NEW packages will be installed:
+  libatomic-ops-dev
+The following packages will be upgraded:
+  git git-man
+2 upgraded, 1 newly installed, 0 to remove and 14 not upgraded.
+Need to get 4959 kB of archives.
+After this operation, 793 kB of additional disk space will be used.
+Get:1 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 git-man all 1:2.43.0-1ubuntu7.4 [1101 kB]
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 git arm64 1:2.43.0-1ubuntu7.4 [3774 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libatomic-ops-dev arm64 7.8.2-1build1 [84.1 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 4959 kB in 1s (9321 kB/s)
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 16970 files and directories currently installed.)
+Preparing to unpack .../git-man_1%3a2.43.0-1ubuntu7.4_all.deb ...
+Unpacking git-man (1:2.43.0-1ubuntu7.4) over (1:2.43.0-1ubuntu7.3) ...
+Preparing to unpack .../git_1%3a2.43.0-1ubuntu7.4_arm64.deb ...
+Unpacking git (1:2.43.0-1ubuntu7.4) over (1:2.43.0-1ubuntu7.3) ...
+Selecting previously unselected package libatomic-ops-dev:arm64.
+Preparing to unpack .../libatomic-ops-dev_7.8.2-1build1_arm64.deb ...
+Unpacking libatomic-ops-dev:arm64 (7.8.2-1build1) ...
+Setting up libatomic-ops-dev:arm64 (7.8.2-1build1) ...
+Setting up git-man (1:2.43.0-1ubuntu7.4) ...
+Setting up git (1:2.43.0-1ubuntu7.4) ...
+libtoolize: putting auxiliary files in '.'.
+libtoolize: copying file './config.guess'
+libtoolize: copying file './config.sub'
+libtoolize: copying file './install-sh'
+libtoolize: copying file './ltmain.sh'
+libtoolize: putting macros in AC_CONFIG_MACRO_DIRS, 'm4'.
+libtoolize: copying file 'm4/libtool.m4'
+libtoolize: copying file 'm4/ltoptions.m4'
+libtoolize: copying file 'm4/ltsugar.m4'
+libtoolize: copying file 'm4/ltversion.m4'
+libtoolize: copying file 'm4/lt~obsolete.m4'
+configure.ac:32: installing './compile'
+configure.ac:25: installing './missing'
+Makefile.am: installing './depcomp'
+parallel-tests: installing './test-driver'
+
+Ready to run './configure'.
+checking build system type... aarch64-unknown-linux-gnu
+checking host system type... aarch64-unknown-linux-gnu
+checking target system type... aarch64-unknown-linux-gnu
+checking GC version numbers... major=8 minor=3                 micro=0
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether build environment is sane... yes
+checking for a race-free mkdir -p... /usr/bin/mkdir -p
+checking for gawk... no
+checking for mawk... mawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking whether to enable maintainer-specific portions of Makefiles... no
+checking whether make supports the include directive... yes (GNU style)
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether the compiler supports GNU C... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to enable C11 features... none needed
+checking whether gcc understands -c and -o together... yes
+checking dependency style of gcc... none
+checking for g++... g++
+checking whether the compiler supports GNU C++... yes
+checking whether g++ accepts -g... yes
+checking for g++ option to enable C++11 features... none needed
+checking dependency style of g++... none
+checking dependency style of gcc... none
+checking how to print strings... printf
+checking for a sed that does not truncate output... /usr/bin/sed
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for fgrep... /usr/bin/grep -F
+checking for ld used by gcc... /usr/bin/ld
+checking if the linker (/usr/bin/ld) is GNU ld... yes
+checking for BSD- or MS-compatible name lister (nm)... /usr/bin/nm -B
+checking the name lister (/usr/bin/nm -B) interface... BSD nm
+checking whether ln -s works... yes
+checking the maximum length of command line arguments... 1572864
+checking how to convert aarch64-unknown-linux-gnu file names to aarch64-unknown-linux-gnu format... func_convert_file_noop
+checking how to convert aarch64-unknown-linux-gnu file names to toolchain format... func_convert_file_noop
+checking for /usr/bin/ld option to reload object files... -r
+checking for file... file
+checking for objdump... objdump
+checking how to recognize dependent libraries... pass_all
+checking for dlltool... no
+checking how to associate runtime and link libraries... printf %s\n
+checking for ar... ar
+checking for archiver @FILE support... @
+checking for strip... strip
+checking for ranlib... ranlib
+checking command to parse /usr/bin/nm -B output from gcc object... ok
+checking for sysroot... no
+checking for a working dd... /usr/bin/dd
+checking how to truncate binary pipes... /usr/bin/dd bs=4096 count=1
+checking for mt... no
+checking if : is a manifest tool... no
+checking for stdio.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for strings.h... yes
+checking for sys/stat.h... yes
+checking for sys/types.h... yes
+checking for unistd.h... yes
+checking for dlfcn.h... yes
+checking for objdir... .libs
+checking if gcc supports -fno-rtti -fno-exceptions... no
+checking for gcc option to produce PIC... -fPIC -DPIC
+checking if gcc PIC flag -fPIC -DPIC works... yes
+checking if gcc static flag -static works... yes
+checking if gcc supports -c -o file.o... yes
+checking if gcc supports -c -o file.o... (cached) yes
+checking whether the gcc linker (/usr/bin/ld) supports shared libraries... yes
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... no
+checking whether to build static libraries... yes
+checking how to run the C++ preprocessor... g++ -E
+checking for ld used by g++... /usr/bin/ld
+checking if the linker (/usr/bin/ld) is GNU ld... yes
+checking whether the g++ linker (/usr/bin/ld) supports shared libraries... yes
+checking for g++ option to produce PIC... -fPIC -DPIC
+checking if g++ PIC flag -fPIC -DPIC works... yes
+checking if g++ static flag -static works... yes
+checking if g++ supports -c -o file.o... yes
+checking if g++ supports -c -o file.o... (cached) yes
+checking whether the g++ linker (/usr/bin/ld) supports shared libraries... yes
+checking dynamic linker characteristics... (cached) GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking for emscripten... no
+checking for inline... inline
+configure: WARNING: "Explicit GC_INIT() calls may be required."
+checking for pthread_self in -lpthread... yes
+checking for clock_gettime without additional libraries... yes
+checking whether compiler supports -Wextra... yes
+checking whether compiler supports -Wpedantic... yes
+checking for xlc... no
+checking for getcontext... yes
+checking for dl_iterate_phdr... yes
+checking for dlopen in -ldl... yes
+checking for execinfo.h... yes
+checking whether to build shared libraries... no
+checking which machine-dependent code should be used... none
+checking whether AIX gcc optimization fix is necessary... no
+configure: WARNING: "Should define GC_DEBUG and use debug alloc in clients."
+configure: WARNING: "Client must not use -fomit-frame-pointer."
+checking whether -Wno-frame-address works... yes
+checking for dladdr... yes
+checking for pthread_sigmask... yes
+checking for sigsetjmp... yes
+checking for wcslen... yes
+checking for pthread_setname_np... yes (with tid)
+checking for sys/dg_sys_info.h... no
+checking for atomic_ops.h... yes
+checking which libatomic_ops to use... external
+checking for lock-free AO_or primitive... yes
+checking for lock-free AO load/store, test-and-set primitives... yes
+checking for lock-free compare-and-swap and fetch-and-add primitives... yes
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating bdw-gc.pc
+config.status: creating include/config.h
+config.status: executing depfiles commands
+config.status: executing libtool commands
+config.status: executing default commands
+make[1]: Entering directory '/tmp/tmp.mV80YT1ae9/bdwgc'
+/bin/bash ./libtool  --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H   -I./include -I./include  -DGC_PTHREAD_START_STANDALONE    -fexceptions -Wall -Wextra -Wpedantic -Wno-long-long -Os -mtune=generic -fPIC -Wno-frame-address  -c -o pthread_start.lo pthread_start.c
+/bin/bash ./libtool  --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H   -I./include -I./include  -DGC_PTHREAD_START_STANDALONE    -fexceptions -Wall -Wextra -Wpedantic -Wno-long-long -Os -mtune=generic -fPIC -Wno-frame-address  -c -o extra/gc.lo extra/gc.c
+libtool: compile:  gcc -DHAVE_CONFIG_H -I./include -I./include -DGC_PTHREAD_START_STANDALONE -fexceptions -Wall -Wextra -Wpedantic -Wno-long-long -Os -mtune=generic -fPIC -Wno-frame-address -c pthread_start.c -o pthread_start.o
+libtool: compile:  gcc -DHAVE_CONFIG_H -I./include -I./include -DGC_PTHREAD_START_STANDALONE -fexceptions -Wall -Wextra -Wpedantic -Wno-long-long -Os -mtune=generic -fPIC -Wno-frame-address -c extra/gc.c -o extra/gc.o
+/bin/bash ./libtool  --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H   -I./include -I./include  -DGC_PTHREAD_START_STANDALONE    -fexceptions -Wall -Wextra -Wpedantic -Wno-long-long -Os -mtune=generic -fPIC -Wno-frame-address  -c -o cord/libcord_la-cordbscs.lo `test -f 'cord/cordbscs.c' || echo './'`cord/cordbscs.c
+libtool: compile:  gcc -DHAVE_CONFIG_H -I./include -I./include -DGC_PTHREAD_START_STANDALONE -fexceptions -Wall -Wextra -Wpedantic -Wno-long-long -Os -mtune=generic -fPIC -Wno-frame-address -c cord/cordbscs.c -o cord/libcord_la-cordbscs.o
+/bin/bash ./libtool  --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H   -I./include -I./include  -DGC_PTHREAD_START_STANDALONE    -fexceptions -Wall -Wextra -Wpedantic -Wno-long-long -Os -mtune=generic -fPIC -Wno-frame-address  -c -o cord/libcord_la-cordprnt.lo `test -f 'cord/cordprnt.c' || echo './'`cord/cordprnt.c
+libtool: compile:  gcc -DHAVE_CONFIG_H -I./include -I./include -DGC_PTHREAD_START_STANDALONE -fexceptions -Wall -Wextra -Wpedantic -Wno-long-long -Os -mtune=generic -fPIC -Wno-frame-address -c cord/cordprnt.c -o cord/libcord_la-cordprnt.o
+/bin/bash ./libtool  --tag=CC   --mode=compile gcc -DHAVE_CONFIG_H   -I./include -I./include  -DGC_PTHREAD_START_STANDALONE    -fexceptions -Wall -Wextra -Wpedantic -Wno-long-long -Os -mtune=generic -fPIC -Wno-frame-address  -c -o cord/libcord_la-cordxtra.lo `test -f 'cord/cordxtra.c' || echo './'`cord/cordxtra.c
+libtool: compile:  gcc -DHAVE_CONFIG_H -I./include -I./include -DGC_PTHREAD_START_STANDALONE -fexceptions -Wall -Wextra -Wpedantic -Wno-long-long -Os -mtune=generic -fPIC -Wno-frame-address -c cord/cordxtra.c -o cord/libcord_la-cordxtra.o
+/bin/bash ./libtool  --tag=CC   --mode=link gcc   -fexceptions -Wall -Wextra -Wpedantic -Wno-long-long -Os -mtune=generic -fPIC -Wno-frame-address   -version-info 6:3:5 -no-undefined -Os -fPIC -o libgc.la -rpath /usr/local/lib extra/gc.lo pthread_start.lo           -lpthread -ldl  -latomic_ops 
+libtool: link: ar cr .libs/libgc.a  extra/gc.o pthread_start.o
+libtool: link: ranlib .libs/libgc.a
+libtool: link: ( cd ".libs" && rm -f "libgc.la" && ln -s "../libgc.la" "libgc.la" )
+/bin/bash ./libtool  --tag=CC   --mode=link gcc   -fexceptions -Wall -Wextra -Wpedantic -Wno-long-long -Os -mtune=generic -fPIC -Wno-frame-address  -version-info 6:1:5 -no-undefined -Os -fPIC -o libcord.la -rpath /usr/local/lib cord/libcord_la-cordbscs.lo cord/libcord_la-cordprnt.lo cord/libcord_la-cordxtra.lo libgc.la 
+libtool: link: ar cr .libs/libcord.a  cord/libcord_la-cordbscs.o cord/libcord_la-cordprnt.o cord/libcord_la-cordxtra.o
+libtool: link: ranlib .libs/libcord.a
+libtool: link: ( cd ".libs" && rm -f "libcord.la" && ln -s "../libcord.la" "libcord.la" )
+make[1]: Leaving directory '/tmp/tmp.mV80YT1ae9/bdwgc'
+ELF Header:
+  Magic:   7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00 
+  Class:                             ELF64
+  Data:                              2's complement, little endian
+  Version:                           1 (current)
+  OS/ABI:                            UNIX - System V
+  ABI Version:                       0
+  Type:                              REL (Relocatable file)
+  Machine:                           AArch64
+  Version:                           0x1
+  Entry point address:               0x0
+  Start of program headers:          0 (bytes into file)
+  Start of section headers:          280992 (bytes into file)
+  Flags:                             0x0
+  Size of this header:               64 (bytes)
+  Size of program headers:           0 (bytes)
+  Number of program headers:         0
+  Size of section headers:           64 (bytes)
+  Number of section headers:         21
+  Section header string table index: 20
+Native ARM64 Boehm GC rebuilt at exact bundled commit c1a45b9ad86f7449509a86360a6c0746615d8c97
+1f616a417db9de508fc2f93a6cf26533b417d44709f9a208be28e82586a455de  /opt/vlang/thirdparty/tcc/lib/libgc.a
+make: Entering directory '/opt/vlang'
+
+Note: `tcc` was not used, so unless you install it yourself, your backend
+C compiler will be `cc`, which is usually either `clang`, `gcc` or `msvc`.
+
+These C compilers, are several times slower at compiling C source code,
+compared to `tcc`. They do produce more optimised executables, but that
+is done at the cost of compilation speed.
+
+V has been successfully built
+V 0.5.2 
+make: Leaving directory '/opt/vlang'
+V 0.5.2 
+
+$ docker exec twelve-current-build-pr70 runuser -u bench -- env PATH=/usr/local/go/bin:/opt/twelve-rust/cargo/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 bash /suite/sources/pr70/build.sh
+C compiler output from the default V compiler:
+failed to build C object /opt/vlang/thirdparty/libgc/gc.o from /opt/vlang/thirdparty/libgc/gc.c:
+/opt/vlang/thirdparty/libgc/gc.c:28278:6: error: #error Invalid config: USE_MUNMAP requires USE_MMAP
+28278 | #    error Invalid config: USE_MUNMAP requires USE_MMAP
+      |      ^~~~~
+V compilation failed (c_compilation_error), but no usable V 0.5.2 fallback was found; running `make v1` now...
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0  0     0    0     0    0     0      0      0 --:--:-- --:--:-- --:--:--     0
+ 12 23.6M   12 2957k    0     0  4404k      0  0:00:05 --:--:--  0:00:05 4404k100 23.6M  100 23.6M    0     0  16.7M      0  0:00:01  0:00:01 --:--:-- 28.0M
+Installed the V 0.5.2 release fallback from v_linux_arm64.zip
+Built V1 compatibility compiler: ./v1_fallback
+V compilation failed (c_compilation_error); retrying with `/home/bench/.cache/v/v1-fallback/0.5.2/v`.
+server.v:101:34: error: expected type is not an enum (`int`)
+   99 |     }
+  100 |     rows := db.exec('SELECT p.id, p.body, p.created_at, u.username, (SELECT count(*) FROM likes l WHERE l.post_id = p.id) AS like_count FROM posts p JOIN users u ON u.id = p.user_id ORDER BY p.created_at DESC, p.id DESC LIMIT 20') or {
+  101 |         return app.json_error(mut ctx, .internal_server_error, 'internal server error')
+      |                                        ~~~~~~~~~~~~~~~~~~~~~~
+  102 |     }
+  103 |     mut posts := []Post{cap: rows.len}
+server.v:101:34: error: `.internal_server_error` (no value) used as value in argument 2 to `App.json_error`
+   99 |     }
+  100 |     rows := db.exec('SELECT p.id, p.body, p.created_at, u.username, (SELECT count(*) FROM likes l WHERE l.post_id = p.id) AS like_count FROM posts p JOIN users u ON u.id = p.user_id ORDER BY p.created_at DESC, p.id DESC LIMIT 20') or {
+  101 |         return app.json_error(mut ctx, .internal_server_error, 'internal server error')
+      |                                        ~~~~~~~~~~~~~~~~~~~~~~
+  102 |     }
+  103 |     mut posts := []Post{cap: rows.len}
+server.v:114:34: error: expected type is not an enum (`int`)
+  112 |     post_id := parse_positive_id(id)
+  113 |     if post_id == 0 {
+  114 |         return app.json_error(mut ctx, .bad_request, 'invalid post id')
+      |                                        ~~~~~~~~~~~~
+  115 |     }
+  116 |     mut db := app.checkout_db()
+server.v:114:34: error: `.bad_request` (no value) used as value in argument 2 to `App.json_error`
+  112 |     post_id := parse_positive_id(id)
+  113 |     if post_id == 0 {
+  114 |         return app.json_error(mut ctx, .bad_request, 'invalid post id')
+      |                                        ~~~~~~~~~~~~
+  115 |     }
+  116 |     mut db := app.checkout_db()
+server.v:121:34: error: expected type is not an enum (`int`)
+  119 |     }
+  120 |     rows := db.exec_param('SELECT p.id, p.body, p.created_at, u.username, (SELECT count(*) FROM likes l WHERE l.post_id = p.id) AS like_count FROM posts p JOIN users u ON u.id = p.user_id WHERE p.id = ?', post_id.str()) or {
+  121 |         return app.json_error(mut ctx, .internal_server_error, 'internal server error')
+      |                                        ~~~~~~~~~~~~~~~~~~~~~~
+  122 |     }
+  123 |     if rows.len == 0 {
+server.v:121:34: error: `.internal_server_error` (no value) used as value in argument 2 to `App.json_error`
+  119 |     }
+  120 |     rows := db.exec_param('SELECT p.id, p.body, p.created_at, u.username, (SELECT count(*) FROM likes l WHERE l.post_id = p.id) AS like_count FROM posts p JOIN users u ON u.id = p.user_id WHERE p.id = ?', post_id.str()) or {
+  121 |         return app.json_error(mut ctx, .internal_server_error, 'internal server error')
+      |                                        ~~~~~~~~~~~~~~~~~~~~~~
+  122 |     }
+  123 |     if rows.len == 0 {
+server.v:124:34: error: expected type is not an enum (`int`)
+  122 |     }
+  123 |     if rows.len == 0 {
+  124 |         return app.json_error(mut ctx, .not_found, 'post not found')
+      |                                        ~~~~~~~~~~
+  125 |     }
+  126 |     return ctx.json(PostResponse{post_from_row(rows[0])})
+server.v:124:34: error: `.not_found` (no value) used as value in argument 2 to `App.json_error`
+  122 |     }
+  123 |     if rows.len == 0 {
+  124 |         return app.json_error(mut ctx, .not_found, 'post not found')
+      |                                        ~~~~~~~~~~
+  125 |     }
+  126 |     return ctx.json(PostResponse{post_from_row(rows[0])})
+server.v:133:34: error: expected type is not an enum (`int`)
+  131 |     user_id, username, auth_error := app.authenticate(ctx.req)
+  132 |     if auth_error != '' {
+  133 |         return app.json_error(mut ctx, .unauthorized, auth_error)
+      |                                        ~~~~~~~~~~~~~
+  134 |     }
+  135 |     payload := json2.decode[CreatePostPayload](ctx.req.data, json2.DecoderOptions{}) or {
+server.v:133:34: error: `.unauthorized` (no value) used as value in argument 2 to `App.json_error`
+  131 |     user_id, username, auth_error := app.authenticate(ctx.req)
+  132 |     if auth_error != '' {
+  133 |         return app.json_error(mut ctx, .unauthorized, auth_error)
+      |                                        ~~~~~~~~~~~~~
+  134 |     }
+  135 |     payload := json2.decode[CreatePostPayload](ctx.req.data, json2.DecoderOptions{}) or {
+server.v:136:34: error: expected type is not an enum (`int`)
+  134 |     }
+  135 |     payload := json2.decode[CreatePostPayload](ctx.req.data, json2.DecoderOptions{}) or {
+  136 |         return app.json_error(mut ctx, .bad_request, 'malformed JSON body')
+      |                                        ~~~~~~~~~~~~
+  137 |     }
+  138 |     body_value := payload.body
+server.v:136:34: error: `.bad_request` (no value) used as value in argument 2 to `App.json_error`
+  134 |     }
+  135 |     payload := json2.decode[CreatePostPayload](ctx.req.data, json2.DecoderOptions{}) or {
+  136 |         return app.json_error(mut ctx, .bad_request, 'malformed JSON body')
+      |                                        ~~~~~~~~~~~~
+  137 |     }
+  138 |     body_value := payload.body
+server.v:140:34: error: expected type is not an enum (`int`)
+  138 |     body_value := payload.body
+  139 |     if body_value !is string {
+  140 |         return app.json_error(mut ctx, .bad_request, 'body is required')
+      |                                        ~~~~~~~~~~~~
+  141 |     }
+  142 |     body := body_value.str().trim_space()
+server.v:140:34: error: `.bad_request` (no value) used as value in argument 2 to `App.json_error`
+  138 |     body_value := payload.body
+  139 |     if body_value !is string {
+  140 |         return app.json_error(mut ctx, .bad_request, 'body is required')
+      |                                        ~~~~~~~~~~~~
+  141 |     }
+  142 |     body := body_value.str().trim_space()
+server.v:144:34: error: expected type is not an enum (`int`)
+  142 |     body := body_value.str().trim_space()
+  143 |     if body.len == 0 {
+  144 |         return app.json_error(mut ctx, .bad_request, 'body is required')
+      |                                        ~~~~~~~~~~~~
+  145 |     }
+  146 |     if body.runes().len > 500 {
+server.v:144:34: error: `.bad_request` (no value) used as value in argument 2 to `App.json_error`
+  142 |     body := body_value.str().trim_space()
+  143 |     if body.len == 0 {
+  144 |         return app.json_error(mut ctx, .bad_request, 'body is required')
+      |                                        ~~~~~~~~~~~~
+  145 |     }
+  146 |     if body.runes().len > 500 {
+server.v:147:34: error: expected type is not an enum (`int`)
+  145 |     }
+  146 |     if body.runes().len > 500 {
+  147 |         return app.json_error(mut ctx, .bad_request, 'body must be at most 500 characters')
+      |                                        ~~~~~~~~~~~~
+  148 |     }
+  149 |     mut db := app.checkout_db()
+server.v:147:34: error: `.bad_request` (no value) used as value in argument 2 to `App.json_error`
+  145 |     }
+  146 |     if body.runes().len > 500 {
+  147 |         return app.json_error(mut ctx, .bad_request, 'body must be at most 500 characters')
+      |                                        ~~~~~~~~~~~~
+  148 |     }
+  149 |     mut db := app.checkout_db()
+server.v:154:34: error: expected type is not an enum (`int`)
+  152 |     }
+  153 |     rows := db.exec_param2('INSERT INTO posts (user_id, body) VALUES (?, ?) RETURNING id, created_at', user_id.str(), body) or {
+  154 |         return app.json_error(mut ctx, .internal_server_error, 'internal server error')
+      |                                        ~~~~~~~~~~~~~~~~~~~~~~
+  155 |     }
+  156 |     if rows.len == 0 {
+server.v:154:34: error: `.internal_server_error` (no value) used as value in argument 2 to `App.json_error`
+  152 |     }
+  153 |     rows := db.exec_param2('INSERT INTO posts (user_id, body) VALUES (?, ?) RETURNING id, created_at', user_id.str(), body) or {
+  154 |         return app.json_error(mut ctx, .internal_server_error, 'internal server error')
+      |                                        ~~~~~~~~~~~~~~~~~~~~~~
+  155 |     }
+  156 |     if rows.len == 0 {
+server.v:157:34: error: expected type is not an enum (`int`)
+  155 |     }
+  156 |     if rows.len == 0 {
+  157 |         return app.json_error(mut ctx, .internal_server_error, 'internal server error')
+      |                                        ~~~~~~~~~~~~~~~~~~~~~~
+  158 |     }
+  159 |     ctx.res.set_status(.created)
+server.v:157:34: error: `.internal_server_error` (no value) used as value in argument 2 to `App.json_error`
+  155 |     }
+  156 |     if rows.len == 0 {
+  157 |         return app.json_error(mut ctx, .internal_server_error, 'internal server error')
+      |                                        ~~~~~~~~~~~~~~~~~~~~~~
+  158 |     }
+  159 |     ctx.res.set_status(.created)
+server.v:168:34: error: expected type is not an enum (`int`)
+  166 |     user_id, _, auth_error := app.authenticate(ctx.req)
+  167 |     if auth_error != '' {
+  168 |         return app.json_error(mut ctx, .unauthorized, auth_error)
+      |                                        ~~~~~~~~~~~~~
+  169 |     }
+  170 |     post_id := parse_positive_id(id)
+server.v:168:34: error: `.unauthorized` (no value) used as value in argument 2 to `App.json_error`
+  166 |     user_id, _, auth_error := app.authenticate(ctx.req)
+  167 |     if auth_error != '' {
+  168 |         return app.json_error(mut ctx, .unauthorized, auth_error)
+      |                                        ~~~~~~~~~~~~~
+  169 |     }
+  170 |     post_id := parse_positive_id(id)
+server.v:172:34: error: expected type is not an enum (`int`)
+  170 |     post_id := parse_positive_id(id)
+  171 |     if post_id == 0 {
+  172 |         return app.json_error(mut ctx, .bad_request, 'invalid post id')
+      |                                        ~~~~~~~~~~~~
+  173 |     }
+  174 |     mut db := app.checkout_db()
+server.v:172:34: error: `.bad_request` (no value) used as value in argument 2 to `App.json_error`
+  170 |     post_id := parse_positive_id(id)
+  171 |     if post_id == 0 {
+  172 |         return app.json_error(mut ctx, .bad_request, 'invalid post id')
+      |                                        ~~~~~~~~~~~~
+  173 |     }
+  174 |     mut db := app.checkout_db()
+server.v:179:34: error: expected type is not an enum (`int`)
+  177 |     }
+  178 |     exists := db.q_int('SELECT EXISTS(SELECT 1 FROM posts WHERE id = ${post_id})') or {
+  179 |         return app.json_error(mut ctx, .internal_server_error, 'internal server error')
+      |                                        ~~~~~~~~~~~~~~~~~~~~~~
+  180 |     }
+  181 |     if exists == 0 {
+server.v:179:34: error: `.internal_server_error` (no value) used as value in argument 2 to `App.json_error`
+  177 |     }
+  178 |     exists := db.q_int('SELECT EXISTS(SELECT 1 FROM posts WHERE id = ${post_id})') or {
+  179 |         return app.json_error(mut ctx, .internal_server_error, 'internal server error')
+      |                                        ~~~~~~~~~~~~~~~~~~~~~~
+  180 |     }
+  181 |     if exists == 0 {
+server.v:182:34: error: expected type is not an enum (`int`)
+  180 |     }
+  181 |     if exists == 0 {
+  182 |         return app.json_error(mut ctx, .not_found, 'post not found')
+      |                                        ~~~~~~~~~~
+  183 |     }
+  184 |     db.exec_param2('INSERT INTO likes (user_id, post_id) VALUES (?, ?) ON CONFLICT (user_id, post_id) DO NOTHING', user_id.str(), post_id.str()) or {
+server.v:182:34: error: `.not_found` (no value) used as value in argument 2 to `App.json_error`
+  180 |     }
+  181 |     if exists == 0 {
+  182 |         return app.json_error(mut ctx, .not_found, 'post not found')
+      |                                        ~~~~~~~~~~
+  183 |     }
+  184 |     db.exec_param2('INSERT INTO likes (user_id, post_id) VALUES (?, ?) ON CONFLICT (user_id, post_id) DO NOTHING', user_id.str(), post_id.str()) or {
+server.v:185:34: error: expected type is not an enum (`int`)
+  183 |     }
+  184 |     db.exec_param2('INSERT INTO likes (user_id, post_id) VALUES (?, ?) ON CONFLICT (user_id, post_id) DO NOTHING', user_id.str(), post_id.str()) or {
+  185 |         return app.json_error(mut ctx, .internal_server_error, 'internal server error')
+      |                                        ~~~~~~~~~~~~~~~~~~~~~~
+  186 |     }
+  187 |     if db.get_affected_rows_count() > 0 {
+server.v:185:34: error: `.internal_server_error` (no value) used as value in argument 2 to `App.json_error`
+  183 |     }
+  184 |     db.exec_param2('INSERT INTO likes (user_id, post_id) VALUES (?, ?) ON CONFLICT (user_id, post_id) DO NOTHING', user_id.str(), post_id.str()) or {
+  185 |         return app.json_error(mut ctx, .internal_server_error, 'internal server error')
+      |                                        ~~~~~~~~~~~~~~~~~~~~~~
+  186 |     }
+  187 |     if db.get_affected_rows_count() > 0 {
+
+$ docker exec twelve-current-build-pr70 bash /evidence/runtime-scripts/vlang-gc-config-arm64.sh
+bce2a754106cd8ac0806ea6e9e25d62a1b8ebf3c58bd6220043b82212b74674a  /opt/vlang/v
+a3622567894ad5ad78a6404012c0c3e7dc95794613d9369ffe49e051b7ad69e4  /opt/vlang/thirdparty/libgc/gc.o
+
+$ docker exec twelve-current-build-pr70 runuser -u bench -- env PATH=/usr/local/go/bin:/opt/twelve-rust/cargo/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 V_MACOS_V3_NO_FALLBACK=1 bash /suite/sources/pr70/build.sh
+
+$ docker exec twelve-current-build-pr70 bash -c rm -f /usr/local/bin/nproc; rm -rf /home/bench/.cache/v/v1-fallback /tmp/*

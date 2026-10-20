@@ -1,0 +1,479 @@
+{
+  "files": {
+    ".gitignore": {
+      "sha256": "bf04ee41db6feb04a27ed5dc0bebc326ac22811575bdf3bb869fe9f02e388b69",
+      "bytes": 204,
+      "physical_lines": 17,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "README.md": {
+      "sha256": "6fc4b3ebf12271acef16e886f17c3cf1745b10545861b8fdd712e227ac7d3ce6",
+      "bytes": 5487,
+      "physical_lines": 87,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "build.sh": {
+      "sha256": "9a4ba9bf86cd4de853a7696c8ed29c08b7c0de158d28c58aead7df4483531415",
+      "bytes": 210,
+      "physical_lines": 7,
+      "classification": "own_support"
+    },
+    "install.sh": {
+      "sha256": "52cd5021da0709616f7fd3c653cf5dc149842e44b10d905700f652c6cf516c74",
+      "bytes": 819,
+      "physical_lines": 22,
+      "classification": "own_support"
+    },
+    "pom.xml": {
+      "sha256": "010407797c3b911240bd17719fc8737d9c569bc1ba7f1771fa12546fc274f536",
+      "bytes": 1050,
+      "physical_lines": 37,
+      "classification": "own_support"
+    },
+    "src/main/java/com/brocchirodrigo/feed/FeedApplication.java": {
+      "sha256": "7a00ea4816c97f9dd551c87921e5a691839b3f1ea2eabd9490dc250f77cea25a",
+      "bytes": 632,
+      "physical_lines": 16,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/adapter/controller/FallbackController.java": {
+      "sha256": "33383c6a4a803b41a670675dbb252fabf91c26153a9440a483cf1df68da520ea",
+      "bytes": 500,
+      "physical_lines": 14,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/adapter/controller/FeedRoutes.java": {
+      "sha256": "3e181031e1a7b06c889ffbffb72306858a8286db0a513e0d0ddf185eedb9926f",
+      "bytes": 944,
+      "physical_lines": 23,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/adapter/controller/HealthController.java": {
+      "sha256": "0595bf26a3dd6a534db29adbfbcf572b778f6702160d1967b846556652be53e2",
+      "bytes": 1042,
+      "physical_lines": 22,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/adapter/controller/PostController.java": {
+      "sha256": "4da7fd64c9a76c0d10671c8468f1d3c0b4bca68a88acddeda1b8e8600d9b9447",
+      "bytes": 5768,
+      "physical_lines": 118,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/adapter/controller/dto/CreatePostRequest.java": {
+      "sha256": "d2d3f5a1ed225d30c7725d794042c6bc375ac021e54930210eb9f71e3240d696",
+      "bytes": 603,
+      "physical_lines": 18,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/adapter/presenter/ErrorMessages.java": {
+      "sha256": "81c8c42effe29c940cc69f033d9b9d107c1ac747c5c52f78bd28000b0d95b2fb",
+      "bytes": 1171,
+      "physical_lines": 32,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/adapter/presenter/Responses.java": {
+      "sha256": "7d73c56efcb6d2a4bc839684b45914b3f70a5dc2a9f465437961ed4af0a178a2",
+      "bytes": 937,
+      "physical_lines": 29,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/adapter/presenter/dto/DegradedHealthResponse.java": {
+      "sha256": "e8ff40ae259ac40e3d7ec8b3504f95c7aeb34106d3ddf364791da055fa1bfb13",
+      "bytes": 290,
+      "physical_lines": 8,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/adapter/presenter/dto/ErrorResponse.java": {
+      "sha256": "d0e52e93a4866f5790ce8819ffcffceb1e3160929f48bcb7c9abce01a037487c",
+      "bytes": 102,
+      "physical_lines": 4,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/adapter/presenter/dto/FeedResponse.java": {
+      "sha256": "5f94130e21b5f48c2e0ee81e30e45fe910ee2b4835c707047090b5d93bc8d292",
+      "bytes": 333,
+      "physical_lines": 12,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/adapter/presenter/dto/HealthResponse.java": {
+      "sha256": "4690309d0c73eba7aaadcd5d9aea694e7fa7d7b86031e106977a71fc76caf8e4",
+      "bytes": 256,
+      "physical_lines": 8,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/adapter/presenter/dto/LikeResponse.java": {
+      "sha256": "8039a3b1b0b33a20c1e5c03c49cd707494c575db5438fcf409f052b9467367f9",
+      "bytes": 369,
+      "physical_lines": 12,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/adapter/presenter/dto/PostEnvelope.java": {
+      "sha256": "8bb134d99919bddff5feb17bf4ddbf9280ccbee616c417f51d010dbedae2e096",
+      "bytes": 271,
+      "physical_lines": 10,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/adapter/presenter/dto/PostResponse.java": {
+      "sha256": "9cd190f126b35ab2f9b4be8181c366b0c74905a30daefd205c8130a6f53e5fa2",
+      "bytes": 373,
+      "physical_lines": 10,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/application/gateway/TokenClaims.java": {
+      "sha256": "4cad11faf52ab947d8233108dd69123e47804c2b13ec892212f7b822868ad378",
+      "bytes": 117,
+      "physical_lines": 4,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/application/gateway/TokenVerifier.java": {
+      "sha256": "9e0d1b80ae10838b7061da9faa68d575f4ebf4411008568b81888dafbecd7fc6",
+      "bytes": 166,
+      "physical_lines": 8,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/application/usecase/AuthenticateUseCase.java": {
+      "sha256": "ebf73bd09ecfdab1331d9c735b38fbe1f6cd1cd4f18e99ede970e37ef74d37ae",
+      "bytes": 213,
+      "physical_lines": 8,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/application/usecase/CheckHealthUseCase.java": {
+      "sha256": "b0f812fb23cb40f5d67f1ea73a7170b8db17cdef0a38b96834beb68869e55b3d",
+      "bytes": 196,
+      "physical_lines": 8,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/application/usecase/CreatePostUseCase.java": {
+      "sha256": "55f4fd056784196a4da0766972ffbf0f50a5daba4b78ef1a405e1f608da02ab3",
+      "bytes": 304,
+      "physical_lines": 9,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/application/usecase/DefaultAuthenticateUseCase.java": {
+      "sha256": "be4d4035075b81058418c2d92d23ca89934db4ad1b3ef8cbc97f74d235d38172",
+      "bytes": 1419,
+      "physical_lines": 32,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/application/usecase/DefaultCheckHealthUseCase.java": {
+      "sha256": "6e7261697d30b44b45e7cd47a3bddc670bdecfce850c783afcb52e04acb0ca9f",
+      "bytes": 936,
+      "physical_lines": 25,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/application/usecase/DefaultCreatePostUseCase.java": {
+      "sha256": "743c488ec6e87d1755b0f504ef4149df5dee6d130009d70a16c644f18c054f7f",
+      "bytes": 1153,
+      "physical_lines": 24,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/application/usecase/DefaultGetFeedUseCase.java": {
+      "sha256": "06372b98f7f414e150572c85fabd56c928000129121d2f5186fc446288911a2e",
+      "bytes": 423,
+      "physical_lines": 16,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/application/usecase/DefaultGetPostUseCase.java": {
+      "sha256": "8e9f7938ec8f2e72974cd099dd651fb4fecd2c35b42ff43b3af0a728f5e02a06",
+      "bytes": 578,
+      "physical_lines": 14,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/application/usecase/DefaultLikePostUseCase.java": {
+      "sha256": "cf75f9e712476cd56d8672ad9e484c846a05bf6e62ce9e080df5289c9fead1dc",
+      "bytes": 643,
+      "physical_lines": 16,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/application/usecase/GetFeedUseCase.java": {
+      "sha256": "4beaff479939ca180d6016783e6d68b992e88f27f8934ea313e72bcc0564ceb4",
+      "bytes": 192,
+      "physical_lines": 10,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/application/usecase/GetPostUseCase.java": {
+      "sha256": "211534515a11ec05a8356e46b0b4c754766fe46b4d603646cbd3fcabb3c2f94f",
+      "bytes": 195,
+      "physical_lines": 8,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/application/usecase/LikePostUseCase.java": {
+      "sha256": "02b9ed1343960dcf4b2f932166f77354f1745898dbf3b4a50a4f29f73feafd72",
+      "bytes": 280,
+      "physical_lines": 9,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/application/usecase/input/CreatePostCommand.java": {
+      "sha256": "61831529c44aedd8455a87a782b254662354ff73f62d4cc67ee8710053fd9dca",
+      "bytes": 143,
+      "physical_lines": 4,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/application/usecase/input/LikePostCommand.java": {
+      "sha256": "78b60963ea1e7a7d7ff8efd40aad073cea66f3a47d4ce092249f75f6066a016a",
+      "bytes": 120,
+      "physical_lines": 4,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/application/usecase/output/AuthRejected.java": {
+      "sha256": "e6f4dae89b30026dc862e63e98bc225491a0f32509fe4242fcacc8377e5aad33",
+      "bytes": 511,
+      "physical_lines": 10,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/application/usecase/output/AuthResult.java": {
+      "sha256": "5e6d152195a6f3ec7a429d518fce9445d9dc49b06eca0061f0c9c093ab6b4397",
+      "bytes": 136,
+      "physical_lines": 4,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/application/usecase/output/Authenticated.java": {
+      "sha256": "a43063735fa6f85b4e04f14d0a7d399de0fdfa56394b69e262841ec468ecf8b2",
+      "bytes": 203,
+      "physical_lines": 6,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/application/usecase/output/CreatePostResult.java": {
+      "sha256": "1e37687b5de7806244effde903403c757a8bf4f77272a65ba1082abc3afbb48d",
+      "bytes": 140,
+      "physical_lines": 4,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/application/usecase/output/HealthStatus.java": {
+      "sha256": "f177c612fb6eafc1c3d5995838f7737f296997d385df1db2663271a57af9ef54",
+      "bytes": 129,
+      "physical_lines": 4,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/application/usecase/output/Healthy.java": {
+      "sha256": "227b807c2d5bdd20ff3352dd4dd2dba1a0e2ef3eb2569ef760e7d3ec6f70fa4e",
+      "bytes": 131,
+      "physical_lines": 4,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/application/usecase/output/PostCreated.java": {
+      "sha256": "41d7fe0bf5e6c5729574be650e244a589ae6fb2651da8cdb8e34a54669f8ebaf",
+      "bytes": 181,
+      "physical_lines": 6,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/application/usecase/output/PostFound.java": {
+      "sha256": "584b6d3b4ff9d9cc1e646ce0f59f0f70b14c42faa9bce1562d0145bd3e641abb",
+      "bytes": 173,
+      "physical_lines": 6,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/application/usecase/output/PostLookup.java": {
+      "sha256": "42d145258af451e907c51fa532eecb2cefdd2ad9c4acf73ebd8641fa34da9e3f",
+      "bytes": 132,
+      "physical_lines": 4,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/application/usecase/output/PostNotFound.java": {
+      "sha256": "211821f693d202fa64666f9694e4d2d47c1a9f30ac98c3cd9b5574e5755b79d6",
+      "bytes": 185,
+      "physical_lines": 6,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/application/usecase/output/PostRejected.java": {
+      "sha256": "f8ac9bddc6cb206934ae1467c655bcf60602003bb032dd6d3f16e4d6caa0cc3c",
+      "bytes": 219,
+      "physical_lines": 6,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/application/usecase/output/Unhealthy.java": {
+      "sha256": "ef6debc79bd33ac62d6cb8d79d10f4ea101e70a082a9772f8c398747487a3883",
+      "bytes": 127,
+      "physical_lines": 4,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/domain/exception/PersistenceException.java": {
+      "sha256": "34aef0083241dd3e3011418417b227ac26047988714c399f1c508d265033b7cc",
+      "bytes": 285,
+      "physical_lines": 13,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/domain/model/AuthenticatedUser.java": {
+      "sha256": "d186f797f4b6b7eeaf08c3dcf46923d771a1f472e020b27c761078448ba9c334",
+      "bytes": 109,
+      "physical_lines": 4,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/domain/model/PersistedPost.java": {
+      "sha256": "ec4075260f699c52ecd4abfa450b443c3cc592caa532665517f9b80063822a1f",
+      "bytes": 106,
+      "physical_lines": 4,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/domain/model/PositiveId.java": {
+      "sha256": "e1891dc71304d7a868a7f841246f669ac3337df5a6560acbd7f83c0732b9241f",
+      "bytes": 760,
+      "physical_lines": 30,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/domain/model/Post.java": {
+      "sha256": "640b044a9c829cbb5aa7dd82a59eb197d79f64d609606238b8bac135dff7d2e6",
+      "bytes": 141,
+      "physical_lines": 4,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/domain/model/PostBody.java": {
+      "sha256": "a9455432b3bca33daedd854a1ed18817c5d5d92580ef5ada99c4a8b20ac83096",
+      "bytes": 875,
+      "physical_lines": 28,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/domain/model/PostBodyRejected.java": {
+      "sha256": "53d5eaaec6a4136512174a14136f4acce001e4889d4c6f2da4b29b4a6e3372a5",
+      "bytes": 211,
+      "physical_lines": 6,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/domain/model/PostBodyValidation.java": {
+      "sha256": "a5777bfdfdbf0b0d30397c586d9dcb3e88e7ec50da076e7212a2fdfbe24c15a9",
+      "bytes": 129,
+      "physical_lines": 4,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/domain/model/enums/AuthFailure.java": {
+      "sha256": "67f3a576868c3d2353a685dc404b39c83f22b9f02cc299c09f169aecbbc2e66d",
+      "bytes": 146,
+      "physical_lines": 7,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/domain/model/enums/LikeOutcome.java": {
+      "sha256": "9f0d8b7ec9339557d6787362ad75c27830ca458f3caf357e6942101812787fb0",
+      "bytes": 130,
+      "physical_lines": 7,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/domain/model/enums/PostBodyViolation.java": {
+      "sha256": "d13f5573d998d7b1052f878bc66f1e760bf3cd260f880a1e7b70fe16bdf86756",
+      "bytes": 114,
+      "physical_lines": 6,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/domain/repository/HealthRepository.java": {
+      "sha256": "48d5e8080e84d1558f60728f2511e371d44f60ae05b436164eb867692209463a",
+      "bytes": 108,
+      "physical_lines": 6,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/domain/repository/PostRepository.java": {
+      "sha256": "36f5b0f8fe65de9487a722cac55e7aef12cb5d719e24b2f5151ef97e19bd8ff3",
+      "bytes": 456,
+      "physical_lines": 20,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/infrastructure/config/FeedProperties.java": {
+      "sha256": "94ebe9c2b901e78faca411f4ef0c20c493aec1706bd3ae61e65eddc9e47db42b",
+      "bytes": 236,
+      "physical_lines": 7,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/infrastructure/config/PersistenceConfig.java": {
+      "sha256": "9dbab03078f1c85d663842192bf23c158f8c922964d97270ce838c0a38cfb929",
+      "bytes": 1047,
+      "physical_lines": 28,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/infrastructure/config/SecurityConfig.java": {
+      "sha256": "b4f7b10aa4f77569a420bbf0da61abd574b625cc4df5ca4031f007299c3d7db5",
+      "bytes": 595,
+      "physical_lines": 16,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/infrastructure/config/UseCaseConfig.java": {
+      "sha256": "2d72fd476c0714f7a636e27acd11eed9559b959e3872b27f552df911a7837d12",
+      "bytes": 2213,
+      "physical_lines": 56,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/infrastructure/config/WebConfig.java": {
+      "sha256": "02fedba01e03a8321e0a3f21d8e5b644fdea8dbcdba5fcc5ad845a42c6eff276",
+      "bytes": 2120,
+      "physical_lines": 53,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/infrastructure/exception/GlobalErrorHandler.java": {
+      "sha256": "5608ddd193196b14d55653f8e6b23f106a78bbccd33fbed53f6dad913dec577c",
+      "bytes": 1481,
+      "physical_lines": 39,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/infrastructure/persistence/mapper/PostRowMapper.java": {
+      "sha256": "4ade2abac9c9d5dc22ac1f1f69eb25f5d9c1704ed43ab979d1dcacc09499de13",
+      "bytes": 440,
+      "physical_lines": 14,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/infrastructure/persistence/repository/SqliteHealthRepository.java": {
+      "sha256": "886aeb684f79de7ed8f9818c6ebbf33dde772bfaf173c013154f158e1f21988b",
+      "bytes": 1163,
+      "physical_lines": 37,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/infrastructure/persistence/repository/SqlitePostRepository.java": {
+      "sha256": "6508ae3452324610be1858734a14c2c629fc271cb654a56a85f46bd7adf98636",
+      "bytes": 4794,
+      "physical_lines": 131,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/infrastructure/persistence/sqlite/Sqlite3.java": {
+      "sha256": "32a7826139ecac1a2542c08b3cd034a451f6fc13ba0e1fe1c893da61abd6225d",
+      "bytes": 7476,
+      "physical_lines": 197,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/infrastructure/persistence/sqlite/SqliteConnection.java": {
+      "sha256": "4867710dfe0f0af616e9e86025b3c079f0016f3b7f14d6fcd00e20da8c414d4b",
+      "bytes": 1759,
+      "physical_lines": 62,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/infrastructure/persistence/sqlite/SqliteDatabase.java": {
+      "sha256": "6f6c1960e1dece6b000969ad6b426d698426bf060d95d006430ff177dc026cda",
+      "bytes": 721,
+      "physical_lines": 26,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/infrastructure/persistence/sqlite/SqliteException.java": {
+      "sha256": "d102c88475dd8a9a84ce01be3de9d1b770e9255606efbeccd668999bfba84e01",
+      "bytes": 367,
+      "physical_lines": 15,
+      "classification": "application"
+    },
+    "src/main/java/com/brocchirodrigo/feed/infrastructure/persistence/sqlite/SqliteStatement.java": {
+      "sha256": "1844af436682159de6c0d149c9bb30f4ac364e93092a3645695b61774c3c49a7",
+      "bytes": 2015,
+      "physical_lines": 61,
+      "classification": "own_support"
+    },
+    "src/main/java/com/brocchirodrigo/feed/infrastructure/security/Hs256TokenVerifier.java": {
+      "sha256": "8cab95f6c0187cc00b9dabe13e6535ab24696651ba834cfcd0a811789c7f80aa",
+      "bytes": 5375,
+      "physical_lines": 142,
+      "classification": "application"
+    },
+    "src/main/resources/META-INF/additional-spring-configuration-metadata.json": {
+      "sha256": "38f5c2a1502c04fe75f6aca488d667568efdd63f7dc74ca940366b579c2576c0",
+      "bytes": 344,
+      "physical_lines": 14,
+      "classification": "own_support"
+    },
+    "src/main/resources/application.yml": {
+      "sha256": "d227e908b7dd16f29f93aea4e7d88def68ba4730d4ab295b20c832913b0eac53",
+      "bytes": 274,
+      "physical_lines": 16,
+      "classification": "own_support"
+    },
+    "start.sh": {
+      "sha256": "07c5e43b3007e4ebf638f0ea07cf833873816b81e2d7c65e20aac79a619b5e75",
+      "bytes": 277,
+      "physical_lines": 10,
+      "classification": "own_support"
+    }
+  },
+  "skipped_members": []
+}

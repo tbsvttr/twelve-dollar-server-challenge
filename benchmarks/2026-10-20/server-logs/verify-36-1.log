@@ -1,0 +1,463 @@
+11:25:38.572 [main] INFO io.ktor.server.Application -- Autoreload is disabled because the development mode is off.
+11:25:38.740 [main] DEBUG com.zaxxer.hikari.HikariConfig -- HikariPool-1 - configuration:
+11:25:38.750 [main] DEBUG com.zaxxer.hikari.HikariConfig -- allowPoolSuspension.............false
+11:25:38.751 [main] DEBUG com.zaxxer.hikari.HikariConfig -- autoCommit......................true
+11:25:38.751 [main] DEBUG com.zaxxer.hikari.HikariConfig -- catalog.........................none
+11:25:38.751 [main] DEBUG com.zaxxer.hikari.HikariConfig -- connectionInitSql..............."PRAGMA journal_mode = WAL;
+PRAGMA synchronous = NORMAL;
+PRAGMA busy_timeout = 5000;
+PRAGMA mmap_size = 1073741824;
+PRAGMA cache_size = -65536;
+PRAGMA temp_store = MEMORY;"
+11:25:38.751 [main] DEBUG com.zaxxer.hikari.HikariConfig -- connectionTestQuery.............none
+11:25:38.751 [main] DEBUG com.zaxxer.hikari.HikariConfig -- connectionTimeout...............30000
+11:25:38.751 [main] DEBUG com.zaxxer.hikari.HikariConfig -- credentials.....................com.zaxxer.hikari.util.Credentials@142eef62
+11:25:38.751 [main] DEBUG com.zaxxer.hikari.HikariConfig -- credentialsProvider.............none
+11:25:38.751 [main] DEBUG com.zaxxer.hikari.HikariConfig -- credentialsProviderClassName....none
+11:25:38.751 [main] DEBUG com.zaxxer.hikari.HikariConfig -- dataSource......................none
+11:25:38.751 [main] DEBUG com.zaxxer.hikari.HikariConfig -- dataSourceClassName.............none
+11:25:38.751 [main] DEBUG com.zaxxer.hikari.HikariConfig -- dataSourceJNDI..................none
+11:25:38.752 [main] DEBUG com.zaxxer.hikari.HikariConfig -- dataSourceProperties............{password=<masked>}
+11:25:38.752 [main] DEBUG com.zaxxer.hikari.HikariConfig -- driverClassName.................none
+11:25:38.752 [main] DEBUG com.zaxxer.hikari.HikariConfig -- exceptionOverride...............none
+11:25:38.753 [main] DEBUG com.zaxxer.hikari.HikariConfig -- exceptionOverrideClassName......none
+11:25:38.754 [main] DEBUG com.zaxxer.hikari.HikariConfig -- healthCheckProperties...........{}
+11:25:38.754 [main] DEBUG com.zaxxer.hikari.HikariConfig -- healthCheckRegistry.............none
+11:25:38.754 [main] DEBUG com.zaxxer.hikari.HikariConfig -- idleTimeout.....................600000
+11:25:38.754 [main] DEBUG com.zaxxer.hikari.HikariConfig -- initializationFailTimeout.......1
+11:25:38.755 [main] DEBUG com.zaxxer.hikari.HikariConfig -- isolateInternalQueries..........false
+11:25:38.755 [main] DEBUG com.zaxxer.hikari.HikariConfig -- jdbcUrl.........................jdbc:sqlite:/tmp/current-pr36-3tywnn75/feed.db
+11:25:38.755 [main] DEBUG com.zaxxer.hikari.HikariConfig -- keepaliveTime...................120000
+11:25:38.755 [main] DEBUG com.zaxxer.hikari.HikariConfig -- leakDetectionThreshold..........0
+11:25:38.755 [main] DEBUG com.zaxxer.hikari.HikariConfig -- maxLifetime.....................1800000
+11:25:38.755 [main] DEBUG com.zaxxer.hikari.HikariConfig -- maximumPoolSize.................10
+11:25:38.755 [main] DEBUG com.zaxxer.hikari.HikariConfig -- metricRegistry..................none
+11:25:38.757 [main] DEBUG com.zaxxer.hikari.HikariConfig -- metricsTrackerFactory...........none
+11:25:38.757 [main] DEBUG com.zaxxer.hikari.HikariConfig -- minimumIdle.....................10
+11:25:38.757 [main] DEBUG com.zaxxer.hikari.HikariConfig -- password........................<masked>
+11:25:38.757 [main] DEBUG com.zaxxer.hikari.HikariConfig -- poolName........................"HikariPool-1"
+11:25:38.758 [main] DEBUG com.zaxxer.hikari.HikariConfig -- readOnly........................false
+11:25:38.758 [main] DEBUG com.zaxxer.hikari.HikariConfig -- registerMbeans..................false
+11:25:38.758 [main] DEBUG com.zaxxer.hikari.HikariConfig -- scheduledExecutor...............none
+11:25:38.758 [main] DEBUG com.zaxxer.hikari.HikariConfig -- schema..........................none
+11:25:38.758 [main] DEBUG com.zaxxer.hikari.HikariConfig -- threadFactory...................internal
+11:25:38.758 [main] DEBUG com.zaxxer.hikari.HikariConfig -- transactionIsolation............default
+11:25:38.758 [main] DEBUG com.zaxxer.hikari.HikariConfig -- username........................none
+11:25:38.758 [main] DEBUG com.zaxxer.hikari.HikariConfig -- validationTimeout...............5000
+11:25:38.759 [main] DEBUG com.zaxxer.hikari.HikariConfig -- HikariPool-1 - configuration:
+11:25:38.759 [main] DEBUG com.zaxxer.hikari.HikariConfig -- allowPoolSuspension.............false
+11:25:38.759 [main] DEBUG com.zaxxer.hikari.HikariConfig -- autoCommit......................true
+11:25:38.759 [main] DEBUG com.zaxxer.hikari.HikariConfig -- catalog.........................none
+11:25:38.759 [main] DEBUG com.zaxxer.hikari.HikariConfig -- connectionInitSql..............."PRAGMA journal_mode = WAL;
+PRAGMA synchronous = NORMAL;
+PRAGMA busy_timeout = 5000;
+PRAGMA mmap_size = 1073741824;
+PRAGMA cache_size = -65536;
+PRAGMA temp_store = MEMORY;"
+11:25:38.759 [main] DEBUG com.zaxxer.hikari.HikariConfig -- connectionTestQuery.............none
+11:25:38.759 [main] DEBUG com.zaxxer.hikari.HikariConfig -- connectionTimeout...............30000
+11:25:38.759 [main] DEBUG com.zaxxer.hikari.HikariConfig -- credentials.....................com.zaxxer.hikari.util.Credentials@142eef62
+11:25:38.759 [main] DEBUG com.zaxxer.hikari.HikariConfig -- credentialsProvider.............none
+11:25:38.759 [main] DEBUG com.zaxxer.hikari.HikariConfig -- credentialsProviderClassName....none
+11:25:38.759 [main] DEBUG com.zaxxer.hikari.HikariConfig -- dataSource......................none
+11:25:38.760 [main] DEBUG com.zaxxer.hikari.HikariConfig -- dataSourceClassName.............none
+11:25:38.760 [main] DEBUG com.zaxxer.hikari.HikariConfig -- dataSourceJNDI..................none
+11:25:38.760 [main] DEBUG com.zaxxer.hikari.HikariConfig -- dataSourceProperties............{password=<masked>}
+11:25:38.760 [main] DEBUG com.zaxxer.hikari.HikariConfig -- driverClassName.................none
+11:25:38.760 [main] DEBUG com.zaxxer.hikari.HikariConfig -- exceptionOverride...............none
+11:25:38.760 [main] DEBUG com.zaxxer.hikari.HikariConfig -- exceptionOverrideClassName......none
+11:25:38.762 [main] DEBUG com.zaxxer.hikari.HikariConfig -- healthCheckProperties...........{}
+11:25:38.762 [main] DEBUG com.zaxxer.hikari.HikariConfig -- healthCheckRegistry.............none
+11:25:38.762 [main] DEBUG com.zaxxer.hikari.HikariConfig -- idleTimeout.....................600000
+11:25:38.762 [main] DEBUG com.zaxxer.hikari.HikariConfig -- initializationFailTimeout.......1
+11:25:38.763 [main] DEBUG com.zaxxer.hikari.HikariConfig -- isolateInternalQueries..........false
+11:25:38.763 [main] DEBUG com.zaxxer.hikari.HikariConfig -- jdbcUrl.........................jdbc:sqlite:/tmp/current-pr36-3tywnn75/feed.db
+11:25:38.763 [main] DEBUG com.zaxxer.hikari.HikariConfig -- keepaliveTime...................120000
+11:25:38.763 [main] DEBUG com.zaxxer.hikari.HikariConfig -- leakDetectionThreshold..........0
+11:25:38.763 [main] DEBUG com.zaxxer.hikari.HikariConfig -- maxLifetime.....................1800000
+11:25:38.764 [main] DEBUG com.zaxxer.hikari.HikariConfig -- maximumPoolSize.................10
+11:25:38.764 [main] DEBUG com.zaxxer.hikari.HikariConfig -- metricRegistry..................none
+11:25:38.764 [main] DEBUG com.zaxxer.hikari.HikariConfig -- metricsTrackerFactory...........none
+11:25:38.764 [main] DEBUG com.zaxxer.hikari.HikariConfig -- minimumIdle.....................10
+11:25:38.765 [main] DEBUG com.zaxxer.hikari.HikariConfig -- password........................<masked>
+11:25:38.765 [main] DEBUG com.zaxxer.hikari.HikariConfig -- poolName........................"HikariPool-1"
+11:25:38.765 [main] DEBUG com.zaxxer.hikari.HikariConfig -- readOnly........................false
+11:25:38.765 [main] DEBUG com.zaxxer.hikari.HikariConfig -- registerMbeans..................false
+11:25:38.765 [main] DEBUG com.zaxxer.hikari.HikariConfig -- scheduledExecutor...............none
+11:25:38.765 [main] DEBUG com.zaxxer.hikari.HikariConfig -- schema..........................none
+11:25:38.765 [main] DEBUG com.zaxxer.hikari.HikariConfig -- threadFactory...................internal
+11:25:38.765 [main] DEBUG com.zaxxer.hikari.HikariConfig -- transactionIsolation............default
+11:25:38.766 [main] DEBUG com.zaxxer.hikari.HikariConfig -- username........................none
+11:25:38.766 [main] DEBUG com.zaxxer.hikari.HikariConfig -- validationTimeout...............5000
+11:25:38.768 [main] INFO com.zaxxer.hikari.HikariDataSource -- HikariPool-1 - Starting...
+11:25:38.778 [main] DEBUG com.zaxxer.hikari.util.DriverDataSource -- Loaded driver with class name org.sqlite.JDBC for jdbcUrl=jdbc:sqlite:/tmp/current-pr36-3tywnn75/feed.db
+11:25:38.807 [main] DEBUG com.zaxxer.hikari.pool.PoolBase -- HikariPool-1 - Attempting to create/setup new connection (d514969a-96e1-45e6-8138-539fcf9bb01b)
+11:25:38.914 [main] DEBUG com.zaxxer.hikari.pool.PoolBase -- HikariPool-1 - Established new connection (d514969a-96e1-45e6-8138-539fcf9bb01b)
+11:25:38.915 [main] INFO com.zaxxer.hikari.pool.HikariPool -- HikariPool-1 - Added connection org.sqlite.jdbc4.JDBC4Connection@106faf11
+11:25:38.916 [main] INFO com.zaxxer.hikari.HikariDataSource -- HikariPool-1 - Start completed.
+11:25:39.017 [HikariPool-1:housekeeper] DEBUG com.zaxxer.hikari.pool.HikariPool -- HikariPool-1 - Pool stats (total=1/10, idle=1/10, active=0, waiting=0)
+11:25:39.019 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.PoolBase -- HikariPool-1 - Attempting to create/setup new connection (a0104f1d-4727-4892-9b5f-53bc5aea9b48)
+11:25:39.019 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.PoolBase -- HikariPool-1 - Established new connection (a0104f1d-4727-4892-9b5f-53bc5aea9b48)
+11:25:39.019 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.HikariPool -- HikariPool-1 - Added connection org.sqlite.jdbc4.JDBC4Connection@56be5ac2
+11:25:39.047 [main] INFO io.ktor.server.Application -- Application started in 0.683 seconds.
+11:25:39.053 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.HikariPool -- HikariPool-1 - After adding stats (total=2/10, idle=2/10, active=0, waiting=0)
+11:25:39.056 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.PoolBase -- HikariPool-1 - Attempting to create/setup new connection (e6e0c70e-c2d2-4a21-b323-569cec044015)
+11:25:39.057 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.PoolBase -- HikariPool-1 - Established new connection (e6e0c70e-c2d2-4a21-b323-569cec044015)
+11:25:39.059 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.HikariPool -- HikariPool-1 - Added connection org.sqlite.jdbc4.JDBC4Connection@5879ae65
+11:25:39.075 [DefaultDispatcher-worker-2] INFO io.ktor.server.Application -- Responding at http://127.0.0.1:24000
+11:25:39.089 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.HikariPool -- HikariPool-1 - After adding stats (total=3/10, idle=3/10, active=0, waiting=0)
+11:25:39.089 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.PoolBase -- HikariPool-1 - Attempting to create/setup new connection (7e106463-476d-49a5-b954-7bcc56e62666)
+11:25:39.090 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.PoolBase -- HikariPool-1 - Established new connection (7e106463-476d-49a5-b954-7bcc56e62666)
+11:25:39.090 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.HikariPool -- HikariPool-1 - Added connection org.sqlite.jdbc4.JDBC4Connection@5c4631b2
+11:25:39.120 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.HikariPool -- HikariPool-1 - After adding stats (total=4/10, idle=4/10, active=0, waiting=0)
+11:25:39.120 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.PoolBase -- HikariPool-1 - Attempting to create/setup new connection (134ede1d-8297-4c93-8071-d24268de1035)
+11:25:39.122 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.PoolBase -- HikariPool-1 - Established new connection (134ede1d-8297-4c93-8071-d24268de1035)
+11:25:39.122 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.HikariPool -- HikariPool-1 - Added connection org.sqlite.jdbc4.JDBC4Connection@1944a45e
+11:25:39.153 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.HikariPool -- HikariPool-1 - After adding stats (total=5/10, idle=5/10, active=0, waiting=0)
+11:25:39.153 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.PoolBase -- HikariPool-1 - Attempting to create/setup new connection (3025b5f6-637e-4021-a897-954dd10fa4cd)
+11:25:39.154 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.PoolBase -- HikariPool-1 - Established new connection (3025b5f6-637e-4021-a897-954dd10fa4cd)
+11:25:39.154 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.HikariPool -- HikariPool-1 - Added connection org.sqlite.jdbc4.JDBC4Connection@3d8895fe
+11:25:39.184 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.HikariPool -- HikariPool-1 - After adding stats (total=6/10, idle=5/10, active=1, waiting=0)
+11:25:39.184 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.PoolBase -- HikariPool-1 - Attempting to create/setup new connection (add34d10-8c57-4de6-abb3-c2318213d0ab)
+11:25:39.185 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.PoolBase -- HikariPool-1 - Established new connection (add34d10-8c57-4de6-abb3-c2318213d0ab)
+11:25:39.185 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.HikariPool -- HikariPool-1 - Added connection org.sqlite.jdbc4.JDBC4Connection@28971eac
+11:25:39.215 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.HikariPool -- HikariPool-1 - After adding stats (total=7/10, idle=7/10, active=0, waiting=0)
+11:25:39.216 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.PoolBase -- HikariPool-1 - Attempting to create/setup new connection (4c643f1c-0093-49f3-a7b0-d66eaf11b2dd)
+11:25:39.218 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.PoolBase -- HikariPool-1 - Established new connection (4c643f1c-0093-49f3-a7b0-d66eaf11b2dd)
+11:25:39.218 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.HikariPool -- HikariPool-1 - Added connection org.sqlite.jdbc4.JDBC4Connection@45b171ad
+11:25:39.249 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.HikariPool -- HikariPool-1 - After adding stats (total=8/10, idle=8/10, active=0, waiting=0)
+11:25:39.251 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.PoolBase -- HikariPool-1 - Attempting to create/setup new connection (c1870d15-9282-4259-994d-54c8a0f2aa92)
+11:25:39.252 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.PoolBase -- HikariPool-1 - Established new connection (c1870d15-9282-4259-994d-54c8a0f2aa92)
+11:25:39.252 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.HikariPool -- HikariPool-1 - Added connection org.sqlite.jdbc4.JDBC4Connection@796b5b11
+11:25:39.282 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.HikariPool -- HikariPool-1 - After adding stats (total=9/10, idle=9/10, active=0, waiting=0)
+11:25:39.283 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.PoolBase -- HikariPool-1 - Attempting to create/setup new connection (f2a3f542-d152-4628-895e-94fb00991b6d)
+11:25:39.283 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.PoolBase -- HikariPool-1 - Established new connection (f2a3f542-d152-4628-895e-94fb00991b6d)
+11:25:39.283 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.HikariPool -- HikariPool-1 - Added connection org.sqlite.jdbc4.JDBC4Connection@3516a7
+11:25:39.314 [HikariPool-1:connection-adder] DEBUG com.zaxxer.hikari.pool.HikariPool -- HikariPool-1 - After adding stats (total=10/10, idle=10/10, active=0, waiting=0)
+11:25:39.466 [DefaultDispatcher-worker-5] DEBUG io.ktor.auth.jwt -- JWT authentication failed: No credentials provided
+11:25:39.482 [DefaultDispatcher-worker-1] DEBUG io.ktor.auth.jwt -- JWT authentication failed: Invalid credentials
+11:25:39.492 [DefaultDispatcher-worker-2] DEBUG io.ktor.auth.jwt -- JWT verification failed: The token was expected to have 3 parts, but got 0.
+com.auth0.jwt.exceptions.JWTDecodeException: The token was expected to have 3 parts, but got 0.
+	at com.auth0.jwt.TokenUtils.wrongNumberOfParts(TokenUtils.java:45)
+	at com.auth0.jwt.TokenUtils.splitToken(TokenUtils.java:23)
+	at com.auth0.jwt.JWTDecoder.<init>(JWTDecoder.java:37)
+	at com.auth0.jwt.JWTVerifier.verify(JWTVerifier.java:451)
+	at io.ktor.server.auth.jwt.JWTUtilsKt.verifyAndValidate(JWTUtils.kt:133)
+	at io.ktor.server.auth.jwt.JWTAuthenticationProvider.onAuthenticate(JWTAuth.kt:209)
+	at io.ktor.server.auth.AuthenticationInterceptorsKt$AuthenticationInterceptors$2$1.invokeSuspend(AuthenticationInterceptors.kt:112)
+	at io.ktor.server.auth.AuthenticationInterceptorsKt$AuthenticationInterceptors$2$1.invoke(AuthenticationInterceptors.kt)
+	at io.ktor.server.auth.AuthenticationInterceptorsKt$AuthenticationInterceptors$2$1.invoke(AuthenticationInterceptors.kt)
+	at io.ktor.server.auth.AuthenticationHook$install$1.invokeSuspend(AuthenticationInterceptors.kt:27)
+	at io.ktor.server.auth.AuthenticationHook$install$1.invoke(AuthenticationInterceptors.kt)
+	at io.ktor.server.auth.AuthenticationHook$install$1.invoke(AuthenticationInterceptors.kt)
+	at io.ktor.server.application.ApplicationPluginKt$addAllInterceptors$1$1$1.invokeSuspend(ApplicationPlugin.kt:218)
+	at io.ktor.server.application.ApplicationPluginKt$addAllInterceptors$1$1$1.invoke(ApplicationPlugin.kt)
+	at io.ktor.server.application.ApplicationPluginKt$addAllInterceptors$1$1$1.invoke(ApplicationPlugin.kt)
+	at io.ktor.util.pipeline.PipelineJvmKt.pipelineStartCoroutineUninterceptedOrReturn(PipelineJvm.kt:15)
+	at io.ktor.util.pipeline.SuspendFunctionGun.loop(SuspendFunctionGun.kt:168)
+	at io.ktor.util.pipeline.SuspendFunctionGun.proceed(SuspendFunctionGun.kt:120)
+	at io.ktor.util.pipeline.SuspendFunctionGun.execute$ktor_utils(SuspendFunctionGun.kt:139)
+	at io.ktor.util.pipeline.Pipeline.execute(Pipeline.kt:93)
+	at io.ktor.server.routing.RoutingRoot$executeResult$$inlined$execute$1.invokeSuspend(Pipeline.kt:509)
+	at io.ktor.server.routing.RoutingRoot$executeResult$$inlined$execute$1.invoke(Pipeline.kt)
+	at io.ktor.server.routing.RoutingRoot$executeResult$$inlined$execute$1.invoke(Pipeline.kt)
+	at io.ktor.util.debug.ContextUtilsKt.initContextInDebugMode(ContextUtils.kt:19)
+	at io.ktor.server.routing.RoutingRoot.executeResult(RoutingRoot.kt:240)
+	at io.ktor.server.routing.RoutingRoot.interceptor(RoutingRoot.kt:85)
+	at io.ktor.server.routing.RoutingRoot$Plugin$install$1.invokeSuspend(RoutingRoot.kt:183)
+	at io.ktor.server.routing.RoutingRoot$Plugin$install$1.invoke(RoutingRoot.kt)
+	at io.ktor.server.routing.RoutingRoot$Plugin$install$1.invoke(RoutingRoot.kt)
+	at io.ktor.util.pipeline.PipelineJvmKt.pipelineStartCoroutineUninterceptedOrReturn(PipelineJvm.kt:15)
+	at io.ktor.util.pipeline.SuspendFunctionGun.loop(SuspendFunctionGun.kt:168)
+	at io.ktor.util.pipeline.SuspendFunctionGun.proceed(SuspendFunctionGun.kt:120)
+	at io.ktor.server.application.hooks.CallFailed$install$1$1.invokeSuspend(CommonHooks.kt:49)
+	at io.ktor.server.application.hooks.CallFailed$install$1$1.invoke(CommonHooks.kt)
+	at io.ktor.server.application.hooks.CallFailed$install$1$1.invoke(CommonHooks.kt)
+	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatched(Undispatched.kt:66)
+	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:43)
+	at kotlinx.coroutines.CoroutineScopeKt.coroutineScope(CoroutineScope.kt:848)
+	at io.ktor.server.application.hooks.CallFailed$install$1.invokeSuspend(CommonHooks.kt:48)
+	at io.ktor.server.application.hooks.CallFailed$install$1.invoke(CommonHooks.kt)
+	at io.ktor.server.application.hooks.CallFailed$install$1.invoke(CommonHooks.kt)
+	at io.ktor.util.pipeline.PipelineJvmKt.pipelineStartCoroutineUninterceptedOrReturn(PipelineJvm.kt:15)
+	at io.ktor.util.pipeline.SuspendFunctionGun.loop(SuspendFunctionGun.kt:168)
+	at io.ktor.util.pipeline.SuspendFunctionGun.proceed(SuspendFunctionGun.kt:120)
+	at io.ktor.util.pipeline.SuspendFunctionGun.execute$ktor_utils(SuspendFunctionGun.kt:139)
+	at io.ktor.util.pipeline.Pipeline.execute(Pipeline.kt:93)
+	at io.ktor.server.engine.DefaultEnginePipelineKt$defaultEnginePipeline$1$invokeSuspend$$inlined$execute$1.invokeSuspend(Pipeline.kt:509)
+	at io.ktor.server.engine.DefaultEnginePipelineKt$defaultEnginePipeline$1$invokeSuspend$$inlined$execute$1.invoke(Pipeline.kt)
+	at io.ktor.server.engine.DefaultEnginePipelineKt$defaultEnginePipeline$1$invokeSuspend$$inlined$execute$1.invoke(Pipeline.kt)
+	at io.ktor.util.debug.ContextUtilsKt.initContextInDebugMode(ContextUtils.kt:19)
+	at io.ktor.server.engine.DefaultEnginePipelineKt$defaultEnginePipeline$1.invokeSuspend(DefaultEnginePipeline.kt:153)
+	at io.ktor.server.engine.DefaultEnginePipelineKt$defaultEnginePipeline$1.invoke(DefaultEnginePipeline.kt)
+	at io.ktor.server.engine.DefaultEnginePipelineKt$defaultEnginePipeline$1.invoke(DefaultEnginePipeline.kt)
+	at io.ktor.util.pipeline.PipelineJvmKt.pipelineStartCoroutineUninterceptedOrReturn(PipelineJvm.kt:15)
+	at io.ktor.util.pipeline.SuspendFunctionGun.loop(SuspendFunctionGun.kt:168)
+	at io.ktor.util.pipeline.SuspendFunctionGun.proceed(SuspendFunctionGun.kt:120)
+	at io.ktor.server.engine.BaseApplicationResponse$Companion$setupFallbackResponse$1.invokeSuspend(BaseApplicationResponse.kt:353)
+	at io.ktor.server.engine.BaseApplicationResponse$Companion$setupFallbackResponse$1.invoke(BaseApplicationResponse.kt)
+	at io.ktor.server.engine.BaseApplicationResponse$Companion$setupFallbackResponse$1.invoke(BaseApplicationResponse.kt)
+	at io.ktor.util.pipeline.PipelineJvmKt.pipelineStartCoroutineUninterceptedOrReturn(PipelineJvm.kt:15)
+	at io.ktor.util.pipeline.SuspendFunctionGun.loop(SuspendFunctionGun.kt:168)
+	at io.ktor.util.pipeline.SuspendFunctionGun.proceed(SuspendFunctionGun.kt:120)
+	at io.ktor.util.pipeline.SuspendFunctionGun.execute$ktor_utils(SuspendFunctionGun.kt:139)
+	at io.ktor.util.pipeline.Pipeline.execute(Pipeline.kt:93)
+	at io.ktor.server.cio.CIOApplicationEngine$handleRequest$2$invokeSuspend$$inlined$execute$1.invokeSuspend(Pipeline.kt:509)
+	at io.ktor.server.cio.CIOApplicationEngine$handleRequest$2$invokeSuspend$$inlined$execute$1.invoke(Pipeline.kt)
+	at io.ktor.server.cio.CIOApplicationEngine$handleRequest$2$invokeSuspend$$inlined$execute$1.invoke(Pipeline.kt)
+	at io.ktor.util.debug.ContextUtilsKt.initContextInDebugMode(ContextUtils.kt:19)
+	at io.ktor.server.cio.CIOApplicationEngine$handleRequest$2.invokeSuspend(CIOApplicationEngine.kt:267)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:798)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+11:25:39.494 [DefaultDispatcher-worker-2] DEBUG io.ktor.auth.jwt -- JWT authentication failed: Invalid credentials
+11:25:39.569 [DefaultDispatcher-worker-5] DEBUG io.ktor.auth.jwt -- JWT verification failed: The Token's Signature resulted invalid when verified using the Algorithm: HmacSHA256
+com.auth0.jwt.exceptions.SignatureVerificationException: The Token's Signature resulted invalid when verified using the Algorithm: HmacSHA256
+	at com.auth0.jwt.algorithms.HMACAlgorithm.verify(HMACAlgorithm.java:57)
+	at com.auth0.jwt.JWTVerifier.verify(JWTVerifier.java:470)
+	at com.auth0.jwt.JWTVerifier.verify(JWTVerifier.java:452)
+	at io.ktor.server.auth.jwt.JWTUtilsKt.verifyAndValidate(JWTUtils.kt:133)
+	at io.ktor.server.auth.jwt.JWTAuthenticationProvider.onAuthenticate(JWTAuth.kt:209)
+	at io.ktor.server.auth.AuthenticationInterceptorsKt$AuthenticationInterceptors$2$1.invokeSuspend(AuthenticationInterceptors.kt:112)
+	at io.ktor.server.auth.AuthenticationInterceptorsKt$AuthenticationInterceptors$2$1.invoke(AuthenticationInterceptors.kt)
+	at io.ktor.server.auth.AuthenticationInterceptorsKt$AuthenticationInterceptors$2$1.invoke(AuthenticationInterceptors.kt)
+	at io.ktor.server.auth.AuthenticationHook$install$1.invokeSuspend(AuthenticationInterceptors.kt:27)
+	at io.ktor.server.auth.AuthenticationHook$install$1.invoke(AuthenticationInterceptors.kt)
+	at io.ktor.server.auth.AuthenticationHook$install$1.invoke(AuthenticationInterceptors.kt)
+	at io.ktor.server.application.ApplicationPluginKt$addAllInterceptors$1$1$1.invokeSuspend(ApplicationPlugin.kt:218)
+	at io.ktor.server.application.ApplicationPluginKt$addAllInterceptors$1$1$1.invoke(ApplicationPlugin.kt)
+	at io.ktor.server.application.ApplicationPluginKt$addAllInterceptors$1$1$1.invoke(ApplicationPlugin.kt)
+	at io.ktor.util.pipeline.PipelineJvmKt.pipelineStartCoroutineUninterceptedOrReturn(PipelineJvm.kt:15)
+	at io.ktor.util.pipeline.SuspendFunctionGun.loop(SuspendFunctionGun.kt:168)
+	at io.ktor.util.pipeline.SuspendFunctionGun.proceed(SuspendFunctionGun.kt:120)
+	at io.ktor.util.pipeline.SuspendFunctionGun.execute$ktor_utils(SuspendFunctionGun.kt:139)
+	at io.ktor.util.pipeline.Pipeline.execute(Pipeline.kt:93)
+	at io.ktor.server.routing.RoutingRoot$executeResult$$inlined$execute$1.invokeSuspend(Pipeline.kt:509)
+	at io.ktor.server.routing.RoutingRoot$executeResult$$inlined$execute$1.invoke(Pipeline.kt)
+	at io.ktor.server.routing.RoutingRoot$executeResult$$inlined$execute$1.invoke(Pipeline.kt)
+	at io.ktor.util.debug.ContextUtilsKt.initContextInDebugMode(ContextUtils.kt:19)
+	at io.ktor.server.routing.RoutingRoot.executeResult(RoutingRoot.kt:240)
+	at io.ktor.server.routing.RoutingRoot.interceptor(RoutingRoot.kt:85)
+	at io.ktor.server.routing.RoutingRoot$Plugin$install$1.invokeSuspend(RoutingRoot.kt:183)
+	at io.ktor.server.routing.RoutingRoot$Plugin$install$1.invoke(RoutingRoot.kt)
+	at io.ktor.server.routing.RoutingRoot$Plugin$install$1.invoke(RoutingRoot.kt)
+	at io.ktor.util.pipeline.PipelineJvmKt.pipelineStartCoroutineUninterceptedOrReturn(PipelineJvm.kt:15)
+	at io.ktor.util.pipeline.SuspendFunctionGun.loop(SuspendFunctionGun.kt:168)
+	at io.ktor.util.pipeline.SuspendFunctionGun.proceed(SuspendFunctionGun.kt:120)
+	at io.ktor.server.application.hooks.CallFailed$install$1$1.invokeSuspend(CommonHooks.kt:49)
+	at io.ktor.server.application.hooks.CallFailed$install$1$1.invoke(CommonHooks.kt)
+	at io.ktor.server.application.hooks.CallFailed$install$1$1.invoke(CommonHooks.kt)
+	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatched(Undispatched.kt:66)
+	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:43)
+	at kotlinx.coroutines.CoroutineScopeKt.coroutineScope(CoroutineScope.kt:848)
+	at io.ktor.server.application.hooks.CallFailed$install$1.invokeSuspend(CommonHooks.kt:48)
+	at io.ktor.server.application.hooks.CallFailed$install$1.invoke(CommonHooks.kt)
+	at io.ktor.server.application.hooks.CallFailed$install$1.invoke(CommonHooks.kt)
+	at io.ktor.util.pipeline.PipelineJvmKt.pipelineStartCoroutineUninterceptedOrReturn(PipelineJvm.kt:15)
+	at io.ktor.util.pipeline.SuspendFunctionGun.loop(SuspendFunctionGun.kt:168)
+	at io.ktor.util.pipeline.SuspendFunctionGun.proceed(SuspendFunctionGun.kt:120)
+	at io.ktor.util.pipeline.SuspendFunctionGun.execute$ktor_utils(SuspendFunctionGun.kt:139)
+	at io.ktor.util.pipeline.Pipeline.execute(Pipeline.kt:93)
+	at io.ktor.server.engine.DefaultEnginePipelineKt$defaultEnginePipeline$1$invokeSuspend$$inlined$execute$1.invokeSuspend(Pipeline.kt:509)
+	at io.ktor.server.engine.DefaultEnginePipelineKt$defaultEnginePipeline$1$invokeSuspend$$inlined$execute$1.invoke(Pipeline.kt)
+	at io.ktor.server.engine.DefaultEnginePipelineKt$defaultEnginePipeline$1$invokeSuspend$$inlined$execute$1.invoke(Pipeline.kt)
+	at io.ktor.util.debug.ContextUtilsKt.initContextInDebugMode(ContextUtils.kt:19)
+	at io.ktor.server.engine.DefaultEnginePipelineKt$defaultEnginePipeline$1.invokeSuspend(DefaultEnginePipeline.kt:153)
+	at io.ktor.server.engine.DefaultEnginePipelineKt$defaultEnginePipeline$1.invoke(DefaultEnginePipeline.kt)
+	at io.ktor.server.engine.DefaultEnginePipelineKt$defaultEnginePipeline$1.invoke(DefaultEnginePipeline.kt)
+	at io.ktor.util.pipeline.PipelineJvmKt.pipelineStartCoroutineUninterceptedOrReturn(PipelineJvm.kt:15)
+	at io.ktor.util.pipeline.SuspendFunctionGun.loop(SuspendFunctionGun.kt:168)
+	at io.ktor.util.pipeline.SuspendFunctionGun.proceed(SuspendFunctionGun.kt:120)
+	at io.ktor.server.engine.BaseApplicationResponse$Companion$setupFallbackResponse$1.invokeSuspend(BaseApplicationResponse.kt:353)
+	at io.ktor.server.engine.BaseApplicationResponse$Companion$setupFallbackResponse$1.invoke(BaseApplicationResponse.kt)
+	at io.ktor.server.engine.BaseApplicationResponse$Companion$setupFallbackResponse$1.invoke(BaseApplicationResponse.kt)
+	at io.ktor.util.pipeline.PipelineJvmKt.pipelineStartCoroutineUninterceptedOrReturn(PipelineJvm.kt:15)
+	at io.ktor.util.pipeline.SuspendFunctionGun.loop(SuspendFunctionGun.kt:168)
+	at io.ktor.util.pipeline.SuspendFunctionGun.proceed(SuspendFunctionGun.kt:120)
+	at io.ktor.util.pipeline.SuspendFunctionGun.execute$ktor_utils(SuspendFunctionGun.kt:139)
+	at io.ktor.util.pipeline.Pipeline.execute(Pipeline.kt:93)
+	at io.ktor.server.cio.CIOApplicationEngine$handleRequest$2$invokeSuspend$$inlined$execute$1.invokeSuspend(Pipeline.kt:509)
+	at io.ktor.server.cio.CIOApplicationEngine$handleRequest$2$invokeSuspend$$inlined$execute$1.invoke(Pipeline.kt)
+	at io.ktor.server.cio.CIOApplicationEngine$handleRequest$2$invokeSuspend$$inlined$execute$1.invoke(Pipeline.kt)
+	at io.ktor.util.debug.ContextUtilsKt.initContextInDebugMode(ContextUtils.kt:19)
+	at io.ktor.server.cio.CIOApplicationEngine$handleRequest$2.invokeSuspend(CIOApplicationEngine.kt:267)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:798)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+11:25:39.570 [DefaultDispatcher-worker-5] DEBUG io.ktor.auth.jwt -- JWT authentication failed: Invalid credentials
+11:25:39.584 [DefaultDispatcher-worker-3] DEBUG io.ktor.auth.jwt -- JWT verification failed: The provided Algorithm doesn't match the one defined in the JWT's Header.
+com.auth0.jwt.exceptions.AlgorithmMismatchException: The provided Algorithm doesn't match the one defined in the JWT's Header.
+	at com.auth0.jwt.JWTVerifier.verifyAlgorithm(JWTVerifier.java:477)
+	at com.auth0.jwt.JWTVerifier.verify(JWTVerifier.java:469)
+	at com.auth0.jwt.JWTVerifier.verify(JWTVerifier.java:452)
+	at io.ktor.server.auth.jwt.JWTUtilsKt.verifyAndValidate(JWTUtils.kt:133)
+	at io.ktor.server.auth.jwt.JWTAuthenticationProvider.onAuthenticate(JWTAuth.kt:209)
+	at io.ktor.server.auth.AuthenticationInterceptorsKt$AuthenticationInterceptors$2$1.invokeSuspend(AuthenticationInterceptors.kt:112)
+	at io.ktor.server.auth.AuthenticationInterceptorsKt$AuthenticationInterceptors$2$1.invoke(AuthenticationInterceptors.kt)
+	at io.ktor.server.auth.AuthenticationInterceptorsKt$AuthenticationInterceptors$2$1.invoke(AuthenticationInterceptors.kt)
+	at io.ktor.server.auth.AuthenticationHook$install$1.invokeSuspend(AuthenticationInterceptors.kt:27)
+	at io.ktor.server.auth.AuthenticationHook$install$1.invoke(AuthenticationInterceptors.kt)
+	at io.ktor.server.auth.AuthenticationHook$install$1.invoke(AuthenticationInterceptors.kt)
+	at io.ktor.server.application.ApplicationPluginKt$addAllInterceptors$1$1$1.invokeSuspend(ApplicationPlugin.kt:218)
+	at io.ktor.server.application.ApplicationPluginKt$addAllInterceptors$1$1$1.invoke(ApplicationPlugin.kt)
+	at io.ktor.server.application.ApplicationPluginKt$addAllInterceptors$1$1$1.invoke(ApplicationPlugin.kt)
+	at io.ktor.util.pipeline.PipelineJvmKt.pipelineStartCoroutineUninterceptedOrReturn(PipelineJvm.kt:15)
+	at io.ktor.util.pipeline.SuspendFunctionGun.loop(SuspendFunctionGun.kt:168)
+	at io.ktor.util.pipeline.SuspendFunctionGun.proceed(SuspendFunctionGun.kt:120)
+	at io.ktor.util.pipeline.SuspendFunctionGun.execute$ktor_utils(SuspendFunctionGun.kt:139)
+	at io.ktor.util.pipeline.Pipeline.execute(Pipeline.kt:93)
+	at io.ktor.server.routing.RoutingRoot$executeResult$$inlined$execute$1.invokeSuspend(Pipeline.kt:509)
+	at io.ktor.server.routing.RoutingRoot$executeResult$$inlined$execute$1.invoke(Pipeline.kt)
+	at io.ktor.server.routing.RoutingRoot$executeResult$$inlined$execute$1.invoke(Pipeline.kt)
+	at io.ktor.util.debug.ContextUtilsKt.initContextInDebugMode(ContextUtils.kt:19)
+	at io.ktor.server.routing.RoutingRoot.executeResult(RoutingRoot.kt:240)
+	at io.ktor.server.routing.RoutingRoot.interceptor(RoutingRoot.kt:85)
+	at io.ktor.server.routing.RoutingRoot$Plugin$install$1.invokeSuspend(RoutingRoot.kt:183)
+	at io.ktor.server.routing.RoutingRoot$Plugin$install$1.invoke(RoutingRoot.kt)
+	at io.ktor.server.routing.RoutingRoot$Plugin$install$1.invoke(RoutingRoot.kt)
+	at io.ktor.util.pipeline.PipelineJvmKt.pipelineStartCoroutineUninterceptedOrReturn(PipelineJvm.kt:15)
+	at io.ktor.util.pipeline.SuspendFunctionGun.loop(SuspendFunctionGun.kt:168)
+	at io.ktor.util.pipeline.SuspendFunctionGun.proceed(SuspendFunctionGun.kt:120)
+	at io.ktor.server.application.hooks.CallFailed$install$1$1.invokeSuspend(CommonHooks.kt:49)
+	at io.ktor.server.application.hooks.CallFailed$install$1$1.invoke(CommonHooks.kt)
+	at io.ktor.server.application.hooks.CallFailed$install$1$1.invoke(CommonHooks.kt)
+	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatched(Undispatched.kt:66)
+	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:43)
+	at kotlinx.coroutines.CoroutineScopeKt.coroutineScope(CoroutineScope.kt:848)
+	at io.ktor.server.application.hooks.CallFailed$install$1.invokeSuspend(CommonHooks.kt:48)
+	at io.ktor.server.application.hooks.CallFailed$install$1.invoke(CommonHooks.kt)
+	at io.ktor.server.application.hooks.CallFailed$install$1.invoke(CommonHooks.kt)
+	at io.ktor.util.pipeline.PipelineJvmKt.pipelineStartCoroutineUninterceptedOrReturn(PipelineJvm.kt:15)
+	at io.ktor.util.pipeline.SuspendFunctionGun.loop(SuspendFunctionGun.kt:168)
+	at io.ktor.util.pipeline.SuspendFunctionGun.proceed(SuspendFunctionGun.kt:120)
+	at io.ktor.util.pipeline.SuspendFunctionGun.execute$ktor_utils(SuspendFunctionGun.kt:139)
+	at io.ktor.util.pipeline.Pipeline.execute(Pipeline.kt:93)
+	at io.ktor.server.engine.DefaultEnginePipelineKt$defaultEnginePipeline$1$invokeSuspend$$inlined$execute$1.invokeSuspend(Pipeline.kt:509)
+	at io.ktor.server.engine.DefaultEnginePipelineKt$defaultEnginePipeline$1$invokeSuspend$$inlined$execute$1.invoke(Pipeline.kt)
+	at io.ktor.server.engine.DefaultEnginePipelineKt$defaultEnginePipeline$1$invokeSuspend$$inlined$execute$1.invoke(Pipeline.kt)
+	at io.ktor.util.debug.ContextUtilsKt.initContextInDebugMode(ContextUtils.kt:19)
+	at io.ktor.server.engine.DefaultEnginePipelineKt$defaultEnginePipeline$1.invokeSuspend(DefaultEnginePipeline.kt:153)
+	at io.ktor.server.engine.DefaultEnginePipelineKt$defaultEnginePipeline$1.invoke(DefaultEnginePipeline.kt)
+	at io.ktor.server.engine.DefaultEnginePipelineKt$defaultEnginePipeline$1.invoke(DefaultEnginePipeline.kt)
+	at io.ktor.util.pipeline.PipelineJvmKt.pipelineStartCoroutineUninterceptedOrReturn(PipelineJvm.kt:15)
+	at io.ktor.util.pipeline.SuspendFunctionGun.loop(SuspendFunctionGun.kt:168)
+	at io.ktor.util.pipeline.SuspendFunctionGun.proceed(SuspendFunctionGun.kt:120)
+	at io.ktor.server.engine.BaseApplicationResponse$Companion$setupFallbackResponse$1.invokeSuspend(BaseApplicationResponse.kt:353)
+	at io.ktor.server.engine.BaseApplicationResponse$Companion$setupFallbackResponse$1.invoke(BaseApplicationResponse.kt)
+	at io.ktor.server.engine.BaseApplicationResponse$Companion$setupFallbackResponse$1.invoke(BaseApplicationResponse.kt)
+	at io.ktor.util.pipeline.PipelineJvmKt.pipelineStartCoroutineUninterceptedOrReturn(PipelineJvm.kt:15)
+	at io.ktor.util.pipeline.SuspendFunctionGun.loop(SuspendFunctionGun.kt:168)
+	at io.ktor.util.pipeline.SuspendFunctionGun.proceed(SuspendFunctionGun.kt:120)
+	at io.ktor.util.pipeline.SuspendFunctionGun.execute$ktor_utils(SuspendFunctionGun.kt:139)
+	at io.ktor.util.pipeline.Pipeline.execute(Pipeline.kt:93)
+	at io.ktor.server.cio.CIOApplicationEngine$handleRequest$2$invokeSuspend$$inlined$execute$1.invokeSuspend(Pipeline.kt:509)
+	at io.ktor.server.cio.CIOApplicationEngine$handleRequest$2$invokeSuspend$$inlined$execute$1.invoke(Pipeline.kt)
+	at io.ktor.server.cio.CIOApplicationEngine$handleRequest$2$invokeSuspend$$inlined$execute$1.invoke(Pipeline.kt)
+	at io.ktor.util.debug.ContextUtilsKt.initContextInDebugMode(ContextUtils.kt:19)
+	at io.ktor.server.cio.CIOApplicationEngine$handleRequest$2.invokeSuspend(CIOApplicationEngine.kt:267)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:798)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+11:25:39.584 [DefaultDispatcher-worker-3] DEBUG io.ktor.auth.jwt -- JWT authentication failed: Invalid credentials
+11:25:39.594 [DefaultDispatcher-worker-4] DEBUG io.ktor.auth.jwt -- JWT verification failed: The Token has expired on 2026-10-20T10:25:39Z.
+com.auth0.jwt.exceptions.TokenExpiredException: The Token has expired on 2026-10-20T10:25:39Z.
+	at com.auth0.jwt.JWTVerifier$BaseVerification.assertValidInstantClaim(JWTVerifier.java:346)
+	at com.auth0.jwt.JWTVerifier$BaseVerification.lambda$addMandatoryClaimChecks$17(JWTVerifier.java:308)
+	at com.auth0.jwt.JWTVerifier$BaseVerification$1.verify(JWTVerifier.java:412)
+	at com.auth0.jwt.JWTVerifier.verifyClaims(JWTVerifier.java:489)
+	at com.auth0.jwt.JWTVerifier.verify(JWTVerifier.java:471)
+	at com.auth0.jwt.JWTVerifier.verify(JWTVerifier.java:452)
+	at io.ktor.server.auth.jwt.JWTUtilsKt.verifyAndValidate(JWTUtils.kt:133)
+	at io.ktor.server.auth.jwt.JWTAuthenticationProvider.onAuthenticate(JWTAuth.kt:209)
+	at io.ktor.server.auth.AuthenticationInterceptorsKt$AuthenticationInterceptors$2$1.invokeSuspend(AuthenticationInterceptors.kt:112)
+	at io.ktor.server.auth.AuthenticationInterceptorsKt$AuthenticationInterceptors$2$1.invoke(AuthenticationInterceptors.kt)
+	at io.ktor.server.auth.AuthenticationInterceptorsKt$AuthenticationInterceptors$2$1.invoke(AuthenticationInterceptors.kt)
+	at io.ktor.server.auth.AuthenticationHook$install$1.invokeSuspend(AuthenticationInterceptors.kt:27)
+	at io.ktor.server.auth.AuthenticationHook$install$1.invoke(AuthenticationInterceptors.kt)
+	at io.ktor.server.auth.AuthenticationHook$install$1.invoke(AuthenticationInterceptors.kt)
+	at io.ktor.server.application.ApplicationPluginKt$addAllInterceptors$1$1$1.invokeSuspend(ApplicationPlugin.kt:218)
+	at io.ktor.server.application.ApplicationPluginKt$addAllInterceptors$1$1$1.invoke(ApplicationPlugin.kt)
+	at io.ktor.server.application.ApplicationPluginKt$addAllInterceptors$1$1$1.invoke(ApplicationPlugin.kt)
+	at io.ktor.util.pipeline.PipelineJvmKt.pipelineStartCoroutineUninterceptedOrReturn(PipelineJvm.kt:15)
+	at io.ktor.util.pipeline.SuspendFunctionGun.loop(SuspendFunctionGun.kt:168)
+	at io.ktor.util.pipeline.SuspendFunctionGun.proceed(SuspendFunctionGun.kt:120)
+	at io.ktor.util.pipeline.SuspendFunctionGun.execute$ktor_utils(SuspendFunctionGun.kt:139)
+	at io.ktor.util.pipeline.Pipeline.execute(Pipeline.kt:93)
+	at io.ktor.server.routing.RoutingRoot$executeResult$$inlined$execute$1.invokeSuspend(Pipeline.kt:509)
+	at io.ktor.server.routing.RoutingRoot$executeResult$$inlined$execute$1.invoke(Pipeline.kt)
+	at io.ktor.server.routing.RoutingRoot$executeResult$$inlined$execute$1.invoke(Pipeline.kt)
+	at io.ktor.util.debug.ContextUtilsKt.initContextInDebugMode(ContextUtils.kt:19)
+	at io.ktor.server.routing.RoutingRoot.executeResult(RoutingRoot.kt:240)
+	at io.ktor.server.routing.RoutingRoot.interceptor(RoutingRoot.kt:85)
+	at io.ktor.server.routing.RoutingRoot$Plugin$install$1.invokeSuspend(RoutingRoot.kt:183)
+	at io.ktor.server.routing.RoutingRoot$Plugin$install$1.invoke(RoutingRoot.kt)
+	at io.ktor.server.routing.RoutingRoot$Plugin$install$1.invoke(RoutingRoot.kt)
+	at io.ktor.util.pipeline.PipelineJvmKt.pipelineStartCoroutineUninterceptedOrReturn(PipelineJvm.kt:15)
+	at io.ktor.util.pipeline.SuspendFunctionGun.loop(SuspendFunctionGun.kt:168)
+	at io.ktor.util.pipeline.SuspendFunctionGun.proceed(SuspendFunctionGun.kt:120)
+	at io.ktor.server.application.hooks.CallFailed$install$1$1.invokeSuspend(CommonHooks.kt:49)
+	at io.ktor.server.application.hooks.CallFailed$install$1$1.invoke(CommonHooks.kt)
+	at io.ktor.server.application.hooks.CallFailed$install$1$1.invoke(CommonHooks.kt)
+	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatched(Undispatched.kt:66)
+	at kotlinx.coroutines.intrinsics.UndispatchedKt.startUndispatchedOrReturn(Undispatched.kt:43)
+	at kotlinx.coroutines.CoroutineScopeKt.coroutineScope(CoroutineScope.kt:848)
+	at io.ktor.server.application.hooks.CallFailed$install$1.invokeSuspend(CommonHooks.kt:48)
+	at io.ktor.server.application.hooks.CallFailed$install$1.invoke(CommonHooks.kt)
+	at io.ktor.server.application.hooks.CallFailed$install$1.invoke(CommonHooks.kt)
+	at io.ktor.util.pipeline.PipelineJvmKt.pipelineStartCoroutineUninterceptedOrReturn(PipelineJvm.kt:15)
+	at io.ktor.util.pipeline.SuspendFunctionGun.loop(SuspendFunctionGun.kt:168)
+	at io.ktor.util.pipeline.SuspendFunctionGun.proceed(SuspendFunctionGun.kt:120)
+	at io.ktor.util.pipeline.SuspendFunctionGun.execute$ktor_utils(SuspendFunctionGun.kt:139)
+	at io.ktor.util.pipeline.Pipeline.execute(Pipeline.kt:93)
+	at io.ktor.server.engine.DefaultEnginePipelineKt$defaultEnginePipeline$1$invokeSuspend$$inlined$execute$1.invokeSuspend(Pipeline.kt:509)
+	at io.ktor.server.engine.DefaultEnginePipelineKt$defaultEnginePipeline$1$invokeSuspend$$inlined$execute$1.invoke(Pipeline.kt)
+	at io.ktor.server.engine.DefaultEnginePipelineKt$defaultEnginePipeline$1$invokeSuspend$$inlined$execute$1.invoke(Pipeline.kt)
+	at io.ktor.util.debug.ContextUtilsKt.initContextInDebugMode(ContextUtils.kt:19)
+	at io.ktor.server.engine.DefaultEnginePipelineKt$defaultEnginePipeline$1.invokeSuspend(DefaultEnginePipeline.kt:153)
+	at io.ktor.server.engine.DefaultEnginePipelineKt$defaultEnginePipeline$1.invoke(DefaultEnginePipeline.kt)
+	at io.ktor.server.engine.DefaultEnginePipelineKt$defaultEnginePipeline$1.invoke(DefaultEnginePipeline.kt)
+	at io.ktor.util.pipeline.PipelineJvmKt.pipelineStartCoroutineUninterceptedOrReturn(PipelineJvm.kt:15)
+	at io.ktor.util.pipeline.SuspendFunctionGun.loop(SuspendFunctionGun.kt:168)
+	at io.ktor.util.pipeline.SuspendFunctionGun.proceed(SuspendFunctionGun.kt:120)
+	at io.ktor.server.engine.BaseApplicationResponse$Companion$setupFallbackResponse$1.invokeSuspend(BaseApplicationResponse.kt:353)
+	at io.ktor.server.engine.BaseApplicationResponse$Companion$setupFallbackResponse$1.invoke(BaseApplicationResponse.kt)
+	at io.ktor.server.engine.BaseApplicationResponse$Companion$setupFallbackResponse$1.invoke(BaseApplicationResponse.kt)
+	at io.ktor.util.pipeline.PipelineJvmKt.pipelineStartCoroutineUninterceptedOrReturn(PipelineJvm.kt:15)
+	at io.ktor.util.pipeline.SuspendFunctionGun.loop(SuspendFunctionGun.kt:168)
+	at io.ktor.util.pipeline.SuspendFunctionGun.proceed(SuspendFunctionGun.kt:120)
+	at io.ktor.util.pipeline.SuspendFunctionGun.execute$ktor_utils(SuspendFunctionGun.kt:139)
+	at io.ktor.util.pipeline.Pipeline.execute(Pipeline.kt:93)
+	at io.ktor.server.cio.CIOApplicationEngine$handleRequest$2$invokeSuspend$$inlined$execute$1.invokeSuspend(Pipeline.kt:509)
+	at io.ktor.server.cio.CIOApplicationEngine$handleRequest$2$invokeSuspend$$inlined$execute$1.invoke(Pipeline.kt)
+	at io.ktor.server.cio.CIOApplicationEngine$handleRequest$2$invokeSuspend$$inlined$execute$1.invoke(Pipeline.kt)
+	at io.ktor.util.debug.ContextUtilsKt.initContextInDebugMode(ContextUtils.kt:19)
+	at io.ktor.server.cio.CIOApplicationEngine$handleRequest$2.invokeSuspend(CIOApplicationEngine.kt:267)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:34)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:100)
+	at kotlinx.coroutines.internal.LimitedDispatcher$Worker.run(LimitedDispatcher.kt:124)
+	at kotlinx.coroutines.scheduling.TaskImpl.run(Tasks.kt:89)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler.runSafely(CoroutineScheduler.kt:586)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.executeTask(CoroutineScheduler.kt:798)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.runWorker(CoroutineScheduler.kt:717)
+	at kotlinx.coroutines.scheduling.CoroutineScheduler$Worker.run(CoroutineScheduler.kt:704)
+11:25:39.594 [DefaultDispatcher-worker-4] DEBUG io.ktor.auth.jwt -- JWT authentication failed: Invalid credentials
+11:25:39.603 [DefaultDispatcher-worker-7] DEBUG io.ktor.auth.jwt -- JWT validation failed: Custom validation returned null
+11:25:39.603 [DefaultDispatcher-worker-7] DEBUG io.ktor.auth.jwt -- JWT authentication failed: Invalid credentials
+11:25:39.611 [DefaultDispatcher-worker-4] DEBUG io.ktor.auth.jwt -- JWT validation failed: Custom validation returned null
+11:25:39.611 [DefaultDispatcher-worker-4] DEBUG io.ktor.auth.jwt -- JWT authentication failed: Invalid credentials
+11:25:39.618 [DefaultDispatcher-worker-8] DEBUG io.ktor.auth.jwt -- JWT authentication failed: No credentials provided

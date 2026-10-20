@@ -1,0 +1,10 @@
+Pinned source: 8fe4cb032ab1875193bc3d5c8ec68e4ac7ef088a
+b50dd1c224cee84cb44043211196b47d0476c5834b22f50b7a389f2c9760ff4a
+go version go1.27.1 linux/arm64
+go: downloading github.com/panjf2000/gnet/v2 v2.10.0
+go: downloading golang.org/x/sync v0.11.0
+go: downloading golang.org/x/sys v0.48.0
+go: downloading go.uber.org/zap v1.28.0
+go: downloading gopkg.in/natefinch/lumberjack.v2 v2.2.1
+go: downloading github.com/panjf2000/ants/v2 v2.12.1
+go: downloading go.uber.org/multierr v1.11.0

@@ -1,0 +1,77 @@
+{
+  "files": {
+    ".gitignore": {
+      "sha256": "c0ae7039ac97cd41ed7bd9c3cb661ab5abacdbc04076bb44a5ca99ac033253c9",
+      "bytes": 37,
+      "physical_lines": 4,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "Gemfile": {
+      "sha256": "0c43f2d99d9c700a61438a56c7e3ed92d28aac0cd9270778fba760955013c985",
+      "bytes": 200,
+      "physical_lines": 7,
+      "classification": "own_support"
+    },
+    "Gemfile.lock": {
+      "sha256": "c7851d4b1cd71594f61376969b2f491ebeb0e8e2cc90b12708b7ceb181abd54c",
+      "bytes": 1512,
+      "physical_lines": 46,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "README.md": {
+      "sha256": "cb4d2037084829049fd42a999e74348cdf291cf1d9efddf83f2b86a9eaad213d",
+      "bytes": 8613,
+      "physical_lines": 124,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "app.rb": {
+      "sha256": "db8ac955034ad802722191e007b4d4014db55993a2059cd85d6e959972fbc6c0",
+      "bytes": 11562,
+      "physical_lines": 328,
+      "classification": "application"
+    },
+    "build.sh": {
+      "sha256": "b3cb3868ec5d821d9fff6aa4aa1684ca85268e116ded8e5478c34cde983ac42c",
+      "bytes": 413,
+      "physical_lines": 10,
+      "classification": "own_support"
+    },
+    "epoll.rb": {
+      "sha256": "dba071666bd1e5f4a4d4969db10c7da09fb2fe6baebecfddd3eb50a4d9f364dc",
+      "bytes": 1535,
+      "physical_lines": 58,
+      "classification": "application"
+    },
+    "http.rb": {
+      "sha256": "ef86c999ef801e34e4439b17bc3adc8c3be73e51cbf4d5e7bbae12754f3e9359",
+      "bytes": 9765,
+      "physical_lines": 276,
+      "classification": "application"
+    },
+    "install.sh": {
+      "sha256": "f4791703c0b21093092ba16872a7e9988740cf28fc8f11397d0d39c024872827",
+      "bytes": 3863,
+      "physical_lines": 75,
+      "classification": "own_support"
+    },
+    "server.rb": {
+      "sha256": "32a0a9fdad2023d70ad50c2bd9b467cf554d2f1f9d38e28d1dc076417e3aa299",
+      "bytes": 531,
+      "physical_lines": 26,
+      "classification": "application"
+    },
+    "sqlite_train.c": {
+      "sha256": "872b29849aa06fce540e24871ef102a1569ad321f130d720c7a4c0d05308b9e0",
+      "bytes": 5082,
+      "physical_lines": 97,
+      "classification": "application"
+    },
+    "start.sh": {
+      "sha256": "9ea7d575e83f1d281c6f71e366c1aeaf7045878870ec4280b803c39456fb7f07",
+      "bytes": 280,
+      "physical_lines": 8,
+      "classification": "own_support"
+    }
+  },
+  "skipped_members": []
+}

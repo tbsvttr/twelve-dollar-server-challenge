@@ -1,0 +1,89 @@
+Testing http://127.0.0.1:24000
+-- golden reads (fresh database)
+  ok   GET /feed == golden -> 200
+  ok   GET /feed content-type (application/json; charset=utf-8)
+  ok   GET /posts/1 == golden -> 200
+  ok   GET /posts/250000 == golden -> 200
+  ok   GET /posts/500000 == golden -> 200
+  ok   GET /posts/:id content-type (application/json; charset=utf-8)
+-- health, 404s, id validation
+  ok   GET /health -> 200 {"status":"ok","db":"ok","uptime_s":0}
+  FAIL GET /nope
+       want 404 {"error":"not found"}
+       got  404 404 - Not Found
+
+Not Found
+  ok   GET /posts/0 -> 400
+  ok   GET /posts/-1 -> 400
+  ok   GET /posts/abc -> 400
+  ok   GET /posts/1.5 -> 400
+  ok   GET /posts/999999999 -> 404
+-- auth
+  ok   POST /posts, no token -> 401
+  ok   POST /posts, Basic auth -> 401
+  ok   POST /posts, garbage token -> 401
+  ok   POST /posts, bad signature -> 401
+  ok   POST /posts, alg=none -> 401
+  FAIL POST /posts, expired token
+       want 401 {"error":"invalid or expired token"}
+       got  500 {"error":"internal server error"}
+  FAIL POST /posts, sub not an integer
+       want 401 {"error":"invalid token payload"}
+       got  500 {"error":"internal server error"}
+  FAIL POST /posts, no username
+       want 401 {"error":"invalid token payload"}
+       got  500 {"error":"internal server error"}
+  ok   POST /posts/abc/like, no token (auth before id) -> 401
+-- create validation
+  FAIL empty body
+       want 400 {"error":"body is required"}
+       got  500 {"error":"internal server error"}
+  FAIL whitespace body
+       want 400 {"error":"body is required"}
+       got  500 {"error":"internal server error"}
+  FAIL numeric body
+       want 400 {"error":"body is required"}
+       got  500 {"error":"internal server error"}
+  FAIL missing body
+       want 400 {"error":"body is required"}
+       got  500 {"error":"internal server error"}
+  FAIL malformed JSON
+       want 400 {"error":"malformed JSON body"}
+       got  500 {"error":"internal server error"}
+  FAIL 501-char body
+       want 400 {"error":"body must be at most 500 characters"}
+       got  500 {"error":"internal server error"}
+-- create, like, read back
+  FAIL special characters round-trip
+       got 500 {"error":"internal server error"}
+  FAIL create 500-char post
+       want 201 {"post":{"id":null,"body":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","created_at":"null","author":"golden_ember_1","like_count":0}}
+       got  500 {"error":"internal server error"}
+  ok   POST /posts content-type (application/json; charset=utf-8)
+  FAIL created_at format
+       got 'null'
+  FAIL created_at is not UTC now
+       drift 1792495761s
+  FAIL like (first)
+       want 201 {"liked":true,"already_liked":false,"post_id":null}
+       got  500 {"error":"internal server error"}
+  FAIL like (repeat)
+       want 200 {"liked":true,"already_liked":true,"post_id":null}
+       got  500 {"error":"internal server error"}
+  FAIL like missing post
+       want 404 {"error":"post not found"}
+       got  500 {"error":"internal server error"}
+  FAIL like bad id (with token)
+       want 400 {"error":"invalid post id"}
+       got  500 {"error":"internal server error"}
+  FAIL read back, like_count 1
+       want 200 {"post":{"id":null,"body":"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb","created_at":"null","author":"golden_ember_1","like_count":1}}
+       got  400 {"error":"invalid post id"}
+  FAIL seeded post like_count
+       want 12, got 11
+  ok   feed has 20 posts
+  FAIL top of feed
+       {"id":500000,"body":"TIL So keepalive the an watching lucky measuring usually everywhere droplet waiting... Nowhere building test those here keepalive network someone and of load? Server big learning ubuntu deploy careful coffee.","created_at":"2025-12-31T23:59:19.409Z","author":"swift_ember_22228","like_count":5}
+  FAIL feed entry
+       {"id":500000,"body":"TIL So keepalive the an watching lucky measuring usually everywhere droplet waiting... Nowhere building test those here keepalive network someone and of load? Server big learning ubuntu deploy careful coffee.","created_at":"2025-12-31T23:59:19.409Z","author":"swift_ember_22228","like_count":5}
+passed=20 failed=22

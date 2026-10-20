@@ -1,0 +1,521 @@
+
+$ docker exec twelve-current-build-pr54 bash -c set -e; rm -rf /suite/sources; mkdir -p /suite/sources; cp -a /evidence/sources/pr54 /suite/sources/; cp /evidence/manifest.json /suite/manifest.json; cp /evidence/schema.sql /suite/schema.sql; chown -R bench:bench /suite/sources
+
+$ docker exec twelve-current-build-pr54 bash /evidence/runtime-scripts/pr54.sh
+Hit:1 http://ports.ubuntu.com/ubuntu-ports noble InRelease
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble-updates InRelease [126 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble-backports InRelease [126 kB]
+Get:4 http://ports.ubuntu.com/ubuntu-ports noble-security InRelease [126 kB]
+Get:5 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 Packages [1786 kB]
+Get:6 http://ports.ubuntu.com/ubuntu-ports noble-updates/restricted arm64 Packages [3251 kB]
+Get:7 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 Packages [2214 kB]
+Get:8 http://ports.ubuntu.com/ubuntu-ports noble-updates/multiverse arm64 Packages [104 kB]
+Get:9 http://ports.ubuntu.com/ubuntu-ports noble-backports/multiverse arm64 Packages [669 B]
+Get:10 http://ports.ubuntu.com/ubuntu-ports noble-security/restricted arm64 Packages [3129 kB]
+Get:11 http://ports.ubuntu.com/ubuntu-ports noble-security/multiverse arm64 Packages [99.1 kB]
+Get:12 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 Packages [1475 kB]
+Get:13 http://ports.ubuntu.com/ubuntu-ports noble-security/universe arm64 Packages [1638 kB]
+Fetched 14.1 MB in 1s (10.9 MB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+build-essential is already the newest version (12.10ubuntu1).
+libssl-dev is already the newest version (3.0.13-0ubuntu3.16).
+unzip is already the newest version (6.0-28ubuntu4.1).
+ca-certificates is already the newest version (20260601~24.04.1).
+The following additional packages will be installed:
+  cmake-data git-man libarchive13t64 libcurl3t64-gnutls libcurl4t64
+  libjsoncpp25 librhash0 libuv1t64
+Suggested packages:
+  cmake-doc cmake-format elpa-cmake-mode ninja-build gettext-base
+  git-daemon-run | git-daemon-sysvinit git-doc git-email git-gui gitk gitweb
+  git-cvs git-mediawiki git-svn lrzip
+Recommended packages:
+  less ssh-client
+The following NEW packages will be installed:
+  cmake cmake-data libarchive13t64 libjsoncpp25 librhash0 libuv1t64
+The following packages will be upgraded:
+  curl git git-man libcurl3t64-gnutls libcurl4t64
+5 upgraded, 6 newly installed, 0 to remove and 14 not upgraded.
+Need to get 18.9 MB of archives.
+After this operation, 46.2 MB of additional disk space will be used.
+Get:1 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libuv1t64 arm64 1.48.0-1.1build1 [95.3 kB]
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libarchive13t64 arm64 3.7.2-2ubuntu0.9 [378 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 curl arm64 8.5.0-2ubuntu10.16 [222 kB]
+Get:4 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 libcurl4t64 arm64 8.5.0-2ubuntu10.16 [337 kB]
+Get:5 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libjsoncpp25 arm64 1.9.5-6build1 [78.2 kB]
+Get:6 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 librhash0 arm64 1.4.3-3build1 [126 kB]
+Get:7 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 cmake-data all 3.28.3-1build7 [2155 kB]
+Get:8 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 cmake arm64 3.28.3-1build7 [10.3 MB]
+Get:9 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 libcurl3t64-gnutls arm64 8.5.0-2ubuntu10.16 [331 kB]
+Get:10 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 git-man all 1:2.43.0-1ubuntu7.4 [1101 kB]
+Get:11 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 git arm64 1:2.43.0-1ubuntu7.4 [3774 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 18.9 MB in 1s (14.7 MB/s)
+Selecting previously unselected package libuv1t64:arm64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 16962 files and directories currently installed.)
+Preparing to unpack .../00-libuv1t64_1.48.0-1.1build1_arm64.deb ...
+Unpacking libuv1t64:arm64 (1.48.0-1.1build1) ...
+Selecting previously unselected package libarchive13t64:arm64.
+Preparing to unpack .../01-libarchive13t64_3.7.2-2ubuntu0.9_arm64.deb ...
+Unpacking libarchive13t64:arm64 (3.7.2-2ubuntu0.9) ...
+Preparing to unpack .../02-curl_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking curl (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Preparing to unpack .../03-libcurl4t64_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking libcurl4t64:arm64 (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Selecting previously unselected package libjsoncpp25:arm64.
+Preparing to unpack .../04-libjsoncpp25_1.9.5-6build1_arm64.deb ...
+Unpacking libjsoncpp25:arm64 (1.9.5-6build1) ...
+Selecting previously unselected package librhash0:arm64.
+Preparing to unpack .../05-librhash0_1.4.3-3build1_arm64.deb ...
+Unpacking librhash0:arm64 (1.4.3-3build1) ...
+Selecting previously unselected package cmake-data.
+Preparing to unpack .../06-cmake-data_3.28.3-1build7_all.deb ...
+Unpacking cmake-data (3.28.3-1build7) ...
+Selecting previously unselected package cmake.
+Preparing to unpack .../07-cmake_3.28.3-1build7_arm64.deb ...
+Unpacking cmake (3.28.3-1build7) ...
+Preparing to unpack .../08-libcurl3t64-gnutls_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking libcurl3t64-gnutls:arm64 (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Preparing to unpack .../09-git-man_1%3a2.43.0-1ubuntu7.4_all.deb ...
+Unpacking git-man (1:2.43.0-1ubuntu7.4) over (1:2.43.0-1ubuntu7.3) ...
+Preparing to unpack .../10-git_1%3a2.43.0-1ubuntu7.4_arm64.deb ...
+Unpacking git (1:2.43.0-1ubuntu7.4) over (1:2.43.0-1ubuntu7.3) ...
+Setting up libcurl4t64:arm64 (8.5.0-2ubuntu10.16) ...
+Setting up libuv1t64:arm64 (1.48.0-1.1build1) ...
+Setting up libcurl3t64-gnutls:arm64 (8.5.0-2ubuntu10.16) ...
+Setting up libjsoncpp25:arm64 (1.9.5-6build1) ...
+Setting up librhash0:arm64 (1.4.3-3build1) ...
+Setting up git-man (1:2.43.0-1ubuntu7.4) ...
+Setting up cmake-data (3.28.3-1build7) ...
+Setting up curl (8.5.0-2ubuntu10.16) ...
+Setting up libarchive13t64:arm64 (3.7.2-2ubuntu0.9) ...
+Setting up git (1:2.43.0-1ubuntu7.4) ...
+Setting up cmake (3.28.3-1build7) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+
+$ docker exec twelve-current-build-pr54 runuser -u bench -- env PATH=/usr/local/go/bin:/opt/twelve-rust/cargo/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 bash /suite/sources/pr54/build.sh
+== AmmarServer @ b72898c19b2ec4f1024a5691cdb1d7369896bae6
+CMake Warning (dev) at CMakeLists.txt:1 (project):
+  cmake_minimum_required() should be called prior to this top-level project()
+  call.  Please see the cmake-commands(7) manual for usage documentation of
+  both commands.
+This warning is for project developers.  Use -Wno-dev to suppress it.
+
+CMake Deprecation Warning at CMakeLists.txt:2 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Deprecation Warning at src/AmmServerlib/CMakeLists.txt:2 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+LibEvent will not be used against AmmarServerLib
+OpenSSL will not be used against AmmarServerLib
+CMake Deprecation Warning at src/AmmClient/CMakeLists.txt:2 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+OpenSSL will not be used
+CMake Deprecation Warning at src/AmmCaptcha/CMakeLists.txt:2 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Deprecation Warning at src/StringRecognizer/CMakeLists.txt:2 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Deprecation Warning at src/StringEscapeFile/CMakeLists.txt:2 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Deprecation Warning at src/FileToString/CMakeLists.txt:2 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Deprecation Warning at src/UserAccounts/CMakeLists.txt:2 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Deprecation Warning at src/Hashmap/CMakeLists.txt:2 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Deprecation Warning at src/InputParser/CMakeLists.txt:2 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Deprecation Warning at src/CSVParser/CMakeLists.txt:2 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Deprecation Warning at src/BasicImaging/CMakeLists.txt:13 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Warning at src/BasicImaging/CMakeLists.txt:53 (message):
+  BasicImaging: libjpeg/jpeglib.h NOT found -- JPEG support DISABLED ,
+  install libjpeg-dev (or equivalent) and re-run cmake to enable it.
+  BasicImaging_SaveJPEG()/BasicImaging_HasJPEG() will report this at runtime
+  instead of crashing.
+
+
+CMake Warning at src/BasicImaging/CMakeLists.txt:64 (message):
+  BasicImaging: libpng/png.h NOT found -- PNG support DISABLED , install
+  libpng-dev (or equivalent) and re-run cmake to enable it.
+  BasicImaging_SavePNG()/BasicImaging_HasPNG() will report this at runtime
+  instead of crashing.
+
+
+CMake Warning at src/BasicImaging/CMakeLists.txt:76 (message):
+  BasicImaging: libzstd/zstd.h and/or liblz4/lz4.h NOT found -- PZP support
+  DISABLED , install libzstd-dev and liblz4-dev and re-run cmake to enable
+  it.  BasicImaging_SavePZP()/BasicImaging_HasPZP() will report this at
+  runtime instead of crashing.
+
+
+CMake Deprecation Warning at src/Services/AmmarServer/CMakeLists.txt:8 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Deprecation Warning at src/Services/MyURL/CMakeLists.txt:2 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Deprecation Warning at src/Services/MyLoader/CMakeLists.txt:2 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Deprecation Warning at src/Services/MyBlog/CMakeLists.txt:2 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Deprecation Warning at src/Services/MyTube/CMakeLists.txt:2 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Deprecation Warning at src/Services/MySearch/CMakeLists.txt:2 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Deprecation Warning at src/Services/GeoPosShare/CMakeLists.txt:2 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Deprecation Warning at src/Services/Social/CMakeLists.txt:2 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Deprecation Warning at src/Services/HabChan/CMakeLists.txt:8 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Deprecation Warning at src/Services/ShareTex/CMakeLists.txt:8 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Deprecation Warning at src/Services/Availability/CMakeLists.txt:8 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Deprecation Warning at src/Services/SuperMarket/CMakeLists.txt:8 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Deprecation Warning at src/Services/WebFramebuffer/CMakeLists.txt:2 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Deprecation Warning at src/Services/V4L2ToHTTP/CMakeLists.txt:2 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Deprecation Warning at src/Services/V4L2ToHTTP/v4l2_acquisition_shared_library/CMakeLists.txt:2 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Deprecation Warning at src/Services/ImageGeneration/CMakeLists.txt:8 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Deprecation Warning at src/Services/AmmBus/CMakeLists.txt:8 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Deprecation Warning at src/Services/APushService/CMakeLists.txt:2 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Deprecation Warning at src/Services/SimpleTemplate/CMakeLists.txt:2 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Deprecation Warning at src/Services/Various/NaoNetWalk/CMakeLists.txt:2 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Deprecation Warning at src/Services/Various/ScriptRunner/CMakeLists.txt:2 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+CMake Deprecation Warning at src/Services/Deprecated/CinemaPilot/CMakeLists.txt:2 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+/suite/sources/pr54/build/AmmarServer/src/AmmServerlib/main.c: In function 'AmmServer_AddEditorResourceHandler':
+/suite/sources/pr54/build/AmmarServer/src/AmmServerlib/main.c:595:3: warning: #warning "TODO: Also remove editor resource handler" [-Wcpp]
+  595 |  #warning "TODO: Also remove editor resource handler"
+      |   ^~~~~~~
+/suite/sources/pr54/build/AmmarServer/src/AmmServerlib/cache/file_caching.c: In function 'cache_LoadResourceFromDisk':
+/suite/sources/pr54/build/AmmarServer/src/AmmServerlib/cache/file_caching.c:262:8: warning: #warning " Todo : populate cache[*index].modification with int fstat(pFile, struct stat *buf);" [-Wcpp]
+  262 |       #warning " Todo : populate cache[*index].modification with int fstat(pFile, struct stat *buf);"
+      |        ^~~~~~~
+/suite/sources/pr54/build/AmmarServer/src/AmmServerlib/cache/file_caching.c: In function 'cache_RefreshResource':
+/suite/sources/pr54/build/AmmarServer/src/AmmServerlib/cache/file_caching.c:505:5: warning: #warning "TODO : we should check here for a potentially newer version of the file.."; [-Wcpp]
+  505 |    #warning "TODO : we should check here for a potentially newer version of the file..";
+      |     ^~~~~~~
+/suite/sources/pr54/build/AmmarServer/src/AmmServerlib/cache/dynamic_requests.c: In function 'dynamicRequest_serveContent':
+/suite/sources/pr54/build/AmmarServer/src/AmmServerlib/cache/dynamic_requests.c:375:78: warning: format '%u' expects argument of type 'unsigned int', but argument 4 has type 'long unsigned int' [-Wformat=]
+  375 |                          fprintf(stderr,"Problematic Rqst %s | Content Size %u / Max Content Size %u ",verified_filename,rqst->contentSize,rqst->MAXcontentSize);
+      |                                                                             ~^                                           ~~~~~~~~~~~~~~~~~
+      |                                                                              |                                               |
+      |                                                                              unsigned int                                    long unsigned int
+      |                                                                             %lu
+/suite/sources/pr54/build/AmmarServer/src/AmmServerlib/cache/dynamic_requests.c:375:100: warning: format '%u' expects argument of type 'unsigned int', but argument 5 has type 'long unsigned int' [-Wformat=]
+  375 |                          fprintf(stderr,"Problematic Rqst %s | Content Size %u / Max Content Size %u ",verified_filename,rqst->contentSize,rqst->MAXcontentSize);
+      |                                                                                                   ~^                                       ~~~~~~~~~~~~~~~~~~~~
+      |                                                                                                    |                                           |
+      |                                                                                                    unsigned int                                long unsigned int
+      |                                                                                                   %lu
+/suite/sources/pr54/build/AmmarServer/src/AmmServerlib/network/file_server.c: In function 'SendFile':
+/suite/sources/pr54/build/AmmarServer/src/AmmServerlib/network/file_server.c:472:11: warning: #warning "No checking on Range Provided is done , the underlying mechanisms are safe , but the header could potentially display wrong things " [-Wcpp]
+  472 |          #warning "No checking on Range Provided is done , the underlying mechanisms are safe , but the header could potentially display wrong things "
+      |           ^~~~~~~
+In file included from /suite/sources/pr54/build/AmmarServer/src/AmmServerlib/threads/freshThreads.c:17:
+/suite/sources/pr54/build/AmmarServer/src/AmmServerlib/threads/threadInitHelper.h: In function 'signalChildFinishedWithParentMessage':
+/suite/sources/pr54/build/AmmarServer/src/AmmServerlib/threads/threadInitHelper.h:81:8: warning: #warning "Using a workaround that does not call signalChildFinishedWithParentMessage due to an unsolvable reallocation error" [-Wcpp]
+   81 |       #warning "Using a workaround that does not call signalChildFinishedWithParentMessage due to an unsolvable reallocation error"
+      |        ^~~~~~~
+In file included from /suite/sources/pr54/build/AmmarServer/src/AmmServerlib/threads/clientServer.c:49:
+/suite/sources/pr54/build/AmmarServer/src/AmmServerlib/threads/../threads/threadInitHelper.h: In function 'signalChildFinishedWithParentMessage':
+/suite/sources/pr54/build/AmmarServer/src/AmmServerlib/threads/../threads/threadInitHelper.h:81:8: warning: #warning "Using a workaround that does not call signalChildFinishedWithParentMessage due to an unsolvable reallocation error" [-Wcpp]
+   81 |       #warning "Using a workaround that does not call signalChildFinishedWithParentMessage due to an unsolvable reallocation error"
+      |        ^~~~~~~
+In file included from /suite/sources/pr54/build/AmmarServer/src/AmmServerlib/threads/threadedServer.c:60:
+/suite/sources/pr54/build/AmmarServer/src/AmmServerlib/threads/../threads/threadInitHelper.h: In function 'signalChildFinishedWithParentMessage':
+/suite/sources/pr54/build/AmmarServer/src/AmmServerlib/threads/../threads/threadInitHelper.h:81:8: warning: #warning "Using a workaround that does not call signalChildFinishedWithParentMessage due to an unsolvable reallocation error" [-Wcpp]
+   81 |       #warning "Using a workaround that does not call signalChildFinishedWithParentMessage due to an unsolvable reallocation error"
+      |        ^~~~~~~
+/suite/sources/pr54/build/AmmarServer/src/AmmServerlib/tools/logs.c: In function 'AccessLogAppend':
+/suite/sources/pr54/build/AmmarServer/src/AmmServerlib/tools/logs.c:185:56: warning: '%u' directive output may be truncated writing between 1 and 2 bytes into a region of size between 0 and 1023 [-Wformat-truncation=]
+  185 |     else                    { snprintf(out,outSize,"%s.%u",baseFilename,shardIndex); }
+      |                                                        ^~
+In function 'GetShardedLogFilename',
+    inlined from 'AccessLogAppend' at /suite/sources/pr54/build/AmmarServer/src/AmmServerlib/tools/logs.c:214:5:
+/suite/sources/pr54/build/AmmarServer/src/AmmServerlib/tools/logs.c:185:52: note: directive argument in the range [0, 15]
+  185 |     else                    { snprintf(out,outSize,"%s.%u",baseFilename,shardIndex); }
+      |                                                    ^~~~~~~
+In file included from /usr/include/stdio.h:980,
+                 from /suite/sources/pr54/build/AmmarServer/src/AmmServerlib/tools/logs.h:8,
+                 from /suite/sources/pr54/build/AmmarServer/src/AmmServerlib/tools/logs.c:8:
+In function 'snprintf',
+    inlined from 'GetShardedLogFilename' at /suite/sources/pr54/build/AmmarServer/src/AmmServerlib/tools/logs.c:185:31,
+    inlined from 'AccessLogAppend' at /suite/sources/pr54/build/AmmarServer/src/AmmServerlib/tools/logs.c:214:5:
+/usr/include/aarch64-linux-gnu/bits/stdio2.h:54:10: note: '__builtin___snprintf_chk' output between 3 and 1027 bytes into a destination of size 1024
+   54 |   return __builtin___snprintf_chk (__s, __n, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   55 |                                    __glibc_objsize (__s), __fmt,
+      |                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   56 |                                    __va_arg_pack ());
+      |                                    ~~~~~~~~~~~~~~~~~
+/suite/sources/pr54/build/AmmarServer/src/AmmServerlib/tools/logs.c: In function 'ErrorLogAppend':
+/suite/sources/pr54/build/AmmarServer/src/AmmServerlib/tools/logs.c:185:56: warning: '%u' directive output may be truncated writing between 1 and 2 bytes into a region of size between 0 and 1023 [-Wformat-truncation=]
+  185 |     else                    { snprintf(out,outSize,"%s.%u",baseFilename,shardIndex); }
+      |                                                        ^~
+In function 'GetShardedLogFilename',
+    inlined from 'ErrorLogAppend' at /suite/sources/pr54/build/AmmarServer/src/AmmServerlib/tools/logs.c:297:5:
+/suite/sources/pr54/build/AmmarServer/src/AmmServerlib/tools/logs.c:185:52: note: directive argument in the range [0, 15]
+  185 |     else                    { snprintf(out,outSize,"%s.%u",baseFilename,shardIndex); }
+      |                                                    ^~~~~~~
+In function 'snprintf',
+    inlined from 'GetShardedLogFilename' at /suite/sources/pr54/build/AmmarServer/src/AmmServerlib/tools/logs.c:185:31,
+    inlined from 'ErrorLogAppend' at /suite/sources/pr54/build/AmmarServer/src/AmmServerlib/tools/logs.c:297:5:
+/usr/include/aarch64-linux-gnu/bits/stdio2.h:54:10: note: '__builtin___snprintf_chk' output between 3 and 1027 bytes into a destination of size 1024
+   54 |   return __builtin___snprintf_chk (__s, __n, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   55 |                                    __glibc_objsize (__s), __fmt,
+      |                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   56 |                                    __va_arg_pack ());
+      |                                    ~~~~~~~~~~~~~~~~~
+/suite/sources/pr54/build/AmmarServer/src/AmmServerlib/tools/http_tools.c: In function 'ServerThreads_DropRootUID':
+/suite/sources/pr54/build/AmmarServer/src/AmmServerlib/tools/http_tools.c:77:53: warning: '%s' directive output may be truncated writing up to 1023 bytes into a region of size 1018 [-Wformat-truncation=]
+   77 |    snprintf(command_to_get_uid,MAX_FILE_PATH,"id -u %s",USERNAME_UID_FOR_DAEMON);
+      |                                                     ^~  ~~~~~~~~~~~~~~~~~~~~~~~
+In file included from /usr/include/stdio.h:980,
+                 from /suite/sources/pr54/build/AmmarServer/src/AmmServerlib/tools/http_tools.c:20:
+In function 'snprintf',
+    inlined from 'ServerThreads_DropRootUID' at /suite/sources/pr54/build/AmmarServer/src/AmmServerlib/tools/http_tools.c:77:4:
+/usr/include/aarch64-linux-gnu/bits/stdio2.h:54:10: note: '__builtin___snprintf_chk' output between 7 and 1030 bytes into a destination of size 1024
+   54 |   return __builtin___snprintf_chk (__s, __n, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   55 |                                    __glibc_objsize (__s), __fmt,
+      |                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   56 |                                    __va_arg_pack ());
+      |                                    ~~~~~~~~~~~~~~~~~
+/suite/sources/pr54/build/AmmarServer/src/AmmServerlib/tools/http_tools.c: In function 'PathResolvesWithinDirectory':
+/suite/sources/pr54/build/AmmarServer/src/AmmServerlib/tools/http_tools.c:714:48: warning: '__builtin___snprintf_chk' output may be truncated before the last format character [-Wformat-truncation=]
+  714 |      snprintf(resolvedCandidate,PATH_MAX,"%s/%s",resolvedCandidateDir,baseName);
+      |                                                ^
+In function 'snprintf',
+    inlined from 'PathResolvesWithinDirectory' at /suite/sources/pr54/build/AmmarServer/src/AmmServerlib/tools/http_tools.c:714:6:
+/usr/include/aarch64-linux-gnu/bits/stdio2.h:54:10: note: '__builtin___snprintf_chk' output 2 or more bytes (assuming 4097) into a destination of size 4096
+   54 |   return __builtin___snprintf_chk (__s, __n, __USE_FORTIFY_LEVEL - 1,
+      |          ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   55 |                                    __glibc_objsize (__s), __fmt,
+      |                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+   56 |                                    __va_arg_pack ());
+      |                                    ~~~~~~~~~~~~~~~~~
+== SQLite 3530000
+/suite/sources/pr54/build/sqlite.zip: OK
+== compiling sqlite3.c
+== feedapi
+== built /suite/sources/pr54/build/feedapi
+
+$ docker exec twelve-current-build-pr54 bash -c rm -f /usr/local/bin/nproc; rm -rf /tmp/* /root/.cache /root/.cargo/registry /home/bench/.cache /home/bench/.cargo/registry /home/bench/.npm/_cacache /var/lib/apt/lists/* /var/cache/apt/archives/*.deb; find /suite/sources -type d -path '*/target/release/incremental' -prune -exec rm -rf {} +

@@ -1,0 +1,19 @@
+Pinned source: 7d8785bb9643e49f3e06744eb478cb450875edc8
+ce1ab95daa4589f7aa9e2e69f5522776cc0cd64e31c6f72e21d64943ce60b2bb
+/tmp/tmp.peojStmunI: OK
+go version go1.27.2 linux/arm64
+go: downloading github.com/lesismal/fib v1.2.1-0.20261017173620-9ff942865c79
+go: downloading github.com/sirkostya009/ggen v0.0.0-20261009214007-38ae500ec7c6
+go: downloading crawshaw.io/sqlite v0.3.3-0.20220618202545-d1964889ea3c
+# feed/domain
+domain/domain_ggen.go:29:13: undefined: ggen.SkipSpaceAVX2
+domain/domain_ggen.go:39:13: undefined: ggen.SkipSpaceAVX2
+domain/domain_ggen.go:65:20: undefined: archsimd.LoadUint8x32
+domain/domain_ggen.go:66:28: undefined: archsimd.BroadcastUint8x32
+domain/domain_ggen.go:67:30: undefined: archsimd.BroadcastUint8x32
+domain/domain_ggen.go:80:23: undefined: ggen.StringAVX2
+domain/domain_ggen.go:88:14: undefined: ggen.SkipSpaceAVX2
+domain/domain_ggen.go:98:14: undefined: ggen.SkipSpaceAVX2
+domain/domain_ggen.go:112:21: undefined: archsimd.LoadUint8x32
+domain/domain_ggen.go:113:29: undefined: archsimd.BroadcastUint8x32
+domain/domain_ggen.go:113:29: too many errors

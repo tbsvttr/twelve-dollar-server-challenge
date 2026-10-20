@@ -1,0 +1,19 @@
+2026-10-20T12:21:18.615Z  INFO 13 --- [  feed-loop-1-1] feed.db.FeedDb                           : query plan feed:
+SCAN p USING INDEX posts_created_at_id_idx
+SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+CORRELATED SCALAR SUBQUERY 1
+  SEARCH l USING COVERING INDEX likes_post_id_idx (post_id=?)
+2026-10-20T12:21:18.616Z  INFO 13 --- [  feed-loop-1-1] feed.db.FeedDb                           : query plan post:
+SEARCH p USING INTEGER PRIMARY KEY (rowid=?)
+SEARCH u USING INTEGER PRIMARY KEY (rowid=?)
+CORRELATED SCALAR SUBQUERY 1
+  SEARCH l USING COVERING INDEX likes_post_id_idx (post_id=?)
+2026-10-20T12:21:18.616Z  INFO 13 --- [  feed-loop-1-1] feed.db.FeedDb                           : query plan create:
+SEARCH likes USING COVERING INDEX likes_post_id_idx (post_id=?)
+2026-10-20T12:21:18.616Z  INFO 13 --- [  feed-loop-1-1] feed.db.FeedDb                           : query plan like:
+SEARCH posts EXISTS USING INTEGER PRIMARY KEY (rowid=?)
+2026-10-20T12:21:18.616Z  INFO 13 --- [  feed-loop-1-1] feed.db.FeedDb                           : query plan postExists:
+SEARCH posts USING INTEGER PRIMARY KEY (rowid=?)
+2026-10-20T12:21:18.730Z  INFO 13 --- [  feed-loop-1-1] feed.db.FeedDb                           : prewarm: read 238 MiB in 26 ms, index scans 86 ms, statements 0 ms
+2026-10-20T12:21:18.730Z  INFO 13 --- [  feed-loop-1-1] feed.db.FeedDb                           : opened /tmp/current-pr124-kmc8q7j7/feed.db (sqlite 3.53.4, wal, exclusive): setup 13 ms, prewarm 113 ms
+2026-10-20T12:21:18.796Z  INFO 13 --- [           main] feed.http.FeedServer                     : listening on 127.0.0.1:24000 (epoll, sqlite 3.53.4, hasUnsafe=true, startup 1748 ms; ckptFrames=1000, maxOpen=65000, idleTimeoutSec=120; connection limit 65000 (feed.maxOpen=65000, fd limit 65535, reserve 512))

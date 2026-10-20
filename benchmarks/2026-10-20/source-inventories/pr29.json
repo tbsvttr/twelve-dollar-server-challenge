@@ -1,0 +1,113 @@
+{
+  "files": {
+    ".clang-format": {
+      "sha256": "e79ebac1e9fa72b975217d9e174faaa9cae321f7a870cc7c76ceadfda5c73696",
+      "bytes": 551,
+      "physical_lines": 26,
+      "classification": "other"
+    },
+    ".clang-tidy": {
+      "sha256": "0df363fb29ef6d48362c9d0ac056a6878f2b25e8ff654b3da8e9281352810f9f",
+      "bytes": 4558,
+      "physical_lines": 145,
+      "classification": "other"
+    },
+    ".dockerignore": {
+      "sha256": "6769fddbea24e193e4e10ab3f6c31b2a3ac2c6a5d0eb102949ed9f5745d88d24",
+      "bytes": 30,
+      "physical_lines": 4,
+      "classification": "documentation_lock_or_metadata"
+    },
+    ".gitignore": {
+      "sha256": "c5117d1d9e5b8e455662facac45e4f02b87a3cea244dd9a980ef31c281da5bbe",
+      "bytes": 48,
+      "physical_lines": 6,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "CMakeLists.txt": {
+      "sha256": "023f7f24fa9d8de834710b8c34db1414b829cbeb3d37e0263841183806d1ce9e",
+      "bytes": 1637,
+      "physical_lines": 75,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "CMakePresets.json": {
+      "sha256": "b85a3cf3503757a1d9fb58e4f62bdfe242603ccce1a17cb55a0cfc0bfc698faa",
+      "bytes": 1291,
+      "physical_lines": 41,
+      "classification": "own_support"
+    },
+    "Dockerfile": {
+      "sha256": "a4a53786caecbb9903de2d7a9d9d19c0af5142b5ab0331cfda295b491da09821",
+      "bytes": 210,
+      "physical_lines": 7,
+      "classification": "own_support"
+    },
+    "README.md": {
+      "sha256": "2a08156612ac52cb4351c90d1ce19adf4b94ce6fb44414fe5f13905848763482",
+      "bytes": 6134,
+      "physical_lines": 109,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "build.sh": {
+      "sha256": "4e7b5095945895be03e630228e0429c0445bc9517f508e6e44961aac000e2fe9",
+      "bytes": 93,
+      "physical_lines": 4,
+      "classification": "own_support"
+    },
+    "cmake/clang-20.cmake": {
+      "sha256": "eb1ae54e4ecb4ed63841ae5fa92faa902f43530f78edee961c913bb7903ac18b",
+      "bytes": 736,
+      "physical_lines": 17,
+      "classification": "other"
+    },
+    "docker-compose.yml": {
+      "sha256": "fc9d674ac59a70a53b669067db64783107f8d1db9cb7fec8b95667b546717030",
+      "bytes": 1241,
+      "physical_lines": 54,
+      "classification": "own_support"
+    },
+    "docker/nginx.conf": {
+      "sha256": "ff7cf5c2434824238f9306cb67778621e5cba2d00093f4a57a7d97f526a3743a",
+      "bytes": 278,
+      "physical_lines": 15,
+      "classification": "own_support"
+    },
+    "install.sh": {
+      "sha256": "50ad281fdfde0f791e9af063714a123bfb516bd9212c3148d2055d19f27cf70c",
+      "bytes": 304,
+      "physical_lines": 7,
+      "classification": "own_support"
+    },
+    "src/jwt.hpp": {
+      "sha256": "ae9b91ba7fdcf3b23cb202429f79f1a5c4d71c9db66ca0f2d191f60bfbe2203f",
+      "bytes": 4943,
+      "physical_lines": 130,
+      "classification": "application"
+    },
+    "src/main.cpp": {
+      "sha256": "bf4d49ea4d8e3eb3a3a79a6601821bb1384611e9090647811279cd962231246a",
+      "bytes": 12562,
+      "physical_lines": 327,
+      "classification": "application"
+    },
+    "start.sh": {
+      "sha256": "307061059b074da076f803ce7e647638c58b258cfae8adc86fe556a6e5f8ecbe",
+      "bytes": 85,
+      "physical_lines": 4,
+      "classification": "own_support"
+    },
+    "tests/jwt_test.cpp": {
+      "sha256": "e2fc7c1dcec657a11010873e146e5c14b73326773346147e5c02882f09726b43",
+      "bytes": 2031,
+      "physical_lines": 46,
+      "classification": "own_support"
+    },
+    "tests/smoke_test.cpp": {
+      "sha256": "2ee87d5a72e9a645098f6ea6253738f4b53d51f24560522dba7663fd91eaabf7",
+      "bytes": 573,
+      "physical_lines": 23,
+      "classification": "own_support"
+    }
+  },
+  "skipped_members": []
+}

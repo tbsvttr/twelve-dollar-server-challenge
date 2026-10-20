@@ -1,0 +1,1 @@
+Submission is x86-64 assembly and explicitly links x86_64-linux-gnu libraries; native platform is ARM64.

@@ -1,0 +1,563 @@
+{
+  "files": {
+    ".gitignore": {
+      "sha256": "6cc08abfdb4ce253381c6168497ebb1139cfd4d9150272ec82a71651d6278dab",
+      "bytes": 58,
+      "physical_lines": 5,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "BENCHMARK.md": {
+      "sha256": "4eb87310e15fda6bb484667b3a6b2c8e9c6587929458f76252c593b318f63155",
+      "bytes": 5932,
+      "physical_lines": 96,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "Caddyfile": {
+      "sha256": "3790b65c9c5a88c514a0573bf7ed0b0d79c3c198de8cb33feda1b486d915889e",
+      "bytes": 703,
+      "physical_lines": 45,
+      "classification": "other"
+    },
+    "LICENSE": {
+      "sha256": "2e56fe45695ea24d5e3dda4c9d358d3fe01bdef037923d69555b9bbbadee3995",
+      "bytes": 1162,
+      "physical_lines": 22,
+      "classification": "other"
+    },
+    "README.md": {
+      "sha256": "6bb142a2eeb5aaf8daa4c96bec1e6778744a59ee2f39cf1a9b9178aa11f41568",
+      "bytes": 5376,
+      "physical_lines": 95,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "app/.htaccess": {
+      "sha256": "66d7bf6151b5085af019d2473254f2827360b94b3c37a73d7837e89d435acdb6",
+      "bytes": 118,
+      "physical_lines": 6,
+      "classification": "other"
+    },
+    "app/Common.php": {
+      "sha256": "6dce94fb27734bb1826cd56dab9124f0436d7286d3e306bfc5862d8f200c85fd",
+      "bytes": 521,
+      "physical_lines": 15,
+      "classification": "application"
+    },
+    "app/Config/App.php": {
+      "sha256": "7864af4054685846493fa3e6f2efef0fe632c03448148723d24a1bbe2969235c",
+      "bytes": 7906,
+      "physical_lines": 202,
+      "classification": "application"
+    },
+    "app/Config/Autoload.php": {
+      "sha256": "63a302be96cb618904cacc4f5664afd56faa878331cfdc686ff31d8860b328a1",
+      "bytes": 3009,
+      "physical_lines": 92,
+      "classification": "application"
+    },
+    "app/Config/Boot/development.php": {
+      "sha256": "026239a48e21ac1caefaaaf8e9331dbf5523798c2b5c2c004295ceee0a70fa8b",
+      "bytes": 1362,
+      "physical_lines": 34,
+      "classification": "application"
+    },
+    "app/Config/Boot/production.php": {
+      "sha256": "24389b89227f83219e94a33b0c46db387764d6bf579fba246aad9179aaab850d",
+      "bytes": 1005,
+      "physical_lines": 25,
+      "classification": "application"
+    },
+    "app/Config/Boot/testing.php": {
+      "sha256": "76e1e19dc621fb4d094dc3b0c88ca151180e4a047f552375321c42b80b82b411",
+      "bytes": 1444,
+      "physical_lines": 38,
+      "classification": "own_support"
+    },
+    "app/Config/CURLRequest.php": {
+      "sha256": "3b4a2489d20ae5efc934362eb4e316b7bd5050cb6c3e1e9d00aa5b87596e3d76",
+      "bytes": 1074,
+      "physical_lines": 36,
+      "classification": "application"
+    },
+    "app/Config/Cache.php": {
+      "sha256": "9f4342e3f5b2e7511f2d4c08a77d4b155bbe5737c89d107805001a6f478502aa",
+      "bytes": 7252,
+      "physical_lines": 198,
+      "classification": "application"
+    },
+    "app/Config/Constants.php": {
+      "sha256": "c0b06fd363e600954cb528d815171754eb26d496992c5a04dcf1d50261f1ab61",
+      "bytes": 3640,
+      "physical_lines": 79,
+      "classification": "application"
+    },
+    "app/Config/ContentSecurityPolicy.php": {
+      "sha256": "b319247f1aee2df85b35ff7170258e3cdb9a417f39ea589e7c963c1562e8bc58",
+      "bytes": 5239,
+      "physical_lines": 216,
+      "classification": "application"
+    },
+    "app/Config/Cookie.php": {
+      "sha256": "9dd319740cdb5e20a10958995682037984f5a2c91158035e9828ece50c6e45aa",
+      "bytes": 3546,
+      "physical_lines": 107,
+      "classification": "application"
+    },
+    "app/Config/Cors.php": {
+      "sha256": "d2ec38e8bfeb8b75aec83a9d521d875d511722fb627c8f0899a0b0f535b4b314",
+      "bytes": 3511,
+      "physical_lines": 105,
+      "classification": "application"
+    },
+    "app/Config/Database.php": {
+      "sha256": "53badcb4615a84f238cb95dee52e1847b4138b98095fd78fd95aa00a927f81e0",
+      "bytes": 6331,
+      "physical_lines": 204,
+      "classification": "application"
+    },
+    "app/Config/DocTypes.php": {
+      "sha256": "e9212a9fcfabab913cf0561103ab5189e622c2aabb13a9607da9e3c5bf5557a1",
+      "bytes": 3058,
+      "physical_lines": 43,
+      "classification": "application"
+    },
+    "app/Config/Email.php": {
+      "sha256": "9f3353760ea40e124c6e1dd991743259ee8435c2cd2df985869e0e411bce6f5a",
+      "bytes": 2456,
+      "physical_lines": 126,
+      "classification": "application"
+    },
+    "app/Config/Encryption.php": {
+      "sha256": "cc4b097241137702af273e67254eec2df891f4198f76498438460712a0672c89",
+      "bytes": 3570,
+      "physical_lines": 109,
+      "classification": "application"
+    },
+    "app/Config/Events.php": {
+      "sha256": "f32ef0f2a80cc937d38e12c8512dbb67b90ed6ccb42e37f7ec7a5cf21ac99ec0",
+      "bytes": 1956,
+      "physical_lines": 57,
+      "classification": "application"
+    },
+    "app/Config/Exceptions.php": {
+      "sha256": "289bd8aafc3208fbd0c57f1814edfd5ee7b2cd4667760a886a026e9ab667c5e8",
+      "bytes": 4001,
+      "physical_lines": 106,
+      "classification": "application"
+    },
+    "app/Config/Feature.php": {
+      "sha256": "65da74162a88671edc99ff29b50cef2c55fd2c3c3e3d1ad3520ab1f9064932a5",
+      "bytes": 1024,
+      "physical_lines": 37,
+      "classification": "application"
+    },
+    "app/Config/Filters.php": {
+      "sha256": "bac1c69a79546c86ef0021f73714178dbc5c29d7589692f0d796021baf210821",
+      "bytes": 298,
+      "physical_lines": 11,
+      "classification": "application"
+    },
+    "app/Config/ForeignCharacters.php": {
+      "sha256": "5944831f09fe449aaaf670c68ec1124787a0bab65ce99b5d1703a52cab14082d",
+      "bytes": 174,
+      "physical_lines": 12,
+      "classification": "application"
+    },
+    "app/Config/Format.php": {
+      "sha256": "f1ae2168037cf104204f2c9792f6ce092ee5721f472059f64c2f083e2eba657a",
+      "bytes": 2560,
+      "physical_lines": 73,
+      "classification": "application"
+    },
+    "app/Config/Generators.php": {
+      "sha256": "9fd72ca6975124312457f6d26aead5c424ab2afb3cc4ab1d010f34fd02385d30",
+      "bytes": 2133,
+      "physical_lines": 44,
+      "classification": "application"
+    },
+    "app/Config/Honeypot.php": {
+      "sha256": "dd9497285afd25f1b1c312dcc9ccaeb62a3b66e649cba6640e9662016a4b7d23",
+      "bytes": 855,
+      "physical_lines": 42,
+      "classification": "application"
+    },
+    "app/Config/Hostnames.php": {
+      "sha256": "fce2fe1487b8e85d895917c7ba68f2c73cf60aab711a409ee38797001f73d744",
+      "bytes": 2243,
+      "physical_lines": 40,
+      "classification": "application"
+    },
+    "app/Config/Images.php": {
+      "sha256": "ae3609c2d8a473844ed17439096201e9eee85cafca585feaae709e03cb780134",
+      "bytes": 756,
+      "physical_lines": 33,
+      "classification": "application"
+    },
+    "app/Config/Kint.php": {
+      "sha256": "e9515a9bef75f6731f41418ce12fadc0414da21c1d7126cd680351f416b852aa",
+      "bytes": 1887,
+      "physical_lines": 63,
+      "classification": "application"
+    },
+    "app/Config/Logger.php": {
+      "sha256": "e2c77f04871c6bd25dfefc8ae31b8d67af631fb5de01fc18996733f0cada4202",
+      "bytes": 6060,
+      "physical_lines": 151,
+      "classification": "application"
+    },
+    "app/Config/Migrations.php": {
+      "sha256": "b622532632f574c85d7481e36a937a4faeebadef2b5e3a306e796716a7df21af",
+      "bytes": 2156,
+      "physical_lines": 65,
+      "classification": "application"
+    },
+    "app/Config/Mimes.php": {
+      "sha256": "fd3c376b9cc2f7d8729d9f57683f2779ba8253160ef88e0060f5c10febd5c938",
+      "bytes": 15756,
+      "physical_lines": 534,
+      "classification": "application"
+    },
+    "app/Config/Modules.php": {
+      "sha256": "4a4eaa5bdab557c6abb5267b6d2cb4dc39a75425068ff779ecbce1bfedc70305",
+      "bytes": 2298,
+      "physical_lines": 82,
+      "classification": "application"
+    },
+    "app/Config/Optimize.php": {
+      "sha256": "1e3e6d7770b0df28056b1dcee27a89920b2962840af5e438e11fe453bf1643ca",
+      "bytes": 1008,
+      "physical_lines": 32,
+      "classification": "application"
+    },
+    "app/Config/Pager.php": {
+      "sha256": "f662dac48b25a451f2799eb4c174f0a8444e909e7e19e6260cd827ad62c488ff",
+      "bytes": 1189,
+      "physical_lines": 37,
+      "classification": "application"
+    },
+    "app/Config/Paths.php": {
+      "sha256": "8e2b730360385cf83ae563566aabf2de6520ef13a55ecdc172502ec4f7e2b0bf",
+      "bytes": 3334,
+      "physical_lines": 90,
+      "classification": "application"
+    },
+    "app/Config/Publisher.php": {
+      "sha256": "7dcde81c00ce4aab878d24593a9ce06114cc789590dd6f871325612e37589a69",
+      "bytes": 807,
+      "physical_lines": 28,
+      "classification": "application"
+    },
+    "app/Config/Routes.php": {
+      "sha256": "e6c86b3e24b59443120648fb09b55368a73a34f641737e3fa8058b6fce1135c9",
+      "bytes": 380,
+      "physical_lines": 9,
+      "classification": "application"
+    },
+    "app/Config/Routing.php": {
+      "sha256": "1a28d9c75526775809db587f172fdf4f1115c724e3902645e0bf50f9d4aab6ca",
+      "bytes": 3950,
+      "physical_lines": 149,
+      "classification": "application"
+    },
+    "app/Config/Security.php": {
+      "sha256": "a8c22d7e0a269fce6cb47d41dec3b4c1331d125a163ffe3694bf927cf2911b9f",
+      "bytes": 2853,
+      "physical_lines": 86,
+      "classification": "application"
+    },
+    "app/Config/Services.php": {
+      "sha256": "34cb6ef186f9ddb585af5273ed5512a0378bf71dc0d208e5eee7ac1323c57a08",
+      "bytes": 921,
+      "physical_lines": 32,
+      "classification": "application"
+    },
+    "app/Config/Session.php": {
+      "sha256": "602d045b8f16c665616a034625ff8cdc587455464b98a251ba4812e77c972039",
+      "bytes": 4640,
+      "physical_lines": 128,
+      "classification": "application"
+    },
+    "app/Config/Toolbar.php": {
+      "sha256": "0fa5fb33d1321d23ae8a020305f1ac6e585c49515374bda4a21844e2925e17b0",
+      "bytes": 5775,
+      "physical_lines": 147,
+      "classification": "application"
+    },
+    "app/Config/UserAgents.php": {
+      "sha256": "7e751ab9964807388af25ae21a3fcbad9ac24be44486ba67e5ecf716a5541974",
+      "bytes": 10327,
+      "physical_lines": 262,
+      "classification": "application"
+    },
+    "app/Config/Validation.php": {
+      "sha256": "af775d9dd7574d9fabd41f5c20ff7b772c5d3a1f512c09be864133155a132735",
+      "bytes": 1192,
+      "physical_lines": 44,
+      "classification": "application"
+    },
+    "app/Config/View.php": {
+      "sha256": "4854f58e22869ad53e6220d572348c9d84065b25760dc67c4f0b6521c9ecfe67",
+      "bytes": 2902,
+      "physical_lines": 81,
+      "classification": "application"
+    },
+    "app/Config/WorkerMode.php": {
+      "sha256": "72e3d97df0c9b26803503600ddc845fdfbca5bf2924519540cd4f2299b9bf5ac",
+      "bytes": 1723,
+      "physical_lines": 62,
+      "classification": "application"
+    },
+    "app/Controllers/BaseController.php": {
+      "sha256": "dfbb8d089d7daaaccbe74b037380ba807a713e1121d3a30e42d82c80fc58a53d",
+      "bytes": 1480,
+      "physical_lines": 49,
+      "classification": "application"
+    },
+    "app/Controllers/Feed.php": {
+      "sha256": "df6e5660efcee3c0b1ce340be185e91eac09ee86f832ce9159f776a4871a395e",
+      "bytes": 8797,
+      "physical_lines": 217,
+      "classification": "application"
+    },
+    "app/Database/Migrations/.gitkeep": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "physical_lines": 0,
+      "classification": "other"
+    },
+    "app/Database/Seeds/.gitkeep": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "physical_lines": 0,
+      "classification": "other"
+    },
+    "app/Filters/.gitkeep": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "physical_lines": 0,
+      "classification": "other"
+    },
+    "app/Helpers/.gitkeep": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "physical_lines": 0,
+      "classification": "other"
+    },
+    "app/Language/.gitkeep": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "physical_lines": 0,
+      "classification": "other"
+    },
+    "app/Language/en/Validation.php": {
+      "sha256": "cc000c8c25a2dc6d4149ff97fb461b9bd9017317728eb6e72e52a62731d2ac6c",
+      "bytes": 115,
+      "physical_lines": 4,
+      "classification": "application"
+    },
+    "app/Libraries/.gitkeep": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "physical_lines": 0,
+      "classification": "other"
+    },
+    "app/Models/.gitkeep": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "physical_lines": 0,
+      "classification": "other"
+    },
+    "app/ThirdParty/.gitkeep": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "physical_lines": 0,
+      "classification": "other"
+    },
+    "app/Views/errors/cli/error_404.php": {
+      "sha256": "855eaeb4854e735c580c7fd28d4ed1bfc82a7ee576421d84b921d99c88b0b560",
+      "bytes": 102,
+      "physical_lines": 7,
+      "classification": "application"
+    },
+    "app/Views/errors/cli/error_exception.php": {
+      "sha256": "9200529a8f18d7f214d7f9e39750626ba4acbe420809320abf7ee9c42caae63b",
+      "bytes": 2207,
+      "physical_lines": 65,
+      "classification": "application"
+    },
+    "app/Views/errors/cli/production.php": {
+      "sha256": "3083340bd656c0e6d15d681de82eeb84dd6ec40073c45831b8f7c481b89bff75",
+      "bytes": 139,
+      "physical_lines": 5,
+      "classification": "application"
+    },
+    "app/Views/errors/html/debug.css": {
+      "sha256": "7db51a846e3783179dab74603c133de552974a34ac6f691bdb753b9acbdf0511",
+      "bytes": 3575,
+      "physical_lines": 194,
+      "classification": "application"
+    },
+    "app/Views/errors/html/debug.js": {
+      "sha256": "968765d1d4913a15e7fd32bc348912e527bf54503d132db7f8b0f1ba66719dd0",
+      "bytes": 2820,
+      "physical_lines": 116,
+      "classification": "application"
+    },
+    "app/Views/errors/html/error_400.php": {
+      "sha256": "81b7b4b440566bae2c7c89a968fc035bbd3e3b6eba70c8228bb0aa7be81edf3a",
+      "bytes": 1997,
+      "physical_lines": 84,
+      "classification": "application"
+    },
+    "app/Views/errors/html/error_404.php": {
+      "sha256": "e81be912470f37059fa69996397a281d5fb4d2a775d53bb2592e8c865b0189d1",
+      "bytes": 2039,
+      "physical_lines": 84,
+      "classification": "application"
+    },
+    "app/Views/errors/html/error_exception.php": {
+      "sha256": "7a892b71ecf5438c25358e18a0114987a82adb626ff5b25422a9b650c1d21a72",
+      "bytes": 16998,
+      "physical_lines": 429,
+      "classification": "application"
+    },
+    "app/Views/errors/html/production.php": {
+      "sha256": "bd52647edfd8ca515a7e4e391b1abb41d99081ce14863b5ca1a55b2a5fe68197",
+      "bytes": 500,
+      "physical_lines": 25,
+      "classification": "application"
+    },
+    "app/index.html": {
+      "sha256": "01644da213f8458177f02e6d5fec529e3c8fd1bac86b0c1771d43b961079ea32",
+      "bytes": 134,
+      "physical_lines": 11,
+      "classification": "application"
+    },
+    "benchmarks/confirmation-18500.json": {
+      "sha256": "6c0dd95f878474a6b9d371a4a309e39d02daaa2a740ca764b474ccf4d783cbba",
+      "bytes": 4163,
+      "physical_lines": 146,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "benchmarks/confirmation-20000.json": {
+      "sha256": "0a1266b08e91cb8b877da92ace723d4e5c97af13ec1ec18fe3d10b305354485e",
+      "bytes": 4192,
+      "physical_lines": 146,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "benchmarks/results.json": {
+      "sha256": "4ac2195f80506e5f7947b7627b4c808bba12bfeab82047ca17be0b3e11cb501c",
+      "bytes": 10587,
+      "physical_lines": 228,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "benchmarks/warmup-18500.json": {
+      "sha256": "861c87a49cd2c527922e8d0151966c5a25ba2e74af8980c08c742b86f9abc966",
+      "bytes": 4207,
+      "physical_lines": 146,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "build.sh": {
+      "sha256": "f7f977d1ccc60bf98fb35cb31f063016e42029a239c4bba90622390d80c5e286",
+      "bytes": 297,
+      "physical_lines": 6,
+      "classification": "own_support"
+    },
+    "checks/worker.py": {
+      "sha256": "2481c6e0831301170214e7a576e7f241fef6657ff9ee3d2b5246d2f2496f8fbe",
+      "bytes": 4036,
+      "physical_lines": 73,
+      "classification": "own_support"
+    },
+    "composer.json": {
+      "sha256": "c571c6c44063dcc08b43920b137979139e1ee87fcc5abc2da4c7b00c9112b856",
+      "bytes": 655,
+      "physical_lines": 27,
+      "classification": "own_support"
+    },
+    "composer.lock": {
+      "sha256": "aed294a1fc6bb5e35deb5eaee7283ee11299f59d5caeef9b42d1ae039574f940",
+      "bytes": 8239,
+      "physical_lines": 212,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "install.sh": {
+      "sha256": "6eea7ca1b81a6342fe054f542fd0286f7e5e88f8ab938854fb0cc28c229d751f",
+      "bytes": 975,
+      "physical_lines": 16,
+      "classification": "own_support"
+    },
+    "public/.htaccess": {
+      "sha256": "328c42a9958cc7a952686723af19e685977080d1129aa229c4e295744a10c493",
+      "bytes": 1661,
+      "physical_lines": 49,
+      "classification": "other"
+    },
+    "public/frankenphp-worker.php": {
+      "sha256": "33f454ee23465bbf1d43a2ce3fe1c5eb7ba6777419ae0d8c6a2eedf858309ea1",
+      "bytes": 3654,
+      "physical_lines": 133,
+      "classification": "application"
+    },
+    "public/index.php": {
+      "sha256": "479ae741c8c130861084e4930d9586c404472970e5db92cb65bb4dc696d6f2e5",
+      "bytes": 1730,
+      "physical_lines": 59,
+      "classification": "application"
+    },
+    "spark": {
+      "sha256": "10b3b8cc982064a0e32e373f589b0aca25740a25588f122e8f54fa2e1ecb6073",
+      "bytes": 2668,
+      "physical_lines": 87,
+      "classification": "other"
+    },
+    "start.sh": {
+      "sha256": "2f2e4fb2aabc7c89c9972b50a936a4a0b5969cf2443c48f9aac1ccfb9323dc07",
+      "bytes": 570,
+      "physical_lines": 9,
+      "classification": "own_support"
+    },
+    "writable/.htaccess": {
+      "sha256": "66d7bf6151b5085af019d2473254f2827360b94b3c37a73d7837e89d435acdb6",
+      "bytes": 118,
+      "physical_lines": 6,
+      "classification": "other"
+    },
+    "writable/cache/index.html": {
+      "sha256": "0ee6dff170c38f66cc1e9ef00cfb927bba75b30379af3281c026647c068a4709",
+      "bytes": 131,
+      "physical_lines": 11,
+      "classification": "application"
+    },
+    "writable/debugbar/index.html": {
+      "sha256": "0ee6dff170c38f66cc1e9ef00cfb927bba75b30379af3281c026647c068a4709",
+      "bytes": 131,
+      "physical_lines": 11,
+      "classification": "application"
+    },
+    "writable/index.html": {
+      "sha256": "0ee6dff170c38f66cc1e9ef00cfb927bba75b30379af3281c026647c068a4709",
+      "bytes": 131,
+      "physical_lines": 11,
+      "classification": "application"
+    },
+    "writable/logs/index.html": {
+      "sha256": "0ee6dff170c38f66cc1e9ef00cfb927bba75b30379af3281c026647c068a4709",
+      "bytes": 131,
+      "physical_lines": 11,
+      "classification": "application"
+    },
+    "writable/session/index.html": {
+      "sha256": "0ee6dff170c38f66cc1e9ef00cfb927bba75b30379af3281c026647c068a4709",
+      "bytes": 131,
+      "physical_lines": 11,
+      "classification": "application"
+    },
+    "writable/uploads/index.html": {
+      "sha256": "0ee6dff170c38f66cc1e9ef00cfb927bba75b30379af3281c026647c068a4709",
+      "bytes": 131,
+      "physical_lines": 11,
+      "classification": "application"
+    }
+  },
+  "skipped_members": []
+}

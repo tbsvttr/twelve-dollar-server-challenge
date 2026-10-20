@@ -1,0 +1,9 @@
+__  ____  __  _____   ___  __ ____  ______ 
+ --/ __ \/ / / / _ | / _ \/ //_/ / / / __/ 
+ -/ /_/ / /_/ / __ |/ , _/ ,< / /_/ /\ \   
+--\___\_\____/_/ |_/_/|_/_/|_|\____/___/   
+2026-10-20 11:30:35,770 INFO  [io.quarkus] (main) twelve-dollar-server-challenge 1.0.0-SNAPSHOT on JVM (powered by Quarkus 3.40.1) started in 0.968s. Listening on: http://127.0.0.1:24000
+2026-10-20 11:30:35,774 INFO  [io.quarkus] (main) Profile prod activated. 
+2026-10-20 11:30:35,774 INFO  [io.quarkus] (main) Installed features: [agroal, cdi, jdbc-sqlite, narayana-jta, rest, rest-jackson, security, smallrye-context-propagation, smallrye-jwt, vertx]
+2026-10-20 11:30:37,045 WARN  [io.agroal.pool] (main) Datasource 'readers': database connection closed
+2026-10-20 11:30:37,157 INFO  [io.quarkus] (main) twelve-dollar-server-challenge stopped in 0.130s

@@ -1,0 +1,217 @@
+{
+  "schema_version": 1,
+  "case_id": "103",
+  "pr": 103,
+  "trial": 1,
+  "diagnostic_kind": "offline_existing_evidence_only",
+  "collected_at": "2026-10-20T12:01:55Z",
+  "identity": {
+    "commit": "896434055ff5278bead6112da223c5bb0670f982",
+    "image": "twelve-current-pr103:2026-10-20",
+    "image_id": "sha256:982859ec4835a6102be6d9b33a8d1778d1d1732f696d52d7ce2e0e6d39d61a8d",
+    "source_sha256": "ecb86bbdd09681a6a378c30bd961851d20f7fb81df83bf6c1d06de6e233a1870",
+    "fingerprint": "e840b1ad15da8ee7bc62618e34478ab8ec84f81e51a18814f2bfd2cc0456c7d5"
+  },
+  "source_identity": {
+    "folder": "go-gin-lincolng4",
+    "source_url": "https://github.com/LincolnG4/twelve-dollar-server-challenge/tree/896434055ff5278bead6112da223c5bb0670f982/submissions/go-gin-lincolng4",
+    "tracked_source_hashes_verified": 9,
+    "inventory_file": "archives/pr103-sha256.json",
+    "main_go_sha256": "71b7ca4840f1a66119073587830194456713afc271c74f7ab1db519e16ec9979"
+  },
+  "evidence": {
+    "measurement_file": "measurements.json",
+    "measurement_trial_record_sha256": "29f630b89dff539ee544f9ffa20353375a16bd9f2f81645357ecf83f5de256c5",
+    "server_log": "server-logs/bench-103-1.log",
+    "server_log_sha256": "5889f7e95cc099550290513e0a8de8c70509a9ff7427cfcd6fa7fbb05f6aeba5",
+    "server_log_bytes": 49,
+    "server_log_text": "2026/10/20 11:56:53 listening on 127.0.0.1:24000\n"
+  },
+  "observed_facts": [
+    {
+      "id": "measured_errors",
+      "description": "wrk reports aggregate error counters, without individual HTTP codes, response bodies or request timings.",
+      "requests": 404492,
+      "duration_s": 15.08,
+      "http_non_2xx_or_3xx_responses": 30,
+      "http_error_fraction_of_completed_requests": 7.416710342849797e-05,
+      "socket_errors": {
+        "connect": 0,
+        "read": 0,
+        "write": 0,
+        "timeout": 30
+      },
+      "rps": 26814.38,
+      "successful_rps_as_harness_defined": 26812.390610079576
+    },
+    {
+      "id": "configuration",
+      "configuration": {
+        "threads": 2,
+        "connections": 64,
+        "warmup_seconds": 2,
+        "measurement_seconds": 15,
+        "trials": 3
+      },
+      "cpuset_cpus": "0",
+      "cpu_limit": 1.0,
+      "memory_limit_bytes": 2147483648,
+      "evidence_lines": {
+        "file": "run.py",
+        "line_start": 220,
+        "line_end": 229
+      },
+      "description": "The command does not set wrk --timeout explicitly; its effective socket deadline is not recorded in the trial metadata."
+    },
+    {
+      "id": "healthy_database_and_live_process",
+      "database_valid": true,
+      "database_after": {
+        "initial_post_count": 500000,
+        "post_count": 504349,
+        "max_post_id": 504349,
+        "integrity": "ok"
+      },
+      "cpu_percent": 93.4211107185616,
+      "rss_mib": 79.234375,
+      "oom_killed": false,
+      "container_running_after_measurement": true,
+      "description": "Database validation is post-stop quick_check plus positive post-count growth, including warmup writes; it does not establish absence of transient SQL errors or per-request durability."
+    },
+    {
+      "id": "log_contains_no_failure_details",
+      "description": "Archived server log contains only the startup/listening line. There is no observed database error string, HTTP status breakdown, panic or crash reason in this log."
+    },
+    {
+      "id": "exclusive_pool_source",
+      "description": "Every connection uses WAL, locking_mode=EXCLUSIVE, and busy_timeout=5000 milliseconds, while database/sql permits 16 open and 16 idle connections.",
+      "references": [
+        {
+          "file": "sources/pr103/main.go",
+          "line_start": 48,
+          "line_end": 56,
+          "pinned_url": "https://github.com/LincolnG4/twelve-dollar-server-challenge/blob/896434055ff5278bead6112da223c5bb0670f982/submissions/go-gin-lincolng4/main.go#L48-L56"
+        }
+      ]
+    },
+    {
+      "id": "unlogged_sql_failures",
+      "description": "Feed/post/like/create SQL failures return generic HTTP500 JSON without logging the underlying error; the middleware also suppresses panic details. gin.New is used without request/error logging middleware.",
+      "references": [
+        {
+          "file": "sources/pr103/main.go",
+          "line_start": 107,
+          "line_end": 116,
+          "pinned_url": "https://github.com/LincolnG4/twelve-dollar-server-challenge/blob/896434055ff5278bead6112da223c5bb0670f982/submissions/go-gin-lincolng4/main.go#L107-L116"
+        },
+        {
+          "file": "sources/pr103/main.go",
+          "line_start": 134,
+          "line_end": 155,
+          "pinned_url": "https://github.com/LincolnG4/twelve-dollar-server-challenge/blob/896434055ff5278bead6112da223c5bb0670f982/submissions/go-gin-lincolng4/main.go#L134-L155"
+        },
+        {
+          "file": "sources/pr103/main.go",
+          "line_start": 164,
+          "line_end": 172,
+          "pinned_url": "https://github.com/LincolnG4/twelve-dollar-server-challenge/blob/896434055ff5278bead6112da223c5bb0670f982/submissions/go-gin-lincolng4/main.go#L164-L172"
+        },
+        {
+          "file": "sources/pr103/main.go",
+          "line_start": 202,
+          "line_end": 206,
+          "pinned_url": "https://github.com/LincolnG4/twelve-dollar-server-challenge/blob/896434055ff5278bead6112da223c5bb0670f982/submissions/go-gin-lincolng4/main.go#L202-L206"
+        },
+        {
+          "file": "sources/pr103/main.go",
+          "line_start": 220,
+          "line_end": 239,
+          "pinned_url": "https://github.com/LincolnG4/twelve-dollar-server-challenge/blob/896434055ff5278bead6112da223c5bb0670f982/submissions/go-gin-lincolng4/main.go#L220-L239"
+        }
+      ]
+    },
+    {
+      "id": "request_context_not_passed_to_sql",
+      "description": "Handlers invoke Query, QueryRow and Exec rather than passing the HTTP request context to the corresponding Context methods.",
+      "references": [
+        {
+          "file": "sources/pr103/main.go",
+          "line_start": 135,
+          "line_end": 135,
+          "pinned_url": "https://github.com/LincolnG4/twelve-dollar-server-challenge/blob/896434055ff5278bead6112da223c5bb0670f982/submissions/go-gin-lincolng4/main.go#L135"
+        },
+        {
+          "file": "sources/pr103/main.go",
+          "line_start": 165,
+          "line_end": 165,
+          "pinned_url": "https://github.com/LincolnG4/twelve-dollar-server-challenge/blob/896434055ff5278bead6112da223c5bb0670f982/submissions/go-gin-lincolng4/main.go#L165"
+        },
+        {
+          "file": "sources/pr103/main.go",
+          "line_start": 203,
+          "line_end": 203,
+          "pinned_url": "https://github.com/LincolnG4/twelve-dollar-server-challenge/blob/896434055ff5278bead6112da223c5bb0670f982/submissions/go-gin-lincolng4/main.go#L203"
+        },
+        {
+          "file": "sources/pr103/main.go",
+          "line_start": 221,
+          "line_end": 221,
+          "pinned_url": "https://github.com/LincolnG4/twelve-dollar-server-challenge/blob/896434055ff5278bead6112da223c5bb0670f982/submissions/go-gin-lincolng4/main.go#L221"
+        },
+        {
+          "file": "sources/pr103/main.go",
+          "line_start": 232,
+          "line_end": 232,
+          "pinned_url": "https://github.com/LincolnG4/twelve-dollar-server-challenge/blob/896434055ff5278bead6112da223c5bb0670f982/submissions/go-gin-lincolng4/main.go#L232"
+        }
+      ]
+    },
+    {
+      "id": "no_deliberate_bad_requests_in_fixture",
+      "description": "The Lua fixture sends feed/post reads and authenticated like/create writes; it initially uses existing post500000 and then IDs from observed feeds. No deliberately invalid-route/auth/body workload is present.",
+      "references": [
+        {
+          "file": "mixed.lua",
+          "line_start": 10,
+          "line_end": 27
+        }
+      ]
+    }
+  ],
+  "inferences": [
+    {
+      "id": "likely_sqlite_connection_contention",
+      "confidence": "strong source-supported hypothesis, not confirmed by the captured runtime log",
+      "statement": "The combination of EXCLUSIVE SQLite locking and a 16-connection pool is the most concrete source-level candidate for concurrent connection contention. Additional connections can wait against the connection holding the exclusive database lock; the configured 5-second busy wait and lack of explicit request-context propagation could produce slow requests/timeouts followed by generic SQL-error HTTP500 responses.",
+      "supporting_fact_ids": [
+        "exclusive_pool_source",
+        "unlogged_sql_failures",
+        "request_context_not_passed_to_sql",
+        "measured_errors"
+      ],
+      "limits": "No captured SQLITE_BUSY/database-is-locked message or actual HTTP500 status was observed, so this mechanism cannot be claimed as the proven cause of these 30 responses/timeouts."
+    },
+    {
+      "id": "no_evidence_for_oom_or_server_crash",
+      "confidence": "directly consistent with captured lifecycle metrics",
+      "statement": "The process remains alive and the container reports no OOM kill; the observed errors are not accompanied by an observed process crash or OOM event."
+    }
+  ],
+  "unknowns": [
+    "Actual HTTP status codes and bodies of the 30 non-2xx/3xx responses.",
+    "Underlying SQL error values, if any; the source does not log them.",
+    "Which requests or database connections waited, and their individual timing.",
+    "Whether the 30 HTTP errors and 30 socket timeouts overlap; they must not be added as 60 distinct failed operations.",
+    "Exact effective wrk timeout and per-connection pool statistics."
+  ],
+  "conclusion_for_reporting": "Retain the measured 30 HTTP-error and 30 socket-timeout counters. The startup-only log does not establish a runtime cause. Label exclusive-mode/pool contention as a source-supported hypothesis, not a confirmed diagnosis. Database quick_check success does not contradict transient lock contention.",
+  "actions": {
+    "workloads_started": false,
+    "builds_started": false,
+    "container_changes": false,
+    "fixture_edits": false,
+    "submission_source_edits": false,
+    "retries_requested_or_run": false,
+    "only_output_written": "diagnostics-pr103.json"
+  }
+}

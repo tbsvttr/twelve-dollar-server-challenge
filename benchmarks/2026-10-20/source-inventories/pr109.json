@@ -1,0 +1,77 @@
+{
+  "files": {
+    ".gitignore": {
+      "sha256": "57a8ad0e62346f7b0f2e261d59a7b90f1310043424bcb9d229208f183f1940d9",
+      "bytes": 20,
+      "physical_lines": 2,
+      "classification": "documentation_lock_or_metadata"
+    },
+    ".python-version": {
+      "sha256": "8effb955f195345405c0cf4d0fb35f65165b59f444ad1a5fd9ff1ca9194fde29",
+      "bytes": 7,
+      "physical_lines": 1,
+      "classification": "other"
+    },
+    "README.md": {
+      "sha256": "cede97ce63ee1867e0c6952bef1bd403e4aaa4829773d8d25529f063519a8714",
+      "bytes": 3704,
+      "physical_lines": 60,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "app.py": {
+      "sha256": "9ca1996fcb767e7808f42b64d611dd110a4de1a66470c5763e02e1238b4dcb5c",
+      "bytes": 8401,
+      "physical_lines": 280,
+      "classification": "application"
+    },
+    "auth.py": {
+      "sha256": "dcae316aa18abe784cc1cd9c661d1c61639bf8bba246219d6a40f9fb88b0097b",
+      "bytes": 2376,
+      "physical_lines": 73,
+      "classification": "application"
+    },
+    "build.sh": {
+      "sha256": "5dc02a4335cc60da112a4fc066a305190adb4bcf438bfe226027a6e177a85845",
+      "bytes": 1531,
+      "physical_lines": 42,
+      "classification": "own_support"
+    },
+    "db.py": {
+      "sha256": "464f73940119897c4973b38d01f707e795879f69b7439a0c831a100d265426d3",
+      "bytes": 1199,
+      "physical_lines": 48,
+      "classification": "application"
+    },
+    "install.sh": {
+      "sha256": "037ce0abbd0b27a8e4d01ab35777da5c140a642db5f446e5e73d61906d544377",
+      "bytes": 677,
+      "physical_lines": 26,
+      "classification": "own_support"
+    },
+    "pyproject.toml": {
+      "sha256": "6869538a1f2cd565e5e470ab13b5de43c9f733301b621cf7e02311f14ee86f9f",
+      "bytes": 227,
+      "physical_lines": 7,
+      "classification": "own_support"
+    },
+    "requirements.txt": {
+      "sha256": "85f9225193f1d88e291e059efc742516c8007e66b65e5f69549dc7591dcba83c",
+      "bytes": 73,
+      "physical_lines": 5,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "start.sh": {
+      "sha256": "b2a0e559781774ca9a1fe72c7b872912dc91ce42fa50a7b225251dceb15308ba",
+      "bytes": 749,
+      "physical_lines": 26,
+      "classification": "own_support"
+    },
+    "uv.lock": {
+      "sha256": "43c3de53baee3f81c82f48558a9ee32c8844dcdd29139118e8c860dac8052e01",
+      "bytes": 25272,
+      "physical_lines": 138,
+      "classification": "documentation_lock_or_metadata"
+    }
+  },
+  "skipped_members": []
+}

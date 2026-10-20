@@ -1,0 +1,341 @@
+{
+  "files": {
+    ".dockerignore": {
+      "sha256": "39b0bd3b7287783b4c4a24b533ea13483f7b7c7f59d2b5d9eb7c3f0ca1786d35",
+      "bytes": 75,
+      "physical_lines": 5,
+      "classification": "documentation_lock_or_metadata"
+    },
+    ".gitattributes": {
+      "sha256": "efe387607bd66fa08eebf5f77c7867140c3a837e1735b2ac560a1ba51c7e1381",
+      "bytes": 120,
+      "physical_lines": 3,
+      "classification": "other"
+    },
+    ".gitignore": {
+      "sha256": "d3f5666e4bb57f3ba9f457a43da416cd04189f5196a9e37f2b043b3af6e94519",
+      "bytes": 423,
+      "physical_lines": 45,
+      "classification": "documentation_lock_or_metadata"
+    },
+    ".mvn/wrapper/maven-wrapper.properties": {
+      "sha256": "9e702bcd7e68ba1cace0a3382a7082e6e1e1b321688a7a3fbf4d5ae7eb0af533",
+      "bytes": 255,
+      "physical_lines": 4,
+      "classification": "own_support"
+    },
+    "README.md": {
+      "sha256": "311d8e59b4ab97f20e3771089269aa875713eece39a7fcda5a66b388d164e19c",
+      "bytes": 3900,
+      "physical_lines": 63,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "build.sh": {
+      "sha256": "bafe775f9ef1368f5c5e851aa878d61cd6d90fe8222747c106d290d246b82c14",
+      "bytes": 418,
+      "physical_lines": 11,
+      "classification": "own_support"
+    },
+    "install.sh": {
+      "sha256": "0e2466b36ec83b11674ec51963ee43a0aa455e662f286b2b9977fabefb8c5f6c",
+      "bytes": 1954,
+      "physical_lines": 44,
+      "classification": "own_support"
+    },
+    "mvnw": {
+      "sha256": "cae96cef89ebea3531221f4ae17c23cf8edf67d00eae8306d4186ae1bbed4d02",
+      "bytes": 11790,
+      "physical_lines": 295,
+      "classification": "other"
+    },
+    "mvnw.cmd": {
+      "sha256": "4a361e1374a3e5ad6d03e18e9adc0cf181ac5058ac6203b76f0ba3b456b56481",
+      "bytes": 8292,
+      "physical_lines": 189,
+      "classification": "other"
+    },
+    "pom.xml": {
+      "sha256": "699110af1e61347a44bb5595949f8177c97dab15e1ad646d91fb1dc844b2344d",
+      "bytes": 5647,
+      "physical_lines": 142,
+      "classification": "own_support"
+    },
+    "src/main/docker/Dockerfile.jvm": {
+      "sha256": "f5f3fe10cd7fec4f9b4b60bd2fade41da3f88304dd4817a8b4e9f63738b9ed93",
+      "bytes": 5738,
+      "physical_lines": 100,
+      "classification": "other"
+    },
+    "src/main/docker/Dockerfile.legacy-jar": {
+      "sha256": "7e5703591bf5d07ffc97c19ed3bc93c295d9d4203e700a45d4d5c03fbba97e12",
+      "bytes": 5551,
+      "physical_lines": 96,
+      "classification": "other"
+    },
+    "src/main/docker/Dockerfile.native": {
+      "sha256": "0602a837a3c443c0c0f026a01e4d6306c69545814b351f7a35364bacf1bfe975",
+      "bytes": 887,
+      "physical_lines": 29,
+      "classification": "other"
+    },
+    "src/main/docker/Dockerfile.native-micro": {
+      "sha256": "10ad907e9e0ed4ca5e31da05225c09942bf3a5e31abce154d21d7feada8597f0",
+      "bytes": 1123,
+      "physical_lines": 32,
+      "classification": "other"
+    },
+    "src/main/java/io/github/wolches/challenge12/dao/AsyncDbWorker.java": {
+      "sha256": "46bbc1166b555f7a58a2d28d9dcdad480ed7957c551df00c7dea3a82c2021115",
+      "bytes": 2329,
+      "physical_lines": 72,
+      "classification": "application"
+    },
+    "src/main/java/io/github/wolches/challenge12/dao/AsyncSeparatedReadWriteDao.java": {
+      "sha256": "ecc55f1432e2b53f3492af009dc180461c0811a6cb3113e8648ed25772dad840",
+      "bytes": 5731,
+      "physical_lines": 168,
+      "classification": "application"
+    },
+    "src/main/java/io/github/wolches/challenge12/dao/ConnectionJob.java": {
+      "sha256": "5e6f4002cd1553c0cc617ed44aeaf172f1d409d2f7154f8313888888b5b57a84",
+      "bytes": 208,
+      "physical_lines": 10,
+      "classification": "application"
+    },
+    "src/main/java/io/github/wolches/challenge12/exception/BusinessLogicException.java": {
+      "sha256": "dce116d9246db696530a78db1416124ccb7fcc105f3298b9ee07fac2d1855a2d",
+      "bytes": 244,
+      "physical_lines": 9,
+      "classification": "application"
+    },
+    "src/main/java/io/github/wolches/challenge12/exception/InternalServerErrorException.java": {
+      "sha256": "883c4a2a2f18978b7e3746c7ba51996db08f18220e62a4becafd3ab247cc576d",
+      "bytes": 335,
+      "physical_lines": 13,
+      "classification": "application"
+    },
+    "src/main/java/io/github/wolches/challenge12/exception/InvalidOrExpiredTokenException.java": {
+      "sha256": "b161c0c505e24a7df97d958c901ee45c49256349d80e6d357262636fafd52721",
+      "bytes": 342,
+      "physical_lines": 13,
+      "classification": "application"
+    },
+    "src/main/java/io/github/wolches/challenge12/exception/InvalidPostIdException.java": {
+      "sha256": "ecf71880a8e333926fae389567ee303bcecdd7de4ff89ac5605b368c2a44b59a",
+      "bytes": 275,
+      "physical_lines": 13,
+      "classification": "application"
+    },
+    "src/main/java/io/github/wolches/challenge12/exception/InvalidTokenPayloadException.java": {
+      "sha256": "145f7598d3c565195fc914a02c40cda35b97273ca59175b5ae0177e2af4e21c9",
+      "bytes": 335,
+      "physical_lines": 13,
+      "classification": "application"
+    },
+    "src/main/java/io/github/wolches/challenge12/exception/MalformedJsonBody.java": {
+      "sha256": "6ef312dba891a653adac67f1f6ab24e9937b7d0e342e7b45786c9e2cbe6afb37",
+      "bytes": 311,
+      "physical_lines": 13,
+      "classification": "application"
+    },
+    "src/main/java/io/github/wolches/challenge12/exception/MissingBearerTokenException.java": {
+      "sha256": "43cec140dcf53f3df98b60a92f9b88b82c37973156236d890543be8d63df1924",
+      "bytes": 332,
+      "physical_lines": 13,
+      "classification": "application"
+    },
+    "src/main/java/io/github/wolches/challenge12/exception/MissingBodyException.java": {
+      "sha256": "8ac4ca311c2732ae60eb941c7ee8e1feac6b5257504606a2a5cc99a3aba74108",
+      "bytes": 272,
+      "physical_lines": 12,
+      "classification": "application"
+    },
+    "src/main/java/io/github/wolches/challenge12/exception/PostNotFoundException.java": {
+      "sha256": "11e9c36a8e4c154c5cf64d904e459f1eadff70271ccdcf7ca51c4ed5c199268a",
+      "bytes": 272,
+      "physical_lines": 12,
+      "classification": "application"
+    },
+    "src/main/java/io/github/wolches/challenge12/exception/TooLongBodyException.java": {
+      "sha256": "a3cd40d2109d54f4327dbaab4c74619aec402588a3b69a5a868f76992665af4e",
+      "bytes": 291,
+      "physical_lines": 12,
+      "classification": "application"
+    },
+    "src/main/java/io/github/wolches/challenge12/exception/UnknownPathException.java": {
+      "sha256": "ea840bcc7ea4021922bb987376a3004f5b48569cdde2e7822e44790efd7ac440",
+      "bytes": 302,
+      "physical_lines": 14,
+      "classification": "application"
+    },
+    "src/main/java/io/github/wolches/challenge12/model/PostCreateRequestDto.java": {
+      "sha256": "271a0033ad53f04a13ec5355cb82a8796119e71df1ff6e705747e80a7e05b481",
+      "bytes": 246,
+      "physical_lines": 12,
+      "classification": "application"
+    },
+    "src/main/java/io/github/wolches/challenge12/model/PostDto.java": {
+      "sha256": "17393ed46b5e4997fc7238ed5ac433a844851368ac0c62056b007a419bb15ba0",
+      "bytes": 513,
+      "physical_lines": 18,
+      "classification": "application"
+    },
+    "src/main/java/io/github/wolches/challenge12/model/PostId.java": {
+      "sha256": "4722dab327f0bd086795ac66541d1e83a0d5da73d44d5d436d4ce1d2a88486d8",
+      "bytes": 609,
+      "physical_lines": 21,
+      "classification": "application"
+    },
+    "src/main/java/io/github/wolches/challenge12/model/persistent/PostResult.java": {
+      "sha256": "9de822a9ed22aed8dfd454e500172a6576f63f078dde7bc53cafaf8c6cdba001",
+      "bytes": 155,
+      "physical_lines": 10,
+      "classification": "application"
+    },
+    "src/main/java/io/github/wolches/challenge12/model/response/ErrorResponseDto.java": {
+      "sha256": "fc3f1e1939365786e4412e7558fcbc56666648c902312ff1fa9c996215663840",
+      "bytes": 111,
+      "physical_lines": 7,
+      "classification": "application"
+    },
+    "src/main/java/io/github/wolches/challenge12/model/response/HealthResponseDto.java": {
+      "sha256": "eae77ba0be41b96076c4ea8074fef79f2306c5004df8e4ab509be1a22b011eb4",
+      "bytes": 1073,
+      "physical_lines": 33,
+      "classification": "application"
+    },
+    "src/main/java/io/github/wolches/challenge12/model/response/LikeResponseDto.java": {
+      "sha256": "c7bb88c4a2395e4a3c0f0daf80e4b7ad6dd7c4a69bb409bc82fd713745f9c114",
+      "bytes": 479,
+      "physical_lines": 16,
+      "classification": "application"
+    },
+    "src/main/java/io/github/wolches/challenge12/model/response/PostListResponseDto.java": {
+      "sha256": "25164e164714a4b64d4fe49fee0eb27a12f4852529f054bf32d144b0f822c701",
+      "bytes": 288,
+      "physical_lines": 14,
+      "classification": "application"
+    },
+    "src/main/java/io/github/wolches/challenge12/model/response/SinglePostResponseDto.java": {
+      "sha256": "630db53281b4ea27940263d62495e2a9a643799d29dc520aa06fd9c0e1c39cd3",
+      "bytes": 259,
+      "physical_lines": 12,
+      "classification": "application"
+    },
+    "src/main/java/io/github/wolches/challenge12/rest/ErrorHandler.java": {
+      "sha256": "15d5255a4cc8c8c1c19c1e9b48688a957da6445e6849e227ad255631cd3ba83e",
+      "bytes": 2526,
+      "physical_lines": 71,
+      "classification": "application"
+    },
+    "src/main/java/io/github/wolches/challenge12/rest/HealthController.java": {
+      "sha256": "668d1fed27bdeb5dd2bcc7e101c03f352c821481b512e4a821e5b3e922f39c2b",
+      "bytes": 693,
+      "physical_lines": 24,
+      "classification": "application"
+    },
+    "src/main/java/io/github/wolches/challenge12/rest/PostController.java": {
+      "sha256": "28995d80d0d8cc7b1cf0710f9537d89c9e65e243fb95800c515c8002193c2b61",
+      "bytes": 2277,
+      "physical_lines": 65,
+      "classification": "application"
+    },
+    "src/main/java/io/github/wolches/challenge12/rest/TokenPayloadFilter.java": {
+      "sha256": "0ca4fbb74bd8997823f52542c78447fffd90c9fb570140565fa86192e9190b29",
+      "bytes": 1135,
+      "physical_lines": 31,
+      "classification": "application"
+    },
+    "src/main/java/io/github/wolches/challenge12/service/BodyService.java": {
+      "sha256": "1d54b39e35d964e3f403d7ed79e424ef25d4cfcc8a754e2c9b8d9a12e69e4c89",
+      "bytes": 920,
+      "physical_lines": 28,
+      "classification": "application"
+    },
+    "src/main/java/io/github/wolches/challenge12/service/HealthService.java": {
+      "sha256": "f7824f43c44727260f8651f1f7bc486d03bbaa95144942cd54b35aacd95541df",
+      "bytes": 964,
+      "physical_lines": 26,
+      "classification": "application"
+    },
+    "src/main/java/io/github/wolches/challenge12/service/PostService.java": {
+      "sha256": "c287427076c0648243feb22fd26b9d316dcdbc5eb60ec27214bd0ce7de1f1002",
+      "bytes": 2429,
+      "physical_lines": 70,
+      "classification": "application"
+    },
+    "src/main/resources/application.properties": {
+      "sha256": "5adc3e6a04ac6258c45324631427a076e6056a01bf4aa25482ad229d48da32b2",
+      "bytes": 951,
+      "physical_lines": 25,
+      "classification": "own_support"
+    },
+    "src/test/java/io/github/wolches/challenge12/AuthTest.java": {
+      "sha256": "7c3dd582e04ef6039462bd273d7e80689b143e60ebec5cd306206c196bcc617c",
+      "bytes": 2625,
+      "physical_lines": 79,
+      "classification": "own_support"
+    },
+    "src/test/java/io/github/wolches/challenge12/CreateLikeReadTest.java": {
+      "sha256": "b7b8edde93a13fef0e022bda6afc0190ba7930ebf01695bb47cafe79d94abada",
+      "bytes": 5612,
+      "physical_lines": 162,
+      "classification": "own_support"
+    },
+    "src/test/java/io/github/wolches/challenge12/CreateValidationTest.java": {
+      "sha256": "26ffb763c936ecc75069c2bff9d20d053497461108dabc9b912b158ab86dd692",
+      "bytes": 1538,
+      "physical_lines": 53,
+      "classification": "own_support"
+    },
+    "src/test/java/io/github/wolches/challenge12/GoldenReadsTest.java": {
+      "sha256": "702e486a0e0917b1348b67f99a7871e20d36cf6c75f1d5bbb6254ff3b871be8c",
+      "bytes": 1828,
+      "physical_lines": 56,
+      "classification": "own_support"
+    },
+    "src/test/java/io/github/wolches/challenge12/HealthAndNotFoundTest.java": {
+      "sha256": "0b7c4d88592c391dfe974f8e78a35c11d6bf6afed2a7e7cc8fa21884a64e5652",
+      "bytes": 1503,
+      "physical_lines": 47,
+      "classification": "own_support"
+    },
+    "src/test/java/io/github/wolches/challenge12/seed/SeedDatabase.java": {
+      "sha256": "9dc758b1f30e60353d352958cd0bb502fff02f5f33fc0b19a206b45578f53b34",
+      "bytes": 13326,
+      "physical_lines": 315,
+      "classification": "own_support"
+    },
+    "src/test/java/io/github/wolches/challenge12/support/ApiTestBase.java": {
+      "sha256": "b2fa2103f534393b08b4f2b63087b14f5078997caa839163f737cf77064e35fd",
+      "bytes": 4087,
+      "physical_lines": 104,
+      "classification": "own_support"
+    },
+    "src/test/java/io/github/wolches/challenge12/support/Jwt.java": {
+      "sha256": "7990abe5cd0db2714846f8f55a5ece7c88d8cf93abca2a4446259267755994bd",
+      "bytes": 2238,
+      "physical_lines": 62,
+      "classification": "own_support"
+    },
+    "src/test/java/io/github/wolches/challenge12/support/TestDatabaseResource.java": {
+      "sha256": "2571e9500cb0cb78747d2f0323686e609a481770c0ffcddfbbe746b530995a1f",
+      "bytes": 3472,
+      "physical_lines": 88,
+      "classification": "own_support"
+    },
+    "src/test/resources/application.properties": {
+      "sha256": "495a5a754749088e40b1ea0a62b38a3ccd31e0389c39c1ab7d66aaf478e713e6",
+      "bytes": 186,
+      "physical_lines": 2,
+      "classification": "own_support"
+    },
+    "start.sh": {
+      "sha256": "51a527f968fdf6155179582b9da413ce790245f1e4abdc50c693e1a7075a35d3",
+      "bytes": 998,
+      "physical_lines": 19,
+      "classification": "own_support"
+    }
+  },
+  "skipped_members": []
+}

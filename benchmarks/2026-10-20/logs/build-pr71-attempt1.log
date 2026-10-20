@@ -1,0 +1,642 @@
+
+$ docker exec twelve-current-build-pr71 bash -c set -e; rm -rf /suite/sources; mkdir -p /suite/sources; cp -a /evidence/sources/pr71 /suite/sources/; cp /evidence/manifest.json /suite/manifest.json; cp /evidence/schema.sql /suite/schema.sql; chown -R bench:bench /suite/sources
+
+$ docker exec twelve-current-build-pr71 bash /evidence/runtime-scripts/pr71.sh
+Hit:1 http://ports.ubuntu.com/ubuntu-ports noble InRelease
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble-updates InRelease [126 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble-backports InRelease [126 kB]
+Get:4 http://ports.ubuntu.com/ubuntu-ports noble-security InRelease [126 kB]
+Get:5 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 Packages [1786 kB]
+Get:6 http://ports.ubuntu.com/ubuntu-ports noble-updates/restricted arm64 Packages [3251 kB]
+Get:7 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 Packages [2214 kB]
+Get:8 http://ports.ubuntu.com/ubuntu-ports noble-updates/multiverse arm64 Packages [104 kB]
+Get:9 http://ports.ubuntu.com/ubuntu-ports noble-backports/multiverse arm64 Packages [669 B]
+Get:10 http://ports.ubuntu.com/ubuntu-ports noble-security/universe arm64 Packages [1638 kB]
+Get:11 http://ports.ubuntu.com/ubuntu-ports noble-security/restricted arm64 Packages [3129 kB]
+Get:12 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 Packages [1475 kB]
+Get:13 http://ports.ubuntu.com/ubuntu-ports noble-security/multiverse arm64 Packages [99.1 kB]
+Fetched 14.1 MB in 2s (8096 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+build-essential is already the newest version (12.10ubuntu1).
+ca-certificates is already the newest version (20260601~24.04.1).
+pkg-config is already the newest version (1.8.1-2build1).
+libssl-dev is already the newest version (3.0.13-0ubuntu3.16).
+libyaml-dev is already the newest version (0.2.5-1build1).
+zlib1g-dev is already the newest version (1:1.3.dfsg-3.1ubuntu2.2).
+libffi-dev is already the newest version (3.4.6-1build1).
+libgmp-dev is already the newest version (2:6.3.0+dfsg-2ubuntu6.1).
+unzip is already the newest version (6.0-28ubuntu4.1).
+The following additional packages will be installed:
+  libcurl3t64-gnutls libcurl4t64 libjemalloc2 libllvm17t64 libstd-rust-1.75
+  libstd-rust-dev liburing2
+Suggested packages:
+  cargo llvm-17 lld-17 clang-17
+The following NEW packages will be installed:
+  libjemalloc-dev libjemalloc2 libllvm17t64 libstd-rust-1.75 libstd-rust-dev
+  liburing-dev liburing2 rustc
+The following packages will be upgraded:
+  curl libcurl3t64-gnutls libcurl4t64
+3 upgraded, 8 newly installed, 0 to remove and 16 not upgraded.
+Need to get 89.1 MB of archives.
+After this operation, 391 MB of additional disk space will be used.
+Get:1 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 curl arm64 8.5.0-2ubuntu10.16 [222 kB]
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 libcurl4t64 arm64 8.5.0-2ubuntu10.16 [337 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 libcurl3t64-gnutls arm64 8.5.0-2ubuntu10.16 [331 kB]
+Get:4 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 libjemalloc2 arm64 5.3.0-2build1 [204 kB]
+Get:5 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libllvm17t64 arm64 1:17.0.6-9ubuntu1 [25.0 MB]
+Get:6 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libstd-rust-1.75 arm64 1.75.0+dfsg0ubuntu1-0ubuntu7.4 [19.0 MB]
+Get:7 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 liburing2 arm64 2.5-1build1 [21.7 kB]
+Get:8 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 liburing-dev arm64 2.5-1build1 [169 kB]
+Get:9 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 libjemalloc-dev arm64 5.3.0-2build1 [377 kB]
+Get:10 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libstd-rust-dev arm64 1.75.0+dfsg0ubuntu1-0ubuntu7.4 [40.2 MB]
+Get:11 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 rustc arm64 1.75.0+dfsg0ubuntu1-0ubuntu7.4 [3215 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 89.1 MB in 5s (19.0 MB/s)
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 16962 files and directories currently installed.)
+Preparing to unpack .../00-curl_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking curl (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Preparing to unpack .../01-libcurl4t64_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking libcurl4t64:arm64 (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Preparing to unpack .../02-libcurl3t64-gnutls_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking libcurl3t64-gnutls:arm64 (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Selecting previously unselected package libjemalloc2:arm64.
+Preparing to unpack .../03-libjemalloc2_5.3.0-2build1_arm64.deb ...
+Unpacking libjemalloc2:arm64 (5.3.0-2build1) ...
+Selecting previously unselected package libllvm17t64:arm64.
+Preparing to unpack .../04-libllvm17t64_1%3a17.0.6-9ubuntu1_arm64.deb ...
+Unpacking libllvm17t64:arm64 (1:17.0.6-9ubuntu1) ...
+Selecting previously unselected package libstd-rust-1.75:arm64.
+Preparing to unpack .../05-libstd-rust-1.75_1.75.0+dfsg0ubuntu1-0ubuntu7.4_arm64.deb ...
+Unpacking libstd-rust-1.75:arm64 (1.75.0+dfsg0ubuntu1-0ubuntu7.4) ...
+Selecting previously unselected package liburing2:arm64.
+Preparing to unpack .../06-liburing2_2.5-1build1_arm64.deb ...
+Unpacking liburing2:arm64 (2.5-1build1) ...
+Selecting previously unselected package liburing-dev:arm64.
+Preparing to unpack .../07-liburing-dev_2.5-1build1_arm64.deb ...
+Unpacking liburing-dev:arm64 (2.5-1build1) ...
+Selecting previously unselected package libjemalloc-dev.
+Preparing to unpack .../08-libjemalloc-dev_5.3.0-2build1_arm64.deb ...
+Unpacking libjemalloc-dev (5.3.0-2build1) ...
+Selecting previously unselected package libstd-rust-dev:arm64.
+Preparing to unpack .../09-libstd-rust-dev_1.75.0+dfsg0ubuntu1-0ubuntu7.4_arm64.deb ...
+Unpacking libstd-rust-dev:arm64 (1.75.0+dfsg0ubuntu1-0ubuntu7.4) ...
+Selecting previously unselected package rustc.
+Preparing to unpack .../10-rustc_1.75.0+dfsg0ubuntu1-0ubuntu7.4_arm64.deb ...
+Unpacking rustc (1.75.0+dfsg0ubuntu1-0ubuntu7.4) ...
+Setting up libcurl4t64:arm64 (8.5.0-2ubuntu10.16) ...
+Setting up libcurl3t64-gnutls:arm64 (8.5.0-2ubuntu10.16) ...
+Setting up libjemalloc2:arm64 (5.3.0-2build1) ...
+Setting up libjemalloc-dev (5.3.0-2build1) ...
+Setting up libllvm17t64:arm64 (1:17.0.6-9ubuntu1) ...
+Setting up curl (8.5.0-2ubuntu10.16) ...
+Setting up liburing2:arm64 (2.5-1build1) ...
+Setting up liburing-dev:arm64 (2.5-1build1) ...
+Setting up libstd-rust-1.75:arm64 (1.75.0+dfsg0ubuntu1-0ubuntu7.4) ...
+Setting up libstd-rust-dev:arm64 (1.75.0+dfsg0ubuntu1-0ubuntu7.4) ...
+Setting up rustc (1.75.0+dfsg0ubuntu1-0ubuntu7.4) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+/tmp/tmp.BimQBiF7sF/sqlite.zip: OK
+/tmp/tmp.BimQBiF7sF/sodium.tar.gz: OK
+checking build system type... aarch64-unknown-linux-gnu
+checking host system type... aarch64-unknown-linux-gnu
+checking target system type... aarch64-unknown-linux-gnu
+checking for a BSD-compatible install... /usr/bin/install -c
+checking whether sleep supports fractional seconds... yes
+checking filesystem timestamp resolution... 0.01
+checking whether build environment is sane... yes
+checking for a race-free mkdir -p... /usr/bin/mkdir -p
+checking for gawk... no
+checking for mawk... mawk
+checking whether make sets $(MAKE)... yes
+checking whether make supports nested variables... yes
+checking xargs -n works... yes
+checking whether UID '0' is supported by ustar format... yes
+checking whether GID '0' is supported by ustar format... yes
+checking how to create a ustar tar archive... gnutar
+checking whether to enable maintainer-specific portions of Makefiles... no
+checking for gcc... gcc
+checking whether the C compiler works... yes
+checking for C compiler default output file name... a.out
+checking for suffix of executables... 
+checking whether we are cross compiling... no
+checking for suffix of object files... o
+checking whether the compiler supports GNU C... yes
+checking whether gcc accepts -g... yes
+checking for gcc option to enable C23 features... unsupported
+checking for gcc option to enable C11 features... none needed
+checking whether gcc understands -c and -o together... yes
+checking whether make supports the include directive... yes (GNU style)
+checking dependency style of gcc... gcc3
+checking dependency style of gcc... gcc3
+checking for stdio.h... yes
+checking for stdlib.h... yes
+checking for string.h... yes
+checking for inttypes.h... yes
+checking for stdint.h... yes
+checking for strings.h... yes
+checking for sys/stat.h... yes
+checking for sys/types.h... yes
+checking for unistd.h... yes
+checking for wchar.h... yes
+checking for minix/config.h... no
+checking whether it is safe to define __EXTENSIONS__... yes
+checking whether _XOPEN_SOURCE should be defined... no
+checking if we are using FilC... no
+checking for a sed that does not truncate output... /usr/bin/sed
+checking how to run the C preprocessor... gcc -E
+checking for egrep -e... /usr/bin/grep -E
+checking whether gcc is Clang... no
+checking whether pthreads work with "-pthread" and "-lpthread"... yes
+checking for joinable pthread attribute... PTHREAD_CREATE_JOINABLE
+checking whether more special flags are required for pthreads... no
+checking for PTHREAD_PRIO_INHERIT... yes
+checking for variable-length arrays... yes
+checking for __wasi__ defined... no
+checking whether C compiler accepts -Werror... yes
+checking whether to add -D_FORTIFY_SOURCE=3 to CPPFLAGS... no
+checking whether to add -D_FORTIFY_SOURCE=2 to CPPFLAGS... no
+checking whether C compiler accepts -fvisibility=hidden... yes
+checking whether C compiler accepts -fPIC... yes
+checking whether C compiler accepts -fPIE... yes
+checking whether the linker accepts -pie... yes
+checking whether C compiler accepts -fno-strict-aliasing... yes
+checking whether C compiler accepts -fno-strict-overflow... yes
+checking whether C compiler accepts -fstack-protector... yes
+checking whether the linker accepts -fstack-protector... yes
+checking whether C compiler accepts -O3  -pthread -fvisibility=hidden -fPIC -fPIE -fno-strict-aliasing -fno-strict-overflow -fstack-protector -Wall... yes
+checking whether C compiler accepts -O3  -pthread -fvisibility=hidden -fPIC -fPIE -fno-strict-aliasing -fno-strict-overflow -fstack-protector -Wno-deprecated-declarations... yes
+checking whether C compiler accepts -O3  -pthread -fvisibility=hidden -fPIC -fPIE -fno-strict-aliasing -fno-strict-overflow -fstack-protector -Wno-deprecated-declarations -Wno-unknown-pragmas... yes
+checking for clang... no
+checking whether C compiler accepts -O3  -pthread -fvisibility=hidden -fPIC -fPIE -fno-strict-aliasing -fno-strict-overflow -fstack-protector -Wall -Wextra... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2 -Wlogical-op... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2 -Wlogical-op -Wmaybe-uninitialized... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2 -Wlogical-op -Wmaybe-uninitialized -Wmisleading-indentation... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2 -Wlogical-op -Wmaybe-uninitialized -Wmisleading-indentation -Wmissing-declarations... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2 -Wlogical-op -Wmaybe-uninitialized -Wmisleading-indentation -Wmissing-declarations -Wmissing-prototypes... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2 -Wlogical-op -Wmaybe-uninitialized -Wmisleading-indentation -Wmissing-declarations -Wmissing-prototypes -Wnested-externs... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2 -Wlogical-op -Wmaybe-uninitialized -Wmisleading-indentation -Wmissing-declarations -Wmissing-prototypes -Wnested-externs -Wno-type-limits... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2 -Wlogical-op -Wmaybe-uninitialized -Wmisleading-indentation -Wmissing-declarations -Wmissing-prototypes -Wnested-externs -Wno-type-limits -Wno-unknown-pragmas... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2 -Wlogical-op -Wmaybe-uninitialized -Wmisleading-indentation -Wmissing-declarations -Wmissing-prototypes -Wnested-externs -Wno-type-limits -Wno-unknown-pragmas -Wnormalized=id... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2 -Wlogical-op -Wmaybe-uninitialized -Wmisleading-indentation -Wmissing-declarations -Wmissing-prototypes -Wnested-externs -Wno-type-limits -Wno-unknown-pragmas -Wnormalized=id -Wnull-dereference... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2 -Wlogical-op -Wmaybe-uninitialized -Wmisleading-indentation -Wmissing-declarations -Wmissing-prototypes -Wnested-externs -Wno-type-limits -Wno-unknown-pragmas -Wnormalized=id -Wnull-dereference -Wold-style-declaration... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2 -Wlogical-op -Wmaybe-uninitialized -Wmisleading-indentation -Wmissing-declarations -Wmissing-prototypes -Wnested-externs -Wno-type-limits -Wno-unknown-pragmas -Wnormalized=id -Wnull-dereference -Wold-style-declaration -Wpointer-arith... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2 -Wlogical-op -Wmaybe-uninitialized -Wmisleading-indentation -Wmissing-declarations -Wmissing-prototypes -Wnested-externs -Wno-type-limits -Wno-unknown-pragmas -Wnormalized=id -Wnull-dereference -Wold-style-declaration -Wpointer-arith -Wredundant-decls... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2 -Wlogical-op -Wmaybe-uninitialized -Wmisleading-indentation -Wmissing-declarations -Wmissing-prototypes -Wnested-externs -Wno-type-limits -Wno-unknown-pragmas -Wnormalized=id -Wnull-dereference -Wold-style-declaration -Wpointer-arith -Wredundant-decls -Wrestrict... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2 -Wlogical-op -Wmaybe-uninitialized -Wmisleading-indentation -Wmissing-declarations -Wmissing-prototypes -Wnested-externs -Wno-type-limits -Wno-unknown-pragmas -Wnormalized=id -Wnull-dereference -Wold-style-declaration -Wpointer-arith -Wredundant-decls -Wrestrict -Wshorten-64-to-32... no
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2 -Wlogical-op -Wmaybe-uninitialized -Wmisleading-indentation -Wmissing-declarations -Wmissing-prototypes -Wnested-externs -Wno-type-limits -Wno-unknown-pragmas -Wnormalized=id -Wnull-dereference -Wold-style-declaration -Wpointer-arith -Wredundant-decls -Wrestrict -Wsometimes-uninitialized... no
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2 -Wlogical-op -Wmaybe-uninitialized -Wmisleading-indentation -Wmissing-declarations -Wmissing-prototypes -Wnested-externs -Wno-type-limits -Wno-unknown-pragmas -Wnormalized=id -Wnull-dereference -Wold-style-declaration -Wpointer-arith -Wredundant-decls -Wrestrict -Wstrict-prototypes... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2 -Wlogical-op -Wmaybe-uninitialized -Wmisleading-indentation -Wmissing-declarations -Wmissing-prototypes -Wnested-externs -Wno-type-limits -Wno-unknown-pragmas -Wnormalized=id -Wnull-dereference -Wold-style-declaration -Wpointer-arith -Wredundant-decls -Wrestrict -Wstrict-prototypes -Wswitch-enum... yes
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2 -Wlogical-op -Wmaybe-uninitialized -Wmisleading-indentation -Wmissing-declarations -Wmissing-prototypes -Wnested-externs -Wno-type-limits -Wno-unknown-pragmas -Wnormalized=id -Wnull-dereference -Wold-style-declaration -Wpointer-arith -Wredundant-decls -Wrestrict -Wstrict-prototypes -Wswitch-enum -Wvariable-decl... no
+checking whether C compiler accepts  -Wextra -Warray-bounds -Wbad-function-cast -Wcast-qual -Wdiv-by-zero -Wduplicated-branches -Wduplicated-cond -Wfloat-equal -Wformat=2 -Wlogical-op -Wmaybe-uninitialized -Wmisleading-indentation -Wmissing-declarations -Wmissing-prototypes -Wnested-externs -Wno-type-limits -Wno-unknown-pragmas -Wnormalized=id -Wnull-dereference -Wold-style-declaration -Wpointer-arith -Wredundant-decls -Wrestrict -Wstrict-prototypes -Wswitch-enum -Wwrite-strings... yes
+checking whether the linker accepts -Wl,-z,relro... yes
+checking whether the linker accepts -Wl,-z,now... yes
+checking whether the linker accepts -Wl,-z,noexecstack... yes
+checking whether segmentation violations can be caught... yes
+checking whether SIGABRT can be caught... yes
+checking for thread local storage (TLS) class... _Thread_local
+thread local storage is supported
+checking whether C compiler accepts -ftls-model=global-dynamic... yes
+checking how to print strings... printf
+checking for a sed that does not truncate output... (cached) /usr/bin/sed
+checking for grep that handles long lines and -e... /usr/bin/grep
+checking for egrep... /usr/bin/grep -E
+checking for fgrep... /usr/bin/grep -F
+checking for ld used by gcc... /usr/bin/ld
+checking if the linker (/usr/bin/ld) is GNU ld... yes
+checking for BSD- or MS-compatible name lister (nm)... /usr/bin/nm -B
+checking the name lister (/usr/bin/nm -B) interface... BSD nm
+checking whether ln -s works... yes
+checking the maximum length of command line arguments... 1572864
+checking how to convert aarch64-unknown-linux-gnu file names to aarch64-unknown-linux-gnu format... func_convert_file_noop
+checking how to convert aarch64-unknown-linux-gnu file names to toolchain format... func_convert_file_noop
+checking for /usr/bin/ld option to reload object files... -r
+checking for file... file
+checking for objdump... objdump
+checking how to recognize dependent libraries... pass_all
+checking for dlltool... no
+checking how to associate runtime and link libraries... printf %s\n
+checking for ranlib... ranlib
+checking for ar... ar
+checking for archiver @FILE support... @
+checking for strip... strip
+checking command to parse /usr/bin/nm -B output from gcc object... ok
+checking for sysroot... no
+checking for a working dd... /usr/bin/dd
+checking how to truncate binary pipes... /usr/bin/dd bs=4096 count=1
+checking for mt... no
+checking if : is a manifest tool... no
+checking for dlfcn.h... yes
+checking for objdir... .libs
+checking if gcc supports -fno-rtti -fno-exceptions... no
+checking for gcc option to produce PIC... -fPIC -DPIC
+checking if gcc PIC flag -fPIC -DPIC works... yes
+checking if gcc static flag -static works... yes
+checking if gcc supports -c -o file.o... yes
+checking if gcc supports -c -o file.o... (cached) yes
+checking whether the gcc linker (/usr/bin/ld) supports shared libraries... yes
+checking whether -lc should be explicitly linked in... no
+checking dynamic linker characteristics... GNU/Linux ld.so
+checking how to hardcode library paths into programs... immediate
+checking whether stripping libraries is possible... yes
+checking if libtool supports shared libraries... yes
+checking whether to build shared libraries... yes
+checking whether to build static libraries... no
+checking if we are using CompCert... no
+checking for ar... (cached) ar
+checking for ARM64 target... yes
+checking for ARM crypto instructions set... yes
+checking whether C compiler accepts -mmmx... no
+checking for MMX instructions set... no
+checking whether C compiler accepts -msse2... no
+checking for SSE2 instructions set... no
+checking whether C compiler accepts -msse3... no
+checking for SSE3 instructions set... no
+checking whether C compiler accepts -mssse3... no
+checking for SSSE3 instructions set... no
+checking whether C compiler accepts -msse4.1... no
+checking for SSE4.1 instructions set... no
+checking whether C compiler accepts -mavx... no
+checking for AVX instructions set... no
+checking whether C compiler accepts -mavx2... no
+checking for AVX2 instructions set... no
+checking whether C compiler accepts -mavx512f... no
+checking for AVX512F instructions set... no
+checking whether C compiler accepts -O3  -pthread -fvisibility=hidden -fPIC -fPIE -fno-strict-aliasing -fno-strict-overflow -fstack-protector -Wno-deprecated-declarations -Wno-unknown-pragmas -ftls-model=global-dynamic -mno-avx512f... no
+checking whether C compiler accepts -maes... no
+checking whether C compiler accepts -mpclmul... no
+checking for AESNI instructions set and PCLMULQDQ... no
+checking whether C compiler accepts -mrdrnd... no
+checking for RDRAND... no
+checking for sys/mman.h... yes
+checking for sys/param.h... yes
+checking for sys/random.h... yes
+checking for intrin.h... no
+checking for sys/auxv.h... yes
+checking for CommonCrypto/CommonRandom.h... no
+checking for cet.h... no
+checking for threads.h... yes
+checking if _xgetbv() is available... no
+checking for inline... inline
+checking whether byte ordering is bigendian... no
+checking whether __STDC_LIMIT_MACROS is required... no
+checking whether we can use inline asm code... yes
+no
+checking whether we can use x86_64 asm code... no
+checking whether we can assemble AVX opcodes... no
+checking for 128-bit arithmetic... yes
+checking for cpuid instruction... no
+checking if the .private_extern asm directive is supported... no
+checking if the .hidden asm directive is supported... yes
+checking if weak symbols are supported... yes
+checking if atomic operations are supported... yes
+checking if C11 memory fences are supported... yes
+checking if gcc memory fences are supported... yes
+checking for size_t... yes
+checking for working alloca.h... yes
+checking for alloca... yes
+checking for arc4random... yes
+checking for arc4random_buf... yes
+checking for mmap... yes
+checking for mlock... yes
+checking for madvise... yes
+checking for mprotect... yes
+checking for raise... yes
+checking for sysconf... yes
+checking for getrandom with a standard API... yes
+checking for getrandom... yes
+checking for getentropy with a standard API... yes
+checking for getentropy... yes
+checking for getpid... yes
+checking for getauxval... yes
+checking for elf_aux_info... no
+checking for posix_memalign... yes
+checking for nanosleep... yes
+checking for clock_gettime... yes
+checking for memset_s... no
+checking for explicit_bzero... yes
+checking for memset_explicit... no
+checking for explicit_memset... no
+checking if gcc/ld supports -Wl,--output-def... no
+checking that generated files are newer than configure... done
+configure: creating ./config.status
+config.status: creating Makefile
+config.status: creating builds/Makefile
+config.status: creating contrib/Makefile
+config.status: creating dist-build/Makefile
+config.status: creating libsodium.pc
+config.status: creating libsodium-uninstalled.pc
+config.status: creating src/Makefile
+config.status: creating src/libsodium/Makefile
+config.status: creating src/libsodium/include/Makefile
+config.status: creating src/libsodium/include/sodium/version.h
+config.status: creating test/default/Makefile
+config.status: creating test/Makefile
+config.status: executing depfiles commands
+config.status: executing libtool commands
+Making all in builds
+make[1]: Entering directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/builds'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/builds'
+Making all in contrib
+make[1]: Entering directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/contrib'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/contrib'
+Making all in dist-build
+make[1]: Entering directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/dist-build'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/dist-build'
+Making all in src
+make[1]: Entering directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/src'
+Making all in libsodium
+make[2]: Entering directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/src/libsodium'
+Making all in include
+make[3]: Entering directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/src/libsodium/include'
+make[3]: Nothing to be done for 'all'.
+make[3]: Leaving directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/src/libsodium/include'
+make[3]: Entering directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/src/libsodium'
+  CC       crypto_shorthash/siphash24/libsodium_la-shorthash_siphashx24.lo
+  CC       crypto_shorthash/siphash24/ref/libsodium_la-shorthash_siphashx24_ref.lo
+  CC       crypto_sign/ed25519/ref10/libsodium_la-obsolete.lo
+  CC       crypto_aead/aegis128l/libaesni_la-aegis128l_aesni.lo
+  CC       crypto_aead/aegis256/libaesni_la-aegis256_aesni.lo
+  CC       crypto_ipcrypt/libaesni_la-ipcrypt_aesni.lo
+  CC       crypto_aead/aegis128l/libarmcrypto_la-aegis128l_armcrypto.lo
+  CC       crypto_aead/aegis256/libarmcrypto_la-aegis256_armcrypto.lo
+  CC       crypto_ipcrypt/libarmcrypto_la-ipcrypt_armcrypto.lo
+  CC       crypto_pwhash/argon2/libarmcrypto_la-argon2-fill-block-neon.lo
+  CC       crypto_generichash/blake2b/ref/libssse3_la-blake2b-compress-ssse3.lo
+  CC       crypto_pwhash/argon2/libssse3_la-argon2-fill-block-ssse3.lo
+  CC       crypto_generichash/blake2b/ref/libsse41_la-blake2b-compress-sse41.lo
+  CC       crypto_generichash/blake2b/ref/libavx2_la-blake2b-compress-avx2.lo
+  CC       crypto_pwhash/argon2/libavx2_la-argon2-fill-block-avx2.lo
+  CC       crypto_stream/chacha20/dolbeau/libavx2_la-chacha20_dolbeau-avx2.lo
+  CC       crypto_stream/salsa20/xmm6int/libavx2_la-salsa20_xmm6int-avx2.lo
+  CC       crypto_pwhash/argon2/libavx512f_la-argon2-fill-block-avx512f.lo
+  CC       crypto_aead/aegis128l/libsodium_la-aead_aegis128l.lo
+  CC       crypto_aead/aegis128l/libsodium_la-aegis128l_soft.lo
+  CC       crypto_aead/aegis256/libsodium_la-aead_aegis256.lo
+  CC       crypto_aead/aegis256/libsodium_la-aegis256_soft.lo
+  CC       crypto_aead/aes256gcm/libsodium_la-aead_aes256gcm.lo
+  CC       crypto_aead/chacha20poly1305/libsodium_la-aead_chacha20poly1305.lo
+  CC       crypto_aead/xchacha20poly1305/libsodium_la-aead_xchacha20poly1305.lo
+  CC       crypto_auth/libsodium_la-crypto_auth.lo
+  CC       crypto_auth/hmacsha256/libsodium_la-auth_hmacsha256.lo
+  CC       crypto_auth/hmacsha512/libsodium_la-auth_hmacsha512.lo
+  CC       crypto_auth/hmacsha512256/libsodium_la-auth_hmacsha512256.lo
+  CC       crypto_box/libsodium_la-crypto_box.lo
+  CC       crypto_box/libsodium_la-crypto_box_easy.lo
+  CC       crypto_box/libsodium_la-crypto_box_seal.lo
+  CC       crypto_box/curve25519xsalsa20poly1305/libsodium_la-box_curve25519xsalsa20poly1305.lo
+  CC       crypto_core/ed25519/ref10/libsodium_la-ed25519_ref10.lo
+  CC       crypto_core/hchacha20/libsodium_la-core_hchacha20.lo
+  CC       crypto_core/hsalsa20/ref2/libsodium_la-core_hsalsa20_ref2.lo
+  CC       crypto_core/hsalsa20/libsodium_la-core_hsalsa20.lo
+  CC       crypto_core/keccak1600/libsodium_la-keccak1600.lo
+  CC       crypto_core/keccak1600/ref/libsodium_la-keccak1600_ref.lo
+  CC       crypto_core/keccak1600/armsha3/libsodium_la-keccak1600_armsha3.lo
+  CC       crypto_core/salsa/ref/libsodium_la-core_salsa_ref.lo
+  CC       crypto_core/softaes/libsodium_la-softaes.lo
+  CC       crypto_generichash/libsodium_la-crypto_generichash.lo
+  CC       crypto_generichash/blake2b/libsodium_la-generichash_blake2.lo
+  CC       crypto_generichash/blake2b/ref/libsodium_la-blake2b-compress-ref.lo
+  CC       crypto_generichash/blake2b/ref/libsodium_la-blake2b-ref.lo
+  CC       crypto_generichash/blake2b/ref/libsodium_la-generichash_blake2b.lo
+  CC       crypto_hash/libsodium_la-crypto_hash.lo
+  CC       crypto_hash/sha256/libsodium_la-hash_sha256.lo
+  CC       crypto_hash/sha256/cp/libsodium_la-hash_sha256_cp.lo
+  CC       crypto_hash/sha512/libsodium_la-hash_sha512.lo
+  CC       crypto_hash/sha512/cp/libsodium_la-hash_sha512_cp.lo
+  CC       crypto_hash/sha3/libsodium_la-hash_sha3.lo
+  CC       crypto_ipcrypt/libsodium_la-crypto_ipcrypt.lo
+  CC       crypto_ipcrypt/libsodium_la-ipcrypt_soft.lo
+  CC       crypto_kdf/blake2b/libsodium_la-kdf_blake2b.lo
+  CC       crypto_kdf/libsodium_la-crypto_kdf.lo
+  CC       crypto_kdf/hkdf/libsodium_la-kdf_hkdf_sha256.lo
+  CC       crypto_kdf/hkdf/libsodium_la-kdf_hkdf_sha512.lo
+  CC       crypto_kem/libsodium_la-crypto_kem.lo
+  CC       crypto_kem/mlkem768/libsodium_la-kem_mlkem768.lo
+  CC       crypto_kem/mlkem768/ref/libsodium_la-kem_mlkem768_ref.lo
+  CC       crypto_kem/xwing/libsodium_la-kem_xwing.lo
+  CC       crypto_kx/libsodium_la-crypto_kx.lo
+  CC       crypto_onetimeauth/libsodium_la-crypto_onetimeauth.lo
+  CC       crypto_onetimeauth/poly1305/libsodium_la-onetimeauth_poly1305.lo
+  CC       crypto_onetimeauth/poly1305/donna/libsodium_la-poly1305_donna.lo
+  CC       crypto_pwhash/argon2/libsodium_la-argon2-core.lo
+  CC       crypto_pwhash/argon2/libsodium_la-argon2-encoding.lo
+  CC       crypto_pwhash/argon2/libsodium_la-argon2-fill-block-ref.lo
+  CC       crypto_pwhash/argon2/libsodium_la-argon2-fill-block-wasm32.lo
+  CC       crypto_pwhash/argon2/libsodium_la-argon2.lo
+  CC       crypto_pwhash/argon2/libsodium_la-blake2b-long.lo
+  CC       crypto_pwhash/argon2/libsodium_la-pwhash_argon2i.lo
+  CC       crypto_pwhash/argon2/libsodium_la-pwhash_argon2id.lo
+  CC       crypto_pwhash/libsodium_la-crypto_pwhash.lo
+  CC       crypto_scalarmult/libsodium_la-crypto_scalarmult.lo
+  CC       crypto_scalarmult/curve25519/ref10/libsodium_la-x25519_ref10.lo
+  CC       crypto_scalarmult/curve25519/libsodium_la-scalarmult_curve25519.lo
+  CC       crypto_secretbox/libsodium_la-crypto_secretbox.lo
+  CC       crypto_secretbox/libsodium_la-crypto_secretbox_easy.lo
+  CC       crypto_secretbox/xsalsa20poly1305/libsodium_la-secretbox_xsalsa20poly1305.lo
+  CC       crypto_secretstream/xchacha20poly1305/libsodium_la-secretstream_xchacha20poly1305.lo
+  CC       crypto_shorthash/libsodium_la-crypto_shorthash.lo
+  CC       crypto_shorthash/siphash24/libsodium_la-shorthash_siphash24.lo
+  CC       crypto_shorthash/siphash24/ref/libsodium_la-shorthash_siphash24_ref.lo
+  CC       crypto_sign/libsodium_la-crypto_sign.lo
+  CC       crypto_sign/ed25519/libsodium_la-sign_ed25519.lo
+  CC       crypto_sign/ed25519/ref10/libsodium_la-keypair.lo
+  CC       crypto_sign/ed25519/ref10/libsodium_la-open.lo
+  CC       crypto_sign/ed25519/ref10/libsodium_la-sign.lo
+  CC       crypto_stream/chacha20/libsodium_la-stream_chacha20.lo
+  CC       crypto_stream/chacha20/ref/libsodium_la-chacha20_ref.lo
+  CC       crypto_stream/libsodium_la-crypto_stream.lo
+  CC       crypto_stream/salsa20/libsodium_la-stream_salsa20.lo
+  CC       crypto_stream/xsalsa20/libsodium_la-stream_xsalsa20.lo
+  CC       crypto_verify/libsodium_la-verify.lo
+  CC       crypto_xof/shake128/libsodium_la-xof_shake128.lo
+  CC       crypto_xof/shake128/ref/libsodium_la-shake128_ref.lo
+  CC       crypto_xof/shake256/libsodium_la-xof_shake256.lo
+  CC       crypto_xof/shake256/ref/libsodium_la-shake256_ref.lo
+  CC       crypto_xof/turboshake128/libsodium_la-xof_turboshake128.lo
+  CC       crypto_xof/turboshake128/ref/libsodium_la-turboshake128_ref.lo
+  CC       crypto_xof/turboshake256/libsodium_la-xof_turboshake256.lo
+  CC       crypto_xof/turboshake256/ref/libsodium_la-turboshake256_ref.lo
+  CC       randombytes/libsodium_la-randombytes.lo
+  CC       sodium/libsodium_la-codecs.lo
+  CC       sodium/libsodium_la-core.lo
+  CC       sodium/libsodium_la-runtime.lo
+  CC       sodium/libsodium_la-utils.lo
+  CC       sodium/libsodium_la-version.lo
+  CC       crypto_stream/salsa20/ref/libsodium_la-salsa20_ref.lo
+  CC       crypto_box/curve25519xchacha20poly1305/libsodium_la-box_curve25519xchacha20poly1305.lo
+  CC       crypto_box/curve25519xchacha20poly1305/libsodium_la-box_seal_curve25519xchacha20poly1305.lo
+  CC       crypto_core/ed25519/libsodium_la-core_ed25519.lo
+  CC       crypto_core/ed25519/libsodium_la-core_ristretto255.lo
+  CC       crypto_pwhash/scryptsalsa208sha256/libsodium_la-crypto_scrypt-common.lo
+  CC       crypto_pwhash/scryptsalsa208sha256/libsodium_la-scrypt_platform.lo
+  CC       crypto_pwhash/scryptsalsa208sha256/libsodium_la-pbkdf2-sha256.lo
+  CC       crypto_pwhash/scryptsalsa208sha256/libsodium_la-pwhash_scryptsalsa208sha256.lo
+  CC       crypto_pwhash/scryptsalsa208sha256/nosse/libsodium_la-pwhash_scryptsalsa208sha256_nosse.lo
+  CC       crypto_scalarmult/ed25519/ref10/libsodium_la-scalarmult_ed25519_ref10.lo
+  CC       crypto_scalarmult/ristretto255/ref10/libsodium_la-scalarmult_ristretto255_ref10.lo
+  CC       crypto_secretbox/xchacha20poly1305/libsodium_la-secretbox_xchacha20poly1305.lo
+  CC       crypto_stream/salsa2012/ref/libsodium_la-stream_salsa2012_ref.lo
+  CC       crypto_stream/salsa2012/libsodium_la-stream_salsa2012.lo
+  CC       crypto_stream/salsa208/ref/libsodium_la-stream_salsa208_ref.lo
+  CC       crypto_stream/salsa208/libsodium_la-stream_salsa208.lo
+  CC       crypto_stream/xchacha20/libsodium_la-stream_xchacha20.lo
+  CC       randombytes/sysrandom/libsodium_la-randombytes_sysrandom.lo
+  CC       crypto_aead/aes256gcm/aesni/libaesni_la-aead_aes256gcm_aesni.lo
+  CC       crypto_aead/aes256gcm/armcrypto/libarmcrypto_la-aead_aes256gcm_armcrypto.lo
+  CC       crypto_onetimeauth/poly1305/sse2/libsse2_la-poly1305_sse2.lo
+  CC       crypto_pwhash/scryptsalsa208sha256/sse/libsse2_la-pwhash_scryptsalsa208sha256_sse.lo
+  CC       crypto_stream/salsa20/xmm6int/libsse2_la-salsa20_xmm6int-sse2.lo
+  CC       crypto_stream/chacha20/dolbeau/libssse3_la-chacha20_dolbeau-ssse3.lo
+  CCLD     libsse41.la
+libtool: warning: '-version-info/-version-number' is ignored for convenience libraries
+  CCLD     libavx2.la
+libtool: warning: '-version-info/-version-number' is ignored for convenience libraries
+  CCLD     libavx512f.la
+libtool: warning: '-version-info/-version-number' is ignored for convenience libraries
+  CC       randombytes/internal/librdrand_la-randombytes_internal_random.lo
+  CCLD     libaesni.la
+libtool: warning: '-version-info/-version-number' is ignored for convenience libraries
+  CCLD     libarmcrypto.la
+  CCLD     libsse2.la
+libtool: warning: '-version-info/-version-number' is ignored for convenience libraries
+libtool: warning: '-version-info/-version-number' is ignored for convenience libraries
+  CCLD     libssse3.la
+  CCLD     librdrand.la
+libtool: warning: '-version-info/-version-number' is ignored for convenience libraries
+libtool: warning: '-version-info/-version-number' is ignored for convenience libraries
+  CCLD     libsodium.la
+make[3]: Leaving directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/src/libsodium'
+make[2]: Leaving directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/src/libsodium'
+make[2]: Entering directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/src'
+make[2]: Nothing to be done for 'all-am'.
+make[2]: Leaving directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/src'
+make[1]: Leaving directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/src'
+Making all in test
+make[1]: Entering directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/test'
+Making all in default
+make[2]: Entering directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/test/default'
+make[2]: Nothing to be done for 'all'.
+make[2]: Leaving directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/test/default'
+make[2]: Entering directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/test'
+make[2]: Nothing to be done for 'all-am'.
+make[2]: Leaving directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/test'
+make[1]: Leaving directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/test'
+make[1]: Entering directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22'
+make[1]: Nothing to be done for 'all-am'.
+make[1]: Leaving directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22'
+Making install in builds
+make[1]: Entering directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/builds'
+make[2]: Entering directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/builds'
+make[2]: Nothing to be done for 'install-exec-am'.
+make[2]: Nothing to be done for 'install-data-am'.
+make[2]: Leaving directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/builds'
+make[1]: Leaving directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/builds'
+Making install in contrib
+make[1]: Entering directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/contrib'
+make[2]: Entering directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/contrib'
+make[2]: Nothing to be done for 'install-exec-am'.
+make[2]: Nothing to be done for 'install-data-am'.
+make[2]: Leaving directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/contrib'
+make[1]: Leaving directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/contrib'
+Making install in dist-build
+make[1]: Entering directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/dist-build'
+make[2]: Entering directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/dist-build'
+make[2]: Nothing to be done for 'install-exec-am'.
+make[2]: Nothing to be done for 'install-data-am'.
+make[2]: Leaving directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/dist-build'
+make[1]: Leaving directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/dist-build'
+Making install in src
+make[1]: Entering directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/src'
+Making install in libsodium
+make[2]: Entering directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/src/libsodium'
+Making install in include
+make[3]: Entering directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/src/libsodium/include'
+make[4]: Entering directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/src/libsodium/include'
+make[4]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/usr/local/include'
+ /usr/bin/mkdir -p '/usr/local/include/sodium'
+ /usr/bin/install -c -m 644  sodium/core.h sodium/crypto_aead_aes256gcm.h sodium/crypto_aead_aegis128l.h sodium/crypto_aead_aegis256.h sodium/crypto_aead_chacha20poly1305.h sodium/crypto_aead_xchacha20poly1305.h sodium/crypto_auth.h sodium/crypto_auth_hmacsha256.h sodium/crypto_auth_hmacsha512.h sodium/crypto_auth_hmacsha512256.h sodium/crypto_box.h sodium/crypto_box_curve25519xchacha20poly1305.h sodium/crypto_box_curve25519xsalsa20poly1305.h sodium/crypto_core_ed25519.h sodium/crypto_core_ristretto255.h sodium/crypto_core_hchacha20.h sodium/crypto_core_hsalsa20.h sodium/crypto_core_keccak1600.h sodium/crypto_core_salsa20.h sodium/crypto_core_salsa2012.h sodium/crypto_core_salsa208.h sodium/crypto_generichash.h sodium/crypto_generichash_blake2b.h sodium/crypto_hash.h sodium/crypto_hash_sha256.h sodium/crypto_hash_sha3.h sodium/crypto_hash_sha512.h sodium/crypto_ipcrypt.h sodium/crypto_kdf.h sodium/crypto_kdf_hkdf_sha256.h sodium/crypto_kdf_hkdf_sha512.h sodium/crypto_kdf_blake2b.h sodium/crypto_kem.h sodium/crypto_kem_mlkem768.h sodium/crypto_kem_xwing.h sodium/crypto_kx.h sodium/crypto_onetimeauth.h sodium/crypto_onetimeauth_poly1305.h sodium/crypto_pwhash.h sodium/crypto_pwhash_argon2i.h '/usr/local/include/sodium'
+ /usr/bin/mkdir -p '/usr/local/include/sodium'
+ /usr/bin/install -c -m 644  sodium/crypto_pwhash_argon2id.h sodium/crypto_pwhash_scryptsalsa208sha256.h sodium/crypto_scalarmult.h sodium/crypto_scalarmult_curve25519.h sodium/crypto_scalarmult_ed25519.h sodium/crypto_scalarmult_ristretto255.h sodium/crypto_secretbox.h sodium/crypto_secretbox_xchacha20poly1305.h sodium/crypto_secretbox_xsalsa20poly1305.h sodium/crypto_secretstream_xchacha20poly1305.h sodium/crypto_shorthash.h sodium/crypto_shorthash_siphash24.h sodium/crypto_sign.h sodium/crypto_sign_ed25519.h sodium/crypto_sign_edwards25519sha512batch.h sodium/crypto_stream.h sodium/crypto_stream_chacha20.h sodium/crypto_stream_salsa20.h sodium/crypto_stream_salsa2012.h sodium/crypto_stream_salsa208.h sodium/crypto_stream_xchacha20.h sodium/crypto_stream_xsalsa20.h sodium/crypto_verify_16.h sodium/crypto_verify_32.h sodium/crypto_verify_64.h sodium/crypto_xof_shake128.h sodium/crypto_xof_shake256.h sodium/crypto_xof_turboshake128.h sodium/crypto_xof_turboshake256.h sodium/export.h sodium/randombytes.h sodium/randombytes_internal_random.h sodium/randombytes_sysrandom.h sodium/runtime.h sodium/utils.h '/usr/local/include/sodium'
+ /usr/bin/install -c -m 644  sodium.h '/usr/local/include/.'
+ /usr/bin/mkdir -p '/usr/local/include'
+ /usr/bin/mkdir -p '/usr/local/include/sodium'
+ /usr/bin/install -c -m 644  sodium/version.h '/usr/local/include/sodium'
+make[4]: Leaving directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/src/libsodium/include'
+make[3]: Leaving directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/src/libsodium/include'
+make[3]: Entering directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/src/libsodium'
+make[4]: Entering directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/src/libsodium'
+ /usr/bin/mkdir -p '/usr/local/lib'
+ /bin/bash ../../libtool   --mode=install /usr/bin/install -c   libsodium.la '/usr/local/lib'
+libtool: install: /usr/bin/install -c .libs/libsodium.so.26.4.0 /usr/local/lib/libsodium.so.26.4.0
+libtool: install: (cd /usr/local/lib && { ln -s -f libsodium.so.26.4.0 libsodium.so.26 || { rm -f libsodium.so.26 && ln -s libsodium.so.26.4.0 libsodium.so.26; }; })
+libtool: install: (cd /usr/local/lib && { ln -s -f libsodium.so.26.4.0 libsodium.so || { rm -f libsodium.so && ln -s libsodium.so.26.4.0 libsodium.so; }; })
+libtool: install: /usr/bin/install -c .libs/libsodium.lai /usr/local/lib/libsodium.la
+libtool: finish: PATH="/opt/twelve-rust/cargo/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin:/sbin" ldconfig -n /usr/local/lib
+----------------------------------------------------------------------
+Libraries have been installed in:
+   /usr/local/lib
+
+If you ever happen to want to link against installed libraries
+in a given directory, LIBDIR, you must either use libtool, and
+specify the full pathname of the library, or use the '-LLIBDIR'
+flag during linking and do at least one of the following:
+   - add LIBDIR to the 'LD_LIBRARY_PATH' environment variable
+     during execution
+   - add LIBDIR to the 'LD_RUN_PATH' environment variable
+     during linking
+   - use the '-Wl,-rpath -Wl,LIBDIR' linker flag
+   - have your system administrator add LIBDIR to '/etc/ld.so.conf'
+
+See any operating system documentation about shared libraries for
+more information, such as the ld(1) and ld.so(8) manual pages.
+----------------------------------------------------------------------
+make[4]: Nothing to be done for 'install-data-am'.
+make[4]: Leaving directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/src/libsodium'
+make[3]: Leaving directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/src/libsodium'
+make[2]: Leaving directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/src/libsodium'
+make[2]: Entering directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/src'
+make[3]: Entering directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/src'
+make[3]: Nothing to be done for 'install-exec-am'.
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/src'
+make[2]: Leaving directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/src'
+make[1]: Leaving directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/src'
+Making install in test
+make[1]: Entering directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/test'
+Making install in default
+make[2]: Entering directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/test/default'
+make[3]: Entering directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/test/default'
+make[3]: Nothing to be done for 'install-exec-am'.
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/test/default'
+make[2]: Leaving directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/test/default'
+make[2]: Entering directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/test'
+make[3]: Entering directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/test'
+make[3]: Nothing to be done for 'install-exec-am'.
+make[3]: Nothing to be done for 'install-data-am'.
+make[3]: Leaving directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/test'
+make[2]: Leaving directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/test'
+make[1]: Leaving directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22/test'
+make[1]: Entering directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22'
+make[2]: Entering directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22'
+make[2]: Nothing to be done for 'install-exec-am'.
+ /usr/bin/mkdir -p '/usr/local/lib/pkgconfig'
+ /usr/bin/install -c -m 644 libsodium.pc '/usr/local/lib/pkgconfig'
+make[2]: Leaving directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22'
+make[1]: Leaving directory '/tmp/tmp.BimQBiF7sF/libsodium-1.0.22'
+/suite/sources/pr71/install.sh: line 60: ldconfig: command not found

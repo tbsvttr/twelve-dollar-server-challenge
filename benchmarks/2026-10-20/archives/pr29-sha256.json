@@ -1,0 +1,20 @@
+{
+  ".clang-format": "e79ebac1e9fa72b975217d9e174faaa9cae321f7a870cc7c76ceadfda5c73696",
+  ".clang-tidy": "0df363fb29ef6d48362c9d0ac056a6878f2b25e8ff654b3da8e9281352810f9f",
+  ".dockerignore": "6769fddbea24e193e4e10ab3f6c31b2a3ac2c6a5d0eb102949ed9f5745d88d24",
+  ".gitignore": "c5117d1d9e5b8e455662facac45e4f02b87a3cea244dd9a980ef31c281da5bbe",
+  "CMakeLists.txt": "023f7f24fa9d8de834710b8c34db1414b829cbeb3d37e0263841183806d1ce9e",
+  "CMakePresets.json": "b85a3cf3503757a1d9fb58e4f62bdfe242603ccce1a17cb55a0cfc0bfc698faa",
+  "Dockerfile": "a4a53786caecbb9903de2d7a9d9d19c0af5142b5ab0331cfda295b491da09821",
+  "README.md": "2a08156612ac52cb4351c90d1ce19adf4b94ce6fb44414fe5f13905848763482",
+  "build.sh": "4e7b5095945895be03e630228e0429c0445bc9517f508e6e44961aac000e2fe9",
+  "cmake/clang-20.cmake": "eb1ae54e4ecb4ed63841ae5fa92faa902f43530f78edee961c913bb7903ac18b",
+  "docker-compose.yml": "fc9d674ac59a70a53b669067db64783107f8d1db9cb7fec8b95667b546717030",
+  "docker/nginx.conf": "ff7cf5c2434824238f9306cb67778621e5cba2d00093f4a57a7d97f526a3743a",
+  "install.sh": "50ad281fdfde0f791e9af063714a123bfb516bd9212c3148d2055d19f27cf70c",
+  "src/jwt.hpp": "ae9b91ba7fdcf3b23cb202429f79f1a5c4d71c9db66ca0f2d191f60bfbe2203f",
+  "src/main.cpp": "bf4d49ea4d8e3eb3a3a79a6601821bb1384611e9090647811279cd962231246a",
+  "start.sh": "307061059b074da076f803ce7e647638c58b258cfae8adc86fe556a6e5f8ecbe",
+  "tests/jwt_test.cpp": "e2fc7c1dcec657a11010873e146e5c14b73326773346147e5c02882f09726b43",
+  "tests/smoke_test.cpp": "2ee87d5a72e9a645098f6ea6253738f4b53d51f24560522dba7663fd91eaabf7"
+}

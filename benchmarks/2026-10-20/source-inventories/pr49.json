@@ -1,0 +1,137 @@
+{
+  "files": {
+    ".gitignore": {
+      "sha256": "4d56952b0fb13bf8f9b6c13a6d4c34a075bac3af447636a1df4335d7576e2f97",
+      "bytes": 14,
+      "physical_lines": 1,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "README.md": {
+      "sha256": "c2209391039136f8b40318528a3ba20f41bf3a10877ce13b6859ef1ff65f7813",
+      "bytes": 4547,
+      "physical_lines": 80,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "build.sh": {
+      "sha256": "32b49e4233390dadb7b3325e72cff74c8e3e7776c5687e05ae7c5c141d5b1d25",
+      "bytes": 97,
+      "physical_lines": 4,
+      "classification": "own_support"
+    },
+    "install.sh": {
+      "sha256": "ce882c4472117351dd7723db9bcb7c097d54129a23d334009be3fb5316fc6c15",
+      "bytes": 804,
+      "physical_lines": 28,
+      "classification": "own_support"
+    },
+    "package.json": {
+      "sha256": "4791fc3e0b371f2e719fd70418180139f1d0c8d249dc21323a52ee74c082f629",
+      "bytes": 692,
+      "physical_lines": 30,
+      "classification": "own_support"
+    },
+    "pnpm-lock.yaml": {
+      "sha256": "f66b243cab560564c1f24c76d44569c21c1f8a9bbb4fc0cc409b47655a242ef9",
+      "bytes": 37876,
+      "physical_lines": 1182,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "pnpm-workspace.yaml": {
+      "sha256": "a58252ab8bd4e53e07bdaee2333fc19a65ea287b5e7e5142390c0656f2d589d0",
+      "bytes": 45,
+      "physical_lines": 2,
+      "classification": "own_support"
+    },
+    "src/Auth/Auth.ts": {
+      "sha256": "c713c42188a7bdca21b36666cec4c0ed19721437fec828e4f372b6f3937c06ff",
+      "bytes": 4554,
+      "physical_lines": 133,
+      "classification": "application"
+    },
+    "src/Database/BunSqlite.ts": {
+      "sha256": "519cbf5a04be048db3a471079852ebafabaa655853d5d8d8d747947adcbfc6a6",
+      "bytes": 668,
+      "physical_lines": 21,
+      "classification": "application"
+    },
+    "src/Database/Database.ts": {
+      "sha256": "40014e14d8d60e327f4ff220b5a09ae9095719a43881e04fd4cd85430d361342",
+      "bytes": 2967,
+      "physical_lines": 93,
+      "classification": "application"
+    },
+    "src/Database/NodeSqlite.ts": {
+      "sha256": "2f8bbafb156d373571e88c5a06f703b27cb2cb8dd630f64b439b083429471d74",
+      "bytes": 639,
+      "physical_lines": 21,
+      "classification": "application"
+    },
+    "src/Database/schema.ts": {
+      "sha256": "29fe0b63fa7751864646e2879777502d57216071d0170758ab777abfc4ad9184",
+      "bytes": 1171,
+      "physical_lines": 29,
+      "classification": "application"
+    },
+    "src/Health/HealthRoutes.ts": {
+      "sha256": "ad0e196629efb4964f99843823f7044b5087364ab128190a66ccfb75a4f8e3a9",
+      "bytes": 1691,
+      "physical_lines": 51,
+      "classification": "application"
+    },
+    "src/Http/HttpApp.ts": {
+      "sha256": "4d72d47b0e190326ad01f8bf9363b1d7c82b4f58594b0e392dc84174eba14488",
+      "bytes": 1980,
+      "physical_lines": 55,
+      "classification": "application"
+    },
+    "src/Http/errorResponse.ts": {
+      "sha256": "91f6a1acfc7bc362f0be889054d233e87f8f641d5223f320df23c8b94c3b8e8b",
+      "bytes": 349,
+      "physical_lines": 13,
+      "classification": "application"
+    },
+    "src/Posts/PostRepo.ts": {
+      "sha256": "9304f69cfeb3d3dbc48b797ef30f03731f1fee3de9ef7d672a62fdbd08fc2f88",
+      "bytes": 7738,
+      "physical_lines": 229,
+      "classification": "application"
+    },
+    "src/Posts/PostRoutes.ts": {
+      "sha256": "1781299469b6387810f26f3a2f41c98b5c0270f94fd191973a8e685053fb5b68",
+      "bytes": 4069,
+      "physical_lines": 123,
+      "classification": "application"
+    },
+    "src/Posts/Posts.ts": {
+      "sha256": "eedc22bf833ee74f82a6a8de5016df244116bc665deca0cea2a0ee77989a37ae",
+      "bytes": 3549,
+      "physical_lines": 106,
+      "classification": "application"
+    },
+    "src/main.bun.ts": {
+      "sha256": "b3538af442a8e33c537a5bc298c74efd5fd42a104b961653b22a5a45eff6164f",
+      "bytes": 459,
+      "physical_lines": 16,
+      "classification": "application"
+    },
+    "src/main.node.ts": {
+      "sha256": "bcfc551f450c696ed051a76d37a2162feb5accba34b633d388e07144068a6e7e",
+      "bytes": 590,
+      "physical_lines": 20,
+      "classification": "application"
+    },
+    "start.sh": {
+      "sha256": "63230d96f4f508330a34ac97321c6f315664fec8855a8a03afb714d325b5b41a",
+      "bytes": 86,
+      "physical_lines": 4,
+      "classification": "own_support"
+    },
+    "tsconfig.json": {
+      "sha256": "bf6887693c2779db5f1e8b3c556b2762692e8bed5644beee79acba00331bdd6e",
+      "bytes": 586,
+      "physical_lines": 22,
+      "classification": "own_support"
+    }
+  },
+  "skipped_members": []
+}

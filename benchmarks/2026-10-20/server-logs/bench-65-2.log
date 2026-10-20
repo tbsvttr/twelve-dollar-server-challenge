@@ -1,0 +1,5 @@
+[w0] 2026/10/20 12:32:25.154643 pid 13 listening on 127.0.0.1:24000, fd limit 65535, fills to 56559 connections
+[w1] 2026/10/20 12:32:25.162634 pid 19 listening on 127.0.0.1:24000, fd limit 65535, fills to 56559 connections
+[w2] 2026/10/20 12:32:25.163713 pid 25 listening on 127.0.0.1:24000, fd limit 65535, fills to 56559 connections
+[w0] 2026/10/20 12:32:42.610174 worker 2 exited (signal: terminated)
+[w0] 2026/10/20 12:32:42.610542 worker 1 exited (signal: terminated)

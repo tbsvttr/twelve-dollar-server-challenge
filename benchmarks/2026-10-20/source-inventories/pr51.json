@@ -1,0 +1,101 @@
+{
+  "files": {
+    ".dockerignore": {
+      "sha256": "8b2ff9da1e6abec0dea5d5e0f5dbc89ac0a2695dddf2ff39af0c673e1cd5aa7b",
+      "bytes": 32,
+      "physical_lines": 4,
+      "classification": "documentation_lock_or_metadata"
+    },
+    ".gitignore": {
+      "sha256": "38a312de7c11a51bc18d916e43974a05ae4861d5cb72dd623bd67bcaac24d493",
+      "bytes": 48,
+      "physical_lines": 5,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "Dockerfile": {
+      "sha256": "4d42a8f79804513e0e2ae08e0a5de19b9551d41dc5aa2279a55015cb38c64e3a",
+      "bytes": 472,
+      "physical_lines": 11,
+      "classification": "own_support"
+    },
+    "PERFORMANCE.md": {
+      "sha256": "ecba38f25aa6a5e4e58b19ebd37733442625c188d3db4ea1831be85b98930130",
+      "bytes": 6162,
+      "physical_lines": 111,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "README.md": {
+      "sha256": "e51556b9725e655288bd0cc7be5fafd0361ce3213e9b43a0601ff7ae65961d91",
+      "bytes": 5269,
+      "physical_lines": 100,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "benchmark.py": {
+      "sha256": "ddedd4b700132d54da83a01beda1d1efbd1f45b9000caea4fd7b99e3e96c3b9a",
+      "bytes": 4991,
+      "physical_lines": 102,
+      "classification": "own_support"
+    },
+    "build.sh": {
+      "sha256": "a3446f447ffee2736658bc75f7cc43f2d9e723402219ee575642801d4cb9fdab",
+      "bytes": 309,
+      "physical_lines": 7,
+      "classification": "own_support"
+    },
+    "install.sh": {
+      "sha256": "d6506d4320cc8d2d8f563b9d9baaf976bb10bce5fa7e588635d32aae9fb22b44",
+      "bytes": 435,
+      "physical_lines": 9,
+      "classification": "own_support"
+    },
+    "package-lock.json": {
+      "sha256": "c305f2a2c1d0e49009212a275e72497e9eaa30e4d8f06f78b712e95d59e4ac63",
+      "bytes": 52754,
+      "physical_lines": 1508,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "package.json": {
+      "sha256": "ac5d5da690cd1d3f61d5ec68a3075cea3a4a35495359e38c6f58b818cdec154f",
+      "bytes": 399,
+      "physical_lines": 17,
+      "classification": "own_support"
+    },
+    "performance-results.json": {
+      "sha256": "0b42c95934366c63f8494c4bb24f0d55f28ed022d9cf0a729b3d2be90dce19d0",
+      "bytes": 10764,
+      "physical_lines": 427,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "server.ts": {
+      "sha256": "1891ebf087afa52bbb73e1a0f919a39ff6298254b36fe2510b785eb78a19f6c3",
+      "bytes": 9860,
+      "physical_lines": 347,
+      "classification": "application"
+    },
+    "start.sh": {
+      "sha256": "7bef158b21f1c4ea9b5dc0437972d1514a837af4482ba9d6eee522e848b5b1c4",
+      "bytes": 84,
+      "physical_lines": 4,
+      "classification": "own_support"
+    },
+    "tsconfig.json": {
+      "sha256": "2768e6a026c46762c562be22f3596b7ca1e11e9301aa0f41f2fddc9e91e28125",
+      "bytes": 257,
+      "physical_lines": 8,
+      "classification": "own_support"
+    },
+    "verify-sockets.mjs": {
+      "sha256": "51f26c0f9c42e78d07a23b3f6db18538484b2db27a4cb76e18084060bf57e5e5",
+      "bytes": 4759,
+      "physical_lines": 97,
+      "classification": "own_support"
+    },
+    "verify.mjs": {
+      "sha256": "743e77b64fb81e37080b5a9155b06087f2d777cf4a9042795597cf7b8b1afa77",
+      "bytes": 5797,
+      "physical_lines": 95,
+      "classification": "own_support"
+    }
+  },
+  "skipped_members": []
+}

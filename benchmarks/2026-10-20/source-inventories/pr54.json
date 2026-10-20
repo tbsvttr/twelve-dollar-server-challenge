@@ -1,0 +1,65 @@
+{
+  "files": {
+    ".gitignore": {
+      "sha256": "181314065df2f2fdaf920b1a8b5311daa216a2d6489a06ada5b49cc514d89417",
+      "bytes": 7,
+      "physical_lines": 1,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "README.md": {
+      "sha256": "8325420bfebbe366618398c51abce422886c02eeebc8b9f4be2b6665e7f27e75",
+      "bytes": 13193,
+      "physical_lines": 194,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "build.sh": {
+      "sha256": "2d32419507c6e58509896ae4e22fb57eebee6691b2f57a88a77cd06283431bd2",
+      "bytes": 6300,
+      "physical_lines": 128,
+      "classification": "own_support"
+    },
+    "feedapi.c": {
+      "sha256": "8e5be22c1cb4c2be54d9665f72642d4bff75cf4c2cb7e885a4fa8413da870ae4",
+      "bytes": 23645,
+      "physical_lines": 590,
+      "classification": "application"
+    },
+    "install.sh": {
+      "sha256": "e00db29f0d679a5130686d68442e7c5ffa5f7d47d2a594dcdd9d0d95972d6a44",
+      "bytes": 552,
+      "physical_lines": 17,
+      "classification": "own_support"
+    },
+    "json.c": {
+      "sha256": "e524b495e51737470f123d6c4d5bc90808ff360d439fb5490baddb57f4bb4c6c",
+      "bytes": 11723,
+      "physical_lines": 359,
+      "classification": "application"
+    },
+    "json.h": {
+      "sha256": "d48167799949b5079332d7f2e05222d44a51e4d3076b075b0b36aaa9316e9d13",
+      "bytes": 1858,
+      "physical_lines": 38,
+      "classification": "application"
+    },
+    "jwt.c": {
+      "sha256": "46571f383d3e9c7fefbe4fe288e82057a53f8060c1309a8c297b3892f0a02717",
+      "bytes": 10634,
+      "physical_lines": 243,
+      "classification": "application"
+    },
+    "jwt.h": {
+      "sha256": "015d153527f705ea741a5c50c9f6e014e4ce9a4f3a769ff33e4c4bcff060a8e3",
+      "bytes": 1841,
+      "physical_lines": 41,
+      "classification": "application"
+    },
+    "start.sh": {
+      "sha256": "2cf7280f2c5c7afc961f696c34c73cbbaa3b8c8a1ef817f18659e873b05bdf57",
+      "bytes": 180,
+      "physical_lines": 5,
+      "classification": "own_support"
+    }
+  },
+  "skipped_members": []
+}

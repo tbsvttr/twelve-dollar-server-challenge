@@ -1,0 +1,59 @@
+{
+  "files": {
+    ".gitignore": {
+      "sha256": "aaccb1a00557171b31d00a99a6a2666856e417964732490685cdcba9f02de491",
+      "bytes": 5,
+      "physical_lines": 1,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "README.md": {
+      "sha256": "4f8469f7daf17ce3114a8780d2f13608b241c8d2e2ada8608592d38676dd7f27",
+      "bytes": 3915,
+      "physical_lines": 67,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "build.sh": {
+      "sha256": "623e109023264c85cf8f0873666abbfaa953b54de5c64bb7dd5b26a7fd839f5c",
+      "bytes": 230,
+      "physical_lines": 7,
+      "classification": "own_support"
+    },
+    "go.mod": {
+      "sha256": "c80c40478cf6ed43b9a048cdf462ae9dcfc6970eb1c25c78cd9a7a557415f6e7",
+      "bytes": 1577,
+      "physical_lines": 40,
+      "classification": "other"
+    },
+    "go.sum": {
+      "sha256": "a17824446267aa011721b2230aaf9832681432701851d185ecff3cc44a95b523",
+      "bytes": 8145,
+      "physical_lines": 92,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "install.sh": {
+      "sha256": "f1b0579cf2a722959e014712cde0dec5a65c4aaa70279298c90d34b8f6cd6230",
+      "bytes": 248,
+      "physical_lines": 5,
+      "classification": "own_support"
+    },
+    "json.go": {
+      "sha256": "452668edfecf011169fc2043fe8c7ee57324658b610a217ff388d5ab160a6fb7",
+      "bytes": 706,
+      "physical_lines": 35,
+      "classification": "application"
+    },
+    "main.go": {
+      "sha256": "71b7ca4840f1a66119073587830194456713afc271c74f7ab1db519e16ec9979",
+      "bytes": 9667,
+      "physical_lines": 380,
+      "classification": "application"
+    },
+    "start.sh": {
+      "sha256": "648569d776f6ee173598bb55cb8d8a4e9c2f51b0438374b160571d3ff7d13967",
+      "bytes": 165,
+      "physical_lines": 4,
+      "classification": "own_support"
+    }
+  },
+  "skipped_members": []
+}

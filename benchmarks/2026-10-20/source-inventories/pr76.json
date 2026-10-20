@@ -1,0 +1,107 @@
+{
+  "files": {
+    ".gitignore": {
+      "sha256": "263fc4434eaf2a6961abb076d9873b66bea0c6390caa6eed425a27b63cda774c",
+      "bytes": 43,
+      "physical_lines": 4,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "README.md": {
+      "sha256": "825b035d81f895caffda522c5adfe6729e606d1ce4ddef8a5394d27379411b31",
+      "bytes": 5787,
+      "physical_lines": 101,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "build.sh": {
+      "sha256": "a24c1953daab30f889e6b0f312297144c9a2c21203c828bfaec68f268cf3e4e6",
+      "bytes": 855,
+      "physical_lines": 18,
+      "classification": "own_support"
+    },
+    "db.go": {
+      "sha256": "951f26fa626c17d1ee021bc159cb1ba13c2fbfba3c05ddba58a0e279164162c9",
+      "bytes": 2463,
+      "physical_lines": 86,
+      "classification": "application"
+    },
+    "epoll.go": {
+      "sha256": "13af12035cce4870535cd8b5fa714ea6160da512d9ead3519c811e63f464ce59",
+      "bytes": 4505,
+      "physical_lines": 188,
+      "classification": "application"
+    },
+    "fastdb.c": {
+      "sha256": "652b019a1787294b0bcc5fec461adbceae32fd0493cb1f2f421a7db304ab4423",
+      "bytes": 9946,
+      "physical_lines": 269,
+      "classification": "application"
+    },
+    "fastdb.h": {
+      "sha256": "475fc5dbcfee1f85246c5b4387bd97b64929139e3ae448002118f3822a2d44b2",
+      "bytes": 1295,
+      "physical_lines": 35,
+      "classification": "application"
+    },
+    "go.mod": {
+      "sha256": "18d27d762daa57a6e5d1808660d622122b438a9eb359963a2e1843073a979dd4",
+      "bytes": 29,
+      "physical_lines": 3,
+      "classification": "other"
+    },
+    "http.go": {
+      "sha256": "db23eecfb3f8591fc3670a177a386aacaca3e6f7d3f1c89989144b248ab38c57",
+      "bytes": 5582,
+      "physical_lines": 216,
+      "classification": "application"
+    },
+    "install.sh": {
+      "sha256": "cde4850ae18f9fdc0f422052953bae858e77164dc4d823271732ace2ae477472",
+      "bytes": 874,
+      "physical_lines": 21,
+      "classification": "own_support"
+    },
+    "jwt.go": {
+      "sha256": "ada025a1a0486389ece8d46333537c4fa9dd4fb8ed9f97673db49a7df6f421fe",
+      "bytes": 3398,
+      "physical_lines": 137,
+      "classification": "application"
+    },
+    "main.go": {
+      "sha256": "c50332b41730067c2fe8d6e06d0119be9d0f38ab3992643d9a86cce724f3b216",
+      "bytes": 1311,
+      "physical_lines": 59,
+      "classification": "application"
+    },
+    "server.go": {
+      "sha256": "b4ceecf9da560b16948f94f0aaea1b3a55c18871a09f14bcfc235888d20ca93e",
+      "bytes": 13600,
+      "physical_lines": 497,
+      "classification": "application"
+    },
+    "start.sh": {
+      "sha256": "f4117d62b63f34ab6e1649c8f5d2ab541bd5413f405be3836f048eff52749fce",
+      "bytes": 159,
+      "physical_lines": 5,
+      "classification": "own_support"
+    },
+    "uring.c": {
+      "sha256": "b6739216ea356ff1a6fb387610050b7812405bff90b4c3d37a013e216deaa2c5",
+      "bytes": 6515,
+      "physical_lines": 201,
+      "classification": "application"
+    },
+    "uring.go": {
+      "sha256": "e6a9c33b327a3c7a31829b7bd5bc8b9024e3562794f6db2af2078767341315ea",
+      "bytes": 8332,
+      "physical_lines": 311,
+      "classification": "application"
+    },
+    "uring.h": {
+      "sha256": "dd872f896b59f119a2b57c3a7d3b0042b55945b84e8cc3e5b3e93bf63c9f4ab0",
+      "bytes": 1441,
+      "physical_lines": 34,
+      "classification": "application"
+    }
+  },
+  "skipped_members": []
+}

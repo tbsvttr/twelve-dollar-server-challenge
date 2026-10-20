@@ -1,0 +1,19 @@
+{
+  "follow_up": {
+    "url": "https://www.youtube.com/watch?v=QGWKCaglSBI",
+    "title": "I Asked Expert Programmers to Max Out a $12 Server",
+    "published": "2026-10-13",
+    "chapters": {
+      "rules": "https://www.youtube.com/watch?v=QGWKCaglSBI&t=76s",
+      "load_testing": "https://www.youtube.com/watch?v=QGWKCaglSBI&t=162s",
+      "takeaways": "https://www.youtube.com/watch?v=QGWKCaglSBI&t=1189s",
+      "trade_offs": "https://www.youtube.com/watch?v=QGWKCaglSBI&t=1271s"
+    },
+    "verification": "Video metadata and description retrieved directly from YouTube; English transcript unavailable. No per-language video results transcribed."
+  },
+  "original": {
+    "url": "https://www.youtube.com/watch?v=sQXFhh_PiG4",
+    "reference": "Video linked by the challenge README."
+  },
+  "comparison_scope": "Current local native ARM64 64-connection saturation benchmark. This does not measure the creator's x86-64 DigitalOcean maximum-user score."
+}

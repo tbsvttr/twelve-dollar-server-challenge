@@ -1,0 +1,3 @@
+import: 50000 users, 500000 posts, 2016005 likes -> /tmp/current-pr21-fsbebnx3/feed.db.memstore/snapshot
+loaded 500000 posts, 2016005 likes in 81 ms (WAL_SYNC=normal)
+listening on 127.0.0.1:24000

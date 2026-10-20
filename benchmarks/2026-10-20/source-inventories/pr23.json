@@ -1,0 +1,47 @@
+{
+  "files": {
+    ".gitignore": {
+      "sha256": "57a8ad0e62346f7b0f2e261d59a7b90f1310043424bcb9d229208f183f1940d9",
+      "bytes": 20,
+      "physical_lines": 2,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "README.md": {
+      "sha256": "d9f60bffeb336c5a429760288e21c6eb90ff9ba20503cc1888ca962d2a0eddb1",
+      "bytes": 1371,
+      "physical_lines": 25,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "app.py": {
+      "sha256": "27cdb7900815d7f5738668a4a0569b0338fabd20a63c125c7713e6fcffa19dc1",
+      "bytes": 6849,
+      "physical_lines": 194,
+      "classification": "application"
+    },
+    "build.sh": {
+      "sha256": "4c753e871a4edf17a39059005d535534ac4cb7ee75e956ff08091efe42516a71",
+      "bytes": 131,
+      "physical_lines": 5,
+      "classification": "own_support"
+    },
+    "install.sh": {
+      "sha256": "e093c009ac0700d25376086b8fb20e244a8e407e554b8c4e2ae76b55fdd35998",
+      "bytes": 96,
+      "physical_lines": 3,
+      "classification": "own_support"
+    },
+    "requirements.txt": {
+      "sha256": "60150750bbd2f9409d00d785cc0c2f9f9a5d34ac22a9a11ca414dd49aa082b62",
+      "bytes": 536,
+      "physical_lines": 32,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "start.sh": {
+      "sha256": "42aa7d498f507dba21093216cf0b711a7cd9db51b0fd1f065db59d24441df84e",
+      "bytes": 231,
+      "physical_lines": 5,
+      "classification": "own_support"
+    }
+  },
+  "skipped_members": []
+}

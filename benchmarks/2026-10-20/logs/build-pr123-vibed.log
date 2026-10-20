@@ -1,0 +1,254 @@
+Pinned source: b8bd4b2e5b302d81a0bac32bd38a4bb6c258b0e2
+
+$ docker run -d --name twelve-current-build-123-vibed --cpus 1.5 --memory 3g --memory-swap 3g --security-opt seccomp=seccomp-io-uring.json --mount type=bind,src=<BENCHMARK_EVIDENCE>,dst=/evidence,readonly twelve-unified:2026-10-07 sleep infinity
+4e9618e34dfb40987b4714fbefd05f8c53da93e6519c19ff3eace5b36c42f421
+
+$ docker exec -i twelve-current-build-123-vibed python3 - 123-vibed
+Verified 8 pinned source files
+
+$ docker exec twelve-current-build-123-vibed bash /evidence/runtime-scripts/pr123-vibed.sh
+Hit:1 http://ports.ubuntu.com/ubuntu-ports noble InRelease
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble-updates InRelease [126 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble-backports InRelease [126 kB]
+Get:4 http://ports.ubuntu.com/ubuntu-ports noble-security InRelease [126 kB]
+Get:5 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 Packages [1786 kB]
+Get:6 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 Packages [2214 kB]
+Get:7 http://ports.ubuntu.com/ubuntu-ports noble-updates/multiverse arm64 Packages [104 kB]
+Get:8 http://ports.ubuntu.com/ubuntu-ports noble-updates/restricted arm64 Packages [3251 kB]
+Get:9 http://ports.ubuntu.com/ubuntu-ports noble-backports/multiverse arm64 Packages [669 B]
+Get:10 http://ports.ubuntu.com/ubuntu-ports noble-security/restricted arm64 Packages [3129 kB]
+Get:11 http://ports.ubuntu.com/ubuntu-ports noble-security/universe arm64 Packages [1638 kB]
+Get:12 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 Packages [1475 kB]
+Get:13 http://ports.ubuntu.com/ubuntu-ports noble-security/multiverse arm64 Packages [99.1 kB]
+Fetched 14.1 MB in 1s (12.2 MB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+ca-certificates is already the newest version (20260601~24.04.1).
+xz-utils is already the newest version (5.6.1+really5.4.5-1ubuntu0.3).
+xz-utils set to manually installed.
+gcc is already the newest version (4:13.2.0-7ubuntu1).
+gcc set to manually installed.
+libc6-dev is already the newest version (2.39-0ubuntu8.9).
+libc6-dev set to manually installed.
+libssl-dev is already the newest version (3.0.13-0ubuntu3.16).
+zlib1g is already the newest version (1:1.3.dfsg-3.1ubuntu2.2).
+liblzma5 is already the newest version (5.6.1+really5.4.5-1ubuntu0.3).
+The following additional packages will be installed:
+  libcurl3t64-gnutls libcurl4t64
+Suggested packages:
+  sqlite3-doc
+The following NEW packages will be installed:
+  libsqlite3-dev
+The following packages will be upgraded:
+  curl libcurl3t64-gnutls libcurl4t64 libxml2
+4 upgraded, 1 newly installed, 0 to remove and 15 not upgraded.
+Need to get 2542 kB of archives.
+After this operation, 3471 kB of additional disk space will be used.
+Get:1 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libxml2 arm64 2.9.14+dfsg-1.3ubuntu3.10 [736 kB]
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 curl arm64 8.5.0-2ubuntu10.16 [222 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 libcurl4t64 arm64 8.5.0-2ubuntu10.16 [337 kB]
+Get:4 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 libcurl3t64-gnutls arm64 8.5.0-2ubuntu10.16 [331 kB]
+Get:5 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libsqlite3-dev arm64 3.45.1-1ubuntu2.8 [916 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 2542 kB in 0s (5925 kB/s)
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 16962 files and directories currently installed.)
+Preparing to unpack .../libxml2_2.9.14+dfsg-1.3ubuntu3.10_arm64.deb ...
+Unpacking libxml2:arm64 (2.9.14+dfsg-1.3ubuntu3.10) over (2.9.14+dfsg-1.3ubuntu3.9) ...
+Preparing to unpack .../curl_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking curl (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Preparing to unpack .../libcurl4t64_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking libcurl4t64:arm64 (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Preparing to unpack .../libcurl3t64-gnutls_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking libcurl3t64-gnutls:arm64 (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Selecting previously unselected package libsqlite3-dev:arm64.
+Preparing to unpack .../libsqlite3-dev_3.45.1-1ubuntu2.8_arm64.deb ...
+Unpacking libsqlite3-dev:arm64 (3.45.1-1ubuntu2.8) ...
+Setting up libcurl4t64:arm64 (8.5.0-2ubuntu10.16) ...
+Setting up libcurl3t64-gnutls:arm64 (8.5.0-2ubuntu10.16) ...
+Setting up libsqlite3-dev:arm64 (3.45.1-1ubuntu2.8) ...
+Setting up curl (8.5.0-2ubuntu10.16) ...
+Setting up libxml2:arm64 (2.9.14+dfsg-1.3ubuntu3.10) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+/tmp/ldc.tar.xz: OK
+LDC - the LLVM D compiler (1.42.0):
+  based on DMD v2.112.1 and LLVM 21.1.8
+  built with LDC - the LLVM D compiler (1.42.0)
+  Default target: aarch64-unknown-linux-gnu
+  Host CPU: (unknown)
+  https://dlang.org - https://wiki.dlang.org/LDC
+
+
+  Registered Targets:
+    aarch64     - AArch64 (little endian)
+    aarch64_32  - AArch64 (little endian ILP32)
+    aarch64_be  - AArch64 (big endian)
+    amdgcn      - AMD GCN GPUs
+    arm         - ARM
+    arm64       - ARM64 (little endian)
+    arm64_32    - ARM64 (little endian ILP32)
+    armeb       - ARM (big endian)
+    avr         - Atmel AVR Microcontroller
+    bpf         - BPF (host endian)
+    bpfeb       - BPF (big endian)
+    bpfel       - BPF (little endian)
+    hexagon     - Hexagon
+    lanai       - Lanai
+    loongarch32 - 32-bit LoongArch
+    loongarch64 - 64-bit LoongArch
+    mips        - MIPS (32-bit big endian)
+    mips64      - MIPS (64-bit big endian)
+    mips64el    - MIPS (64-bit little endian)
+    mipsel      - MIPS (32-bit little endian)
+    msp430      - MSP430 [experimental]
+    nvptx       - NVIDIA PTX 32-bit
+    nvptx64     - NVIDIA PTX 64-bit
+    ppc32       - PowerPC 32
+    ppc32le     - PowerPC 32 LE
+    ppc64       - PowerPC 64
+    ppc64le     - PowerPC 64 LE
+    r600        - AMD GPUs HD2XXX-HD6XXX
+    riscv32     - 32-bit RISC-V
+    riscv64     - 64-bit RISC-V
+    sparc       - Sparc
+    sparcel     - Sparc LE
+    sparcv9     - Sparc V9
+    spirv       - SPIR-V Logical
+    spirv32     - SPIR-V 32-bit
+    spirv64     - SPIR-V 64-bit
+    systemz     - SystemZ
+    thumb       - Thumb
+    thumbeb     - Thumb (big endian)
+    ve          - VE
+    wasm32      - WebAssembly 32-bit
+    wasm64      - WebAssembly 64-bit
+    x86         - 32-bit X86: Pentium-Pro and above
+    x86-64      - 64-bit X86: EM64T and AMD64
+    xcore       - XCore
+    xtensa      - Xtensa 32
+DUB version 1.41.0, built on Mar  1 2026
+
+$ docker exec twelve-current-build-123-vibed chown -R bench:bench /suite/sources/pr123-vibed
+
+$ docker exec twelve-current-build-123-vibed runuser -u bench -- env PATH=/opt/twelve-rust/cargo/bin:/usr/local/go/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 NIM_JOBS=2 MAKEFLAGS=-j2 bash /suite/sources/pr123-vibed/build.sh
+    Fetching vibe-stream 1.4.1 (getting selected version)
+    Fetching vibe-inet 1.3.1 (getting selected version)
+    Fetching vibe-container 1.7.1 (getting selected version)
+    Fetching mir-algorithm 3.22.4 (getting selected version)
+    Fetching vibe-serialization 1.2.0 (getting selected version)
+    Fetching during 0.3.0 (getting selected version)
+    Fetching jwtlited 1.4.0 (getting selected version)
+    Fetching asdf 0.8.0 (getting selected version)
+    Fetching taggedalgebraic 1.0.1 (getting selected version)
+    Fetching stdx-allocator 2.77.5 (getting selected version)
+    Fetching eventcore 0.9.39 (getting selected version)
+    Fetching mir-core 1.7.4 (getting selected version)
+    Fetching diet-ng 1.8.4 (getting selected version)
+    Fetching silly 1.1.1 (getting selected version)
+    Fetching d2sqlite3 1.0.0 (getting selected version)
+    Fetching vibe-http 1.5.1 (getting selected version)
+    Fetching vibe-core 2.14.0 (getting selected version)
+    Fetching openssl 3.4.0 (getting selected version)
+    Fetching openssl-static 1.0.5+3.0.8 (getting selected version)
+    Fetching mir-linux-kernel 1.2.1 (getting selected version)
+    Starting Performing "release" build using ldc2 for aarch64, arm_hardfloat.
+    Building mir-core 1.7.4: building configuration [library]
+    Building mir-algorithm 3.22.4: building configuration [default]
+    Building asdf 0.8.0: building configuration [library]
+'-sse4.2' is not a recognized feature for this target (ignoring feature)
+    Building d2sqlite3 1.0.0: building configuration [with-lib]
+    Building jwtlited:base 1.4.0: building configuration [library]
+    Building jwtlited:phobos 1.4.0: building configuration [library]
+    Building diet-ng 1.8.4: building configuration [library]
+    Building during 0.3.0: building configuration [default]
+/home/bench/.dub/packages/during/0.3.0/during/source/during/package.d(44,18): Deprecation: accessing `@system` field `SetupParameters.flags` will become `@system` in a future release
+    uring.payload.params.flags = flags;
+                 ^
+/home/bench/.dub/packages/during/0.3.0/during/source/during/package.d(83,18): Deprecation: accessing `@system` field `io_uring_probe.last_op` will become `@system` in a future release
+        if (op > probe.last_op) return false;
+                 ^
+/home/bench/.dub/packages/during/0.3.0/during/source/during/package.d(84,19): Deprecation: accessing `@system` field `io_uring_probe_op.op` will become `@system` in a future release
+        assert(ops[op].op == op, "Operations differs");
+                  ^
+/home/bench/.dub/packages/during/0.3.0/during/source/during/package.d(85,33): Deprecation: access `@system` variable `IO_URING_OP_SUPPORTED` will become `@system` in a future release
+        return (ops[op].flags & IO_URING_OP_SUPPORTED) != 0;
+                                ^
+/home/bench/.dub/packages/during/0.3.0/during/source/during/package.d(85,20): Deprecation: accessing `@system` field `io_uring_probe_op.flags` will become `@system` in a future release
+        return (ops[op].flags & IO_URING_OP_SUPPORTED) != 0;
+                   ^
+/home/bench/.dub/packages/during/0.3.0/during/source/during/package.d(829,5): Deprecation: accessing `@system` field `SubmissionEntry.opcode` will become `@system` in a future release
+    entry.opcode = op;
+    ^
+/home/bench/.dub/packages/during/0.3.0/during/source/during/package.d(830,5): Deprecation: accessing `@system` field `SubmissionEntry.fd` will become `@system` in a future release
+    entry.fd = fd;
+    ^
+/home/bench/.dub/packages/during/0.3.0/during/source/during/package.d(831,5): Deprecation: accessing `@system` field `SubmissionEntry.off` will become `@system` in a future release
+    entry.off = offset;
+    ^
+/home/bench/.dub/packages/during/0.3.0/during/source/during/package.d(832,5): Deprecation: accessing `@system` field `SubmissionEntry.flags` will become `@system` in a future release
+    entry.flags = SubmissionEntryFlags.NONE;
+    ^
+/home/bench/.dub/packages/during/0.3.0/during/source/during/package.d(833,5): Deprecation: accessing `@system` field `SubmissionEntry.ioprio` will become `@system` in a future release
+    entry.ioprio = 0;
+    ^
+/home/bench/.dub/packages/during/0.3.0/during/source/during/package.d(834,5): Deprecation: accessing `@system` field `SubmissionEntry.addr` will become `@system` in a future release
+    entry.addr = cast(ulong)addr;
+    ^
+/home/bench/.dub/packages/during/0.3.0/during/source/during/package.d(835,5): Deprecation: accessing `@system` field `SubmissionEntry.len` will become `@system` in a future release
+    entry.len = len;
+    ^
+/home/bench/.dub/packages/during/0.3.0/during/source/during/package.d(836,5): Deprecation: accessing `@system` field `SubmissionEntry.rw_flags` will become `@system` in a future release
+    entry.rw_flags = ReadWriteFlags.NONE;
+    ^
+/home/bench/.dub/packages/during/0.3.0/during/source/during/package.d(837,2): Deprecation: accessing `@system` field `SubmissionEntry.user_data` will become `@system` in a future release
+    entry.user_data = 0;
+    ^
+/home/bench/.dub/packages/during/0.3.0/during/source/during/package.d(838,5): Deprecation: accessing `@system` field `SubmissionEntry.buf_index` will become `@system` in a future release
+    entry.buf_index = 0;
+    ^
+/home/bench/.dub/packages/during/0.3.0/during/source/during/package.d(839,5): Deprecation: accessing `@system` field `SubmissionEntry.personality` will become `@system` in a future release
+    entry.personality = 0;
+    ^
+/home/bench/.dub/packages/during/0.3.0/during/source/during/package.d(840,5): Deprecation: accessing `@system` field `SubmissionEntry.file_index` will become `@system` in a future release
+    entry.file_index = 0;
+    ^
+/home/bench/.dub/packages/during/0.3.0/during/source/during/package.d(841,5): Deprecation: accessing `@system` field `SubmissionEntry.__pad2` will become `@system` in a future release
+    entry.__pad2[0] = entry.__pad2[1] = 0;
+    ^
+/home/bench/.dub/packages/during/0.3.0/during/source/during/package.d(841,5): Deprecation: accessing `@system` field `SubmissionEntry.__pad2` will become `@system` in a future release
+    entry.__pad2[0] = entry.__pad2[1] = 0;
+    ^
+/home/bench/.dub/packages/during/0.3.0/during/source/during/package.d(841,5): Deprecation: accessing `@system` field `SubmissionEntry.__pad2` will become `@system` in a future release
+    entry.__pad2[0] = entry.__pad2[1] = 0;
+    ^
+22 deprecation warnings omitted, use `-verrors=0` to show all
+    Building taggedalgebraic 1.0.1: building configuration [library]
+    Building eventcore 0.9.39: building configuration [epoll]
+    Building stdx-allocator 2.77.5: building configuration [library]
+    Building vibe-container 1.7.1: building configuration [library]
+    Building vibe-core 2.14.0: building configuration [epoll]
+    Building vibe-inet:textfilter 1.3.1: building configuration [library]
+    Building vibe-serialization 1.2.0: building configuration [library]
+    Building vibe-stream 1.4.1: building configuration [library]
+    Building vibe-inet 1.3.1: building configuration [library]
+    Building vibe-inet:crypto 1.3.1: building configuration [library]
+    Building vibe-stream:tls 1.4.1: building configuration [notls]
+    Building vibe-http 1.5.1: building configuration [library]
+/home/bench/.dub/packages/vibe-http/1.5.1/vibe-http/source/vibe/http/internal/http2/multiplexing.d(248,9): Deprecation: `@safe` function `close` calling `performLocked`
+        m_lock.performLocked!({
+              ^
+/home/bench/.dub/packages/vibe-core/2.14.0/vibe-core/source/vibe/core/sync.d(204,13):        which calls `() { this.m_countOpen--; this.m_open.removeKey(sid); this.m_streamWSize.remov...`
+    return PROC();
+               ^
+/home/bench/.dub/packages/vibe-http/1.5.1/vibe-http/source/vibe/http/internal/http2/multiplexing.d(251,25):        and using the result of a cast from `const(uint)` to `uint` as an lvalue makes it fail to infer `@safe`
+            m_streamWSize.remove(sid);
+                                 ^
+    Building feed-server ~master: building configuration [application]
+'-sse4.2' is not a recognized feature for this target (ignoring feature)
+     Linking server
+
+$ docker exec twelve-current-build-123-vibed bash -c rm -rf /tmp/* /root/.cache /home/bench/.cache /home/bench/.npm/_cacache /var/lib/apt/lists/* /var/cache/apt/archives/*.deb
+
+$ docker commit twelve-current-build-123-vibed twelve-current-pr123-vibed:2026-10-20
+sha256:6f9cdc733dc4034e5ee051c2ed19d848193239d15439c8b09d0128110512cdd3

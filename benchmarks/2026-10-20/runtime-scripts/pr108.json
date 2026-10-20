@@ -1,0 +1,4 @@
+[
+  "Reuse native ARM64 .NET SDK 10.0.401 in benchmark base image; same version as submitted installer.",
+  "Register existing native .NET runtime in /etc/dotnet/install_location_arm64 so the apphost finds /usr/local/share/dotnet."
+]

@@ -1,0 +1,293 @@
+{
+  "files": {
+    ".gitattributes": {
+      "sha256": "61641c6e77710b1d3b68c6bd28f65e22c546b2d69a2ed1a8793a9e95642e4811",
+      "bytes": 58,
+      "physical_lines": 3,
+      "classification": "other"
+    },
+    ".gitignore": {
+      "sha256": "3ee72d2b3c8368e3348510f1d253267083d6d30408ba6ca22c6a0da86f6fc0b8",
+      "bytes": 32,
+      "physical_lines": 4,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "README.md": {
+      "sha256": "c4c1d0707101b0b0fa3062086143f3f45e19fe017a6edbd3f976ca15ee8d69c1",
+      "bytes": 8560,
+      "physical_lines": 118,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "build.gradle.kts": {
+      "sha256": "07c3059bd58c415af567e649adcfb8d596d577cfd3d919ad67a2ed5bec651c80",
+      "bytes": 1847,
+      "physical_lines": 50,
+      "classification": "own_support"
+    },
+    "build.sh": {
+      "sha256": "5491a500dedbc97f7d828c8babdf83f2c097cbcb765ec926159eb1dd36f272da",
+      "bytes": 228,
+      "physical_lines": 6,
+      "classification": "own_support"
+    },
+    "gradle.properties": {
+      "sha256": "e41085bf6b3d72200b9f941f99547126b26e09a58b0a766d04f1a4a700533cc4",
+      "bytes": 180,
+      "physical_lines": 4,
+      "classification": "own_support"
+    },
+    "gradle/wrapper/gradle-wrapper.jar": {
+      "sha256": "3b8a25775a69158b5ad2b1d17a80a88dc7b40a352a73eb27d06c612a7ce68e98",
+      "bytes": 48749,
+      "physical_lines": 346,
+      "classification": "binary"
+    },
+    "gradle/wrapper/gradle-wrapper.properties": {
+      "sha256": "b9c24447093e4fab2b1f37bfb461d2a1eb14157a4808dff50e0f954801a8f8f1",
+      "bytes": 368,
+      "physical_lines": 10,
+      "classification": "own_support"
+    },
+    "gradlew": {
+      "sha256": "a5a5c199ba02189ae8c46a334223371a20599d9c298ef65e7540ede4a3f72d59",
+      "bytes": 8656,
+      "physical_lines": 248,
+      "classification": "other"
+    },
+    "gradlew.bat": {
+      "sha256": "f17917f8dbe61182b149273ee78090fec1197442c3f38276af907bfa5190db16",
+      "bytes": 4888,
+      "physical_lines": 112,
+      "classification": "other"
+    },
+    "install.sh": {
+      "sha256": "e49e03be49373afeb42f57f44c758b97f5fe9a068f8911cbb143f79ddb49c6a7",
+      "bytes": 720,
+      "physical_lines": 17,
+      "classification": "own_support"
+    },
+    "settings.gradle.kts": {
+      "sha256": "7ed9f6e2e7798684bab2aeefa16e015511c2741693cff19c57b47b6c0dd97e95",
+      "bytes": 26,
+      "physical_lines": 1,
+      "classification": "own_support"
+    },
+    "src/main/kotlin/challenge/feed/FeedApplication.kt": {
+      "sha256": "8267de113b7688cf91508ac411d77d1af771ae4a75a140fcbd195b5b03de885d",
+      "bytes": 371,
+      "physical_lines": 13,
+      "classification": "application"
+    },
+    "src/main/kotlin/challenge/feed/PositiveIds.kt": {
+      "sha256": "1e9758899194599dd410d5760601533a71d3767d7159a54abae2f08714345b16",
+      "bytes": 293,
+      "physical_lines": 6,
+      "classification": "application"
+    },
+    "src/main/kotlin/challenge/feed/auth/AuthConfig.kt": {
+      "sha256": "4d29d3677a1fbd466c350f7f48683649fc0c098fcc4e5ec2ffd7129dd715cd16",
+      "bytes": 373,
+      "physical_lines": 12,
+      "classification": "application"
+    },
+    "src/main/kotlin/challenge/feed/auth/AuthUser.kt": {
+      "sha256": "e0d3952afdd965212083894a1a9439586f8fbb28685d7f4c0ff425715d12fa57",
+      "bytes": 192,
+      "physical_lines": 4,
+      "classification": "application"
+    },
+    "src/main/kotlin/challenge/feed/auth/AuthUserArgumentResolver.kt": {
+      "sha256": "cb4809d6c50a141b9f58c6cee2b3f5763054bba647f509ecaca36168cc323982",
+      "bytes": 1417,
+      "physical_lines": 34,
+      "classification": "application"
+    },
+    "src/main/kotlin/challenge/feed/auth/JwtVerifier.kt": {
+      "sha256": "96cd3dcfc806d203fb02f020cff70231ceb10bbde3d1b2834a1ae2e8f3255a62",
+      "bytes": 2933,
+      "physical_lines": 71,
+      "classification": "application"
+    },
+    "src/main/kotlin/challenge/feed/config/DataSourceConfig.kt": {
+      "sha256": "7b85c5e5a9e8787a11246d3e9d3c56dbd1f9ebcffcf26d36f0afcdd413c69f56",
+      "bytes": 2430,
+      "physical_lines": 54,
+      "classification": "application"
+    },
+    "src/main/kotlin/challenge/feed/config/FeedProperties.kt": {
+      "sha256": "8577d3f9de3e042f937ffa284debe4385947920a8ae3fda2a196a14e67cd9770",
+      "bytes": 830,
+      "physical_lines": 22,
+      "classification": "application"
+    },
+    "src/main/kotlin/challenge/feed/config/StatementCachingDataSource.kt": {
+      "sha256": "5cdb1ddd0aabae657c69351a8908af3a49548205240d767a657200a5665a1394",
+      "bytes": 6321,
+      "physical_lines": 174,
+      "classification": "application"
+    },
+    "src/main/kotlin/challenge/feed/config/TomcatConfig.kt": {
+      "sha256": "27d5a4de985503f4a8878a513b83d99b17866a448dcb123df9c4ef39cf59bf10",
+      "bytes": 816,
+      "physical_lines": 19,
+      "classification": "application"
+    },
+    "src/main/kotlin/challenge/feed/config/WebConfig.kt": {
+      "sha256": "7fd4f3fd5426810b865519b96cc341a7285fc5a6a3adae04bf318e7a8caa86dc",
+      "bytes": 613,
+      "physical_lines": 14,
+      "classification": "application"
+    },
+    "src/main/kotlin/challenge/feed/error/ApiException.kt": {
+      "sha256": "3bd9d38a0078d5340a2fbd6d33457bf7ed8a62e522b9c05db78e201271cd408e",
+      "bytes": 724,
+      "physical_lines": 20,
+      "classification": "application"
+    },
+    "src/main/kotlin/challenge/feed/error/ApiExceptionHandler.kt": {
+      "sha256": "1d5c805b640d3376ba8d7fc9cdf07ed8aa6d9b3310b903b8e0f379fa3560e176",
+      "bytes": 2090,
+      "physical_lines": 45,
+      "classification": "application"
+    },
+    "src/main/kotlin/challenge/feed/health/HealthController.kt": {
+      "sha256": "54c23c8d6af826aa2b23816487b6890bc312951fa9980f67d7bf33ea72660ce5",
+      "bytes": 1577,
+      "physical_lines": 40,
+      "classification": "application"
+    },
+    "src/main/kotlin/challenge/feed/post/Dtos.kt": {
+      "sha256": "3da145978539e9d3dc901cdd7db5c7a815ecdf54a00830ba829affda9a7ae49e",
+      "bytes": 873,
+      "physical_lines": 33,
+      "classification": "application"
+    },
+    "src/main/kotlin/challenge/feed/post/PostBody.kt": {
+      "sha256": "8053a4c1c05d7ae1aa08a82fa6796bb51dac50f48e0cc82a3977f6b6b1ecbf8a",
+      "bytes": 920,
+      "physical_lines": 21,
+      "classification": "application"
+    },
+    "src/main/kotlin/challenge/feed/post/PostController.kt": {
+      "sha256": "f747ad6def0cc1c9726b18be457ff2b90d608049b667103d0ec6164d64aa677b",
+      "bytes": 1408,
+      "physical_lines": 34,
+      "classification": "application"
+    },
+    "src/main/kotlin/challenge/feed/post/PostId.kt": {
+      "sha256": "327c6269782321abb8becfcc9b3c8c7f51037261170b70f646d86ed23b4845c0",
+      "bytes": 310,
+      "physical_lines": 9,
+      "classification": "application"
+    },
+    "src/main/kotlin/challenge/feed/post/PostRepository.kt": {
+      "sha256": "912e355a014adefb41bb71d5130bcc12a87aa8ee8b012d4ad95b9c505c015e91",
+      "bytes": 2058,
+      "physical_lines": 48,
+      "classification": "application"
+    },
+    "src/main/kotlin/challenge/feed/post/PostService.kt": {
+      "sha256": "0f60d4a09743d4ad29ec61d2e7a50d3984b54d2c50b95311663ca6bdbf9add2f",
+      "bytes": 927,
+      "physical_lines": 27,
+      "classification": "application"
+    },
+    "src/main/resources/application.properties": {
+      "sha256": "85056bc8c1267507f13dd298d97404dade511875ae1ebd12f173927d90c38290",
+      "bytes": 1363,
+      "physical_lines": 29,
+      "classification": "own_support"
+    },
+    "src/test/kotlin/challenge/feed/ApiTest.kt": {
+      "sha256": "54f0c54cc623ed6389203d315053cfa483921f8f6fdf7dcad6ea33d47637c1ca",
+      "bytes": 7996,
+      "physical_lines": 176,
+      "classification": "own_support"
+    },
+    "src/test/kotlin/challenge/feed/PositiveIdsTest.kt": {
+      "sha256": "f2582511ead6dc57be6f10ae40020048c7ce5580d3ce678049abb26177ec2b80",
+      "bytes": 661,
+      "physical_lines": 21,
+      "classification": "own_support"
+    },
+    "src/test/kotlin/challenge/feed/TestDatabase.kt": {
+      "sha256": "518f188f9937287d02acded617d916b95ddf7a75794c0934cbdb3fa693ca6055",
+      "bytes": 2495,
+      "physical_lines": 62,
+      "classification": "own_support"
+    },
+    "src/test/kotlin/challenge/feed/TestTokens.kt": {
+      "sha256": "d5687f6f4fd562e8ff07906f6c1f10cc27633fdbb16c8d79e7c7544f15c93e4e",
+      "bytes": 1090,
+      "physical_lines": 24,
+      "classification": "own_support"
+    },
+    "src/test/kotlin/challenge/feed/auth/JwtVerifierTest.kt": {
+      "sha256": "8949c2fa3386f46846cfeb56704f3ea6c724fbaf5f391b265936748616c6a75b",
+      "bytes": 3801,
+      "physical_lines": 99,
+      "classification": "own_support"
+    },
+    "src/test/kotlin/challenge/feed/config/DataSourceConfigTest.kt": {
+      "sha256": "da83285d1da5c132d712efd55edc049d51e3fafff61be1eceb50ffc0ac2fd5f1",
+      "bytes": 1459,
+      "physical_lines": 37,
+      "classification": "own_support"
+    },
+    "src/test/kotlin/challenge/feed/config/FeedPropertiesTest.kt": {
+      "sha256": "07ab91097dd690f2c01ca8d3857b94dc97ab474732d8f496303dfbcc4627004f",
+      "bytes": 1303,
+      "physical_lines": 38,
+      "classification": "own_support"
+    },
+    "src/test/kotlin/challenge/feed/config/FilterChainTest.kt": {
+      "sha256": "1fae0bc8ddae3d096f2b1dfbf0b6ff2d4fa2dd8efae832a4377e72312b02e737",
+      "bytes": 1272,
+      "physical_lines": 35,
+      "classification": "own_support"
+    },
+    "src/test/kotlin/challenge/feed/config/StatementCachingDataSourceTest.kt": {
+      "sha256": "e0a646b993fb2a5877f335cc07788aad8956fc5baf83e00481ab32da7cde6a31",
+      "bytes": 4472,
+      "physical_lines": 111,
+      "classification": "own_support"
+    },
+    "src/test/kotlin/challenge/feed/config/TomcatConfigTest.kt": {
+      "sha256": "98381c72f8640882e2980c062051dacad741232f9057759a961e60e73f1ed09e",
+      "bytes": 1410,
+      "physical_lines": 37,
+      "classification": "own_support"
+    },
+    "src/test/kotlin/challenge/feed/post/PostBodyTest.kt": {
+      "sha256": "0348cd3439299619d0888b56ddbe3a9277ed59f649ae23d01328c50cef0ed357",
+      "bytes": 2151,
+      "physical_lines": 52,
+      "classification": "own_support"
+    },
+    "src/test/kotlin/challenge/feed/post/PostIdTest.kt": {
+      "sha256": "6c46fb7f6cf233f415988271dbecbb2987a1a77abf5251c8cd073ca76f6051d4",
+      "bytes": 576,
+      "physical_lines": 21,
+      "classification": "own_support"
+    },
+    "src/test/kotlin/challenge/feed/post/PostServiceTest.kt": {
+      "sha256": "4a924b5db8dc6eb4eea6750ad062df839ff75da16462f16276b8eb8e6c8a84a2",
+      "bytes": 3656,
+      "physical_lines": 93,
+      "classification": "own_support"
+    },
+    "src/test/resources/schema.sql": {
+      "sha256": "7fe0ea8823a1c94b80da9f7224949b8a1e8663ed03450cdd4d0c7b3c55e77dde",
+      "bytes": 1158,
+      "physical_lines": 26,
+      "classification": "own_support"
+    },
+    "start.sh": {
+      "sha256": "c52745302ae6c18476cdc65b967f45ad2e410693ae47fd76f5f5a545f91345ff",
+      "bytes": 668,
+      "physical_lines": 9,
+      "classification": "own_support"
+    }
+  },
+  "skipped_members": []
+}

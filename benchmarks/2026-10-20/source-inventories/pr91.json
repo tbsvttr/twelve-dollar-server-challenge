@@ -1,0 +1,455 @@
+{
+  "files": {
+    ".gitignore": {
+      "sha256": "263566c9eff452fe79fd98c83abd2f5ea3408cd9384b1034c37ba4b5b52223a3",
+      "bytes": 26,
+      "physical_lines": 4,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "Makefile": {
+      "sha256": "10e488c7e4d55ea9567bc4e71eac2f4d6ba75f114dab53a67addf766b622556e",
+      "bytes": 1633,
+      "physical_lines": 59,
+      "classification": "own_support"
+    },
+    "README.md": {
+      "sha256": "be48c72661b5b312a4885d6082e9e9bebb8c3cad90fb3999f4063a121d8c9869",
+      "bytes": 4164,
+      "physical_lines": 85,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "app/api.go": {
+      "sha256": "cacd0483c0aca3cfb3909315d2b8f3b67c5598fee0c2d7711c681b674b8c0272",
+      "bytes": 9311,
+      "physical_lines": 315,
+      "classification": "application"
+    },
+    "app/api_test.go": {
+      "sha256": "6fdf387e8b6927dcee9584b063bb342b71bc5993606b2da4cc4fb6e714c90362",
+      "bytes": 3657,
+      "physical_lines": 106,
+      "classification": "own_support"
+    },
+    "app/backend_linux.go": {
+      "sha256": "02a46340c814633a64755f91d1d898837c7e79d43e2a0fe53dcdd5de38d490fd",
+      "bytes": 2005,
+      "physical_lines": 66,
+      "classification": "application"
+    },
+    "app/backend_other_linux.go": {
+      "sha256": "a3f121628a73c690bca772deadc24aa3790046156b899e68fb5b36f50e46fa3b",
+      "bytes": 329,
+      "physical_lines": 13,
+      "classification": "application"
+    },
+    "app/buffer_pool_test.go": {
+      "sha256": "b7220596b90a8c6d1af0879fb402aea75e02389d151d325b3dcecf2167ee3586",
+      "bytes": 4061,
+      "physical_lines": 127,
+      "classification": "own_support"
+    },
+    "app/cfeed.c": {
+      "sha256": "78c3b21056d6066770304fa1ad68a0cf90aea7cba7deed178c3e8b1a35797516",
+      "bytes": 6939,
+      "physical_lines": 160,
+      "classification": "application"
+    },
+    "app/cfeed.go": {
+      "sha256": "2ddc151339a6fe7536cf67085834c1d12c0ab1ad87ec8defa484180d24df1c3d",
+      "bytes": 1999,
+      "physical_lines": 82,
+      "classification": "application"
+    },
+    "app/cfeed.h": {
+      "sha256": "00a7d2d40784ade8a09b7866b6819ee57a887872948c9670a1772cc3cef18c4e",
+      "bytes": 1550,
+      "physical_lines": 35,
+      "classification": "application"
+    },
+    "app/cfeed_test.go": {
+      "sha256": "ce774de73b391799d0263ad94492dfaff28a27844bc165b130a54b859ea163d7",
+      "bytes": 2760,
+      "physical_lines": 81,
+      "classification": "own_support"
+    },
+    "app/checkpointer.go": {
+      "sha256": "93e30e151260aae65089c652f5fd995f78e99949149cbbc4e12500c30cf9d4d4",
+      "bytes": 3944,
+      "physical_lines": 152,
+      "classification": "application"
+    },
+    "app/connection_linux.go": {
+      "sha256": "a553087f231bfec972c451c6fb476aa167a219b31df4d4f8529e1f48657e84e9",
+      "bytes": 9086,
+      "physical_lines": 332,
+      "classification": "application"
+    },
+    "app/connection_test.go": {
+      "sha256": "f4877ed6bcfb9ccc96caa63d767b3fabdfb4912272b7a5f9535a8fd115bc0802",
+      "bytes": 4693,
+      "physical_lines": 162,
+      "classification": "own_support"
+    },
+    "app/db.go": {
+      "sha256": "e32694f87d9a41030220df72fb4f5ee3dabb5b12a087057dae25754029054ff8",
+      "bytes": 1129,
+      "physical_lines": 49,
+      "classification": "application"
+    },
+    "app/driver_cgo.go": {
+      "sha256": "d95e7d5183fdbc6125c4e51b63a8d796f971011a54e72848f5030eb2233be071",
+      "bytes": 124,
+      "physical_lines": 7,
+      "classification": "application"
+    },
+    "app/driver_cgo_test.go": {
+      "sha256": "9af700df87c56f0ca433e052475432e90bb511421f2dbad4e129fc841c5f2d10",
+      "bytes": 100,
+      "physical_lines": 5,
+      "classification": "own_support"
+    },
+    "app/encode.go": {
+      "sha256": "58a2197bf45ccfc7a41d4a5b18b78a83613c9cc64c81b12ae6691e625a124641",
+      "bytes": 2600,
+      "physical_lines": 103,
+      "classification": "application"
+    },
+    "app/feed_benchmark_test.go": {
+      "sha256": "a24b14392f18ff84a33ef05ab00bea8b35b86bc480d738fce8221e172e2c618f",
+      "bytes": 2971,
+      "physical_lines": 103,
+      "classification": "own_support"
+    },
+    "app/go.mod": {
+      "sha256": "06d56800b29018b2e68e6458d95b87c7bf2d00e6f4022d721b3be4a86b6135f5",
+      "bytes": 104,
+      "physical_lines": 8,
+      "classification": "other"
+    },
+    "app/go.sum": {
+      "sha256": "6d046a6c49d8bf12d54ed3e4401045404a19d6139c09f08197c0ed2aa2c0f78e",
+      "bytes": 330,
+      "physical_lines": 4,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "app/http.go": {
+      "sha256": "a0060f8cdf2dc65e17e50ff84dee3b465bf521061dfb21bc3bc652393aa3a828",
+      "bytes": 7544,
+      "physical_lines": 307,
+      "classification": "application"
+    },
+    "app/internal/netring/abi_linux.go": {
+      "sha256": "736b303c0c96ace4835b6aa44f9bb074103923c0959796280a1cfd7524b98cca",
+      "bytes": 3023,
+      "physical_lines": 105,
+      "classification": "application"
+    },
+    "app/internal/netring/direct_probe_linux.go": {
+      "sha256": "b9e256400c0603d99d7a2a4076b474f77c1599d1630dd77f794ca8166387858c",
+      "bytes": 3077,
+      "physical_lines": 135,
+      "classification": "own_support"
+    },
+    "app/internal/netring/probe_linux.go": {
+      "sha256": "b40fbb69fb4409c05eb2f76d29d0af550b9b6ad3b734609b7023f786b33d8a5c",
+      "bytes": 4403,
+      "physical_lines": 183,
+      "classification": "own_support"
+    },
+    "app/internal/netring/ring_linux.go": {
+      "sha256": "158ff960f3519d09f1f25cb02d35bda9abee63a202edd23f49a1d4db4ba3f963",
+      "bytes": 15350,
+      "physical_lines": 435,
+      "classification": "application"
+    },
+    "app/internal/netring/send_arena_linux.go": {
+      "sha256": "b505ad1eb5f5b8d58d039f9016b3bf6253ec1aaa191ee4adaca401d567975d54",
+      "bytes": 2360,
+      "physical_lines": 108,
+      "classification": "application"
+    },
+    "app/internal/netring/send_arena_linux_test.go": {
+      "sha256": "16a27e37de4cce71b0eb2ffaeba0a209af767cf55d36d59d51bcd024f6c83e2a",
+      "bytes": 4733,
+      "physical_lines": 184,
+      "classification": "own_support"
+    },
+    "app/loop_reader_test.go": {
+      "sha256": "209eef0c15e97724f18bde23dd2bde66dc93810a8b9b2e2382c52ab52f474ed4",
+      "bytes": 2755,
+      "physical_lines": 102,
+      "classification": "own_support"
+    },
+    "app/main_linux.go": {
+      "sha256": "be66108ad1e5fd290b31a08088806dfb21adc3491e3111d2b33e3e2d41d39c3e",
+      "bytes": 11911,
+      "physical_lines": 404,
+      "classification": "application"
+    },
+    "app/memguard.go": {
+      "sha256": "d4120b570f2bc34b8369ce9b690031f3dee7842ef1900ebcc6a5e382f2775f87",
+      "bytes": 19241,
+      "physical_lines": 534,
+      "classification": "application"
+    },
+    "app/memguard_test.go": {
+      "sha256": "58a04fa73ade6a102aea660cad6632f97e53bb4d4714278f69a4a50c8c9fdd28",
+      "bytes": 20469,
+      "physical_lines": 597,
+      "classification": "own_support"
+    },
+    "app/memstatus_test.go": {
+      "sha256": "d07622d7436db45c059b70b8a7825af77a88b43b41f4c1bfe2e9f2dc08e49ddb",
+      "bytes": 777,
+      "physical_lines": 27,
+      "classification": "own_support"
+    },
+    "app/profile.go": {
+      "sha256": "d91bf15b150972b23f30dabfd22a0314ea85807859c5635c6f184422fce06783",
+      "bytes": 2830,
+      "physical_lines": 103,
+      "classification": "own_support"
+    },
+    "app/profile_linux_test.go": {
+      "sha256": "e04fc620454c8347ad0eff91d7cb546f5402a671a31925dc7de7351acbe8c39b",
+      "bytes": 4128,
+      "physical_lines": 137,
+      "classification": "own_support"
+    },
+    "app/profile_test.go": {
+      "sha256": "b54948757c1064c54fb1bf5ac5a1b3ce541914debdf4bed3826c90c0b6ffb71b",
+      "bytes": 4586,
+      "physical_lines": 154,
+      "classification": "own_support"
+    },
+    "app/shed_linux_test.go": {
+      "sha256": "c4af00000ac4be4b2129734d1a8610806420c651d5021a27adf8927c9fa35954",
+      "bytes": 2995,
+      "physical_lines": 91,
+      "classification": "own_support"
+    },
+    "app/sqlite_build_test.go": {
+      "sha256": "cfb65f61aded96b7b30160cefcae96f3f891181e078dea7b815d63461f7d6aa1",
+      "bytes": 1444,
+      "physical_lines": 30,
+      "classification": "own_support"
+    },
+    "app/sqlite_profile_llvm.c": {
+      "sha256": "acf48b5a9ff35683f2206b77ccbd36631bc4912b5d9ff0a64633ef2fa022926b",
+      "bytes": 760,
+      "physical_lines": 19,
+      "classification": "own_support"
+    },
+    "app/sqlite_profile_llvm.go": {
+      "sha256": "3828665ca254caa1fae7a226bc705d77864654fcae87621753d07feb126191f7",
+      "bytes": 5119,
+      "physical_lines": 148,
+      "classification": "own_support"
+    },
+    "app/sqlite_profile_llvm_test.go": {
+      "sha256": "566a2216c5dfcecf160b0bf1fa8e9a6865a8ad559760347749328be90a732d09",
+      "bytes": 6202,
+      "physical_lines": 182,
+      "classification": "own_support"
+    },
+    "app/sqlite_profile_off.go": {
+      "sha256": "c89c63f1b8455acac7324ae94572bbd208dd54b6f763dfb5df8afdbf07dff535",
+      "bytes": 137,
+      "physical_lines": 6,
+      "classification": "own_support"
+    },
+    "app/sqlite_profile_off_test.go": {
+      "sha256": "4ab0746a008cf76e796660fc503f5d97b313f019ce0edcc620f90958f2386c67",
+      "bytes": 358,
+      "physical_lines": 17,
+      "classification": "own_support"
+    },
+    "app/uring_linux.go": {
+      "sha256": "2c1cf637ff9de9fd2df87cd1e31a421acb48f029f284f3d38f070c3fd735ef59",
+      "bytes": 20694,
+      "physical_lines": 719,
+      "classification": "application"
+    },
+    "app/writer.go": {
+      "sha256": "f5b2c0089b983c9f2fefe001a6612f4736b251cf443d72252728badcdebd12ea",
+      "bytes": 8577,
+      "physical_lines": 325,
+      "classification": "application"
+    },
+    "app/writer_metrics.go": {
+      "sha256": "b70407a85d9359f83061c377ea5a4ff073ad6d1bb1d086fef043543b51626347",
+      "bytes": 3776,
+      "physical_lines": 70,
+      "classification": "application"
+    },
+    "build.py": {
+      "sha256": "4724b5fab41d5c52d242920a82bae7d54b56654a2095e62a6fec116b57492a8d",
+      "bytes": 36292,
+      "physical_lines": 649,
+      "classification": "own_support"
+    },
+    "build.sh": {
+      "sha256": "66b54ac66462de69d26e5aba92e5a561f92d6c32bdada4c6a38330b152370207",
+      "bytes": 170,
+      "physical_lines": 5,
+      "classification": "own_support"
+    },
+    "install.sh": {
+      "sha256": "0a6b8ce30b1e9b6e1ce9a4e3033d2151f2eeed548f765c07a45e523bb68e1ede",
+      "bytes": 7225,
+      "physical_lines": 168,
+      "classification": "own_support"
+    },
+    "profiles/README.md": {
+      "sha256": "fc33f0ea659eb1cc453c4e9817c8e5747e90ac4093a9666e9b4cbf11ca732a44",
+      "bytes": 5180,
+      "physical_lines": 85,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "profiles/go-provenance.json": {
+      "sha256": "67bba3e921d5aed7c88295062b5b3233490655bba64a8bc81fcbbc68eb5bbf90",
+      "bytes": 5248,
+      "physical_lines": 77,
+      "classification": "own_support"
+    },
+    "profiles/go.pprof": {
+      "sha256": "cffbedaaa8f7208e6cce79844a858e8ae2f08a3a14079cdc345f0968e63eb6ff",
+      "bytes": 103133,
+      "physical_lines": 727,
+      "classification": "binary"
+    },
+    "profiles/manifest.json": {
+      "sha256": "c162545add340316ae50d60b4a87809b4a538df337a0f26eab7e08637f25f111",
+      "bytes": 1823,
+      "physical_lines": 56,
+      "classification": "own_support"
+    },
+    "profiles/provenance.json": {
+      "sha256": "266f3df324d6603086d25c1a78d44b2331573dc6da4b30e6ee0db24e34197045",
+      "bytes": 6654,
+      "physical_lines": 105,
+      "classification": "own_support"
+    },
+    "profiles/sqlite.profraw": {
+      "sha256": "8446142f0e5d1a9692f88c1ee5c6a9270532932271a8c772e45ae924359ed974",
+      "bytes": 406512,
+      "physical_lines": 1275,
+      "classification": "binary"
+    },
+    "sqlite-source.sha256": {
+      "sha256": "ca33e4be923411c7f0237743fadfc5a27d3f741ffe8b3b732268b7356bcf6ee0",
+      "bytes": 407,
+      "physical_lines": 5,
+      "classification": "other"
+    },
+    "start.sh": {
+      "sha256": "f8651cabdebd5220c19e710a5e36be9e50467c5f52eee1c460e92c5f1ee08e5e",
+      "bytes": 205,
+      "physical_lines": 6,
+      "classification": "own_support"
+    },
+    "tests/fixtures/LICENSE": {
+      "sha256": "911f8f5782931320f5b8d1160a76365b83aea6447ee6c04fa6d5591467db9dad",
+      "bytes": 1453,
+      "physical_lines": 27,
+      "classification": "other"
+    },
+    "tests/fixtures/README.md": {
+      "sha256": "0e796fc28024bd3536526247777527c2ca987fbcbd26432986a4f13657291958",
+      "bytes": 2793,
+      "physical_lines": 46,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "tests/fixtures/count-first-positive.pprof": {
+      "sha256": "5586ddb05888727541337ac2f741971b5b3c7877f33647b810778f3d9ae86751",
+      "bytes": 860,
+      "physical_lines": 11,
+      "classification": "binary"
+    },
+    "tests/fixtures/count-first-zero-cpu.pprof": {
+      "sha256": "c9ce0258e2d4972a672545d3f2ad16377cc25b0678581a3cf05fb5ec95f6ad12",
+      "bytes": 816,
+      "physical_lines": 3,
+      "classification": "binary"
+    },
+    "tests/fixtures/count-first-zero.pprof": {
+      "sha256": "02e39c2373e9e393b7b8f59f056cec577151212684157d76b562cb797a9bdaff",
+      "bytes": 847,
+      "physical_lines": 9,
+      "classification": "binary"
+    },
+    "tests/fixtures/cpu-first-positive.pprof": {
+      "sha256": "5570de7155dd8f415e5c3fafe7136980b52aba401dc90ebf0d34ff9f21ef74a6",
+      "bytes": 853,
+      "physical_lines": 9,
+      "classification": "binary"
+    },
+    "tests/fixtures/cpu-first-zero.pprof": {
+      "sha256": "ce5051edcfa08b88daa7b0b7a6d4f75a8dceb78f36da5d7d17d12b2cfc02f23e",
+      "bytes": 805,
+      "physical_lines": 12,
+      "classification": "binary"
+    },
+    "tests/fixtures/positive.pprof": {
+      "sha256": "a9222135ce769e29de2b7338be7482e8bd33680f36416a7ed4864c7c8a9bc60e",
+      "bytes": 842,
+      "physical_lines": 10,
+      "classification": "binary"
+    },
+    "tests/fixtures/wrong-unit.pprof": {
+      "sha256": "21bf4309300c18d4bee6c7fab846fb327203708993b9964767a475ddeffdae0c",
+      "bytes": 849,
+      "physical_lines": 6,
+      "classification": "binary"
+    },
+    "tests/fixtures/zero.pprof": {
+      "sha256": "7a86a413b5a0587adc7d9f58cebe58e8f890c83a11d917ba7ce9cbaf264896eb",
+      "bytes": 779,
+      "physical_lines": 7,
+      "classification": "binary"
+    },
+    "tests/jwt/auth_test.go": {
+      "sha256": "60f3cbb88a45b6391214a56760a59a5963445e12e224b854f471b1e78fc1a8ae",
+      "bytes": 13809,
+      "physical_lines": 268,
+      "classification": "own_support"
+    },
+    "tests/jwt/claims_test.go": {
+      "sha256": "3347a4ebdf3893456d684f41452fbe40f43174208ab1b7c1a7c3444ae5b2f59e",
+      "bytes": 4890,
+      "physical_lines": 140,
+      "classification": "own_support"
+    },
+    "tests/test_build.py": {
+      "sha256": "8fac885dc1e203c589014ad43ea2bfa80ae7fc67108dd79d17a1aaf49be51a12",
+      "bytes": 68388,
+      "physical_lines": 1179,
+      "classification": "own_support"
+    },
+    "tests/test_install.py": {
+      "sha256": "7ac47af7940a279debffb555a0074ee54073b7920815e9cb0b5a969853ed518e",
+      "bytes": 14935,
+      "physical_lines": 341,
+      "classification": "own_support"
+    },
+    "tests/test_jwt.py": {
+      "sha256": "642f36ddd88ea049f0a07dd63fd99f0fbb4dc3d13480452f401699607e6b6ae6",
+      "bytes": 2083,
+      "physical_lines": 40,
+      "classification": "own_support"
+    },
+    "v3probe/go.mod": {
+      "sha256": "95ad380c1fd5eebec1339a031567be03c7a38d9e6ce48a862e056a2770ab6a3c",
+      "bytes": 26,
+      "physical_lines": 3,
+      "classification": "other"
+    },
+    "v3probe/main.go": {
+      "sha256": "2f571d23825e5205aa33d7a5ac306935da94e10be4096849e46275090b1136dc",
+      "bytes": 484,
+      "physical_lines": 19,
+      "classification": "application"
+    }
+  },
+  "skipped_members": []
+}

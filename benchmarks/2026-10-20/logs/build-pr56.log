@@ -1,0 +1,47 @@
+
+$ docker exec twelve-current-build-pr56 bash -c set -e; rm -rf /suite/sources; mkdir -p /suite/sources; cp -a /evidence/sources/pr56 /suite/sources/; cp /evidence/manifest.json /suite/manifest.json; cp /evidence/schema.sql /suite/schema.sql; chown -R bench:bench /suite/sources
+
+$ docker exec twelve-current-build-pr56 bash /evidence/runtime-scripts/pr56.sh
+go version go1.27.1 linux/arm64
+Reading package lists...
+Building dependency tree...
+Reading state information...
+Suggested packages:
+  sqlite3-doc
+The following NEW packages will be installed:
+  libsqlite3-dev
+0 upgraded, 1 newly installed, 0 to remove and 19 not upgraded.
+Need to get 916 kB of archives.
+After this operation, 3468 kB of additional disk space will be used.
+Get:1 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libsqlite3-dev arm64 3.45.1-1ubuntu2.8 [916 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 916 kB in 0s (3066 kB/s)
+Selecting previously unselected package libsqlite3-dev:arm64.
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 16962 files and directories currently installed.)
+Preparing to unpack .../libsqlite3-dev_3.45.1-1ubuntu2.8_arm64.deb ...
+Unpacking libsqlite3-dev:arm64 (3.45.1-1ubuntu2.8) ...
+Setting up libsqlite3-dev:arm64 (3.45.1-1ubuntu2.8) ...
+
+$ docker exec twelve-current-build-pr56 runuser -u bench -- env PATH=/usr/local/go/bin:/opt/twelve-rust/cargo/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 bash /suite/sources/pr56/build.sh
+go: downloading github.com/valyala/fasthttp v1.75.0
+go: downloading github.com/klauspost/compress v1.20.1
+go: downloading github.com/molecule-man/go-brrr v1.1.1
+go: downloading github.com/valyala/bytebufferpool v1.0.0
+
+$ docker exec twelve-current-build-pr56 /usr/local/go/bin/go version -m /suite/sources/pr56/bin/server
+/suite/sources/pr56/bin/server: go1.27.1
+	path	twelve-dollar-server
+	mod	twelve-dollar-server	(devel)	
+	dep	github.com/klauspost/compress	v1.20.1	h1:T7kKElXUMXrUJ2E9QhQhxFtcK5rPyLdsGZvdbLMPdiQ=
+	dep	github.com/molecule-man/go-brrr	v1.1.1	h1:KYwusQhjtV3smALnhmafZf4OBrh7vP4p8O47DyUmmuY=
+	dep	github.com/valyala/bytebufferpool	v1.0.0	h1:GqA5TC/0021Y/b9FG4Oi9Mr3q7XYx6KllzawFIhcdPw=
+	dep	github.com/valyala/fasthttp	v1.75.0	h1:W3xrvNJHG60j2ZCjxpP8kkB+oPG8kh9/g1n4+3xUwNA=
+	build	-buildmode=exe
+	build	-compiler=gc
+	build	-trimpath=true
+	build	CGO_ENABLED=1
+	build	GOARCH=arm64
+	build	GOOS=linux
+	build	GOARM64=v8.0
+
+$ docker exec twelve-current-build-pr56 bash -c rm -f /usr/local/bin/nproc; rm -rf /tmp/* /root/.cache /root/.cargo/registry /home/bench/.cache /home/bench/.cargo/registry /home/bench/.npm/_cacache /var/lib/apt/lists/* /var/cache/apt/archives/*.deb; find /suite/sources -type d -path '*/target/release/incremental' -prune -exec rm -rf {} +

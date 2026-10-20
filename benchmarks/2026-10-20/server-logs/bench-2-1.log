@@ -1,0 +1,11 @@
+Puma starting in single mode...
+* Puma version: 8.0.2 ("Into the Arena")
+* Ruby version: ruby 4.0.5 (2026-05-20 revision 64336ffd0e) +YJIT +PRISM [aarch64-linux]
+*  Min threads: 3
+*  Max threads: 3
+*  Environment: production
+*          PID: 13
+Using vips to process variants requires the libvips library. Please install libvips using the instructions on the libvips website.
+* Listening on http://127.0.0.1:3000
+Use Ctrl-C to stop
+- Gracefully stopping, waiting for requests to finish

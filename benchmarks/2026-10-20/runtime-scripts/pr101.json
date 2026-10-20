@@ -1,0 +1,3 @@
+[
+  "Install same OpenJDK 27+35 release using official native AArch64 artifact; SHA-256 from official download.java.net .sha256 sidecar."
+]
