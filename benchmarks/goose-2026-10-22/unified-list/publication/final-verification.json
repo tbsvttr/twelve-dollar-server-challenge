@@ -1,0 +1,12 @@
+{
+  "published_github_tables": 1,
+  "published_measurement_rows": 127,
+  "goose_current_position": 2,
+  "body_sha256": "913465622bc4146f6b9ec992153f8e1731133252a6f93b8a675a81a4daa90b8c",
+  "remote_artifact_hashes_verified": {
+    "comparison.csv": "1e543a3b263f8ddaac840a3ac123df808703085349b77170c37c1ca6a92edc54",
+    "comparison.html": "830ae2eb79842a83085cc1b4b7f5a5d695ed3dad00b0252902db10f5b1f6ab1d",
+    "comparison-rows.json": "69f33b4f3d3f2e1a65feb3549793a52d5a86ed88e1a24aea00b34afac322146b"
+  },
+  "audit_checks_passed": 569
+}

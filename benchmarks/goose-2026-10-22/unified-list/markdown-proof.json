@@ -1,7 +1,7 @@
 {
   "rows": 127,
   "table_count_each_markdown": 1,
-  "issue_comment_characters": 48486,
+  "issue_comment_characters": 48746,
   "source_rows_sha256": "69f33b4f3d3f2e1a65feb3549793a52d5a86ed88e1a24aea00b34afac322146b",
-  "artifact_ref": "benchmark-2026-10-22"
+  "artifact_ref": "d153e9a0348e74e5527f6692ee22aca18cc60980"
 }

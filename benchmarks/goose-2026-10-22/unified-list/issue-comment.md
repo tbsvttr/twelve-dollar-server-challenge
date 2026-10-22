@@ -1,6 +1,6 @@
 **All-submission comparison — one table, updated October 22, 2026.**
 
-[Full report](https://github.com/tbsvttr/twelve-dollar-server-challenge/blob/benchmark-2026-10-22/benchmarks/2026-10-22/report.md) · [CSV](https://github.com/tbsvttr/twelve-dollar-server-challenge/blob/benchmark-2026-10-22/benchmarks/2026-10-22/comparison.csv) · [Filterable HTML](https://github.com/tbsvttr/twelve-dollar-server-challenge/blob/benchmark-2026-10-22/benchmarks/2026-10-22/comparison.html) · [Exact row data](https://github.com/tbsvttr/twelve-dollar-server-challenge/blob/benchmark-2026-10-22/benchmarks/2026-10-22/comparison-rows.json)
+[Full report](https://github.com/tbsvttr/twelve-dollar-server-challenge/blob/d153e9a0348e74e5527f6692ee22aca18cc60980/benchmarks/2026-10-22/report.md) · [CSV](https://github.com/tbsvttr/twelve-dollar-server-challenge/blob/d153e9a0348e74e5527f6692ee22aca18cc60980/benchmarks/2026-10-22/comparison.csv) · [Filterable HTML](https://github.com/tbsvttr/twelve-dollar-server-challenge/blob/d153e9a0348e74e5527f6692ee22aca18cc60980/benchmarks/2026-10-22/comparison.html) · [Exact row data](https://github.com/tbsvttr/twelve-dollar-server-challenge/blob/d153e9a0348e74e5527f6692ee22aca18cc60980/benchmarks/2026-10-22/comparison-rows.json)
 
 **120 current outcomes, all preserved, plus seven comparison rows:** two previous measured revisions, two short-run Rust controls and three longer confirmation measurements. All **127 rows** appear together, sorted by successful req/s; unmeasured outcomes follow.
 
@@ -136,11 +136,11 @@
 | — | #91 [go-lowlevel-janso123](https://github.com/Janso123/twelve-dollar-server-challenge/tree/40a6861dfd0b8bb51924d56be92843f5a444aa63/submissions/go-lowlevel-janso123) | current<br>ARM64 unsupported | 20 Oct<br>stock 3×15s | — | — / — | — / — | —; — | 4,340 / 10,132 | [details][details]<!-- row:current:91 --> |
 | — | #95 [csharp-aspnetcore-devv-guru](https://github.com/devv-guru/twelve-dollar-server-challenge/tree/02e7ce7684b208532ee1c09337fdd2f1cfee7137/submissions/csharp-aspnetcore-devv-guru) | current<br>ARM64 unsupported | 20 Oct<br>stock 3×15s | — | — / — | — / — | —; — | 735 / 1,711 | [details][details]<!-- row:current:95 --> |
 
-[details]: https://github.com/tbsvttr/twelve-dollar-server-challenge/blob/benchmark-2026-10-22/benchmarks/2026-10-22/report.md
-[raw0]: https://github.com/tbsvttr/twelve-dollar-server-challenge/blob/benchmark-2026-10-22/benchmarks/2026-10-20/measurements.json
-[raw2]: https://github.com/tbsvttr/twelve-dollar-server-challenge/blob/benchmark-2026-10-22/benchmarks/goose-2026-10-22/ranking-3x15-2026-10-22/measurements.json
-[raw3]: https://github.com/tbsvttr/twelve-dollar-server-challenge/blob/benchmark-2026-10-22/benchmarks/goose-2026-10-22/lead5/holdout-hmac/measurements.json
-[raw1]: https://github.com/tbsvttr/twelve-dollar-server-challenge/blob/benchmark-2026-10-22/benchmarks/2026-10-22/measurements.json
+[details]: https://github.com/tbsvttr/twelve-dollar-server-challenge/blob/d153e9a0348e74e5527f6692ee22aca18cc60980/benchmarks/2026-10-22/report.md
+[raw0]: https://github.com/tbsvttr/twelve-dollar-server-challenge/blob/d153e9a0348e74e5527f6692ee22aca18cc60980/benchmarks/2026-10-20/measurements.json
+[raw2]: https://github.com/tbsvttr/twelve-dollar-server-challenge/blob/d153e9a0348e74e5527f6692ee22aca18cc60980/benchmarks/goose-2026-10-22/ranking-3x15-2026-10-22/measurements.json
+[raw3]: https://github.com/tbsvttr/twelve-dollar-server-challenge/blob/d153e9a0348e74e5527f6692ee22aca18cc60980/benchmarks/goose-2026-10-22/lead5/holdout-hmac/measurements.json
+[raw1]: https://github.com/tbsvttr/twelve-dollar-server-challenge/blob/d153e9a0348e74e5527f6692ee22aca18cc60980/benchmarks/2026-10-22/measurements.json
 
 <details>
 <summary>Reading the table, validation and measurement notes</summary>
@@ -151,6 +151,6 @@ Current clean ranks require 42/42 official assertions, dynamic live-data checks,
 
 The separate 45-second Goose/Rust confirmation has a +13.72% paired geometric mean, +1.85% one-sided 95% lower bound and 8/10 pairs above 5%; the stable ≥5% target remains **UNMET**. It supplies reference rows in this table and changes no clean rank. These local ARM64 saturation measurements establish no official x86-64 k6 maximum-user capacity.
 
-[Original October 20 evidence](https://github.com/tbsvttr/twelve-dollar-server-challenge/blob/benchmark-2026-10-22/benchmarks/2026-10-20/report.md) · [Fixed-target before/after history](https://github.com/tbsvttr/twelve-dollar-server-challenge/blob/benchmark-2026-10-22/benchmarks/2026-10-22/before-after.csv) · [Long confirmation report](https://github.com/tbsvttr/twelve-dollar-server-challenge/blob/benchmark-2026-10-22/benchmarks/goose-2026-10-22/lead5/holdout-hmac/RESULT.md) · [Unified-table audit](https://github.com/tbsvttr/twelve-dollar-server-challenge/blob/benchmark-2026-10-22/benchmarks/2026-10-22/unified-audit.json)
+[Original October 20 evidence](https://github.com/tbsvttr/twelve-dollar-server-challenge/blob/d153e9a0348e74e5527f6692ee22aca18cc60980/benchmarks/2026-10-20/report.md) · [Fixed-target before/after history](https://github.com/tbsvttr/twelve-dollar-server-challenge/blob/d153e9a0348e74e5527f6692ee22aca18cc60980/benchmarks/2026-10-22/before-after.csv) · [Long confirmation report](https://github.com/tbsvttr/twelve-dollar-server-challenge/blob/d153e9a0348e74e5527f6692ee22aca18cc60980/benchmarks/goose-2026-10-22/lead5/holdout-hmac/RESULT.md) · [Unified-table audit](https://github.com/tbsvttr/twelve-dollar-server-challenge/blob/d153e9a0348e74e5527f6692ee22aca18cc60980/benchmarks/2026-10-22/unified-audit.json)
 
 </details>

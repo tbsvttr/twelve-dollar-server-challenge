@@ -1,0 +1,21 @@
+{
+  "published_at": "2026-10-22T15:32:18.692240+00:00",
+  "artifact_commit": "d153e9a0348e74e5527f6692ee22aca18cc60980",
+  "issue_comment_url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/issues/7#issuecomment-6292218419",
+  "notice_url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/issues/7#issuecomment-6343585262",
+  "csv_url": "https://github.com/tbsvttr/twelve-dollar-server-challenge/blob/d153e9a0348e74e5527f6692ee22aca18cc60980/benchmarks/2026-10-22/comparison.csv",
+  "html_url": "https://github.com/tbsvttr/twelve-dollar-server-challenge/blob/d153e9a0348e74e5527f6692ee22aca18cc60980/benchmarks/2026-10-22/comparison.html",
+  "measurement_tables": 1,
+  "displayed_rows": 127,
+  "current_outcomes": 120,
+  "historical_measured_revisions": 2,
+  "short_controls": 2,
+  "confirmation_rows": 3,
+  "unchanged_clean_ranks": 98,
+  "audit_checks": 569,
+  "new_measurements_run": 0,
+  "new_comments_posted": 0,
+  "method": "Authenticated gh CLI",
+  "connector_attribution": null,
+  "body_sha256": "913465622bc4146f6b9ec992153f8e1731133252a6f93b8a675a81a4daa90b8c"
+}

@@ -1,6 +1,6 @@
 {
-  "file_count": 3321,
-  "bytes": 52083354,
+  "file_count": 3325,
+  "bytes": 52092550,
   "files": {
     "README.md": {
       "bytes": 7998,
@@ -13251,16 +13251,32 @@
       "sha256": "f33037daebe4b8ab1d5d1137ddf8a77539fea4f89caf42112d698f81b90520c6"
     },
     "unified-list/issue-comment.json": {
-      "bytes": 50629,
-      "sha256": "dbb9b671436ae939d5c23c6d057e2856ee4ab0c314ca3fb9f41dd17c7bd4ebf3"
+      "bytes": 50889,
+      "sha256": "6522eb7c46682fd42ed585c59f3e303bfc0140251d2b9e66aea3c652420706d1"
     },
     "unified-list/issue-comment.md": {
-      "bytes": 49124,
-      "sha256": "be259c5dbc9d0d63c37e5d3e7e5f706b45061c2346db751d07a0bba9bbda3380"
+      "bytes": 49384,
+      "sha256": "913465622bc4146f6b9ec992153f8e1731133252a6f93b8a675a81a4daa90b8c"
     },
     "unified-list/markdown-proof.json": {
-      "bytes": 223,
-      "sha256": "f93743051a2fa8e737926cad73e599dcf63aec510a99da2aa37ec60d984134ee"
+      "bytes": 243,
+      "sha256": "b447ac586e77f2f37911075ff0bcb011b3fde282a0365a705a1cec2ab89da835"
+    },
+    "unified-list/publication/final-verification.json": {
+      "bytes": 538,
+      "sha256": "5b24bf9aca32b1c864f1db2f70f6a5db6facf5c170ef50a3b6a7da1044f59a8f"
+    },
+    "unified-list/publication/pr-body.md": {
+      "bytes": 2628,
+      "sha256": "3cce808118f6d432defa296ab46556522b6a8521627f57733d7f3292ee843031"
+    },
+    "unified-list/publication/publication-record.json": {
+      "bytes": 1104,
+      "sha256": "ebb05b55b7a82aef4101b153fcf0a181cff66fa7c16f000eb458853426f23b6b"
+    },
+    "unified-list/publish.py": {
+      "bytes": 4386,
+      "sha256": "3da26f7f49d1101fee6d63edc813322dac0114d95703725abe2627ce6fed292c"
     },
     "unified-list/render.py": {
       "bytes": 15872,
@@ -13276,7 +13292,7 @@
     },
     "unified-list/unified-audit.json": {
       "bytes": 68874,
-      "sha256": "6bc4f05419be8c2cf9ef87ef848e9f710fd568a73522601506de6b07649b667c"
+      "sha256": "03036228d1aae8bc868d6789e706b621f38727a059a7f44acb31889374202f8b"
     },
     "unified-list/unified_audit.py": {
       "bytes": 13867,
