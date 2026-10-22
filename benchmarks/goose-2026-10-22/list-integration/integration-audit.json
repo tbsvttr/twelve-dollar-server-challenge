@@ -8,7 +8,7 @@
   "current_rows": 120,
   "clean_ranked": 98,
   "additional_controls": 1,
-  "issue_comment_characters": 51928,
+  "issue_comment_characters": 52048,
   "original_targeted_and_control_arrays_unchanged": true,
   "only_old_rank_fields_changed": true,
   "outputs": {
@@ -17,7 +17,7 @@
     "comparison.html": "ae8265c504b2ebeda0c412eab58483bd717588423391c3a781705ee04d700dde",
     "report.md": "14e509a653000151d95252362c9a011056f8adf7cda980d02f836c9224954e70",
     "README.md": "c12ddcd5065fb95bb694e1f0f714357743db227217d9e7d4e08f6fe3234a1182",
-    "issue-comment.md": "1818b93da3078cb1d7b50702bde189dfcb834687dce1f65ed26ed06871d042c1"
+    "issue-comment.md": "78fca82001a4e062fcde01f499887bca202078674bff444f862568b4adc49dae"
   },
   "generator_sha256": "c29c40accbcdd93ffd7de44993dd4c5113117c84c18b3c75faa587c4d97e2314"
 }

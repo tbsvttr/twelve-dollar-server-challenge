@@ -1,6 +1,6 @@
 {
-  "file_count": 3308,
-  "bytes": 51858393,
+  "file_count": 3312,
+  "bytes": 51870569,
   "files": {
     "README.md": {
       "bytes": 7604,
@@ -12708,7 +12708,7 @@
     },
     "list-integration/independent-audit.json": {
       "bytes": 13549,
-      "sha256": "a57cbd11615ba282b3e6b8c1fcc52143fc875d8eaa5cd87ad5145219d48dfbe0"
+      "sha256": "1b5fd5f438cedd4e2592ece56785c2db6abd6587b67dedb5dfbc39d8981ec53a"
     },
     "list-integration/independent_audit.py": {
       "bytes": 18222,
@@ -12720,15 +12720,31 @@
     },
     "list-integration/integration-audit.json": {
       "bytes": 1162,
-      "sha256": "9bc9bec241ad2fc35d1034f8fb660d9895e1d963b2447fffa0926c693c29a836"
+      "sha256": "ece1ebf4b6ec24d066be2aaea52be1a3c9874b331d91d06fa80686017343e5d0"
     },
     "list-integration/issue-comment.json": {
-      "bytes": 52406,
-      "sha256": "7059053c3ecd01cd7e3a35886dd2128456ef81da918da71dd376ab32fc73b05c"
+      "bytes": 52526,
+      "sha256": "308dc9f6fb98a0afc6b6846e662e3eb50213972e7a77945a13f44d18f19b2d03"
     },
     "list-integration/issue-comment.md": {
-      "bytes": 52173,
-      "sha256": "1818b93da3078cb1d7b50702bde189dfcb834687dce1f65ed26ed06871d042c1"
+      "bytes": 52293,
+      "sha256": "78fca82001a4e062fcde01f499887bca202078674bff444f862568b4adc49dae"
+    },
+    "list-integration/publication/notice-payload.json": {
+      "bytes": 1902,
+      "sha256": "932ddd3fed5cd62650c94817dc641b128104deb0266c2cef3a5b0914116e30d3"
+    },
+    "list-integration/publication/pr-body.md": {
+      "bytes": 2487,
+      "sha256": "68e68c72c76f50a22f90e38c8c533ebdddde20e2f82710bd3e2e5bbfd300d16a"
+    },
+    "list-integration/publication/publication-record.json": {
+      "bytes": 1408,
+      "sha256": "b87aac15416941477b52b22db9c6879076521886b63da8564f017695c6d93c81"
+    },
+    "list-integration/publish.py": {
+      "bytes": 6139,
+      "sha256": "858a653124e311c49987d4a4422f4d254f1951e84953becd7090b5b41d9a1299"
     },
     "matched-controls.csv": {
       "bytes": 1904,
