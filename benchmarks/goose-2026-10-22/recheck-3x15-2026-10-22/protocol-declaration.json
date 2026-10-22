@@ -1,0 +1,24 @@
+{
+  "declared_before_measurement": true,
+  "cases": [
+    "143",
+    "82"
+  ],
+  "rounds": 3,
+  "measurement_seconds": 15,
+  "warmup_seconds": 2,
+  "load_image": "twelve-unified:2026-10-07",
+  "expected_load_image_id": "sha256:901ab577025cfdcf7abc716fb4158774615b881383529bb77163b5f07f963898",
+  "purpose": "User-requested full recheck after 38 Goose timeouts in the previous batch. Same source, images, stock driver and three complete 15-second trials per implementation; no individual-trial replacement.",
+  "no_selection_or_replacements": true,
+  "error_policy": "Retain all six attempts and both new verification attempts. Publish the entire latest batch outcome, including any errors; no further clean-run selection.",
+  "server_cpu_quota": 1,
+  "server_memory_bytes": 2147483648,
+  "server_swap_bytes": 0,
+  "source_sha256": "585649e7bc8dcd98a281a07c682c0bd17869b9eec2bada040d1f80f146ef8796",
+  "commit": "1454fa62e7c4e273d978b7ad93a492148079edae",
+  "driver": "Unmodified Ubuntu wrk 4.1.0-4build2 from the exact original load image. This batch is separate from 10x45s monotonic-clock confirmation.",
+  "stable_five_percent_target": "Existing longer confirmations remain UNMET. This small ranking batch does not overturn that conclusion.",
+  "declared_at": "2026-10-22T16:11:04Z",
+  "previous_batch": "../ranking-3x15-2026-10-22/measurements.json"
+}

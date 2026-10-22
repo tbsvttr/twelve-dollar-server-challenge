@@ -1,0 +1,40 @@
+{
+  "canonical_rows": 129,
+  "visible_rows": 126,
+  "visible_goose_rows": 1,
+  "visible_roles": {
+    "current": 120,
+    "control": 3,
+    "confirmation": 1,
+    "historical": 2
+  },
+  "visible_conditions": {
+    "FAIL": 12,
+    "PASS": 102,
+    "DIFFERENT_PROTOCOL": 1,
+    "UNVERIFIED": 11
+  },
+  "superseded_from_main_view_only": [
+    "confirmation:baseline",
+    "confirmation:goose",
+    "current:143"
+  ],
+  "historical_rows_unchanged": true,
+  "history_rows_sha256": "1e41ba165d524af5f00364c1dbc771923971e680462af288dc7da2ee11da62fa",
+  "recheck_rows_sha256": "5d89247f17775cc7083ded6c6a344a59af9cafaf07fc0b688a4f629b6c294001",
+  "generator_sha256": "25317673a110c490de350ca3a5d307a50c0a95f824b539f974e77e43f88acb93",
+  "archive_ref": "bb2f2def4f6c2e2ef2eb1262f406a754b5757844",
+  "artifact_ref": "benchmark-2026-10-22",
+  "issue_comment_characters": 54100,
+  "new_benchmark_commands_run": 0,
+  "outputs": {
+    "report.md": "84faaa335e71bf77914668a238895038db7fbfd401288ae7a316768c8108b797",
+    "issue-comment.md": "2875345f9111fc2e20c376b02b1f99a58dbc3e11b3a4bab128aa8d5af74635fe",
+    "issue-comment.json": "eb50bcfc3678970db8011ed5450808c3ef04f20e66e24a903a5804e825ce90c4",
+    "comparison.html": "73d8997f065be5ea6ab77eeb8360c401c112894f14b305b008deaee19af96d8d",
+    "visible-rows.json": "56f41113b554a710b90cbfe863bfa54b7c4cb639b10fac74293dcdb9c0795b0a",
+    "README.md": "dd7b9e45a6928228e57415a27e8d50fbd3448683f1915d875200db7905b6d936",
+    "comparison-rows.json": "4799baba4fb9ad2b03e7e1d9b341b84194f7a4c9e455885c7a562fa6e483566a",
+    "comparison.csv": "05a2ad6b9835b88b5bc220d61db892fa88543971e19d40127bfb3cd359a4bcd1"
+  }
+}

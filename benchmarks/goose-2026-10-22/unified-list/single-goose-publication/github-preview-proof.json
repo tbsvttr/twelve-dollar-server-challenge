@@ -1,0 +1,8 @@
+{
+  "tables": 1,
+  "rows": 126,
+  "columns": 10,
+  "goose_rows": 1,
+  "goose_conditions": "PASS",
+  "body_sha256": "2875345f9111fc2e20c376b02b1f99a58dbc3e11b3a4bab128aa8d5af74635fe"
+}
