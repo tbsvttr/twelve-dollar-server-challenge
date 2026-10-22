@@ -166,7 +166,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "khalefa-ow/twelve-dollar-server-challenge/submissions/cpp-epoll-memstore-khalefa-ow",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 143,
@@ -378,844 +382,11 @@
     },
     "runtime_budget_reason": "Recorded limits are one CPU quota / 2 GiB / no swap.",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
-  },
-  {
-    "pr": 82,
-    "id": "82",
-    "case_id": "82",
-    "title": "rust io_uring version 2",
-    "url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/82",
-    "folder": "rust-epoll-scooter1337",
-    "commit": "95aa405a0003599dbc7fb4dfa47a09e8343239df",
-    "source_url": "https://github.com/Scooter1337/twelve-dollar-server-challenge/tree/95aa405a0003599dbc7fb4dfa47a09e8343239df/submissions/rust-epoll-scooter1337",
-    "source_sha256": "b91b9491e2a7a8856f8f360bc89f376b6493ae9b9a3907c557836b94f5131438",
-    "archive_sha256": "6157f04b6ef9177431f1bad5fe003f52383a8e8523fa8d95e03d972c6e0d1a8d",
-    "app_loc": 2816,
-    "own_loc": 4508,
-    "nginx": false,
-    "eligible": true,
-    "build_status": "built",
-    "build_exit_code": 0,
-    "build_elapsed_s": 93.54,
-    "build_log": "../2026-10-20/logs/build-pr82.log",
-    "runtime_setup": "../2026-10-20/runtime-scripts/pr82.sh",
-    "build_adapter": null,
-    "image_id": "sha256:64227e803306084617be2a4ebc1c3623260d265f158dd8c009f647558a280135",
-    "status": "measured",
-    "reason": "",
-    "rank": 1,
-    "ranked": true,
-    "trials_recorded": 3,
-    "tests_passed": 42,
-    "tests_failed": 0,
-    "official_passed_all": true,
-    "semantic_passed_all": true,
-    "verification_log": "../2026-10-20/logs/verify-82-1.log",
-    "trial_errors": {},
-    "rps": 108275.04,
-    "successful_rps": 108275.04,
-    "p50_ms": 0.443,
-    "p95_ms": 13.707,
-    "p99_ms": 23.42,
-    "rss_mib": 48.22265625,
-    "cpu_percent": 89.29777983963727,
-    "rps_min": 78187.86,
-    "rps_max": 110425.19,
-    "http_errors": 0,
-    "socket_errors": {
-      "connect": 0,
-      "read": 0,
-      "write": 0,
-      "timeout": 0
-    },
-    "database_valid": true,
-    "batch": "current-2026-10-20",
-    "measurement_date": "2026-10-20",
-    "role": "current",
-    "evidence": [
-      "../2026-10-20/manifest.json",
-      "../2026-10-20/build-status.json",
-      "../2026-10-20/logs/build-pr82.log",
-      "../2026-10-20/verification.json",
-      "../2026-10-20/logs/verify-82-1.log",
-      "../2026-10-20/server-logs/verify-82-1.log",
-      "../2026-10-20/measurements.json",
-      "../2026-10-20/logs/bench-82-1.log",
-      "../2026-10-20/server-logs/bench-82-1.log",
-      "../2026-10-20/logs/bench-82-2.log",
-      "../2026-10-20/server-logs/bench-82-2.log",
-      "../2026-10-20/logs/bench-82-3.log",
-      "../2026-10-20/server-logs/bench-82-3.log"
-    ],
-    "source_record": {
-      "pr": 82,
-      "id": "82",
-      "case_id": "82",
-      "title": "rust io_uring version 2",
-      "url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/82",
-      "folder": "rust-epoll-scooter1337",
-      "commit": "95aa405a0003599dbc7fb4dfa47a09e8343239df",
-      "source_url": "https://github.com/Scooter1337/twelve-dollar-server-challenge/tree/95aa405a0003599dbc7fb4dfa47a09e8343239df/submissions/rust-epoll-scooter1337",
-      "source_sha256": "b91b9491e2a7a8856f8f360bc89f376b6493ae9b9a3907c557836b94f5131438",
-      "archive_sha256": "6157f04b6ef9177431f1bad5fe003f52383a8e8523fa8d95e03d972c6e0d1a8d",
-      "app_loc": 2816,
-      "own_loc": 4508,
-      "nginx": false,
-      "eligible": true,
-      "build_status": "built",
-      "build_exit_code": 0,
-      "build_elapsed_s": 93.54,
-      "build_log": "../2026-10-20/logs/build-pr82.log",
-      "runtime_setup": "../2026-10-20/runtime-scripts/pr82.sh",
-      "build_adapter": null,
-      "image_id": "sha256:64227e803306084617be2a4ebc1c3623260d265f158dd8c009f647558a280135",
-      "status": "measured",
-      "reason": "",
-      "rank": 1,
-      "ranked": true,
-      "trials_recorded": 3,
-      "tests_passed": 42,
-      "tests_failed": 0,
-      "official_passed_all": true,
-      "semantic_passed_all": true,
-      "verification_log": "../2026-10-20/logs/verify-82-1.log",
-      "trial_errors": {},
-      "rps": 108275.04,
-      "successful_rps": 108275.04,
-      "p50_ms": 0.443,
-      "p95_ms": 13.707,
-      "p99_ms": 23.42,
-      "rss_mib": 48.22265625,
-      "cpu_percent": 89.29777983963727,
-      "rps_min": 78187.86,
-      "rps_max": 110425.19,
-      "http_errors": 0,
-      "socket_errors": {
-        "connect": 0,
-        "read": 0,
-        "write": 0,
-        "timeout": 0
-      },
-      "database_valid": true,
-      "batch": "current-2026-10-20",
-      "measurement_date": "2026-10-20",
-      "role": "submission",
-      "evidence": [
-        "../2026-10-20/manifest.json",
-        "../2026-10-20/build-status.json",
-        "../2026-10-20/logs/build-pr82.log",
-        "../2026-10-20/verification.json",
-        "../2026-10-20/logs/verify-82-1.log",
-        "../2026-10-20/server-logs/verify-82-1.log",
-        "../2026-10-20/measurements.json",
-        "../2026-10-20/logs/bench-82-1.log",
-        "../2026-10-20/server-logs/bench-82-1.log",
-        "../2026-10-20/logs/bench-82-2.log",
-        "../2026-10-20/server-logs/bench-82-2.log",
-        "../2026-10-20/logs/bench-82-3.log",
-        "../2026-10-20/server-logs/bench-82-3.log"
-      ]
-    },
-    "source_role": "submission",
-    "source_rank": 1,
-    "row_id": "current:82",
-    "measurement_batch": "current-2026-10-20",
-    "protocol": "stock-wrk-3x15s",
-    "protocol_label": "stock wrk · 3×15s · 2s warmup · 2t/64c",
-    "measurement_seconds": 15,
-    "warmup_seconds": 2,
-    "pr_url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/82",
-    "label": "rust-epoll-scooter1337",
-    "evidence_url": "../2026-10-20/measurements.json",
-    "warmup_http_errors": null,
-    "warmup_socket_errors": null,
-    "requirements_status": "PASS",
-    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
-    "benchmark_requirements_met": true,
-    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
-    "requirements_detail": {
-      "sqlite_eligibility": "PASS",
-      "official_api_42": "PASS",
-      "dynamic_live_data": "PASS",
-      "committed_database": "PASS",
-      "three_completed_stock_trials": "PASS",
-      "zero_measured_errors": "PASS",
-      "runtime_budget": "PASS",
-      "build_start_contract": "PASS",
-      "runtime_startup": "PASS"
-    },
-    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
-    "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
-  },
-  {
-    "pr": 82,
-    "id": "82",
-    "case_id": "82",
-    "title": "rust io_uring version 2",
-    "url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/82",
-    "folder": "rust-epoll-scooter1337",
-    "commit": "95aa405a0003599dbc7fb4dfa47a09e8343239df",
-    "source_url": "https://github.com/Scooter1337/twelve-dollar-server-challenge/tree/95aa405a0003599dbc7fb4dfa47a09e8343239df/submissions/rust-epoll-scooter1337",
-    "source_sha256": "b91b9491e2a7a8856f8f360bc89f376b6493ae9b9a3907c557836b94f5131438",
-    "archive_sha256": "6157f04b6ef9177431f1bad5fe003f52383a8e8523fa8d95e03d972c6e0d1a8d",
-    "app_loc": 2816,
-    "own_loc": 4508,
-    "nginx": false,
-    "eligible": true,
-    "build_status": "built",
-    "build_exit_code": 0,
-    "build_elapsed_s": 93.54,
-    "build_log": null,
-    "runtime_setup": null,
-    "build_adapter": null,
-    "image_id": "sha256:64227e803306084617be2a4ebc1c3623260d265f158dd8c009f647558a280135",
-    "status": "measured_with_errors",
-    "reason": "All three trials completed, with HTTP/socket errors. Measurements are diagnostic and excluded from ranking.",
-    "rank": null,
-    "ranked": false,
-    "trials_recorded": 3,
-    "tests_passed": 42,
-    "tests_failed": 0,
-    "official_passed_all": true,
-    "semantic_passed_all": true,
-    "verification_log": "../goose-2026-10-22/ranking-3x15-2026-10-22/logs/verify-82-1.log",
-    "trial_errors": {},
-    "rps": 106162.0,
-    "successful_rps": 106162.0,
-    "p50_ms": 0.457,
-    "p95_ms": 11.397,
-    "p99_ms": 21.35,
-    "rss_mib": 48.08984375,
-    "cpu_percent": 90.18439122218342,
-    "rps_min": 103854.48,
-    "rps_max": 108398.82,
-    "http_errors": 0,
-    "socket_errors": {
-      "connect": 0,
-      "read": 0,
-      "write": 0,
-      "timeout": 34
-    },
-    "database_valid": true,
-    "batch": "ranking-3x15-2026-10-22",
-    "measurement_date": "2026-10-22",
-    "role": "control",
-    "evidence": [
-      "../goose-2026-10-22/ranking-3x15-2026-10-22/manifest.json",
-      "../goose-2026-10-22/ranking-3x15-2026-10-22/build-status.json",
-      "../goose-2026-10-22/ranking-3x15-2026-10-22/verification.json",
-      "../goose-2026-10-22/ranking-3x15-2026-10-22/measurements.json",
-      "../goose-2026-10-22/ranking-3x15-2026-10-22/shared-sha256.json",
-      "../goose-2026-10-22/ranking-3x15-2026-10-22/environment-bench.json",
-      "../goose-2026-10-22/ranking-3x15-2026-10-22/environment-verify.json",
-      "../goose-2026-10-22/ranking-3x15-2026-10-22/pr-documentation-image-proof.json",
-      "../goose-2026-10-22/ranking-3x15-2026-10-22/logs/bench-82-1.log",
-      "../goose-2026-10-22/ranking-3x15-2026-10-22/server-logs/bench-82-1.log",
-      "../goose-2026-10-22/ranking-3x15-2026-10-22/logs/bench-82-2.log",
-      "../goose-2026-10-22/ranking-3x15-2026-10-22/server-logs/bench-82-2.log",
-      "../goose-2026-10-22/ranking-3x15-2026-10-22/logs/bench-82-3.log",
-      "../goose-2026-10-22/ranking-3x15-2026-10-22/server-logs/bench-82-3.log",
-      "../goose-2026-10-22/ranking-3x15-2026-10-22/logs/verify-82-1.log",
-      "../goose-2026-10-22/ranking-3x15-2026-10-22/server-logs/verify-82-1.log"
-    ],
-    "measurement_protocol": "stock wrk 4.1.0; three 15-second runs; two-second warmups; 2 threads/64 connections",
-    "binary_sha256": "61d48f1be2feb858a14b1617cf3221bebf68df6caaac3541116e0dfbb7562026",
-    "source_record": {
-      "pr": 82,
-      "id": "82",
-      "case_id": "82",
-      "title": "rust io_uring version 2",
-      "url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/82",
-      "folder": "rust-epoll-scooter1337",
-      "commit": "95aa405a0003599dbc7fb4dfa47a09e8343239df",
-      "source_url": "https://github.com/Scooter1337/twelve-dollar-server-challenge/tree/95aa405a0003599dbc7fb4dfa47a09e8343239df/submissions/rust-epoll-scooter1337",
-      "source_sha256": "b91b9491e2a7a8856f8f360bc89f376b6493ae9b9a3907c557836b94f5131438",
-      "archive_sha256": "6157f04b6ef9177431f1bad5fe003f52383a8e8523fa8d95e03d972c6e0d1a8d",
-      "app_loc": 2816,
-      "own_loc": 4508,
-      "nginx": false,
-      "eligible": true,
-      "build_status": "built",
-      "build_exit_code": 0,
-      "build_elapsed_s": 93.54,
-      "build_log": null,
-      "runtime_setup": null,
-      "build_adapter": null,
-      "image_id": "sha256:64227e803306084617be2a4ebc1c3623260d265f158dd8c009f647558a280135",
-      "status": "measured_with_errors",
-      "reason": "All three trials completed, with HTTP/socket errors. Measurements are diagnostic and excluded from ranking.",
-      "rank": null,
-      "ranked": false,
-      "trials_recorded": 3,
-      "tests_passed": 42,
-      "tests_failed": 0,
-      "official_passed_all": true,
-      "semantic_passed_all": true,
-      "verification_log": "../goose-2026-10-22/ranking-3x15-2026-10-22/logs/verify-82-1.log",
-      "trial_errors": {},
-      "rps": 106162.0,
-      "successful_rps": 106162.0,
-      "p50_ms": 0.457,
-      "p95_ms": 11.397,
-      "p99_ms": 21.35,
-      "rss_mib": 48.08984375,
-      "cpu_percent": 90.18439122218342,
-      "rps_min": 103854.48,
-      "rps_max": 108398.82,
-      "http_errors": 0,
-      "socket_errors": {
-        "connect": 0,
-        "read": 0,
-        "write": 0,
-        "timeout": 34
-      },
-      "database_valid": true,
-      "batch": "ranking-3x15-2026-10-22",
-      "measurement_date": "2026-10-22",
-      "role": "control",
-      "evidence": [
-        "../goose-2026-10-22/ranking-3x15-2026-10-22/manifest.json",
-        "../goose-2026-10-22/ranking-3x15-2026-10-22/build-status.json",
-        "../goose-2026-10-22/ranking-3x15-2026-10-22/verification.json",
-        "../goose-2026-10-22/ranking-3x15-2026-10-22/measurements.json",
-        "../goose-2026-10-22/ranking-3x15-2026-10-22/shared-sha256.json",
-        "../goose-2026-10-22/ranking-3x15-2026-10-22/environment-bench.json",
-        "../goose-2026-10-22/ranking-3x15-2026-10-22/environment-verify.json",
-        "../goose-2026-10-22/ranking-3x15-2026-10-22/pr-documentation-image-proof.json",
-        "../goose-2026-10-22/ranking-3x15-2026-10-22/logs/bench-82-1.log",
-        "../goose-2026-10-22/ranking-3x15-2026-10-22/server-logs/bench-82-1.log",
-        "../goose-2026-10-22/ranking-3x15-2026-10-22/logs/bench-82-2.log",
-        "../goose-2026-10-22/ranking-3x15-2026-10-22/server-logs/bench-82-2.log",
-        "../goose-2026-10-22/ranking-3x15-2026-10-22/logs/bench-82-3.log",
-        "../goose-2026-10-22/ranking-3x15-2026-10-22/server-logs/bench-82-3.log",
-        "../goose-2026-10-22/ranking-3x15-2026-10-22/logs/verify-82-1.log",
-        "../goose-2026-10-22/ranking-3x15-2026-10-22/server-logs/verify-82-1.log"
-      ],
-      "measurement_protocol": "stock wrk 4.1.0; three 15-second runs; two-second warmups; 2 threads/64 connections",
-      "binary_sha256": "61d48f1be2feb858a14b1617cf3221bebf68df6caaac3541116e0dfbb7562026"
-    },
-    "source_role": "control",
-    "source_rank": null,
-    "row_id": "control:ranking-3x15-2026-10-22:82",
-    "measurement_batch": "ranking-3x15-2026-10-22",
-    "protocol": "stock-wrk-3x15s",
-    "protocol_label": "stock wrk · 3×15s · 2s warmup · 2t/64c",
-    "measurement_seconds": 15,
-    "warmup_seconds": 2,
-    "pr_url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/82",
-    "label": "rust-epoll-scooter1337",
-    "evidence_url": "../goose-2026-10-22/ranking-3x15-2026-10-22/measurements.json",
-    "warmup_http_errors": null,
-    "warmup_socket_errors": null,
-    "requirements_status": "FAIL",
-    "requirements_reason": "34 wrk timeouts across the local measured trials.",
-    "benchmark_requirements_met": false,
-    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
-    "requirements_detail": {
-      "sqlite_eligibility": "PASS",
-      "official_api_42": "PASS",
-      "dynamic_live_data": "PASS",
-      "committed_database": "PASS",
-      "three_completed_stock_trials": "PASS",
-      "zero_measured_errors": "FAIL",
-      "runtime_budget": "PASS",
-      "build_start_contract": "PASS",
-      "runtime_startup": "PASS"
-    },
-    "runtime_budget_reason": "Limits documented by retained batch audit: ../goose-2026-10-22/list-integration/independent-audit.json",
-    "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
-  },
-  {
-    "pr": 82,
-    "id": "82",
-    "case_id": "82",
-    "title": "rust io_uring version 2",
-    "url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/82",
-    "folder": "rust-epoll-scooter1337",
-    "commit": "95aa405a0003599dbc7fb4dfa47a09e8343239df",
-    "source_url": "https://github.com/Scooter1337/twelve-dollar-server-challenge/tree/95aa405a0003599dbc7fb4dfa47a09e8343239df/submissions/rust-epoll-scooter1337",
-    "source_sha256": "b91b9491e2a7a8856f8f360bc89f376b6493ae9b9a3907c557836b94f5131438",
-    "archive_sha256": "6157f04b6ef9177431f1bad5fe003f52383a8e8523fa8d95e03d972c6e0d1a8d",
-    "app_loc": 2816,
-    "own_loc": 4508,
-    "nginx": false,
-    "eligible": true,
-    "build_status": "built",
-    "build_exit_code": 0,
-    "build_elapsed_s": 93.54,
-    "build_log": "logs/build-pr82.log",
-    "runtime_setup": "runtime-scripts/pr82.sh",
-    "build_adapter": null,
-    "image_id": "sha256:64227e803306084617be2a4ebc1c3623260d265f158dd8c009f647558a280135",
-    "status": "measured",
-    "reason": "",
-    "rank": null,
-    "ranked": false,
-    "trials_recorded": 3,
-    "tests_passed": 42,
-    "tests_failed": 0,
-    "official_passed_all": true,
-    "semantic_passed_all": true,
-    "verification_log": "logs/verify-82-1.log",
-    "trial_errors": {},
-    "rps": 105569.55,
-    "successful_rps": 105569.55,
-    "p50_ms": 0.447,
-    "p95_ms": 14.669,
-    "p99_ms": 24.74,
-    "rss_mib": 48.359375,
-    "cpu_percent": 88.99082368441336,
-    "rps_min": 105045.4,
-    "rps_max": 109481.2,
-    "http_errors": 0,
-    "socket_errors": {
-      "connect": 0,
-      "read": 0,
-      "write": 0,
-      "timeout": 0
-    },
-    "database_valid": true,
-    "batch": "fixes-2026-10-22",
-    "measurement_date": "2026-10-22",
-    "role": "control",
-    "evidence": [
-      "manifest.json",
-      "build-status.json",
-      "verification.json",
-      "logs/verify-82-1.log",
-      "server-logs/verify-82-1.log",
-      "measurements.json",
-      "logs/bench-82-1.log",
-      "server-logs/bench-82-1.log",
-      "logs/bench-82-2.log",
-      "server-logs/bench-82-2.log",
-      "logs/bench-82-3.log",
-      "server-logs/bench-82-3.log"
-    ],
-    "source_record": {
-      "pr": 82,
-      "id": "82",
-      "case_id": "82",
-      "title": "rust io_uring version 2",
-      "url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/82",
-      "folder": "rust-epoll-scooter1337",
-      "commit": "95aa405a0003599dbc7fb4dfa47a09e8343239df",
-      "source_url": "https://github.com/Scooter1337/twelve-dollar-server-challenge/tree/95aa405a0003599dbc7fb4dfa47a09e8343239df/submissions/rust-epoll-scooter1337",
-      "source_sha256": "b91b9491e2a7a8856f8f360bc89f376b6493ae9b9a3907c557836b94f5131438",
-      "archive_sha256": "6157f04b6ef9177431f1bad5fe003f52383a8e8523fa8d95e03d972c6e0d1a8d",
-      "app_loc": 2816,
-      "own_loc": 4508,
-      "nginx": false,
-      "eligible": true,
-      "build_status": "built",
-      "build_exit_code": 0,
-      "build_elapsed_s": 93.54,
-      "build_log": "logs/build-pr82.log",
-      "runtime_setup": "runtime-scripts/pr82.sh",
-      "build_adapter": null,
-      "image_id": "sha256:64227e803306084617be2a4ebc1c3623260d265f158dd8c009f647558a280135",
-      "status": "measured",
-      "reason": "",
-      "rank": null,
-      "ranked": false,
-      "trials_recorded": 3,
-      "tests_passed": 42,
-      "tests_failed": 0,
-      "official_passed_all": true,
-      "semantic_passed_all": true,
-      "verification_log": "logs/verify-82-1.log",
-      "trial_errors": {},
-      "rps": 105569.55,
-      "successful_rps": 105569.55,
-      "p50_ms": 0.447,
-      "p95_ms": 14.669,
-      "p99_ms": 24.74,
-      "rss_mib": 48.359375,
-      "cpu_percent": 88.99082368441336,
-      "rps_min": 105045.4,
-      "rps_max": 109481.2,
-      "http_errors": 0,
-      "socket_errors": {
-        "connect": 0,
-        "read": 0,
-        "write": 0,
-        "timeout": 0
-      },
-      "database_valid": true,
-      "batch": "fixes-2026-10-22",
-      "measurement_date": "2026-10-22",
-      "role": "control",
-      "evidence": [
-        "manifest.json",
-        "build-status.json",
-        "verification.json",
-        "logs/verify-82-1.log",
-        "server-logs/verify-82-1.log",
-        "measurements.json",
-        "logs/bench-82-1.log",
-        "server-logs/bench-82-1.log",
-        "logs/bench-82-2.log",
-        "server-logs/bench-82-2.log",
-        "logs/bench-82-3.log",
-        "server-logs/bench-82-3.log"
-      ]
-    },
-    "source_role": "control",
-    "source_rank": null,
-    "row_id": "control:fixes-2026-10-22:82",
-    "measurement_batch": "fixes-2026-10-22",
-    "protocol": "stock-wrk-3x15s",
-    "protocol_label": "stock wrk · 3×15s · 2s warmup · 2t/64c",
-    "measurement_seconds": 15,
-    "warmup_seconds": 2,
-    "pr_url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/82",
-    "label": "rust-epoll-scooter1337",
-    "evidence_url": "measurements.json",
-    "warmup_http_errors": null,
-    "warmup_socket_errors": null,
-    "requirements_status": "PASS",
-    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
-    "benchmark_requirements_met": true,
-    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
-    "requirements_detail": {
-      "sqlite_eligibility": "PASS",
-      "official_api_42": "PASS",
-      "dynamic_live_data": "PASS",
-      "committed_database": "PASS",
-      "three_completed_stock_trials": "PASS",
-      "zero_measured_errors": "PASS",
-      "runtime_budget": "PASS",
-      "build_start_contract": "PASS",
-      "runtime_startup": "PASS"
-    },
-    "runtime_budget_reason": "Limits documented by retained batch audit: audit-final.json",
-    "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
-  },
-  {
-    "case_id": "82",
-    "role": "confirmation",
-    "pr_url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/82",
-    "source_url": "https://github.com/tbsvttr/twelve-dollar-server-challenge/tree/643a55e26853341feac6fbcb168ad4c9a909ee9d/benchmarks/goose-2026-10-22/lead5/holdout-hmac/sources/pr82",
-    "label": "Rust PR82 matched control",
-    "measurement_batch": "goose-hmac-2026-10-22-10x45s-monotonic",
-    "measurement_date": "2026-10-22",
-    "workload": "mixed",
-    "aggregate": "median of ten independent 45-second trials",
-    "trials": 10,
-    "threads": 2,
-    "connections": 64,
-    "warmup_seconds": 2,
-    "measurement_seconds": 45,
-    "platform": "native Linux ARM64 on local Apple M2 Pro / Docker Desktop",
-    "server_cpus": "0",
-    "server_cpu_quota": 1,
-    "server_memory_bytes": 2147483648,
-    "server_memory_swap_bytes": 2147483648,
-    "container_swap_available_bytes": 0,
-    "successful_rps_min": 78990.26,
-    "successful_rps_max": 114295.94,
-    "successful_rps": 103477.985,
-    "p50_ms": 0.439,
-    "p95_ms": 14.9315,
-    "p99_ms": 25.549999999999997,
-    "rss_mib": 66.955078125,
-    "cpu_percent": 87.02514225898858,
-    "measured_http_errors": 0,
-    "measured_socket_errors": 0,
-    "warmup_http_errors": 0,
-    "warmup_socket_errors": 0,
-    "source_sha256": "b91b9491e2a7a8856f8f360bc89f376b6493ae9b9a3907c557836b94f5131438",
-    "image_id": "sha256:64227e803306084617be2a4ebc1c3623260d265f158dd8c009f647558a280135",
-    "binary_sha256": "61d48f1be2feb858a14b1617cf3221bebf68df6caaac3541116e0dfbb7562026",
-    "rank": null,
-    "official_k6_capacity_users": null,
-    "weighted_score": null,
-    "app_loc": 2816,
-    "own_loc": 4508,
-    "own_loc_as_recorded": 4508,
-    "original_119_row_replacement": false,
-    "evidence": "goose-2026-10-22/lead5/holdout-hmac/measurements.json",
-    "source_record": {
-      "case_id": "82",
-      "role": "matched_reference",
-      "pr_url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/82",
-      "source_url": null,
-      "label": "Rust PR82 matched control",
-      "measurement_batch": "goose-hmac-2026-10-22-10x45s-monotonic",
-      "measurement_date": "2026-10-22",
-      "workload": "mixed",
-      "aggregate": "median of ten independent 45-second trials",
-      "trials": 10,
-      "threads": 2,
-      "connections": 64,
-      "warmup_seconds": 2,
-      "measurement_seconds": 45,
-      "platform": "native Linux ARM64 on local Apple M2 Pro / Docker Desktop",
-      "server_cpus": "0",
-      "server_cpu_quota": 1,
-      "server_memory_bytes": 2147483648,
-      "server_memory_swap_bytes": 2147483648,
-      "container_swap_available_bytes": 0,
-      "successful_rps_min": 78990.26,
-      "successful_rps_max": 114295.94,
-      "successful_rps": 103477.985,
-      "p50_ms": 0.439,
-      "p95_ms": 14.9315,
-      "p99_ms": 25.549999999999997,
-      "rss_mib": 66.955078125,
-      "cpu_percent": 87.02514225898858,
-      "measured_http_errors": 0,
-      "measured_socket_errors": 0,
-      "warmup_http_errors": 0,
-      "warmup_socket_errors": 0,
-      "source_sha256": "b91b9491e2a7a8856f8f360bc89f376b6493ae9b9a3907c557836b94f5131438",
-      "image_id": "sha256:64227e803306084617be2a4ebc1c3623260d265f158dd8c009f647558a280135",
-      "binary_sha256": "61d48f1be2feb858a14b1617cf3221bebf68df6caaac3541116e0dfbb7562026",
-      "rank": null,
-      "official_k6_capacity_users": null,
-      "weighted_score": null,
-      "app_loc": 2816,
-      "own_loc": 4508,
-      "own_loc_as_recorded": 4508,
-      "original_119_row_replacement": false,
-      "evidence": "goose-2026-10-22/lead5/holdout-hmac/measurements.json"
-    },
-    "source_role": "matched_reference",
-    "source_rank": null,
-    "row_id": "confirmation:82",
-    "protocol": "monotonic-wrk-10x45s",
-    "protocol_label": "monotonic wrk · 10×45s · 2s warmup · 2t/64c",
-    "evidence_url": "../goose-2026-10-22/lead5/holdout-hmac/measurements.json",
-    "ranked": false,
-    "trials_recorded": 10,
-    "status": "measured reference",
-    "confirmation_role": "matched control",
-    "target_outcome": "UNMET",
-    "pr": 82,
-    "rps_min": 78990.26,
-    "rps_max": 114295.94,
-    "http_errors": 0,
-    "socket_errors": {
-      "connect": 0,
-      "read": 0,
-      "write": 0,
-      "timeout": 0
-    },
-    "tests_passed": 42,
-    "tests_failed": 0,
-    "reason": "Separate corrected-driver confirmation; stable ≥5% target UNMET. Not part of the three-trial clean ranking.",
-    "raw_trials_ref": {
-      "path": "../goose-2026-10-22/lead5/holdout-hmac/measurements.json",
-      "sha256": "52e56cecd0b75279b4fa7301d4b561ccef4b06a3452eb6ccbb1c8c2167cc27ab",
-      "case_id": "82",
-      "trials": [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10
-      ]
-    },
-    "summary_ref": {
-      "path": "../goose-2026-10-22/lead5/holdout-hmac/holdout-summary.json",
-      "sha256": "c4f873838637c4ea99ce8ce3ed187465f1ff1dc23a921db1f60875e71fc51070"
-    },
-    "requirements_status": "DIFFERENT_PROTOCOL",
-    "requirements_reason": "10×45s with corrected wrk; not the stock 3×15s comparison. Stable ≥5% target UNMET.",
-    "benchmark_requirements_met": false,
-    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
-    "requirements_detail": {
-      "sqlite_eligibility": "UNVERIFIED",
-      "official_api_42": "UNVERIFIED",
-      "dynamic_live_data": "UNVERIFIED",
-      "committed_database": "UNVERIFIED",
-      "three_completed_stock_trials": "UNVERIFIED",
-      "zero_measured_errors": "PASS",
-      "runtime_budget": "PASS",
-      "build_start_contract": "UNVERIFIED",
-      "runtime_startup": "UNVERIFIED"
-    },
-    "runtime_budget_reason": "Recorded limits are one CPU quota / 2 GiB / no swap.",
-    "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
-  },
-  {
-    "pr": 19,
-    "id": "19",
-    "case_id": "19",
-    "title": "Add Rust/raw io_uring SQLite submission",
-    "url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/19",
-    "folder": "rust-epoll-scooter1337",
-    "commit": "bd517fa7c8a57b135579ae02fdddb6196b4cd9a4",
-    "source_url": "https://github.com/Scooter1337/twelve-dollar-server-challenge/tree/bd517fa7c8a57b135579ae02fdddb6196b4cd9a4/submissions/rust-epoll-scooter1337",
-    "source_sha256": "6b55691421e1ec5002ecd575e7fd030c8a6b7c7776c2241dcb2ae513ac04a72f",
-    "archive_sha256": "1ea2bf83964650f528410d6e57b54418f58ddcba661e9b9fb7a2a648fe3ca720",
-    "app_loc": 2379,
-    "own_loc": 3600,
-    "nginx": false,
-    "eligible": true,
-    "build_status": "built",
-    "build_exit_code": 0,
-    "build_elapsed_s": 73.08,
-    "build_log": "../2026-10-20/logs/build-pr19.log",
-    "runtime_setup": null,
-    "build_adapter": null,
-    "image_id": "sha256:2ffcb7d9e4c5bdc9d0fd182dbc7f24900e4599e74825c8d037088dc5abc9d77a",
-    "status": "measured",
-    "reason": "",
-    "rank": 2,
-    "ranked": true,
-    "trials_recorded": 3,
-    "tests_passed": 42,
-    "tests_failed": 0,
-    "official_passed_all": true,
-    "semantic_passed_all": true,
-    "verification_log": "../2026-10-20/logs/verify-19-1.log",
-    "trial_errors": {},
-    "rps": 103174.47,
-    "successful_rps": 103174.47,
-    "p50_ms": 0.419,
-    "p95_ms": 8.869,
-    "p99_ms": 12.05,
-    "rss_mib": 41.15234375,
-    "cpu_percent": 81.36901015100842,
-    "rps_min": 98936.5,
-    "rps_max": 107099.95,
-    "http_errors": 0,
-    "socket_errors": {
-      "connect": 0,
-      "read": 0,
-      "write": 0,
-      "timeout": 0
-    },
-    "database_valid": true,
-    "batch": "current-2026-10-20",
-    "measurement_date": "2026-10-20",
-    "role": "current",
-    "evidence": [
-      "../2026-10-20/manifest.json",
-      "../2026-10-20/build-status.json",
-      "../2026-10-20/logs/build-pr19.log",
-      "../2026-10-20/verification.json",
-      "../2026-10-20/logs/verify-19-1.log",
-      "../2026-10-20/server-logs/verify-19-1.log",
-      "../2026-10-20/measurements.json",
-      "../2026-10-20/logs/bench-19-1.log",
-      "../2026-10-20/server-logs/bench-19-1.log",
-      "../2026-10-20/logs/bench-19-2.log",
-      "../2026-10-20/server-logs/bench-19-2.log",
-      "../2026-10-20/logs/bench-19-3.log",
-      "../2026-10-20/server-logs/bench-19-3.log"
-    ],
-    "source_record": {
-      "pr": 19,
-      "id": "19",
-      "case_id": "19",
-      "title": "Add Rust/raw io_uring SQLite submission",
-      "url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/19",
-      "folder": "rust-epoll-scooter1337",
-      "commit": "bd517fa7c8a57b135579ae02fdddb6196b4cd9a4",
-      "source_url": "https://github.com/Scooter1337/twelve-dollar-server-challenge/tree/bd517fa7c8a57b135579ae02fdddb6196b4cd9a4/submissions/rust-epoll-scooter1337",
-      "source_sha256": "6b55691421e1ec5002ecd575e7fd030c8a6b7c7776c2241dcb2ae513ac04a72f",
-      "archive_sha256": "1ea2bf83964650f528410d6e57b54418f58ddcba661e9b9fb7a2a648fe3ca720",
-      "app_loc": 2379,
-      "own_loc": 3600,
-      "nginx": false,
-      "eligible": true,
-      "build_status": "built",
-      "build_exit_code": 0,
-      "build_elapsed_s": 73.08,
-      "build_log": "../2026-10-20/logs/build-pr19.log",
-      "runtime_setup": null,
-      "build_adapter": null,
-      "image_id": "sha256:2ffcb7d9e4c5bdc9d0fd182dbc7f24900e4599e74825c8d037088dc5abc9d77a",
-      "status": "measured",
-      "reason": "",
-      "rank": 2,
-      "ranked": true,
-      "trials_recorded": 3,
-      "tests_passed": 42,
-      "tests_failed": 0,
-      "official_passed_all": true,
-      "semantic_passed_all": true,
-      "verification_log": "../2026-10-20/logs/verify-19-1.log",
-      "trial_errors": {},
-      "rps": 103174.47,
-      "successful_rps": 103174.47,
-      "p50_ms": 0.419,
-      "p95_ms": 8.869,
-      "p99_ms": 12.05,
-      "rss_mib": 41.15234375,
-      "cpu_percent": 81.36901015100842,
-      "rps_min": 98936.5,
-      "rps_max": 107099.95,
-      "http_errors": 0,
-      "socket_errors": {
-        "connect": 0,
-        "read": 0,
-        "write": 0,
-        "timeout": 0
-      },
-      "database_valid": true,
-      "batch": "current-2026-10-20",
-      "measurement_date": "2026-10-20",
-      "role": "submission",
-      "evidence": [
-        "../2026-10-20/manifest.json",
-        "../2026-10-20/build-status.json",
-        "../2026-10-20/logs/build-pr19.log",
-        "../2026-10-20/verification.json",
-        "../2026-10-20/logs/verify-19-1.log",
-        "../2026-10-20/server-logs/verify-19-1.log",
-        "../2026-10-20/measurements.json",
-        "../2026-10-20/logs/bench-19-1.log",
-        "../2026-10-20/server-logs/bench-19-1.log",
-        "../2026-10-20/logs/bench-19-2.log",
-        "../2026-10-20/server-logs/bench-19-2.log",
-        "../2026-10-20/logs/bench-19-3.log",
-        "../2026-10-20/server-logs/bench-19-3.log"
-      ]
-    },
-    "source_role": "submission",
-    "source_rank": 2,
-    "row_id": "current:19",
-    "measurement_batch": "current-2026-10-20",
-    "protocol": "stock-wrk-3x15s",
-    "protocol_label": "stock wrk · 3×15s · 2s warmup · 2t/64c",
-    "measurement_seconds": 15,
-    "warmup_seconds": 2,
-    "pr_url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/19",
-    "label": "rust-epoll-scooter1337",
-    "evidence_url": "../2026-10-20/measurements.json",
-    "warmup_http_errors": null,
-    "warmup_socket_errors": null,
-    "requirements_status": "PASS",
-    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
-    "benchmark_requirements_met": true,
-    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
-    "requirements_detail": {
-      "sqlite_eligibility": "PASS",
-      "official_api_42": "PASS",
-      "dynamic_live_data": "PASS",
-      "committed_database": "PASS",
-      "three_completed_stock_trials": "PASS",
-      "zero_measured_errors": "PASS",
-      "runtime_budget": "PASS",
-      "build_start_contract": "PASS",
-      "runtime_startup": "PASS"
-    },
-    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
-    "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "tbsvttr/twelve-dollar-server-challenge/submissions/goose-native-tbsvttr",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 82,
@@ -1425,7 +596,13 @@
     },
     "runtime_budget_reason": "Recorded limits are one CPU quota / 2 GiB / no swap.",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "scooter1337/twelve-dollar-server-challenge/submissions/rust-epoll-scooter1337",
+    "display_role": "current",
+    "selection_reason": "Latest complete stock-protocol batch for the current pinned source.",
+    "superseded_prs": [
+      19
+    ]
   },
   {
     "pr": 132,
@@ -1594,7 +771,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: audit-final.json",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "niohast/twelve-dollar-server-challenge/submissions/nim-io_uring-niohast",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 32,
@@ -1763,7 +944,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: audit-final.json",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "hendy643/twelve-dollar-server-challenge/submissions/cpp-eastl-io_uring-pgo-hendy643",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 68,
@@ -1932,7 +1117,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "27bhd/twelve-dollar-server-challenge/submissions/c-iouring-27bhd",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 113,
@@ -2101,7 +1290,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "i098/twelve-dollar-server-challenge/submissions/v-epoll-i098",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 72,
@@ -2270,7 +1463,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "megapanchamz/twelve-dollar-server-challenge/submissions/go-epoll-megapanchamz",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 44,
@@ -2439,7 +1636,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "vkrishna03/twelve-dollar-server-challenge/submissions/go-stdlib-vkrishna03",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 64,
@@ -2608,7 +1809,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "thefirstistari/twelve-dollar-server-challenge/submissions/c-epoll-thefirstistari",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 88,
@@ -2777,7 +1982,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "stohirov/twelve-dollar-server-challenge/submissions/java-nio-stohirov",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 98,
@@ -2946,7 +2155,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "edwin-2024/twelve-dollar-server-challenge/submissions/cpp-iouring-edwin-2024",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 55,
@@ -3115,7 +2328,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "einhornimmond/twelve-dollar-server-challenge/submissions/c-iouring-einhornimmond",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 52,
@@ -3284,7 +2501,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "damianoneill/twelve-dollar-server-challenge/submissions/go-epoll-damianoneill",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 26,
@@ -3453,7 +2674,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "raoz/twelve-dollar-server-challenge/submissions/c-iouring-raoz",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 25,
@@ -3622,7 +2847,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "tbsvttr/twelve-dollar-server-challenge/submissions/zig-usockets-tbsvttr",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 15,
@@ -3791,7 +3020,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "tbsvttr/twelve-dollar-server-challenge/submissions/cpp-uwebsockets-v2-tbsvttr",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 42,
@@ -3960,7 +3193,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "benclawbot/twelve-dollar-server-challenge/submissions/c-epoll-benclawbot",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 65,
@@ -4129,7 +3366,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "antheurus/twelve-dollar-server-challenge/submissions/go-epoll-antheurus",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 9,
@@ -4298,7 +3539,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "khalefa-ow/twelve-dollar-server-challenge/submissions/cpp-epoll_inmem-khalefa-ow",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 124,
@@ -4469,7 +3714,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "bogdan-blaj/twelve-dollar-server-challenge/submissions/java-springboot-bogdan-blaj",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 76,
@@ -4638,7 +3887,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "champ3oy/twelve-dollar-server-challenge/submissions/go-epoll-champ3oy",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 54,
@@ -4807,7 +4060,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "ammarkov/twelve-dollar-server-challenge/submissions/c-ammarserver-ammarkov",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 5,
@@ -4976,7 +4233,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "tbsvttr/twelve-dollar-server-challenge/submissions/c-fio-tbsvttr",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 8,
@@ -5145,7 +4406,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "khalefa-ow/twelve-dollar-server-challenge/submissions/cpp-epoll-khalefa-ow",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 3,
@@ -5314,7 +4579,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "xxmohamed012/twelve-dollar-server-challenge/submissions/typescript-bun-xxmohamed012",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 107,
@@ -5483,7 +4752,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "jacksonhoran/twelve-dollar-server-challenge/submissions/scala-netty-jacksonhoran",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 17,
@@ -5652,7 +4925,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "tbsvttr/twelve-dollar-server-challenge/submissions/rust-axum-tbsvttr",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 6,
@@ -5821,7 +5098,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "tbsvttr/twelve-dollar-server-challenge/submissions/cpp-uwebsockets-tbsvttr",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 112,
@@ -5990,7 +5271,13 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "ssmurfgg04-gif/twelve-dollar-server-challenge/submissions/c-iouring-ssmurfgg04-gif",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": [
+      121
+    ]
   },
   {
     "pr": 48,
@@ -6159,7 +5446,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "kaikegm/twelve-dollar-server-challenge/submissions/go-gnet-kaikegm",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 39,
@@ -6328,7 +5619,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "einhornimmond/twelve-dollar-server-challenge/submissions/c-h2o-einhornimmond",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 111,
@@ -6497,7 +5792,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "brady1408/twelve-dollar-server-challenge/submissions/go-epoll-brady1408",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 77,
@@ -6666,7 +5965,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "vijay-highlo/twelve-dollar-server-challenge/submissions/csharp-aspnetcore-vijay-highlo",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 29,
@@ -6835,7 +6138,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "hendy643/twelve-dollar-server-challenge/submissions/cpp-drogon-hendy643",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 38,
@@ -7004,7 +6311,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "haris0059/twelve-dollar-server-challenge/submissions/go-gnet-haris0059",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 102,
@@ -7173,7 +6484,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "zahidcakici/twelve-dollar-server-challenge/submissions/node-uwebsockets-zahidcakici",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 63,
@@ -7342,7 +6657,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "lfeagan/twelve-dollar-server-challenge/submissions/java-netty-lfeagan",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 100,
@@ -7511,176 +6830,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
-  },
-  {
-    "pr": 121,
-    "id": "121-c-iouring-ssmurfgg04-gif",
-    "case_id": "121-c-iouring-ssmurfgg04-gif",
-    "title": "Add c-libco-ssmurfgg04-gif submission (C, libco coroutines, SQLite, direct on :80)",
-    "url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/121",
-    "folder": "c-iouring-ssmurfgg04-gif",
-    "commit": "315df90113281bfd9e78a62c1999a12e6d671370",
-    "source_url": "https://github.com/ssmurfgg04-gif/twelve-dollar-server-challenge/tree/315df90113281bfd9e78a62c1999a12e6d671370/submissions/c-iouring-ssmurfgg04-gif",
-    "source_sha256": "5cdb95e62366b16b072302bdcbe56639aea77aa43b6bb8edaba79ab9b8339822",
-    "archive_sha256": "86f8ef044074ff1a79bced38ae18d7f3820bda9b7e6aa8703724e454bf54cdc2",
-    "app_loc": 2630,
-    "own_loc": 3273,
-    "nginx": false,
-    "eligible": true,
-    "build_status": "built",
-    "build_exit_code": 0,
-    "build_elapsed_s": 84.55,
-    "build_log": "../2026-10-20/logs/build-pr121-c-iouring-ssmurfgg04-gif.log",
-    "runtime_setup": "../2026-10-20/runtime-scripts/pr121-c-iouring-ssmurfgg04-gif.sh",
-    "build_adapter": null,
-    "image_id": "sha256:8f5507820adfd2d73640d4c6f1e3721d9a26b4b3ed912c96c66562bbb2fa08ab",
-    "status": "measured",
-    "reason": "",
-    "rank": 38,
-    "ranked": true,
-    "trials_recorded": 3,
-    "tests_passed": 42,
-    "tests_failed": 0,
-    "official_passed_all": true,
-    "semantic_passed_all": true,
-    "verification_log": "../2026-10-20/logs/verify-121-c-iouring-ssmurfgg04-gif-1.log",
-    "trial_errors": {},
-    "rps": 44076.65,
-    "successful_rps": 44076.65,
-    "p50_ms": 1.25,
-    "p95_ms": 1.971,
-    "p99_ms": 67.53,
-    "rss_mib": 39.640625,
-    "cpu_percent": 67.27397211710564,
-    "rps_min": 42621.89,
-    "rps_max": 48478.35,
-    "http_errors": 0,
-    "socket_errors": {
-      "connect": 0,
-      "read": 0,
-      "write": 0,
-      "timeout": 0
-    },
-    "database_valid": true,
-    "batch": "current-2026-10-20",
-    "measurement_date": "2026-10-20",
-    "role": "current",
-    "evidence": [
-      "../2026-10-20/manifest.json",
-      "../2026-10-20/build-status.json",
-      "../2026-10-20/logs/build-pr121-c-iouring-ssmurfgg04-gif.log",
-      "../2026-10-20/verification.json",
-      "../2026-10-20/logs/verify-121-c-iouring-ssmurfgg04-gif-1.log",
-      "../2026-10-20/server-logs/verify-121-c-iouring-ssmurfgg04-gif-1.log",
-      "../2026-10-20/measurements.json",
-      "../2026-10-20/logs/bench-121-c-iouring-ssmurfgg04-gif-1.log",
-      "../2026-10-20/server-logs/bench-121-c-iouring-ssmurfgg04-gif-1.log",
-      "../2026-10-20/logs/bench-121-c-iouring-ssmurfgg04-gif-2.log",
-      "../2026-10-20/server-logs/bench-121-c-iouring-ssmurfgg04-gif-2.log",
-      "../2026-10-20/logs/bench-121-c-iouring-ssmurfgg04-gif-3.log",
-      "../2026-10-20/server-logs/bench-121-c-iouring-ssmurfgg04-gif-3.log"
-    ],
-    "source_record": {
-      "pr": 121,
-      "id": "121-c-iouring-ssmurfgg04-gif",
-      "case_id": "121-c-iouring-ssmurfgg04-gif",
-      "title": "Add c-libco-ssmurfgg04-gif submission (C, libco coroutines, SQLite, direct on :80)",
-      "url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/121",
-      "folder": "c-iouring-ssmurfgg04-gif",
-      "commit": "315df90113281bfd9e78a62c1999a12e6d671370",
-      "source_url": "https://github.com/ssmurfgg04-gif/twelve-dollar-server-challenge/tree/315df90113281bfd9e78a62c1999a12e6d671370/submissions/c-iouring-ssmurfgg04-gif",
-      "source_sha256": "5cdb95e62366b16b072302bdcbe56639aea77aa43b6bb8edaba79ab9b8339822",
-      "archive_sha256": "86f8ef044074ff1a79bced38ae18d7f3820bda9b7e6aa8703724e454bf54cdc2",
-      "app_loc": 2630,
-      "own_loc": 3273,
-      "nginx": false,
-      "eligible": true,
-      "build_status": "built",
-      "build_exit_code": 0,
-      "build_elapsed_s": 84.55,
-      "build_log": "../2026-10-20/logs/build-pr121-c-iouring-ssmurfgg04-gif.log",
-      "runtime_setup": "../2026-10-20/runtime-scripts/pr121-c-iouring-ssmurfgg04-gif.sh",
-      "build_adapter": null,
-      "image_id": "sha256:8f5507820adfd2d73640d4c6f1e3721d9a26b4b3ed912c96c66562bbb2fa08ab",
-      "status": "measured",
-      "reason": "",
-      "rank": 38,
-      "ranked": true,
-      "trials_recorded": 3,
-      "tests_passed": 42,
-      "tests_failed": 0,
-      "official_passed_all": true,
-      "semantic_passed_all": true,
-      "verification_log": "../2026-10-20/logs/verify-121-c-iouring-ssmurfgg04-gif-1.log",
-      "trial_errors": {},
-      "rps": 44076.65,
-      "successful_rps": 44076.65,
-      "p50_ms": 1.25,
-      "p95_ms": 1.971,
-      "p99_ms": 67.53,
-      "rss_mib": 39.640625,
-      "cpu_percent": 67.27397211710564,
-      "rps_min": 42621.89,
-      "rps_max": 48478.35,
-      "http_errors": 0,
-      "socket_errors": {
-        "connect": 0,
-        "read": 0,
-        "write": 0,
-        "timeout": 0
-      },
-      "database_valid": true,
-      "batch": "current-2026-10-20",
-      "measurement_date": "2026-10-20",
-      "role": "submission",
-      "evidence": [
-        "../2026-10-20/manifest.json",
-        "../2026-10-20/build-status.json",
-        "../2026-10-20/logs/build-pr121-c-iouring-ssmurfgg04-gif.log",
-        "../2026-10-20/verification.json",
-        "../2026-10-20/logs/verify-121-c-iouring-ssmurfgg04-gif-1.log",
-        "../2026-10-20/server-logs/verify-121-c-iouring-ssmurfgg04-gif-1.log",
-        "../2026-10-20/measurements.json",
-        "../2026-10-20/logs/bench-121-c-iouring-ssmurfgg04-gif-1.log",
-        "../2026-10-20/server-logs/bench-121-c-iouring-ssmurfgg04-gif-1.log",
-        "../2026-10-20/logs/bench-121-c-iouring-ssmurfgg04-gif-2.log",
-        "../2026-10-20/server-logs/bench-121-c-iouring-ssmurfgg04-gif-2.log",
-        "../2026-10-20/logs/bench-121-c-iouring-ssmurfgg04-gif-3.log",
-        "../2026-10-20/server-logs/bench-121-c-iouring-ssmurfgg04-gif-3.log"
-      ]
-    },
-    "source_role": "submission",
-    "source_rank": 38,
-    "row_id": "current:121-c-iouring-ssmurfgg04-gif",
-    "measurement_batch": "current-2026-10-20",
-    "protocol": "stock-wrk-3x15s",
-    "protocol_label": "stock wrk · 3×15s · 2s warmup · 2t/64c",
-    "measurement_seconds": 15,
-    "warmup_seconds": 2,
-    "pr_url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/121",
-    "label": "c-iouring-ssmurfgg04-gif",
-    "evidence_url": "../2026-10-20/measurements.json",
-    "warmup_http_errors": null,
-    "warmup_socket_errors": null,
-    "requirements_status": "PASS",
-    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
-    "benchmark_requirements_met": true,
-    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
-    "requirements_detail": {
-      "sqlite_eligibility": "PASS",
-      "official_api_42": "PASS",
-      "dynamic_live_data": "PASS",
-      "committed_database": "PASS",
-      "three_completed_stock_trials": "PASS",
-      "zero_measured_errors": "PASS",
-      "runtime_budget": "PASS",
-      "build_start_contract": "PASS",
-      "runtime_startup": "PASS"
-    },
-    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
-    "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "crazy-vedic/twelve-dollar-server-challenge/submissions/go-nethttp-mattn-vedic",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 71,
@@ -7849,7 +7003,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "cicloid/twelve-dollar-server-challenge/submissions/ruby-async-cicloid",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 4,
@@ -8018,7 +7176,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "tbsvttr/twelve-dollar-server-challenge/submissions/typescript-bun-tbsvttr",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 84,
@@ -8187,7 +7349,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "pranavds-codes/twelve-dollar-server-challenge/submissions/python-pypy-epoll-pranavds-codes",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 45,
@@ -8356,7 +7522,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "c-hatton/twelve-dollar-server-challenge/submissions/kotlin-ktor-c-hatton",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 104,
@@ -8525,7 +7695,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "staticfx/twelve-dollar-server-challenge/submissions/haskell-warp-staticfx",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 24,
@@ -8694,7 +7868,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "mattsplat/twelve-dollar-server-challenge/submissions/php-swoole-mattsplat",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 94,
@@ -8865,7 +8043,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "yar0slav/twelve-dollar-server-challenge/submissions/lua-openresty-yar0slav",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 28,
@@ -9034,7 +8216,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "tzimpel/twelve-dollar-server-challenge/submissions/php-swoole-tzimpel",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 59,
@@ -9203,7 +8389,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "shashishsoni/twelve-dollar-server-challenge/submissions/bun-elysia-shashishsoni",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 73,
@@ -9372,7 +8562,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "raisinsfried/twelve-dollar-server-challenge/submissions/java-quarkus-panama-raisinsfried",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 118,
@@ -9541,7 +8735,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "shawal-mbalire/twelve-dollar-server-challenge/submissions/python-stdlib-shawal-mbalire",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 106,
@@ -9710,7 +8908,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "savak1990/twelve-dollar-upstream/submissions/go-fasthttp-savak1990",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 114,
@@ -9879,7 +9081,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "mjc/twelve-dollar-server-challenge/submissions/rust-axum-mjc",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 83,
@@ -10048,7 +9254,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "3x3xx3n0n/twelve-dollar-server-challenge/submissions/kotlin-nio-3x3xx3n0n",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 69,
@@ -10217,7 +9427,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "ulises-jeremias/twelve-dollar-server-challenge/submissions/v-fasthttp-ulises-jeremias",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 78,
@@ -10386,7 +9600,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "barrard/twelve-dollar-server-challenge/submissions/node-net-barrard",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 51,
@@ -10555,7 +9773,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "melroy89/twelve-dollar-server-challenge/submissions/typescript-fastify-melroy89",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 80,
@@ -10724,7 +9946,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "brocchirodrigo/twelve-dollar-server-challenge/submissions/bun-elysia-brocchirodrigo",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 99,
@@ -10893,7 +10119,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "fi5hie/twelve-dollar-server-challenge/submissions/go-nethttp-fi5hie",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 108,
@@ -11062,7 +10292,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "delneg/twelve-dollar-server-challenge/submissions/fsharp-oxpecker-delneg",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 14,
@@ -11231,7 +10465,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "tbsvttr/twelve-dollar-server-challenge/submissions/ruby-iodine-tbsvttr",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 18,
@@ -11400,7 +10638,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "tbsvttr/twelve-dollar-server-challenge/submissions/go-nethttp-tbsvttr",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 56,
@@ -11569,7 +10811,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "b3nhard/twelve-dollar-server-challenge/submissions/go-fasthttp-b3nhard",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 41,
@@ -11738,7 +10984,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "shawal-mbalire/twelve-dollar-server-challenge/submissions/python-fastapi-granian-shawal-mbalire",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 101,
@@ -11907,7 +11157,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "agrison/twelve-dollar-server-challenge/submissions/java-raw-agrison",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 129,
@@ -12076,7 +11330,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "naveedzahoorkhan/twelve-dollar-server-challenge/submissions/go-nethttp-naveedzahoorkhan",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 46,
@@ -12245,7 +11503,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "c-hatton/twelve-dollar-server-challenge/submissions/dart-rawsocket-c-hatton",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 61,
@@ -12414,7 +11676,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "gmr458/twelve-dollar-server-challenge/submissions/node-fastify-gmr458",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 13,
@@ -12583,7 +11849,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "tbsvttr/twelve-dollar-server-challenge/submissions/python-granian-tbsvttr",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 16,
@@ -12754,178 +12024,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
-  },
-  {
-    "pr": 103,
-    "id": "103",
-    "case_id": "103",
-    "title": "Add Go gin SQLite submission",
-    "url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/103",
-    "folder": "go-gin-lincolng4",
-    "commit": "896434055ff5278bead6112da223c5bb0670f982",
-    "source_url": "https://github.com/LincolnG4/twelve-dollar-server-challenge/tree/896434055ff5278bead6112da223c5bb0670f982/submissions/go-gin-lincolng4",
-    "source_sha256": "ecb86bbdd09681a6a378c30bd961851d20f7fb81df83bf6c1d06de6e233a1870",
-    "archive_sha256": "f1e8084fad954181c371964dae6b91371cb4148d6eeb0771eb67595af076f258",
-    "app_loc": 415,
-    "own_loc": 431,
-    "nginx": false,
-    "eligible": true,
-    "build_status": "built",
-    "build_exit_code": 0,
-    "build_elapsed_s": 102.02,
-    "build_log": "../2026-10-20/logs/build-pr103.log",
-    "runtime_setup": "../2026-10-20/runtime-scripts/pr103.sh",
-    "build_adapter": null,
-    "image_id": "sha256:982859ec4835a6102be6d9b33a8d1778d1d1732f696d52d7ce2e0e6d39d61a8d",
-    "status": "measured_with_errors",
-    "reason": "All three trials completed, with HTTP/socket errors. Measurements are diagnostic and excluded from ranking.",
-    "rank": null,
-    "ranked": false,
-    "trials_recorded": 3,
-    "tests_passed": 42,
-    "tests_failed": 0,
-    "official_passed_all": true,
-    "semantic_passed_all": true,
-    "verification_log": "../2026-10-20/logs/verify-103-1.log",
-    "trial_errors": {},
-    "rps": 26433.45,
-    "successful_rps": 26431.461928429424,
-    "p50_ms": 1.9,
-    "p95_ms": 6.167,
-    "p99_ms": 13.89,
-    "rss_mib": 77.50390625,
-    "cpu_percent": 93.18436358472631,
-    "rps_min": 20561.28664451827,
-    "rps_max": 26812.390610079576,
-    "http_errors": 90,
-    "socket_errors": {
-      "connect": 0,
-      "read": 0,
-      "write": 0,
-      "timeout": 91
-    },
-    "database_valid": true,
-    "batch": "current-2026-10-20",
-    "measurement_date": "2026-10-20",
-    "role": "historical",
-    "evidence": [
-      "../2026-10-20/manifest.json",
-      "../2026-10-20/build-status.json",
-      "../2026-10-20/logs/build-pr103.log",
-      "../2026-10-20/verification.json",
-      "../2026-10-20/logs/verify-103-1.log",
-      "../2026-10-20/server-logs/verify-103-1.log",
-      "../2026-10-20/measurements.json",
-      "../2026-10-20/logs/bench-103-1.log",
-      "../2026-10-20/server-logs/bench-103-1.log",
-      "../2026-10-20/logs/bench-103-2.log",
-      "../2026-10-20/server-logs/bench-103-2.log",
-      "../2026-10-20/logs/bench-103-3.log",
-      "../2026-10-20/server-logs/bench-103-3.log",
-      "../2026-10-20/diagnostics-pr103.json"
-    ],
-    "source_record": {
-      "pr": 103,
-      "id": "103",
-      "case_id": "103",
-      "title": "Add Go gin SQLite submission",
-      "url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/103",
-      "folder": "go-gin-lincolng4",
-      "commit": "896434055ff5278bead6112da223c5bb0670f982",
-      "source_url": "https://github.com/LincolnG4/twelve-dollar-server-challenge/tree/896434055ff5278bead6112da223c5bb0670f982/submissions/go-gin-lincolng4",
-      "source_sha256": "ecb86bbdd09681a6a378c30bd961851d20f7fb81df83bf6c1d06de6e233a1870",
-      "archive_sha256": "f1e8084fad954181c371964dae6b91371cb4148d6eeb0771eb67595af076f258",
-      "app_loc": 415,
-      "own_loc": 431,
-      "nginx": false,
-      "eligible": true,
-      "build_status": "built",
-      "build_exit_code": 0,
-      "build_elapsed_s": 102.02,
-      "build_log": "../2026-10-20/logs/build-pr103.log",
-      "runtime_setup": "../2026-10-20/runtime-scripts/pr103.sh",
-      "build_adapter": null,
-      "image_id": "sha256:982859ec4835a6102be6d9b33a8d1778d1d1732f696d52d7ce2e0e6d39d61a8d",
-      "status": "measured_with_errors",
-      "reason": "All three trials completed, with HTTP/socket errors. Measurements are diagnostic and excluded from ranking.",
-      "rank": null,
-      "ranked": false,
-      "trials_recorded": 3,
-      "tests_passed": 42,
-      "tests_failed": 0,
-      "official_passed_all": true,
-      "semantic_passed_all": true,
-      "verification_log": "../2026-10-20/logs/verify-103-1.log",
-      "trial_errors": {},
-      "rps": 26433.45,
-      "successful_rps": 26431.461928429424,
-      "p50_ms": 1.9,
-      "p95_ms": 6.167,
-      "p99_ms": 13.89,
-      "rss_mib": 77.50390625,
-      "cpu_percent": 93.18436358472631,
-      "rps_min": 20561.28664451827,
-      "rps_max": 26812.390610079576,
-      "http_errors": 90,
-      "socket_errors": {
-        "connect": 0,
-        "read": 0,
-        "write": 0,
-        "timeout": 91
-      },
-      "database_valid": true,
-      "batch": "current-2026-10-20",
-      "measurement_date": "2026-10-20",
-      "role": "submission",
-      "evidence": [
-        "../2026-10-20/manifest.json",
-        "../2026-10-20/build-status.json",
-        "../2026-10-20/logs/build-pr103.log",
-        "../2026-10-20/verification.json",
-        "../2026-10-20/logs/verify-103-1.log",
-        "../2026-10-20/server-logs/verify-103-1.log",
-        "../2026-10-20/measurements.json",
-        "../2026-10-20/logs/bench-103-1.log",
-        "../2026-10-20/server-logs/bench-103-1.log",
-        "../2026-10-20/logs/bench-103-2.log",
-        "../2026-10-20/server-logs/bench-103-2.log",
-        "../2026-10-20/logs/bench-103-3.log",
-        "../2026-10-20/server-logs/bench-103-3.log",
-        "../2026-10-20/diagnostics-pr103.json"
-      ]
-    },
-    "source_role": "submission",
-    "source_rank": null,
-    "row_id": "historical:103:896434055ff5278bead6112da223c5bb0670f982",
-    "measurement_batch": "current-2026-10-20",
-    "protocol": "stock-wrk-3x15s",
-    "protocol_label": "stock wrk · 3×15s · 2s warmup · 2t/64c",
-    "measurement_seconds": 15,
-    "warmup_seconds": 2,
-    "pr_url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/103",
-    "label": "go-gin-lincolng4",
-    "evidence_url": "../2026-10-20/measurements.json",
-    "warmup_http_errors": null,
-    "warmup_socket_errors": null,
-    "requirements_status": "FAIL",
-    "requirements_reason": "90 HTTP errors; 91 wrk timeouts across the local measured trials.",
-    "benchmark_requirements_met": false,
-    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
-    "requirements_detail": {
-      "sqlite_eligibility": "PASS",
-      "official_api_42": "PASS",
-      "dynamic_live_data": "PASS",
-      "committed_database": "PASS",
-      "three_completed_stock_trials": "PASS",
-      "zero_measured_errors": "FAIL",
-      "runtime_budget": "PASS",
-      "build_start_contract": "PASS",
-      "runtime_startup": "PASS"
-    },
-    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
-    "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "tbsvttr/twelve-dollar-server-challenge/submissions/fortran-microhttpd-tbsvttr",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 103,
@@ -13094,7 +12197,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: audit-final.json",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "lincolng4/twelve-dollar-server-challenge/submissions/go-gin-lincolng4",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 92,
@@ -13263,7 +12370,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: audit-final.json",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "super-horst/twelve-dollar-server-challenge/submissions/java-vertx-super-horst",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 116,
@@ -13432,7 +12543,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "clickin/twelve-dollar-server-challenge/submissions/java-micronaut-clickin",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 27,
@@ -13601,7 +12716,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "maks-march/twelve-dollar-server-challenge/submissions/csharp-aspnetcore-maks-march",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 119,
@@ -13772,7 +12891,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "jakeave/twelve-dollar-server-challenge/submissions/typescript-deno-jakeave",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 123,
@@ -13941,7 +13064,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: audit-final.json",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "cyrusmsk/twelve-dollar-server-challenge/submissions/d-arsd-hybridcgi-cyrusmsk",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 10,
@@ -14110,7 +13237,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "tejasnafde/twelve-dollar-server-challenge/submissions/python-fastapi-tejasnafde",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 57,
@@ -14279,176 +13410,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
-  },
-  {
-    "pr": 123,
-    "id": "123-arsd-threadedcgi",
-    "case_id": "123-arsd-threadedcgi",
-    "title": "[D] Implementations for Vibe.D and Arsd:CGI frameworks",
-    "url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/123",
-    "folder": "d-arsd-threadedcgi-cyrusmsk",
-    "commit": "b8bd4b2e5b302d81a0bac32bd38a4bb6c258b0e2",
-    "source_url": "https://github.com/cyrusmsk/twelve-dollar-server-challenge/tree/b8bd4b2e5b302d81a0bac32bd38a4bb6c258b0e2/submissions/d-arsd-threadedcgi-cyrusmsk",
-    "source_sha256": "6928632c9db31b4efb45f8394c8cfc725a61f73867388bda762ba641c8b6ad8d",
-    "archive_sha256": "5a9acf2994c6b27565f11025644cc0861e2a006ba603ff8a054cc70835b70dba",
-    "app_loc": 680,
-    "own_loc": 734,
-    "nginx": false,
-    "eligible": true,
-    "build_status": "built",
-    "build_exit_code": 0,
-    "build_elapsed_s": 32.69,
-    "build_log": "../2026-10-20/logs/build-pr123-arsd-threadedcgi.log",
-    "runtime_setup": "../2026-10-20/runtime-scripts/pr123-arsd-threadedcgi.sh",
-    "build_adapter": null,
-    "image_id": "sha256:d7e884042d35c7f875a36b91f9bee1cec4e75d8051bb52385b53fee4d35ec68c",
-    "status": "measured",
-    "reason": "",
-    "rank": null,
-    "ranked": false,
-    "trials_recorded": 3,
-    "tests_passed": 42,
-    "tests_failed": 0,
-    "official_passed_all": true,
-    "semantic_passed_all": true,
-    "verification_log": "../2026-10-20/logs/verify-123-arsd-threadedcgi-1.log",
-    "trial_errors": {},
-    "rps": 21690.5,
-    "successful_rps": 21690.5,
-    "p50_ms": 0.107,
-    "p95_ms": 0.429,
-    "p99_ms": 1.53,
-    "rss_mib": 13.87890625,
-    "cpu_percent": 95.41637448517866,
-    "rps_min": 19250.56,
-    "rps_max": 21971.15,
-    "http_errors": 0,
-    "socket_errors": {
-      "connect": 0,
-      "read": 0,
-      "write": 0,
-      "timeout": 0
-    },
-    "database_valid": true,
-    "batch": "current-2026-10-20",
-    "measurement_date": "2026-10-20",
-    "role": "historical",
-    "evidence": [
-      "../2026-10-20/manifest.json",
-      "../2026-10-20/build-status.json",
-      "../2026-10-20/logs/build-pr123-arsd-threadedcgi.log",
-      "../2026-10-20/verification.json",
-      "../2026-10-20/logs/verify-123-arsd-threadedcgi-1.log",
-      "../2026-10-20/server-logs/verify-123-arsd-threadedcgi-1.log",
-      "../2026-10-20/measurements.json",
-      "../2026-10-20/logs/bench-123-arsd-threadedcgi-1.log",
-      "../2026-10-20/server-logs/bench-123-arsd-threadedcgi-1.log",
-      "../2026-10-20/logs/bench-123-arsd-threadedcgi-2.log",
-      "../2026-10-20/server-logs/bench-123-arsd-threadedcgi-2.log",
-      "../2026-10-20/logs/bench-123-arsd-threadedcgi-3.log",
-      "../2026-10-20/server-logs/bench-123-arsd-threadedcgi-3.log"
-    ],
-    "source_record": {
-      "pr": 123,
-      "id": "123-arsd-threadedcgi",
-      "case_id": "123-arsd-threadedcgi",
-      "title": "[D] Implementations for Vibe.D and Arsd:CGI frameworks",
-      "url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/123",
-      "folder": "d-arsd-threadedcgi-cyrusmsk",
-      "commit": "b8bd4b2e5b302d81a0bac32bd38a4bb6c258b0e2",
-      "source_url": "https://github.com/cyrusmsk/twelve-dollar-server-challenge/tree/b8bd4b2e5b302d81a0bac32bd38a4bb6c258b0e2/submissions/d-arsd-threadedcgi-cyrusmsk",
-      "source_sha256": "6928632c9db31b4efb45f8394c8cfc725a61f73867388bda762ba641c8b6ad8d",
-      "archive_sha256": "5a9acf2994c6b27565f11025644cc0861e2a006ba603ff8a054cc70835b70dba",
-      "app_loc": 680,
-      "own_loc": 734,
-      "nginx": false,
-      "eligible": true,
-      "build_status": "built",
-      "build_exit_code": 0,
-      "build_elapsed_s": 32.69,
-      "build_log": "../2026-10-20/logs/build-pr123-arsd-threadedcgi.log",
-      "runtime_setup": "../2026-10-20/runtime-scripts/pr123-arsd-threadedcgi.sh",
-      "build_adapter": null,
-      "image_id": "sha256:d7e884042d35c7f875a36b91f9bee1cec4e75d8051bb52385b53fee4d35ec68c",
-      "status": "measured",
-      "reason": "",
-      "rank": 69,
-      "ranked": true,
-      "trials_recorded": 3,
-      "tests_passed": 42,
-      "tests_failed": 0,
-      "official_passed_all": true,
-      "semantic_passed_all": true,
-      "verification_log": "../2026-10-20/logs/verify-123-arsd-threadedcgi-1.log",
-      "trial_errors": {},
-      "rps": 21690.5,
-      "successful_rps": 21690.5,
-      "p50_ms": 0.107,
-      "p95_ms": 0.429,
-      "p99_ms": 1.53,
-      "rss_mib": 13.87890625,
-      "cpu_percent": 95.41637448517866,
-      "rps_min": 19250.56,
-      "rps_max": 21971.15,
-      "http_errors": 0,
-      "socket_errors": {
-        "connect": 0,
-        "read": 0,
-        "write": 0,
-        "timeout": 0
-      },
-      "database_valid": true,
-      "batch": "current-2026-10-20",
-      "measurement_date": "2026-10-20",
-      "role": "submission",
-      "evidence": [
-        "../2026-10-20/manifest.json",
-        "../2026-10-20/build-status.json",
-        "../2026-10-20/logs/build-pr123-arsd-threadedcgi.log",
-        "../2026-10-20/verification.json",
-        "../2026-10-20/logs/verify-123-arsd-threadedcgi-1.log",
-        "../2026-10-20/server-logs/verify-123-arsd-threadedcgi-1.log",
-        "../2026-10-20/measurements.json",
-        "../2026-10-20/logs/bench-123-arsd-threadedcgi-1.log",
-        "../2026-10-20/server-logs/bench-123-arsd-threadedcgi-1.log",
-        "../2026-10-20/logs/bench-123-arsd-threadedcgi-2.log",
-        "../2026-10-20/server-logs/bench-123-arsd-threadedcgi-2.log",
-        "../2026-10-20/logs/bench-123-arsd-threadedcgi-3.log",
-        "../2026-10-20/server-logs/bench-123-arsd-threadedcgi-3.log"
-      ]
-    },
-    "source_role": "submission",
-    "source_rank": 69,
-    "row_id": "historical:123-arsd-threadedcgi:b8bd4b2e5b302d81a0bac32bd38a4bb6c258b0e2",
-    "measurement_batch": "current-2026-10-20",
-    "protocol": "stock-wrk-3x15s",
-    "protocol_label": "stock wrk · 3×15s · 2s warmup · 2t/64c",
-    "measurement_seconds": 15,
-    "warmup_seconds": 2,
-    "pr_url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/123",
-    "label": "d-arsd-threadedcgi-cyrusmsk",
-    "evidence_url": "../2026-10-20/measurements.json",
-    "warmup_http_errors": null,
-    "warmup_socket_errors": null,
-    "requirements_status": "PASS",
-    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
-    "benchmark_requirements_met": true,
-    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
-    "requirements_detail": {
-      "sqlite_eligibility": "PASS",
-      "official_api_42": "PASS",
-      "dynamic_live_data": "PASS",
-      "committed_database": "PASS",
-      "three_completed_stock_trials": "PASS",
-      "zero_measured_errors": "PASS",
-      "runtime_budget": "PASS",
-      "build_start_contract": "PASS",
-      "runtime_startup": "PASS"
-    },
-    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
-    "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "itsnaveenk/twelve-dollar-server-challenge/submissions/java-netty-itsnaveenk",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 123,
@@ -14617,7 +13583,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: audit-final.json",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "cyrusmsk/twelve-dollar-server-challenge/submissions/d-arsd-threadedcgi-cyrusmsk",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 43,
@@ -14786,7 +13756,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "denizak/twelve-dollar-server-challenge/submissions/swift-hummingbird-denizak",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 123,
@@ -14955,7 +13929,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: audit-final.json",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "cyrusmsk/twelve-dollar-server-challenge/submissions/d-vibe-http-cyrusmsk",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 81,
@@ -15124,7 +14102,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "brocchirodrigo/twelve-dollar-server-challenge/submissions/java-springboot-brocchirodrigo",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 70,
@@ -15293,7 +14275,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "ulises-jeremias/twelve-dollar-server-challenge/submissions/v-veb-ulises-jeremias",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 85,
@@ -15462,7 +14448,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "ahosan1siam/twelve-dollar-server-challenge/submissions/java-virtualthreads-ahosan1siam",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 20,
@@ -15631,7 +14621,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "andrexx/twelve-dollar-server-challenge/submissions/csharp-aspnetcore-andrexx",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 23,
@@ -15800,7 +14794,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "przwr/twelve-dollar-server-challenge/submissions/python-litestar-przwr",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 1,
@@ -15969,7 +14967,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "cknutson12/twelve-dollar-server-challenge/submissions/python-fastapi-cknutson12",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 109,
@@ -16138,7 +15140,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "hoopengo/twelve-dollar-server-challenge/submissions/python-granian-hoopengo",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 11,
@@ -16307,7 +15313,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "tbsvttr/twelve-dollar-server-challenge/submissions/erlang-cowboy-tbsvttr",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 67,
@@ -16476,7 +15486,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "wolches/twelve-dollar-server-challenge/submissions/java-quarkus-wolches",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 49,
@@ -16645,7 +15659,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "seethruhead/twelve-dollar-server-challenge/submissions/typescript-effect-seethruhead",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 53,
@@ -16814,7 +15832,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "noamm9/twelve-dollar-server-challenge/submissions/kotlin-ktor-graalvm-noamm9",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 40,
@@ -16983,7 +16005,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "pklebba/twelve-dollar-server-challenge/submissions/php-symfony-pklebba",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 12,
@@ -17152,7 +16178,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "tbsvttr/twelve-dollar-server-challenge/submissions/ruby-rails-tbsvttr",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 126,
@@ -17321,7 +16351,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "lua-lunet/twelve-dollar-server-challenge/submissions/lua-lunet-simbo1905",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 66,
@@ -17490,7 +16524,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "mindstorm1750/twelve-dollar-server-challenge/submissions/kotlin-springboot-mindstorm1750",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 33,
@@ -17659,7 +16697,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "nb-99/twelve-dollar-server-challenge/submissions/java-spring-boot-nb-99",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 47,
@@ -17830,7 +16872,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "larsholm/twelve-dollar-server-challenge/submissions/csharp-aspnetcore-larsholm",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 36,
@@ -18001,7 +17047,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "syorito-hatsuki/twelve-dollar-server-challenge-kotlin/submissions/kotlin-ktor-jvm-syorito-hatsuki",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 50,
@@ -18170,7 +17220,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "melroy89/twelve-dollar-server-challenge/submissions/php-codeigniter-melroy89",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 35,
@@ -18339,7 +17393,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "hellovai/twelve-dollar-server-challenge/submissions/baml-http-hellovai",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 2,
@@ -18508,7 +17566,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "gambitboy/twelve-dollar-server-challenge/submissions/ruby-rails-gambitboy",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 128,
@@ -18677,7 +17739,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "jnorthrup/twelve-dollar-server-challenge-trikeshed/submissions/kotlin-trikeshed-jnorthrup",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 89,
@@ -18846,7 +17912,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "framegrace/twelve-dollar-server-challenge/submissions/bash-socat-framegrace",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 31,
@@ -19015,7 +18085,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "josiahparry/twelve-dollar-server-challenge/submissions/r-plumber2-josiahparry",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 115,
@@ -19118,7 +18192,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "ailang-author/twelve-dollar-server-challenge/submissions/ailang-native-2paws",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 117,
@@ -19221,7 +18299,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "umitaltintas/twelve-dollar-server-challenge/submissions/asm-epoll-umitaltintas",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 121,
@@ -19324,7 +18406,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "ssmurfgg04-gif/twelve-dollar-server-challenge/submissions/c-libco-ssmurfgg04-gif",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 125,
@@ -19427,7 +18513,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "marler8997/twelve-dollar-server-challenge/submissions/zig-iouring-marler8997",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 127,
@@ -19550,7 +18640,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: audit-final.json",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "aliskhanoff/twelve-dollar-server-challenge/submissions/node-httpserver-aliskhanoff",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 130,
@@ -19653,7 +18747,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "haultce/twelve-dollar-server-challenge/submissions/asm-epoll-haultce",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 34,
@@ -19756,7 +18854,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "sirkostya009/twelve-dollar-server-challenge/submissions/go-fib-sirkostya009",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 74,
@@ -19859,7 +18961,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "gichamba/twelve-dollar-server-challenge/submissions/csharp-epoll-gichamba",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 75,
@@ -19962,7 +19068,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "flavouredtux/twelve-dollar-server-challenge/submissions/asm-epoll-flavouredtux",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 79,
@@ -20093,7 +19203,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "perkinslr/twelve-dollar-server-challenge/submissions/pypy-twisted-perkinslr",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 86,
@@ -20196,7 +19310,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "melroy89/twelve-dollar-server-challenge/submissions/asm-nasm-melroy89",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 90,
@@ -20297,7 +19415,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "abeni-csa/twelve-dollar-server-challenge/submissions/rust-actix-web-abeni-csa",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 91,
@@ -20400,7 +19522,11 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "janso123/twelve-dollar-server-challenge/submissions/go-lowlevel-janso123",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   },
   {
     "pr": 95,
@@ -20503,6 +19629,10 @@
     },
     "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
     "official_conditions_status": "UNVERIFIED",
-    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity.",
+    "implementation_key": "devv-guru/twelve-dollar-server-challenge/submissions/csharp-aspnetcore-devv-guru",
+    "display_role": "current",
+    "selection_reason": "Current source revision; unchanged inherited folders use their original PR.",
+    "superseded_prs": []
   }
 ]

@@ -1,0 +1,21 @@
+{
+  "visible_rows": 118,
+  "unique_implementations": 118,
+  "all_records": 129,
+  "all_records_sha256": "4799baba4fb9ad2b03e7e1d9b341b84194f7a4c9e455885c7a562fa6e483566a",
+  "old_records_unchanged": true,
+  "goose_rows": 1,
+  "rust82_rows": 1,
+  "new_benchmarks": 0,
+  "generator_sha256": "41d5271c20b7d09c191868e2eb313dbc2c3fd0edad629d4a4d7fbe5f84ece735",
+  "outputs": {
+    "README.md": "c2700467b3749596f5e246c7fe8f0cf75ac8124eeb57dc4e6d8386a6834b704b",
+    "comparison-rows.json": "4799baba4fb9ad2b03e7e1d9b341b84194f7a4c9e455885c7a562fa6e483566a",
+    "comparison.csv": "282902560c9eb267e0fc3f7fc6618a4c9feaa6e00cf99d3a44c0832a99e4a535",
+    "comparison.html": "e87f20a147cdeb09939e50fbd3ca29ed8a2363549ebdcb586b779773bbb66838",
+    "issue-comment.json": "71e47f3313a291fffa4e3cf7c839fb0747843d6bf7cb6a5e02ec13da69f5d23d",
+    "issue-comment.md": "fda7d954fca020f6d89aae57630a71ca2509e5901dc929bcea10e775389bd471",
+    "report.md": "5f82f1b3784681b7fc41f0debe702c80311ac8fc633fbbad30f933306ab9cd2a",
+    "visible-rows.json": "fc2c46c627ab325dbc96ae5e77e81cc13ed5425f48dae604839e15490ac6531a"
+  }
+}

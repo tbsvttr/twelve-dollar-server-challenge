@@ -1,0 +1,3351 @@
+{
+  "passed": true,
+  "checks": 830,
+  "checks_passed": 830,
+  "canonical_rows": 129,
+  "visible_rows": 118,
+  "unique_implementations": 118,
+  "visible_conditions": {
+    "FAIL": 10,
+    "PASS": 97,
+    "UNVERIFIED": 11
+  },
+  "canonical_sha256": "4799baba4fb9ad2b03e7e1d9b341b84194f7a4c9e455885c7a562fa6e483566a",
+  "new_benchmark_commands_run": 0,
+  "outputs": {
+    "comparison-rows.json": "4799baba4fb9ad2b03e7e1d9b341b84194f7a4c9e455885c7a562fa6e483566a",
+    "visible-rows.json": "fc2c46c627ab325dbc96ae5e77e81cc13ed5425f48dae604839e15490ac6531a",
+    "comparison.csv": "282902560c9eb267e0fc3f7fc6618a4c9feaa6e00cf99d3a44c0832a99e4a535",
+    "comparison.html": "e87f20a147cdeb09939e50fbd3ca29ed8a2363549ebdcb586b779773bbb66838",
+    "issue-comment.md": "fda7d954fca020f6d89aae57630a71ca2509e5901dc929bcea10e775389bd471",
+    "report.md": "5f82f1b3784681b7fc41f0debe702c80311ac8fc633fbbad30f933306ab9cd2a"
+  },
+  "failures": [],
+  "results": [
+    {
+      "check": "frozen canonical file byte hash",
+      "passed": true
+    },
+    {
+      "check": "all 129 original and recheck records retained",
+      "passed": true
+    },
+    {
+      "check": "canonical row IDs remain unique",
+      "passed": true
+    },
+    {
+      "check": "independent selected-row policy yields 118 implementations",
+      "passed": true,
+      "detail": 118
+    },
+    {
+      "check": "exactly 118 visible unique rows",
+      "passed": true
+    },
+    {
+      "check": "visible selection is the specified current implementation set",
+      "passed": true,
+      "detail": {
+        "missing": [],
+        "extra": []
+      }
+    },
+    {
+      "check": "129 retained records byte-exact in current view",
+      "passed": true
+    },
+    {
+      "check": "one row per case-insensitive owner/repository/submission folder",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:21",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:21",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:21",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:21",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:21",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:143:recheck-3x15-2026-10-22",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:143:recheck-3x15-2026-10-22",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:143:recheck-3x15-2026-10-22",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:143:recheck-3x15-2026-10-22",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:143:recheck-3x15-2026-10-22",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:143:recheck-3x15-2026-10-22",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: control:recheck-3x15-2026-10-22:82",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: control:recheck-3x15-2026-10-22:82",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: control:recheck-3x15-2026-10-22:82",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: control:recheck-3x15-2026-10-22:82",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: control:recheck-3x15-2026-10-22:82",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: control:recheck-3x15-2026-10-22:82",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:132",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:132",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:132",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:132",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:132",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:132",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:32",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:32",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:32",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:32",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:32",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:32",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:68",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:68",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:68",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:68",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:68",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:68",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:113",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:113",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:113",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:113",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:113",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:113",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:72",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:72",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:72",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:72",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:72",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:72",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:44",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:44",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:44",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:44",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:44",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:44",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:64",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:64",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:64",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:64",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:64",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:64",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:88",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:88",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:88",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:88",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:88",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:88",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:98",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:98",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:98",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:98",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:98",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:98",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:55",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:55",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:55",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:55",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:55",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:55",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:52",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:52",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:52",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:52",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:52",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:52",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:26",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:26",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:26",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:26",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:26",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:26",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:25",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:25",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:25",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:25",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:25",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:25",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:15",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:15",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:15",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:15",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:15",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:15",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:42",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:42",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:42",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:42",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:42",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:42",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:65",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:65",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:65",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:65",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:65",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:65",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:9",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:9",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:9",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:9",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:9",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:9",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:124",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:124",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:124",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:124",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:124",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:76",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:76",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:76",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:76",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:76",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:76",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:54",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:54",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:54",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:54",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:54",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:54",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:5",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:5",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:5",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:5",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:5",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:5",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:8",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:8",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:8",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:8",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:8",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:8",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:3",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:3",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:3",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:3",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:3",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:3",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:107",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:107",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:107",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:107",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:107",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:107",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:17",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:17",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:17",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:17",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:17",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:17",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:6",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:6",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:6",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:6",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:6",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:6",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:112",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:112",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:112",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:112",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:112",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:112",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:48",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:48",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:48",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:48",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:48",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:48",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:39",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:39",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:39",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:39",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:39",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:39",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:111",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:111",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:111",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:111",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:111",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:111",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:77",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:77",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:77",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:77",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:77",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:77",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:29",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:29",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:29",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:29",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:29",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:29",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:38",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:38",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:38",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:38",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:38",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:38",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:102",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:102",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:102",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:102",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:102",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:102",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:63",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:63",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:63",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:63",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:63",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:63",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:100",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:100",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:100",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:100",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:100",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:100",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:71",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:71",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:71",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:71",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:71",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:71",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:4",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:4",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:4",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:4",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:4",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:4",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:84",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:84",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:84",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:84",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:84",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:84",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:45",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:45",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:45",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:45",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:45",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:45",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:104",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:104",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:104",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:104",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:104",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:104",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:24",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:24",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:24",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:24",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:24",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:24",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:94",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:94",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:94",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:94",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:94",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:28",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:28",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:28",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:28",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:28",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:28",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:59",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:59",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:59",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:59",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:59",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:59",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:73",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:73",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:73",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:73",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:73",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:73",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:118",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:118",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:118",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:118",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:118",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:118",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:106",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:106",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:106",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:106",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:106",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:106",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:114",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:114",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:114",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:114",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:114",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:114",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:83",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:83",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:83",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:83",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:83",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:83",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:69",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:69",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:69",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:69",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:69",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:69",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:78",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:78",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:78",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:78",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:78",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:78",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:51",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:51",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:51",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:51",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:51",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:51",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:80",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:80",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:80",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:80",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:80",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:80",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:99",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:99",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:99",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:99",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:99",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:99",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:108",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:108",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:108",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:108",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:108",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:108",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:14",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:14",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:14",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:14",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:14",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:14",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:18",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:18",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:18",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:18",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:18",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:18",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:56",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:56",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:56",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:56",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:56",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:56",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:41",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:41",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:41",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:41",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:41",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:41",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:101",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:101",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:101",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:101",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:101",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:101",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:129",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:129",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:129",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:129",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:129",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:129",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:46",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:46",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:46",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:46",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:46",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:46",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:61",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:61",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:61",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:61",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:61",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:61",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:13",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:13",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:13",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:13",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:13",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:13",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:16",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:16",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:16",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:16",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:16",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:103",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:103",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:103",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:103",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:103",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:103",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:92",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:92",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:92",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:92",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:92",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:92",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:116",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:116",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:116",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:116",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:116",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:116",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:27",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:27",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:27",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:27",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:27",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:27",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:119",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:119",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:119",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:119",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:119",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:123-arsd-hybridcgi",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:123-arsd-hybridcgi",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:123-arsd-hybridcgi",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:123-arsd-hybridcgi",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:123-arsd-hybridcgi",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:123-arsd-hybridcgi",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:10",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:10",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:10",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:10",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:10",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:10",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:57",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:57",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:57",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:57",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:57",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:57",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:123-arsd-threadedcgi",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:123-arsd-threadedcgi",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:123-arsd-threadedcgi",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:123-arsd-threadedcgi",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:123-arsd-threadedcgi",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:123-arsd-threadedcgi",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:43",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:43",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:43",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:43",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:43",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:43",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:123-vibed",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:123-vibed",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:123-vibed",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:123-vibed",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:123-vibed",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:123-vibed",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:81",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:81",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:81",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:81",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:81",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:81",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:70",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:70",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:70",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:70",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:70",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:70",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:85",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:85",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:85",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:85",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:85",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:85",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:20",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:20",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:20",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:20",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:20",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:20",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:23",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:23",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:23",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:23",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:23",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:23",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:1",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:1",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:1",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:1",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:1",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:1",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:109",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:109",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:109",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:109",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:109",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:109",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:11",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:11",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:11",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:11",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:11",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:11",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:67",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:67",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:67",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:67",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:67",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:67",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:49",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:49",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:49",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:49",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:49",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:49",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:53",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:53",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:53",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:53",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:53",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:53",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:40",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:40",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:40",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:40",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:40",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:40",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:12",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:12",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:12",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:12",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:12",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:12",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:126",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:126",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:126",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:126",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:126",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:126",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:66",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:66",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:66",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:66",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:66",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:66",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:33",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:33",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:33",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:33",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:33",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:33",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:47",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:47",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:47",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:47",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:47",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:36",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:36",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:36",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:36",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:36",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:50",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:50",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:50",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:50",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:50",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:50",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:35",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:35",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:35",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:35",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:35",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:35",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:2",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:2",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:2",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:2",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:2",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:2",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:128",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:128",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:128",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:128",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:128",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:128",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:89",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:89",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:89",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:89",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:89",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:89",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:31",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:31",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:31",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:31",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:31",
+      "passed": true
+    },
+    {
+      "check": "PASS has zero measured errors: current:31",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:115",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:115",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:115",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:115",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:115",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:117",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:117",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:117",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:117",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:117",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:121-c-libco-ssmurfgg04-gif",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:121-c-libco-ssmurfgg04-gif",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:121-c-libco-ssmurfgg04-gif",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:121-c-libco-ssmurfgg04-gif",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:121-c-libco-ssmurfgg04-gif",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:125",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:125",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:125",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:125",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:125",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:127",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:127",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:127",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:127",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:127",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:130",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:130",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:130",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:130",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:130",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:34",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:34",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:34",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:34",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:34",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:74",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:74",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:74",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:74",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:74",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:75",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:75",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:75",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:75",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:75",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:79",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:79",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:79",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:79",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:79",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:86",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:86",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:86",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:86",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:86",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:90",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:90",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:90",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:90",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:90",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:91",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:91",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:91",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:91",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:91",
+      "passed": true
+    },
+    {
+      "check": "preserve every metric, counter, source and classification: current:95",
+      "passed": true
+    },
+    {
+      "check": "only explicit display metadata added: current:95",
+      "passed": true
+    },
+    {
+      "check": "derived current display identifies implementation: current:95",
+      "passed": true
+    },
+    {
+      "check": "local requirement scope retained: current:95",
+      "passed": true
+    },
+    {
+      "check": "stock protocol only: current:95",
+      "passed": true
+    },
+    {
+      "check": "exactly one Rust scooter entry from current PR82",
+      "passed": true
+    },
+    {
+      "check": "one Goose uses complete clean recheck batch",
+      "passed": true
+    },
+    {
+      "check": "original C io_uring submission retained without inherited duplicate",
+      "passed": true
+    },
+    {
+      "check": "distinct C libco submission remains visible",
+      "passed": true
+    },
+    {
+      "check": "visible order is successful throughput descending",
+      "passed": true
+    },
+    {
+      "check": "CSV exact same ordered 118 row IDs",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:21",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:143:recheck-3x15-2026-10-22",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: control:recheck-3x15-2026-10-22:82",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:132",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:32",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:68",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:113",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:72",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:44",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:64",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:88",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:98",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:55",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:52",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:26",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:25",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:15",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:42",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:65",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:9",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:124",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:76",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:54",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:5",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:8",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:3",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:107",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:17",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:6",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:112",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:48",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:39",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:111",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:77",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:29",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:38",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:102",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:63",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:100",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:71",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:4",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:84",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:45",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:104",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:24",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:94",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:28",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:59",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:73",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:118",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:106",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:114",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:83",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:69",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:78",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:51",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:80",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:99",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:108",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:14",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:18",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:56",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:41",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:101",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:129",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:46",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:61",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:13",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:16",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:103",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:92",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:116",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:27",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:119",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:123-arsd-hybridcgi",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:10",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:57",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:123-arsd-threadedcgi",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:43",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:123-vibed",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:81",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:70",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:85",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:20",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:23",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:1",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:109",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:11",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:67",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:49",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:53",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:40",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:12",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:126",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:66",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:33",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:47",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:36",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:50",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:35",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:2",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:128",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:89",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:31",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:115",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:117",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:121-c-libco-ssmurfgg04-gif",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:125",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:127",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:130",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:34",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:74",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:75",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:79",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:86",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:90",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:91",
+      "passed": true
+    },
+    {
+      "check": "CSV fields preserve view values: current:95",
+      "passed": true
+    },
+    {
+      "check": "HTML embeds all visible fields except duplicate nested source_record",
+      "passed": true
+    },
+    {
+      "check": "issue-comment.md contains exactly same 118 ordered rows",
+      "passed": true
+    },
+    {
+      "check": "issue-comment.md has one primary measurement table",
+      "passed": true
+    },
+    {
+      "check": "issue-comment.md clearly limits PASS to local conditions",
+      "passed": true
+    },
+    {
+      "check": "issue-comment.md keeps history discoverable",
+      "passed": true
+    },
+    {
+      "check": "report.md contains exactly same 118 ordered rows",
+      "passed": true
+    },
+    {
+      "check": "report.md has one primary measurement table",
+      "passed": true
+    },
+    {
+      "check": "report.md clearly limits PASS to local conditions",
+      "passed": true
+    },
+    {
+      "check": "report.md keeps history discoverable",
+      "passed": true
+    },
+    {
+      "check": "issue payload equals Markdown",
+      "passed": true
+    },
+    {
+      "check": "issue body within GitHub 65536-character limit",
+      "passed": true
+    }
+  ]
+}

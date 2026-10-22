@@ -1,10 +1,10 @@
 {
-  "file_count": 3455,
-  "bytes": 66142072,
+  "file_count": 3463,
+  "bytes": 66273802,
   "files": {
     "README.md": {
-      "bytes": 8765,
-      "sha256": "13cd318a17fa748c2e384c0e76242d14fe4259f546b5dcf290877208602fa9e0"
+      "bytes": 9135,
+      "sha256": "037de6030c74f754bbb245b34a358531e5861d1e46cf0a7122a1518ece472b54"
     },
     "analyze.py": {
       "bytes": 27339,
@@ -13714,6 +13714,34 @@
       "bytes": 16540,
       "sha256": "27cef63b46cd836d71e4bf3cbacc1ef0e519a1bc4c7d944842ecbfc41c46dee8"
     },
+    "unified-list/current-only-publication/current-only-proof.json": {
+      "bytes": 1103,
+      "sha256": "6e4b145132d48b0240903b1f645258ad675cbe8e6f70e4c50af5f3753658643a"
+    },
+    "unified-list/current-only-publication/github-preview-proof.json": {
+      "bytes": 174,
+      "sha256": "bedbfc3b26ffd13c47ba878744b210b721dc3ead4fde1560ad8e4bda36011903"
+    },
+    "unified-list/current-only-publication/issue-comment.json": {
+      "bytes": 50697,
+      "sha256": "71e47f3313a291fffa4e3cf7c839fb0747843d6bf7cb6a5e02ec13da69f5d23d"
+    },
+    "unified-list/current-only-publication/issue-comment.md": {
+      "bytes": 50531,
+      "sha256": "fda7d954fca020f6d89aae57630a71ca2509e5901dc929bcea10e775389bd471"
+    },
+    "unified-list/current-only-publication/pr-body.md": {
+      "bytes": 2994,
+      "sha256": "aa40c630cb0acc9b9af351b6b076674e26b6d6149771886a3dd6131db9cb3cc8"
+    },
+    "unified-list/current_only_audit.py": {
+      "bytes": 8798,
+      "sha256": "e7afe04637c9250cf35c859f1bf608a933dd6622440b68289876e2e0fd930cc7"
+    },
+    "unified-list/current_only_view.py": {
+      "bytes": 10879,
+      "sha256": "41d5271c20b7d09c191868e2eb313dbc2c3fd0edad629d4a4d7fbe5f84ece735"
+    },
     "unified-list/github-preview-proof.json": {
       "bytes": 380,
       "sha256": "193b7f77bb2282750ea84601503d8d12138cb41020244a884b4719b89cce997e"
@@ -13749,6 +13777,10 @@
     "unified-list/publish_conditions.py": {
       "bytes": 4148,
       "sha256": "c8d267815c43fd00defa137d2ca7593ab2cf39bc581a63223408cb79ac7c6f21"
+    },
+    "unified-list/publish_current_only.py": {
+      "bytes": 6184,
+      "sha256": "7dc79e01e06ccad18c452447532615df9d68af8862a438a1f9f96c59807a2565"
     },
     "unified-list/publish_recheck.py": {
       "bytes": 8504,
