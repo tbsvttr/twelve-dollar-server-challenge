@@ -1,0 +1,23 @@
+{
+  "complete": true,
+  "passed_all": true,
+  "prior_summary_sha256": "44746123e12340a6abb2674838b59d9c14cb760a763120d4ba0d6bbe141b4933",
+  "current_comment_source_sha256": "469fdcb08cd060e6ce011583c6dd1df68e7e9fd5ab862eb6465250b77bc3379d",
+  "old_rows_preserved": 119,
+  "historical_measured_rows_preserved": 2,
+  "current_rows": 120,
+  "clean_ranked": 98,
+  "additional_controls": 1,
+  "issue_comment_characters": 51928,
+  "original_targeted_and_control_arrays_unchanged": true,
+  "only_old_rank_fields_changed": true,
+  "outputs": {
+    "summary.json": "5f486bd45a79aaed781b9b928f1ecb07c82670f47b867b190bedc344a6fff613",
+    "comparison.csv": "cf700c2a80e0d6b82865d7c9e4ccc0663e790723af347258ebd3990a5964488d",
+    "comparison.html": "ae8265c504b2ebeda0c412eab58483bd717588423391c3a781705ee04d700dde",
+    "report.md": "14e509a653000151d95252362c9a011056f8adf7cda980d02f836c9224954e70",
+    "README.md": "c12ddcd5065fb95bb694e1f0f714357743db227217d9e7d4e08f6fe3234a1182",
+    "issue-comment.md": "1818b93da3078cb1d7b50702bde189dfcb834687dce1f65ed26ed06871d042c1"
+  },
+  "generator_sha256": "c29c40accbcdd93ffd7de44993dd4c5113117c84c18b3c75faa587c4d97e2314"
+}

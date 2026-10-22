@@ -1,0 +1,22 @@
+{
+  "declared_before_measurement": true,
+  "cases": [
+    "143",
+    "82"
+  ],
+  "rounds": 3,
+  "measurement_seconds": 15,
+  "warmup_seconds": 2,
+  "load_image": "twelve-unified:2026-10-07",
+  "expected_load_image_id": "sha256:901ab577025cfdcf7abc716fb4158774615b881383529bb77163b5f07f963898",
+  "purpose": "Add PR143 to the existing ranking with the exact existing 3x15s stock-wrk protocol. Rust is an environmental control, not a replacement of its old ranked row.",
+  "no_selection_or_replacements": true,
+  "error_policy": "Retain every attempted trial; any measured HTTP/socket error excludes Goose from the clean ranking. No low-throughput exclusion or rerun selection.",
+  "server_cpu_quota": 1,
+  "server_memory_bytes": 2147483648,
+  "server_swap_bytes": 0,
+  "source_sha256": "585649e7bc8dcd98a281a07c682c0bd17869b9eec2bada040d1f80f146ef8796",
+  "commit": "1454fa62e7c4e273d978b7ad93a492148079edae",
+  "driver": "Unmodified Ubuntu wrk 4.1.0-4build2 from the exact original load image. This batch is separate from 10x45s monotonic-clock confirmation.",
+  "stable_five_percent_target": "Existing longer confirmations remain UNMET. This small ranking batch does not overturn that conclusion."
+}

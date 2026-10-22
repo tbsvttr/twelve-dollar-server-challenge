@@ -2,9 +2,11 @@
 
 Targeted follow-up to [issue #7, comment 6298620934](https://github.com/arjaythedev/twelve-dollar-server-challenge/issues/7#issuecomment-6298620934). Current pinned heads of #32, #92, #103, the three #123 implementations, #127 and replacement #132 were retried. #120 is closed and superseded by #132. This is a targeted rerun, not a fresh test of every submission.
 
-**Coverage:** 8 targeted implementations from 6 PRs; 111 unchanged October 20 results retained. Combined inventory: 119 implementations, 98 clean ranked, 7 diagnostic/reference, 14 without a valid three-trial result. Follow-up complete. Target outcome counts: measured=7, runtime_failed=1.
+**Coverage:** 8 targeted implementations from 6 PRs; 111 unchanged October 20 results retained. Combined inventory: 120 implementations, 98 clean ranked, 8 diagnostic/reference, 14 without a valid three-trial result. Follow-up complete. Target outcome counts: measured=7, runtime_failed=1.
 
 **Comparability.** Every table row names its measurement batch. The combined ordering mixes October 20 and October 22 runs under the same harness and limits; it does not establish simultaneous head-to-head performance. Run-to-run and host variation remain possible. Historical evidence is retained in the [October 20 report](../2026-10-20/report.md), [summary](../2026-10-20/summary.json) and [raw trials](../2026-10-20/trials.csv).
+
+**Goose main-list addition.** PR #143 is included as current outcome 120, from a separate three-trial stock-wrk 15-second batch, with 117,565.71 median successful req/s and status `measured_with_errors`. Every one of the previous 119 outcomes keeps all measurements and source identities; only displayed ranks are recomputed. The two prior measured revisions remain in the before/after table. [New batch evidence](../goose-2026-10-22/ranking-3x15-2026-10-22/measurements.json). The unchanged new #82 control measured 106,162.00 req/s with 34 reported wrk timeouts; its original main-list score remains unchanged. Goose recorded 0 HTTP errors and 38 socket-error counters (38 timeouts); any nonzero counter excludes it from clean ranking. The separate monotonic-driver 10×45-second holdout is not used for this main-list row.
 
 **Common conditions.** Native Linux ARM64; server CPU 0, one CPU, 2 GiB RAM with no container swap, 65,535 file descriptors; load generator on CPUs 1–2. All correctness runs and measurements are sequential. `wrk -t2 -c64`, three 15-second trials after a two-second warm-up, fresh process and seeded SQLite database for every trial, deterministic shuffled order per round. The inherited 100 feed : 100 post : 15 like : 2 create workload and its compact-JSON ID recognition are unchanged. Docker-default seccomp permits only the same additional three io_uring system calls. Submitted application and start/build scripts are preserved; native toolchain setup and build substitutions are recorded in [build provenance](build-status.json) and [runtime helpers](runtime-scripts/).
 
@@ -168,6 +170,7 @@ Control [#82](https://github.com/arjaythedev/twelve-dollar-server-challenge/pull
 | Case / implementation | Batch | Status | Successful req/s | Range | p99 ms | RSS MiB | HTTP; socket C/R/W/T |
 |---|---|---|---:|---:|---:|---:|---|
 | [#21](https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/21) `21` cpp-epoll-memstore-khalefa-ow | 2026-10-20 | ineligible_reference | 142,067 | 136,827–144,187 | 0.565 | 282.37 | 0; 0/0/0/0 |
+| [#143](https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/143) `143` goose-native-tbsvttr | 2026-10-22 | measured_with_errors | 117,566 | 116,757–117,734 | 22.060 | 15.26 | 0; 0/0/0/38 |
 | [#124](https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/124) `124` java-springboot-bogdan-blaj | 2026-10-20 | measured_with_errors | 61,246 | 46,621–65,646 | 11.860 | 901.38 | 0; 0/0/0/64 |
 | [#94](https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/94) `94` lua-openresty-yar0slav | 2026-10-20 | measured_with_errors | 37,563 | 36,865–38,563 | 11.970 | 99.33 | 0; 0/0/0/63 |
 | [#16](https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/16) `16` fortran-microhttpd-tbsvttr | 2026-10-20 | measured_with_errors | 26,944 | 26,466–30,259 | 21.910 | 39.28 | 0; 0/0/0/64 |
@@ -223,3 +226,5 @@ python3 run.py verify
 python3 run.py bench
 python3 analyze_followup.py --strict
 ```
+
+**Goose addition audit.** [Independent list-integration and six-trial audit](independent-audit.json). The original fixed-target audit remains separate and covers its original 119-outcome snapshot. [PR documentation-only source/binary equivalence](../goose-2026-10-22/ranking-3x15-2026-10-22/pr-documentation-image-proof.json) records the added README/measurement metadata; runtime/build/support files and the production binary are unchanged.

@@ -1,10 +1,12 @@
 # Fixed-submission benchmark follow-up — 2026-10-22
 
-[Full combined report](report.md) · [CSV](comparison.csv) · [Filterable HTML (download and open locally)](comparison.html) · [Before/after CSV](before-after.csv) · [Raw trials](trials.csv) · [Independent audit](audit-final.json)
+[Full combined report](report.md) · [CSV](comparison.csv) · [Filterable HTML (download and open locally)](comparison.html) · [Before/after CSV](before-after.csv) · [Raw trials](trials.csv) · [Original fixed-target audit](audit-final.json) · [Goose addition audit](independent-audit.json)
+
+**Goose main-list addition.** PR #143 is included as current outcome 120, from a separate three-trial stock-wrk 15-second batch, with 117,565.71 median successful req/s and status `measured_with_errors`. Every one of the previous 119 outcomes keeps all measurements and source identities; only displayed ranks are recomputed. The two prior measured revisions remain in the before/after table. [New batch evidence](../goose-2026-10-22/ranking-3x15-2026-10-22/measurements.json). The unchanged new #82 control measured 106,162.00 req/s with 34 reported wrk timeouts; its original main-list score remains unchanged. Goose recorded 0 HTTP errors and 38 socket-error counters (38 timeouts); any nonzero counter excludes it from clean ranking. The separate monotonic-driver 10×45-second holdout is not used for this main-list row.
 
 Retested eight implementations from PRs #32, #92, #103, #123 (three servers), #127, and #132. **Seven passed all 42 official API checks, dynamic checks, database integrity/committed-write checks, and three error-free throughput trials.** #127 still exits at startup because its package start command overrides `SQLITE_PATH` with `./feed.db`; [diagnostic evidence](diagnostics-pr127.json) retains the exact failure. #132 replaces the closed #120.
 
-The combined report contains **119 outcomes: 98 clean ranked, seven diagnostic/reference, and 14 without a valid three-trial result.** It retains 111 unchanged October 20 measurements with their original date labels. It is a targeted update, not an all-submission rerun.
+The combined report contains **120 outcomes: 98 clean ranked, 8 diagnostic/reference, and 14 without a valid three-trial result.** It retains 111 unchanged October 20 measurements with their original date labels. It is a targeted update, not an all-submission rerun.
 
 The unchanged previous leader (#82) measured 105,569.55 req/s versus 108,275.04 previously (-2.50%); its original ranking measurement is retained. No result was rescaled.
 

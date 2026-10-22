@@ -1,0 +1,442 @@
+{
+  "complete": true,
+  "audit_passed": true,
+  "checks_passed": 100,
+  "checks_total": 100,
+  "checks": [
+    {
+      "check": "original 119-row summary retained at independently observed hash",
+      "passed": true
+    },
+    {
+      "check": "exact two cases and six unique measured attempts, no selection",
+      "passed": true
+    },
+    {
+      "check": "original stock-wrk controller, service helper and shared fixture identity",
+      "passed": true
+    },
+    {
+      "check": "actual shared files match frozen inventory",
+      "passed": true
+    },
+    {
+      "check": "declared stock driver and fixed three-trial protocol",
+      "passed": true
+    },
+    {
+      "check": "verify: driver and configured server/load limits",
+      "passed": true
+    },
+    {
+      "check": "bench: driver and configured server/load limits",
+      "passed": true
+    },
+    {
+      "check": "143: exact source snapshot and aggregate identity",
+      "passed": true
+    },
+    {
+      "check": "143: build commit/image pinned",
+      "passed": true
+    },
+    {
+      "check": "82: exact source snapshot and aggregate identity",
+      "passed": true
+    },
+    {
+      "check": "82: build commit/image pinned",
+      "passed": true
+    },
+    {
+      "check": "verify 143/1: exact recorded identity and fingerprint",
+      "passed": true
+    },
+    {
+      "check": "verify 143/1: runtime source verified",
+      "passed": true
+    },
+    {
+      "check": "verify 143/1: actual resource limits, no OOM, committed writes/integrity",
+      "passed": true
+    },
+    {
+      "check": "verify 143/1: actual fd and seccomp limits",
+      "passed": true
+    },
+    {
+      "check": "verify 143/1: fixed configuration",
+      "passed": true
+    },
+    {
+      "check": "verify 143/1: official 42 and dynamic semantic pass",
+      "passed": true
+    },
+    {
+      "check": "verify 82/1: exact recorded identity and fingerprint",
+      "passed": true
+    },
+    {
+      "check": "verify 82/1: runtime source verified",
+      "passed": true
+    },
+    {
+      "check": "verify 82/1: actual resource limits, no OOM, committed writes/integrity",
+      "passed": true
+    },
+    {
+      "check": "verify 82/1: actual fd and seccomp limits",
+      "passed": true
+    },
+    {
+      "check": "verify 82/1: fixed configuration",
+      "passed": true
+    },
+    {
+      "check": "verify 82/1: official 42 and dynamic semantic pass",
+      "passed": true
+    },
+    {
+      "check": "bench 143/1: exact recorded identity and fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench 143/1: runtime source verified",
+      "passed": true
+    },
+    {
+      "check": "bench 143/1: actual resource limits, no OOM, committed writes/integrity",
+      "passed": true
+    },
+    {
+      "check": "bench 143/1: actual fd and seccomp limits",
+      "passed": true
+    },
+    {
+      "check": "bench 143/1: fixed configuration",
+      "passed": true
+    },
+    {
+      "check": "bench 143/1: raw measured metrics independently reproduced",
+      "passed": true
+    },
+    {
+      "check": "bench 143/1: complete trial without error-counter or throughput exclusion",
+      "passed": true
+    },
+    {
+      "check": "bench 143/1: RSS and CPU independently reproduced",
+      "passed": true
+    },
+    {
+      "check": "bench 143/1: retained log contains exact measured output",
+      "passed": true
+    },
+    {
+      "check": "bench 82/1: exact recorded identity and fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench 82/1: runtime source verified",
+      "passed": true
+    },
+    {
+      "check": "bench 82/1: actual resource limits, no OOM, committed writes/integrity",
+      "passed": true
+    },
+    {
+      "check": "bench 82/1: actual fd and seccomp limits",
+      "passed": true
+    },
+    {
+      "check": "bench 82/1: fixed configuration",
+      "passed": true
+    },
+    {
+      "check": "bench 82/1: raw measured metrics independently reproduced",
+      "passed": true
+    },
+    {
+      "check": "bench 82/1: complete trial without error-counter or throughput exclusion",
+      "passed": true
+    },
+    {
+      "check": "bench 82/1: RSS and CPU independently reproduced",
+      "passed": true
+    },
+    {
+      "check": "bench 82/1: retained log contains exact measured output",
+      "passed": true
+    },
+    {
+      "check": "bench 143/2: exact recorded identity and fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench 143/2: runtime source verified",
+      "passed": true
+    },
+    {
+      "check": "bench 143/2: actual resource limits, no OOM, committed writes/integrity",
+      "passed": true
+    },
+    {
+      "check": "bench 143/2: actual fd and seccomp limits",
+      "passed": true
+    },
+    {
+      "check": "bench 143/2: fixed configuration",
+      "passed": true
+    },
+    {
+      "check": "bench 143/2: raw measured metrics independently reproduced",
+      "passed": true
+    },
+    {
+      "check": "bench 143/2: complete trial without error-counter or throughput exclusion",
+      "passed": true
+    },
+    {
+      "check": "bench 143/2: RSS and CPU independently reproduced",
+      "passed": true
+    },
+    {
+      "check": "bench 143/2: retained log contains exact measured output",
+      "passed": true
+    },
+    {
+      "check": "bench 82/2: exact recorded identity and fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench 82/2: runtime source verified",
+      "passed": true
+    },
+    {
+      "check": "bench 82/2: actual resource limits, no OOM, committed writes/integrity",
+      "passed": true
+    },
+    {
+      "check": "bench 82/2: actual fd and seccomp limits",
+      "passed": true
+    },
+    {
+      "check": "bench 82/2: fixed configuration",
+      "passed": true
+    },
+    {
+      "check": "bench 82/2: raw measured metrics independently reproduced",
+      "passed": true
+    },
+    {
+      "check": "bench 82/2: complete trial without error-counter or throughput exclusion",
+      "passed": true
+    },
+    {
+      "check": "bench 82/2: RSS and CPU independently reproduced",
+      "passed": true
+    },
+    {
+      "check": "bench 82/2: retained log contains exact measured output",
+      "passed": true
+    },
+    {
+      "check": "bench 143/3: exact recorded identity and fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench 143/3: runtime source verified",
+      "passed": true
+    },
+    {
+      "check": "bench 143/3: actual resource limits, no OOM, committed writes/integrity",
+      "passed": true
+    },
+    {
+      "check": "bench 143/3: actual fd and seccomp limits",
+      "passed": true
+    },
+    {
+      "check": "bench 143/3: fixed configuration",
+      "passed": true
+    },
+    {
+      "check": "bench 143/3: raw measured metrics independently reproduced",
+      "passed": true
+    },
+    {
+      "check": "bench 143/3: complete trial without error-counter or throughput exclusion",
+      "passed": true
+    },
+    {
+      "check": "bench 143/3: RSS and CPU independently reproduced",
+      "passed": true
+    },
+    {
+      "check": "bench 143/3: retained log contains exact measured output",
+      "passed": true
+    },
+    {
+      "check": "bench 82/3: exact recorded identity and fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench 82/3: runtime source verified",
+      "passed": true
+    },
+    {
+      "check": "bench 82/3: actual resource limits, no OOM, committed writes/integrity",
+      "passed": true
+    },
+    {
+      "check": "bench 82/3: actual fd and seccomp limits",
+      "passed": true
+    },
+    {
+      "check": "bench 82/3: fixed configuration",
+      "passed": true
+    },
+    {
+      "check": "bench 82/3: raw measured metrics independently reproduced",
+      "passed": true
+    },
+    {
+      "check": "bench 82/3: complete trial without error-counter or throughput exclusion",
+      "passed": true
+    },
+    {
+      "check": "bench 82/3: RSS and CPU independently reproduced",
+      "passed": true
+    },
+    {
+      "check": "bench 82/3: retained log contains exact measured output",
+      "passed": true
+    },
+    {
+      "check": "all 119 old outcomes retained and PR143 added exactly once",
+      "passed": true
+    },
+    {
+      "check": "all old row fields and metrics exactly unchanged except rank",
+      "passed": true
+    },
+    {
+      "check": "historical followups, before/after and control evidence unchanged",
+      "passed": true
+    },
+    {
+      "check": "new Rust rerun only a separate unranked control",
+      "passed": true
+    },
+    {
+      "check": "143: aggregate medians independently reproduced",
+      "passed": true
+    },
+    {
+      "check": "143: exact PR commit/source identity in summary",
+      "passed": true
+    },
+    {
+      "check": "143: all error counters retained in aggregate",
+      "passed": true
+    },
+    {
+      "check": "143: clean-ranking eligibility follows every measured error counter",
+      "passed": true
+    },
+    {
+      "check": "82: aggregate medians independently reproduced",
+      "passed": true
+    },
+    {
+      "check": "82: exact PR commit/source identity in summary",
+      "passed": true
+    },
+    {
+      "check": "82: all error counters retained in aggregate",
+      "passed": true
+    },
+    {
+      "check": "82: clean-ranking eligibility follows every measured error counter",
+      "passed": true
+    },
+    {
+      "check": "clean ranks contiguous and sorted by successful throughput",
+      "passed": true
+    },
+    {
+      "check": "coverage counts reproduce 120 outcomes with 98 clean, eight diagnostic and 14 unmeasured",
+      "passed": true
+    },
+    {
+      "check": "CSV covers all 120 main rows exactly",
+      "passed": true
+    },
+    {
+      "check": "CSV metric/status/rank values equal summary",
+      "passed": true
+    },
+    {
+      "check": "HTML main rows and separate controls match summary exactly",
+      "passed": true
+    },
+    {
+      "check": "Markdown main ranking exactly matches audited ranks",
+      "passed": true
+    },
+    {
+      "check": "Markdown section coverage: **Combined clean ranking.**",
+      "passed": true
+    },
+    {
+      "check": "Markdown section coverage: **Combined diagnostic / reference outcomes.**",
+      "passed": true
+    },
+    {
+      "check": "Markdown section coverage: **Combined build, runtime or test failures",
+      "passed": true
+    },
+    {
+      "check": "public comment retains every old main-table row verbatim except ranks/evidence commit links",
+      "passed": true
+    },
+    {
+      "check": "public comment retains long-holdout addendum exactly except the one explicit scope clarification",
+      "passed": true,
+      "detail": {
+        "previous_scope": "The existing 119-outcome October 20/22 comparison and its historical rows remain unchanged.",
+        "current_scope": "The original 119 outcome measurements and historical rows remain preserved. The main list above now includes PR #143 as outcome 120 from the matching three-by-15-second stock-driver batch. The 45-second figures below remain a separate protocol and are not pooled into that ranking."
+      }
+    }
+  ],
+  "evidence_sha256": {
+    "results/goose-2026-10-22/list-integration/summary.json": "5f486bd45a79aaed781b9b928f1ecb07c82670f47b867b190bedc344a6fff613",
+    "results/goose-2026-10-22/list-integration/comparison.csv": "cf700c2a80e0d6b82865d7c9e4ccc0663e790723af347258ebd3990a5964488d",
+    "results/goose-2026-10-22/list-integration/comparison.html": "ae8265c504b2ebeda0c412eab58483bd717588423391c3a781705ee04d700dde",
+    "results/goose-2026-10-22/list-integration/report.md": "14e509a653000151d95252362c9a011056f8adf7cda980d02f836c9224954e70",
+    "results/goose-2026-10-22/list-integration/issue-comment.md": "1818b93da3078cb1d7b50702bde189dfcb834687dce1f65ed26ed06871d042c1",
+    "results/goose-2026-10-22/list-integration/integrate.py": "c29c40accbcdd93ffd7de44993dd4c5113117c84c18b3c75faa587c4d97e2314",
+    "results/goose-2026-10-22/ranking-3x15-2026-10-22/measurements.json": "88bd8ca7a4f489192f84b34000c729bca1562d1441d91b90284b6c10ebcfb1d3",
+    "results/goose-2026-10-22/ranking-3x15-2026-10-22/manifest.json": "e5dedc0ace1d5fb3f2a5e0d8b0b18bcaa63071b8f412cb0da9faea552523a2f1",
+    "results/goose-2026-10-22/ranking-3x15-2026-10-22/verification.json": "07478e0b086124d77b5669c037686da838674af0b0eee011f5b706606f26de99",
+    "results/goose-2026-10-22/ranking-3x15-2026-10-22/build-status.json": "55d27f66184d7f713e8d335e43f363b74230e372f0947f0c53ef8f80e515ce5a",
+    "results/goose-2026-10-22/ranking-3x15-2026-10-22/protocol-declaration.json": "e589f5a88d7d2477ad2c11ca4307b8811b59b1a48fca94b3718b8c113ad11e73",
+    "results/fixes-2026-10-22/summary.json": "44746123e12340a6abb2674838b59d9c14cb760a763120d4ba0d6bbe141b4933",
+    "results/goose-2026-10-22/list-integration/independent_audit.py": "ee7265f49d87b8ddaa7d6ad7e0f53bfde824a120f99669470a68322c77b98aaa"
+  },
+  "measured_attempts": 6,
+  "old_rows": 119,
+  "new_main_rows": 120,
+  "all_measured_http_errors": 0,
+  "all_measured_socket_errors": {
+    "connect": 0,
+    "read": 0,
+    "write": 0,
+    "timeout": 72
+  },
+  "limitations": [
+    "Historical rows retain their original measurement dates; adding a new batch does not make the entire ranking a contemporaneous rerun.",
+    "Per-trial load-container inspection is not retained; load limits/image are proven by the unchanged controller and environment record.",
+    "This short stock-wrk ranking batch does not establish the unmet stable-five-percent target from the longer monotonic-clock holdouts."
+  ]
+}
