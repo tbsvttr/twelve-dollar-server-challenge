@@ -1,0 +1,878 @@
+[
+  {
+    "case_id": "goose",
+    "pr": 0,
+    "commit": "9a298580809e2a6821c7a8068b6a45315ae7aaa4b58bb79edc3f94606b9f861b",
+    "image": "twelve-goose-hmac-budget:2026-10-22",
+    "source_sha256": "9a298580809e2a6821c7a8068b6a45315ae7aaa4b58bb79edc3f94606b9f861b",
+    "shared_hashes": {
+      "seed/feed.db": "ef5f135c16a2277a68ef37f1f1a66e4100f9dbc6743d2ef54dbeb533c4dceb0e",
+      "seed/tokens.json": "b39f1edf8a3545ab5851031d1cee8d2d1192e4b598361e516f4560f6893a939a",
+      "mixed.lua": "eb8d49273c56fe4b558a58bd6c7e65551ec683c53d299e2b3a69e0b71421d701",
+      "test/test.sh": "679e722044fd1f366d85093232e7f2ec2e3398ea312032dd9eb6cbdf8b17306a",
+      "semantic.py": "785f8ce565b469e4f4d702d01a9d868cd7458d64e3f1362c3fb8728560215fbc",
+      "serve.py": "52d8bdd75c0dc2477fc5b2391c797a2832eab5ac61a72d3bbe4dac4cb94bf311",
+      "bench/nginx.conf": "1b4b00789b0d138759bebde391d4cd05a9598dc10a17df3d09eb569512b8f654",
+      "seccomp-io-uring.json": "4baf3b268185f55527933e7df090e85936003674e34b5f5396461fd9d3efeb17",
+      "test/golden/feed.json": "8c9b3d6cb46e650c4786ab9281bc3a72ba7bd75b7926021d2b0c431dd9bd3d68",
+      "test/golden/post-1.json": "8035350dc55714c9a673af9f441ab07d2b269047e1137612f022877b9e8f3652",
+      "test/golden/post-250000.json": "febb2506b9d4a99bc34f1f182c61ced6b3ba3b2533724485c6e5206604a65b71",
+      "test/golden/post-500000.json": "662fe8c7282dee8aab00dab6cdb15e64e953f10a2c1c923e2ea67fab1429a4de"
+    },
+    "image_id": "sha256:afde328ec4a000f300730f264ee883f973769130994762ebd8c8efdf794a8508",
+    "fingerprint": "a76505c35ba300c38e80bf99162068d2716b9d069a4a056eef68b9b45779deee",
+    "trial": 1,
+    "mode": "bench",
+    "configuration": {
+      "threads": 2,
+      "connections": 64,
+      "warmup_seconds": 2,
+      "measurement_seconds": 15,
+      "trials": 2
+    },
+    "recorded_at": "2026-10-22T13:34:24Z",
+    "service": {
+      "ready": true,
+      "roots": [
+        13
+      ],
+      "port": 24000,
+      "log": "/tmp/current-prgoose-24000.log",
+      "nginx": false,
+      "initial_post_count": 500000,
+      "source_files_verified": 19,
+      "source_sha256": "9a298580809e2a6821c7a8068b6a45315ae7aaa4b58bb79edc3f94606b9f861b",
+      "start_script": "/suite/sources/prgoose/start.sh"
+    },
+    "warmup_output": "Running 2s test @ http://127.0.0.1:24000/feed\n  2 threads and 64 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     4.82ms   16.38ms 125.58ms   94.12%\n    Req/Sec    56.27k    15.05k   74.15k    82.93%\n  Latency Distribution\n     50%  382.00us\n     75%  499.00us\n     90%   12.02ms\n     99%  101.12ms\n  229904 requests in 2.08s, 388.09MB read\nRequests/sec: 110403.75\nTransfer/sec:    186.37MB\n  95% 23.138000ms\n",
+    "warmup_stderr": "",
+    "before": {
+      "monotonic": 49135.876368887,
+      "processes": {
+        "13": {
+          "ppid": 7,
+          "cpu_s": 1.76,
+          "cpu_self_s": 1.76,
+          "cpu_waited_children_s": 0.0,
+          "rss_kib": 15620,
+          "hwm_kib": 15620,
+          "threads": 1
+        }
+      },
+      "cpu_s": 1.76,
+      "cpu_self_s": 1.76,
+      "cpu_waited_children_s": 0.0,
+      "rss_kib": 15620,
+      "hwm_kib": 15620
+    },
+    "output": "Running 15s test @ http://127.0.0.1:24000/feed\n  2 threads and 64 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     1.78ms    4.61ms  31.80ms   91.38%\n    Req/Sec    58.24k     8.01k   73.05k    58.33%\n  Latency Distribution\n     50%  385.00us\n     75%  486.00us\n     90%    3.47ms\n     99%   22.82ms\n  1740767 requests in 15.02s, 2.89GB read\nRequests/sec: 115902.31\nTransfer/sec:    197.08MB\n  95% 14.159000ms\n",
+    "stderr": "",
+    "requests": 1740767,
+    "duration_s": 15.02,
+    "rps": 115902.31,
+    "p50_ms": 0.385,
+    "p95_ms": 14.159,
+    "p99_ms": 22.82,
+    "http_errors": 0,
+    "socket_errors": {
+      "connect": 0,
+      "read": 0,
+      "write": 0,
+      "timeout": 0
+    },
+    "successful_rps": 115902.31,
+    "after": {
+      "monotonic": 49151.005234978,
+      "processes": {
+        "13": {
+          "ppid": 7,
+          "cpu_s": 15.19,
+          "cpu_self_s": 15.19,
+          "cpu_waited_children_s": 0.0,
+          "rss_kib": 15620,
+          "hwm_kib": 15620,
+          "threads": 1
+        }
+      },
+      "cpu_s": 15.19,
+      "cpu_self_s": 15.19,
+      "cpu_waited_children_s": 0.0,
+      "rss_kib": 15620,
+      "hwm_kib": 15620
+    },
+    "final": [
+      {
+        "database_after": {
+          "initial_post_count": 500000,
+          "post_count": 518233,
+          "max_post_id": 518233,
+          "integrity": "ok"
+        }
+      }
+    ],
+    "database_valid": true,
+    "valid_duration": true,
+    "rss_mib": 15.25390625,
+    "cpu_percent": 88.77069781184592,
+    "completed": true,
+    "container_state": {
+      "Status": "running",
+      "Running": true,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 64045,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-10-22T13:34:24.905494421Z",
+      "FinishedAt": "0001-01-01T00:00:00Z"
+    },
+    "container_host_config": {
+      "CpusetCpus": "0",
+      "NanoCpus": 1000000000,
+      "Memory": 2147483648,
+      "MemorySwap": 2147483648,
+      "Ulimits": [
+        {
+          "Name": "nofile",
+          "Hard": 65535,
+          "Soft": 65535
+        }
+      ],
+      "SecurityOpt": [
+        "seccomp={\"defaultAction\":\"SCMP_ACT_ERRNO\",\"defaultErrnoRet\":1,\"archMap\":[{\"architecture\":\"SCMP_ARCH_X86_64\",\"subArchitectures\":[\"SCMP_ARCH_X86\",\"SCMP_ARCH_X32\"]},{\"architecture\":\"SCMP_ARCH_AARCH64\",\"subArchitectures\":[\"SCMP_ARCH_ARM\"]},{\"architecture\":\"SCMP_ARCH_MIPS64\",\"subArchitectures\":[\"SCMP_ARCH_MIPS\",\"SCMP_ARCH_MIPS64N32\"]},{\"architecture\":\"SCMP_ARCH_MIPS64N32\",\"subArchitectures\":[\"SCMP_ARCH_MIPS\",\"SCMP_ARCH_MIPS64\"]},{\"architecture\":\"SCMP_ARCH_MIPSEL64\",\"subArchitectures\":[\"SCMP_ARCH_MIPSEL\",\"SCMP_ARCH_MIPSEL64N32\"]},{\"architecture\":\"SCMP_ARCH_MIPSEL64N32\",\"subArchitectures\":[\"SCMP_ARCH_MIPSEL\",\"SCMP_ARCH_MIPSEL64\"]},{\"architecture\":\"SCMP_ARCH_S390X\",\"subArchitectures\":[\"SCMP_ARCH_S390\"]},{\"architecture\":\"SCMP_ARCH_RISCV64\",\"subArchitectures\":null},{\"architecture\":\"SCMP_ARCH_LOONGARCH64\",\"subArchitectures\":null}],\"syscalls\":[{\"names\":[\"accept\",\"accept4\",\"access\",\"adjtimex\",\"alarm\",\"bind\",\"brk\",\"cachestat\",\"capget\",\"capset\",\"chdir\",\"chmod\",\"chown\",\"chown32\",\"clock_adjtime\",\"clock_adjtime64\",\"clock_getres\",\"clock_getres_time64\",\"clock_gettime\",\"clock_gettime64\",\"clock_nanosleep\",\"clock_nanosleep_time64\",\"close\",\"close_range\",\"connect\",\"copy_file_range\",\"creat\",\"dup\",\"dup2\",\"dup3\",\"epoll_create\",\"epoll_create1\",\"epoll_ctl\",\"epoll_ctl_old\",\"epoll_pwait\",\"epoll_pwait2\",\"epoll_wait\",\"epoll_wait_old\",\"eventfd\",\"eventfd2\",\"execve\",\"execveat\",\"exit\",\"exit_group\",\"faccessat\",\"faccessat2\",\"fadvise64\",\"fadvise64_64\",\"fallocate\",\"fanotify_mark\",\"fchdir\",\"fchmod\",\"fchmodat\",\"fchmodat2\",\"fchown\",\"fchown32\",\"fchownat\",\"fcntl\",\"fcntl64\",\"fdatasync\",\"fgetxattr\",\"flistxattr\",\"flock\",\"fork\",\"fremovexattr\",\"fsetxattr\",\"fstat\",\"fstat64\",\"fstatat64\",\"fstatfs\",\"fstatfs64\",\"fsync\",\"ftruncate\",\"ftruncate64\",\"futex\",\"futex_requeue\",\"futex_time64\",\"futex_wait\",\"futex_waitv\",\"futex_wake\",\"futimesat\",\"getcpu\",\"getcwd\",\"getdents\",\"getdents64\",\"getegid\",\"getegid32\",\"geteuid\",\"geteuid32\",\"getgid\",\"getgid32\",\"getgroups\",\"getgroups32\",\"getitimer\",\"getpeername\",\"getpgid\",\"getpgrp\",\"getpid\",\"getppid\",\"getpriority\",\"getrandom\",\"getresgid\",\"getresgid32\",\"getresuid\",\"getresuid32\",\"getrlimit\",\"get_robust_list\",\"getrusage\",\"getsid\",\"getsockname\",\"getsockopt\",\"get_thread_area\",\"gettid\",\"gettimeofday\",\"getuid\",\"getuid32\",\"getxattr\",\"getxattrat\",\"inotify_add_watch\",\"inotify_init\",\"inotify_init1\",\"inotify_rm_watch\",\"io_cancel\",\"ioctl\",\"io_destroy\",\"io_getevents\",\"io_pgetevents\",\"io_pgetevents_time64\",\"ioprio_get\",\"ioprio_set\",\"io_setup\",\"io_submit\",\"ipc\",\"kill\",\"landlock_add_rule\",\"landlock_create_ruleset\",\"landlock_restrict_self\",\"lchown\",\"lchown32\",\"lgetxattr\",\"link\",\"linkat\",\"listen\",\"listmount\",\"listxattr\",\"listxattrat\",\"llistxattr\",\"_llseek\",\"lremovexattr\",\"lseek\",\"lsetxattr\",\"lstat\",\"lstat64\",\"madvise\",\"map_shadow_stack\",\"membarrier\",\"memfd_create\",\"memfd_secret\",\"mincore\",\"mkdir\",\"mkdirat\",\"mknod\",\"mknodat\",\"mlock\",\"mlock2\",\"mlockall\",\"mmap\",\"mmap2\",\"mprotect\",\"mq_getsetattr\",\"mq_notify\",\"mq_open\",\"mq_timedreceive\",\"mq_timedreceive_time64\",\"mq_timedsend\",\"mq_timedsend_time64\",\"mq_unlink\",\"mremap\",\"mseal\",\"msgctl\",\"msgget\",\"msgrcv\",\"msgsnd\",\"msync\",\"munlock\",\"munlockall\",\"munmap\",\"name_to_handle_at\",\"nanosleep\",\"newfstatat\",\"_newselect\",\"open\",\"openat\",\"openat2\",\"pause\",\"pidfd_open\",\"pidfd_send_signal\",\"pipe\",\"pipe2\",\"pkey_alloc\",\"pkey_free\",\"pkey_mprotect\",\"poll\",\"ppoll\",\"ppoll_time64\",\"prctl\",\"pread64\",\"preadv\",\"preadv2\",\"prlimit64\",\"process_mrelease\",\"pselect6\",\"pselect6_time64\",\"pwrite64\",\"pwritev\",\"pwritev2\",\"read\",\"readahead\",\"readlink\",\"readlinkat\",\"readv\",\"recv\",\"recvfrom\",\"recvmmsg\",\"recvmmsg_time64\",\"recvmsg\",\"remap_file_pages\",\"removexattr\",\"removexattrat\",\"rename\",\"renameat\",\"renameat2\",\"restart_syscall\",\"riscv_hwprobe\",\"rmdir\",\"rseq\",\"rt_sigaction\",\"rt_sigpending\",\"rt_sigprocmask\",\"rt_sigqueueinfo\",\"rt_sigreturn\",\"rt_sigsuspend\",\"rt_sigtimedwait\",\"rt_sigtimedwait_time64\",\"rt_tgsigqueueinfo\",\"sched_getaffinity\",\"sched_getattr\",\"sched_getparam\",\"sched_get_priority_max\",\"sched_get_priority_min\",\"sched_getscheduler\",\"sched_rr_get_interval\",\"sched_rr_get_interval_time64\",\"sched_setaffinity\",\"sched_setattr\",\"sched_setparam\",\"sched_setscheduler\",\"sched_yield\",\"seccomp\",\"select\",\"semctl\",\"semget\",\"semop\",\"semtimedop\",\"semtimedop_time64\",\"send\",\"sendfile\",\"sendfile64\",\"sendmmsg\",\"sendmsg\",\"sendto\",\"setfsgid\",\"setfsgid32\",\"setfsuid\",\"setfsuid32\",\"setgid\",\"setgid32\",\"setgroups\",\"setgroups32\",\"setitimer\",\"setpgid\",\"setpriority\",\"setregid\",\"setregid32\",\"setresgid\",\"setresgid32\",\"setresuid\",\"setresuid32\",\"setreuid\",\"setreuid32\",\"setrlimit\",\"set_robust_list\",\"setsid\",\"setsockopt\",\"set_thread_area\",\"set_tid_address\",\"setuid\",\"setuid32\",\"setxattr\",\"setxattrat\",\"shmat\",\"shmctl\",\"shmdt\",\"shmget\",\"shutdown\",\"sigaltstack\",\"signalfd\",\"signalfd4\",\"sigprocmask\",\"sigreturn\",\"socketcall\",\"socketpair\",\"splice\",\"stat\",\"stat64\",\"statfs\",\"statfs64\",\"statmount\",\"statx\",\"symlink\",\"symlinkat\",\"sync\",\"sync_file_range\",\"syncfs\",\"sysinfo\",\"tee\",\"tgkill\",\"time\",\"timer_create\",\"timer_delete\",\"timer_getoverrun\",\"timer_gettime\",\"timer_gettime64\",\"timer_settime\",\"timer_settime64\",\"timerfd_create\",\"timerfd_gettime\",\"timerfd_gettime64\",\"timerfd_settime\",\"timerfd_settime64\",\"times\",\"tkill\",\"truncate\",\"truncate64\",\"ugetrlimit\",\"umask\",\"uname\",\"unlink\",\"unlinkat\",\"uretprobe\",\"utime\",\"utimensat\",\"utimensat_time64\",\"utimes\",\"vfork\",\"vmsplice\",\"wait4\",\"waitid\",\"waitpid\",\"write\",\"writev\"],\"action\":\"SCMP_ACT_ALLOW\"},{\"names\":[\"process_vm_readv\",\"process_vm_writev\",\"ptrace\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"minKernel\":\"4.8\"}},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":3,\"op\":\"SCMP_CMP_LT\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":7,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":8,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":9,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":10,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":13,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":14,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":15,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":16,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":17,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":18,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":21,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":22,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":24,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":26,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":27,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":28,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":29,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":30,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":31,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":32,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":33,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":35,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":36,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":39,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":41,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":42,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":43,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":44,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":45,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":0,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":8,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":131072,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":131080,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":4294967295,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"sync_file_range2\",\"swapcontext\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"ppc64le\"]}},{\"names\":[\"arm_fadvise64_64\",\"arm_sync_file_range\",\"sync_file_range2\",\"breakpoint\",\"cacheflush\",\"set_tls\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"arm\",\"arm64\"]}},{\"names\":[\"arch_prctl\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"amd64\",\"x32\"]}},{\"names\":[\"modify_ldt\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"amd64\",\"x32\",\"x86\"]}},{\"names\":[\"s390_pci_mmio_read\",\"s390_pci_mmio_write\",\"s390_runtime_instr\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"s390\",\"s390x\"]}},{\"names\":[\"riscv_flush_icache\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"riscv64\"]}},{\"names\":[\"open_by_handle_at\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_DAC_READ_SEARCH\"]}},{\"names\":[\"bpf\",\"clone\",\"clone3\",\"fanotify_init\",\"fsconfig\",\"fsmount\",\"fsopen\",\"fspick\",\"lookup_dcookie\",\"lsm_get_self_attr\",\"lsm_list_modules\",\"lsm_set_self_attr\",\"mount\",\"mount_setattr\",\"move_mount\",\"open_tree\",\"perf_event_open\",\"quotactl\",\"quotactl_fd\",\"setdomainname\",\"sethostname\",\"setns\",\"syslog\",\"umount\",\"umount2\",\"unshare\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_ADMIN\"]}},{\"names\":[\"clone\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":2114060288,\"op\":\"SCMP_CMP_MASKED_EQ\"}],\"excludes\":{\"caps\":[\"CAP_SYS_ADMIN\"],\"arches\":[\"s390\",\"s390x\"]}},{\"names\":[\"clone\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":1,\"value\":2114060288,\"op\":\"SCMP_CMP_MASKED_EQ\"}],\"comment\":\"s390 parameter ordering for clone is different\",\"includes\":{\"arches\":[\"s390\",\"s390x\"]},\"excludes\":{\"caps\":[\"CAP_SYS_ADMIN\"]}},{\"names\":[\"clone3\"],\"action\":\"SCMP_ACT_ERRNO\",\"errnoRet\":38,\"excludes\":{\"caps\":[\"CAP_SYS_ADMIN\"]}},{\"names\":[\"reboot\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_BOOT\"]}},{\"names\":[\"chroot\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_CHROOT\"]}},{\"names\":[\"delete_module\",\"init_module\",\"finit_module\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_MODULE\"]}},{\"names\":[\"acct\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_PACCT\"]}},{\"names\":[\"kcmp\",\"pidfd_getfd\",\"process_madvise\",\"process_vm_readv\",\"process_vm_writev\",\"ptrace\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_PTRACE\"]}},{\"names\":[\"iopl\",\"ioperm\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_RAWIO\"]}},{\"names\":[\"settimeofday\",\"stime\",\"clock_settime\",\"clock_settime64\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_TIME\"]}},{\"names\":[\"vhangup\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_TTY_CONFIG\"]}},{\"names\":[\"get_mempolicy\",\"mbind\",\"set_mempolicy\",\"set_mempolicy_home_node\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_NICE\"]}},{\"names\":[\"syslog\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYSLOG\"]}},{\"names\":[\"bpf\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_BPF\"]}},{\"names\":[\"perf_event_open\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_PERFMON\"]}},{\"names\":[\"io_uring_enter\",\"io_uring_register\",\"io_uring_setup\"],\"action\":\"SCMP_ACT_ALLOW\"}]}"
+      ]
+    }
+  },
+  {
+    "case_id": "82",
+    "pr": 82,
+    "commit": "95aa405a0003599dbc7fb4dfa47a09e8343239df",
+    "image": "twelve-current-pr82:2026-10-20",
+    "source_sha256": "b91b9491e2a7a8856f8f360bc89f376b6493ae9b9a3907c557836b94f5131438",
+    "shared_hashes": {
+      "seed/feed.db": "ef5f135c16a2277a68ef37f1f1a66e4100f9dbc6743d2ef54dbeb533c4dceb0e",
+      "seed/tokens.json": "b39f1edf8a3545ab5851031d1cee8d2d1192e4b598361e516f4560f6893a939a",
+      "mixed.lua": "eb8d49273c56fe4b558a58bd6c7e65551ec683c53d299e2b3a69e0b71421d701",
+      "test/test.sh": "679e722044fd1f366d85093232e7f2ec2e3398ea312032dd9eb6cbdf8b17306a",
+      "semantic.py": "785f8ce565b469e4f4d702d01a9d868cd7458d64e3f1362c3fb8728560215fbc",
+      "serve.py": "52d8bdd75c0dc2477fc5b2391c797a2832eab5ac61a72d3bbe4dac4cb94bf311",
+      "bench/nginx.conf": "1b4b00789b0d138759bebde391d4cd05a9598dc10a17df3d09eb569512b8f654",
+      "seccomp-io-uring.json": "4baf3b268185f55527933e7df090e85936003674e34b5f5396461fd9d3efeb17",
+      "test/golden/feed.json": "8c9b3d6cb46e650c4786ab9281bc3a72ba7bd75b7926021d2b0c431dd9bd3d68",
+      "test/golden/post-1.json": "8035350dc55714c9a673af9f441ab07d2b269047e1137612f022877b9e8f3652",
+      "test/golden/post-250000.json": "febb2506b9d4a99bc34f1f182c61ced6b3ba3b2533724485c6e5206604a65b71",
+      "test/golden/post-500000.json": "662fe8c7282dee8aab00dab6cdb15e64e953f10a2c1c923e2ea67fab1429a4de"
+    },
+    "image_id": "sha256:64227e803306084617be2a4ebc1c3623260d265f158dd8c009f647558a280135",
+    "fingerprint": "73a5f655af496b9d7c0d9511faec3464114f73e6146573f744c0756cb94a229f",
+    "trial": 1,
+    "mode": "bench",
+    "configuration": {
+      "threads": 2,
+      "connections": 64,
+      "warmup_seconds": 2,
+      "measurement_seconds": 15,
+      "trials": 2
+    },
+    "recorded_at": "2026-10-22T13:34:43Z",
+    "service": {
+      "ready": true,
+      "roots": [
+        13
+      ],
+      "port": 24000,
+      "log": "/tmp/current-pr82-24000.log",
+      "nginx": false,
+      "initial_post_count": 500000,
+      "source_files_verified": 49,
+      "source_sha256": "b91b9491e2a7a8856f8f360bc89f376b6493ae9b9a3907c557836b94f5131438",
+      "start_script": "/suite/sources/pr82/start.sh"
+    },
+    "warmup_output": "Running 2s test @ http://127.0.0.1:24000/feed\n  2 threads and 64 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency    12.65ms   40.34ms 237.22ms   92.69%\n    Req/Sec    48.96k    13.04k   66.10k    81.58%\n  Latency Distribution\n     50%  485.00us\n     75%  636.00us\n     90%   21.77ms\n     99%  212.05ms\n  189725 requests in 2.08s, 315.90MB read\nRequests/sec:  91010.79\nTransfer/sec:    151.54MB\n  95% 111.332000ms\n",
+    "warmup_stderr": "",
+    "before": {
+      "monotonic": 49154.237231354,
+      "processes": {
+        "13": {
+          "ppid": 7,
+          "cpu_s": 1.68,
+          "cpu_self_s": 1.68,
+          "cpu_waited_children_s": 0.0,
+          "rss_kib": 42608,
+          "hwm_kib": 42608,
+          "threads": 10
+        }
+      },
+      "cpu_s": 1.68,
+      "cpu_self_s": 1.68,
+      "cpu_waited_children_s": 0.0,
+      "rss_kib": 42608,
+      "hwm_kib": 42608
+    },
+    "output": "Running 15s test @ http://127.0.0.1:24000/feed\n  2 threads and 64 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     1.92ms    5.00ms  34.89ms   91.84%\n    Req/Sec    53.10k     8.71k   66.58k    61.46%\n  Latency Distribution\n     50%  458.00us\n     75%  567.00us\n     90%    2.55ms\n     99%   25.12ms\n  1592109 requests in 15.09s, 2.61GB read\nRequests/sec: 105501.06\nTransfer/sec:    176.96MB\n  95% 14.851000ms\n",
+    "stderr": "",
+    "requests": 1592109,
+    "duration_s": 15.09,
+    "rps": 105501.06,
+    "p50_ms": 0.458,
+    "p95_ms": 14.851,
+    "p99_ms": 25.12,
+    "http_errors": 0,
+    "socket_errors": {
+      "connect": 0,
+      "read": 0,
+      "write": 0,
+      "timeout": 0
+    },
+    "successful_rps": 105501.06,
+    "after": {
+      "monotonic": 49169.440692069,
+      "processes": {
+        "13": {
+          "ppid": 7,
+          "cpu_s": 15.21,
+          "cpu_self_s": 15.21,
+          "cpu_waited_children_s": 0.0,
+          "rss_kib": 49404,
+          "hwm_kib": 49404,
+          "threads": 10
+        }
+      },
+      "cpu_s": 15.21,
+      "cpu_self_s": 15.21,
+      "cpu_waited_children_s": 0.0,
+      "rss_kib": 49404,
+      "hwm_kib": 49404
+    },
+    "final": [
+      {
+        "database_after": {
+          "initial_post_count": 500000,
+          "post_count": 516456,
+          "max_post_id": 516456,
+          "integrity": "ok"
+        }
+      }
+    ],
+    "database_valid": true,
+    "valid_duration": true,
+    "rss_mib": 48.24609375,
+    "cpu_percent": 88.99289611511135,
+    "completed": true,
+    "container_state": {
+      "Status": "running",
+      "Running": true,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 64250,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-10-22T13:34:43.247329555Z",
+      "FinishedAt": "0001-01-01T00:00:00Z"
+    },
+    "container_host_config": {
+      "CpusetCpus": "0",
+      "NanoCpus": 1000000000,
+      "Memory": 2147483648,
+      "MemorySwap": 2147483648,
+      "Ulimits": [
+        {
+          "Name": "nofile",
+          "Hard": 65535,
+          "Soft": 65535
+        }
+      ],
+      "SecurityOpt": [
+        "seccomp={\"defaultAction\":\"SCMP_ACT_ERRNO\",\"defaultErrnoRet\":1,\"archMap\":[{\"architecture\":\"SCMP_ARCH_X86_64\",\"subArchitectures\":[\"SCMP_ARCH_X86\",\"SCMP_ARCH_X32\"]},{\"architecture\":\"SCMP_ARCH_AARCH64\",\"subArchitectures\":[\"SCMP_ARCH_ARM\"]},{\"architecture\":\"SCMP_ARCH_MIPS64\",\"subArchitectures\":[\"SCMP_ARCH_MIPS\",\"SCMP_ARCH_MIPS64N32\"]},{\"architecture\":\"SCMP_ARCH_MIPS64N32\",\"subArchitectures\":[\"SCMP_ARCH_MIPS\",\"SCMP_ARCH_MIPS64\"]},{\"architecture\":\"SCMP_ARCH_MIPSEL64\",\"subArchitectures\":[\"SCMP_ARCH_MIPSEL\",\"SCMP_ARCH_MIPSEL64N32\"]},{\"architecture\":\"SCMP_ARCH_MIPSEL64N32\",\"subArchitectures\":[\"SCMP_ARCH_MIPSEL\",\"SCMP_ARCH_MIPSEL64\"]},{\"architecture\":\"SCMP_ARCH_S390X\",\"subArchitectures\":[\"SCMP_ARCH_S390\"]},{\"architecture\":\"SCMP_ARCH_RISCV64\",\"subArchitectures\":null},{\"architecture\":\"SCMP_ARCH_LOONGARCH64\",\"subArchitectures\":null}],\"syscalls\":[{\"names\":[\"accept\",\"accept4\",\"access\",\"adjtimex\",\"alarm\",\"bind\",\"brk\",\"cachestat\",\"capget\",\"capset\",\"chdir\",\"chmod\",\"chown\",\"chown32\",\"clock_adjtime\",\"clock_adjtime64\",\"clock_getres\",\"clock_getres_time64\",\"clock_gettime\",\"clock_gettime64\",\"clock_nanosleep\",\"clock_nanosleep_time64\",\"close\",\"close_range\",\"connect\",\"copy_file_range\",\"creat\",\"dup\",\"dup2\",\"dup3\",\"epoll_create\",\"epoll_create1\",\"epoll_ctl\",\"epoll_ctl_old\",\"epoll_pwait\",\"epoll_pwait2\",\"epoll_wait\",\"epoll_wait_old\",\"eventfd\",\"eventfd2\",\"execve\",\"execveat\",\"exit\",\"exit_group\",\"faccessat\",\"faccessat2\",\"fadvise64\",\"fadvise64_64\",\"fallocate\",\"fanotify_mark\",\"fchdir\",\"fchmod\",\"fchmodat\",\"fchmodat2\",\"fchown\",\"fchown32\",\"fchownat\",\"fcntl\",\"fcntl64\",\"fdatasync\",\"fgetxattr\",\"flistxattr\",\"flock\",\"fork\",\"fremovexattr\",\"fsetxattr\",\"fstat\",\"fstat64\",\"fstatat64\",\"fstatfs\",\"fstatfs64\",\"fsync\",\"ftruncate\",\"ftruncate64\",\"futex\",\"futex_requeue\",\"futex_time64\",\"futex_wait\",\"futex_waitv\",\"futex_wake\",\"futimesat\",\"getcpu\",\"getcwd\",\"getdents\",\"getdents64\",\"getegid\",\"getegid32\",\"geteuid\",\"geteuid32\",\"getgid\",\"getgid32\",\"getgroups\",\"getgroups32\",\"getitimer\",\"getpeername\",\"getpgid\",\"getpgrp\",\"getpid\",\"getppid\",\"getpriority\",\"getrandom\",\"getresgid\",\"getresgid32\",\"getresuid\",\"getresuid32\",\"getrlimit\",\"get_robust_list\",\"getrusage\",\"getsid\",\"getsockname\",\"getsockopt\",\"get_thread_area\",\"gettid\",\"gettimeofday\",\"getuid\",\"getuid32\",\"getxattr\",\"getxattrat\",\"inotify_add_watch\",\"inotify_init\",\"inotify_init1\",\"inotify_rm_watch\",\"io_cancel\",\"ioctl\",\"io_destroy\",\"io_getevents\",\"io_pgetevents\",\"io_pgetevents_time64\",\"ioprio_get\",\"ioprio_set\",\"io_setup\",\"io_submit\",\"ipc\",\"kill\",\"landlock_add_rule\",\"landlock_create_ruleset\",\"landlock_restrict_self\",\"lchown\",\"lchown32\",\"lgetxattr\",\"link\",\"linkat\",\"listen\",\"listmount\",\"listxattr\",\"listxattrat\",\"llistxattr\",\"_llseek\",\"lremovexattr\",\"lseek\",\"lsetxattr\",\"lstat\",\"lstat64\",\"madvise\",\"map_shadow_stack\",\"membarrier\",\"memfd_create\",\"memfd_secret\",\"mincore\",\"mkdir\",\"mkdirat\",\"mknod\",\"mknodat\",\"mlock\",\"mlock2\",\"mlockall\",\"mmap\",\"mmap2\",\"mprotect\",\"mq_getsetattr\",\"mq_notify\",\"mq_open\",\"mq_timedreceive\",\"mq_timedreceive_time64\",\"mq_timedsend\",\"mq_timedsend_time64\",\"mq_unlink\",\"mremap\",\"mseal\",\"msgctl\",\"msgget\",\"msgrcv\",\"msgsnd\",\"msync\",\"munlock\",\"munlockall\",\"munmap\",\"name_to_handle_at\",\"nanosleep\",\"newfstatat\",\"_newselect\",\"open\",\"openat\",\"openat2\",\"pause\",\"pidfd_open\",\"pidfd_send_signal\",\"pipe\",\"pipe2\",\"pkey_alloc\",\"pkey_free\",\"pkey_mprotect\",\"poll\",\"ppoll\",\"ppoll_time64\",\"prctl\",\"pread64\",\"preadv\",\"preadv2\",\"prlimit64\",\"process_mrelease\",\"pselect6\",\"pselect6_time64\",\"pwrite64\",\"pwritev\",\"pwritev2\",\"read\",\"readahead\",\"readlink\",\"readlinkat\",\"readv\",\"recv\",\"recvfrom\",\"recvmmsg\",\"recvmmsg_time64\",\"recvmsg\",\"remap_file_pages\",\"removexattr\",\"removexattrat\",\"rename\",\"renameat\",\"renameat2\",\"restart_syscall\",\"riscv_hwprobe\",\"rmdir\",\"rseq\",\"rt_sigaction\",\"rt_sigpending\",\"rt_sigprocmask\",\"rt_sigqueueinfo\",\"rt_sigreturn\",\"rt_sigsuspend\",\"rt_sigtimedwait\",\"rt_sigtimedwait_time64\",\"rt_tgsigqueueinfo\",\"sched_getaffinity\",\"sched_getattr\",\"sched_getparam\",\"sched_get_priority_max\",\"sched_get_priority_min\",\"sched_getscheduler\",\"sched_rr_get_interval\",\"sched_rr_get_interval_time64\",\"sched_setaffinity\",\"sched_setattr\",\"sched_setparam\",\"sched_setscheduler\",\"sched_yield\",\"seccomp\",\"select\",\"semctl\",\"semget\",\"semop\",\"semtimedop\",\"semtimedop_time64\",\"send\",\"sendfile\",\"sendfile64\",\"sendmmsg\",\"sendmsg\",\"sendto\",\"setfsgid\",\"setfsgid32\",\"setfsuid\",\"setfsuid32\",\"setgid\",\"setgid32\",\"setgroups\",\"setgroups32\",\"setitimer\",\"setpgid\",\"setpriority\",\"setregid\",\"setregid32\",\"setresgid\",\"setresgid32\",\"setresuid\",\"setresuid32\",\"setreuid\",\"setreuid32\",\"setrlimit\",\"set_robust_list\",\"setsid\",\"setsockopt\",\"set_thread_area\",\"set_tid_address\",\"setuid\",\"setuid32\",\"setxattr\",\"setxattrat\",\"shmat\",\"shmctl\",\"shmdt\",\"shmget\",\"shutdown\",\"sigaltstack\",\"signalfd\",\"signalfd4\",\"sigprocmask\",\"sigreturn\",\"socketcall\",\"socketpair\",\"splice\",\"stat\",\"stat64\",\"statfs\",\"statfs64\",\"statmount\",\"statx\",\"symlink\",\"symlinkat\",\"sync\",\"sync_file_range\",\"syncfs\",\"sysinfo\",\"tee\",\"tgkill\",\"time\",\"timer_create\",\"timer_delete\",\"timer_getoverrun\",\"timer_gettime\",\"timer_gettime64\",\"timer_settime\",\"timer_settime64\",\"timerfd_create\",\"timerfd_gettime\",\"timerfd_gettime64\",\"timerfd_settime\",\"timerfd_settime64\",\"times\",\"tkill\",\"truncate\",\"truncate64\",\"ugetrlimit\",\"umask\",\"uname\",\"unlink\",\"unlinkat\",\"uretprobe\",\"utime\",\"utimensat\",\"utimensat_time64\",\"utimes\",\"vfork\",\"vmsplice\",\"wait4\",\"waitid\",\"waitpid\",\"write\",\"writev\"],\"action\":\"SCMP_ACT_ALLOW\"},{\"names\":[\"process_vm_readv\",\"process_vm_writev\",\"ptrace\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"minKernel\":\"4.8\"}},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":3,\"op\":\"SCMP_CMP_LT\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":7,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":8,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":9,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":10,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":13,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":14,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":15,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":16,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":17,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":18,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":21,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":22,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":24,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":26,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":27,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":28,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":29,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":30,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":31,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":32,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":33,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":35,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":36,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":39,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":41,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":42,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":43,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":44,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":45,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":0,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":8,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":131072,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":131080,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":4294967295,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"sync_file_range2\",\"swapcontext\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"ppc64le\"]}},{\"names\":[\"arm_fadvise64_64\",\"arm_sync_file_range\",\"sync_file_range2\",\"breakpoint\",\"cacheflush\",\"set_tls\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"arm\",\"arm64\"]}},{\"names\":[\"arch_prctl\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"amd64\",\"x32\"]}},{\"names\":[\"modify_ldt\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"amd64\",\"x32\",\"x86\"]}},{\"names\":[\"s390_pci_mmio_read\",\"s390_pci_mmio_write\",\"s390_runtime_instr\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"s390\",\"s390x\"]}},{\"names\":[\"riscv_flush_icache\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"riscv64\"]}},{\"names\":[\"open_by_handle_at\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_DAC_READ_SEARCH\"]}},{\"names\":[\"bpf\",\"clone\",\"clone3\",\"fanotify_init\",\"fsconfig\",\"fsmount\",\"fsopen\",\"fspick\",\"lookup_dcookie\",\"lsm_get_self_attr\",\"lsm_list_modules\",\"lsm_set_self_attr\",\"mount\",\"mount_setattr\",\"move_mount\",\"open_tree\",\"perf_event_open\",\"quotactl\",\"quotactl_fd\",\"setdomainname\",\"sethostname\",\"setns\",\"syslog\",\"umount\",\"umount2\",\"unshare\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_ADMIN\"]}},{\"names\":[\"clone\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":2114060288,\"op\":\"SCMP_CMP_MASKED_EQ\"}],\"excludes\":{\"caps\":[\"CAP_SYS_ADMIN\"],\"arches\":[\"s390\",\"s390x\"]}},{\"names\":[\"clone\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":1,\"value\":2114060288,\"op\":\"SCMP_CMP_MASKED_EQ\"}],\"comment\":\"s390 parameter ordering for clone is different\",\"includes\":{\"arches\":[\"s390\",\"s390x\"]},\"excludes\":{\"caps\":[\"CAP_SYS_ADMIN\"]}},{\"names\":[\"clone3\"],\"action\":\"SCMP_ACT_ERRNO\",\"errnoRet\":38,\"excludes\":{\"caps\":[\"CAP_SYS_ADMIN\"]}},{\"names\":[\"reboot\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_BOOT\"]}},{\"names\":[\"chroot\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_CHROOT\"]}},{\"names\":[\"delete_module\",\"init_module\",\"finit_module\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_MODULE\"]}},{\"names\":[\"acct\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_PACCT\"]}},{\"names\":[\"kcmp\",\"pidfd_getfd\",\"process_madvise\",\"process_vm_readv\",\"process_vm_writev\",\"ptrace\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_PTRACE\"]}},{\"names\":[\"iopl\",\"ioperm\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_RAWIO\"]}},{\"names\":[\"settimeofday\",\"stime\",\"clock_settime\",\"clock_settime64\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_TIME\"]}},{\"names\":[\"vhangup\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_TTY_CONFIG\"]}},{\"names\":[\"get_mempolicy\",\"mbind\",\"set_mempolicy\",\"set_mempolicy_home_node\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_NICE\"]}},{\"names\":[\"syslog\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYSLOG\"]}},{\"names\":[\"bpf\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_BPF\"]}},{\"names\":[\"perf_event_open\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_PERFMON\"]}},{\"names\":[\"io_uring_enter\",\"io_uring_register\",\"io_uring_setup\"],\"action\":\"SCMP_ACT_ALLOW\"}]}"
+      ]
+    }
+  },
+  {
+    "case_id": "previous",
+    "pr": 0,
+    "commit": "09e695a0652cc4654e12d5382b423adf75b7ea7c5ef18978313ddff3cc9d13ed",
+    "image": "twelve-goose-combined-like-bound:2026-10-22",
+    "source_sha256": "09e695a0652cc4654e12d5382b423adf75b7ea7c5ef18978313ddff3cc9d13ed",
+    "shared_hashes": {
+      "seed/feed.db": "ef5f135c16a2277a68ef37f1f1a66e4100f9dbc6743d2ef54dbeb533c4dceb0e",
+      "seed/tokens.json": "b39f1edf8a3545ab5851031d1cee8d2d1192e4b598361e516f4560f6893a939a",
+      "mixed.lua": "eb8d49273c56fe4b558a58bd6c7e65551ec683c53d299e2b3a69e0b71421d701",
+      "test/test.sh": "679e722044fd1f366d85093232e7f2ec2e3398ea312032dd9eb6cbdf8b17306a",
+      "semantic.py": "785f8ce565b469e4f4d702d01a9d868cd7458d64e3f1362c3fb8728560215fbc",
+      "serve.py": "52d8bdd75c0dc2477fc5b2391c797a2832eab5ac61a72d3bbe4dac4cb94bf311",
+      "bench/nginx.conf": "1b4b00789b0d138759bebde391d4cd05a9598dc10a17df3d09eb569512b8f654",
+      "seccomp-io-uring.json": "4baf3b268185f55527933e7df090e85936003674e34b5f5396461fd9d3efeb17",
+      "test/golden/feed.json": "8c9b3d6cb46e650c4786ab9281bc3a72ba7bd75b7926021d2b0c431dd9bd3d68",
+      "test/golden/post-1.json": "8035350dc55714c9a673af9f441ab07d2b269047e1137612f022877b9e8f3652",
+      "test/golden/post-250000.json": "febb2506b9d4a99bc34f1f182c61ced6b3ba3b2533724485c6e5206604a65b71",
+      "test/golden/post-500000.json": "662fe8c7282dee8aab00dab6cdb15e64e953f10a2c1c923e2ea67fab1429a4de"
+    },
+    "image_id": "sha256:d0a2f1e95817cefd26c9563d86849efff6cb2bb5dc0e2ff733ed7656577ef9ea",
+    "fingerprint": "be1731cb171d2e5ea9b0eab8627a5013eaf41397d45dd02d0ba3c90e479dea3d",
+    "trial": 1,
+    "mode": "bench",
+    "configuration": {
+      "threads": 2,
+      "connections": 64,
+      "warmup_seconds": 2,
+      "measurement_seconds": 15,
+      "trials": 2
+    },
+    "recorded_at": "2026-10-22T13:35:01Z",
+    "service": {
+      "ready": true,
+      "roots": [
+        13
+      ],
+      "port": 24000,
+      "log": "/tmp/current-prprevious-24000.log",
+      "nginx": false,
+      "initial_post_count": 500000,
+      "source_files_verified": 19,
+      "source_sha256": "09e695a0652cc4654e12d5382b423adf75b7ea7c5ef18978313ddff3cc9d13ed",
+      "start_script": "/suite/sources/prgoose/start.sh"
+    },
+    "warmup_output": "Running 2s test @ http://127.0.0.1:24000/feed\n  2 threads and 64 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     8.68ms   29.17ms 189.19ms   93.93%\n    Req/Sec    51.84k    15.98k   71.73k    85.00%\n  Latency Distribution\n     50%  419.00us\n     75%  552.00us\n     90%   16.87ms\n     99%  164.30ms\n  209045 requests in 2.08s, 352.92MB read\nRequests/sec: 100456.72\nTransfer/sec:    169.59MB\n  95% 64.475000ms\n",
+    "warmup_stderr": "",
+    "before": {
+      "monotonic": 49172.705874196,
+      "processes": {
+        "13": {
+          "ppid": 7,
+          "cpu_s": 1.71,
+          "cpu_self_s": 1.71,
+          "cpu_waited_children_s": 0.0,
+          "rss_kib": 15624,
+          "hwm_kib": 15624,
+          "threads": 1
+        }
+      },
+      "cpu_s": 1.71,
+      "cpu_self_s": 1.71,
+      "cpu_waited_children_s": 0.0,
+      "rss_kib": 15624,
+      "hwm_kib": 15624
+    },
+    "output": "Running 15s test @ http://127.0.0.1:24000/feed\n  2 threads and 64 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     1.82ms    4.72ms  38.91ms   91.98%\n    Req/Sec    51.54k    13.32k   71.93k    60.33%\n  Latency Distribution\n     50%  407.00us\n     75%  551.00us\n     90%    2.77ms\n     99%   23.84ms\n  1540692 requests in 15.03s, 2.56GB read\nRequests/sec: 102495.27\nTransfer/sec:    174.24MB\n  95% 13.875000ms\n",
+    "stderr": "",
+    "requests": 1540692,
+    "duration_s": 15.03,
+    "rps": 102495.27,
+    "p50_ms": 0.40700000000000003,
+    "p95_ms": 13.875,
+    "p99_ms": 23.84,
+    "http_errors": 0,
+    "socket_errors": {
+      "connect": 0,
+      "read": 0,
+      "write": 0,
+      "timeout": 0
+    },
+    "successful_rps": 102495.27,
+    "after": {
+      "monotonic": 49187.848503828,
+      "processes": {
+        "13": {
+          "ppid": 7,
+          "cpu_s": 14.85,
+          "cpu_self_s": 14.85,
+          "cpu_waited_children_s": 0.0,
+          "rss_kib": 15624,
+          "hwm_kib": 15624,
+          "threads": 1
+        }
+      },
+      "cpu_s": 14.85,
+      "cpu_self_s": 14.85,
+      "cpu_waited_children_s": 0.0,
+      "rss_kib": 15624,
+      "hwm_kib": 15624
+    },
+    "final": [
+      {
+        "database_after": {
+          "initial_post_count": 500000,
+          "post_count": 516172,
+          "max_post_id": 516172,
+          "integrity": "ok"
+        }
+      }
+    ],
+    "database_valid": true,
+    "valid_duration": true,
+    "rss_mib": 15.2578125,
+    "cpu_percent": 86.77488863779082,
+    "completed": true,
+    "container_state": {
+      "Status": "running",
+      "Running": true,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 64468,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-10-22T13:35:01.716099007Z",
+      "FinishedAt": "0001-01-01T00:00:00Z"
+    },
+    "container_host_config": {
+      "CpusetCpus": "0",
+      "NanoCpus": 1000000000,
+      "Memory": 2147483648,
+      "MemorySwap": 2147483648,
+      "Ulimits": [
+        {
+          "Name": "nofile",
+          "Hard": 65535,
+          "Soft": 65535
+        }
+      ],
+      "SecurityOpt": [
+        "seccomp={\"defaultAction\":\"SCMP_ACT_ERRNO\",\"defaultErrnoRet\":1,\"archMap\":[{\"architecture\":\"SCMP_ARCH_X86_64\",\"subArchitectures\":[\"SCMP_ARCH_X86\",\"SCMP_ARCH_X32\"]},{\"architecture\":\"SCMP_ARCH_AARCH64\",\"subArchitectures\":[\"SCMP_ARCH_ARM\"]},{\"architecture\":\"SCMP_ARCH_MIPS64\",\"subArchitectures\":[\"SCMP_ARCH_MIPS\",\"SCMP_ARCH_MIPS64N32\"]},{\"architecture\":\"SCMP_ARCH_MIPS64N32\",\"subArchitectures\":[\"SCMP_ARCH_MIPS\",\"SCMP_ARCH_MIPS64\"]},{\"architecture\":\"SCMP_ARCH_MIPSEL64\",\"subArchitectures\":[\"SCMP_ARCH_MIPSEL\",\"SCMP_ARCH_MIPSEL64N32\"]},{\"architecture\":\"SCMP_ARCH_MIPSEL64N32\",\"subArchitectures\":[\"SCMP_ARCH_MIPSEL\",\"SCMP_ARCH_MIPSEL64\"]},{\"architecture\":\"SCMP_ARCH_S390X\",\"subArchitectures\":[\"SCMP_ARCH_S390\"]},{\"architecture\":\"SCMP_ARCH_RISCV64\",\"subArchitectures\":null},{\"architecture\":\"SCMP_ARCH_LOONGARCH64\",\"subArchitectures\":null}],\"syscalls\":[{\"names\":[\"accept\",\"accept4\",\"access\",\"adjtimex\",\"alarm\",\"bind\",\"brk\",\"cachestat\",\"capget\",\"capset\",\"chdir\",\"chmod\",\"chown\",\"chown32\",\"clock_adjtime\",\"clock_adjtime64\",\"clock_getres\",\"clock_getres_time64\",\"clock_gettime\",\"clock_gettime64\",\"clock_nanosleep\",\"clock_nanosleep_time64\",\"close\",\"close_range\",\"connect\",\"copy_file_range\",\"creat\",\"dup\",\"dup2\",\"dup3\",\"epoll_create\",\"epoll_create1\",\"epoll_ctl\",\"epoll_ctl_old\",\"epoll_pwait\",\"epoll_pwait2\",\"epoll_wait\",\"epoll_wait_old\",\"eventfd\",\"eventfd2\",\"execve\",\"execveat\",\"exit\",\"exit_group\",\"faccessat\",\"faccessat2\",\"fadvise64\",\"fadvise64_64\",\"fallocate\",\"fanotify_mark\",\"fchdir\",\"fchmod\",\"fchmodat\",\"fchmodat2\",\"fchown\",\"fchown32\",\"fchownat\",\"fcntl\",\"fcntl64\",\"fdatasync\",\"fgetxattr\",\"flistxattr\",\"flock\",\"fork\",\"fremovexattr\",\"fsetxattr\",\"fstat\",\"fstat64\",\"fstatat64\",\"fstatfs\",\"fstatfs64\",\"fsync\",\"ftruncate\",\"ftruncate64\",\"futex\",\"futex_requeue\",\"futex_time64\",\"futex_wait\",\"futex_waitv\",\"futex_wake\",\"futimesat\",\"getcpu\",\"getcwd\",\"getdents\",\"getdents64\",\"getegid\",\"getegid32\",\"geteuid\",\"geteuid32\",\"getgid\",\"getgid32\",\"getgroups\",\"getgroups32\",\"getitimer\",\"getpeername\",\"getpgid\",\"getpgrp\",\"getpid\",\"getppid\",\"getpriority\",\"getrandom\",\"getresgid\",\"getresgid32\",\"getresuid\",\"getresuid32\",\"getrlimit\",\"get_robust_list\",\"getrusage\",\"getsid\",\"getsockname\",\"getsockopt\",\"get_thread_area\",\"gettid\",\"gettimeofday\",\"getuid\",\"getuid32\",\"getxattr\",\"getxattrat\",\"inotify_add_watch\",\"inotify_init\",\"inotify_init1\",\"inotify_rm_watch\",\"io_cancel\",\"ioctl\",\"io_destroy\",\"io_getevents\",\"io_pgetevents\",\"io_pgetevents_time64\",\"ioprio_get\",\"ioprio_set\",\"io_setup\",\"io_submit\",\"ipc\",\"kill\",\"landlock_add_rule\",\"landlock_create_ruleset\",\"landlock_restrict_self\",\"lchown\",\"lchown32\",\"lgetxattr\",\"link\",\"linkat\",\"listen\",\"listmount\",\"listxattr\",\"listxattrat\",\"llistxattr\",\"_llseek\",\"lremovexattr\",\"lseek\",\"lsetxattr\",\"lstat\",\"lstat64\",\"madvise\",\"map_shadow_stack\",\"membarrier\",\"memfd_create\",\"memfd_secret\",\"mincore\",\"mkdir\",\"mkdirat\",\"mknod\",\"mknodat\",\"mlock\",\"mlock2\",\"mlockall\",\"mmap\",\"mmap2\",\"mprotect\",\"mq_getsetattr\",\"mq_notify\",\"mq_open\",\"mq_timedreceive\",\"mq_timedreceive_time64\",\"mq_timedsend\",\"mq_timedsend_time64\",\"mq_unlink\",\"mremap\",\"mseal\",\"msgctl\",\"msgget\",\"msgrcv\",\"msgsnd\",\"msync\",\"munlock\",\"munlockall\",\"munmap\",\"name_to_handle_at\",\"nanosleep\",\"newfstatat\",\"_newselect\",\"open\",\"openat\",\"openat2\",\"pause\",\"pidfd_open\",\"pidfd_send_signal\",\"pipe\",\"pipe2\",\"pkey_alloc\",\"pkey_free\",\"pkey_mprotect\",\"poll\",\"ppoll\",\"ppoll_time64\",\"prctl\",\"pread64\",\"preadv\",\"preadv2\",\"prlimit64\",\"process_mrelease\",\"pselect6\",\"pselect6_time64\",\"pwrite64\",\"pwritev\",\"pwritev2\",\"read\",\"readahead\",\"readlink\",\"readlinkat\",\"readv\",\"recv\",\"recvfrom\",\"recvmmsg\",\"recvmmsg_time64\",\"recvmsg\",\"remap_file_pages\",\"removexattr\",\"removexattrat\",\"rename\",\"renameat\",\"renameat2\",\"restart_syscall\",\"riscv_hwprobe\",\"rmdir\",\"rseq\",\"rt_sigaction\",\"rt_sigpending\",\"rt_sigprocmask\",\"rt_sigqueueinfo\",\"rt_sigreturn\",\"rt_sigsuspend\",\"rt_sigtimedwait\",\"rt_sigtimedwait_time64\",\"rt_tgsigqueueinfo\",\"sched_getaffinity\",\"sched_getattr\",\"sched_getparam\",\"sched_get_priority_max\",\"sched_get_priority_min\",\"sched_getscheduler\",\"sched_rr_get_interval\",\"sched_rr_get_interval_time64\",\"sched_setaffinity\",\"sched_setattr\",\"sched_setparam\",\"sched_setscheduler\",\"sched_yield\",\"seccomp\",\"select\",\"semctl\",\"semget\",\"semop\",\"semtimedop\",\"semtimedop_time64\",\"send\",\"sendfile\",\"sendfile64\",\"sendmmsg\",\"sendmsg\",\"sendto\",\"setfsgid\",\"setfsgid32\",\"setfsuid\",\"setfsuid32\",\"setgid\",\"setgid32\",\"setgroups\",\"setgroups32\",\"setitimer\",\"setpgid\",\"setpriority\",\"setregid\",\"setregid32\",\"setresgid\",\"setresgid32\",\"setresuid\",\"setresuid32\",\"setreuid\",\"setreuid32\",\"setrlimit\",\"set_robust_list\",\"setsid\",\"setsockopt\",\"set_thread_area\",\"set_tid_address\",\"setuid\",\"setuid32\",\"setxattr\",\"setxattrat\",\"shmat\",\"shmctl\",\"shmdt\",\"shmget\",\"shutdown\",\"sigaltstack\",\"signalfd\",\"signalfd4\",\"sigprocmask\",\"sigreturn\",\"socketcall\",\"socketpair\",\"splice\",\"stat\",\"stat64\",\"statfs\",\"statfs64\",\"statmount\",\"statx\",\"symlink\",\"symlinkat\",\"sync\",\"sync_file_range\",\"syncfs\",\"sysinfo\",\"tee\",\"tgkill\",\"time\",\"timer_create\",\"timer_delete\",\"timer_getoverrun\",\"timer_gettime\",\"timer_gettime64\",\"timer_settime\",\"timer_settime64\",\"timerfd_create\",\"timerfd_gettime\",\"timerfd_gettime64\",\"timerfd_settime\",\"timerfd_settime64\",\"times\",\"tkill\",\"truncate\",\"truncate64\",\"ugetrlimit\",\"umask\",\"uname\",\"unlink\",\"unlinkat\",\"uretprobe\",\"utime\",\"utimensat\",\"utimensat_time64\",\"utimes\",\"vfork\",\"vmsplice\",\"wait4\",\"waitid\",\"waitpid\",\"write\",\"writev\"],\"action\":\"SCMP_ACT_ALLOW\"},{\"names\":[\"process_vm_readv\",\"process_vm_writev\",\"ptrace\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"minKernel\":\"4.8\"}},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":3,\"op\":\"SCMP_CMP_LT\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":7,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":8,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":9,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":10,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":13,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":14,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":15,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":16,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":17,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":18,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":21,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":22,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":24,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":26,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":27,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":28,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":29,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":30,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":31,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":32,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":33,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":35,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":36,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":39,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":41,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":42,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":43,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":44,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":45,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":0,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":8,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":131072,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":131080,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":4294967295,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"sync_file_range2\",\"swapcontext\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"ppc64le\"]}},{\"names\":[\"arm_fadvise64_64\",\"arm_sync_file_range\",\"sync_file_range2\",\"breakpoint\",\"cacheflush\",\"set_tls\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"arm\",\"arm64\"]}},{\"names\":[\"arch_prctl\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"amd64\",\"x32\"]}},{\"names\":[\"modify_ldt\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"amd64\",\"x32\",\"x86\"]}},{\"names\":[\"s390_pci_mmio_read\",\"s390_pci_mmio_write\",\"s390_runtime_instr\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"s390\",\"s390x\"]}},{\"names\":[\"riscv_flush_icache\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"riscv64\"]}},{\"names\":[\"open_by_handle_at\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_DAC_READ_SEARCH\"]}},{\"names\":[\"bpf\",\"clone\",\"clone3\",\"fanotify_init\",\"fsconfig\",\"fsmount\",\"fsopen\",\"fspick\",\"lookup_dcookie\",\"lsm_get_self_attr\",\"lsm_list_modules\",\"lsm_set_self_attr\",\"mount\",\"mount_setattr\",\"move_mount\",\"open_tree\",\"perf_event_open\",\"quotactl\",\"quotactl_fd\",\"setdomainname\",\"sethostname\",\"setns\",\"syslog\",\"umount\",\"umount2\",\"unshare\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_ADMIN\"]}},{\"names\":[\"clone\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":2114060288,\"op\":\"SCMP_CMP_MASKED_EQ\"}],\"excludes\":{\"caps\":[\"CAP_SYS_ADMIN\"],\"arches\":[\"s390\",\"s390x\"]}},{\"names\":[\"clone\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":1,\"value\":2114060288,\"op\":\"SCMP_CMP_MASKED_EQ\"}],\"comment\":\"s390 parameter ordering for clone is different\",\"includes\":{\"arches\":[\"s390\",\"s390x\"]},\"excludes\":{\"caps\":[\"CAP_SYS_ADMIN\"]}},{\"names\":[\"clone3\"],\"action\":\"SCMP_ACT_ERRNO\",\"errnoRet\":38,\"excludes\":{\"caps\":[\"CAP_SYS_ADMIN\"]}},{\"names\":[\"reboot\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_BOOT\"]}},{\"names\":[\"chroot\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_CHROOT\"]}},{\"names\":[\"delete_module\",\"init_module\",\"finit_module\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_MODULE\"]}},{\"names\":[\"acct\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_PACCT\"]}},{\"names\":[\"kcmp\",\"pidfd_getfd\",\"process_madvise\",\"process_vm_readv\",\"process_vm_writev\",\"ptrace\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_PTRACE\"]}},{\"names\":[\"iopl\",\"ioperm\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_RAWIO\"]}},{\"names\":[\"settimeofday\",\"stime\",\"clock_settime\",\"clock_settime64\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_TIME\"]}},{\"names\":[\"vhangup\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_TTY_CONFIG\"]}},{\"names\":[\"get_mempolicy\",\"mbind\",\"set_mempolicy\",\"set_mempolicy_home_node\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_NICE\"]}},{\"names\":[\"syslog\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYSLOG\"]}},{\"names\":[\"bpf\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_BPF\"]}},{\"names\":[\"perf_event_open\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_PERFMON\"]}},{\"names\":[\"io_uring_enter\",\"io_uring_register\",\"io_uring_setup\"],\"action\":\"SCMP_ACT_ALLOW\"}]}"
+      ]
+    }
+  },
+  {
+    "case_id": "goose",
+    "pr": 0,
+    "commit": "9a298580809e2a6821c7a8068b6a45315ae7aaa4b58bb79edc3f94606b9f861b",
+    "image": "twelve-goose-hmac-budget:2026-10-22",
+    "source_sha256": "9a298580809e2a6821c7a8068b6a45315ae7aaa4b58bb79edc3f94606b9f861b",
+    "shared_hashes": {
+      "seed/feed.db": "ef5f135c16a2277a68ef37f1f1a66e4100f9dbc6743d2ef54dbeb533c4dceb0e",
+      "seed/tokens.json": "b39f1edf8a3545ab5851031d1cee8d2d1192e4b598361e516f4560f6893a939a",
+      "mixed.lua": "eb8d49273c56fe4b558a58bd6c7e65551ec683c53d299e2b3a69e0b71421d701",
+      "test/test.sh": "679e722044fd1f366d85093232e7f2ec2e3398ea312032dd9eb6cbdf8b17306a",
+      "semantic.py": "785f8ce565b469e4f4d702d01a9d868cd7458d64e3f1362c3fb8728560215fbc",
+      "serve.py": "52d8bdd75c0dc2477fc5b2391c797a2832eab5ac61a72d3bbe4dac4cb94bf311",
+      "bench/nginx.conf": "1b4b00789b0d138759bebde391d4cd05a9598dc10a17df3d09eb569512b8f654",
+      "seccomp-io-uring.json": "4baf3b268185f55527933e7df090e85936003674e34b5f5396461fd9d3efeb17",
+      "test/golden/feed.json": "8c9b3d6cb46e650c4786ab9281bc3a72ba7bd75b7926021d2b0c431dd9bd3d68",
+      "test/golden/post-1.json": "8035350dc55714c9a673af9f441ab07d2b269047e1137612f022877b9e8f3652",
+      "test/golden/post-250000.json": "febb2506b9d4a99bc34f1f182c61ced6b3ba3b2533724485c6e5206604a65b71",
+      "test/golden/post-500000.json": "662fe8c7282dee8aab00dab6cdb15e64e953f10a2c1c923e2ea67fab1429a4de"
+    },
+    "image_id": "sha256:afde328ec4a000f300730f264ee883f973769130994762ebd8c8efdf794a8508",
+    "fingerprint": "a76505c35ba300c38e80bf99162068d2716b9d069a4a056eef68b9b45779deee",
+    "trial": 2,
+    "mode": "bench",
+    "configuration": {
+      "threads": 2,
+      "connections": 64,
+      "warmup_seconds": 2,
+      "measurement_seconds": 15,
+      "trials": 2
+    },
+    "recorded_at": "2026-10-22T13:35:20Z",
+    "service": {
+      "ready": true,
+      "roots": [
+        13
+      ],
+      "port": 24000,
+      "log": "/tmp/current-prgoose-24000.log",
+      "nginx": false,
+      "initial_post_count": 500000,
+      "source_files_verified": 19,
+      "source_sha256": "9a298580809e2a6821c7a8068b6a45315ae7aaa4b58bb79edc3f94606b9f861b",
+      "start_script": "/suite/sources/prgoose/start.sh"
+    },
+    "warmup_output": "Running 2s test @ http://127.0.0.1:24000/feed\n  2 threads and 64 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency    14.97ms   46.40ms 263.17ms   92.17%\n    Req/Sec    54.30k    15.39k   72.84k    84.21%\n  Latency Distribution\n     50%  401.00us\n     75%  545.00us\n     90%   24.47ms\n     99%  237.19ms\n  209869 requests in 2.09s, 354.33MB read\nRequests/sec: 100481.27\nTransfer/sec:    169.65MB\n  95% 134.066000ms\n",
+    "warmup_stderr": "",
+    "before": {
+      "monotonic": 49191.109075162,
+      "processes": {
+        "13": {
+          "ppid": 7,
+          "cpu_s": 1.63,
+          "cpu_self_s": 1.63,
+          "cpu_waited_children_s": 0.0,
+          "rss_kib": 15628,
+          "hwm_kib": 15628,
+          "threads": 1
+        }
+      },
+      "cpu_s": 1.63,
+      "cpu_self_s": 1.63,
+      "cpu_waited_children_s": 0.0,
+      "rss_kib": 15628,
+      "hwm_kib": 15628
+    },
+    "output": "Running 15s test @ http://127.0.0.1:24000/feed\n  2 threads and 64 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     1.84ms    4.74ms  33.55ms   91.11%\n    Req/Sec    59.12k     8.63k   73.27k    68.00%\n  Latency Distribution\n     50%  375.00us\n     75%  477.00us\n     90%    4.26ms\n     99%   23.13ms\n  1768974 requests in 15.03s, 2.94GB read\nRequests/sec: 117688.35\nTransfer/sec:    200.15MB\n  95% 14.722000ms\n",
+    "stderr": "",
+    "requests": 1768974,
+    "duration_s": 15.03,
+    "rps": 117688.35,
+    "p50_ms": 0.375,
+    "p95_ms": 14.722,
+    "p99_ms": 23.13,
+    "http_errors": 0,
+    "socket_errors": {
+      "connect": 0,
+      "read": 0,
+      "write": 0,
+      "timeout": 0
+    },
+    "successful_rps": 117688.35,
+    "after": {
+      "monotonic": 49206.251524836,
+      "processes": {
+        "13": {
+          "ppid": 7,
+          "cpu_s": 14.91,
+          "cpu_self_s": 14.91,
+          "cpu_waited_children_s": 0.0,
+          "rss_kib": 15628,
+          "hwm_kib": 15628,
+          "threads": 1
+        }
+      },
+      "cpu_s": 14.91,
+      "cpu_self_s": 14.91,
+      "cpu_waited_children_s": 0.0,
+      "rss_kib": 15628,
+      "hwm_kib": 15628
+    },
+    "final": [
+      {
+        "database_after": {
+          "initial_post_count": 500000,
+          "post_count": 518274,
+          "max_post_id": 518274,
+          "integrity": "ok"
+        }
+      }
+    ],
+    "database_valid": true,
+    "valid_duration": true,
+    "rss_mib": 15.26171875,
+    "cpu_percent": 87.70047308000662,
+    "completed": true,
+    "container_state": {
+      "Status": "running",
+      "Running": true,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 64681,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-10-22T13:35:20.116047502Z",
+      "FinishedAt": "0001-01-01T00:00:00Z"
+    },
+    "container_host_config": {
+      "CpusetCpus": "0",
+      "NanoCpus": 1000000000,
+      "Memory": 2147483648,
+      "MemorySwap": 2147483648,
+      "Ulimits": [
+        {
+          "Name": "nofile",
+          "Hard": 65535,
+          "Soft": 65535
+        }
+      ],
+      "SecurityOpt": [
+        "seccomp={\"defaultAction\":\"SCMP_ACT_ERRNO\",\"defaultErrnoRet\":1,\"archMap\":[{\"architecture\":\"SCMP_ARCH_X86_64\",\"subArchitectures\":[\"SCMP_ARCH_X86\",\"SCMP_ARCH_X32\"]},{\"architecture\":\"SCMP_ARCH_AARCH64\",\"subArchitectures\":[\"SCMP_ARCH_ARM\"]},{\"architecture\":\"SCMP_ARCH_MIPS64\",\"subArchitectures\":[\"SCMP_ARCH_MIPS\",\"SCMP_ARCH_MIPS64N32\"]},{\"architecture\":\"SCMP_ARCH_MIPS64N32\",\"subArchitectures\":[\"SCMP_ARCH_MIPS\",\"SCMP_ARCH_MIPS64\"]},{\"architecture\":\"SCMP_ARCH_MIPSEL64\",\"subArchitectures\":[\"SCMP_ARCH_MIPSEL\",\"SCMP_ARCH_MIPSEL64N32\"]},{\"architecture\":\"SCMP_ARCH_MIPSEL64N32\",\"subArchitectures\":[\"SCMP_ARCH_MIPSEL\",\"SCMP_ARCH_MIPSEL64\"]},{\"architecture\":\"SCMP_ARCH_S390X\",\"subArchitectures\":[\"SCMP_ARCH_S390\"]},{\"architecture\":\"SCMP_ARCH_RISCV64\",\"subArchitectures\":null},{\"architecture\":\"SCMP_ARCH_LOONGARCH64\",\"subArchitectures\":null}],\"syscalls\":[{\"names\":[\"accept\",\"accept4\",\"access\",\"adjtimex\",\"alarm\",\"bind\",\"brk\",\"cachestat\",\"capget\",\"capset\",\"chdir\",\"chmod\",\"chown\",\"chown32\",\"clock_adjtime\",\"clock_adjtime64\",\"clock_getres\",\"clock_getres_time64\",\"clock_gettime\",\"clock_gettime64\",\"clock_nanosleep\",\"clock_nanosleep_time64\",\"close\",\"close_range\",\"connect\",\"copy_file_range\",\"creat\",\"dup\",\"dup2\",\"dup3\",\"epoll_create\",\"epoll_create1\",\"epoll_ctl\",\"epoll_ctl_old\",\"epoll_pwait\",\"epoll_pwait2\",\"epoll_wait\",\"epoll_wait_old\",\"eventfd\",\"eventfd2\",\"execve\",\"execveat\",\"exit\",\"exit_group\",\"faccessat\",\"faccessat2\",\"fadvise64\",\"fadvise64_64\",\"fallocate\",\"fanotify_mark\",\"fchdir\",\"fchmod\",\"fchmodat\",\"fchmodat2\",\"fchown\",\"fchown32\",\"fchownat\",\"fcntl\",\"fcntl64\",\"fdatasync\",\"fgetxattr\",\"flistxattr\",\"flock\",\"fork\",\"fremovexattr\",\"fsetxattr\",\"fstat\",\"fstat64\",\"fstatat64\",\"fstatfs\",\"fstatfs64\",\"fsync\",\"ftruncate\",\"ftruncate64\",\"futex\",\"futex_requeue\",\"futex_time64\",\"futex_wait\",\"futex_waitv\",\"futex_wake\",\"futimesat\",\"getcpu\",\"getcwd\",\"getdents\",\"getdents64\",\"getegid\",\"getegid32\",\"geteuid\",\"geteuid32\",\"getgid\",\"getgid32\",\"getgroups\",\"getgroups32\",\"getitimer\",\"getpeername\",\"getpgid\",\"getpgrp\",\"getpid\",\"getppid\",\"getpriority\",\"getrandom\",\"getresgid\",\"getresgid32\",\"getresuid\",\"getresuid32\",\"getrlimit\",\"get_robust_list\",\"getrusage\",\"getsid\",\"getsockname\",\"getsockopt\",\"get_thread_area\",\"gettid\",\"gettimeofday\",\"getuid\",\"getuid32\",\"getxattr\",\"getxattrat\",\"inotify_add_watch\",\"inotify_init\",\"inotify_init1\",\"inotify_rm_watch\",\"io_cancel\",\"ioctl\",\"io_destroy\",\"io_getevents\",\"io_pgetevents\",\"io_pgetevents_time64\",\"ioprio_get\",\"ioprio_set\",\"io_setup\",\"io_submit\",\"ipc\",\"kill\",\"landlock_add_rule\",\"landlock_create_ruleset\",\"landlock_restrict_self\",\"lchown\",\"lchown32\",\"lgetxattr\",\"link\",\"linkat\",\"listen\",\"listmount\",\"listxattr\",\"listxattrat\",\"llistxattr\",\"_llseek\",\"lremovexattr\",\"lseek\",\"lsetxattr\",\"lstat\",\"lstat64\",\"madvise\",\"map_shadow_stack\",\"membarrier\",\"memfd_create\",\"memfd_secret\",\"mincore\",\"mkdir\",\"mkdirat\",\"mknod\",\"mknodat\",\"mlock\",\"mlock2\",\"mlockall\",\"mmap\",\"mmap2\",\"mprotect\",\"mq_getsetattr\",\"mq_notify\",\"mq_open\",\"mq_timedreceive\",\"mq_timedreceive_time64\",\"mq_timedsend\",\"mq_timedsend_time64\",\"mq_unlink\",\"mremap\",\"mseal\",\"msgctl\",\"msgget\",\"msgrcv\",\"msgsnd\",\"msync\",\"munlock\",\"munlockall\",\"munmap\",\"name_to_handle_at\",\"nanosleep\",\"newfstatat\",\"_newselect\",\"open\",\"openat\",\"openat2\",\"pause\",\"pidfd_open\",\"pidfd_send_signal\",\"pipe\",\"pipe2\",\"pkey_alloc\",\"pkey_free\",\"pkey_mprotect\",\"poll\",\"ppoll\",\"ppoll_time64\",\"prctl\",\"pread64\",\"preadv\",\"preadv2\",\"prlimit64\",\"process_mrelease\",\"pselect6\",\"pselect6_time64\",\"pwrite64\",\"pwritev\",\"pwritev2\",\"read\",\"readahead\",\"readlink\",\"readlinkat\",\"readv\",\"recv\",\"recvfrom\",\"recvmmsg\",\"recvmmsg_time64\",\"recvmsg\",\"remap_file_pages\",\"removexattr\",\"removexattrat\",\"rename\",\"renameat\",\"renameat2\",\"restart_syscall\",\"riscv_hwprobe\",\"rmdir\",\"rseq\",\"rt_sigaction\",\"rt_sigpending\",\"rt_sigprocmask\",\"rt_sigqueueinfo\",\"rt_sigreturn\",\"rt_sigsuspend\",\"rt_sigtimedwait\",\"rt_sigtimedwait_time64\",\"rt_tgsigqueueinfo\",\"sched_getaffinity\",\"sched_getattr\",\"sched_getparam\",\"sched_get_priority_max\",\"sched_get_priority_min\",\"sched_getscheduler\",\"sched_rr_get_interval\",\"sched_rr_get_interval_time64\",\"sched_setaffinity\",\"sched_setattr\",\"sched_setparam\",\"sched_setscheduler\",\"sched_yield\",\"seccomp\",\"select\",\"semctl\",\"semget\",\"semop\",\"semtimedop\",\"semtimedop_time64\",\"send\",\"sendfile\",\"sendfile64\",\"sendmmsg\",\"sendmsg\",\"sendto\",\"setfsgid\",\"setfsgid32\",\"setfsuid\",\"setfsuid32\",\"setgid\",\"setgid32\",\"setgroups\",\"setgroups32\",\"setitimer\",\"setpgid\",\"setpriority\",\"setregid\",\"setregid32\",\"setresgid\",\"setresgid32\",\"setresuid\",\"setresuid32\",\"setreuid\",\"setreuid32\",\"setrlimit\",\"set_robust_list\",\"setsid\",\"setsockopt\",\"set_thread_area\",\"set_tid_address\",\"setuid\",\"setuid32\",\"setxattr\",\"setxattrat\",\"shmat\",\"shmctl\",\"shmdt\",\"shmget\",\"shutdown\",\"sigaltstack\",\"signalfd\",\"signalfd4\",\"sigprocmask\",\"sigreturn\",\"socketcall\",\"socketpair\",\"splice\",\"stat\",\"stat64\",\"statfs\",\"statfs64\",\"statmount\",\"statx\",\"symlink\",\"symlinkat\",\"sync\",\"sync_file_range\",\"syncfs\",\"sysinfo\",\"tee\",\"tgkill\",\"time\",\"timer_create\",\"timer_delete\",\"timer_getoverrun\",\"timer_gettime\",\"timer_gettime64\",\"timer_settime\",\"timer_settime64\",\"timerfd_create\",\"timerfd_gettime\",\"timerfd_gettime64\",\"timerfd_settime\",\"timerfd_settime64\",\"times\",\"tkill\",\"truncate\",\"truncate64\",\"ugetrlimit\",\"umask\",\"uname\",\"unlink\",\"unlinkat\",\"uretprobe\",\"utime\",\"utimensat\",\"utimensat_time64\",\"utimes\",\"vfork\",\"vmsplice\",\"wait4\",\"waitid\",\"waitpid\",\"write\",\"writev\"],\"action\":\"SCMP_ACT_ALLOW\"},{\"names\":[\"process_vm_readv\",\"process_vm_writev\",\"ptrace\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"minKernel\":\"4.8\"}},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":3,\"op\":\"SCMP_CMP_LT\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":7,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":8,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":9,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":10,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":13,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":14,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":15,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":16,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":17,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":18,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":21,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":22,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":24,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":26,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":27,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":28,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":29,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":30,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":31,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":32,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":33,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":35,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":36,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":39,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":41,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":42,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":43,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":44,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":45,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":0,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":8,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":131072,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":131080,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":4294967295,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"sync_file_range2\",\"swapcontext\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"ppc64le\"]}},{\"names\":[\"arm_fadvise64_64\",\"arm_sync_file_range\",\"sync_file_range2\",\"breakpoint\",\"cacheflush\",\"set_tls\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"arm\",\"arm64\"]}},{\"names\":[\"arch_prctl\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"amd64\",\"x32\"]}},{\"names\":[\"modify_ldt\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"amd64\",\"x32\",\"x86\"]}},{\"names\":[\"s390_pci_mmio_read\",\"s390_pci_mmio_write\",\"s390_runtime_instr\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"s390\",\"s390x\"]}},{\"names\":[\"riscv_flush_icache\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"riscv64\"]}},{\"names\":[\"open_by_handle_at\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_DAC_READ_SEARCH\"]}},{\"names\":[\"bpf\",\"clone\",\"clone3\",\"fanotify_init\",\"fsconfig\",\"fsmount\",\"fsopen\",\"fspick\",\"lookup_dcookie\",\"lsm_get_self_attr\",\"lsm_list_modules\",\"lsm_set_self_attr\",\"mount\",\"mount_setattr\",\"move_mount\",\"open_tree\",\"perf_event_open\",\"quotactl\",\"quotactl_fd\",\"setdomainname\",\"sethostname\",\"setns\",\"syslog\",\"umount\",\"umount2\",\"unshare\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_ADMIN\"]}},{\"names\":[\"clone\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":2114060288,\"op\":\"SCMP_CMP_MASKED_EQ\"}],\"excludes\":{\"caps\":[\"CAP_SYS_ADMIN\"],\"arches\":[\"s390\",\"s390x\"]}},{\"names\":[\"clone\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":1,\"value\":2114060288,\"op\":\"SCMP_CMP_MASKED_EQ\"}],\"comment\":\"s390 parameter ordering for clone is different\",\"includes\":{\"arches\":[\"s390\",\"s390x\"]},\"excludes\":{\"caps\":[\"CAP_SYS_ADMIN\"]}},{\"names\":[\"clone3\"],\"action\":\"SCMP_ACT_ERRNO\",\"errnoRet\":38,\"excludes\":{\"caps\":[\"CAP_SYS_ADMIN\"]}},{\"names\":[\"reboot\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_BOOT\"]}},{\"names\":[\"chroot\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_CHROOT\"]}},{\"names\":[\"delete_module\",\"init_module\",\"finit_module\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_MODULE\"]}},{\"names\":[\"acct\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_PACCT\"]}},{\"names\":[\"kcmp\",\"pidfd_getfd\",\"process_madvise\",\"process_vm_readv\",\"process_vm_writev\",\"ptrace\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_PTRACE\"]}},{\"names\":[\"iopl\",\"ioperm\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_RAWIO\"]}},{\"names\":[\"settimeofday\",\"stime\",\"clock_settime\",\"clock_settime64\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_TIME\"]}},{\"names\":[\"vhangup\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_TTY_CONFIG\"]}},{\"names\":[\"get_mempolicy\",\"mbind\",\"set_mempolicy\",\"set_mempolicy_home_node\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_NICE\"]}},{\"names\":[\"syslog\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYSLOG\"]}},{\"names\":[\"bpf\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_BPF\"]}},{\"names\":[\"perf_event_open\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_PERFMON\"]}},{\"names\":[\"io_uring_enter\",\"io_uring_register\",\"io_uring_setup\"],\"action\":\"SCMP_ACT_ALLOW\"}]}"
+      ]
+    }
+  },
+  {
+    "case_id": "82",
+    "pr": 82,
+    "commit": "95aa405a0003599dbc7fb4dfa47a09e8343239df",
+    "image": "twelve-current-pr82:2026-10-20",
+    "source_sha256": "b91b9491e2a7a8856f8f360bc89f376b6493ae9b9a3907c557836b94f5131438",
+    "shared_hashes": {
+      "seed/feed.db": "ef5f135c16a2277a68ef37f1f1a66e4100f9dbc6743d2ef54dbeb533c4dceb0e",
+      "seed/tokens.json": "b39f1edf8a3545ab5851031d1cee8d2d1192e4b598361e516f4560f6893a939a",
+      "mixed.lua": "eb8d49273c56fe4b558a58bd6c7e65551ec683c53d299e2b3a69e0b71421d701",
+      "test/test.sh": "679e722044fd1f366d85093232e7f2ec2e3398ea312032dd9eb6cbdf8b17306a",
+      "semantic.py": "785f8ce565b469e4f4d702d01a9d868cd7458d64e3f1362c3fb8728560215fbc",
+      "serve.py": "52d8bdd75c0dc2477fc5b2391c797a2832eab5ac61a72d3bbe4dac4cb94bf311",
+      "bench/nginx.conf": "1b4b00789b0d138759bebde391d4cd05a9598dc10a17df3d09eb569512b8f654",
+      "seccomp-io-uring.json": "4baf3b268185f55527933e7df090e85936003674e34b5f5396461fd9d3efeb17",
+      "test/golden/feed.json": "8c9b3d6cb46e650c4786ab9281bc3a72ba7bd75b7926021d2b0c431dd9bd3d68",
+      "test/golden/post-1.json": "8035350dc55714c9a673af9f441ab07d2b269047e1137612f022877b9e8f3652",
+      "test/golden/post-250000.json": "febb2506b9d4a99bc34f1f182c61ced6b3ba3b2533724485c6e5206604a65b71",
+      "test/golden/post-500000.json": "662fe8c7282dee8aab00dab6cdb15e64e953f10a2c1c923e2ea67fab1429a4de"
+    },
+    "image_id": "sha256:64227e803306084617be2a4ebc1c3623260d265f158dd8c009f647558a280135",
+    "fingerprint": "73a5f655af496b9d7c0d9511faec3464114f73e6146573f744c0756cb94a229f",
+    "trial": 2,
+    "mode": "bench",
+    "configuration": {
+      "threads": 2,
+      "connections": 64,
+      "warmup_seconds": 2,
+      "measurement_seconds": 15,
+      "trials": 2
+    },
+    "recorded_at": "2026-10-22T13:35:38Z",
+    "service": {
+      "ready": true,
+      "roots": [
+        13
+      ],
+      "port": 24000,
+      "log": "/tmp/current-pr82-24000.log",
+      "nginx": false,
+      "initial_post_count": 500000,
+      "source_files_verified": 49,
+      "source_sha256": "b91b9491e2a7a8856f8f360bc89f376b6493ae9b9a3907c557836b94f5131438",
+      "start_script": "/suite/sources/pr82/start.sh"
+    },
+    "warmup_output": "Running 2s test @ http://127.0.0.1:24000/feed\n  2 threads and 64 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     5.24ms   17.68ms 132.75ms   94.19%\n    Req/Sec    46.87k    13.03k   67.05k    67.50%\n  Latency Distribution\n     50%  478.00us\n     75%  649.00us\n     90%   11.46ms\n     99%  108.05ms\n  189237 requests in 2.09s, 315.10MB read\nRequests/sec:  90715.21\nTransfer/sec:    151.05MB\n  95% 25.627000ms\n",
+    "warmup_stderr": "",
+    "before": {
+      "monotonic": 49209.45631238,
+      "processes": {
+        "13": {
+          "ppid": 7,
+          "cpu_s": 1.73,
+          "cpu_self_s": 1.73,
+          "cpu_waited_children_s": 0.0,
+          "rss_kib": 42508,
+          "hwm_kib": 42508,
+          "threads": 10
+        }
+      },
+      "cpu_s": 1.73,
+      "cpu_self_s": 1.73,
+      "cpu_waited_children_s": 0.0,
+      "rss_kib": 42508,
+      "hwm_kib": 42508
+    },
+    "output": "Running 15s test @ http://127.0.0.1:24000/feed\n  2 threads and 64 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     1.82ms    4.71ms  46.30ms   91.95%\n    Req/Sec    53.61k     8.45k   67.72k    61.00%\n  Latency Distribution\n     50%  448.00us\n     75%  560.00us\n     90%    2.21ms\n     99%   23.71ms\n  1602512 requests in 15.03s, 2.62GB read\nRequests/sec: 106649.32\nTransfer/sec:    178.88MB\n  95% 13.840000ms\n",
+    "stderr": "",
+    "requests": 1602512,
+    "duration_s": 15.03,
+    "rps": 106649.32,
+    "p50_ms": 0.448,
+    "p95_ms": 13.84,
+    "p99_ms": 23.71,
+    "http_errors": 0,
+    "socket_errors": {
+      "connect": 0,
+      "read": 0,
+      "write": 0,
+      "timeout": 0
+    },
+    "successful_rps": 106649.32,
+    "after": {
+      "monotonic": 49224.595658928,
+      "processes": {
+        "13": {
+          "ppid": 7,
+          "cpu_s": 15.24,
+          "cpu_self_s": 15.24,
+          "cpu_waited_children_s": 0.0,
+          "rss_kib": 49096,
+          "hwm_kib": 49096,
+          "threads": 10
+        }
+      },
+      "cpu_s": 15.24,
+      "cpu_self_s": 15.24,
+      "cpu_waited_children_s": 0.0,
+      "rss_kib": 49096,
+      "hwm_kib": 49096
+    },
+    "final": [
+      {
+        "database_after": {
+          "initial_post_count": 500000,
+          "post_count": 516549,
+          "max_post_id": 516549,
+          "integrity": "ok"
+        }
+      }
+    ],
+    "database_valid": true,
+    "valid_duration": true,
+    "rss_mib": 47.9453125,
+    "cpu_percent": 89.23766925584457,
+    "completed": true,
+    "container_state": {
+      "Status": "running",
+      "Running": true,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 64886,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-10-22T13:35:38.470452969Z",
+      "FinishedAt": "0001-01-01T00:00:00Z"
+    },
+    "container_host_config": {
+      "CpusetCpus": "0",
+      "NanoCpus": 1000000000,
+      "Memory": 2147483648,
+      "MemorySwap": 2147483648,
+      "Ulimits": [
+        {
+          "Name": "nofile",
+          "Hard": 65535,
+          "Soft": 65535
+        }
+      ],
+      "SecurityOpt": [
+        "seccomp={\"defaultAction\":\"SCMP_ACT_ERRNO\",\"defaultErrnoRet\":1,\"archMap\":[{\"architecture\":\"SCMP_ARCH_X86_64\",\"subArchitectures\":[\"SCMP_ARCH_X86\",\"SCMP_ARCH_X32\"]},{\"architecture\":\"SCMP_ARCH_AARCH64\",\"subArchitectures\":[\"SCMP_ARCH_ARM\"]},{\"architecture\":\"SCMP_ARCH_MIPS64\",\"subArchitectures\":[\"SCMP_ARCH_MIPS\",\"SCMP_ARCH_MIPS64N32\"]},{\"architecture\":\"SCMP_ARCH_MIPS64N32\",\"subArchitectures\":[\"SCMP_ARCH_MIPS\",\"SCMP_ARCH_MIPS64\"]},{\"architecture\":\"SCMP_ARCH_MIPSEL64\",\"subArchitectures\":[\"SCMP_ARCH_MIPSEL\",\"SCMP_ARCH_MIPSEL64N32\"]},{\"architecture\":\"SCMP_ARCH_MIPSEL64N32\",\"subArchitectures\":[\"SCMP_ARCH_MIPSEL\",\"SCMP_ARCH_MIPSEL64\"]},{\"architecture\":\"SCMP_ARCH_S390X\",\"subArchitectures\":[\"SCMP_ARCH_S390\"]},{\"architecture\":\"SCMP_ARCH_RISCV64\",\"subArchitectures\":null},{\"architecture\":\"SCMP_ARCH_LOONGARCH64\",\"subArchitectures\":null}],\"syscalls\":[{\"names\":[\"accept\",\"accept4\",\"access\",\"adjtimex\",\"alarm\",\"bind\",\"brk\",\"cachestat\",\"capget\",\"capset\",\"chdir\",\"chmod\",\"chown\",\"chown32\",\"clock_adjtime\",\"clock_adjtime64\",\"clock_getres\",\"clock_getres_time64\",\"clock_gettime\",\"clock_gettime64\",\"clock_nanosleep\",\"clock_nanosleep_time64\",\"close\",\"close_range\",\"connect\",\"copy_file_range\",\"creat\",\"dup\",\"dup2\",\"dup3\",\"epoll_create\",\"epoll_create1\",\"epoll_ctl\",\"epoll_ctl_old\",\"epoll_pwait\",\"epoll_pwait2\",\"epoll_wait\",\"epoll_wait_old\",\"eventfd\",\"eventfd2\",\"execve\",\"execveat\",\"exit\",\"exit_group\",\"faccessat\",\"faccessat2\",\"fadvise64\",\"fadvise64_64\",\"fallocate\",\"fanotify_mark\",\"fchdir\",\"fchmod\",\"fchmodat\",\"fchmodat2\",\"fchown\",\"fchown32\",\"fchownat\",\"fcntl\",\"fcntl64\",\"fdatasync\",\"fgetxattr\",\"flistxattr\",\"flock\",\"fork\",\"fremovexattr\",\"fsetxattr\",\"fstat\",\"fstat64\",\"fstatat64\",\"fstatfs\",\"fstatfs64\",\"fsync\",\"ftruncate\",\"ftruncate64\",\"futex\",\"futex_requeue\",\"futex_time64\",\"futex_wait\",\"futex_waitv\",\"futex_wake\",\"futimesat\",\"getcpu\",\"getcwd\",\"getdents\",\"getdents64\",\"getegid\",\"getegid32\",\"geteuid\",\"geteuid32\",\"getgid\",\"getgid32\",\"getgroups\",\"getgroups32\",\"getitimer\",\"getpeername\",\"getpgid\",\"getpgrp\",\"getpid\",\"getppid\",\"getpriority\",\"getrandom\",\"getresgid\",\"getresgid32\",\"getresuid\",\"getresuid32\",\"getrlimit\",\"get_robust_list\",\"getrusage\",\"getsid\",\"getsockname\",\"getsockopt\",\"get_thread_area\",\"gettid\",\"gettimeofday\",\"getuid\",\"getuid32\",\"getxattr\",\"getxattrat\",\"inotify_add_watch\",\"inotify_init\",\"inotify_init1\",\"inotify_rm_watch\",\"io_cancel\",\"ioctl\",\"io_destroy\",\"io_getevents\",\"io_pgetevents\",\"io_pgetevents_time64\",\"ioprio_get\",\"ioprio_set\",\"io_setup\",\"io_submit\",\"ipc\",\"kill\",\"landlock_add_rule\",\"landlock_create_ruleset\",\"landlock_restrict_self\",\"lchown\",\"lchown32\",\"lgetxattr\",\"link\",\"linkat\",\"listen\",\"listmount\",\"listxattr\",\"listxattrat\",\"llistxattr\",\"_llseek\",\"lremovexattr\",\"lseek\",\"lsetxattr\",\"lstat\",\"lstat64\",\"madvise\",\"map_shadow_stack\",\"membarrier\",\"memfd_create\",\"memfd_secret\",\"mincore\",\"mkdir\",\"mkdirat\",\"mknod\",\"mknodat\",\"mlock\",\"mlock2\",\"mlockall\",\"mmap\",\"mmap2\",\"mprotect\",\"mq_getsetattr\",\"mq_notify\",\"mq_open\",\"mq_timedreceive\",\"mq_timedreceive_time64\",\"mq_timedsend\",\"mq_timedsend_time64\",\"mq_unlink\",\"mremap\",\"mseal\",\"msgctl\",\"msgget\",\"msgrcv\",\"msgsnd\",\"msync\",\"munlock\",\"munlockall\",\"munmap\",\"name_to_handle_at\",\"nanosleep\",\"newfstatat\",\"_newselect\",\"open\",\"openat\",\"openat2\",\"pause\",\"pidfd_open\",\"pidfd_send_signal\",\"pipe\",\"pipe2\",\"pkey_alloc\",\"pkey_free\",\"pkey_mprotect\",\"poll\",\"ppoll\",\"ppoll_time64\",\"prctl\",\"pread64\",\"preadv\",\"preadv2\",\"prlimit64\",\"process_mrelease\",\"pselect6\",\"pselect6_time64\",\"pwrite64\",\"pwritev\",\"pwritev2\",\"read\",\"readahead\",\"readlink\",\"readlinkat\",\"readv\",\"recv\",\"recvfrom\",\"recvmmsg\",\"recvmmsg_time64\",\"recvmsg\",\"remap_file_pages\",\"removexattr\",\"removexattrat\",\"rename\",\"renameat\",\"renameat2\",\"restart_syscall\",\"riscv_hwprobe\",\"rmdir\",\"rseq\",\"rt_sigaction\",\"rt_sigpending\",\"rt_sigprocmask\",\"rt_sigqueueinfo\",\"rt_sigreturn\",\"rt_sigsuspend\",\"rt_sigtimedwait\",\"rt_sigtimedwait_time64\",\"rt_tgsigqueueinfo\",\"sched_getaffinity\",\"sched_getattr\",\"sched_getparam\",\"sched_get_priority_max\",\"sched_get_priority_min\",\"sched_getscheduler\",\"sched_rr_get_interval\",\"sched_rr_get_interval_time64\",\"sched_setaffinity\",\"sched_setattr\",\"sched_setparam\",\"sched_setscheduler\",\"sched_yield\",\"seccomp\",\"select\",\"semctl\",\"semget\",\"semop\",\"semtimedop\",\"semtimedop_time64\",\"send\",\"sendfile\",\"sendfile64\",\"sendmmsg\",\"sendmsg\",\"sendto\",\"setfsgid\",\"setfsgid32\",\"setfsuid\",\"setfsuid32\",\"setgid\",\"setgid32\",\"setgroups\",\"setgroups32\",\"setitimer\",\"setpgid\",\"setpriority\",\"setregid\",\"setregid32\",\"setresgid\",\"setresgid32\",\"setresuid\",\"setresuid32\",\"setreuid\",\"setreuid32\",\"setrlimit\",\"set_robust_list\",\"setsid\",\"setsockopt\",\"set_thread_area\",\"set_tid_address\",\"setuid\",\"setuid32\",\"setxattr\",\"setxattrat\",\"shmat\",\"shmctl\",\"shmdt\",\"shmget\",\"shutdown\",\"sigaltstack\",\"signalfd\",\"signalfd4\",\"sigprocmask\",\"sigreturn\",\"socketcall\",\"socketpair\",\"splice\",\"stat\",\"stat64\",\"statfs\",\"statfs64\",\"statmount\",\"statx\",\"symlink\",\"symlinkat\",\"sync\",\"sync_file_range\",\"syncfs\",\"sysinfo\",\"tee\",\"tgkill\",\"time\",\"timer_create\",\"timer_delete\",\"timer_getoverrun\",\"timer_gettime\",\"timer_gettime64\",\"timer_settime\",\"timer_settime64\",\"timerfd_create\",\"timerfd_gettime\",\"timerfd_gettime64\",\"timerfd_settime\",\"timerfd_settime64\",\"times\",\"tkill\",\"truncate\",\"truncate64\",\"ugetrlimit\",\"umask\",\"uname\",\"unlink\",\"unlinkat\",\"uretprobe\",\"utime\",\"utimensat\",\"utimensat_time64\",\"utimes\",\"vfork\",\"vmsplice\",\"wait4\",\"waitid\",\"waitpid\",\"write\",\"writev\"],\"action\":\"SCMP_ACT_ALLOW\"},{\"names\":[\"process_vm_readv\",\"process_vm_writev\",\"ptrace\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"minKernel\":\"4.8\"}},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":3,\"op\":\"SCMP_CMP_LT\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":7,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":8,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":9,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":10,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":13,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":14,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":15,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":16,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":17,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":18,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":21,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":22,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":24,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":26,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":27,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":28,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":29,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":30,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":31,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":32,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":33,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":35,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":36,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":39,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":41,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":42,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":43,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":44,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":45,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":0,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":8,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":131072,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":131080,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":4294967295,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"sync_file_range2\",\"swapcontext\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"ppc64le\"]}},{\"names\":[\"arm_fadvise64_64\",\"arm_sync_file_range\",\"sync_file_range2\",\"breakpoint\",\"cacheflush\",\"set_tls\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"arm\",\"arm64\"]}},{\"names\":[\"arch_prctl\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"amd64\",\"x32\"]}},{\"names\":[\"modify_ldt\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"amd64\",\"x32\",\"x86\"]}},{\"names\":[\"s390_pci_mmio_read\",\"s390_pci_mmio_write\",\"s390_runtime_instr\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"s390\",\"s390x\"]}},{\"names\":[\"riscv_flush_icache\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"riscv64\"]}},{\"names\":[\"open_by_handle_at\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_DAC_READ_SEARCH\"]}},{\"names\":[\"bpf\",\"clone\",\"clone3\",\"fanotify_init\",\"fsconfig\",\"fsmount\",\"fsopen\",\"fspick\",\"lookup_dcookie\",\"lsm_get_self_attr\",\"lsm_list_modules\",\"lsm_set_self_attr\",\"mount\",\"mount_setattr\",\"move_mount\",\"open_tree\",\"perf_event_open\",\"quotactl\",\"quotactl_fd\",\"setdomainname\",\"sethostname\",\"setns\",\"syslog\",\"umount\",\"umount2\",\"unshare\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_ADMIN\"]}},{\"names\":[\"clone\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":2114060288,\"op\":\"SCMP_CMP_MASKED_EQ\"}],\"excludes\":{\"caps\":[\"CAP_SYS_ADMIN\"],\"arches\":[\"s390\",\"s390x\"]}},{\"names\":[\"clone\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":1,\"value\":2114060288,\"op\":\"SCMP_CMP_MASKED_EQ\"}],\"comment\":\"s390 parameter ordering for clone is different\",\"includes\":{\"arches\":[\"s390\",\"s390x\"]},\"excludes\":{\"caps\":[\"CAP_SYS_ADMIN\"]}},{\"names\":[\"clone3\"],\"action\":\"SCMP_ACT_ERRNO\",\"errnoRet\":38,\"excludes\":{\"caps\":[\"CAP_SYS_ADMIN\"]}},{\"names\":[\"reboot\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_BOOT\"]}},{\"names\":[\"chroot\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_CHROOT\"]}},{\"names\":[\"delete_module\",\"init_module\",\"finit_module\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_MODULE\"]}},{\"names\":[\"acct\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_PACCT\"]}},{\"names\":[\"kcmp\",\"pidfd_getfd\",\"process_madvise\",\"process_vm_readv\",\"process_vm_writev\",\"ptrace\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_PTRACE\"]}},{\"names\":[\"iopl\",\"ioperm\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_RAWIO\"]}},{\"names\":[\"settimeofday\",\"stime\",\"clock_settime\",\"clock_settime64\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_TIME\"]}},{\"names\":[\"vhangup\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_TTY_CONFIG\"]}},{\"names\":[\"get_mempolicy\",\"mbind\",\"set_mempolicy\",\"set_mempolicy_home_node\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_NICE\"]}},{\"names\":[\"syslog\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYSLOG\"]}},{\"names\":[\"bpf\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_BPF\"]}},{\"names\":[\"perf_event_open\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_PERFMON\"]}},{\"names\":[\"io_uring_enter\",\"io_uring_register\",\"io_uring_setup\"],\"action\":\"SCMP_ACT_ALLOW\"}]}"
+      ]
+    }
+  },
+  {
+    "case_id": "previous",
+    "pr": 0,
+    "commit": "09e695a0652cc4654e12d5382b423adf75b7ea7c5ef18978313ddff3cc9d13ed",
+    "image": "twelve-goose-combined-like-bound:2026-10-22",
+    "source_sha256": "09e695a0652cc4654e12d5382b423adf75b7ea7c5ef18978313ddff3cc9d13ed",
+    "shared_hashes": {
+      "seed/feed.db": "ef5f135c16a2277a68ef37f1f1a66e4100f9dbc6743d2ef54dbeb533c4dceb0e",
+      "seed/tokens.json": "b39f1edf8a3545ab5851031d1cee8d2d1192e4b598361e516f4560f6893a939a",
+      "mixed.lua": "eb8d49273c56fe4b558a58bd6c7e65551ec683c53d299e2b3a69e0b71421d701",
+      "test/test.sh": "679e722044fd1f366d85093232e7f2ec2e3398ea312032dd9eb6cbdf8b17306a",
+      "semantic.py": "785f8ce565b469e4f4d702d01a9d868cd7458d64e3f1362c3fb8728560215fbc",
+      "serve.py": "52d8bdd75c0dc2477fc5b2391c797a2832eab5ac61a72d3bbe4dac4cb94bf311",
+      "bench/nginx.conf": "1b4b00789b0d138759bebde391d4cd05a9598dc10a17df3d09eb569512b8f654",
+      "seccomp-io-uring.json": "4baf3b268185f55527933e7df090e85936003674e34b5f5396461fd9d3efeb17",
+      "test/golden/feed.json": "8c9b3d6cb46e650c4786ab9281bc3a72ba7bd75b7926021d2b0c431dd9bd3d68",
+      "test/golden/post-1.json": "8035350dc55714c9a673af9f441ab07d2b269047e1137612f022877b9e8f3652",
+      "test/golden/post-250000.json": "febb2506b9d4a99bc34f1f182c61ced6b3ba3b2533724485c6e5206604a65b71",
+      "test/golden/post-500000.json": "662fe8c7282dee8aab00dab6cdb15e64e953f10a2c1c923e2ea67fab1429a4de"
+    },
+    "image_id": "sha256:d0a2f1e95817cefd26c9563d86849efff6cb2bb5dc0e2ff733ed7656577ef9ea",
+    "fingerprint": "be1731cb171d2e5ea9b0eab8627a5013eaf41397d45dd02d0ba3c90e479dea3d",
+    "trial": 2,
+    "mode": "bench",
+    "configuration": {
+      "threads": 2,
+      "connections": 64,
+      "warmup_seconds": 2,
+      "measurement_seconds": 15,
+      "trials": 2
+    },
+    "recorded_at": "2026-10-22T13:35:56Z",
+    "service": {
+      "ready": true,
+      "roots": [
+        13
+      ],
+      "port": 24000,
+      "log": "/tmp/current-prprevious-24000.log",
+      "nginx": false,
+      "initial_post_count": 500000,
+      "source_files_verified": 19,
+      "source_sha256": "09e695a0652cc4654e12d5382b423adf75b7ea7c5ef18978313ddff3cc9d13ed",
+      "start_script": "/suite/sources/prgoose/start.sh"
+    },
+    "warmup_output": "Running 2s test @ http://127.0.0.1:24000/feed\n  2 threads and 64 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     7.74ms   26.02ms 175.02ms   94.36%\n    Req/Sec    54.95k    15.04k   71.42k    85.00%\n  Latency Distribution\n     50%  397.00us\n     75%  524.00us\n     90%   16.46ms\n     99%  150.12ms\n  220302 requests in 2.08s, 371.90MB read\nRequests/sec: 105906.23\nTransfer/sec:    178.78MB\n  95% 49.976000ms\n",
+    "warmup_stderr": "",
+    "before": {
+      "monotonic": 49227.799562013,
+      "processes": {
+        "13": {
+          "ppid": 7,
+          "cpu_s": 1.71,
+          "cpu_self_s": 1.71,
+          "cpu_waited_children_s": 0.0,
+          "rss_kib": 15620,
+          "hwm_kib": 15620,
+          "threads": 1
+        }
+      },
+      "cpu_s": 1.71,
+      "cpu_self_s": 1.71,
+      "cpu_waited_children_s": 0.0,
+      "rss_kib": 15620,
+      "hwm_kib": 15620
+    },
+    "output": "Running 15s test @ http://127.0.0.1:24000/feed\n  2 threads and 64 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     1.82ms    4.70ms  28.95ms   91.20%\n    Req/Sec    59.24k     7.92k   73.66k    55.67%\n  Latency Distribution\n     50%  380.00us\n     75%  479.00us\n     90%    4.00ms\n     99%   23.09ms\n  1770842 requests in 15.02s, 2.94GB read\nRequests/sec: 117863.58\nTransfer/sec:    200.46MB\n  95% 14.587000ms\n",
+    "stderr": "",
+    "requests": 1770842,
+    "duration_s": 15.02,
+    "rps": 117863.58,
+    "p50_ms": 0.38,
+    "p95_ms": 14.587,
+    "p99_ms": 23.09,
+    "http_errors": 0,
+    "socket_errors": {
+      "connect": 0,
+      "read": 0,
+      "write": 0,
+      "timeout": 0
+    },
+    "successful_rps": 117863.58,
+    "after": {
+      "monotonic": 49242.933221603,
+      "processes": {
+        "13": {
+          "ppid": 7,
+          "cpu_s": 15.11,
+          "cpu_self_s": 15.11,
+          "cpu_waited_children_s": 0.0,
+          "rss_kib": 15620,
+          "hwm_kib": 15620,
+          "threads": 1
+        }
+      },
+      "cpu_s": 15.11,
+      "cpu_self_s": 15.11,
+      "cpu_waited_children_s": 0.0,
+      "rss_kib": 15620,
+      "hwm_kib": 15620
+    },
+    "final": [
+      {
+        "database_after": {
+          "initial_post_count": 500000,
+          "post_count": 518373,
+          "max_post_id": 518373,
+          "integrity": "ok"
+        }
+      }
+    ],
+    "database_valid": true,
+    "valid_duration": true,
+    "rss_mib": 15.25390625,
+    "cpu_percent": 88.54434659581649,
+    "completed": true,
+    "container_state": {
+      "Status": "running",
+      "Running": true,
+      "Paused": false,
+      "Restarting": false,
+      "OOMKilled": false,
+      "Dead": false,
+      "Pid": 65100,
+      "ExitCode": 0,
+      "Error": "",
+      "StartedAt": "2026-10-22T13:35:56.824934713Z",
+      "FinishedAt": "0001-01-01T00:00:00Z"
+    },
+    "container_host_config": {
+      "CpusetCpus": "0",
+      "NanoCpus": 1000000000,
+      "Memory": 2147483648,
+      "MemorySwap": 2147483648,
+      "Ulimits": [
+        {
+          "Name": "nofile",
+          "Hard": 65535,
+          "Soft": 65535
+        }
+      ],
+      "SecurityOpt": [
+        "seccomp={\"defaultAction\":\"SCMP_ACT_ERRNO\",\"defaultErrnoRet\":1,\"archMap\":[{\"architecture\":\"SCMP_ARCH_X86_64\",\"subArchitectures\":[\"SCMP_ARCH_X86\",\"SCMP_ARCH_X32\"]},{\"architecture\":\"SCMP_ARCH_AARCH64\",\"subArchitectures\":[\"SCMP_ARCH_ARM\"]},{\"architecture\":\"SCMP_ARCH_MIPS64\",\"subArchitectures\":[\"SCMP_ARCH_MIPS\",\"SCMP_ARCH_MIPS64N32\"]},{\"architecture\":\"SCMP_ARCH_MIPS64N32\",\"subArchitectures\":[\"SCMP_ARCH_MIPS\",\"SCMP_ARCH_MIPS64\"]},{\"architecture\":\"SCMP_ARCH_MIPSEL64\",\"subArchitectures\":[\"SCMP_ARCH_MIPSEL\",\"SCMP_ARCH_MIPSEL64N32\"]},{\"architecture\":\"SCMP_ARCH_MIPSEL64N32\",\"subArchitectures\":[\"SCMP_ARCH_MIPSEL\",\"SCMP_ARCH_MIPSEL64\"]},{\"architecture\":\"SCMP_ARCH_S390X\",\"subArchitectures\":[\"SCMP_ARCH_S390\"]},{\"architecture\":\"SCMP_ARCH_RISCV64\",\"subArchitectures\":null},{\"architecture\":\"SCMP_ARCH_LOONGARCH64\",\"subArchitectures\":null}],\"syscalls\":[{\"names\":[\"accept\",\"accept4\",\"access\",\"adjtimex\",\"alarm\",\"bind\",\"brk\",\"cachestat\",\"capget\",\"capset\",\"chdir\",\"chmod\",\"chown\",\"chown32\",\"clock_adjtime\",\"clock_adjtime64\",\"clock_getres\",\"clock_getres_time64\",\"clock_gettime\",\"clock_gettime64\",\"clock_nanosleep\",\"clock_nanosleep_time64\",\"close\",\"close_range\",\"connect\",\"copy_file_range\",\"creat\",\"dup\",\"dup2\",\"dup3\",\"epoll_create\",\"epoll_create1\",\"epoll_ctl\",\"epoll_ctl_old\",\"epoll_pwait\",\"epoll_pwait2\",\"epoll_wait\",\"epoll_wait_old\",\"eventfd\",\"eventfd2\",\"execve\",\"execveat\",\"exit\",\"exit_group\",\"faccessat\",\"faccessat2\",\"fadvise64\",\"fadvise64_64\",\"fallocate\",\"fanotify_mark\",\"fchdir\",\"fchmod\",\"fchmodat\",\"fchmodat2\",\"fchown\",\"fchown32\",\"fchownat\",\"fcntl\",\"fcntl64\",\"fdatasync\",\"fgetxattr\",\"flistxattr\",\"flock\",\"fork\",\"fremovexattr\",\"fsetxattr\",\"fstat\",\"fstat64\",\"fstatat64\",\"fstatfs\",\"fstatfs64\",\"fsync\",\"ftruncate\",\"ftruncate64\",\"futex\",\"futex_requeue\",\"futex_time64\",\"futex_wait\",\"futex_waitv\",\"futex_wake\",\"futimesat\",\"getcpu\",\"getcwd\",\"getdents\",\"getdents64\",\"getegid\",\"getegid32\",\"geteuid\",\"geteuid32\",\"getgid\",\"getgid32\",\"getgroups\",\"getgroups32\",\"getitimer\",\"getpeername\",\"getpgid\",\"getpgrp\",\"getpid\",\"getppid\",\"getpriority\",\"getrandom\",\"getresgid\",\"getresgid32\",\"getresuid\",\"getresuid32\",\"getrlimit\",\"get_robust_list\",\"getrusage\",\"getsid\",\"getsockname\",\"getsockopt\",\"get_thread_area\",\"gettid\",\"gettimeofday\",\"getuid\",\"getuid32\",\"getxattr\",\"getxattrat\",\"inotify_add_watch\",\"inotify_init\",\"inotify_init1\",\"inotify_rm_watch\",\"io_cancel\",\"ioctl\",\"io_destroy\",\"io_getevents\",\"io_pgetevents\",\"io_pgetevents_time64\",\"ioprio_get\",\"ioprio_set\",\"io_setup\",\"io_submit\",\"ipc\",\"kill\",\"landlock_add_rule\",\"landlock_create_ruleset\",\"landlock_restrict_self\",\"lchown\",\"lchown32\",\"lgetxattr\",\"link\",\"linkat\",\"listen\",\"listmount\",\"listxattr\",\"listxattrat\",\"llistxattr\",\"_llseek\",\"lremovexattr\",\"lseek\",\"lsetxattr\",\"lstat\",\"lstat64\",\"madvise\",\"map_shadow_stack\",\"membarrier\",\"memfd_create\",\"memfd_secret\",\"mincore\",\"mkdir\",\"mkdirat\",\"mknod\",\"mknodat\",\"mlock\",\"mlock2\",\"mlockall\",\"mmap\",\"mmap2\",\"mprotect\",\"mq_getsetattr\",\"mq_notify\",\"mq_open\",\"mq_timedreceive\",\"mq_timedreceive_time64\",\"mq_timedsend\",\"mq_timedsend_time64\",\"mq_unlink\",\"mremap\",\"mseal\",\"msgctl\",\"msgget\",\"msgrcv\",\"msgsnd\",\"msync\",\"munlock\",\"munlockall\",\"munmap\",\"name_to_handle_at\",\"nanosleep\",\"newfstatat\",\"_newselect\",\"open\",\"openat\",\"openat2\",\"pause\",\"pidfd_open\",\"pidfd_send_signal\",\"pipe\",\"pipe2\",\"pkey_alloc\",\"pkey_free\",\"pkey_mprotect\",\"poll\",\"ppoll\",\"ppoll_time64\",\"prctl\",\"pread64\",\"preadv\",\"preadv2\",\"prlimit64\",\"process_mrelease\",\"pselect6\",\"pselect6_time64\",\"pwrite64\",\"pwritev\",\"pwritev2\",\"read\",\"readahead\",\"readlink\",\"readlinkat\",\"readv\",\"recv\",\"recvfrom\",\"recvmmsg\",\"recvmmsg_time64\",\"recvmsg\",\"remap_file_pages\",\"removexattr\",\"removexattrat\",\"rename\",\"renameat\",\"renameat2\",\"restart_syscall\",\"riscv_hwprobe\",\"rmdir\",\"rseq\",\"rt_sigaction\",\"rt_sigpending\",\"rt_sigprocmask\",\"rt_sigqueueinfo\",\"rt_sigreturn\",\"rt_sigsuspend\",\"rt_sigtimedwait\",\"rt_sigtimedwait_time64\",\"rt_tgsigqueueinfo\",\"sched_getaffinity\",\"sched_getattr\",\"sched_getparam\",\"sched_get_priority_max\",\"sched_get_priority_min\",\"sched_getscheduler\",\"sched_rr_get_interval\",\"sched_rr_get_interval_time64\",\"sched_setaffinity\",\"sched_setattr\",\"sched_setparam\",\"sched_setscheduler\",\"sched_yield\",\"seccomp\",\"select\",\"semctl\",\"semget\",\"semop\",\"semtimedop\",\"semtimedop_time64\",\"send\",\"sendfile\",\"sendfile64\",\"sendmmsg\",\"sendmsg\",\"sendto\",\"setfsgid\",\"setfsgid32\",\"setfsuid\",\"setfsuid32\",\"setgid\",\"setgid32\",\"setgroups\",\"setgroups32\",\"setitimer\",\"setpgid\",\"setpriority\",\"setregid\",\"setregid32\",\"setresgid\",\"setresgid32\",\"setresuid\",\"setresuid32\",\"setreuid\",\"setreuid32\",\"setrlimit\",\"set_robust_list\",\"setsid\",\"setsockopt\",\"set_thread_area\",\"set_tid_address\",\"setuid\",\"setuid32\",\"setxattr\",\"setxattrat\",\"shmat\",\"shmctl\",\"shmdt\",\"shmget\",\"shutdown\",\"sigaltstack\",\"signalfd\",\"signalfd4\",\"sigprocmask\",\"sigreturn\",\"socketcall\",\"socketpair\",\"splice\",\"stat\",\"stat64\",\"statfs\",\"statfs64\",\"statmount\",\"statx\",\"symlink\",\"symlinkat\",\"sync\",\"sync_file_range\",\"syncfs\",\"sysinfo\",\"tee\",\"tgkill\",\"time\",\"timer_create\",\"timer_delete\",\"timer_getoverrun\",\"timer_gettime\",\"timer_gettime64\",\"timer_settime\",\"timer_settime64\",\"timerfd_create\",\"timerfd_gettime\",\"timerfd_gettime64\",\"timerfd_settime\",\"timerfd_settime64\",\"times\",\"tkill\",\"truncate\",\"truncate64\",\"ugetrlimit\",\"umask\",\"uname\",\"unlink\",\"unlinkat\",\"uretprobe\",\"utime\",\"utimensat\",\"utimensat_time64\",\"utimes\",\"vfork\",\"vmsplice\",\"wait4\",\"waitid\",\"waitpid\",\"write\",\"writev\"],\"action\":\"SCMP_ACT_ALLOW\"},{\"names\":[\"process_vm_readv\",\"process_vm_writev\",\"ptrace\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"minKernel\":\"4.8\"}},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":3,\"op\":\"SCMP_CMP_LT\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":7,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":8,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":9,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":10,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":13,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":14,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":15,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":16,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":17,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":18,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":21,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":22,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":24,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":26,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":27,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":28,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":29,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":30,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":31,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":32,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":33,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":35,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":36,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":39,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":41,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":42,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":43,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":44,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":45,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":0,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":8,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":131072,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":131080,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":4294967295,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"sync_file_range2\",\"swapcontext\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"ppc64le\"]}},{\"names\":[\"arm_fadvise64_64\",\"arm_sync_file_range\",\"sync_file_range2\",\"breakpoint\",\"cacheflush\",\"set_tls\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"arm\",\"arm64\"]}},{\"names\":[\"arch_prctl\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"amd64\",\"x32\"]}},{\"names\":[\"modify_ldt\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"amd64\",\"x32\",\"x86\"]}},{\"names\":[\"s390_pci_mmio_read\",\"s390_pci_mmio_write\",\"s390_runtime_instr\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"s390\",\"s390x\"]}},{\"names\":[\"riscv_flush_icache\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"riscv64\"]}},{\"names\":[\"open_by_handle_at\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_DAC_READ_SEARCH\"]}},{\"names\":[\"bpf\",\"clone\",\"clone3\",\"fanotify_init\",\"fsconfig\",\"fsmount\",\"fsopen\",\"fspick\",\"lookup_dcookie\",\"lsm_get_self_attr\",\"lsm_list_modules\",\"lsm_set_self_attr\",\"mount\",\"mount_setattr\",\"move_mount\",\"open_tree\",\"perf_event_open\",\"quotactl\",\"quotactl_fd\",\"setdomainname\",\"sethostname\",\"setns\",\"syslog\",\"umount\",\"umount2\",\"unshare\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_ADMIN\"]}},{\"names\":[\"clone\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":2114060288,\"op\":\"SCMP_CMP_MASKED_EQ\"}],\"excludes\":{\"caps\":[\"CAP_SYS_ADMIN\"],\"arches\":[\"s390\",\"s390x\"]}},{\"names\":[\"clone\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":1,\"value\":2114060288,\"op\":\"SCMP_CMP_MASKED_EQ\"}],\"comment\":\"s390 parameter ordering for clone is different\",\"includes\":{\"arches\":[\"s390\",\"s390x\"]},\"excludes\":{\"caps\":[\"CAP_SYS_ADMIN\"]}},{\"names\":[\"clone3\"],\"action\":\"SCMP_ACT_ERRNO\",\"errnoRet\":38,\"excludes\":{\"caps\":[\"CAP_SYS_ADMIN\"]}},{\"names\":[\"reboot\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_BOOT\"]}},{\"names\":[\"chroot\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_CHROOT\"]}},{\"names\":[\"delete_module\",\"init_module\",\"finit_module\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_MODULE\"]}},{\"names\":[\"acct\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_PACCT\"]}},{\"names\":[\"kcmp\",\"pidfd_getfd\",\"process_madvise\",\"process_vm_readv\",\"process_vm_writev\",\"ptrace\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_PTRACE\"]}},{\"names\":[\"iopl\",\"ioperm\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_RAWIO\"]}},{\"names\":[\"settimeofday\",\"stime\",\"clock_settime\",\"clock_settime64\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_TIME\"]}},{\"names\":[\"vhangup\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_TTY_CONFIG\"]}},{\"names\":[\"get_mempolicy\",\"mbind\",\"set_mempolicy\",\"set_mempolicy_home_node\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_NICE\"]}},{\"names\":[\"syslog\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYSLOG\"]}},{\"names\":[\"bpf\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_BPF\"]}},{\"names\":[\"perf_event_open\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_PERFMON\"]}},{\"names\":[\"io_uring_enter\",\"io_uring_register\",\"io_uring_setup\"],\"action\":\"SCMP_ACT_ALLOW\"}]}"
+      ]
+    }
+  }
+]

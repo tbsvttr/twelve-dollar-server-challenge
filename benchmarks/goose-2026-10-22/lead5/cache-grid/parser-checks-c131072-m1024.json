@@ -1,0 +1,198 @@
+{
+  "purpose": "bounded parser/JSON correctness diagnostics; not throughput or ranking",
+  "image_id": "sha256:23f0b5485116bd1ed2903ef82c19d4bde01a2af469e527d8c905fec44070b1b6",
+  "uid": 1001,
+  "checks": [
+    {
+      "check": "escaped claim names, subject and username",
+      "request_body": "{\"body\":\"escaped claims\"}",
+      "authorization": "Bearer eyJhXHUwMDZjZyI6IkhcdTAwNTMyNTYiLCJ1bmtub3duIjp7ImFycmF5IjpbZmFsc2UsbnVsbCx7fSxbXSwxLC0yLjI1LDNlNCx7ImEiOiJlc2NhcGVkXFx2YWx1ZSJ9XX19.eyJzXHUwMDc1YiI6Ilx1MDAzMVx1MDAzOSIsInVzZXJcdTAwNmVhbWUiOiJlc2NhcGVkIFx1ZDgzZFx1ZGUwMCBcInF1b3RlXCIiLCJleHAiOjE3OTI2NzIzMTMsInVua25vd24iOnsiYXJyYXkiOltmYWxzZSxudWxsLHt9LFtdLDEsLTIuMjUsM2U0LHsiYSI6ImVzY2FwZWRcXHZhbHVlIn1dfX0.BCKiGGkERra4lZZs5gpbIdESwevZiFJEVvQ9NCzpgxU",
+      "expected_status": 201,
+      "expected_body": "{\"post\":{\"id\":500001,\"body\":\"escaped claims\",\"created_at\":\"2026-10-22T11:31:53.565Z\",\"author\":\"escaped 😀 \\\"quote\\\"\",\"like_count\":0}}",
+      "actual_status": 201,
+      "actual_body": "{\"post\":{\"id\":500001,\"body\":\"escaped claims\",\"created_at\":\"2026-10-22T11:31:53.565Z\",\"author\":\"escaped 😀 \\\"quote\\\"\",\"like_count\":0}}",
+      "passed": true
+    },
+    {
+      "check": "unknown nested JWT values are fully parsed",
+      "request_body": "{\"body\":\"nested claims\"}",
+      "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxOSIsInVzZXJuYW1lIjoicGFyc2VyIGF1dGhvciIsImV4cCI6MTc5MjY3MjMxMywiaWdub3JlZCI6eyJhcnJheSI6W2ZhbHNlLG51bGwse30sW10sMSwtMi4yNSwzZTQseyJhIjoiZXNjYXBlZFxcdmFsdWUifV19fQ.HUnIJymkIbSltW8dgGN2ST32DKSRrnvC8JnyS8NR1xk",
+      "expected_status": 201,
+      "expected_body": "{\"post\":{\"id\":500002,\"body\":\"nested claims\",\"created_at\":\"2026-10-22T11:31:53.567Z\",\"author\":\"parser author\",\"like_count\":0}}",
+      "actual_status": 201,
+      "actual_body": "{\"post\":{\"id\":500002,\"body\":\"nested claims\",\"created_at\":\"2026-10-22T11:31:53.567Z\",\"author\":\"parser author\",\"like_count\":0}}",
+      "passed": true
+    },
+    {
+      "check": "malformed unknown JWT value is rejected",
+      "request_body": "{\"body\":\"must not insert\"}",
+      "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxOSIsInVzZXJuYW1lIjoicGFyc2VyIGF1dGhvciIsImV4cCI6MTc5MjY3MjMxMywiaWdub3JlZCI6WzEsXX0.dQqWKtADs7xu8p1xj4EkDVdaFx-ctsTWVXfgYef8Ock",
+      "expected_status": 401,
+      "expected_body": "{\"error\":\"invalid or expired token\"}",
+      "actual_status": 401,
+      "actual_body": "{\"error\":\"invalid or expired token\"}",
+      "passed": true
+    },
+    {
+      "check": "trailing JWT garbage is rejected",
+      "request_body": "{\"body\":\"must not insert\"}",
+      "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxOSIsInVzZXJuYW1lIjoicGFyc2VyIGF1dGhvciIsImV4cCI6MTc5MjY3MjMxM30gdHJ1ZQ.Ei89S9dy3FWMcK8CMIzLMJVR5uuf5E6lbdtWIxe7tw8",
+      "expected_status": 401,
+      "expected_body": "{\"error\":\"invalid or expired token\"}",
+      "actual_status": 401,
+      "actual_body": "{\"error\":\"invalid or expired token\"}",
+      "passed": true
+    },
+    {
+      "check": "malformed unknown header field is rejected",
+      "request_body": "{\"body\":\"must not insert\"}",
+      "authorization": "Bearer eyJhbGciOiJIUzI1NiIsImlnbm9yZWQiOlsxLF19.eyJzdWIiOiIxOSIsInVzZXJuYW1lIjoicGFyc2VyIGF1dGhvciIsImV4cCI6MTc5MjY3MjMxM30.Wyxdb8UqZBdpLzu7XyEUPoq-kHe3dKg9yncU_g70KfQ",
+      "expected_status": 401,
+      "expected_body": "{\"error\":\"invalid or expired token\"}",
+      "actual_status": 401,
+      "actual_body": "{\"error\":\"invalid or expired token\"}",
+      "passed": true
+    },
+    {
+      "check": "escaped request member name and value",
+      "request_body": "{\"bo\\u0064y\":\"hello \\ud83d\\ude00 \\\"quote\\\"\"}",
+      "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxOSIsInVzZXJuYW1lIjoicGFyc2VyIGF1dGhvciIsImV4cCI6MTc5MjY3MjMxM30.uBG-gHD0_84JiQH-e9xm-yPynHO1SIf1oK9YPs6Oz0k",
+      "expected_status": 201,
+      "expected_body": "{\"post\":{\"id\":500003,\"body\":\"hello 😀 \\\"quote\\\"\",\"created_at\":\"2026-10-22T11:31:53.568Z\",\"author\":\"parser author\",\"like_count\":0}}",
+      "actual_status": 201,
+      "actual_body": "{\"post\":{\"id\":500003,\"body\":\"hello 😀 \\\"quote\\\"\",\"created_at\":\"2026-10-22T11:31:53.568Z\",\"author\":\"parser author\",\"like_count\":0}}",
+      "passed": true
+    },
+    {
+      "check": "valid nested request fields are skipped",
+      "request_body": "{\"ignored\":{\"array\":[false,null,{},[],1,-2.25,3e4,{\"a\":\"escaped\\\\value\"}]},\"body\":\"nested body\"}",
+      "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxOSIsInVzZXJuYW1lIjoicGFyc2VyIGF1dGhvciIsImV4cCI6MTc5MjY3MjMxM30.uBG-gHD0_84JiQH-e9xm-yPynHO1SIf1oK9YPs6Oz0k",
+      "expected_status": 201,
+      "expected_body": "{\"post\":{\"id\":500004,\"body\":\"nested body\",\"created_at\":\"2026-10-22T11:31:53.568Z\",\"author\":\"parser author\",\"like_count\":0}}",
+      "actual_status": 201,
+      "actual_body": "{\"post\":{\"id\":500004,\"body\":\"nested body\",\"created_at\":\"2026-10-22T11:31:53.568Z\",\"author\":\"parser author\",\"like_count\":0}}",
+      "passed": true
+    },
+    {
+      "check": "malformed nested request fields are rejected",
+      "request_body": "{\"body\":\"must not insert\",\"ignored\":[1,]}",
+      "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxOSIsInVzZXJuYW1lIjoicGFyc2VyIGF1dGhvciIsImV4cCI6MTc5MjY3MjMxM30.uBG-gHD0_84JiQH-e9xm-yPynHO1SIf1oK9YPs6Oz0k",
+      "expected_status": 400,
+      "expected_body": "{\"error\":\"malformed JSON body\"}",
+      "actual_status": 400,
+      "actual_body": "{\"error\":\"malformed JSON body\"}",
+      "passed": true
+    },
+    {
+      "check": "trailing request garbage is rejected",
+      "request_body": "{\"body\":\"must not insert\"} false",
+      "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxOSIsInVzZXJuYW1lIjoicGFyc2VyIGF1dGhvciIsImV4cCI6MTc5MjY3MjMxM30.uBG-gHD0_84JiQH-e9xm-yPynHO1SIf1oK9YPs6Oz0k",
+      "expected_status": 400,
+      "expected_body": "{\"error\":\"malformed JSON body\"}",
+      "actual_status": 400,
+      "actual_body": "{\"error\":\"malformed JSON body\"}",
+      "passed": true
+    },
+    {
+      "check": "unescaped control character is rejected",
+      "request_body": "{\"body\":\"bad\u0001string\"}",
+      "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxOSIsInVzZXJuYW1lIjoicGFyc2VyIGF1dGhvciIsImV4cCI6MTc5MjY3MjMxM30.uBG-gHD0_84JiQH-e9xm-yPynHO1SIf1oK9YPs6Oz0k",
+      "expected_status": 400,
+      "expected_body": "{\"error\":\"malformed JSON body\"}",
+      "actual_status": 400,
+      "actual_body": "{\"error\":\"malformed JSON body\"}",
+      "passed": true
+    },
+    {
+      "check": "valid non-object request has no body: null",
+      "request_body": "null",
+      "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxOSIsInVzZXJuYW1lIjoicGFyc2VyIGF1dGhvciIsImV4cCI6MTc5MjY3MjMxM30.uBG-gHD0_84JiQH-e9xm-yPynHO1SIf1oK9YPs6Oz0k",
+      "expected_status": 400,
+      "expected_body": "{\"error\":\"body is required\"}",
+      "actual_status": 400,
+      "actual_body": "{\"error\":\"body is required\"}",
+      "passed": true
+    },
+    {
+      "check": "valid non-object request has no body: true",
+      "request_body": "true",
+      "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxOSIsInVzZXJuYW1lIjoicGFyc2VyIGF1dGhvciIsImV4cCI6MTc5MjY3MjMxM30.uBG-gHD0_84JiQH-e9xm-yPynHO1SIf1oK9YPs6Oz0k",
+      "expected_status": 400,
+      "expected_body": "{\"error\":\"body is required\"}",
+      "actual_status": 400,
+      "actual_body": "{\"error\":\"body is required\"}",
+      "passed": true
+    },
+    {
+      "check": "valid non-object request has no body: [1,\"x\",{}]",
+      "request_body": "[1,\"x\",{}]",
+      "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxOSIsInVzZXJuYW1lIjoicGFyc2VyIGF1dGhvciIsImV4cCI6MTc5MjY3MjMxM30.uBG-gHD0_84JiQH-e9xm-yPynHO1SIf1oK9YPs6Oz0k",
+      "expected_status": 400,
+      "expected_body": "{\"error\":\"body is required\"}",
+      "actual_status": 400,
+      "actual_body": "{\"error\":\"body is required\"}",
+      "passed": true
+    },
+    {
+      "check": "every JSON control escape round-trips",
+      "request_body": "{\"body\":\"controls:\\u0000\\u0001\\u0002\\u0003\\u0004\\u0005\\u0006\\u0007\\b\\t\\n\\u000b\\f\\r\\u000e\\u000f\\u0010\\u0011\\u0012\\u0013\\u0014\\u0015\\u0016\\u0017\\u0018\\u0019\\u001a\\u001b\\u001c\\u001d\\u001e\\u001f:end\"}",
+      "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxOSIsInVzZXJuYW1lIjoicGFyc2VyIGF1dGhvciIsImV4cCI6MTc5MjY3MjMxM30.uBG-gHD0_84JiQH-e9xm-yPynHO1SIf1oK9YPs6Oz0k",
+      "expected_status": 201,
+      "expected_body": "{\"post\":{\"id\":500005,\"body\":\"controls:\\u0000\\u0001\\u0002\\u0003\\u0004\\u0005\\u0006\\u0007\\b\\t\\n\\u000b\\f\\r\\u000e\\u000f\\u0010\\u0011\\u0012\\u0013\\u0014\\u0015\\u0016\\u0017\\u0018\\u0019\\u001a\\u001b\\u001c\\u001d\\u001e\\u001f:end\",\"created_at\":\"2026-10-22T11:31:53.569Z\",\"author\":\"parser author\",\"like_count\":0}}",
+      "actual_status": 201,
+      "actual_body": "{\"post\":{\"id\":500005,\"body\":\"controls:\\u0000\\u0001\\u0002\\u0003\\u0004\\u0005\\u0006\\u0007\\b\\t\\n\\u000b\\f\\r\\u000e\\u000f\\u0010\\u0011\\u0012\\u0013\\u0014\\u0015\\u0016\\u0017\\u0018\\u0019\\u001a\\u001b\\u001c\\u001d\\u001e\\u001f:end\",\"created_at\":\"2026-10-22T11:31:53.569Z\",\"author\":\"parser author\",\"like_count\":0}}",
+      "passed": true
+    },
+    {
+      "check": "JSON escapes cross SIMD boundary 15",
+      "request_body": "{\"body\":\"aaaaaaaaaaaaaaa\\\"\\\\\\né😀zzzzzzzzzzzzzzzzzz\"}",
+      "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxOSIsInVzZXJuYW1lIjoicGFyc2VyIGF1dGhvciIsImV4cCI6MTc5MjY3MjMxM30.uBG-gHD0_84JiQH-e9xm-yPynHO1SIf1oK9YPs6Oz0k",
+      "expected_status": 201,
+      "expected_body": "{\"post\":{\"id\":500006,\"body\":\"aaaaaaaaaaaaaaa\\\"\\\\\\né😀zzzzzzzzzzzzzzzzzz\",\"created_at\":\"2026-10-22T11:31:53.569Z\",\"author\":\"parser author\",\"like_count\":0}}",
+      "actual_status": 201,
+      "actual_body": "{\"post\":{\"id\":500006,\"body\":\"aaaaaaaaaaaaaaa\\\"\\\\\\né😀zzzzzzzzzzzzzzzzzz\",\"created_at\":\"2026-10-22T11:31:53.569Z\",\"author\":\"parser author\",\"like_count\":0}}",
+      "passed": true
+    },
+    {
+      "check": "JSON escapes cross SIMD boundary 16",
+      "request_body": "{\"body\":\"aaaaaaaaaaaaaaaa\\\"\\\\\\né😀zzzzzzzzzzzzzzzzz\"}",
+      "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxOSIsInVzZXJuYW1lIjoicGFyc2VyIGF1dGhvciIsImV4cCI6MTc5MjY3MjMxM30.uBG-gHD0_84JiQH-e9xm-yPynHO1SIf1oK9YPs6Oz0k",
+      "expected_status": 201,
+      "expected_body": "{\"post\":{\"id\":500007,\"body\":\"aaaaaaaaaaaaaaaa\\\"\\\\\\né😀zzzzzzzzzzzzzzzzz\",\"created_at\":\"2026-10-22T11:31:53.569Z\",\"author\":\"parser author\",\"like_count\":0}}",
+      "actual_status": 201,
+      "actual_body": "{\"post\":{\"id\":500007,\"body\":\"aaaaaaaaaaaaaaaa\\\"\\\\\\né😀zzzzzzzzzzzzzzzzz\",\"created_at\":\"2026-10-22T11:31:53.569Z\",\"author\":\"parser author\",\"like_count\":0}}",
+      "passed": true
+    },
+    {
+      "check": "JSON escapes cross SIMD boundary 31",
+      "request_body": "{\"body\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\\\"\\\\\\né😀zz\"}",
+      "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxOSIsInVzZXJuYW1lIjoicGFyc2VyIGF1dGhvciIsImV4cCI6MTc5MjY3MjMxM30.uBG-gHD0_84JiQH-e9xm-yPynHO1SIf1oK9YPs6Oz0k",
+      "expected_status": 201,
+      "expected_body": "{\"post\":{\"id\":500008,\"body\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\\\"\\\\\\né😀zz\",\"created_at\":\"2026-10-22T11:31:53.570Z\",\"author\":\"parser author\",\"like_count\":0}}",
+      "actual_status": 201,
+      "actual_body": "{\"post\":{\"id\":500008,\"body\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\\\"\\\\\\né😀zz\",\"created_at\":\"2026-10-22T11:31:53.570Z\",\"author\":\"parser author\",\"like_count\":0}}",
+      "passed": true
+    },
+    {
+      "check": "JSON escapes cross SIMD boundary 32",
+      "request_body": "{\"body\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\\\"\\\\\\né😀z\"}",
+      "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxOSIsInVzZXJuYW1lIjoicGFyc2VyIGF1dGhvciIsImV4cCI6MTc5MjY3MjMxM30.uBG-gHD0_84JiQH-e9xm-yPynHO1SIf1oK9YPs6Oz0k",
+      "expected_status": 201,
+      "expected_body": "{\"post\":{\"id\":500009,\"body\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\\\"\\\\\\né😀z\",\"created_at\":\"2026-10-22T11:31:53.570Z\",\"author\":\"parser author\",\"like_count\":0}}",
+      "actual_status": 201,
+      "actual_body": "{\"post\":{\"id\":500009,\"body\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\\\"\\\\\\né😀z\",\"created_at\":\"2026-10-22T11:31:53.570Z\",\"author\":\"parser author\",\"like_count\":0}}",
+      "passed": true
+    }
+  ],
+  "app_goose_sha256": "1b9d5eaacf03b58be58818197707ac2269e135a4a010bfeb90cc3bbcc4d00509",
+  "server_log": "SQLite memory: cache_kib=131072 mmap_mib=1024\nGoose native transport: epoll\nGoose challenge server listening on 127.0.0.1:24118\n",
+  "passed": 18,
+  "failed": 0,
+  "passed_all": true,
+  "case_id": "c131072-m1024",
+  "runtime_backend_expected": "epoll",
+  "runtime_backend_verified": true,
+  "source_app_verified": true,
+  "diagnostic_exit_code": 0,
+  "diagnostic_stderr": ""
+}

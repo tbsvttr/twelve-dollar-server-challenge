@@ -1,0 +1,22 @@
+{
+  "state": {
+    "Status": "exited",
+    "Running": false,
+    "Paused": false,
+    "Restarting": false,
+    "OOMKilled": false,
+    "Dead": false,
+    "Pid": 0,
+    "ExitCode": 0,
+    "Error": "",
+    "StartedAt": "2026-10-22T13:29:26.652534255Z",
+    "FinishedAt": "2026-10-22T13:30:11.037923512Z"
+  },
+  "host_config": {
+    "NanoCpus": 1000000000,
+    "Memory": 2147483648,
+    "MemorySwap": 2147483648,
+    "CpusetCpus": ""
+  },
+  "image_id": "sha256:77fb78a49e1720b00ac8bde1dc6e880de48c9fafd9c47508c8ea749037c1ad3f"
+}

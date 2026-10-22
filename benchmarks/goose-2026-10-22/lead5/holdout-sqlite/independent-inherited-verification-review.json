@@ -1,0 +1,72 @@
+{
+  "purpose": "Independent STATIC review of exact inherited holdout correctness evidence before candidate selection; no test reexecution",
+  "recorded_at": "2026-10-22T12:08:00.739900+00:00",
+  "cases": [
+    {
+      "case_id": "goose",
+      "source_batch": "combined-sqlite",
+      "source_sha256": "27a404880d6357dd853a6731d96c034de59fcb535b5e5b6953cbe04d5ebb203e",
+      "image_id": "sha256:2797d68fbf424e42b23cfbbbc243b6b026e7dcc4f9ac7748ab0fb883a143cf74",
+      "binary_sha256": "d45e5efb4abbe17326d49a7b5f236147a1ec5b5477d774b3ddf80f877314367b",
+      "fingerprint": "49f5f2c92f64eb1bda10021761bbd6c11022dc91703bbd51a073929173bf3720",
+      "preserved_record_sha256": "514164f5cd5fea49d5d58e8d2ab6c04da40270232d6524a3ba6e53af1d7265ca",
+      "raw_log_sha256": "982860ed60dea81991d30534583d51c88c12f9040592c7bcc6244e410ec1203b",
+      "source_file_count": 19
+    },
+    {
+      "case_id": "82",
+      "source_batch": "combined-sqlite",
+      "source_sha256": "b91b9491e2a7a8856f8f360bc89f376b6493ae9b9a3907c557836b94f5131438",
+      "image_id": "sha256:64227e803306084617be2a4ebc1c3623260d265f158dd8c009f647558a280135",
+      "binary_sha256": "61d48f1be2feb858a14b1617cf3221bebf68df6caaac3541116e0dfbb7562026",
+      "fingerprint": "73a5f655af496b9d7c0d9511faec3464114f73e6146573f744c0756cb94a229f",
+      "preserved_record_sha256": "dba78a855113358c89f44bd4cc5c3c598be25aec8dfb6ec6a47b1edad5393e5e",
+      "raw_log_sha256": "d7d5865aebea3afa694b77ad45ba5c622e951f360db143be6189201a5f970dfa",
+      "source_file_count": 49
+    },
+    {
+      "case_id": "baseline",
+      "source_batch": "isolated-screen",
+      "source_sha256": "73148f5d49e07fc62289bf582e261b8df0e1ef51d478d6fb9d44a68fec87b88a",
+      "image_id": "sha256:a69064953b766ec5c800389b8e17a7d184f73aa8dd46cd4aa2048955ee86eb0f",
+      "binary_sha256": "f0b086e53343263381c55a9046dbd65f400c4ec5ebbfc872c5d682d20a5679ab",
+      "fingerprint": "476db10ba06ac1056267571246e0a55195b3d7eaf9f39a7595dd1fe388013384",
+      "preserved_record_sha256": "b91d76e3f089827db97b590b93853c265fc8dc717241cd0fb0e65b961a74d6d7",
+      "raw_log_sha256": "47aa5a640e15fa507f54abb9fd4c9eaa8bdee67c7182c6b604fd436c7866f7b0",
+      "source_file_count": 17
+    }
+  ],
+  "shared_files_verified": 12,
+  "previous_records_preserved_exactly": true,
+  "source_inventories_and_image_binary_proofs_match_origin": true,
+  "official42_semantic_integrity_pass_each": true,
+  "candidate43supplemental_proofs_copied_byte_exact": true,
+  "origin_metadata_sha256": "753255e92da268779b51c70fadea623dc638a707ed557d8ab820163e7e411a32",
+  "verification_sha256": "a9c7ddf2831aa6f041b884d8e6fca69f71e0cc285ea6010dbe723693c1914370",
+  "preflight_sha256": "73a2ff8c0dbbad67928f382b33347df510b2968153f3ae65319fe6c3d8ef3a5e",
+  "preflight_issues": [
+    "environment shared hashes differ",
+    "environment resource differs: server_cpus",
+    "environment resource differs: server_cpu_quota",
+    "environment resource differs: server_memory",
+    "environment resource differs: server_memory_swap",
+    "environment resource differs: load_cpus",
+    "environment resource differs: load_cpu_quota",
+    "environment resource differs: load_memory",
+    "environment resource differs: nofile",
+    "unrecognized load-generator image",
+    "pre-holdout candidate selection missing or differs",
+    "pre-holdout selection differs: manifest_sha256",
+    "pre-holdout selection differs: build_status_sha256",
+    "pre-holdout selection differs: protocol_sha256",
+    "candidate selection not recorded before all throughput attempts"
+  ],
+  "preflight_issues_only_expected_missing_environment_and_selection": true,
+  "build_metadata_note": "Goose holdout build record omits redundant backend/compiler_commit/substitutions wrapper fields present in the source batch. Complete immutable proof, image, binary, commit, exit status and source inventories are unchanged. Manifest and proof retain compiler/backend identities.",
+  "blocking_findings": [],
+  "limitations": [
+    "Inherited correctness applies to these exact source/image/binary/fixture identities and preserves original timestamps; it is not a newly executed correctness run.",
+    "No holdout measurement occurred in the reviewed preflight. Missing runtime environment/selection and unmet performance gates are expected at this preparation stage; those gates must be satisfied by the declared holdout."
+  ],
+  "passed_all": true
+}

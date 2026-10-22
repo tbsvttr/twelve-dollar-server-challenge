@@ -1,0 +1,56 @@
+{
+  "purpose": "Independent static review of selected combined-like-bound source/docs before live copy and dedicatedCPUholdout; no tests/builds/loads run",
+  "recorded_at": "2026-10-22T12:41:08.558869+00:00",
+  "source_sha256": "09e695a0652cc4654e12d5382b423adf75b7ea7c5ef18978313ddff3cc9d13ed",
+  "image_id": "sha256:d0a2f1e95817cefd26c9563d86849efff6cb2bb5dc0e2ff733ed7656577ef9ea",
+  "binary_sha256": "309f1138b9c5d6b404670a8c0eaf1d42c2f96d4fc7e30d7a89f5bff326a5af2e",
+  "source_file_count": 19,
+  "checks": [
+    {
+      "area": "source identity and scope",
+      "passed": true,
+      "finding": "Exact19source files match selected09e695...snapshot andd0a2f1e...imageproof. Onlyapp.goose differs from reviewedoldcombined; finalsource remains completely copyable and contains no unified/trainer-v2 changes."
+    },
+    {
+      "area": "default build semantics",
+      "passed": true,
+      "finding": "Unchangedbuild.sh normal path freshly instruments SQLite3.53.4 with pinned copiedtrain_sqlite.c, rebuilds the same nativeobject with feedback, then freshly instruments/trains/optimizes fourapp/native units withLTO. No GOOSE_SQLITE_PGO_MODE appdefault or unified5unittraining occurs in thisselectedvariant."
+    },
+    {
+      "area": "accurate README and attribution",
+      "passed": true,
+      "finding": "README accurately says SQLite/application receive separatePGO, app/native receiveLTO, app trainer sends realHTTPsyntheticdense/sparse/empty requests, and GOOSE_APP_PGO=0 disablesappPGO. TRAINER-NOTICE correctly describes the copiedlegacySQLtrainer actually used by this defaultbuild and retains its MITlicense. No stale unifiedbuild/large-trainer claims appear."
+    },
+    {
+      "area": "safe build-only profile helper",
+      "passed": true,
+      "finding": "Exactapprovedhelper9187d9... uses blockedSIGUSR1 plus atomically unmaskedepoll_pwait to dump on mainthread outside signalcontext. Productionlink omits helper; immutableproof confirms nohelper/gcovdump/interposer. Bothtrainers use disposable independent syntheticdata and read nochallengefixtures."
+    },
+    {
+      "area": "live likes-bound correctness",
+      "passed": true,
+      "finding": "App46494... changes only livefeed likes query to indexedlowerbound/ascendingorder andGoose stops above actualselectedmaximum before slotaccess. Omittedslots, currenttimestamp/idordering, sparsefallback andstatementreset staycorrect;43API+9boundarychecks already passed exactbinary."
+    },
+    {
+      "area": "runtime policy and durability",
+      "passed": true,
+      "finding": "Goose still owns all applicationrouting/auth/error/JSON/SQL/rowordering logic. Nativehelpers remaingeneric; noresult/JWT/rowcache, seedIDassumption, benchmarkrequestdetector or precomputedanswer is introduced. WAL/NORMAL/foreignkeys/checkpoint remain, andtransactioncommit still precedesnetworkflush."
+    },
+    {
+      "area": "configuration and lifetime",
+      "passed": true,
+      "finding": "README8MiBpagecache/mmap0defaults andbounds matchdb.c. epoll remainsdefault; callbackborrowedRX/arena initialization discipline, stablecopiedTX, fragmentation/pipelining andmonotonicsocketactivity are unchanged from reviewedtransport."
+    },
+    {
+      "area": "measured image versus normal rebuild",
+      "passed": true,
+      "finding": "Selectedimage intentionally reusedverifiedSQLiteobject2c566... and freshlyretrainedappPGO; proof names this experiment reuse honestly. Defaultsourcebuild instead generatesfreshSQLitefeedback. Separatefullnormalreproduction is an additional reproducibility check and must retain its ownbinary/profiles if bytes differ; it cannot silentlyreplace the frozenselectedbenchmarkidentity."
+    }
+  ],
+  "blocking_findings": [],
+  "passed_all": true,
+  "limitations": [
+    "SharedCPUselection suggests thiscandidate is strongest; it doesnotestablish>=5%dedicatedCPUlead. Holdoutmust freeze exactsource/image/binary andpreserveallattempts under existingprotocol.",
+    "The selectedimage used explicitverifiedSQLiteobjectreuse. The independently requested normalbuild should be reported separately; freshPGO may produce differentbinary bytes withoutsourcebehaviorchanges."
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "protected_inputs_sha256": {
+    "overall-results-publication.json": "1324ff5928e25be930569eec0e2a5150b98f4f6cc2fea8156a4a5a08ece7d82d",
+    "overall-results.json": "de0631997380c2ab6737639b50c8fc54a6ead96c965ce6cafcf7308da459fb7a",
+    "overall-results.csv": "21cdc4de3d56530d69e58587abe3c2af87f85509f1c0c1c3852d9fa3fb302135",
+    "overall-results-comment.md": "342b67d92e1f0a52c8aae455b9a9cbeed87f70c9b9a2b6af4f5233b1f0877ea0",
+    "overall-results-code.json": "c6d4e2b4bcc2036327973ca1039ac8d52ce923b4600f2d187ce15800b4f16285",
+    "overall-results-code.csv": "241d180c7a0094b7e9756ce01235278a8c19bbfeecd63d8120ee80b32c8f0dbb",
+    "overall-results-score.json": "741a400d9b38c6e13bde14d5e30d8377e4402ba0c3cb049576d9932bbc5b80e5",
+    "overall-results-table.csv": "3e49afdd6880ec9a7ddf844bc3808444172b614ad1b3bfccf1b810f2c7cffe26",
+    "fixes-2026-10-22/summary.json": "44746123e12340a6abb2674838b59d9c14cb760a763120d4ba0d6bbe141b4933",
+    "fixes-2026-10-22/comparison.csv": "40a403cbeb28fff6d172f02caf61e8acff033fabe525fd5f7672d3c7ec4446fc",
+    "fixes-2026-10-22/report.md": "d52dbd7f095121f68198d8961df38253e08a666792e8c6777f1bd1b3f4e2cc58",
+    "fixes-2026-10-22/publication/issue-comment.md": "9d353d7c4cd8a5b0e7f46761ccd9c9e08d35180f1929191a98995dc996f17560",
+    "fixes-2026-10-22/publication/issue-comment-full.md": "9d353d7c4cd8a5b0e7f46761ccd9c9e08d35180f1929191a98995dc996f17560",
+    "fixes-2026-10-22/publication/publication-record.json": "8aa4f2fb39b01b6caa74389e1a2987badd7007ae224aa2b4d40fd759968a9366",
+    "fixes-2026-10-22/publication/comment-coverage-audit.json": "f2fc398b61f09209ba8464f32a502b904bd50e62862417f2fa6a9431467ce884"
+  },
+  "published_issue_comment_id": 6292218419,
+  "published_issue_comment_url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/issues/7#issuecomment-6292218419",
+  "prior_comment_body_sha256": "9d353d7c4cd8a5b0e7f46761ccd9c9e08d35180f1929191a98995dc996f17560",
+  "historical_current_rows": 119,
+  "historical_ranked_rows": 98,
+  "historical_diagnostic_rows": 7,
+  "historical_unmeasured_rows": 14,
+  "historical_measured_revisions_inline": 2,
+  "new_submission_rows": 1,
+  "new_control_reference_rows": 2,
+  "published_inputs_unchanged": true,
+  "external_writes_performed": false,
+  "guidance": "Root should read the current remote comment before an authorized normal-gh update, preserve every old row/history, and append this separately labeled batch. Do not run the old fixed-eight-target combiner to add Goose or recalculate the historical weighted cohort."
+}

@@ -1,0 +1,21 @@
+{
+  "status": "AST equivalence passed after only two explicit label-node normalizations",
+  "old_source_sha256": "2d478532f1390f092abb6785ceb43798cfd6369f559e867f26dc05128663a493",
+  "new_source_sha256": "333f9ae3364189cd880ed37f7e491773ffed92be3e2d516ca5eac27aae9d16a4",
+  "changed_files": [
+    "bench/train_app.py"
+  ],
+  "actual_feedback_trainer_sha256": "53ba1822774e973253a89dc1bfa32d7948a6a900c5585a3005b634d87f2d92f7",
+  "final_source_trainer_sha256": "fd55841b9ded6df79c0b41d26a81acee1752dea68c1c026f3706d3c4b641bf51",
+  "allowed_normalized_nodes": [
+    "module body[0] docstring",
+    "single dict keyword trainer_variant constant"
+  ],
+  "normalized_ast_sha256": "7fc37283ded82d170d9f604b315de16d6d506a335d95c77e414a02cd350f71ca",
+  "original_trainer_variant": "staged-v2-large-fixture-live-feed-targets",
+  "final_source_trainer_variant": "v2-large-fixture-live-feed-targets",
+  "training_metadata_file": "../unified-like-trainer-v2/unified-pgo-training.json",
+  "training_metadata_sha256": "4cc20ffea44b22189ecd261afc33d7430453f410ac0e245d09a572eba7db1868",
+  "training_metadata_preserved_byte_identical": true,
+  "new_feedback_generated": false
+}

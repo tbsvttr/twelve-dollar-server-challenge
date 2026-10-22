@@ -1,0 +1,176 @@
+{
+  "source_files_verified": 19,
+  "source_snapshot_sha256": "09e695a0652cc4654e12d5382b423adf75b7ea7c5ef18978313ddff3cc9d13ed",
+  "source_hashes": {
+    ".gitignore": "1ee00c3768b764a999544de814cafa138aeca02bf295873337081540152d4f06",
+    "README.md": "ee538237baead76cd3508e23b8a0c2cf309131de798661b1373facd0704f1e37",
+    "app.build": "0752b8f45d545518a8f9ad05a7e90f03cfb49315cb6bea4e2fe83d7ab6baa9d6",
+    "app.goose": "46494e94c2c6d56ea209f16f1338792b3c540b2c0647c3cda4ecd1bf34d9eb98",
+    "bench/TRAINER-LICENSE": "1c809f52dd742570746a8ac00694ad4ddd9229e12accc7d5c598075861b478a0",
+    "bench/TRAINER-NOTICE.md": "e674c245d3e2f21f271ed644b04b30981cc342de1dc0010af8a09b2dd7dfd62e",
+    "bench/app_pgo_exit.c": "9187d9d0dedbdcf3e6665b9ae60a900259b8af0f965db75baea08af0cccc7e41",
+    "bench/train_app.py": "5e618377cda9bf3bfe7d50e227113eeb995bddc90fcc7fcb59f981186171b06e",
+    "bench/train_sqlite.c": "dd7d056bf259e587e8a21b902bb5469b4ea75b41a511c00d328eacb019a48967",
+    "build.sh": "af9a8429b29c49d771092f888438478d6dd21b395248c2fa101c52ba81bb4e30",
+    "db.c": "43213a121ce787c87a9253ea260765f27e53dadd96e7674186e4064291d2b2b2",
+    "install.sh": "c629207a8d0c99f6da625efabd18160af776b69127d54b1fa8129285e7979a56",
+    "json_fast.c": "f393c3e8c02389b9d7344e45351353dbf753f0f397cc1785bb599afe0332fd1e",
+    "json_fast.h": "8b2e84d4b63edd08d146e61420bcebf6737ef41541e7992a77d853b73659ecad",
+    "net.c": "0773ddfd7b89b0d34a717e5e9eb63fd0ee18026a5458ddf837bae4c0fb4ec9be",
+    "net.h": "25c8688957508264aaa0a2485f6d8714caede9570f865cb91217de32f4e548af",
+    "net_epoll.inc": "4a2a316e861b7d1fb8c80930574f0c8ab068be977c6424dffaa6a5d3a351a7ad",
+    "net_uring.inc": "f01531f5d63af6ec4e93e14d5ec0bbf3f56f49af657496ccb71e85add3bd33f9",
+    "start.sh": "9a23eeaa024a08f898c3b904f1c362b21398732e7b0e71923876d286ef70825f"
+  },
+  "binary_path": "/suite/sources/prgoose/bin/server",
+  "binary_sha256": "c4aa7c89126bd854d14d2c3d0fccef9ef8b2523d3d17d683193480abe77f226b",
+  "binary_bytes": 1219320,
+  "binary_owner_uid": 1001,
+  "generated_c_sha256": "2959b0a51d1e0d60784b989745fa45226d8e67ed55a6b23cb1b3924f76b86729",
+  "sqlite_object_sha256": "56e381b79ad4a29a5b6d5a966cba49da02e7581f98ff0c3eb43d878b51e0dab5",
+  "compiler": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "goose_runtime": "goose runtime df5f78ce88d4",
+  "architecture": "aarch64",
+  "inspection_uid": 1001,
+  "sqlite_version": "3.53.4",
+  "sqlite_pgo_enabled": true,
+  "application_pgo_enabled": true,
+  "production_training_symbols_absent": true,
+  "production_epoll_interposer_absent": true,
+  "backend": "epoll",
+  "sqlite_pgo_profile_files": [
+    {
+      "path": ".build/sqlite-profile/suite/sources/prgoose/.build/sqlite-pgo.gcda",
+      "bytes": 295504,
+      "sha256": "49b37d2b8777093c69a98cb3151a63af1affe5314ed520f395e574281530bfb8"
+    },
+    {
+      "path": ".build/sqlite-profile/suite/sources/prgoose/.build/sqlite-train-train_sqlite.gcda",
+      "bytes": 700,
+      "sha256": "6f826eba887eb8888ac16e7365a8ebc71fdc542927a07ea33eff0b349b6ee4fd"
+    }
+  ],
+  "sqlite_pgo_profile_file_count": 2,
+  "sqlite_trainer_sha256": "dd7d056bf259e587e8a21b902bb5469b4ea75b41a511c00d328eacb019a48967",
+  "trainer_sha256": "dd7d056bf259e587e8a21b902bb5469b4ea75b41a511c00d328eacb019a48967",
+  "application_pgo_profile_files": [
+    {
+      "path": ".build/app-profile/suite/sources/prgoose/.build/app-native/app.gcda",
+      "bytes": 11360,
+      "sha256": "9f351c7af90e9f1688d95eed0da254f8e088d4a43acecfd2f5c3d79562cb2c10"
+    },
+    {
+      "path": ".build/app-profile/suite/sources/prgoose/.build/app-native/db.gcda",
+      "bytes": 2064,
+      "sha256": "7ef36b894a0aa33a6bba114b0ebf3fdf26552129a48db25739ed7aa81cc6fef4"
+    },
+    {
+      "path": ".build/app-profile/suite/sources/prgoose/.build/app-native/json_fast.gcda",
+      "bytes": 352,
+      "sha256": "c44b54bf630c71fda7bf51ef7bc5922c2e7395c015706d6e6e6ff88decdece4e"
+    },
+    {
+      "path": ".build/app-profile/suite/sources/prgoose/.build/app-native/net.gcda",
+      "bytes": 6196,
+      "sha256": "23a244782ad739ab0149cab5ca0ad35cb0eb5e94f1718f3b6feb90e5df924d2d"
+    }
+  ],
+  "application_pgo_profile_file_count": 4,
+  "app_trainer_sha256": "5e618377cda9bf3bfe7d50e227113eeb995bddc90fcc7fcb59f981186171b06e",
+  "profile_dump_helper_sha256": "9187d9d0dedbdcf3e6665b9ae60a900259b8af0f965db75baea08af0cccc7e41",
+  "training_metadata_sha256": "47cf8c9bfd36658f708b73fc7a86b9e5d43a62b5fcc89ca923a82e9ee19cd01f",
+  "training_requests": 16953,
+  "app_training_metadata_sha256": "47cf8c9bfd36658f708b73fc7a86b9e5d43a62b5fcc89ca923a82e9ee19cd01f",
+  "app_training_requests": 16953,
+  "training_databases_removed": true,
+  "instrumented_epoll_interposer_verified": true,
+  "profile_dump_lifecycle": "SIGUSR1 flag only in handler; atomically unblocked in epoll_pwait; main-thread dump before/after wait",
+  "training_phases": [
+    {
+      "phase": "dense",
+      "requests": 16411,
+      "database_integrity": "ok",
+      "server_exit_code": 0
+    },
+    {
+      "phase": "sparse",
+      "requests": 539,
+      "database_integrity": "ok",
+      "server_exit_code": 0
+    },
+    {
+      "phase": "empty",
+      "requests": 3,
+      "database_integrity": "ok",
+      "server_exit_code": 0
+    }
+  ],
+  "app_training_phases": [
+    {
+      "phase": "dense",
+      "requests": 16411,
+      "database_integrity": "ok",
+      "server_exit_code": 0
+    },
+    {
+      "phase": "sparse",
+      "requests": 539,
+      "database_integrity": "ok",
+      "server_exit_code": 0
+    },
+    {
+      "phase": "empty",
+      "requests": 3,
+      "database_integrity": "ok",
+      "server_exit_code": 0
+    }
+  ],
+  "image": "twelve-goose-selected-reproduction:2026-10-22",
+  "image_id": "sha256:a1fb183d9156a344210065de176bc64b8219e6c2cd6ff2ac882ea7617cb8430a",
+  "base_image_id": "sha256:a69064953b766ec5c800389b8e17a7d184f73aa8dd46cd4aa2048955ee86eb0f",
+  "build_uid": 1001,
+  "build_limits": {
+    "cpus": 2,
+    "cpuset": "3,4",
+    "memory": "3g",
+    "memory_swap": "3g",
+    "network": "none"
+  },
+  "build_started": "2026-10-22T12:41:35.348307759Z",
+  "build_finished": "2026-10-22T12:42:23.279056254Z",
+  "image_environment": {
+    "GOOSE_IO_BACKEND": "epoll"
+  },
+  "normal_default_build": true,
+  "sqlite_object_reused": false,
+  "sqlite_pgo_mode": "legacy",
+  "sqlite_archive_sha256": "0e9483900e92cd5de8fd48d16bf9200145a61f7fd5be542a5ac81d8a9516eb9c",
+  "training_database_configurations": [
+    {
+      "phase": "dense",
+      "cache_kib": 8192,
+      "mmap_mib": 0
+    },
+    {
+      "phase": "sparse",
+      "cache_kib": 8192,
+      "mmap_mib": 0
+    },
+    {
+      "phase": "empty",
+      "cache_kib": 8192,
+      "mmap_mib": 0
+    }
+  ],
+  "source_matches_selected": true,
+  "binary_matches_selected": false,
+  "sqlite_object_matches_selected": false,
+  "selected_image_id": "sha256:d0a2f1e95817cefd26c9563d86849efff6cb2bb5dc0e2ff733ed7656577ef9ea",
+  "selected_binary_sha256": "309f1138b9c5d6b404670a8c0eaf1d42c2f96d4fc7e30d7a89f5bff326a5af2e",
+  "selected_unchanged": true,
+  "reproduction_unmeasured": true,
+  "build_method": "Full normal unchanged selected build.sh: fresh legacy synthetic SQL training and SQLite profile-use, followed by fresh synthetic HTTP application training and four-unit application profile-use/LTO; no object reuse or benchmark fixtures.",
+  "compiler_flags": "Goose O2 standalone; GCC O3/native; legacy SQLite defines and separate PGO; four native application units LTO2/fno-semantic-interposition/fno-plt with atomic-generation and feedback-use/partial-training/correction; hard missing-profile and application coverage-mismatch checks",
+  "comparison_artifact": "comparison.json",
+  "bit_reproducible": false
+}

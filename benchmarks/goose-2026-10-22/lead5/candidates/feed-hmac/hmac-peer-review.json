@@ -1,0 +1,54 @@
+{
+  "purpose": "Independent static peer review of generic keyed-HMAC reuse; no test/container/build run by reviewer",
+  "recorded_at": "2026-10-22T13:17:15.124136+00:00",
+  "db_c_sha256": "425bfd09e1729a5578393a61884997104e76eee467434fffb83946c1273429f7",
+  "tests_sha256": "5489c3ce24e41901e83339317c6f4f522694b06590eb397c347d59318e9da002",
+  "checks": [
+    {
+      "area": "ABI and ownership",
+      "passed": true,
+      "finding": "auth_decodeABI/Gooseclaimvalidation areunchanged. Retainedstate is onlygeneric HMAC/SHA256algorithm/context and ownedkeybytes; no JWTpayload/signature/result cache or appdecision moves toC."
+    },
+    {
+      "area": "fresh computation",
+      "passed": true,
+      "finding": "Every validlyframed request executescontextinit/reset, messageupdate andfinal, thenconstanttime signaturecomparison. Failedsignature/header/payload stillreject; no tokenresult isreused."
+    },
+    {
+      "area": "key lifetime",
+      "passed": true,
+      "finding": "Keybytes are copied intoownedOPENSSLallocation, neverretainingGooseborrowedmemory. Samekey detection compares exactlength+bytes; empty/binary/longkeys arehandled withoutCstringassumptions underexistinglengthbounds."
+    },
+    {
+      "area": "key replacement",
+      "passed": true,
+      "finding": "Newkeyallocation/contextinitialization finishbeforeoldkey/context arefreed/replaced. Anynewsetupfailure returns0withoutmislabelingoldstate; laterold/newkey requests reset/retry correctly."
+    },
+    {
+      "area": "failure recovery",
+      "passed": true,
+      "finding": "Areset/update/final failure clearscontext+key andreturns0. Anewrequest recreatesstate; no partiallyprocessed/damagedcontext isaccepted. Digestlength mustexactly32bytes."
+    },
+    {
+      "area": "cleanup and serial use",
+      "passed": true,
+      "finding": "Singleapplicationthreadmatchesnativecallbackdispatch; no concurrentstate access isintroduced. Cleanup freescontext beforealgorithm andclearskeybytes. atexitregistrationfollowsOpenSSLinitialization, andregistrationfailure freesnewalgorithm withoutretainingallocation."
+    },
+    {
+      "area": "parser and timing boundaries",
+      "passed": true,
+      "finding": "Strictbase64url/segment/tokenlen handling, constanttime digestcomparison, decodedbytecopy andGoosealg/exp/sub/username rules remainunchanged. Existinginputbounds makecasts/keycomparison lengths safe."
+    },
+    {
+      "area": "retained empirical evidence",
+      "passed": true,
+      "finding": "Toolchainowned differential/fault result139PASS isretained at hmac-tests/results.json againstone-shotreference, includingempty/binary/long/changedkeys andfailure-recovery cases. Reviewer didnotreruntests orcontainers."
+    }
+  ],
+  "blocking_findings": [],
+  "passed_all": true,
+  "limitations": [
+    "Persistentcontextassumes theexisting singleapplicationthread; futureparallel requestexecution would requireperthreadcontext or synchronization.",
+    "Performancegain remainsunmeasured; fullcandidateGoose/API/semantic/edgechecks remainrequired."
+  ]
+}

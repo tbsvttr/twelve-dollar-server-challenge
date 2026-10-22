@@ -1,0 +1,23 @@
+--- a/src/wrk.c
++++ b/src/wrk.c
+@@ -3,6 +3,7 @@
+ #include "wrk.h"
+ #include "script.h"
+ #include "main.h"
++#include <time.h>
+ 
+ static struct config {
+     uint64_t connections;
+@@ -448,9 +449,9 @@
+ }
+ 
+ static uint64_t time_us() {
+-    struct timeval t;
+-    gettimeofday(&t, NULL);
+-    return (t.tv_sec * 1000000) + t.tv_usec;
++    struct timespec t;
++    clock_gettime(CLOCK_MONOTONIC, &t);
++    return ((uint64_t)t.tv_sec * 1000000) + (t.tv_nsec / 1000);
+ }
+ 
+ static char *copy_url_part(char *url, struct http_parser_url *parts, enum http_parser_url_fields field) {

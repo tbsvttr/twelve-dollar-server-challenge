@@ -1,0 +1,22 @@
+{
+  "interval_start": "2026-10-22T11:52:45.520601+00:00",
+  "interval_end": "2026-10-22T11:53:28.482591+00:00",
+  "interval_wall_seconds": 42.96199,
+  "total_cpu_time_raw": 61905074,
+  "p_core_cpu_time_raw": 6067182,
+  "p_core_fraction": 0.09800783050513759,
+  "qos_delta": {
+    "ri_cpu_time_qos_default": 0,
+    "ri_cpu_time_qos_maintenance": 0,
+    "ri_cpu_time_qos_background": 0,
+    "ri_cpu_time_qos_utility": 0,
+    "ri_cpu_time_qos_legacy": 61902381,
+    "ri_cpu_time_qos_user_initiated": 1057,
+    "ri_cpu_time_qos_user_interactive": 1636
+  },
+  "limitations": [
+    "All VM threads combined; no guestCPU0 mapping.",
+    "Interval overlaps screen completion/idle time; not aligned with one throughput sample.",
+    "Low P-core fraction during this interval is observed, not proof background QoS or E-core scheduling caused earlier RPS variability."
+  ]
+}

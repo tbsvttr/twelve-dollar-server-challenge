@@ -1,0 +1,9 @@
+.deps/sqlite.tar.gz: OK
+parsed ok: 258 top-level declarations, 3 file(s)
+typechecked ok: 236 specialization(s), 7 struct/1 enum instance(s); optimized -O2: 102 inlined, 0 base case(s), 41 folded, 46 propagated, 0 tail loop(s), 0 reassociated
+bce: elided 71/120 index and 21/43 slice checks
+wrote .build/app.c (532785 bytes)
+/suite/sources/prgoose/.build/sqlite-pgo.o: OK
+goose runtime df5f78ce88d4
+gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+309f1138b9c5d6b404670a8c0eaf1d42c2f96d4fc7e30d7a89f5bff326a5af2e  bin/server

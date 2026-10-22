@@ -1,0 +1,32 @@
+{
+  "selected": false,
+  "decision": "Reject grouped counts: both paired comparisons regress against previous HMAC Goose; no confirmation",
+  "all_attempts": 6,
+  "pairs": [
+    {
+      "trial": 1,
+      "rust_ratio": 1.0269868005042202,
+      "previous_ratio": 0.9857333232320774,
+      "rps": {
+        "goose": 114630.11,
+        "82": 111617.9,
+        "previous": 116289.17
+      }
+    },
+    {
+      "trial": 2,
+      "rust_ratio": 0.9823386589848053,
+      "previous_ratio": 0.9242402670864259,
+      "rps": {
+        "goose": 110878.48,
+        "82": 112871.95,
+        "previous": 119967.16
+      }
+    }
+  ],
+  "geometric_rust_ratio": 1.0044146735300175,
+  "geometric_previous_ratio": 0.9544917128713091,
+  "protocol_sha256": "cd7adbf9a9f76451d652f78f51e4ff434d62d2b2210aeea8f95438900fc2f13a",
+  "measurements_sha256": "b2d0ec9afb8eac98cacf9681673ddb91de6fd5fef65636c325e0ad2b3fea6ecb",
+  "source_sha256": "2048a84023628943b7851ae830a5f3aee84a40a6342db88632ec9e63fc3e3ee3"
+}

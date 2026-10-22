@@ -1,0 +1,8 @@
+transport: correctness 42/42; failures=0
+baseline: correctness 42/42; failures=0
+82: correctness 42/42; failures=0
+goose: correctness 42/42; failures=0
+like-bound: correctness 42/42; failures=0
+cache8: correctness 42/42; failures=0
+app-pgo: correctness 42/42; failures=0
+/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/goose-2026-10-22/lead5/isolated-screen/verification.json

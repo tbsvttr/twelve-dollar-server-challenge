@@ -1,0 +1,40 @@
+{
+  "recorded_at": "2026-10-22T14:11:51Z",
+  "mode": "verify",
+  "load_image": "twelve-load-wrk-monotonic:2026-10-22",
+  "load_image_id": "sha256:a5e8736dcfaf72bf79c0196a89fe3fd49774916ab7ea4ce06a8a2cdfd3a4b504",
+  "shared_hashes": {
+    "seed/feed.db": "ef5f135c16a2277a68ef37f1f1a66e4100f9dbc6743d2ef54dbeb533c4dceb0e",
+    "seed/tokens.json": "b39f1edf8a3545ab5851031d1cee8d2d1192e4b598361e516f4560f6893a939a",
+    "mixed.lua": "eb8d49273c56fe4b558a58bd6c7e65551ec683c53d299e2b3a69e0b71421d701",
+    "test/test.sh": "679e722044fd1f366d85093232e7f2ec2e3398ea312032dd9eb6cbdf8b17306a",
+    "semantic.py": "785f8ce565b469e4f4d702d01a9d868cd7458d64e3f1362c3fb8728560215fbc",
+    "serve.py": "52d8bdd75c0dc2477fc5b2391c797a2832eab5ac61a72d3bbe4dac4cb94bf311",
+    "bench/nginx.conf": "1b4b00789b0d138759bebde391d4cd05a9598dc10a17df3d09eb569512b8f654",
+    "seccomp-io-uring.json": "4baf3b268185f55527933e7df090e85936003674e34b5f5396461fd9d3efeb17",
+    "test/golden/feed.json": "8c9b3d6cb46e650c4786ab9281bc3a72ba7bd75b7926021d2b0c431dd9bd3d68",
+    "test/golden/post-1.json": "8035350dc55714c9a673af9f441ab07d2b269047e1137612f022877b9e8f3652",
+    "test/golden/post-250000.json": "febb2506b9d4a99bc34f1f182c61ced6b3ba3b2533724485c6e5206604a65b71",
+    "test/golden/post-500000.json": "662fe8c7282dee8aab00dab6cdb15e64e953f10a2c1c923e2ea67fab1429a4de"
+  },
+  "server_cpus": "0",
+  "server_cpu_quota": 1,
+  "server_memory": "2g",
+  "server_memory_swap": "2g",
+  "load_cpus": "1,2",
+  "load_cpu_quota": 2,
+  "load_memory": "2g",
+  "nofile": 65535,
+  "server_seccomp": "Docker default profile plus io_uring_setup/io_uring_enter/io_uring_register",
+  "cpu_accounting": "Sum live service-process self CPU and waited-child CPU (utime+stime+cutime+cstime).",
+  "wrk": {
+    "threads": 2,
+    "connections": 64,
+    "warmup_seconds": 2,
+    "measurement_seconds": 15,
+    "trials": 3
+  },
+  "docker_version": "{\"Client\":{\"Version\":\"29.8.2\",\"ApiVersion\":\"1.56\",\"DefaultAPIVersion\":\"1.56\",\"GitCommit\":\"7fc2dff\",\"GoVersion\":\"go1.26.8\",\"Os\":\"darwin\",\"Arch\":\"arm64\",\"BuildTime\":\"Wed Sep 30 19:32:03 2026\",\"Context\":\"desktop-linux\"},\"Server\":{\"Platform\":{\"Name\":\"Docker Desktop 4.95.0 (242831)\"},\"Version\":\"29.8.2\",\"ApiVersion\":\"1.56\",\"MinAPIVersion\":\"1.40\",\"Os\":\"linux\",\"Arch\":\"arm64\",\"Components\":[{\"Name\":\"Engine\",\"Version\":\"29.8.2\",\"Details\":{\"ApiVersion\":\"1.56\",\"Arch\":\"arm64\",\"BuildTime\":\"Wed Sep 30 19:31:50 2026\",\"Experimental\":\"false\",\"GitCommit\":\"8af9fe3\",\"GoVersion\":\"go1.26.8\",\"KernelVersion\":\"7.0.14-linuxkit\",\"MinAPIVersion\":\"1.40\",\"Module\":\"github.com/moby/moby/v2\",\"ModuleVersion\":\"v2.0.0+unknown\",\"Os\":\"linux\"}},{\"Name\":\"containerd\",\"Version\":\"v2.3.6\",\"Details\":{\"GitCommit\":\"ee2735368117d2eb259779949d5e75cdafec9761\"}},{\"Name\":\"runc\",\"Version\":\"1.5.1\",\"Details\":{\"GitCommit\":\"v1.5.1-0-g8f2685a4\"}},{\"Name\":\"docker-init\",\"Version\":\"0.19.0\",\"Details\":{\"GitCommit\":\"de40ad0\"}}],\"GitCommit\":\"8af9fe3\",\"GoVersion\":\"go1.26.8\",\"KernelVersion\":\"7.0.14-linuxkit\",\"BuildTime\":\"2026-09-30T19:31:50.000000000+00:00\"}}",
+  "host_uname": "Darwin Tobiass-MacBook-Pro.local 25.6.0 Darwin Kernel Version 25.6.0: Tue Aug 18 17:50:45 PDT 2026; root:xnu-12377.161.15.700.19~2/RELEASE_ARM64_T6020 arm64",
+  "host_cpu": "Apple M2 Pro"
+}

@@ -1,0 +1,31 @@
+{
+  "status": "staged_static_checks_only_not_built_or_trained",
+  "base_trainer_path": "results/goose-2026-10-22/lead5/candidates/combined-sqlite/source/bench/train_app.py",
+  "base_trainer_sha256": "5e618377cda9bf3bfe7d50e227113eeb995bddc90fcc7fcb59f981186171b06e",
+  "candidate_path": "results/goose-2026-10-22/lead5/candidates/trainer-v2/train_app.py",
+  "candidate_sha256": "31a0fc427bf94ecacdbd3b31c0e9fbe32da517b30f8222534ee9359ee05e7678",
+  "checks": {
+    "syntax": true,
+    "exact_schema_unchanged": true,
+    "synthetic_text_constants_unchanged": true,
+    "diagnostic_error_cases_unchanged": true,
+    "JWT_generator_unchanged": true,
+    "fresh_probe_post_and_feed_count_assertions_present": true
+  },
+  "defaults": {
+    "DENSE_POSTS": 131072,
+    "SPARSE_POSTS": 8192,
+    "DENSE_REQUESTS": 32768,
+    "SPARSE_REQUESTS": 1024,
+    "RECENT_TARGET_PERCENT": 80,
+    "USER_COUNT": 256
+  },
+  "not_performed": [
+    "database construction",
+    "HTTP trainer execution",
+    "instrumented build",
+    "profile inspection",
+    "throughput measurement"
+  ],
+  "live_or_existing_trainers_changed": false
+}

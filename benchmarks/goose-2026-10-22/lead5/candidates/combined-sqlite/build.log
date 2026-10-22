@@ -1,0 +1,115 @@
++ set -euo pipefail
+++ dirname build.sh
++ cd .
+++ command -v goose
++ goose_bin=/opt/goose/build/goose
++ [[ -z /opt/goose/build/goose ]]
++ [[ ! -x /opt/goose/build/goose ]]
+++ readlink -f /opt/goose/build/goose
++ goose_bin=/opt/goose/build/goose
+++ /opt/goose/build/goose version
++ [[ goose runtime df5f78ce88d4 == \g\o\o\s\e\ \r\u\n\t\i\m\e\ \d\f\5\f\7\8\c\e\8\8\d\4 ]]
++ mkdir -p .deps .build bin
++ sqlite_sha=0e9483900e92cd5de8fd48d16bf9200145a61f7fd5be542a5ac81d8a9516eb9c
++ [[ ! -f .deps/sqlite.tar.gz ]]
++ printf '%s  %s\n' 0e9483900e92cd5de8fd48d16bf9200145a61f7fd5be542a5ac81d8a9516eb9c .deps/sqlite.tar.gz
++ sha256sum -c -
+.deps/sqlite.tar.gz: OK
++ tar -xzf .deps/sqlite.tar.gz -C .deps --strip-components=1 sqlite-autoconf-3530400/sqlite3.c sqlite-autoconf-3530400/sqlite3.h
++ /opt/goose/build/goose -O2 --standalone -o .build/app.c app.goose
+parsed ok: 258 top-level declarations, 3 file(s)
+typechecked ok: 236 specialization(s), 7 struct/1 enum instance(s); optimized -O2: 102 inlined, 0 base case(s), 41 folded, 46 propagated, 0 tail loop(s), 0 reassociated
+bce: elided 71/120 index and 21/43 slice checks
+wrote .build/app.c (532910 bytes)
++++ dirname /opt/goose/build/goose
+++ cd /opt/goose/build/..
+++ pwd
++ goose_source=/opt/goose
++ [[ -f /opt/goose/src/runtime/goose.h ]]
++ cp /opt/goose/src/runtime/goose.h .build/goose.h
++ cc=gcc
++ common=(-O3 -march=native -DNDEBUG -std=gnu11 -I.deps -I.build -pthread)
++ native_flags=(-flto=2 -fno-semantic-interposition -fno-plt)
++ sqlite_defines=(-DSQLITE_THREADSAFE=0 -DSQLITE_DEFAULT_MEMSTATUS=0 -DSQLITE_DQS=0 -DSQLITE_OMIT_LOAD_EXTENSION -DSQLITE_OMIT_DEPRECATED -DSQLITE_OMIT_SHARED_CACHE -DSQLITE_OMIT_PROGRESS_CALLBACK -DSQLITE_LIKE_DOESNT_MATCH_BLOBS -DSQLITE_USE_ALLOCA -DHAVE_FDATASYNC=1)
++ sqlite_pgo_mode=app
++ case "$sqlite_pgo_mode" in
++ profile=/suite/sources/prgoose/.build/sqlite-profile
++ object=/suite/sources/prgoose/.build/sqlite-pgo.o
++ trainer=/suite/sources/prgoose/.build/sqlite-train
++ [[ -n '' ]]
++ rm -rf /suite/sources/prgoose/.build/sqlite-profile
++ mkdir -p /suite/sources/prgoose/.build/sqlite-profile
++ [[ app == app ]]
++ command -v python3
++ gcc -O3 -march=native -DNDEBUG -std=gnu11 -I.deps -I.build -pthread -DSQLITE_THREADSAFE=0 -DSQLITE_DEFAULT_MEMSTATUS=0 -DSQLITE_DQS=0 -DSQLITE_OMIT_LOAD_EXTENSION -DSQLITE_OMIT_DEPRECATED -DSQLITE_OMIT_SHARED_CACHE -DSQLITE_OMIT_PROGRESS_CALLBACK -DSQLITE_LIKE_DOESNT_MATCH_BLOBS -DSQLITE_USE_ALLOCA -DHAVE_FDATASYNC=1 -fprofile-generate=/suite/sources/prgoose/.build/sqlite-profile -fprofile-update=atomic -c .deps/sqlite3.c -o /suite/sources/prgoose/.build/sqlite-pgo.o
++ gcc -O3 -march=native -DNDEBUG -std=gnu11 -I.deps -I.build -pthread -c bench/app_pgo_exit.c -o .build/app-pgo-exit.o
++ gcc -O3 -march=native -DNDEBUG -std=gnu11 -I.deps -I.build -pthread -flto=2 -fno-semantic-interposition -fno-plt .build/app.c net.c db.c json_fast.c /suite/sources/prgoose/.build/sqlite-pgo.o .build/app-pgo-exit.o -lcrypto -lm -pthread -lgcov -o bin/server
++ cp bin/server .build/server-sqlite-profiled
++ python3 bench/train_app.py .build/server-sqlite-profiled
++ mapfile -t profiles
+++ find /suite/sources/prgoose/.build/sqlite-profile -type f -name '*.gcda' -print
++ [[ 1 -gt 0 ]]
++ [[ app == app ]]
++ [[ 1 == 1 ]]
++ [[ /suite/sources/prgoose/.build/sqlite-profile/suite/sources/prgoose/.build/sqlite-pgo.gcda == */sqlite-pgo.gcda ]]
++ gcc -O3 -march=native -DNDEBUG -std=gnu11 -I.deps -I.build -pthread -DSQLITE_THREADSAFE=0 -DSQLITE_DEFAULT_MEMSTATUS=0 -DSQLITE_DQS=0 -DSQLITE_OMIT_LOAD_EXTENSION -DSQLITE_OMIT_DEPRECATED -DSQLITE_OMIT_SHARED_CACHE -DSQLITE_OMIT_PROGRESS_CALLBACK -DSQLITE_LIKE_DOESNT_MATCH_BLOBS -DSQLITE_USE_ALLOCA -DHAVE_FDATASYNC=1 -fprofile-use=/suite/sources/prgoose/.build/sqlite-profile -fprofile-correction -Werror=missing-profile -Werror=coverage-mismatch -c .deps/sqlite3.c -o /suite/sources/prgoose/.build/sqlite-pgo.o
++ rm -f .build/training.db .build/training.db-wal .build/training.db-shm
++ [[ 1 == 1 ]]
++ command -v python3
++ app_profile=/suite/sources/prgoose/.build/app-profile
++ app_objects=/suite/sources/prgoose/.build/app-native
++ rm -rf /suite/sources/prgoose/.build/app-profile /suite/sources/prgoose/.build/app-native
++ mkdir -p /suite/sources/prgoose/.build/app-profile /suite/sources/prgoose/.build/app-native
++ units=(app net db json_fast)
++ sources=(.build/app.c net.c db.c json_fast.c)
++ objects=()
++ for unit in "${units[@]}"
++ objects+=("$app_objects/$unit.o")
++ for unit in "${units[@]}"
++ objects+=("$app_objects/$unit.o")
++ for unit in "${units[@]}"
++ objects+=("$app_objects/$unit.o")
++ for unit in "${units[@]}"
++ objects+=("$app_objects/$unit.o")
++ gcc -O3 -march=native -DNDEBUG -std=gnu11 -I.deps -I.build -pthread -c bench/app_pgo_exit.c -o .build/app-pgo-exit.o
++ generate=("-fprofile-generate=$app_profile" -fprofile-update=atomic)
++ for i in "${!sources[@]}"
++ gcc -O3 -march=native -DNDEBUG -std=gnu11 -I.deps -I.build -pthread -flto=2 -fno-semantic-interposition -fno-plt -fprofile-generate=/suite/sources/prgoose/.build/app-profile -fprofile-update=atomic -c .build/app.c -o /suite/sources/prgoose/.build/app-native/app.o
++ for i in "${!sources[@]}"
++ gcc -O3 -march=native -DNDEBUG -std=gnu11 -I.deps -I.build -pthread -flto=2 -fno-semantic-interposition -fno-plt -fprofile-generate=/suite/sources/prgoose/.build/app-profile -fprofile-update=atomic -c net.c -o /suite/sources/prgoose/.build/app-native/net.o
++ for i in "${!sources[@]}"
++ gcc -O3 -march=native -DNDEBUG -std=gnu11 -I.deps -I.build -pthread -flto=2 -fno-semantic-interposition -fno-plt -fprofile-generate=/suite/sources/prgoose/.build/app-profile -fprofile-update=atomic -c db.c -o /suite/sources/prgoose/.build/app-native/db.o
++ for i in "${!sources[@]}"
++ gcc -O3 -march=native -DNDEBUG -std=gnu11 -I.deps -I.build -pthread -flto=2 -fno-semantic-interposition -fno-plt -fprofile-generate=/suite/sources/prgoose/.build/app-profile -fprofile-update=atomic -c json_fast.c -o /suite/sources/prgoose/.build/app-native/json_fast.o
++ gcc -O3 -march=native -DNDEBUG -std=gnu11 -I.deps -I.build -pthread -flto=2 -fno-semantic-interposition -fno-plt -fprofile-generate=/suite/sources/prgoose/.build/app-profile -fprofile-update=atomic /suite/sources/prgoose/.build/app-native/app.o /suite/sources/prgoose/.build/app-native/net.o /suite/sources/prgoose/.build/app-native/db.o /suite/sources/prgoose/.build/app-native/json_fast.o /suite/sources/prgoose/.build/sqlite-pgo.o .build/app-pgo-exit.o -lcrypto -lm -pthread -o bin/server
++ cp bin/server .build/server-profiled
++ python3 bench/train_app.py .build/server-profiled
++ for unit in "${units[@]}"
+++ find /suite/sources/prgoose/.build/app-profile -type f -name app.gcda -print -quit
++ [[ -n /suite/sources/prgoose/.build/app-profile/suite/sources/prgoose/.build/app-native/app.gcda ]]
++ for unit in "${units[@]}"
+++ find /suite/sources/prgoose/.build/app-profile -type f -name net.gcda -print -quit
++ [[ -n /suite/sources/prgoose/.build/app-profile/suite/sources/prgoose/.build/app-native/net.gcda ]]
++ for unit in "${units[@]}"
+++ find /suite/sources/prgoose/.build/app-profile -type f -name db.gcda -print -quit
++ [[ -n /suite/sources/prgoose/.build/app-profile/suite/sources/prgoose/.build/app-native/db.gcda ]]
++ for unit in "${units[@]}"
+++ find /suite/sources/prgoose/.build/app-profile -type f -name json_fast.gcda -print -quit
++ [[ -n /suite/sources/prgoose/.build/app-profile/suite/sources/prgoose/.build/app-native/json_fast.gcda ]]
++ use=("-fprofile-use=$app_profile" -fprofile-correction -fprofile-partial-training -Werror=missing-profile -Werror=coverage-mismatch)
++ for i in "${!sources[@]}"
++ gcc -O3 -march=native -DNDEBUG -std=gnu11 -I.deps -I.build -pthread -flto=2 -fno-semantic-interposition -fno-plt -fprofile-use=/suite/sources/prgoose/.build/app-profile -fprofile-correction -fprofile-partial-training -Werror=missing-profile -Werror=coverage-mismatch -c .build/app.c -o /suite/sources/prgoose/.build/app-native/app.o
++ for i in "${!sources[@]}"
++ gcc -O3 -march=native -DNDEBUG -std=gnu11 -I.deps -I.build -pthread -flto=2 -fno-semantic-interposition -fno-plt -fprofile-use=/suite/sources/prgoose/.build/app-profile -fprofile-correction -fprofile-partial-training -Werror=missing-profile -Werror=coverage-mismatch -c net.c -o /suite/sources/prgoose/.build/app-native/net.o
++ for i in "${!sources[@]}"
++ gcc -O3 -march=native -DNDEBUG -std=gnu11 -I.deps -I.build -pthread -flto=2 -fno-semantic-interposition -fno-plt -fprofile-use=/suite/sources/prgoose/.build/app-profile -fprofile-correction -fprofile-partial-training -Werror=missing-profile -Werror=coverage-mismatch -c db.c -o /suite/sources/prgoose/.build/app-native/db.o
++ for i in "${!sources[@]}"
++ gcc -O3 -march=native -DNDEBUG -std=gnu11 -I.deps -I.build -pthread -flto=2 -fno-semantic-interposition -fno-plt -fprofile-use=/suite/sources/prgoose/.build/app-profile -fprofile-correction -fprofile-partial-training -Werror=missing-profile -Werror=coverage-mismatch -c json_fast.c -o /suite/sources/prgoose/.build/app-native/json_fast.o
++ gcc -O3 -march=native -DNDEBUG -std=gnu11 -I.deps -I.build -pthread -flto=2 -fno-semantic-interposition -fno-plt -fprofile-use=/suite/sources/prgoose/.build/app-profile -fprofile-correction -fprofile-partial-training -Werror=missing-profile -Werror=coverage-mismatch /suite/sources/prgoose/.build/app-native/app.o /suite/sources/prgoose/.build/app-native/net.o /suite/sources/prgoose/.build/app-native/db.o /suite/sources/prgoose/.build/app-native/json_fast.o /suite/sources/prgoose/.build/sqlite-pgo.o -lcrypto -lm -pthread -o bin/server
++ /opt/goose/build/goose version
+goose runtime df5f78ce88d4
++ gcc --version
++ head -1
+gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
++ sha256sum bin/server
+d45e5efb4abbe17326d49a7b5f236147a1ec5b5477d774b3ddf80f877314367b  bin/server

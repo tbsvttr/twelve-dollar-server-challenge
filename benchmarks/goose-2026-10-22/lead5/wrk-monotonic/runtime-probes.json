@@ -1,0 +1,88 @@
+{
+  "stock": {
+    "selected_executable": {
+      "argv": [
+        "sh",
+        "-c",
+        "command -v wrk"
+      ],
+      "exit_code": 0,
+      "stdout": "/opt/wrk-clock/bin/wrk\n",
+      "stderr": ""
+    },
+    "path": "/opt/wrk-clock/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+    "selected_sha256": "443ca5eb3e943666d6e25e3df9d88532ed2df81a95035665a69f1b756d007ead",
+    "original_usr_bin_sha256": "55157ab26d15f39e68d80ed3e16240dcdcb1722abf0fa7d74bfd3e20dd50254c",
+    "version": {
+      "argv": [
+        "wrk",
+        "--version"
+      ],
+      "exit_code": 1,
+      "stdout": "wrk debian/4.1.0-4build2 [epoll] Copyright (C) 2012 Will Glozer\nUsage: wrk <options> <url>                            \n  Options:                                            \n    -c, --connections <N>  Connections to keep open   \n    -d, --duration    <T>  Duration of test           \n    -t, --threads     <N>  Number of threads to use   \n                                                      \n    -s, --script      <S>  Load Lua script file       \n    -H, --header      <H>  Add header to request      \n        --latency          Print latency statistics   \n        --timeout     <T>  Socket/request timeout     \n    -v, --version          Print version details      \n                                                      \n  Numeric arguments may include a SI unit (1k, 1M, 1G)\n  Time arguments may include a time unit (2s, 2m, 2h)\n",
+      "stderr": ""
+    },
+    "clock_dynamic_symbols": {
+      "argv": [
+        "readelf",
+        "-Ws",
+        "/opt/wrk-clock/bin/wrk"
+      ],
+      "exit_code": 0,
+      "stdout": "    46: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND gettimeofday@GLIBC_2.17 (3)\n   871: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND gettimeofday@GLIBC_2.17",
+      "stderr": ""
+    },
+    "linkage": {
+      "argv": [
+        "ldd",
+        "/opt/wrk-clock/bin/wrk"
+      ],
+      "exit_code": 0,
+      "stdout": "\tlinux-vdso.so.1 (0x0000ffffa8a08000)\n\tlibluajit-5.1.so.2 => /lib/aarch64-linux-gnu/libluajit-5.1.so.2 (0x0000ffffa88d0000)\n\tlibm.so.6 => /lib/aarch64-linux-gnu/libm.so.6 (0x0000ffffa8820000)\n\tlibssl.so.3 => /lib/aarch64-linux-gnu/libssl.so.3 (0x0000ffffa8750000)\n\tlibcrypto.so.3 => /lib/aarch64-linux-gnu/libcrypto.so.3 (0x0000ffffa82c0000)\n\tlibc.so.6 => /lib/aarch64-linux-gnu/libc.so.6 (0x0000ffffa8100000)\n\t/lib/ld-linux-aarch64.so.1 (0x0000ffffa89c0000)\n\tlibgcc_s.so.1 => /lib/aarch64-linux-gnu/libgcc_s.so.1 (0x0000ffffa80c0000)\n",
+      "stderr": ""
+    }
+  },
+  "monotonic": {
+    "selected_executable": {
+      "argv": [
+        "sh",
+        "-c",
+        "command -v wrk"
+      ],
+      "exit_code": 0,
+      "stdout": "/opt/wrk-clock/bin/wrk\n",
+      "stderr": ""
+    },
+    "path": "/opt/wrk-clock/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+    "selected_sha256": "20ec627b07490f94b7d1ed73e16ed64e04d993457ceacf4cb92fd66f93f7cb39",
+    "original_usr_bin_sha256": "55157ab26d15f39e68d80ed3e16240dcdcb1722abf0fa7d74bfd3e20dd50254c",
+    "version": {
+      "argv": [
+        "wrk",
+        "--version"
+      ],
+      "exit_code": 1,
+      "stdout": "wrk debian/4.1.0-4build2 [epoll] Copyright (C) 2012 Will Glozer\nUsage: wrk <options> <url>                            \n  Options:                                            \n    -c, --connections <N>  Connections to keep open   \n    -d, --duration    <T>  Duration of test           \n    -t, --threads     <N>  Number of threads to use   \n                                                      \n    -s, --script      <S>  Load Lua script file       \n    -H, --header      <H>  Add header to request      \n        --latency          Print latency statistics   \n        --timeout     <T>  Socket/request timeout     \n    -v, --version          Print version details      \n                                                      \n  Numeric arguments may include a SI unit (1k, 1M, 1G)\n  Time arguments may include a time unit (2s, 2m, 2h)\n",
+      "stderr": ""
+    },
+    "clock_dynamic_symbols": {
+      "argv": [
+        "readelf",
+        "-Ws",
+        "/opt/wrk-clock/bin/wrk"
+      ],
+      "exit_code": 0,
+      "stdout": "    46: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND gettimeofday@GLIBC_2.17 (3)\n    62: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND clock_gettime@GLIBC_2.17 (3)\n   873: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND gettimeofday@GLIBC_2.17\n   900: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND clock_gettime@GLIBC_2.17",
+      "stderr": ""
+    },
+    "linkage": {
+      "argv": [
+        "ldd",
+        "/opt/wrk-clock/bin/wrk"
+      ],
+      "exit_code": 0,
+      "stdout": "\tlinux-vdso.so.1 (0x0000ffff7fded000)\n\tlibluajit-5.1.so.2 => /lib/aarch64-linux-gnu/libluajit-5.1.so.2 (0x0000ffff7fcb0000)\n\tlibm.so.6 => /lib/aarch64-linux-gnu/libm.so.6 (0x0000ffff7fc00000)\n\tlibssl.so.3 => /lib/aarch64-linux-gnu/libssl.so.3 (0x0000ffff7fb30000)\n\tlibcrypto.so.3 => /lib/aarch64-linux-gnu/libcrypto.so.3 (0x0000ffff7f6a0000)\n\tlibc.so.6 => /lib/aarch64-linux-gnu/libc.so.6 (0x0000ffff7f4e0000)\n\t/lib/ld-linux-aarch64.so.1 (0x0000ffff7fda0000)\n\tlibgcc_s.so.1 => /lib/aarch64-linux-gnu/libgcc_s.so.1 (0x0000ffff7f4a0000)\n",
+      "stderr": ""
+    }
+  }
+}

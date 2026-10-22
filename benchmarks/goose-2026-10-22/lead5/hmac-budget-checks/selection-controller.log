@@ -1,0 +1,7 @@
+goose trial 1: 115,902.31 successful req/s; 15.25 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+82 trial 1: 105,501.06 successful req/s; 48.25 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+previous trial 1: 102,495.27 successful req/s; 15.26 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+goose trial 2: 117,688.35 successful req/s; 15.26 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+82 trial 2: 106,649.32 successful req/s; 47.95 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+previous trial 2: 117,863.58 successful req/s; 15.25 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/goose-2026-10-22/lead5/hmac-budget-checks/measurements.json

@@ -1,0 +1,61 @@
+{
+  "purpose": "Independent STATIC review of combined-sqlite normal-build changes; no container, build or workload run by reviewer",
+  "recorded_at": "2026-10-22T12:07:10.182560+00:00",
+  "reviewed_source_sha256": "27a404880d6357dd853a6731d96c034de59fcb535b5e5b6953cbe04d5ebb203e",
+  "source_file_count": 19,
+  "image_id": "sha256:2797d68fbf424e42b23cfbbbc243b6b026e7dcc4f9ac7748ab0fb883a143cf74",
+  "binary_sha256": "d45e5efb4abbe17326d49a7b5f236147a1ec5b5477d774b3ddf80f877314367b",
+  "previous_combined_source_sha256": "b1642ad34c40bdf7b8af44351375c228aa94ec335e197d9b8026954fb28b3016",
+  "changed_files": [
+    "build.sh"
+  ],
+  "checks": [
+    {
+      "area": "frozen source",
+      "passed": true,
+      "finding": "All19candidate source files match proof27a404...; build.sh is the ONLY changed file against oldcombinedb1642ad... . App, SQL, auth/JSON semantics, native transport and DBdurability/config code are byte-identical."
+    },
+    {
+      "area": "new default training",
+      "passed": true,
+      "finding": "GOOSE_SQLITE_PGO_MODE now defaults to app; legacy remains an explicit comparison mode. The default generates a fresh SQLite object/profile using the real Goose HTTP app over independently generated synthetic exact-schema data."
+    },
+    {
+      "area": "no profile cross-contamination",
+      "passed": true,
+      "finding": "SQLite profile directory is deleted first, only sqlite3.c is instrumented in stage1, and exactly one sqlite-pgo.gcda is required. Its instrumented/use object pathname and SQLite defines match; missing profiles and CFGcoverage mismatches fail the build."
+    },
+    {
+      "area": "separate app feedback",
+      "passed": true,
+      "finding": "SQLite is rebuilt with feedback before the unchanged four-unit app/native generate/train/use sequence. App profile/object directories are reset; production links only feedback-optimized objects and ordinary runtime libraries."
+    },
+    {
+      "area": "main-thread dump lifecycle",
+      "passed": true,
+      "finding": "The unchanged build-only helper blocksSIGUSR1 outside epoll_pwait, atomically unmasks during wait, and dumps on the app main thread outside signal context. The helper/interposer is omitted from both production link branches, corroborated by retained symbol proof."
+    },
+    {
+      "area": "synthetic training ownership",
+      "passed": true,
+      "finding": "Unchanged trainer contains its own six-object schema and synthetic256users/8192posts/dense+sparse+empty fixtures; it reads no challenge seed or tokens. Both training metadata files match pinned hashes and each records16953requests, all3DBintegrity checks and exits0."
+    },
+    {
+      "area": "current config training",
+      "passed": true,
+      "finding": "All six recorded phases trained with cache8192KiB/mmap0, matching production defaults. Both stages use the same current generated app and real query/transaction code; no precomputed result, JWT, or row cache is introduced."
+    },
+    {
+      "area": "normal reproducible build path",
+      "passed": true,
+      "finding": "Proof states full default source build with fresh SQLite object, no optional object reuse, pinned Goose runtime/SQLitearchive/GCC/flags, and oneSQLite+fourapp profile files. Source-only build remains self-contained with build-time Python/OpenSSL tool dependencies from existing install.sh."
+    },
+    {
+      "area": "correctness evidence",
+      "passed": true,
+      "finding": "Exact production binaryd45e5ef... and image2797d68f... already passed fresh42official+semantic+postshutdownintegrity and43supplemental checks; this static review performs no reexecution."
+    }
+  ],
+  "blocking_findings": [],
+  "passed_all": true
+}

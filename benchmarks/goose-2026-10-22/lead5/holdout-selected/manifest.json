@@ -1,0 +1,98 @@
+[
+  {
+    "pr": 0,
+    "id": "goose",
+    "case_id": "goose",
+    "folder": "goose-native-tbsvttr",
+    "title": "Selected Goose: bounded likes scan, application PGO, 8 MiB cache, mmap disabled",
+    "status": "prepared",
+    "eligible": true,
+    "nginx": false,
+    "commit": "09e695a0652cc4654e12d5382b423adf75b7ea7c5ef18978313ddff3cc9d13ed",
+    "source_sha256": "09e695a0652cc4654e12d5382b423adf75b7ea7c5ef18978313ddff3cc9d13ed",
+    "source_file_count": 19,
+    "source_hashes": "archives/prgoose-sha256.json",
+    "app_loc": 2156,
+    "own_loc": 2420,
+    "goose_compiler_commit": "f605b5a07dd2aa3a5cb3f4c9b14002bd3c9d3d1a",
+    "variant": "holdout-selected",
+    "backend": "epoll"
+  },
+  {
+    "pr": 82,
+    "id": "82",
+    "case_id": "82",
+    "title": "rust io_uring version 2",
+    "url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/82",
+    "state": "open",
+    "merged": false,
+    "repo": "Scooter1337/twelve-dollar-server-challenge",
+    "commit": "95aa405a0003599dbc7fb4dfa47a09e8343239df",
+    "eligible": true,
+    "folder": "rust-epoll-scooter1337",
+    "nginx": false,
+    "status": "prepared",
+    "archive": "archives/pr82-95aa405a0003599dbc7fb4dfa47a09e8343239df.tar.gz",
+    "archive_sha256": "6157f04b6ef9177431f1bad5fe003f52383a8e8523fa8d95e03d972c6e0d1a8d",
+    "archive_endpoint": "repos/arjaythedev/twelve-dollar-server-challenge/tarball/95aa405a0003599dbc7fb4dfa47a09e8343239df",
+    "source_url": "https://github.com/Scooter1337/twelve-dollar-server-challenge/tree/95aa405a0003599dbc7fb4dfa47a09e8343239df/submissions/rust-epoll-scooter1337",
+    "source_sha256": "b91b9491e2a7a8856f8f360bc89f376b6493ae9b9a3907c557836b94f5131438",
+    "source_file_count": 49,
+    "source_hashes": "archives/pr82-sha256.json",
+    "app_loc": 2816,
+    "own_loc": 4508,
+    "loc_method": "Physical lines including blanks/comments; heuristic file classification retained in source-inventories, excluding docs, lockfiles, binary/generated/dependency folders.",
+    "start_sh": true,
+    "build_sh": true,
+    "install_sh": true,
+    "skipped_members": [],
+    "nginx_evidence": [
+      {
+        "file": "README.md",
+        "line": "Direct HTTP/1.1 on $HOST:$PORT. No Nginx, HTTP framework, async executor or ORM. Requires Linux 6.1+ with io_uring enabled. The existing submission directory and executable names are retained."
+      },
+      {
+        "file": "README.md",
+        "line": "  HOST=0.0.0.0 PORT=80 bash start.sh"
+      },
+      {
+        "file": "README.md",
+        "line": "- io_uring issuers use multishot direct accept/receive, fixed socket descriptors, provided buffers and batched completions. Tables adapt to the inherited hard limit: eight rings of 65,535 slots under the spec limit, or one ring of 524,280 slots with a one-million limit. Accepted sockets occupy those tables instead of ordinary process descriptors, lifting the previous connection ceiling under LimitNOFILE=65535. The process raises only its own soft limit within the inherited hard limit."
+      },
+      {
+        "file": "readme.md",
+        "line": "Direct HTTP/1.1 on $HOST:$PORT. No Nginx, HTTP framework, async executor or ORM. Requires Linux 6.1+ with io_uring enabled. The existing submission directory and executable names are retained."
+      },
+      {
+        "file": "readme.md",
+        "line": "  HOST=0.0.0.0 PORT=80 bash start.sh"
+      },
+      {
+        "file": "readme.md",
+        "line": "- io_uring issuers use multishot direct accept/receive, fixed socket descriptors, provided buffers and batched completions. Tables adapt to the inherited hard limit: eight rings of 65,535 slots under the spec limit, or one ring of 524,280 slots with a one-million limit. Accepted sockets occupy those tables instead of ordinary process descriptors, lifting the previous connection ceiling under LimitNOFILE=65535. The process raises only its own soft limit within the inherited hard limit."
+      }
+    ],
+    "role": "control"
+  },
+  {
+    "pr": 0,
+    "id": "baseline",
+    "case_id": "baseline",
+    "folder": "goose-native-tbsvttr",
+    "title": "Retained Goose baseline",
+    "status": "prepared",
+    "eligible": true,
+    "nginx": false,
+    "commit": "73148f5d49e07fc62289bf582e261b8df0e1ef51d478d6fb9d44a68fec87b88a",
+    "source_sha256": "73148f5d49e07fc62289bf582e261b8df0e1ef51d478d6fb9d44a68fec87b88a",
+    "source_file_count": 17,
+    "source_hashes": "archives/prbaseline-sha256.json",
+    "app_loc": 2096,
+    "own_loc": 2256,
+    "goose_compiler_commit": "f605b5a07dd2aa3a5cb3f4c9b14002bd3c9d3d1a",
+    "variant": "borrowed inputs, SIMD JSON, streaming parsing, LTO",
+    "backend": "epoll",
+    "source_dir": "/suite/sources/prgoose",
+    "role": "previous_implementation"
+  }
+]

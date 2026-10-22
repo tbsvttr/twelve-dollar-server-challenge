@@ -1,0 +1,17 @@
+c2000-m1024 trial 1: 84,788.70 successful req/s; 35.99 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+c131072-m0 trial 1: 106,554.49 successful req/s; 39.08 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+82 trial 1: 101,907.17 successful req/s; 47.82 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+c131072-m1024 trial 1: 106,897.10 successful req/s; 60.83 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+c8192-m0 trial 1: 116,321.87 successful req/s; 15.38 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+baseline trial 1: 109,633.78 successful req/s; 39.19 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+c32768-m0 trial 1: 117,819.00 successful req/s; 40.08 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+c32768-m1024 trial 1: 96,817.10 successful req/s; 59.88 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+c32768-m1024 trial 2: 105,668.23 successful req/s; 61.33 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+c131072-m1024 trial 2: 76,182.17 successful req/s; 57.06 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+c8192-m0 trial 2: 113,626.75 successful req/s; 15.27 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+baseline trial 2: 89,193.87 successful req/s; 37.32 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+82 trial 2: 53,646.90 successful req/s; 44.16 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+c2000-m1024 trial 2: 54,916.99 successful req/s; 35.02 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 26}
+c32768-m0 trial 2: 66,465.13 successful req/s; 35.15 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+c131072-m0 trial 2: 79,842.81 successful req/s; 36.32 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/goose-2026-10-22/lead5/cache-grid/measurements.json

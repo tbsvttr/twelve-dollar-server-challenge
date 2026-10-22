@@ -1,0 +1,22 @@
+{
+  "purpose": "Final-form metadata-only trainer-label correction of fresh unified-like-v2 build",
+  "source_sha256": "333f9ae3364189cd880ed37f7e491773ffed92be3e2d516ca5eac27aae9d16a4",
+  "source_files": 19,
+  "changed_files": [
+    "bench/train_app.py"
+  ],
+  "base_candidate": "unified-like-trainer-v2",
+  "base_image_id": "sha256:69402259b96bfadeefc1229fea8ddbdfa701a27d4910359348c77bb67e5f0b49",
+  "actual_feedback_trainer_sha256": "53ba1822774e973253a89dc1bfa32d7948a6a900c5585a3005b634d87f2d92f7",
+  "final_source_trainer_sha256": "fd55841b9ded6df79c0b41d26a81acee1752dea68c1c026f3706d3c4b641bf51",
+  "application_pgo_enabled": true,
+  "sqlite_pgo_enabled": true,
+  "unified_lto": true,
+  "cache_kib": 8192,
+  "mmap_mib": 0,
+  "status": "metadata-only final repack and nineteen source hashes verified; API/performance pending",
+  "image": "twelve-goose-unified-like-trainer-v2-final:2026-10-22",
+  "new_feedback_generated": false,
+  "image_id": "sha256:2eb01e5b62c27013ce3374c372e93becc1aa2e63f33293441a78e605aef3fdfb",
+  "binary_sha256": "d39ced515dc58a8ea93b3010f7def21805fffa58e388dfe89211b25de7ed01be"
+}

@@ -1,0 +1,59 @@
+{
+  "purpose": "Independent final static source/docs/runtime/trainer/provenance review; no container/build/load executed by this review",
+  "recorded_at": "2026-10-22T12:32:43.362370+00:00",
+  "source_sha256": "333f9ae3364189cd880ed37f7e491773ffed92be3e2d516ca5eac27aae9d16a4",
+  "image_id": "sha256:2eb01e5b62c27013ce3374c372e93becc1aa2e63f33293441a78e605aef3fdfb",
+  "binary_sha256": "d39ced515dc58a8ea93b3010f7def21805fffa58e388dfe89211b25de7ed01be",
+  "actual_feedback_trainer_sha256": "53ba1822774e973253a89dc1bfa32d7948a6a900c5585a3005b634d87f2d92f7",
+  "final_source_trainer_sha256": "fd55841b9ded6df79c0b41d26a81acee1752dea68c1c026f3706d3c4b641bf51",
+  "independent_normalized_ast_sha256": "ffbf8c046018cddeb9fcbdb59b01d661947db11a72513268a3362527eaf79662",
+  "normalization": "Only module docstring replaced with <module-doc> and single trainer_variant keyword value with <variant-label>",
+  "checks": [
+    {
+      "area": "frozen source/runtime equivalence",
+      "passed": true,
+      "finding": "All19finalsource files match proof333f9a...; the only source difference versus original-trainerfinal is build-only train_app.py. ProductionGooseapp46494..., SQLrangeguard, Ctransport/crypto/quoting/DBconfig/durability and compilerbuildflags are identical."
+    },
+    {
+      "area": "accurate final documentation",
+      "passed": true,
+      "finding": "README and TRAINER-NOTICE match approvedfinaltemplates. Trainer module and metadata labels now accurately identify the actual build-only v2 trainer; currentsource contains no stale not-used-in-any-build assertion."
+    },
+    {
+      "area": "exact label-only repack",
+      "passed": true,
+      "finding": "Independent AST normalization of exactlymodule-docstring and one trainer_variant constant proves equality with retainedpre-repacktrainer. Binary/generatedC/fiveLTOobjects/fiveprofiles/IPA/trainingJSON hashes remain byteidentical to fullnormalbuild; no feedback was regenerated during repack."
+    },
+    {
+      "area": "explicit actual profile origin",
+      "passed": true,
+      "finding": "Currenttrainer source SHAfd5584... differsfrom actualfeedbacktrainerSHA53ba18... . Final proof, equivalenceartifact and preservedtrainingJSON explicitly retain both; actual trainingJSONtrainer_sha256 remains53ba18... and new_feedback_generated=false. No claim is made that revisedlabelbytes generated retainedprofiles."
+    },
+    {
+      "area": "synthetic feed-driven training",
+      "passed": true,
+      "finding": "The independently reviewed v2 runtime targets are80%actualHTTPfeedIDs and20%originalsyntheticIDs, with100/100/15/2routes and256syntheticJWTusers. Uniformseed is the trainer own generator, not challenge seed; requestselection contains no challengepostIDs/tokens/goldenanswers."
+    },
+    {
+      "area": "training coverage",
+      "passed": true,
+      "finding": "Dense131072posts produce70.4MiB syntheticDB; retainedmain-onlycoverage records1765likes of recentcreatedposts, positiveupdated-count feedobservations and256successfulsubjects before deterministicprobe. Freshlike/duplicateprobe verifies post/feedcount1 in dense+sparse; all3DBchecks/exits/configs pass."
+    },
+    {
+      "area": "build/profile/production separation",
+      "passed": true,
+      "finding": "Normalparentbuild freshly compiles/trains5units together withLTO and hardmissingprofile/CFG/ABI checks. Build-only trainer/helper/fixtures are absentfrom productionruntime behavior; synchronizedmainthreaddump hook/interposer symbols absent in finalbinary."
+    },
+    {
+      "area": "no benchmark-specific application shortcuts",
+      "passed": true,
+      "finding": "Application contains no result/JWT/rowcache, seedIDassumption, UserAgent/load detector, precomputedresponse or alternativebenchmarkroute. Livequery selection/likes/order remaininGoose, HMACchecks perrequest and commit-before-responsegate are unchanged. Trainer tokenpool/subject counters existonly in build-timePython."
+    }
+  ],
+  "blocking_findings": [],
+  "limitations": [
+    "Current trainer-source bytes differ descriptively from the retained actual-training bytes; both identities and originalmetadata are preserved. Generic trainer_sha256 fields in the finalproof refer to currentsource, while actual_feedback_trainer_sha256 is authoritative for retainedfeedbackorigin.",
+    "Correctness and sharedCPU selection cannot establish the>=5% dedicatedCPUholdout target. The chosen finalcandidate still needs a separately frozen, predeclaredholdout with all required runtimeproofs and counterretention."
+  ],
+  "passed_all": true
+}

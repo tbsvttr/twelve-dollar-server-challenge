@@ -1,0 +1,7 @@
+goose trial 1: 114,630.11 successful req/s; 15.37 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+82 trial 1: 111,617.90 successful req/s; 48.38 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+previous trial 1: 116,289.17 successful req/s; 15.27 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+goose trial 2: 110,878.48 successful req/s; 15.25 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+82 trial 2: 112,871.95 successful req/s; 48.48 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+previous trial 2: 119,967.16 successful req/s; 15.27 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/goose-2026-10-22/lead5/counts-checks/measurements.json

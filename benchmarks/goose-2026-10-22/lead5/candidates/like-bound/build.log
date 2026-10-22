@@ -1,0 +1,40 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 486B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/twelve-goose-final:2026-10-22
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [internal] load build context
+#4 transferring context: 96.19kB done
+#4 DONE 0.0s
+
+#5 [1/4] FROM docker.io/library/twelve-goose-final:2026-10-22
+#5 CACHED
+
+#6 [2/4] COPY --chown=bench:bench source /suite/sources/prgoose
+#6 DONE 0.1s
+
+#7 [3/4] WORKDIR /suite/sources/prgoose
+#7 DONE 0.0s
+
+#8 [4/4] RUN /opt/goose/build/goose -O2 --standalone -o .build/app.c app.goose && gcc -O3 -march=native -DNDEBUG -std=gnu11 -I.deps -I.build -pthread -flto=2 -fno-semantic-interposition -fno-plt .build/app.c net.c db.c json_fast.c .build/sqlite-pgo.o -lcrypto -lm -pthread -o bin/server
+#8 0.161 parsed ok: 258 top-level declarations, 3 file(s)
+#8 0.161 typechecked ok: 236 specialization(s), 7 struct/1 enum instance(s); optimized -O2: 102 inlined, 0 base case(s), 41 folded, 46 propagated, 0 tail loop(s), 0 reassociated
+#8 0.161 bce: elided 71/120 index and 21/43 slice checks
+#8 0.161 wrote .build/app.c (532785 bytes)
+#8 DONE 3.2s
+
+#9 exporting to image
+#9 exporting layers 0.0s done
+#9 writing image sha256:5dcd9f8764ebc238c8e392bf32d7e69061428c45b9cbb3c98bcef82eac0ba14c done
+#9 naming to docker.io/library/twelve-goose-like-bound:2026-10-22 done
+#9 DONE 0.0s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/tndq970wcaj3ha897whp5y9r8

@@ -1,0 +1,35 @@
+  PID  PPID NI PRI STAT  %CPU COMM
+15432     1  0  31 Rs   263.2 /System/Library/Frameworks/Virtualization.framework/Versions/A/XPCServices/com.apple.Virtualization.VirtualMachine.xpc/Contents/MacOS/com.apple.Virtualization.VirtualMachine
+25218 25181  0  31 R     92.7 /Users/tvcc/agent-work/wt/zpa-87/.venv/bin/python
+25219 25181  0  31 R     92.1 /Users/tvcc/agent-work/wt/zpa-87/.venv/bin/python
+25187 25181  0  31 R     90.7 /Users/tvcc/agent-work/wt/zpa-87/.venv/bin/python
+86591  1043  0  47 S     72.0 /Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/155.0.8059.85/Helpers/Google Chrome Helper (Aperitif Renderer).app/Contents/MacOS/Google Chrome Helper (Aperitif Renderer)
+25186 25181  0  31 S     46.2 /Users/tvcc/agent-work/wt/zpa-87/.venv/bin/python
+  410     1  0  79 Ss    36.7 /System/Library/PrivateFrameworks/SkyLight.framework/Resources/WindowServer
+ 1019  1007  0  54 S     23.4 /Users/tvcc/Library/Application Support/Steam/Steam.AppBundle/Steam/Contents/Frameworks/Steam Helper.app/Contents/MacOS/Steam Helper
+21115     1  0  46 R     18.2 /Applications/WezTerm.app/Contents/MacOS/wezterm-gui
+69817 69369  0  31 S     12.1 /Users/tvcc/.vscode/extensions/anthropic.claude-code-2.1.304-darwin-arm64/resources/native-binary/claude
+ 1029  1007  0  47 S      9.0 /Users/tvcc/Library/Application Support/Steam/Steam.AppBundle/Steam/Contents/Frameworks/Steam Helper.app/Contents/MacOS/Steam Helper
+25413 69817  0  31 R      5.2 /usr/bin/sandbox-exec
+ 1043     1  0  55 S      4.5 /Applications/Google Chrome.app/Contents/MacOS/Google Chrome
+  727     1  0  48 S      4.3 /System/Library/CoreServices/WindowManager.app/Contents/MacOS/WindowManager
+67151 66863  0  31 S+     4.0 codex
+16839 25691  0  31 S+     3.4 codex
+21662     1  0  31 Ss     2.9 /Users/tvcc/.codex/packages/app-server-daemon/releases/0.163.0-aarch64-apple-darwin/bin/codex
+ 1446  1417  0  47 S      2.4 /Applications/Visual Studio Code.app/Contents/Frameworks/Code Helper (Renderer).app/Contents/MacOS/Code Helper (Renderer)
+  544     1  0  63 Ss     2.3 /System/Library/DriverExtensions/com.apple.DriverKit-AppleBCMWLAN.dext/com.apple.DriverKit-AppleBCMWLAN
+  871     1  0  46 S      1.2 /Applications/Caffeine.app/Contents/MacOS/Caffeine
+ 1078  1043  0  54 S      1.2 /Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/155.0.8059.85/Helpers/Google Chrome Helper (Aperitif).app/Contents/MacOS/Google Chrome Helper (Aperitif)
+  366     1  0  50 Ss     1.1 /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mds
+  538     1  0  31 Ss     1.1 /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mds_stores
+ 1007   867  0  46 S      1.1 /Users/tvcc/Library/Application Support/Steam/Steam.AppBundle/Steam/Contents/Frameworks/Steam Helper.app/Contents/MacOS/Steam Helper
+  341     1  0  50 Ss     0.8 /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/FSEvents.framework/Versions/A/Support/fseventsd
+  339     1  0  31 Ss     0.6 /usr/libexec/UserEventAgent
+17305  1043  0  47 S      0.6 /Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/155.0.8059.85/Helpers/Google Chrome Helper (Aperitif Renderer).app/Contents/MacOS/Google Chrome Helper (Aperitif Renderer)
+  710     1  0  63 Ss     0.6 /usr/sbin/BTLEServer
+ 1079  1043  0  47 S      0.5 /Applications/Google Chrome.app/Contents/Frameworks/Google Chrome Framework.framework/Versions/155.0.8059.85/Helpers/Google Chrome Helper (Aperitif).app/Contents/MacOS/Google Chrome Helper (Aperitif)
+65221     1  0  46 S      0.5 /System/Applications/Notes.app/Contents/MacOS/Notes
+  788     1  0  37 S      0.5 /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/corespotlightd
+  337     1  0  31 Ss     0.3 /usr/libexec/logd
+25181 25180  0  31 S      0.3 /Users/tvcc/agent-work/wt/zpa-87/.venv/bin/python
+21971     1  0   4 S      0.3 /System/Library/Frameworks/CoreServices.framework/Versions/A/Frameworks/Metadata.framework/Versions/A/Support/mdworker_shared

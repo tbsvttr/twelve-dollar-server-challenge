@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "stock_backwards_delta_us": 18446744073709541616,
+  "monotonic_delta_us": 500,
+  "backward_step_stock_timeouts": 1,
+  "backward_step_monotonic_timeouts": 0,
+  "real_over_two_second_duration_counted_by_both": true,
+  "timeout_logic_unchanged": true,
+  "clock_functions_extracted_from_actual_sources": true,
+  "actual_stats_c_sha256": "29ed9ac771ac1309137307d26df8a7e56150e79b4655ba915d0dd3e368d612de",
+  "timeout_condition_sha256": "889b54c5d5091c8fafff59043dba7ad57c938f0785c480caab74ff43269066c6",
+  "compile_command": [
+    "cc",
+    "-O2",
+    "-std=c99",
+    "-D_POSIX_C_SOURCE=200112L",
+    "-D_DEFAULT_SOURCE",
+    "-I/tmp/wrk-clock-build.9Rxm5G/stock/src",
+    "/output/mock-clock.c",
+    "/tmp/wrk-clock-build.9Rxm5G/stock/src/stats.c",
+    "/tmp/wrk-clock-build.9Rxm5G/stock/src/zmalloc.c",
+    "-pthread",
+    "-lm",
+    "-o",
+    "/output/mock-clock"
+  ],
+  "process_exit_code": 0
+}

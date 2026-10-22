@@ -1,0 +1,11 @@
+{
+  "container": "twelve-goose-lead5-clock",
+  "image_id": "sha256:901ab577025cfdcf7abc716fb4158774615b881383529bb77163b5f07f963898",
+  "host_config": {
+    "CpusetCpus": "5",
+    "NanoCpus": 20000000,
+    "Memory": 67108864,
+    "MemorySwap": 67108864
+  },
+  "stopped": true
+}

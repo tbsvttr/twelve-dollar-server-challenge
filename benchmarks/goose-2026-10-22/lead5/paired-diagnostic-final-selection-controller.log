@@ -1,0 +1,7 @@
+{"attempt_id": "pair01-repeat01", "requested_pair": ["baseline", "baseline"], "valid": true, "requested_first_second_ratio": 1.0015154668602424, "measured_start_skew_s": 0.0006349579998641275, "error": null}
+{"attempt_id": "pair01-repeat02", "requested_pair": ["baseline", "baseline"], "valid": true, "requested_first_second_ratio": 0.9911722492030909, "measured_start_skew_s": 0.0003309169987915084, "error": null}
+{"attempt_id": "pair02-repeat01", "requested_pair": ["unified-like-final", "82"], "valid": true, "requested_first_second_ratio": 1.022365245374095, "measured_start_skew_s": 0.0023858330023358576, "error": null}
+{"attempt_id": "pair02-repeat02", "requested_pair": ["unified-like-final", "82"], "valid": true, "requested_first_second_ratio": 1.041819400744921, "measured_start_skew_s": 0.012525749996711966, "error": null}
+{"attempt_id": "pair03-repeat01", "requested_pair": ["unified-like-trainer-v2-final", "82"], "valid": true, "requested_first_second_ratio": 1.0516723986362808, "measured_start_skew_s": 0.00025945899687940255, "error": null}
+{"attempt_id": "pair03-repeat02", "requested_pair": ["unified-like-trainer-v2-final", "82"], "valid": true, "requested_first_second_ratio": 1.0428164888278915, "measured_start_skew_s": 0.0037364589952630922, "error": null}
+/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/goose-2026-10-22/lead5/paired-diagnostic-final-selection

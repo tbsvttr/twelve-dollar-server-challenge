@@ -1,0 +1,26 @@
+[
+  {
+    "case_id": "goose",
+    "source_batch": "combined-like-bound",
+    "source_verification_sha256": "f6184d5ff02af75ba2eb1ae3a9c10298eda4bf558523c0392764c3386e353ae6",
+    "preserved_record": "inherited-verification/goose.json",
+    "preserved_record_sha256": "695d0986dd6846c3c3b69e1ac6f0d76ea3079ba507682d479ef463669a195eab",
+    "raw_log_sha256": "0172ffac679de1a3ba485ac86c124b7e1d5cef1c628b3f8187b09f655dd81e2a"
+  },
+  {
+    "case_id": "82",
+    "source_batch": "combined-like-bound",
+    "source_verification_sha256": "f6184d5ff02af75ba2eb1ae3a9c10298eda4bf558523c0392764c3386e353ae6",
+    "preserved_record": "inherited-verification/82.json",
+    "preserved_record_sha256": "786fab61491033d87385b5aa1caf3992f7df24d73c0f12deecd94936fd1a246b",
+    "raw_log_sha256": "6b390e4d18496227a1e98547d90a4a51ee4af50e1e321392e85258b20da6ecf6"
+  },
+  {
+    "case_id": "baseline",
+    "source_batch": "isolated-screen",
+    "source_verification_sha256": "e2b7f545a11a802a3ac4f1d2b323036d0139d5d91b081183748b273192927c19",
+    "preserved_record": "inherited-verification/baseline.json",
+    "preserved_record_sha256": "b91d76e3f089827db97b590b93853c265fc8dc717241cd0fb0e65b961a74d6d7",
+    "raw_log_sha256": "47aa5a640e15fa507f54abb9fd4c9eaa8bdee67c7182c6b604fd436c7866f7b0"
+  }
+]

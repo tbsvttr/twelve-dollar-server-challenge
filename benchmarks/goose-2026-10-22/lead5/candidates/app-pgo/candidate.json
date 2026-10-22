@@ -1,0 +1,18 @@
+{
+  "purpose": "Isolate whole-application PGO on unchanged final application/native sources and unchanged SQLite PGO object.",
+  "source_sha256": "b8cd5c7bf9560f9d091fcf8c95dbbc69f71068859018ade51a22534aa049e2cb",
+  "source_files": 19,
+  "base_source_sha256": "73148f5d49e07fc62289bf582e261b8df0e1ef51d478d6fb9d44a68fec87b88a",
+  "changed_files": [
+    "build.sh",
+    "install.sh",
+    "bench/train_app.py",
+    "bench/app_pgo_exit.c"
+  ],
+  "sqlite_object_sha256": "2c5663ef60e2bbc9f87a54f05f8eca1057b64614f5ced6fc34591ed3ef3b2178",
+  "training_fixture": "Created from independent synthetic literals by bench/train_app.py; no benchmark fixture mounted or read.",
+  "status": "built and source/profile/symbol proof verified; correctness/performance gates pending",
+  "image": "twelve-goose-app-pgo:2026-10-22",
+  "image_id": "sha256:02b50497b257a790c85545d7cde995ee7bb270c6d2c0dc8edbd1e174d6bb5871",
+  "binary_sha256": "c985cb01520e7d3b41de9b6315078c4ba627ed0dd785ca26e132c6c6db01073a"
+}

@@ -1,0 +1,6 @@
+hw.model: Mac14,10
+hw.physicalcpu: 12
+hw.logicalcpu: 12
+hw.perflevel0.physicalcpu: 8
+hw.perflevel1.physicalcpu: 4
+kern.hv_support: 1

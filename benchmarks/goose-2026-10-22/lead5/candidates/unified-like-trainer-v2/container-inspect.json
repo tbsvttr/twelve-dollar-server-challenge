@@ -1,0 +1,190 @@
+{
+  "Id": "163347c454cb52989e2732510b1c4af980a0bdd1f81330a30bf76657feb0daae",
+  "Created": "2026-10-22T12:26:03.916944967Z",
+  "Path": "bash",
+  "Args": [
+    "-c",
+    "set -e\nrm -rf .build bin\nexec bash -x build.sh"
+  ],
+  "State": {
+    "Status": "exited",
+    "Running": false,
+    "Paused": false,
+    "Restarting": false,
+    "OOMKilled": false,
+    "Dead": false,
+    "Pid": 0,
+    "ExitCode": 0,
+    "Error": "",
+    "StartedAt": "2026-10-22T12:26:03.992311509Z",
+    "FinishedAt": "2026-10-22T12:26:41.006557179Z"
+  },
+  "Image": "sha256:36ab1fd99ec3747a746db51f452e3b0e8ee97518ae14ee2ff1bab392854ec210",
+  "ResolvConfPath": "/var/lib/docker/containers/163347c454cb52989e2732510b1c4af980a0bdd1f81330a30bf76657feb0daae/resolv.conf",
+  "HostnamePath": "/var/lib/docker/containers/163347c454cb52989e2732510b1c4af980a0bdd1f81330a30bf76657feb0daae/hostname",
+  "HostsPath": "/var/lib/docker/containers/163347c454cb52989e2732510b1c4af980a0bdd1f81330a30bf76657feb0daae/hosts",
+  "LogPath": "",
+  "Name": "/twelve-build-unified-like-trainer-v2",
+  "RestartCount": 0,
+  "Driver": "overlay2",
+  "Platform": "linux",
+  "MountLabel": "",
+  "ProcessLabel": "",
+  "AppArmorProfile": "",
+  "ExecIDs": null,
+  "HostConfig": {
+    "Binds": null,
+    "ContainerIDFile": "",
+    "LogConfig": {
+      "Type": "local",
+      "Config": {}
+    },
+    "NetworkMode": "none",
+    "PortBindings": {},
+    "RestartPolicy": {
+      "Name": "no",
+      "MaximumRetryCount": 0
+    },
+    "AutoRemove": false,
+    "VolumeDriver": "",
+    "VolumesFrom": null,
+    "ConsoleSize": [
+      0,
+      0
+    ],
+    "CapAdd": null,
+    "CapDrop": null,
+    "CgroupnsMode": "private",
+    "Dns": null,
+    "DnsOptions": [],
+    "DnsSearch": [],
+    "ExtraHosts": null,
+    "GroupAdd": null,
+    "IpcMode": "private",
+    "Cgroup": "",
+    "Links": null,
+    "OomScoreAdj": 0,
+    "PidMode": "",
+    "Privileged": false,
+    "PublishAllPorts": false,
+    "ReadonlyRootfs": false,
+    "SecurityOpt": null,
+    "UTSMode": "",
+    "UsernsMode": "",
+    "ShmSize": 67108864,
+    "Runtime": "runc",
+    "Isolation": "",
+    "CpuShares": 0,
+    "Memory": 3221225472,
+    "NanoCpus": 2000000000,
+    "CgroupParent": "",
+    "BlkioWeight": 0,
+    "BlkioWeightDevice": [],
+    "BlkioDeviceReadBps": [],
+    "BlkioDeviceWriteBps": [],
+    "BlkioDeviceReadIOps": [],
+    "BlkioDeviceWriteIOps": [],
+    "CpuPeriod": 0,
+    "CpuQuota": 0,
+    "CpuRealtimePeriod": 0,
+    "CpuRealtimeRuntime": 0,
+    "CpusetCpus": "3,4",
+    "CpusetMems": "",
+    "Devices": [],
+    "DeviceCgroupRules": null,
+    "DeviceRequests": null,
+    "MemoryReservation": 0,
+    "MemorySwap": 3221225472,
+    "MemorySwappiness": null,
+    "OomKillDisable": null,
+    "PidsLimit": null,
+    "Ulimits": null,
+    "CpuCount": 0,
+    "CpuPercent": 0,
+    "IOMaximumIOps": 0,
+    "IOMaximumBandwidth": 0,
+    "MaskedPaths": [
+      "/proc/acpi",
+      "/proc/asound",
+      "/proc/interrupts",
+      "/proc/kcore",
+      "/proc/keys",
+      "/proc/latency_stats",
+      "/proc/sched_debug",
+      "/proc/scsi",
+      "/proc/timer_list",
+      "/proc/timer_stats",
+      "/sys/devices/virtual/powercap",
+      "/sys/firmware"
+    ],
+    "ReadonlyPaths": [
+      "/proc/bus",
+      "/proc/fs",
+      "/proc/irq",
+      "/proc/sys",
+      "/proc/sysrq-trigger"
+    ]
+  },
+  "GraphDriver": {
+    "Data": {
+      "ID": "163347c454cb52989e2732510b1c4af980a0bdd1f81330a30bf76657feb0daae",
+      "LowerDir": "/var/lib/docker/overlay2/871d23f8e523bd8b77d5045eac07306576bb617f28a9add8043c782208e6536d-init/diff:/var/lib/docker/overlay2/svpigttkg4sf0uk1h72en6u6e/diff:/var/lib/docker/overlay2/oz1ycx0unf3184m219hobtfag/diff:/var/lib/docker/overlay2/x147rubcswa275f41ag311api/diff:/var/lib/docker/overlay2/omp2msezcqr5ca69jaxc9frnz/diff:/var/lib/docker/overlay2/1mwjqtjdpvs3nfga4owlp4lix/diff:/var/lib/docker/overlay2/u4hyvyi0tuimwlu2sxdv7dd41/diff:/var/lib/docker/overlay2/z8mgenqrbshae6oy9pdagx7ci/diff:/var/lib/docker/overlay2/axcptz3c47hgwdfwrh3sazt4l/diff:/var/lib/docker/overlay2/0jcoflasca8na0jp3nszwl8kn/diff:/var/lib/docker/overlay2/8bd0rtxz2ojs9ueq13sa6dqyl/diff:/var/lib/docker/overlay2/pbccsqiaexhj4qa9ne7qwe68q/diff:/var/lib/docker/overlay2/zqjxejbfseh7ohcg84a5jdp48/diff:/var/lib/docker/overlay2/zpfb38dk81mxc2tmosmqqlves/diff:/var/lib/docker/overlay2/e2fd3ea9e88ae61b26964e52fdfa043a1d34db2a27770669909e351194b19d00/diff:/var/lib/docker/overlay2/2384b46cf7fddafea7e6da88f6c88961ccac9f8351644805697a28eed555c106/diff",
+      "MergedDir": "/var/lib/docker/overlay2/871d23f8e523bd8b77d5045eac07306576bb617f28a9add8043c782208e6536d/merged",
+      "UpperDir": "/var/lib/docker/overlay2/871d23f8e523bd8b77d5045eac07306576bb617f28a9add8043c782208e6536d/diff",
+      "WorkDir": "/var/lib/docker/overlay2/871d23f8e523bd8b77d5045eac07306576bb617f28a9add8043c782208e6536d/work"
+    },
+    "Name": "overlay2"
+  },
+  "Mounts": [],
+  "Config": {
+    "Hostname": "163347c454cb",
+    "Domainname": "",
+    "User": "bench",
+    "AttachStdin": false,
+    "AttachStdout": true,
+    "AttachStderr": true,
+    "Tty": false,
+    "OpenStdin": false,
+    "StdinOnce": false,
+    "Env": [
+      "PATH=/opt/goose/build:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+      "GOOSE_IO_BACKEND=epoll"
+    ],
+    "Cmd": [
+      "bash",
+      "-c",
+      "set -e\nrm -rf .build bin\nexec bash -x build.sh"
+    ],
+    "Image": "twelve-goose-unified-like-trainer-v2-build:2026-10-22",
+    "Volumes": null,
+    "WorkingDir": "/suite/sources/prgoose",
+    "Entrypoint": null,
+    "Labels": {
+      "org.opencontainers.image.version": "24.04"
+    }
+  },
+  "NetworkSettings": {
+    "SandboxID": "",
+    "SandboxKey": "",
+    "Ports": {},
+    "Networks": {
+      "none": {
+        "IPAMConfig": null,
+        "Links": null,
+        "Aliases": null,
+        "DriverOpts": null,
+        "GwPriority": 0,
+        "NetworkID": "bd7233eb8543f81569b5f6ac1a8790276b722ee30fb086b0c5ecd77455dca03a",
+        "EndpointID": "",
+        "Gateway": "",
+        "IPAddress": "",
+        "MacAddress": "",
+        "IPPrefixLen": 0,
+        "IPv6Gateway": "",
+        "GlobalIPv6Address": "",
+        "GlobalIPv6PrefixLen": 0,
+        "DNSNames": null
+      }
+    }
+  }
+}

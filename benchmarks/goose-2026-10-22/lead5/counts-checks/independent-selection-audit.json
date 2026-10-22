@@ -1,0 +1,90 @@
+{
+  "purpose": "Independent file-only rejection/selection evidence and report review; no workloads",
+  "recorded_at": "2026-10-22T14:21:22.026546+00:00",
+  "complete": true,
+  "audit_passed": true,
+  "selected": false,
+  "all_attempts": 6,
+  "pairs": [
+    {
+      "trial": 1,
+      "rust_ratio": 1.0269868005042202,
+      "previous_ratio": 0.9857333232320774,
+      "rps": {
+        "goose": 114630.11,
+        "82": 111617.9,
+        "previous": 116289.17
+      }
+    },
+    {
+      "trial": 2,
+      "rust_ratio": 0.9823386589848053,
+      "previous_ratio": 0.9242402670864259,
+      "rps": {
+        "goose": 110878.48,
+        "82": 112871.95,
+        "previous": 119967.16
+      }
+    }
+  ],
+  "geometric_rust_ratio": 1.0044146735300175,
+  "geometric_previous_ratio": 0.9544917128713091,
+  "checks": {
+    "six_retained_attempts_form_two_complete_triplets": true,
+    "all_six_records_pass_raw_warmup_duration_database_limits_cpu_rss_identity_checks": true,
+    "sequential_measurement_intervals_do_not_overlap": true,
+    "independent_ratios_and_geometric_means_match_decision": true,
+    "rejection_matches_predeclared_selection_margins": true,
+    "decision_binds_current_protocol_and_measurements": true,
+    "candidate_source_image_binary_are_exact_requested_pins": true,
+    "nineteen_source_files_match_candidate_batch_and_image_proof": true,
+    "normal_fresh_source_build_is_budget_limited_and_binary_bound": true,
+    "official42_semantics_and_committed_integrity_all_pass": true,
+    "actual_official_and_measured_servers_have_one_cpu_two_gib_no_swap": true,
+    "parser-checks.json_passed_on_exact_candidate": true,
+    "edge-checks.json_passed_on_exact_candidate": true,
+    "above-max-checks.json_passed_on_exact_candidate": true,
+    "retained_sqlite3534_plan_is_covering_index_without_temporary_sort": true,
+    "first_readonly_plan_attempt_is_separately_retained": true,
+    "archived_hmac_index_matches_exact_previous_reviewed_sha": true,
+    "current_index_is_previous_index_plus_rejection_append": true,
+    "completed_hmac_report_raw_summary_and_aggregate_are_unchanged": true,
+    "first_holdout_pins_remain_unchanged": true,
+    "live_nineteen_files_remain_hmac_only_source": true,
+    "report_states_correct_rejection_and_no_confirmation_or_pooling": true,
+    "all_selection_report_links_resolve": true
+  },
+  "issues": [],
+  "record_issues": [],
+  "missing_links": [],
+  "resource_budget_build": {
+    "sha256": "45fad72344024535aaec4653e2e297f7a68591b37d2c3d6ac18dc2716f5d18b8",
+    "peak_cgroup_bytes": 415154176,
+    "elapsed_seconds": 44.56708847900154,
+    "uid": 1001,
+    "limits": {
+      "cpu.max": "100000 100000",
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "cpuset.cpus.effective": "0-9"
+    }
+  },
+  "primary_validity_helper_sha256": "a759420725083ecc24e4a132eeb5633a2849faa8eb21152ca48641e30fa895d1",
+  "artifacts": {
+    "PROTOCOL-counts-query.md": "cd7adbf9a9f76451d652f78f51e4ff434d62d2b2210aeea8f95438900fc2f13a",
+    "counts-checks/measurements.json": "b2d0ec9afb8eac98cacf9681673ddb91de6fd5fef65636c325e0ad2b3fea6ecb",
+    "counts-checks/selection-summary.json": "d750d9ef943724252478756a486effc7074374846da62317cab7b35637c8af45",
+    "counts-checks/RESULT.md": "19aa02bd38d897857e3d13ae9ecf1b0d64e841dc8ad3acd97bbce06a6771f28c",
+    "README.md": "251735913aa9469684567aac0ca92f910be993eb62ad07849cb4c1e369a0e4a3",
+    "README-after-hmac-confirmation.md": "aa4fee170c85b74556ad3d92e7750d1c501dae1e14d32ac64c35923d28adabee",
+    "candidates/counts-query/image-proof.json": "e993d7cc47ebd982c789135b7c0af15c3956d051b1194eef29f89aa8a22cb0bd",
+    "candidates/counts-query/plan.txt": "513ea6aecfc6390c51d171756015f3706979fe9740fb93594b8551d393d2ec64"
+  },
+  "limitations": [
+    "No Docker, API, builds, database queries or benchmarks were executed by this reviewer.",
+    "Recorded generic validity checks were reused for raw/error/resource validation; paired ratios and selection arithmetic were recomputed directly.",
+    "Supplement records bind UID, exact image and app; official and benchmark records additionally retain actual Docker HostConfig.",
+    "The initial read-only plan stdout and original program remain separate; no retained exit-code file was available, and the failed output is not treated as a successful plan.",
+    "These six attempts only reject the candidate; they are not confirmation and are not pooled with either complete holdout."
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "purpose": "Independent file-only review of the second holdout renderer; the renderer was not executed",
+  "reviewed_at": "2026-10-22T13:44:52.744292+00:00",
+  "source": "render_next_report.py",
+  "sha256": "df20fb8e8659816e13bde8a0860c9a8103a0e5fb82fcedafecd2280b9b3fe135",
+  "blocking_findings": [],
+  "passed_all": true,
+  "checks": {
+    "completion_marker_binds_current_attempt_count_and_selected_rounds": true,
+    "completion_marker_and_aggregate_bind_current_raw_and_final_summary_hashes": true,
+    "met_requires_all_primary_independent_and_normal_build_budget_gates": true,
+    "complete_failed_target_can_render_unmet": true,
+    "selection_requires_six_rows_in_two_sequential_triplets_and_frozen_hash": true,
+    "selection_is_explicitly_excluded_from_confirmation_and_new_aa_is_not_claimed": true,
+    "first_failed_holdout_remains_separate_and_linked": true,
+    "only_new_result_and_top_level_index_are_write_targets": true,
+    "budget_proof_is_selection_hash_bound_and_binary_bound": true,
+    "source_parses_without_execution": true
+  },
+  "wording_notes": [
+    "Use one CPU quota for the normal build: its cpu.max is 100000 100000 and effective cpuset spans 0-9.",
+    "The 42 official checks are accompanied by independent dynamic semantics and integrity checks; distinguish those scopes in prose."
+  ],
+  "limitations": [
+    "Static review only; final reports and their links must be checked against completed evidence after rendering."
+  ]
+}

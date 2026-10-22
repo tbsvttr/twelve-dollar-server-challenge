@@ -1,0 +1,47 @@
+{
+  "purpose": "Independent file-only peer review of final holdout report renderer; renderer not invoked by reviewer",
+  "recorded_at": "2026-10-22T13:04:14.802547+00:00",
+  "renderer_sha256": "0bc19babbc40cc62657481c10f82348684156d69e4da6d9faa9a2864fc803380",
+  "checks": [
+    {
+      "area": "completion guards",
+      "passed": true,
+      "finding": "Renderer requires completedholdoutmarker, matchingraw/finalsummary/auditattemptcounts andselectedrounds, currentmeasurementhash andcompleteaggregateaudit before reportgeneration."
+    },
+    {
+      "area": "direct audit-to-summary binding",
+      "passed": true,
+      "finding": "Newmandatory guard requires aggregateaudit.primary_summary.sha256 equal the exact displayedfinalsummaryfilehash; root will produce a byteidenticalcopy of auditedcanonicalsummary. Completionmarker hashes provide an additionalbinding."
+    },
+    {
+      "area": "honest target status",
+      "passed": true,
+      "finding": "MET requiresprimarypassed_all, everyrequiredgate/everydeclaredgate, aggregateaudit_passed andtarget_passed. Completeauditedtargetfailure rendersUNMET andlistsfailedgates; positivepointestimate alone doesnot claimtarget."
+    },
+    {
+      "area": "all attempts and discovery retained",
+      "passed": true,
+      "finding": "Output includes everyround/serverattempt, inclusionflag, latency/error/rawlinks, all-attempterror totals andwhole-roundexclusionreasons. Discoverymatrixretains32sequential and18sharedpairattempts explicitlyoutsideholdoutstatistics."
+    },
+    {
+      "area": "implementation and reproduction scope",
+      "passed": true,
+      "finding": "SelectedlegacySQLitePGO/fourunitappLTO/querybound/cachedbsettings aredescribed accurately; rejectedunified/trainer-v2 variants are explicitlynotshipped. Differentnormalrebuildbinary/object/profileevidence remainsunmeasured andcannotreplacefrozenselectedimage."
+    },
+    {
+      "area": "measurement limitations",
+      "passed": true,
+      "finding": "Reports explicitlyidentify occupiedM2Pro/nativeARM64Docker dedicatedguestCPUsettings, commonmonotonicdriver/schedulerwalllimitation, retainedhistoricalclockattributionuncertainty andwholeimplementationversuslanguage/x86capacityscope."
+    },
+    {
+      "area": "output isolation",
+      "passed": true,
+      "finding": "Renderer reads completedlocalfiles only and writes exactlyholdout-selected/RESULT.md andlead5/README.md atomically. It contains no container/server/compiler/workload invocation and doesnotmodifyoldresults orrawrecords."
+    }
+  ],
+  "blocking_findings": [],
+  "passed_all": true,
+  "limitations": [
+    "Final humanreports still require completedmeasurements/summary/marker/aggregateaudit and a postgenerationconsistency check; this review examines rendererlogic only."
+  ]
+}

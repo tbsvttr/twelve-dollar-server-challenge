@@ -1,0 +1,20 @@
+{
+  "purpose": "Final-form original-trainer unified PGO/LTO+boundedlikes candidate; accurateREADME+trainerattribution; docs-only corrected snapshot over full fresh normal build",
+  "source_sha256": "eee8140ae61a30401c20241257344f13d63f401f8398d89d74a2ab00d8f8433f",
+  "source_files": 19,
+  "parent_candidate": "unified-like",
+  "parent_source_sha256": "d580b6c76f4fb61e535a6a3df2f4e55d3de94ae331a5c0e63589cd880ffca591",
+  "changed_files": [
+    "bench/TRAINER-NOTICE.md"
+  ],
+  "compiled_inputs_identical_to_parent": true,
+  "application_pgo_enabled": true,
+  "sqlite_pgo_enabled": true,
+  "unified_lto": true,
+  "cache_kib": 8192,
+  "mmap_mib": 0,
+  "status": "corrected final-form image verified; compiled inputs/binary/objects/profiles identical to fresh parent; API/performance gates pending",
+  "image": "twelve-goose-unified-like-final:2026-10-22",
+  "image_id": "sha256:156abeecae6919eaf8457b304507c4a97262a911be7882ca60700f8fce58ef24",
+  "binary_sha256": "27fe3cd23b2f62f8b7c022f976d3a119c3f355062e3c149f4749d14651de524e"
+}

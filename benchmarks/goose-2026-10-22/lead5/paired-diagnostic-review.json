@@ -1,0 +1,93 @@
+{
+  "purpose": "Independent STATIC review of the sharedCPU selection diagnostic; no workload run by reviewer",
+  "recorded_at": "2026-10-22T12:02:51.548929+00:00",
+  "runner": "paired_diagnostic.py",
+  "runner_sha256": "ea58a393dc10e1f2947c5fb11b281633fe0f4eee282344093e01b4c90f321e7f",
+  "plan_sha256": "d675301673da3c0a9857c8ae7ad39128e7f02f396076b1998f14d70e70445d49",
+  "scope": "selection_only_two_servers_share_one_guest_cpu_not_dedicated_cpu_holdout",
+  "pairs": [
+    [
+      "baseline",
+      "baseline"
+    ],
+    [
+      "goose",
+      "82"
+    ],
+    [
+      "combined-sqlite",
+      "82"
+    ]
+  ],
+  "repeats": 2,
+  "seconds": 30,
+  "checks": [
+    {
+      "area": "scope",
+      "passed": true,
+      "finding": "The module, configuration and every attempt identify this as selection-only: two servers SHARE guestCPU0; rates cannot establish the dedicated-one-CPU target."
+    },
+    {
+      "area": "frozen correctness identities",
+      "passed": true,
+      "finding": "prepare recomputes the exact official42/semantic/database fingerprint for every case, pins source inventories and service binaries, and accepts only the declared corrected driver image/binary."
+    },
+    {
+      "area": "runtime identity",
+      "passed": true,
+      "finding": "The runner checks actual tag-to-image IDs before loads, launches immutable IDs, verifies service binary hashes, source readiness hashes and the driver selected by PATH in both instance containers."
+    },
+    {
+      "area": "equal resources",
+      "passed": true,
+      "finding": "Both servers request and inspect CPU0, one-CPUquota,2GiB/no swap and equal defaultCpuShares0; both drivers request and inspect CPUs1,2,two-CPUquota,2GiB/no swap. Effective cgroup limits are recorded."
+    },
+    {
+      "area": "independent instances",
+      "passed": true,
+      "finding": "Even A/A receives unique left/right server and load containers and each serve.py creates an independent fresh copy of the same seed database. Each client joins only its own server network namespace."
+    },
+    {
+      "area": "A/A first",
+      "passed": true,
+      "finding": "The CLI requires baseline:baseline first and all planned A/A repeats complete before variants. Every A/A must be valid and meet frozen5% throughput and CPU-seconds imbalance limits; a failure stops variants and retains attempts."
+    },
+    {
+      "area": "phase barriers",
+      "passed": true,
+      "finding": "Both warmups complete before either measurement phase begins. A two-worker barrier launches identical workloads; sameVM monotonic start/end times and maximum250ms start skew are recorded/checked."
+    },
+    {
+      "area": "shutdown order",
+      "passed": true,
+      "finding": "parallel joins both measured workers, including on errors, before after/stop metrics, shutdown or database checks; valid measurement cannot overlap the other side cleanup."
+    },
+    {
+      "area": "cleanliness and durability evidence",
+      "passed": true,
+      "finding": "Warmup and measurement HTTP/socket errors, service-controller exit, duration, committed post growth, DBquick_check, missing server logs, unhealthy/OOM containers and failed cleanup all invalidate the attempt."
+    },
+    {
+      "area": "retention and partial reporting",
+      "passed": true,
+      "finding": "Unique new output directories preserve commands, raw outputs, probes, logs and both sides. Final medians require every planned repeat valid; attempted/valid/required counts and partial_or_invalid flag expose missing/invalid repeats."
+    },
+    {
+      "area": "role reversal",
+      "passed": true,
+      "finding": "Case-to-side assignment and worker submission order reverse by repeat. Requested first/second ratios are oriented by case identity despite side reversal."
+    },
+    {
+      "area": "read-only plan",
+      "passed": true,
+      "finding": "The exact frozen runner completed full --plan successfully against the nine-case suite, including newly verified combined-sqlite. This review launched no container or load."
+    }
+  ],
+  "blocking_findings": [],
+  "limitations": [
+    "Both services compete on one guestCPU and both clients compete on two guestCPUs. Shared scheduling, yielding, I/O and client saturation can affect relative rates; this experiment selects candidates only and cannot meet or replace the >=5% dedicatedCPU holdout protocol.",
+    "Docker exec and thread scheduling create imperfect simultaneous starts. The runner records sameVM monotonic launch times and invalidates measured start skew above its frozen bound.",
+    "Static review does not replace observing the initial A/A validation and recorded actual limits during execution."
+  ],
+  "passed_all": true
+}

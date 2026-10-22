@@ -1,0 +1,21 @@
+{
+  "purpose": "Final-form unified five-unit PGO/LTO plus bounded live likes query; approved original synthetic trainer and accurate runtime/build documentation",
+  "source_sha256": "d580b6c76f4fb61e535a6a3df2f4e55d3de94ae331a5c0e63589cd880ffca591",
+  "source_files": 19,
+  "base_source_sha256": "62f77add50ed76f70469cb1b091eb8a4adf74c3a11b754cea1d79a213f9beb73",
+  "changed_files": [
+    "app.goose",
+    "README.md"
+  ],
+  "app_goose_sha256": "46494e94c2c6d56ea209f16f1338792b3c540b2c0647c3cda4ecd1bf34d9eb98",
+  "trainer_sha256": "5e618377cda9bf3bfe7d50e227113eeb995bddc90fcc7fcb59f981186171b06e",
+  "application_pgo_enabled": true,
+  "sqlite_pgo_enabled": true,
+  "unified_lto": true,
+  "cache_kib": 8192,
+  "mmap_mib": 0,
+  "status": "full normal source build verified and preserved unmeasured; superseded by trainer-notice-only corrected final-form image",
+  "image": "twelve-goose-unified-like:2026-10-22",
+  "image_id": "sha256:c4564b098ee1092e5e2725411718ceb589989623fb24d022c2165e853bdbb43a",
+  "binary_sha256": "27fe3cd23b2f62f8b7c022f976d3a119c3f355062e3c149f4749d14651de524e"
+}

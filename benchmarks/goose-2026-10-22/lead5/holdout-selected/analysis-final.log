@@ -1,0 +1,1474 @@
+{
+  "passed_all": false,
+  "gates": {
+    "evidence_checks": true,
+    "ten_clean_rounds": true,
+    "replacement_limit": true,
+    "zero_candidate_errors_in_all_attempts": true,
+    "candidate_valid_in_all_attempts": true,
+    "geometric_mean_at_least_5_percent": true,
+    "one_sided_95_percent_lower_bound_at_least_5_percent": false,
+    "nine_of_ten_pairs_at_least_5_percent": false,
+    "median_p99_within_5_percent_of_rust": true
+  },
+  "geometric_mean_ratio": 1.1072856648528149,
+  "one_sided_95_percent_lower_ratio": 1.041321768402645,
+  "t_degrees_of_freedom": 9,
+  "one_sided_confidence": 0.95,
+  "protocol_issues": [],
+  "candidate_error_trials": [],
+  "candidate_invalid_attempt_trials": [],
+  "all_attempts": 30,
+  "attempted_rounds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "selected_rounds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "clean_rounds_available": 10,
+  "excluded_rounds": [],
+  "paired_rounds": [
+    {
+      "trial": 1,
+      "rps": {
+        "goose": 89615.45,
+        "82": 75785.37,
+        "baseline": 80273.26
+      },
+      "p99_ms": {
+        "goose": 28.17,
+        "82": 29.02,
+        "baseline": 27.05
+      },
+      "candidate_rust_ratio": 1.1824901033009405
+    },
+    {
+      "trial": 2,
+      "rps": {
+        "goose": 96052.58,
+        "82": 67644.01,
+        "baseline": 96791.53
+      },
+      "p99_ms": {
+        "goose": 28.33,
+        "82": 28.56,
+        "baseline": 24.91
+      },
+      "candidate_rust_ratio": 1.4199717018550497
+    },
+    {
+      "trial": 3,
+      "rps": {
+        "goose": 108845.5,
+        "baseline": 96875.42,
+        "82": 97565.91
+      },
+      "p99_ms": {
+        "goose": 24.61,
+        "baseline": 25.57,
+        "82": 25.05
+      },
+      "candidate_rust_ratio": 1.115609950237742
+    },
+    {
+      "trial": 4,
+      "rps": {
+        "82": 99899.47,
+        "goose": 108998.58,
+        "baseline": 97387.38
+      },
+      "p99_ms": {
+        "82": 24.8,
+        "goose": 24.55,
+        "baseline": 27.1
+      },
+      "candidate_rust_ratio": 1.0910826654035302
+    },
+    {
+      "trial": 5,
+      "rps": {
+        "goose": 108019.65,
+        "baseline": 95629.95,
+        "82": 99922.66
+      },
+      "p99_ms": {
+        "goose": 25.11,
+        "baseline": 26.57,
+        "82": 25.96
+      },
+      "candidate_rust_ratio": 1.0810325705900943
+    },
+    {
+      "trial": 6,
+      "rps": {
+        "82": 100087.64,
+        "baseline": 97463.59,
+        "goose": 113308.12
+      },
+      "p99_ms": {
+        "82": 25.98,
+        "baseline": 24.74,
+        "goose": 25.95
+      },
+      "candidate_rust_ratio": 1.132089037167826
+    },
+    {
+      "trial": 7,
+      "rps": {
+        "82": 105515.1,
+        "baseline": 104861.53,
+        "goose": 114427.24
+      },
+      "p99_ms": {
+        "82": 24.99,
+        "baseline": 22.35,
+        "goose": 23.89
+      },
+      "candidate_rust_ratio": 1.0844631716218815
+    },
+    {
+      "trial": 8,
+      "rps": {
+        "82": 109625.81,
+        "goose": 113466.02,
+        "baseline": 79283.88
+      },
+      "p99_ms": {
+        "82": 24.56,
+        "goose": 23.48,
+        "baseline": 26.32
+      },
+      "candidate_rust_ratio": 1.035030163061053
+    },
+    {
+      "trial": 9,
+      "rps": {
+        "goose": 113840.61,
+        "82": 109017.72,
+        "baseline": 106340.56
+      },
+      "p99_ms": {
+        "goose": 23.13,
+        "82": 24.7,
+        "baseline": 24.24
+      },
+      "candidate_rust_ratio": 1.0442395052840951
+    },
+    {
+      "trial": 10,
+      "rps": {
+        "82": 110178.1,
+        "goose": 104125.6,
+        "baseline": 92692.48
+      },
+      "p99_ms": {
+        "82": 23.62,
+        "goose": 29.13,
+        "baseline": 26.42
+      },
+      "candidate_rust_ratio": 0.9450662155183289
+    }
+  ],
+  "median_p99_ms": {
+    "goose": 24.86,
+    "82": 25.02,
+    "baseline": 25.945
+  },
+  "all_attempt_error_totals": {
+    "goose": {
+      "http_errors": 0,
+      "socket_errors": 0,
+      "warmup_http_errors": 0,
+      "warmup_socket_errors": 0
+    },
+    "82": {
+      "http_errors": 0,
+      "socket_errors": 0,
+      "warmup_http_errors": 0,
+      "warmup_socket_errors": 0
+    },
+    "baseline": {
+      "http_errors": 0,
+      "socket_errors": 0,
+      "warmup_http_errors": 0,
+      "warmup_socket_errors": 0
+    }
+  },
+  "attempts": [
+    {
+      "trial": 1,
+      "case_id": "goose",
+      "issues": [],
+      "raw": {
+        "requests": 4040691,
+        "duration_s": 45.09,
+        "rps": 89615.45,
+        "p50_ms": 0.46,
+        "p95_ms": 16.982,
+        "p99_ms": 28.17,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 89615.45
+      },
+      "warmup": {
+        "requests": 144685,
+        "duration_s": 2.06,
+        "rps": 70169.63,
+        "p50_ms": 0.58,
+        "p95_ms": 59.393,
+        "p99_ms": 156.45,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 70169.63
+      },
+      "rss_mib": 15.26171875,
+      "cpu_percent": 86.55412576755812,
+      "included_in_comparison": true
+    },
+    {
+      "trial": 1,
+      "case_id": "82",
+      "issues": [],
+      "raw": {
+        "requests": 3415881,
+        "duration_s": 45.07,
+        "rps": 75785.37,
+        "p50_ms": 0.583,
+        "p95_ms": 15.044,
+        "p99_ms": 29.02,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 75785.37
+      },
+      "warmup": {
+        "requests": 131124,
+        "duration_s": 2.06,
+        "rps": 63512.02,
+        "p50_ms": 0.679,
+        "p95_ms": 60.334,
+        "p99_ms": 156.07,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 63512.02
+      },
+      "rss_mib": 59.35546875,
+      "cpu_percent": 84.84636743487926,
+      "included_in_comparison": true
+    },
+    {
+      "trial": 1,
+      "case_id": "baseline",
+      "issues": [],
+      "raw": {
+        "requests": 3620345,
+        "duration_s": 45.1,
+        "rps": 80273.26,
+        "p50_ms": 0.535,
+        "p95_ms": 14.261,
+        "p99_ms": 27.05,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 80273.26
+      },
+      "warmup": {
+        "requests": 126100,
+        "duration_s": 2.07,
+        "rps": 60809.74,
+        "p50_ms": 0.681,
+        "p95_ms": 28.186,
+        "p99_ms": 89.67,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 60809.74
+      },
+      "rss_mib": 50.60546875,
+      "cpu_percent": 89.09128881420688,
+      "included_in_comparison": true
+    },
+    {
+      "trial": 2,
+      "case_id": "goose",
+      "issues": [],
+      "raw": {
+        "requests": 4328705,
+        "duration_s": 45.07,
+        "rps": 96052.58,
+        "p50_ms": 0.442,
+        "p95_ms": 16.092,
+        "p99_ms": 28.33,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 96052.58
+      },
+      "warmup": {
+        "requests": 212622,
+        "duration_s": 2.08,
+        "rps": 102230.72,
+        "p50_ms": 0.424,
+        "p95_ms": 18.004,
+        "p99_ms": 55.11,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 102230.72
+      },
+      "rss_mib": 15.265625,
+      "cpu_percent": 87.55375812773917,
+      "included_in_comparison": true
+    },
+    {
+      "trial": 2,
+      "case_id": "82",
+      "issues": [],
+      "raw": {
+        "requests": 3049112,
+        "duration_s": 45.08,
+        "rps": 67644.01,
+        "p50_ms": 0.664,
+        "p95_ms": 13.494,
+        "p99_ms": 28.56,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 67644.01
+      },
+      "warmup": {
+        "requests": 173740,
+        "duration_s": 2.08,
+        "rps": 83496.69,
+        "p50_ms": 0.533,
+        "p95_ms": 26.05,
+        "p99_ms": 115.16,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 83496.69
+      },
+      "rss_mib": 57.05078125,
+      "cpu_percent": 84.55823368685589,
+      "included_in_comparison": true
+    },
+    {
+      "trial": 2,
+      "case_id": "baseline",
+      "issues": [],
+      "raw": {
+        "requests": 4361286,
+        "duration_s": 45.06,
+        "rps": 96791.53,
+        "p50_ms": 0.47800000000000004,
+        "p95_ms": 14.202,
+        "p99_ms": 24.91,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 96791.53
+      },
+      "warmup": {
+        "requests": 138166,
+        "duration_s": 2.09,
+        "rps": 66116.61,
+        "p50_ms": 0.626,
+        "p95_ms": 22.737,
+        "p99_ms": 70.73,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 66116.61
+      },
+      "rss_mib": 55.1328125,
+      "cpu_percent": 90.8315784264499,
+      "included_in_comparison": true
+    },
+    {
+      "trial": 3,
+      "case_id": "goose",
+      "issues": [],
+      "raw": {
+        "requests": 4904525,
+        "duration_s": 45.06,
+        "rps": 108845.5,
+        "p50_ms": 0.405,
+        "p95_ms": 15.162,
+        "p99_ms": 24.61,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 108845.5
+      },
+      "warmup": {
+        "requests": 190840,
+        "duration_s": 2.09,
+        "rps": 91389.41,
+        "p50_ms": 0.428,
+        "p95_ms": 194.391,
+        "p99_ms": 299.0,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 91389.41
+      },
+      "rss_mib": 15.2578125,
+      "cpu_percent": 88.98751934540465,
+      "included_in_comparison": true
+    },
+    {
+      "trial": 3,
+      "case_id": "baseline",
+      "issues": [],
+      "raw": {
+        "requests": 4368314,
+        "duration_s": 45.09,
+        "rps": 96875.42,
+        "p50_ms": 0.494,
+        "p95_ms": 14.847,
+        "p99_ms": 25.57,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 96875.42
+      },
+      "warmup": {
+        "requests": 197306,
+        "duration_s": 2.08,
+        "rps": 94763.12,
+        "p50_ms": 0.491,
+        "p95_ms": 19.662,
+        "p99_ms": 75.33,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 94763.12
+      },
+      "rss_mib": 55.765625,
+      "cpu_percent": 91.31238438387318,
+      "included_in_comparison": true
+    },
+    {
+      "trial": 3,
+      "case_id": "82",
+      "issues": [],
+      "raw": {
+        "requests": 4394115,
+        "duration_s": 45.04,
+        "rps": 97565.91,
+        "p50_ms": 0.481,
+        "p95_ms": 14.248,
+        "p99_ms": 25.05,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 97565.91
+      },
+      "warmup": {
+        "requests": 190924,
+        "duration_s": 2.08,
+        "rps": 91952.45,
+        "p50_ms": 0.494,
+        "p95_ms": 24.289,
+        "p99_ms": 96.3,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 91952.45
+      },
+      "rss_mib": 64.9609375,
+      "cpu_percent": 89.15680925604183,
+      "included_in_comparison": true
+    },
+    {
+      "trial": 4,
+      "case_id": "82",
+      "issues": [],
+      "raw": {
+        "requests": 4503364,
+        "duration_s": 45.08,
+        "rps": 99899.47,
+        "p50_ms": 0.47600000000000003,
+        "p95_ms": 14.382,
+        "p99_ms": 24.8,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 99899.47
+      },
+      "warmup": {
+        "requests": 193283,
+        "duration_s": 2.07,
+        "rps": 93184.72,
+        "p50_ms": 0.492,
+        "p95_ms": 22.086,
+        "p99_ms": 99.2,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 93184.72
+      },
+      "rss_mib": 66.56640625,
+      "cpu_percent": 89.8191019948445,
+      "included_in_comparison": true
+    },
+    {
+      "trial": 4,
+      "case_id": "goose",
+      "issues": [],
+      "raw": {
+        "requests": 4913093,
+        "duration_s": 45.07,
+        "rps": 108998.58,
+        "p50_ms": 0.403,
+        "p95_ms": 15.366,
+        "p99_ms": 24.55,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 108998.58
+      },
+      "warmup": {
+        "requests": 210453,
+        "duration_s": 2.08,
+        "rps": 101072.23,
+        "p50_ms": 0.417,
+        "p95_ms": 75.106,
+        "p99_ms": 174.49,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 101072.23
+      },
+      "rss_mib": 15.26171875,
+      "cpu_percent": 88.68680437296264,
+      "included_in_comparison": true
+    },
+    {
+      "trial": 4,
+      "case_id": "baseline",
+      "issues": [],
+      "raw": {
+        "requests": 4387979,
+        "duration_s": 45.06,
+        "rps": 97387.38,
+        "p50_ms": 0.485,
+        "p95_ms": 16.186,
+        "p99_ms": 27.1,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 97387.38
+      },
+      "warmup": {
+        "requests": 194194,
+        "duration_s": 2.08,
+        "rps": 93249.52,
+        "p50_ms": 0.495,
+        "p95_ms": 17.439,
+        "p99_ms": 55.44,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 93249.52
+      },
+      "rss_mib": 55.86328125,
+      "cpu_percent": 90.92959762911218,
+      "included_in_comparison": true
+    },
+    {
+      "trial": 5,
+      "case_id": "goose",
+      "issues": [],
+      "raw": {
+        "requests": 4869965,
+        "duration_s": 45.08,
+        "rps": 108019.65,
+        "p50_ms": 0.405,
+        "p95_ms": 15.655,
+        "p99_ms": 25.11,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 108019.65
+      },
+      "warmup": {
+        "requests": 188563,
+        "duration_s": 2.09,
+        "rps": 90174.33,
+        "p50_ms": 0.43,
+        "p95_ms": 243.98,
+        "p99_ms": 350.36,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 90174.33
+      },
+      "rss_mib": 15.25390625,
+      "cpu_percent": 88.38890498670722,
+      "included_in_comparison": true
+    },
+    {
+      "trial": 5,
+      "case_id": "baseline",
+      "issues": [],
+      "raw": {
+        "requests": 4309408,
+        "duration_s": 45.06,
+        "rps": 95629.95,
+        "p50_ms": 0.489,
+        "p95_ms": 15.65,
+        "p99_ms": 26.57,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 95629.95
+      },
+      "warmup": {
+        "requests": 198086,
+        "duration_s": 2.08,
+        "rps": 95274.28,
+        "p50_ms": 0.481,
+        "p95_ms": 18.644,
+        "p99_ms": 54.77,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 95274.28
+      },
+      "rss_mib": 55.68359375,
+      "cpu_percent": 90.96570119575827,
+      "included_in_comparison": true
+    },
+    {
+      "trial": 5,
+      "case_id": "82",
+      "issues": [],
+      "raw": {
+        "requests": 4506453,
+        "duration_s": 45.1,
+        "rps": 99922.66,
+        "p50_ms": 0.47000000000000003,
+        "p95_ms": 15.438,
+        "p99_ms": 25.96,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 99922.66
+      },
+      "warmup": {
+        "requests": 190438,
+        "duration_s": 2.09,
+        "rps": 91136.41,
+        "p50_ms": 0.483,
+        "p95_ms": 100.814,
+        "p99_ms": 200.71,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 91136.41
+      },
+      "rss_mib": 66.19140625,
+      "cpu_percent": 89.25267631196103,
+      "included_in_comparison": true
+    },
+    {
+      "trial": 6,
+      "case_id": "82",
+      "issues": [],
+      "raw": {
+        "requests": 4508861,
+        "duration_s": 45.05,
+        "rps": 100087.64,
+        "p50_ms": 0.47100000000000003,
+        "p95_ms": 15.274,
+        "p99_ms": 25.98,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 100087.64
+      },
+      "warmup": {
+        "requests": 185636,
+        "duration_s": 2.08,
+        "rps": 89258.46,
+        "p50_ms": 0.498,
+        "p95_ms": 29.741,
+        "p99_ms": 119.75,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 89258.46
+      },
+      "rss_mib": 65.8671875,
+      "cpu_percent": 89.28914676416704,
+      "included_in_comparison": true
+    },
+    {
+      "trial": 6,
+      "case_id": "baseline",
+      "issues": [],
+      "raw": {
+        "requests": 4391304,
+        "duration_s": 45.06,
+        "rps": 97463.59,
+        "p50_ms": 0.47300000000000003,
+        "p95_ms": 13.863,
+        "p99_ms": 24.74,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 97463.59
+      },
+      "warmup": {
+        "requests": 196416,
+        "duration_s": 2.08,
+        "rps": 94318.86,
+        "p50_ms": 0.47700000000000004,
+        "p95_ms": 65.207,
+        "p99_ms": 163.88,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 94318.86
+      },
+      "rss_mib": 54.89453125,
+      "cpu_percent": 90.61431338864178,
+      "included_in_comparison": true
+    },
+    {
+      "trial": 6,
+      "case_id": "goose",
+      "issues": [],
+      "raw": {
+        "requests": 5108537,
+        "duration_s": 45.09,
+        "rps": 113308.12,
+        "p50_ms": 0.384,
+        "p95_ms": 16.672,
+        "p99_ms": 25.95,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 113308.12
+      },
+      "warmup": {
+        "requests": 189020,
+        "duration_s": 2.08,
+        "rps": 90776.85,
+        "p50_ms": 0.444,
+        "p95_ms": 38.58,
+        "p99_ms": 131.15,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 90776.85
+      },
+      "rss_mib": 15.34765625,
+      "cpu_percent": 87.21328497240293,
+      "included_in_comparison": true
+    },
+    {
+      "trial": 7,
+      "case_id": "82",
+      "issues": [],
+      "raw": {
+        "requests": 4758114,
+        "duration_s": 45.09,
+        "rps": 105515.1,
+        "p50_ms": 0.442,
+        "p95_ms": 14.685,
+        "p99_ms": 24.99,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 105515.1
+      },
+      "warmup": {
+        "requests": 211139,
+        "duration_s": 2.09,
+        "rps": 101078.43,
+        "p50_ms": 0.443,
+        "p95_ms": 54.733,
+        "p99_ms": 153.9,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 101078.43
+      },
+      "rss_mib": 68.0859375,
+      "cpu_percent": 88.38943835370115,
+      "included_in_comparison": true
+    },
+    {
+      "trial": 7,
+      "case_id": "baseline",
+      "issues": [],
+      "raw": {
+        "requests": 4724710,
+        "duration_s": 45.06,
+        "rps": 104861.53,
+        "p50_ms": 0.464,
+        "p95_ms": 12.594,
+        "p99_ms": 22.35,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 104861.53
+      },
+      "warmup": {
+        "requests": 186306,
+        "duration_s": 2.08,
+        "rps": 89484.92,
+        "p50_ms": 0.503,
+        "p95_ms": 66.117,
+        "p99_ms": 165.89,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 89484.92
+      },
+      "rss_mib": 58.31640625,
+      "cpu_percent": 91.87969535700667,
+      "included_in_comparison": true
+    },
+    {
+      "trial": 7,
+      "case_id": "goose",
+      "issues": [],
+      "raw": {
+        "requests": 5160307,
+        "duration_s": 45.1,
+        "rps": 114427.24,
+        "p50_ms": 0.387,
+        "p95_ms": 14.706,
+        "p99_ms": 23.89,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 114427.24
+      },
+      "warmup": {
+        "requests": 222911,
+        "duration_s": 2.09,
+        "rps": 106748.58,
+        "p50_ms": 0.406,
+        "p95_ms": 22.525,
+        "p99_ms": 109.11,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 106748.58
+      },
+      "rss_mib": 15.37109375,
+      "cpu_percent": 88.4993643375589,
+      "included_in_comparison": true
+    },
+    {
+      "trial": 8,
+      "case_id": "82",
+      "issues": [],
+      "raw": {
+        "requests": 4939106,
+        "duration_s": 45.05,
+        "rps": 109625.81,
+        "p50_ms": 0.436,
+        "p95_ms": 14.907,
+        "p99_ms": 24.56,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 109625.81
+      },
+      "warmup": {
+        "requests": 218470,
+        "duration_s": 2.08,
+        "rps": 104885.3,
+        "p50_ms": 0.44,
+        "p95_ms": 20.343,
+        "p99_ms": 83.72,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 104885.3
+      },
+      "rss_mib": 68.35546875,
+      "cpu_percent": 89.23116848981124,
+      "included_in_comparison": true
+    },
+    {
+      "trial": 8,
+      "case_id": "goose",
+      "issues": [],
+      "raw": {
+        "requests": 5114693,
+        "duration_s": 45.08,
+        "rps": 113466.02,
+        "p50_ms": 0.382,
+        "p95_ms": 14.566,
+        "p99_ms": 23.48,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 113466.02
+      },
+      "warmup": {
+        "requests": 238074,
+        "duration_s": 2.09,
+        "rps": 114158.06,
+        "p50_ms": 0.381,
+        "p95_ms": 18.717,
+        "p99_ms": 51.98,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 114158.06
+      },
+      "rss_mib": 15.26953125,
+      "cpu_percent": 87.25281139150377,
+      "included_in_comparison": true
+    },
+    {
+      "trial": 8,
+      "case_id": "baseline",
+      "issues": [],
+      "raw": {
+        "requests": 3574801,
+        "duration_s": 45.09,
+        "rps": 79283.88,
+        "p50_ms": 0.524,
+        "p95_ms": 13.169,
+        "p99_ms": 26.32,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 79283.88
+      },
+      "warmup": {
+        "requests": 149400,
+        "duration_s": 2.08,
+        "rps": 71675.75,
+        "p50_ms": 0.549,
+        "p95_ms": 23.547,
+        "p99_ms": 88.58,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 71675.75
+      },
+      "rss_mib": 49.83203125,
+      "cpu_percent": 82.68296154918427,
+      "included_in_comparison": true
+    },
+    {
+      "trial": 9,
+      "case_id": "goose",
+      "issues": [],
+      "raw": {
+        "requests": 5131100,
+        "duration_s": 45.07,
+        "rps": 113840.61,
+        "p50_ms": 0.391,
+        "p95_ms": 14.227,
+        "p99_ms": 23.13,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 113840.61
+      },
+      "warmup": {
+        "requests": 117542,
+        "duration_s": 2.08,
+        "rps": 56485.27,
+        "p50_ms": 0.711,
+        "p95_ms": 27.078,
+        "p99_ms": 98.71,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 56485.27
+      },
+      "rss_mib": 15.375,
+      "cpu_percent": 88.40481192930967,
+      "included_in_comparison": true
+    },
+    {
+      "trial": 9,
+      "case_id": "82",
+      "issues": [],
+      "raw": {
+        "requests": 4913038,
+        "duration_s": 45.07,
+        "rps": 109017.72,
+        "p50_ms": 0.438,
+        "p95_ms": 15.099,
+        "p99_ms": 24.7,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 109017.72
+      },
+      "warmup": {
+        "requests": 165344,
+        "duration_s": 2.09,
+        "rps": 79029.23,
+        "p50_ms": 0.491,
+        "p95_ms": 145.661,
+        "p99_ms": 250.7,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 79029.23
+      },
+      "rss_mib": 68.53125,
+      "cpu_percent": 89.14158198862454,
+      "included_in_comparison": true
+    },
+    {
+      "trial": 9,
+      "case_id": "baseline",
+      "issues": [],
+      "raw": {
+        "requests": 4794247,
+        "duration_s": 45.08,
+        "rps": 106340.56,
+        "p50_ms": 0.455,
+        "p95_ms": 14.359,
+        "p99_ms": 24.24,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 106340.56
+      },
+      "warmup": {
+        "requests": 216954,
+        "duration_s": 2.09,
+        "rps": 103986.2,
+        "p50_ms": 0.453,
+        "p95_ms": 18.241,
+        "p99_ms": 68.89,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 103986.2
+      },
+      "rss_mib": 58.61328125,
+      "cpu_percent": 91.55841030970852,
+      "included_in_comparison": true
+    },
+    {
+      "trial": 10,
+      "case_id": "82",
+      "issues": [],
+      "raw": {
+        "requests": 4965901,
+        "duration_s": 45.07,
+        "rps": 110178.1,
+        "p50_ms": 0.435,
+        "p95_ms": 14.133,
+        "p99_ms": 23.62,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 110178.1
+      },
+      "warmup": {
+        "requests": 224638,
+        "duration_s": 2.08,
+        "rps": 107801.99,
+        "p50_ms": 0.427,
+        "p95_ms": 20.387,
+        "p99_ms": 74.59,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 107801.99
+      },
+      "rss_mib": 68.40625,
+      "cpu_percent": 89.87976113706681,
+      "included_in_comparison": true
+    },
+    {
+      "trial": 10,
+      "case_id": "goose",
+      "issues": [],
+      "raw": {
+        "requests": 4691761,
+        "duration_s": 45.06,
+        "rps": 104125.6,
+        "p50_ms": 0.41400000000000003,
+        "p95_ms": 17.511,
+        "p99_ms": 29.13,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 104125.6
+      },
+      "warmup": {
+        "requests": 221435,
+        "duration_s": 2.08,
+        "rps": 106396.22,
+        "p50_ms": 0.40800000000000003,
+        "p95_ms": 19.465,
+        "p99_ms": 77.11,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 106396.22
+      },
+      "rss_mib": 15.37109375,
+      "cpu_percent": 86.82219958893634,
+      "included_in_comparison": true
+    },
+    {
+      "trial": 10,
+      "case_id": "baseline",
+      "issues": [],
+      "raw": {
+        "requests": 4178030,
+        "duration_s": 45.07,
+        "rps": 92692.48,
+        "p50_ms": 0.496,
+        "p95_ms": 14.98,
+        "p99_ms": 26.42,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 92692.48
+      },
+      "warmup": {
+        "requests": 161585,
+        "duration_s": 2.08,
+        "rps": 77737.23,
+        "p50_ms": 0.548,
+        "p95_ms": 40.947,
+        "p99_ms": 138.25,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 77737.23
+      },
+      "rss_mib": 53.9609375,
+      "cpu_percent": 89.67403145329052,
+      "included_in_comparison": true
+    }
+  ],
+  "identities": {
+    "goose": {
+      "source_sha256": "09e695a0652cc4654e12d5382b423adf75b7ea7c5ef18978313ddff3cc9d13ed",
+      "image_id": "sha256:d0a2f1e95817cefd26c9563d86849efff6cb2bb5dc0e2ff733ed7656577ef9ea",
+      "binary_sha256": "309f1138b9c5d6b404670a8c0eaf1d42c2f96d4fc7e30d7a89f5bff326a5af2e"
+    },
+    "82": {
+      "source_sha256": "b91b9491e2a7a8856f8f360bc89f376b6493ae9b9a3907c557836b94f5131438",
+      "image_id": "sha256:64227e803306084617be2a4ebc1c3623260d265f158dd8c009f647558a280135",
+      "binary_sha256": "61d48f1be2feb858a14b1617cf3221bebf68df6caaac3541116e0dfbb7562026"
+    },
+    "baseline": {
+      "source_sha256": "73148f5d49e07fc62289bf582e261b8df0e1ef51d478d6fb9d44a68fec87b88a",
+      "image_id": "sha256:a69064953b766ec5c800389b8e17a7d184f73aa8dd46cd4aa2048955ee86eb0f",
+      "binary_sha256": "f0b086e53343263381c55a9046dbd65f400c4ec5ebbfc872c5d682d20a5679ab"
+    }
+  },
+  "supplemental_proofs": {
+    "edge": {
+      "path": "edge-checks.json",
+      "sha256": "891f52f3a91c6739372dc85ea43f9a1cb8473b7ee9b570044819ef1ecc0fa1ff",
+      "checks": 25,
+      "image_id": "sha256:d0a2f1e95817cefd26c9563d86849efff6cb2bb5dc0e2ff733ed7656577ef9ea",
+      "app_sha256": "46494e94c2c6d56ea209f16f1338792b3c540b2c0647c3cda4ecd1bf34d9eb98"
+    },
+    "parser": {
+      "path": "parser-checks.json",
+      "sha256": "2cbff417fac8bfcdf18247fcee781c0c968cd812c886f47d07371b169efe664f",
+      "checks": 18,
+      "image_id": "sha256:d0a2f1e95817cefd26c9563d86849efff6cb2bb5dc0e2ff733ed7656577ef9ea",
+      "app_sha256": "46494e94c2c6d56ea209f16f1338792b3c540b2c0647c3cda4ecd1bf34d9eb98"
+    }
+  },
+  "shared_hashes": {
+    "seed/feed.db": "ef5f135c16a2277a68ef37f1f1a66e4100f9dbc6743d2ef54dbeb533c4dceb0e",
+    "seed/tokens.json": "b39f1edf8a3545ab5851031d1cee8d2d1192e4b598361e516f4560f6893a939a",
+    "mixed.lua": "eb8d49273c56fe4b558a58bd6c7e65551ec683c53d299e2b3a69e0b71421d701",
+    "test/test.sh": "679e722044fd1f366d85093232e7f2ec2e3398ea312032dd9eb6cbdf8b17306a",
+    "semantic.py": "785f8ce565b469e4f4d702d01a9d868cd7458d64e3f1362c3fb8728560215fbc",
+    "serve.py": "52d8bdd75c0dc2477fc5b2391c797a2832eab5ac61a72d3bbe4dac4cb94bf311",
+    "bench/nginx.conf": "1b4b00789b0d138759bebde391d4cd05a9598dc10a17df3d09eb569512b8f654",
+    "seccomp-io-uring.json": "4baf3b268185f55527933e7df090e85936003674e34b5f5396461fd9d3efeb17",
+    "test/golden/feed.json": "8c9b3d6cb46e650c4786ab9281bc3a72ba7bd75b7926021d2b0c431dd9bd3d68",
+    "test/golden/post-1.json": "8035350dc55714c9a673af9f441ab07d2b269047e1137612f022877b9e8f3652",
+    "test/golden/post-250000.json": "febb2506b9d4a99bc34f1f182c61ced6b3ba3b2533724485c6e5206604a65b71",
+    "test/golden/post-500000.json": "662fe8c7282dee8aab00dab6cdb15e64e953f10a2c1c923e2ea67fab1429a4de"
+  },
+  "load_generator": {
+    "mode": "declared_monotonic",
+    "image_id": "sha256:a5e8736dcfaf72bf79c0196a89fe3fd49774916ab7ea4ce06a8a2cdfd3a4b504",
+    "binary_path": "/opt/wrk-clock/bin/wrk",
+    "binary_sha256": "20ec627b07490f94b7d1ed73e16ed64e04d993457ceacf4cb92fd66f93f7cb39",
+    "record_sha256": "0c69abc4b25232fafe02c850ae21e970c4bfe27f6a3f196caa2b366f6f64b825",
+    "declaration_sha256": "cd94705b618c95367a63b17ef9a54adb30796bbc43de0f652b77a9113e1579b3",
+    "proof_sha256": "40fb0b8eefdf8d12746eb178e547e9c54ee0ddc843ac9dbe2818053d1687e5e7"
+  },
+  "analyzer_helper_sha256": "bb308729a6dfbeb33893831ea97681a93c2baf6a7580cb112e76a431975abb8f"
+}

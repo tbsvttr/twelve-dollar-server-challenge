@@ -1,0 +1,7 @@
+{"attempt_id": "pair01-repeat01", "requested_pair": ["baseline", "baseline"], "valid": true, "requested_first_second_ratio": 0.9778226539429244, "measured_start_skew_s": 0.0009272500028600916, "error": null}
+{"attempt_id": "pair01-repeat02", "requested_pair": ["baseline", "baseline"], "valid": true, "requested_first_second_ratio": 1.0038340157018384, "measured_start_skew_s": 0.010909374999755528, "error": null}
+{"attempt_id": "pair02-repeat01", "requested_pair": ["combined-like-bound", "82"], "valid": true, "requested_first_second_ratio": 1.0716167689201237, "measured_start_skew_s": 0.0029315000065253116, "error": null}
+{"attempt_id": "pair02-repeat02", "requested_pair": ["combined-like-bound", "82"], "valid": true, "requested_first_second_ratio": 1.053856685366463, "measured_start_skew_s": 0.00517720799689414, "error": null}
+{"attempt_id": "pair03-repeat01", "requested_pair": ["unified-pgo-lto", "82"], "valid": true, "requested_first_second_ratio": 1.040539556261938, "measured_start_skew_s": 0.009510666997812223, "error": null}
+{"attempt_id": "pair03-repeat02", "requested_pair": ["unified-pgo-lto", "82"], "valid": true, "requested_first_second_ratio": 1.060915043615937, "measured_start_skew_s": 0.00044750000233761966, "error": null}
+/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/goose-2026-10-22/lead5/paired-diagnostic-second

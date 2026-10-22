@@ -1,0 +1,118 @@
+{
+  "files": {
+    "net.h": {
+      "sha256": "25c8688957508264aaa0a2485f6d8714caede9570f865cb91217de32f4e548af",
+      "bytes": 775,
+      "physical_lines": 23,
+      "classification": "application"
+    },
+    "net_epoll.inc": {
+      "sha256": "4a2a316e861b7d1fb8c80930574f0c8ab068be977c6424dffaa6a5d3a351a7ad",
+      "bytes": 22571,
+      "physical_lines": 603,
+      "classification": "application"
+    },
+    "install.sh": {
+      "sha256": "c629207a8d0c99f6da625efabd18160af776b69127d54b1fa8129285e7979a56",
+      "bytes": 1116,
+      "physical_lines": 22,
+      "classification": "own_support"
+    },
+    "json_fast.c": {
+      "sha256": "f393c3e8c02389b9d7344e45351353dbf753f0f397cc1785bb599afe0332fd1e",
+      "bytes": 2840,
+      "physical_lines": 76,
+      "classification": "application"
+    },
+    "README.md": {
+      "sha256": "ee538237baead76cd3508e23b8a0c2cf309131de798661b1373facd0704f1e37",
+      "bytes": 4555,
+      "physical_lines": 83,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "app.goose": {
+      "sha256": "1b9d5eaacf03b58be58818197707ac2269e135a4a010bfeb90cc3bbcc4d00509",
+      "bytes": 21451,
+      "physical_lines": 556,
+      "classification": "application"
+    },
+    "build.sh": {
+      "sha256": "0c4b339254c7496813521b0e13d207181c4f22bfe9ef777b70a4647e44f51dc8",
+      "bytes": 4159,
+      "physical_lines": 91,
+      "classification": "own_support"
+    },
+    ".gitignore": {
+      "sha256": "1ee00c3768b764a999544de814cafa138aeca02bf295873337081540152d4f06",
+      "bytes": 20,
+      "physical_lines": 3,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "net.c": {
+      "sha256": "0773ddfd7b89b0d34a717e5e9eb63fd0ee18026a5458ddf837bae4c0fb4ec9be",
+      "bytes": 3279,
+      "physical_lines": 94,
+      "classification": "application"
+    },
+    "app.build": {
+      "sha256": "0752b8f45d545518a8f9ad05a7e90f03cfb49315cb6bea4e2fe83d7ab6baa9d6",
+      "bytes": 502,
+      "physical_lines": 11,
+      "classification": "own_support"
+    },
+    "json_fast.h": {
+      "sha256": "8b2e84d4b63edd08d146e61420bcebf6737ef41541e7992a77d853b73659ecad",
+      "bytes": 249,
+      "physical_lines": 10,
+      "classification": "application"
+    },
+    "net_uring.inc": {
+      "sha256": "f01531f5d63af6ec4e93e14d5ec0bbf3f56f49af657496ccb71e85add3bd33f9",
+      "bytes": 22447,
+      "physical_lines": 554,
+      "classification": "application"
+    },
+    "db.c": {
+      "sha256": "43213a121ce787c87a9253ea260765f27e53dadd96e7674186e4064291d2b2b2",
+      "bytes": 9608,
+      "physical_lines": 237,
+      "classification": "application"
+    },
+    "start.sh": {
+      "sha256": "9a23eeaa024a08f898c3b904f1c362b21398732e7b0e71923876d286ef70825f",
+      "bytes": 102,
+      "physical_lines": 5,
+      "classification": "own_support"
+    },
+    "bench/TRAINER-LICENSE": {
+      "sha256": "1c809f52dd742570746a8ac00694ad4ddd9229e12accc7d5c598075861b478a0",
+      "bytes": 1099,
+      "physical_lines": 21,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "bench/train_app.py": {
+      "sha256": "5e618377cda9bf3bfe7d50e227113eeb995bddc90fcc7fcb59f981186171b06e",
+      "bytes": 13392,
+      "physical_lines": 261,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "bench/app_pgo_exit.c": {
+      "sha256": "9187d9d0dedbdcf3e6665b9ae60a900259b8af0f965db75baea08af0cccc7e41",
+      "bytes": 2057,
+      "physical_lines": 60,
+      "classification": "own_support"
+    },
+    "bench/TRAINER-NOTICE.md": {
+      "sha256": "e674c245d3e2f21f271ed644b04b30981cc342de1dc0010af8a09b2dd7dfd62e",
+      "bytes": 718,
+      "physical_lines": 7,
+      "classification": "documentation_lock_or_metadata"
+    },
+    "bench/train_sqlite.c": {
+      "sha256": "dd7d056bf259e587e8a21b902bb5469b4ea75b41a511c00d328eacb019a48967",
+      "bytes": 4234,
+      "physical_lines": 55,
+      "classification": "own_support"
+    }
+  }
+}

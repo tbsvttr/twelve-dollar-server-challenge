@@ -1,0 +1,1 @@
+listening 127.0.0.1:24000; io_uring, 8 rings x 65535 direct descriptors; SQLite WAL/NORMAL

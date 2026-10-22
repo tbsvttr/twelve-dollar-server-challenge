@@ -1,0 +1,64 @@
+{
+  "recorded_at": "2026-10-22T11:52:45.520601+00:00",
+  "struct_size": 464,
+  "rows": [
+    {
+      "pid": 15432,
+      "result": 0,
+      "errno": 0,
+      "ri_user_time": 234164553007,
+      "ri_system_time": 29874144174,
+      "ri_proc_start_abstime": 35952675542,
+      "ri_proc_exit_abstime": 0,
+      "ri_child_user_time": 0,
+      "ri_child_system_time": 0,
+      "ri_child_elapsed_abstime": 0,
+      "ri_cpu_time_qos_default": 22118,
+      "ri_cpu_time_qos_maintenance": 0,
+      "ri_cpu_time_qos_background": 7331,
+      "ri_cpu_time_qos_utility": 2165545,
+      "ri_cpu_time_qos_legacy": 264034660870,
+      "ri_cpu_time_qos_user_initiated": 427379,
+      "ri_cpu_time_qos_user_interactive": 1430733,
+      "ri_billed_system_time": 1085597,
+      "ri_serviced_system_time": 4217967,
+      "ri_lifetime_max_phys_footprint": 17269772928,
+      "ri_instructions": 84466451551701,
+      "ri_cycles": 33414554253932,
+      "ri_runnable_time": 305226881830,
+      "ri_user_ptime": 192969729126,
+      "ri_system_ptime": 16451671342,
+      "ri_pinstructions": 81253386377546,
+      "ri_pcycles": 28509722704713,
+      "ri_secure_time_in_system": 0,
+      "ri_secure_ptime_in_system": 0,
+      "ri_lifetime_max_neural_footprint": 0,
+      "ri_page_wait_time_mach": 0
+    },
+    {
+      "pid": 25181,
+      "result": -1,
+      "errno": 3
+    },
+    {
+      "pid": 25186,
+      "result": -1,
+      "errno": 3
+    },
+    {
+      "pid": 25187,
+      "result": -1,
+      "errno": 3
+    },
+    {
+      "pid": 25218,
+      "result": -1,
+      "errno": 3
+    },
+    {
+      "pid": 25219,
+      "result": -1,
+      "errno": 3
+    }
+  ]
+}

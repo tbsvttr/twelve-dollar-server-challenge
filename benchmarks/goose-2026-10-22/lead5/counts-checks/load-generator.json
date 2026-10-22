@@ -1,0 +1,10 @@
+{
+  "image": "twelve-load-wrk-monotonic:2026-10-22",
+  "image_id": "sha256:a5e8736dcfaf72bf79c0196a89fe3fd49774916ab7ea4ce06a8a2cdfd3a4b504",
+  "binary_path": "/opt/wrk-clock/bin/wrk",
+  "binary_sha256": "20ec627b07490f94b7d1ed73e16ed64e04d993457ceacf4cb92fd66f93f7cb39",
+  "declaration": "../PROTOCOL-monotonic.md",
+  "declaration_sha256": "cd94705b618c95367a63b17ef9a54adb30796bbc43de0f652b77a9113e1579b3",
+  "proof": "../wrk-monotonic/runtime-proof.json",
+  "proof_sha256": "40fb0b8eefdf8d12746eb178e547e9c54ee0ddc843ac9dbe2818053d1687e5e7"
+}

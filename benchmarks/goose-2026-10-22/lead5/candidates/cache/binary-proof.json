@@ -1,0 +1,23 @@
+{
+  "files": {
+    "bin/server": {
+      "sha256": "05c329ee5ad6436217de7872142ea40cb197f99f862734469b93c9fb26eb12ae",
+      "bytes": 1152784
+    },
+    ".build/app.c": {
+      "sha256": "a5d2e945a637018aca3019109502a0565671b8246cc96bee29cd5cff47ffe46f",
+      "bytes": 532910
+    },
+    ".build/sqlite-pgo.o": {
+      "sha256": "2c5663ef60e2bbc9f87a54f05f8eca1057b64614f5ced6fc34591ed3ef3b2178",
+      "bytes": 1398552
+    }
+  },
+  "environment": {
+    "GOOSE_IO_BACKEND": "epoll"
+  },
+  "image": "twelve-goose-cache-common:2026-10-22",
+  "image_id": "sha256:a6461ed6d1d19122caba440bae716e2529614e9a2c5a45374ab2621664104539",
+  "source_sha256": "855861cbefb0018dc8a7f99297221032464fb55cb808f2914ef29948cd43755d",
+  "sqlite_object_reused_from": "sha256:a69064953b766ec5c800389b8e17a7d184f73aa8dd46cd4aa2048955ee86eb0f"
+}

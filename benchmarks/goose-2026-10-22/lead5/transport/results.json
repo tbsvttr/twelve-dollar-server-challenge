@@ -1,0 +1,35 @@
+{
+  "status": "passed",
+  "recorded_at": "2026-10-22T11:31:02.432079+00:00",
+  "source_sha256": "4a2a316e861b7d1fb8c80930574f0c8ab068be977c6424dffaa6a5d3a351a7ad",
+  "changed_runtime_files": [
+    "net_epoll.inc"
+  ],
+  "changes": [
+    "Fixed response header fragments and decimal Content-Length replace snprintf, preserving exact wire bytes/status behavior.",
+    "Monotonic time cached per poll/readiness/flush batch; refreshed after blocking epoll_wait and after Goose/commit work before sends."
+  ],
+  "compile": "-std=c11 -O2 -Wall -Wextra -Werror",
+  "header_oracle": "Frozen optimization/final/sources/prgoose/net_epoll.inc compiled separately;2320 exact-byte/error comparisons.",
+  "clock_test": "clock_check.c with --wrap=clock_gettime,--wrap=epoll_wait; verifies idle retention and freshness after simulated wait/delayed commit without long sleeps.",
+  "socket_tests": [
+    "epoll primary:fragmentation,900KB body,200pipeline,chunked,trailer,exact500oncommitfailure,8MBslowreader,ambiguousframing,halfclose",
+    "epoll/uring extended:fragmentedConnectioncloseandHTTP1.0,hugeContentLength413,blocked8MBsend+120KBinput,pipeline,32resets,gracefulcleanupwith24idle/partialpeers"
+  ],
+  "sanitizer_run": {
+    "flags": "-O1 -g -fsanitize=address,undefined -fno-omit-frame-pointer",
+    "ASAN_OPTIONS": "detect_leaks=1:quarantine_size_mb=4",
+    "exit_code": 0,
+    "log": "sanitizer-sockets.log"
+  },
+  "limits": {
+    "cpuset_cpus": "3,4",
+    "cpus": 1,
+    "memory": "256m"
+  },
+  "fixture_correction": "Initial clock fixture omitted EPOLL_CTL_ADD for its synthetic socket; flush correctly rejected MOD with ENOENT and closed it. Corrected fixture registers the real socket. Production clock implementation was unchanged. Initial failure retained in clock-initial-fixture-failure.log.",
+  "limitations": [
+    "Transport correctness only; application/API validation and measured speedup are evaluated separately.",
+    "No production PGO stop hook or response-storage lifetime change."
+  ]
+}

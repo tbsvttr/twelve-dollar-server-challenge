@@ -1,0 +1,931 @@
+{
+  "purpose": "supplemental API correctness diagnostics; not ranking or throughput",
+  "image_id": "sha256:156abeecae6919eaf8457b304507c4a97262a911be7882ca60700f8fce58ef24",
+  "uid": 1001,
+  "source_app_sha256": "46494e94c2c6d56ea209f16f1338792b3c540b2c0647c3cda4ecd1bf34d9eb98",
+  "seed_sha256": "ef5f135c16a2277a68ef37f1f1a66e4100f9dbc6743d2ef54dbeb533c4dceb0e",
+  "recorded_at": "2026-10-22T12:28:23Z",
+  "checks": [
+    {
+      "check": "sparse newest IDs preserve timestamp order and distinct live counts",
+      "request": {
+        "method": "GET",
+        "path": "/feed",
+        "body": null,
+        "authorization": null
+      },
+      "expected_status": 200,
+      "expected_body": "{\"posts\":[{\"id\":10017001,\"body\":\"sparse diagnostic 17 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:19.000Z\",\"author\":\"golden_ember_1\",\"like_count\":3},{\"id\":10014001,\"body\":\"sparse diagnostic 14 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:18.000Z\",\"author\":\"golden_ember_1\",\"like_count\":0},{\"id\":10011001,\"body\":\"sparse diagnostic 11 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:17.000Z\",\"author\":\"golden_ember_1\",\"like_count\":4},{\"id\":10008001,\"body\":\"sparse diagnostic 8 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:16.000Z\",\"author\":\"golden_ember_1\",\"like_count\":1},{\"id\":10005001,\"body\":\"sparse diagnostic 5 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:15.000Z\",\"author\":\"golden_ember_1\",\"like_count\":5},{\"id\":10002001,\"body\":\"sparse diagnostic 2 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:14.000Z\",\"author\":\"golden_ember_1\",\"like_count\":2},{\"id\":10019001,\"body\":\"sparse diagnostic 19 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:13.000Z\",\"author\":\"golden_ember_1\",\"like_count\":5},{\"id\":10016001,\"body\":\"sparse diagnostic 16 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:12.000Z\",\"author\":\"golden_ember_1\",\"like_count\":2},{\"id\":10013001,\"body\":\"sparse diagnostic 13 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:11.000Z\",\"author\":\"golden_ember_1\",\"like_count\":6},{\"id\":10010001,\"body\":\"sparse diagnostic 10 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:10.000Z\",\"author\":\"golden_ember_1\",\"like_count\":3},{\"id\":10007001,\"body\":\"sparse diagnostic 7 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:09.000Z\",\"author\":\"golden_ember_1\",\"like_count\":0},{\"id\":10004001,\"body\":\"sparse diagnostic 4 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:08.000Z\",\"author\":\"golden_ember_1\",\"like_count\":4},{\"id\":10001001,\"body\":\"sparse diagnostic 1 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:07.000Z\",\"author\":\"golden_ember_1\",\"like_count\":1},{\"id\":10018001,\"body\":\"sparse diagnostic 18 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:06.000Z\",\"author\":\"golden_ember_1\",\"like_count\":4},{\"id\":10015001,\"body\":\"sparse diagnostic 15 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:05.000Z\",\"author\":\"golden_ember_1\",\"like_count\":1},{\"id\":10012001,\"body\":\"sparse diagnostic 12 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:04.000Z\",\"author\":\"golden_ember_1\",\"like_count\":5},{\"id\":10009001,\"body\":\"sparse diagnostic 9 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:03.000Z\",\"author\":\"golden_ember_1\",\"like_count\":2},{\"id\":10006001,\"body\":\"sparse diagnostic 6 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:02.000Z\",\"author\":\"golden_ember_1\",\"like_count\":6},{\"id\":10003001,\"body\":\"sparse diagnostic 3 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:01.000Z\",\"author\":\"golden_ember_1\",\"like_count\":3},{\"id\":10000001,\"body\":\"sparse diagnostic 0 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:00.000Z\",\"author\":\"golden_ember_1\",\"like_count\":0}]}",
+      "actual_status": 200,
+      "actual_body": "{\"posts\":[{\"id\":10017001,\"body\":\"sparse diagnostic 17 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:19.000Z\",\"author\":\"golden_ember_1\",\"like_count\":3},{\"id\":10014001,\"body\":\"sparse diagnostic 14 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:18.000Z\",\"author\":\"golden_ember_1\",\"like_count\":0},{\"id\":10011001,\"body\":\"sparse diagnostic 11 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:17.000Z\",\"author\":\"golden_ember_1\",\"like_count\":4},{\"id\":10008001,\"body\":\"sparse diagnostic 8 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:16.000Z\",\"author\":\"golden_ember_1\",\"like_count\":1},{\"id\":10005001,\"body\":\"sparse diagnostic 5 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:15.000Z\",\"author\":\"golden_ember_1\",\"like_count\":5},{\"id\":10002001,\"body\":\"sparse diagnostic 2 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:14.000Z\",\"author\":\"golden_ember_1\",\"like_count\":2},{\"id\":10019001,\"body\":\"sparse diagnostic 19 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:13.000Z\",\"author\":\"golden_ember_1\",\"like_count\":5},{\"id\":10016001,\"body\":\"sparse diagnostic 16 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:12.000Z\",\"author\":\"golden_ember_1\",\"like_count\":2},{\"id\":10013001,\"body\":\"sparse diagnostic 13 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:11.000Z\",\"author\":\"golden_ember_1\",\"like_count\":6},{\"id\":10010001,\"body\":\"sparse diagnostic 10 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:10.000Z\",\"author\":\"golden_ember_1\",\"like_count\":3},{\"id\":10007001,\"body\":\"sparse diagnostic 7 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:09.000Z\",\"author\":\"golden_ember_1\",\"like_count\":0},{\"id\":10004001,\"body\":\"sparse diagnostic 4 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:08.000Z\",\"author\":\"golden_ember_1\",\"like_count\":4},{\"id\":10001001,\"body\":\"sparse diagnostic 1 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:07.000Z\",\"author\":\"golden_ember_1\",\"like_count\":1},{\"id\":10018001,\"body\":\"sparse diagnostic 18 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:06.000Z\",\"author\":\"golden_ember_1\",\"like_count\":4},{\"id\":10015001,\"body\":\"sparse diagnostic 15 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:05.000Z\",\"author\":\"golden_ember_1\",\"like_count\":1},{\"id\":10012001,\"body\":\"sparse diagnostic 12 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:04.000Z\",\"author\":\"golden_ember_1\",\"like_count\":5},{\"id\":10009001,\"body\":\"sparse diagnostic 9 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:03.000Z\",\"author\":\"golden_ember_1\",\"like_count\":2},{\"id\":10006001,\"body\":\"sparse diagnostic 6 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:02.000Z\",\"author\":\"golden_ember_1\",\"like_count\":6},{\"id\":10003001,\"body\":\"sparse diagnostic 3 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:01.000Z\",\"author\":\"golden_ember_1\",\"like_count\":3},{\"id\":10000001,\"body\":\"sparse diagnostic 0 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:00.000Z\",\"author\":\"golden_ember_1\",\"like_count\":0}]}",
+      "passed": true
+    },
+    {
+      "check": "new live like on sparse post",
+      "request": {
+        "method": "POST",
+        "path": "/posts/10017001/like",
+        "body": null,
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxOSIsInVzZXJuYW1lIjoiZGlhZ25vc3RpY19hdXRob3IiLCJpYXQiOjE3OTI2NzIxMDMsImV4cCI6MTc5MjY3NTcwM30.GeBk0TYIFd-18svRB0y8kN2jxdGb5X1gBF58Q_i9Pfk"
+      },
+      "expected_status": 201,
+      "expected_body": "{\"liked\":true,\"already_liked\":false,\"post_id\":10017001}",
+      "actual_status": 201,
+      "actual_body": "{\"liked\":true,\"already_liked\":false,\"post_id\":10017001}",
+      "passed": true
+    },
+    {
+      "check": "sparse fallback feed observes live like",
+      "request": {
+        "method": "GET",
+        "path": "/feed",
+        "body": null,
+        "authorization": null
+      },
+      "expected_status": 200,
+      "expected_body": "{\"posts\":[{\"id\":10017001,\"body\":\"sparse diagnostic 17 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:19.000Z\",\"author\":\"golden_ember_1\",\"like_count\":4},{\"id\":10014001,\"body\":\"sparse diagnostic 14 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:18.000Z\",\"author\":\"golden_ember_1\",\"like_count\":0},{\"id\":10011001,\"body\":\"sparse diagnostic 11 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:17.000Z\",\"author\":\"golden_ember_1\",\"like_count\":4},{\"id\":10008001,\"body\":\"sparse diagnostic 8 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:16.000Z\",\"author\":\"golden_ember_1\",\"like_count\":1},{\"id\":10005001,\"body\":\"sparse diagnostic 5 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:15.000Z\",\"author\":\"golden_ember_1\",\"like_count\":5},{\"id\":10002001,\"body\":\"sparse diagnostic 2 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:14.000Z\",\"author\":\"golden_ember_1\",\"like_count\":2},{\"id\":10019001,\"body\":\"sparse diagnostic 19 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:13.000Z\",\"author\":\"golden_ember_1\",\"like_count\":5},{\"id\":10016001,\"body\":\"sparse diagnostic 16 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:12.000Z\",\"author\":\"golden_ember_1\",\"like_count\":2},{\"id\":10013001,\"body\":\"sparse diagnostic 13 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:11.000Z\",\"author\":\"golden_ember_1\",\"like_count\":6},{\"id\":10010001,\"body\":\"sparse diagnostic 10 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:10.000Z\",\"author\":\"golden_ember_1\",\"like_count\":3},{\"id\":10007001,\"body\":\"sparse diagnostic 7 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:09.000Z\",\"author\":\"golden_ember_1\",\"like_count\":0},{\"id\":10004001,\"body\":\"sparse diagnostic 4 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:08.000Z\",\"author\":\"golden_ember_1\",\"like_count\":4},{\"id\":10001001,\"body\":\"sparse diagnostic 1 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:07.000Z\",\"author\":\"golden_ember_1\",\"like_count\":1},{\"id\":10018001,\"body\":\"sparse diagnostic 18 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:06.000Z\",\"author\":\"golden_ember_1\",\"like_count\":4},{\"id\":10015001,\"body\":\"sparse diagnostic 15 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:05.000Z\",\"author\":\"golden_ember_1\",\"like_count\":1},{\"id\":10012001,\"body\":\"sparse diagnostic 12 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:04.000Z\",\"author\":\"golden_ember_1\",\"like_count\":5},{\"id\":10009001,\"body\":\"sparse diagnostic 9 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:03.000Z\",\"author\":\"golden_ember_1\",\"like_count\":2},{\"id\":10006001,\"body\":\"sparse diagnostic 6 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:02.000Z\",\"author\":\"golden_ember_1\",\"like_count\":6},{\"id\":10003001,\"body\":\"sparse diagnostic 3 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:01.000Z\",\"author\":\"golden_ember_1\",\"like_count\":3},{\"id\":10000001,\"body\":\"sparse diagnostic 0 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:00.000Z\",\"author\":\"golden_ember_1\",\"like_count\":0}]}",
+      "actual_status": 200,
+      "actual_body": "{\"posts\":[{\"id\":10017001,\"body\":\"sparse diagnostic 17 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:19.000Z\",\"author\":\"golden_ember_1\",\"like_count\":4},{\"id\":10014001,\"body\":\"sparse diagnostic 14 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:18.000Z\",\"author\":\"golden_ember_1\",\"like_count\":0},{\"id\":10011001,\"body\":\"sparse diagnostic 11 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:17.000Z\",\"author\":\"golden_ember_1\",\"like_count\":4},{\"id\":10008001,\"body\":\"sparse diagnostic 8 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:16.000Z\",\"author\":\"golden_ember_1\",\"like_count\":1},{\"id\":10005001,\"body\":\"sparse diagnostic 5 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:15.000Z\",\"author\":\"golden_ember_1\",\"like_count\":5},{\"id\":10002001,\"body\":\"sparse diagnostic 2 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:14.000Z\",\"author\":\"golden_ember_1\",\"like_count\":2},{\"id\":10019001,\"body\":\"sparse diagnostic 19 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:13.000Z\",\"author\":\"golden_ember_1\",\"like_count\":5},{\"id\":10016001,\"body\":\"sparse diagnostic 16 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:12.000Z\",\"author\":\"golden_ember_1\",\"like_count\":2},{\"id\":10013001,\"body\":\"sparse diagnostic 13 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:11.000Z\",\"author\":\"golden_ember_1\",\"like_count\":6},{\"id\":10010001,\"body\":\"sparse diagnostic 10 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:10.000Z\",\"author\":\"golden_ember_1\",\"like_count\":3},{\"id\":10007001,\"body\":\"sparse diagnostic 7 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:09.000Z\",\"author\":\"golden_ember_1\",\"like_count\":0},{\"id\":10004001,\"body\":\"sparse diagnostic 4 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:08.000Z\",\"author\":\"golden_ember_1\",\"like_count\":4},{\"id\":10001001,\"body\":\"sparse diagnostic 1 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:07.000Z\",\"author\":\"golden_ember_1\",\"like_count\":1},{\"id\":10018001,\"body\":\"sparse diagnostic 18 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:06.000Z\",\"author\":\"golden_ember_1\",\"like_count\":4},{\"id\":10015001,\"body\":\"sparse diagnostic 15 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:05.000Z\",\"author\":\"golden_ember_1\",\"like_count\":1},{\"id\":10012001,\"body\":\"sparse diagnostic 12 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:04.000Z\",\"author\":\"golden_ember_1\",\"like_count\":5},{\"id\":10009001,\"body\":\"sparse diagnostic 9 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:03.000Z\",\"author\":\"golden_ember_1\",\"like_count\":2},{\"id\":10006001,\"body\":\"sparse diagnostic 6 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:02.000Z\",\"author\":\"golden_ember_1\",\"like_count\":6},{\"id\":10003001,\"body\":\"sparse diagnostic 3 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:01.000Z\",\"author\":\"golden_ember_1\",\"like_count\":3},{\"id\":10000001,\"body\":\"sparse diagnostic 0 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:00.000Z\",\"author\":\"golden_ember_1\",\"like_count\":0}]}",
+      "passed": true
+    },
+    {
+      "check": "sparse post observes live like",
+      "request": {
+        "method": "GET",
+        "path": "/posts/10017001",
+        "body": null,
+        "authorization": null
+      },
+      "expected_status": 200,
+      "expected_body": "{\"post\":{\"id\":10017001,\"body\":\"sparse diagnostic 17 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:19.000Z\",\"author\":\"golden_ember_1\",\"like_count\":4}}",
+      "actual_status": 200,
+      "actual_body": "{\"post\":{\"id\":10017001,\"body\":\"sparse diagnostic 17 café \\\"quoted\\\"\",\"created_at\":\"2099-01-01T00:00:19.000Z\",\"author\":\"golden_ember_1\",\"like_count\":4}}",
+      "passed": true
+    },
+    {
+      "check": "repeat sparse like remains idempotent",
+      "request": {
+        "method": "POST",
+        "path": "/posts/10017001/like",
+        "body": null,
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxOSIsInVzZXJuYW1lIjoiZGlhZ25vc3RpY19hdXRob3IiLCJpYXQiOjE3OTI2NzIxMDMsImV4cCI6MTc5MjY3NTcwM30.GeBk0TYIFd-18svRB0y8kN2jxdGb5X1gBF58Q_i9Pfk"
+      },
+      "expected_status": 200,
+      "expected_body": "{\"liked\":true,\"already_liked\":true,\"post_id\":10017001}",
+      "actual_status": 200,
+      "actual_body": "{\"liked\":true,\"already_liked\":true,\"post_id\":10017001}",
+      "passed": true
+    },
+    {
+      "check": "500 Unicode scalar body is accepted",
+      "request": {
+        "method": "POST",
+        "path": "/posts",
+        "body": {
+          "body": "😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀"
+        },
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxOSIsInVzZXJuYW1lIjoiZGlhZ25vc3RpY19hdXRob3IiLCJpYXQiOjE3OTI2NzIxMDMsImV4cCI6MTc5MjY3NTcwM30.GeBk0TYIFd-18svRB0y8kN2jxdGb5X1gBF58Q_i9Pfk"
+      },
+      "expected_status": 201,
+      "expected_body": "{\"post\":{\"id\":10019002,\"body\":\"😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀\",\"created_at\":\"2026-10-22T12:28:23.710Z\",\"author\":\"diagnostic_author\",\"like_count\":0}}",
+      "actual_status": 201,
+      "actual_body": "{\"post\":{\"id\":10019002,\"body\":\"😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀\",\"created_at\":\"2026-10-22T12:28:23.710Z\",\"author\":\"diagnostic_author\",\"like_count\":0}}",
+      "passed": true
+    },
+    {
+      "check": "500 Unicode scalar post reads exactly using stored author",
+      "request": {
+        "method": "GET",
+        "path": "/posts/10019002",
+        "body": null,
+        "authorization": null
+      },
+      "expected_status": 200,
+      "expected_body": "{\"post\":{\"id\":10019002,\"body\":\"😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀\",\"created_at\":\"2026-10-22T12:28:23.710Z\",\"author\":\"salty_falcon_19\",\"like_count\":0}}",
+      "actual_status": 200,
+      "actual_body": "{\"post\":{\"id\":10019002,\"body\":\"😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀\",\"created_at\":\"2026-10-22T12:28:23.710Z\",\"author\":\"salty_falcon_19\",\"like_count\":0}}",
+      "passed": true
+    },
+    {
+      "check": "501 Unicode scalars are rejected",
+      "request": {
+        "method": "POST",
+        "path": "/posts",
+        "body": {
+          "body": "😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀😀"
+        },
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxOSIsInVzZXJuYW1lIjoiZGlhZ25vc3RpY19hdXRob3IiLCJpYXQiOjE3OTI2NzIxMDMsImV4cCI6MTc5MjY3NTcwM30.GeBk0TYIFd-18svRB0y8kN2jxdGb5X1gBF58Q_i9Pfk"
+      },
+      "expected_status": 400,
+      "expected_body": "{\"error\":\"body must be at most 500 characters\"}",
+      "actual_status": 400,
+      "actual_body": "{\"error\":\"body must be at most 500 characters\"}",
+      "passed": true
+    },
+    {
+      "check": "Unicode edge whitespace trims without changing inner characters",
+      "request": {
+        "method": "POST",
+        "path": "/posts",
+        "body": {
+          "body": " ﻿ \té́😀 inner space\r　 "
+        },
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxOSIsInVzZXJuYW1lIjoiZGlhZ25vc3RpY19hdXRob3IiLCJpYXQiOjE3OTI2NzIxMDMsImV4cCI6MTc5MjY3NTcwM30.GeBk0TYIFd-18svRB0y8kN2jxdGb5X1gBF58Q_i9Pfk"
+      },
+      "expected_status": 201,
+      "expected_body": "{\"post\":{\"id\":10019003,\"body\":\"é́😀 inner space\",\"created_at\":\"2026-10-22T12:28:23.711Z\",\"author\":\"diagnostic_author\",\"like_count\":0}}",
+      "actual_status": 201,
+      "actual_body": "{\"post\":{\"id\":10019003,\"body\":\"é́😀 inner space\",\"created_at\":\"2026-10-22T12:28:23.711Z\",\"author\":\"diagnostic_author\",\"like_count\":0}}",
+      "passed": true
+    },
+    {
+      "check": "all Unicode whitespace is empty",
+      "request": {
+        "method": "POST",
+        "path": "/posts",
+        "body": {
+          "body": " ﻿ \t\r　 "
+        },
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxOSIsInVzZXJuYW1lIjoiZGlhZ25vc3RpY19hdXRob3IiLCJpYXQiOjE3OTI2NzIxMDMsImV4cCI6MTc5MjY3NTcwM30.GeBk0TYIFd-18svRB0y8kN2jxdGb5X1gBF58Q_i9Pfk"
+      },
+      "expected_status": 400,
+      "expected_body": "{\"error\":\"body is required\"}",
+      "actual_status": 400,
+      "actual_body": "{\"error\":\"body is required\"}",
+      "passed": true
+    },
+    {
+      "check": "authenticated invalid like ID 0",
+      "request": {
+        "method": "POST",
+        "path": "/posts/0/like",
+        "body": null,
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxOSIsInVzZXJuYW1lIjoiZGlhZ25vc3RpY19hdXRob3IiLCJpYXQiOjE3OTI2NzIxMDMsImV4cCI6MTc5MjY3NTcwM30.GeBk0TYIFd-18svRB0y8kN2jxdGb5X1gBF58Q_i9Pfk"
+      },
+      "expected_status": 400,
+      "expected_body": "{\"error\":\"invalid post id\"}",
+      "actual_status": 400,
+      "actual_body": "{\"error\":\"invalid post id\"}",
+      "passed": true
+    },
+    {
+      "check": "authenticated invalid like ID -1",
+      "request": {
+        "method": "POST",
+        "path": "/posts/-1/like",
+        "body": null,
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxOSIsInVzZXJuYW1lIjoiZGlhZ25vc3RpY19hdXRob3IiLCJpYXQiOjE3OTI2NzIxMDMsImV4cCI6MTc5MjY3NTcwM30.GeBk0TYIFd-18svRB0y8kN2jxdGb5X1gBF58Q_i9Pfk"
+      },
+      "expected_status": 400,
+      "expected_body": "{\"error\":\"invalid post id\"}",
+      "actual_status": 400,
+      "actual_body": "{\"error\":\"invalid post id\"}",
+      "passed": true
+    },
+    {
+      "check": "authenticated invalid like ID abc",
+      "request": {
+        "method": "POST",
+        "path": "/posts/abc/like",
+        "body": null,
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxOSIsInVzZXJuYW1lIjoiZGlhZ25vc3RpY19hdXRob3IiLCJpYXQiOjE3OTI2NzIxMDMsImV4cCI6MTc5MjY3NTcwM30.GeBk0TYIFd-18svRB0y8kN2jxdGb5X1gBF58Q_i9Pfk"
+      },
+      "expected_status": 400,
+      "expected_body": "{\"error\":\"invalid post id\"}",
+      "actual_status": 400,
+      "actual_body": "{\"error\":\"invalid post id\"}",
+      "passed": true
+    },
+    {
+      "check": "authenticated invalid like ID 1.5",
+      "request": {
+        "method": "POST",
+        "path": "/posts/1.5/like",
+        "body": null,
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxOSIsInVzZXJuYW1lIjoiZGlhZ25vc3RpY19hdXRob3IiLCJpYXQiOjE3OTI2NzIxMDMsImV4cCI6MTc5MjY3NTcwM30.GeBk0TYIFd-18svRB0y8kN2jxdGb5X1gBF58Q_i9Pfk"
+      },
+      "expected_status": 400,
+      "expected_body": "{\"error\":\"invalid post id\"}",
+      "actual_status": 400,
+      "actual_body": "{\"error\":\"invalid post id\"}",
+      "passed": true
+    },
+    {
+      "check": "authentication precedes invalid ID",
+      "request": {
+        "method": "POST",
+        "path": "/posts/abc/like",
+        "body": null,
+        "authorization": null
+      },
+      "expected_status": 401,
+      "expected_body": "{\"error\":\"missing bearer token\"}",
+      "actual_status": 401,
+      "actual_body": "{\"error\":\"missing bearer token\"}",
+      "passed": true
+    },
+    {
+      "check": "nested route is unknown before auth",
+      "request": {
+        "method": "POST",
+        "path": "/posts/1/nested/like",
+        "body": null,
+        "authorization": null
+      },
+      "expected_status": 404,
+      "expected_body": "{\"error\":\"not found\"}",
+      "actual_status": 404,
+      "actual_body": "{\"error\":\"not found\"}",
+      "passed": true
+    },
+    {
+      "check": "wrong signed algorithm",
+      "request": {
+        "method": "POST",
+        "path": "/posts",
+        "body": {
+          "body": "must not insert"
+        },
+        "authorization": "Bearer eyJhbGciOiJIUzM4NCIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxOSIsInVzZXJuYW1lIjoiZGlhZ25vc3RpY19hdXRob3IiLCJpYXQiOjE3OTI2NzIxMDMsImV4cCI6MTc5MjY3NTcwM30.fJQy0o2NqjOeik53LJ299rvq6_3kGn-azU2T7BfJp-M"
+      },
+      "expected_status": 401,
+      "expected_body": "{\"error\":\"invalid or expired token\"}",
+      "actual_status": 401,
+      "actual_body": "{\"error\":\"invalid or expired token\"}",
+      "passed": true
+    },
+    {
+      "check": "expired token",
+      "request": {
+        "method": "POST",
+        "path": "/posts",
+        "body": {
+          "body": "must not insert"
+        },
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxOSIsInVzZXJuYW1lIjoiZGlhZ25vc3RpY19hdXRob3IiLCJpYXQiOjE3OTI2NzIxMDMsImV4cCI6MTc5MjY3MjEwMn0.pgS0GBIaVl0s4hVciEgg32CSfEF7ICKnuX8-syXKryk"
+      },
+      "expected_status": 401,
+      "expected_body": "{\"error\":\"invalid or expired token\"}",
+      "actual_status": 401,
+      "actual_body": "{\"error\":\"invalid or expired token\"}",
+      "passed": true
+    },
+    {
+      "check": "missing expiration",
+      "request": {
+        "method": "POST",
+        "path": "/posts",
+        "body": {
+          "body": "must not insert"
+        },
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxOSIsInVzZXJuYW1lIjoiZGlhZ25vc3RpY19hdXRob3IiLCJpYXQiOjE3OTI2NzIxMDN9.P0UMUvPti5QS894h6rzh2jVBoPhTj2qSk-OeH7PU2OA"
+      },
+      "expected_status": 401,
+      "expected_body": "{\"error\":\"invalid or expired token\"}",
+      "actual_status": 401,
+      "actual_body": "{\"error\":\"invalid or expired token\"}",
+      "passed": true
+    },
+    {
+      "check": "numeric subject",
+      "request": {
+        "method": "POST",
+        "path": "/posts",
+        "body": {
+          "body": "must not insert"
+        },
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjE5LCJ1c2VybmFtZSI6ImRpYWdub3N0aWNfYXV0aG9yIiwiaWF0IjoxNzkyNjcyMTAzLCJleHAiOjE3OTI2NzU3MDN9.q9by9Dh7oCfz7TBwT41rlFiayR4JuEmYy7NS4g1sgOY"
+      },
+      "expected_status": 401,
+      "expected_body": "{\"error\":\"invalid token payload\"}",
+      "actual_status": 401,
+      "actual_body": "{\"error\":\"invalid token payload\"}",
+      "passed": true
+    },
+    {
+      "check": "zero subject",
+      "request": {
+        "method": "POST",
+        "path": "/posts",
+        "body": {
+          "body": "must not insert"
+        },
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwIiwidXNlcm5hbWUiOiJkaWFnbm9zdGljX2F1dGhvciIsImlhdCI6MTc5MjY3MjEwMywiZXhwIjoxNzkyNjc1NzAzfQ.Y9lhC4BVAl-qd8xREPsdj4lSNzUGDcj0uNnR1uJdR4k"
+      },
+      "expected_status": 401,
+      "expected_body": "{\"error\":\"invalid token payload\"}",
+      "actual_status": 401,
+      "actual_body": "{\"error\":\"invalid token payload\"}",
+      "passed": true
+    },
+    {
+      "check": "negative subject",
+      "request": {
+        "method": "POST",
+        "path": "/posts",
+        "body": {
+          "body": "must not insert"
+        },
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiItMSIsInVzZXJuYW1lIjoiZGlhZ25vc3RpY19hdXRob3IiLCJpYXQiOjE3OTI2NzIxMDMsImV4cCI6MTc5MjY3NTcwM30.bSoa--o9aTjYbJj5fJXXxNgEJaSuoSQIa-svUC11mxM"
+      },
+      "expected_status": 401,
+      "expected_body": "{\"error\":\"invalid token payload\"}",
+      "actual_status": 401,
+      "actual_body": "{\"error\":\"invalid token payload\"}",
+      "passed": true
+    },
+    {
+      "check": "numeric username",
+      "request": {
+        "method": "POST",
+        "path": "/posts",
+        "body": {
+          "body": "must not insert"
+        },
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxOSIsInVzZXJuYW1lIjo0MiwiaWF0IjoxNzkyNjcyMTAzLCJleHAiOjE3OTI2NzU3MDN9.bdBTdsVF8AcbutEFI7NqswlusGp3zKhhhbkiRa1FGeg"
+      },
+      "expected_status": 401,
+      "expected_body": "{\"error\":\"invalid token payload\"}",
+      "actual_status": 401,
+      "actual_body": "{\"error\":\"invalid token payload\"}",
+      "passed": true
+    },
+    {
+      "check": "missing username",
+      "request": {
+        "method": "POST",
+        "path": "/posts",
+        "body": {
+          "body": "must not insert"
+        },
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxOSIsImlhdCI6MTc5MjY3MjEwMywiZXhwIjoxNzkyNjc1NzAzfQ.6FIApFhWKRFWqCDChSh_FJW4wI__kal9XP6EonMWtzw"
+      },
+      "expected_status": 401,
+      "expected_body": "{\"error\":\"invalid token payload\"}",
+      "actual_status": 401,
+      "actual_body": "{\"error\":\"invalid token payload\"}",
+      "passed": true
+    },
+    {
+      "check": "malformed JWT segments",
+      "request": {
+        "method": "POST",
+        "path": "/posts",
+        "body": {
+          "body": "must not insert"
+        },
+        "authorization": "Bearer abc.def.ghi.extra"
+      },
+      "expected_status": 401,
+      "expected_body": "{\"error\":\"invalid or expired token\"}",
+      "actual_status": 401,
+      "actual_body": "{\"error\":\"invalid or expired token\"}",
+      "passed": true
+    }
+  ],
+  "fixture": {
+    "post_sql": "INSERT INTO posts(id,user_id,body,created_at) VALUES(?,?,?,?)",
+    "post_parameters": [
+      [
+        10000001,
+        1,
+        "sparse diagnostic 0 café \"quoted\"",
+        "2099-01-01T00:00:00.000Z"
+      ],
+      [
+        10001001,
+        1,
+        "sparse diagnostic 1 café \"quoted\"",
+        "2099-01-01T00:00:07.000Z"
+      ],
+      [
+        10002001,
+        1,
+        "sparse diagnostic 2 café \"quoted\"",
+        "2099-01-01T00:00:14.000Z"
+      ],
+      [
+        10003001,
+        1,
+        "sparse diagnostic 3 café \"quoted\"",
+        "2099-01-01T00:00:01.000Z"
+      ],
+      [
+        10004001,
+        1,
+        "sparse diagnostic 4 café \"quoted\"",
+        "2099-01-01T00:00:08.000Z"
+      ],
+      [
+        10005001,
+        1,
+        "sparse diagnostic 5 café \"quoted\"",
+        "2099-01-01T00:00:15.000Z"
+      ],
+      [
+        10006001,
+        1,
+        "sparse diagnostic 6 café \"quoted\"",
+        "2099-01-01T00:00:02.000Z"
+      ],
+      [
+        10007001,
+        1,
+        "sparse diagnostic 7 café \"quoted\"",
+        "2099-01-01T00:00:09.000Z"
+      ],
+      [
+        10008001,
+        1,
+        "sparse diagnostic 8 café \"quoted\"",
+        "2099-01-01T00:00:16.000Z"
+      ],
+      [
+        10009001,
+        1,
+        "sparse diagnostic 9 café \"quoted\"",
+        "2099-01-01T00:00:03.000Z"
+      ],
+      [
+        10010001,
+        1,
+        "sparse diagnostic 10 café \"quoted\"",
+        "2099-01-01T00:00:10.000Z"
+      ],
+      [
+        10011001,
+        1,
+        "sparse diagnostic 11 café \"quoted\"",
+        "2099-01-01T00:00:17.000Z"
+      ],
+      [
+        10012001,
+        1,
+        "sparse diagnostic 12 café \"quoted\"",
+        "2099-01-01T00:00:04.000Z"
+      ],
+      [
+        10013001,
+        1,
+        "sparse diagnostic 13 café \"quoted\"",
+        "2099-01-01T00:00:11.000Z"
+      ],
+      [
+        10014001,
+        1,
+        "sparse diagnostic 14 café \"quoted\"",
+        "2099-01-01T00:00:18.000Z"
+      ],
+      [
+        10015001,
+        1,
+        "sparse diagnostic 15 café \"quoted\"",
+        "2099-01-01T00:00:05.000Z"
+      ],
+      [
+        10016001,
+        1,
+        "sparse diagnostic 16 café \"quoted\"",
+        "2099-01-01T00:00:12.000Z"
+      ],
+      [
+        10017001,
+        1,
+        "sparse diagnostic 17 café \"quoted\"",
+        "2099-01-01T00:00:19.000Z"
+      ],
+      [
+        10018001,
+        1,
+        "sparse diagnostic 18 café \"quoted\"",
+        "2099-01-01T00:00:06.000Z"
+      ],
+      [
+        10019001,
+        1,
+        "sparse diagnostic 19 café \"quoted\"",
+        "2099-01-01T00:00:13.000Z"
+      ]
+    ],
+    "like_sql": "INSERT INTO likes(user_id,post_id) VALUES(?,?)",
+    "like_parameters": [
+      [
+        1,
+        10001001
+      ],
+      [
+        1,
+        10002001
+      ],
+      [
+        2,
+        10002001
+      ],
+      [
+        1,
+        10003001
+      ],
+      [
+        2,
+        10003001
+      ],
+      [
+        3,
+        10003001
+      ],
+      [
+        1,
+        10004001
+      ],
+      [
+        2,
+        10004001
+      ],
+      [
+        3,
+        10004001
+      ],
+      [
+        4,
+        10004001
+      ],
+      [
+        1,
+        10005001
+      ],
+      [
+        2,
+        10005001
+      ],
+      [
+        3,
+        10005001
+      ],
+      [
+        4,
+        10005001
+      ],
+      [
+        5,
+        10005001
+      ],
+      [
+        1,
+        10006001
+      ],
+      [
+        2,
+        10006001
+      ],
+      [
+        3,
+        10006001
+      ],
+      [
+        4,
+        10006001
+      ],
+      [
+        5,
+        10006001
+      ],
+      [
+        6,
+        10006001
+      ],
+      [
+        1,
+        10008001
+      ],
+      [
+        1,
+        10009001
+      ],
+      [
+        2,
+        10009001
+      ],
+      [
+        1,
+        10010001
+      ],
+      [
+        2,
+        10010001
+      ],
+      [
+        3,
+        10010001
+      ],
+      [
+        1,
+        10011001
+      ],
+      [
+        2,
+        10011001
+      ],
+      [
+        3,
+        10011001
+      ],
+      [
+        4,
+        10011001
+      ],
+      [
+        1,
+        10012001
+      ],
+      [
+        2,
+        10012001
+      ],
+      [
+        3,
+        10012001
+      ],
+      [
+        4,
+        10012001
+      ],
+      [
+        5,
+        10012001
+      ],
+      [
+        1,
+        10013001
+      ],
+      [
+        2,
+        10013001
+      ],
+      [
+        3,
+        10013001
+      ],
+      [
+        4,
+        10013001
+      ],
+      [
+        5,
+        10013001
+      ],
+      [
+        6,
+        10013001
+      ],
+      [
+        1,
+        10015001
+      ],
+      [
+        1,
+        10016001
+      ],
+      [
+        2,
+        10016001
+      ],
+      [
+        1,
+        10017001
+      ],
+      [
+        2,
+        10017001
+      ],
+      [
+        3,
+        10017001
+      ],
+      [
+        1,
+        10018001
+      ],
+      [
+        2,
+        10018001
+      ],
+      [
+        3,
+        10018001
+      ],
+      [
+        4,
+        10018001
+      ],
+      [
+        1,
+        10019001
+      ],
+      [
+        2,
+        10019001
+      ],
+      [
+        3,
+        10019001
+      ],
+      [
+        4,
+        10019001
+      ],
+      [
+        5,
+        10019001
+      ]
+    ],
+    "oracle_query": "SELECT p.id,p.body,p.created_at,u.username,(SELECT count(*) FROM likes l WHERE l.post_id=p.id) FROM posts p JOIN users u ON u.id=p.user_id ORDER BY p.created_at DESC,p.id DESC LIMIT 20",
+    "expected_initial_feed": {
+      "posts": [
+        {
+          "id": 10017001,
+          "body": "sparse diagnostic 17 café \"quoted\"",
+          "created_at": "2099-01-01T00:00:19.000Z",
+          "author": "golden_ember_1",
+          "like_count": 3
+        },
+        {
+          "id": 10014001,
+          "body": "sparse diagnostic 14 café \"quoted\"",
+          "created_at": "2099-01-01T00:00:18.000Z",
+          "author": "golden_ember_1",
+          "like_count": 0
+        },
+        {
+          "id": 10011001,
+          "body": "sparse diagnostic 11 café \"quoted\"",
+          "created_at": "2099-01-01T00:00:17.000Z",
+          "author": "golden_ember_1",
+          "like_count": 4
+        },
+        {
+          "id": 10008001,
+          "body": "sparse diagnostic 8 café \"quoted\"",
+          "created_at": "2099-01-01T00:00:16.000Z",
+          "author": "golden_ember_1",
+          "like_count": 1
+        },
+        {
+          "id": 10005001,
+          "body": "sparse diagnostic 5 café \"quoted\"",
+          "created_at": "2099-01-01T00:00:15.000Z",
+          "author": "golden_ember_1",
+          "like_count": 5
+        },
+        {
+          "id": 10002001,
+          "body": "sparse diagnostic 2 café \"quoted\"",
+          "created_at": "2099-01-01T00:00:14.000Z",
+          "author": "golden_ember_1",
+          "like_count": 2
+        },
+        {
+          "id": 10019001,
+          "body": "sparse diagnostic 19 café \"quoted\"",
+          "created_at": "2099-01-01T00:00:13.000Z",
+          "author": "golden_ember_1",
+          "like_count": 5
+        },
+        {
+          "id": 10016001,
+          "body": "sparse diagnostic 16 café \"quoted\"",
+          "created_at": "2099-01-01T00:00:12.000Z",
+          "author": "golden_ember_1",
+          "like_count": 2
+        },
+        {
+          "id": 10013001,
+          "body": "sparse diagnostic 13 café \"quoted\"",
+          "created_at": "2099-01-01T00:00:11.000Z",
+          "author": "golden_ember_1",
+          "like_count": 6
+        },
+        {
+          "id": 10010001,
+          "body": "sparse diagnostic 10 café \"quoted\"",
+          "created_at": "2099-01-01T00:00:10.000Z",
+          "author": "golden_ember_1",
+          "like_count": 3
+        },
+        {
+          "id": 10007001,
+          "body": "sparse diagnostic 7 café \"quoted\"",
+          "created_at": "2099-01-01T00:00:09.000Z",
+          "author": "golden_ember_1",
+          "like_count": 0
+        },
+        {
+          "id": 10004001,
+          "body": "sparse diagnostic 4 café \"quoted\"",
+          "created_at": "2099-01-01T00:00:08.000Z",
+          "author": "golden_ember_1",
+          "like_count": 4
+        },
+        {
+          "id": 10001001,
+          "body": "sparse diagnostic 1 café \"quoted\"",
+          "created_at": "2099-01-01T00:00:07.000Z",
+          "author": "golden_ember_1",
+          "like_count": 1
+        },
+        {
+          "id": 10018001,
+          "body": "sparse diagnostic 18 café \"quoted\"",
+          "created_at": "2099-01-01T00:00:06.000Z",
+          "author": "golden_ember_1",
+          "like_count": 4
+        },
+        {
+          "id": 10015001,
+          "body": "sparse diagnostic 15 café \"quoted\"",
+          "created_at": "2099-01-01T00:00:05.000Z",
+          "author": "golden_ember_1",
+          "like_count": 1
+        },
+        {
+          "id": 10012001,
+          "body": "sparse diagnostic 12 café \"quoted\"",
+          "created_at": "2099-01-01T00:00:04.000Z",
+          "author": "golden_ember_1",
+          "like_count": 5
+        },
+        {
+          "id": 10009001,
+          "body": "sparse diagnostic 9 café \"quoted\"",
+          "created_at": "2099-01-01T00:00:03.000Z",
+          "author": "golden_ember_1",
+          "like_count": 2
+        },
+        {
+          "id": 10006001,
+          "body": "sparse diagnostic 6 café \"quoted\"",
+          "created_at": "2099-01-01T00:00:02.000Z",
+          "author": "golden_ember_1",
+          "like_count": 6
+        },
+        {
+          "id": 10003001,
+          "body": "sparse diagnostic 3 café \"quoted\"",
+          "created_at": "2099-01-01T00:00:01.000Z",
+          "author": "golden_ember_1",
+          "like_count": 3
+        },
+        {
+          "id": 10000001,
+          "body": "sparse diagnostic 0 café \"quoted\"",
+          "created_at": "2099-01-01T00:00:00.000Z",
+          "author": "golden_ember_1",
+          "like_count": 0
+        }
+      ]
+    },
+    "stored_user_name": "salty_falcon_19",
+    "sparse_id_span": 19000
+  },
+  "server_log": "SQLite memory: cache_kib=8192 mmap_mib=0\nGoose native transport: epoll\nGoose challenge server listening on 127.0.0.1:24117\n",
+  "database_after": {
+    "integrity": "ok",
+    "sparse_post_like_count": 4
+  },
+  "passed_all": true,
+  "passed": 25,
+  "failed": 0,
+  "diagnostic_harness_correction": "The first draft expected a GET author to equal the token username after deliberately changing that username. The corrected oracle follows SPEC: create echoes the token username while GET reads users.username. The server source and image were unchanged.",
+  "runtime_backend_expected": "epoll",
+  "runtime_backend_verified": true,
+  "source_app_verified": true,
+  "diagnostic_exit_code": 0,
+  "diagnostic_stderr": "",
+  "diagnostic_cpu_allocation": "CPU0/one CPU; correctness only",
+  "case_id": "goose",
+  "command": [
+    "docker",
+    "run",
+    "--rm",
+    "--user",
+    "bench",
+    "--cpuset-cpus",
+    "0",
+    "--cpus",
+    "1",
+    "--memory",
+    "2g",
+    "--memory-swap",
+    "2g",
+    "--ulimit",
+    "nofile=65535:65535",
+    "--security-opt",
+    "seccomp=/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/goose-2026-10-22/lead5/unified-like-final/seccomp-io-uring.json",
+    "--mount",
+    "type=bind,src=/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/goose-2026-10-22/lead5/unified-like-final,dst=/evidence,readonly",
+    "-e",
+    "EXPERIMENT_IMAGE_ID=sha256:156abeecae6919eaf8457b304507c4a97262a911be7882ca60700f8fce58ef24",
+    "sha256:156abeecae6919eaf8457b304507c4a97262a911be7882ca60700f8fce58ef24",
+    "python3",
+    "/evidence/edge_checks.py"
+  ]
+}

@@ -1,0 +1,152 @@
+{
+  "recorded_at": "2026-10-22T13:12:55.441656+00:00",
+  "complete": true,
+  "audit_passed": true,
+  "target_passed": false,
+  "purpose": "Completed independent source/identity/correctness and raw/statistics audit; accurate audit success is distinct from meeting the performance target",
+  "measurement_count": 30,
+  "measurements_sha256": "99ff301c0c7231105f57441479f20789cc5cad1ecccdcc432a700107639eb4b1",
+  "identities": {
+    "goose": {
+      "source_sha256": "09e695a0652cc4654e12d5382b423adf75b7ea7c5ef18978313ddff3cc9d13ed",
+      "image_id": "sha256:d0a2f1e95817cefd26c9563d86849efff6cb2bb5dc0e2ff733ed7656577ef9ea",
+      "binary_sha256": "309f1138b9c5d6b404670a8c0eaf1d42c2f96d4fc7e30d7a89f5bff326a5af2e"
+    },
+    "82": {
+      "source_sha256": "b91b9491e2a7a8856f8f360bc89f376b6493ae9b9a3907c557836b94f5131438",
+      "image_id": "sha256:64227e803306084617be2a4ebc1c3623260d265f158dd8c009f647558a280135",
+      "binary_sha256": "61d48f1be2feb858a14b1617cf3221bebf68df6caaac3541116e0dfbb7562026"
+    },
+    "baseline": {
+      "source_sha256": "73148f5d49e07fc62289bf582e261b8df0e1ef51d478d6fb9d44a68fec87b88a",
+      "image_id": "sha256:a69064953b766ec5c800389b8e17a7d184f73aa8dd46cd4aa2048955ee86eb0f",
+      "binary_sha256": "f0b086e53343263381c55a9046dbd65f400c4ec5ebbfc872c5d682d20a5679ab"
+    }
+  },
+  "selection_sha256": "1421ddc8f3de969a01e9a71fc23f141d2fe5c5a4016b25d84662f7b5e7c92939",
+  "primary_summary": {
+    "path": "holdout-summary.json",
+    "sha256": "fcc6590cd3fd4f8d7bb518521d4d8fd434a540a1e1503723d1586996d279a8ae",
+    "target_passed": false
+  },
+  "completion_marker": {
+    "path": "holdout-complete.json",
+    "sha256": "aefedd73b977e776734389377dcd7ebef16a0ecb39db7201c7c19c2424d5aa89"
+  },
+  "identity_audit": {
+    "path": "independent-identity-audit.json",
+    "sha256": "88c75c7de68d97039c44935ffe05fd2d27412e811e5577ab1bc3ad2e9922f762",
+    "evidence_passed_all": true
+  },
+  "statistics_audit": {
+    "path": "independent-statistics-audit.json",
+    "sha256": "9b52d52eec5dd0a02c76b9dd215217e24528e762cc83a119104e9fcdd5b9ea20",
+    "audit_passed": true,
+    "target_passed": false,
+    "analyzer_matches": true
+  },
+  "geometric_mean_ratio": 1.1072856648528149,
+  "one_sided_95_percent_lower_ratio": 1.041321768402645,
+  "selected_rounds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "excluded_rounds": [],
+  "all_attempt_error_totals": {
+    "goose": {
+      "http_errors": 0,
+      "socket_errors": 0,
+      "warmup_http_errors": 0,
+      "warmup_socket_errors": 0,
+      "socket_error_categories": {
+        "connect": 0,
+        "read": 0,
+        "write": 0,
+        "timeout": 0
+      },
+      "warmup_socket_error_categories": {
+        "connect": 0,
+        "read": 0,
+        "write": 0,
+        "timeout": 0
+      }
+    },
+    "82": {
+      "http_errors": 0,
+      "socket_errors": 0,
+      "warmup_http_errors": 0,
+      "warmup_socket_errors": 0,
+      "socket_error_categories": {
+        "connect": 0,
+        "read": 0,
+        "write": 0,
+        "timeout": 0
+      },
+      "warmup_socket_error_categories": {
+        "connect": 0,
+        "read": 0,
+        "write": 0,
+        "timeout": 0
+      }
+    },
+    "baseline": {
+      "http_errors": 0,
+      "socket_errors": 0,
+      "warmup_http_errors": 0,
+      "warmup_socket_errors": 0,
+      "socket_error_categories": {
+        "connect": 0,
+        "read": 0,
+        "write": 0,
+        "timeout": 0
+      },
+      "warmup_socket_error_categories": {
+        "connect": 0,
+        "read": 0,
+        "write": 0,
+        "timeout": 0
+      }
+    }
+  },
+  "protocol_gates": {
+    "evidence_checks": true,
+    "ten_clean_rounds": true,
+    "replacement_limit": true,
+    "zero_candidate_errors_in_all_attempts": true,
+    "candidate_valid_in_all_attempts": true,
+    "geometric_mean_at_least_5_percent": true,
+    "one_sided_95_percent_lower_bound_at_least_5_percent": false,
+    "nine_of_ten_pairs_at_least_5_percent": false,
+    "median_p99_within_5_percent_of_rust": true
+  },
+  "normal_reproduction": {
+    "image_id": "sha256:a1fb183d9156a344210065de176bc64b8219e6c2cd6ff2ac882ea7617cb8430a",
+    "binary_sha256": "c4aa7c89126bd854d14d2c3d0fccef9ef8b2523d3d17d683193480abe77f226b",
+    "source_sha256": "09e695a0652cc4654e12d5382b423adf75b7ea7c5ef18978313ddff3cc9d13ed",
+    "comparison_sha256": "07d3e2d738e6de08b4f649d79de854f22aa4349e6af8219364ba25b6cc8026d2",
+    "measured": false,
+    "binary_identical_to_selected": false
+  },
+  "merger_sha256": "01c021e3beae97222877bed9e50aa475c85e14647819e026950efc766ded861b",
+  "issues": [],
+  "limitations": [
+    "Image/binary and driver execution identities use retained immutable image/runtime proofs; this reviewer runs no new containers.",
+    "Inherited correctness records retain original timestamps and bytes; these are not newly executed tests.",
+    "A separate full normal source build succeeds but produces different SQLite feedback/object and binary bytes. It is unmeasured and does not replace the selected frozen image.",
+    "Statistics, whole-triplet selection and target gates are independently audited in independent-statistics-audit.json.",
+    "This audit reads local evidence only; live Docker/host settings are not probed.",
+    "Source/profile/driver/correctness identity proofs are audited independently by the handler agent.",
+    "The predeclared Student-t interval treats ten paired log ratios as independent approximately normal observations; noisy host scheduling or temporal correlation may weaken coverage.",
+    "A successful audit can report target_passed=false; accurate reporting is distinct from meeting the 5% target.",
+    "Partial data are not a final target claim. No stopping or round selection is based on these interim values.",
+    "This local ARM64 experiment compares complete pinned implementations; it does not establish official x86-64 capacity or isolate language speed."
+  ]
+}

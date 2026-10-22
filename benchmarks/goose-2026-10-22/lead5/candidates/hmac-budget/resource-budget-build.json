@@ -1,0 +1,29 @@
+{
+  "exit_code": 0,
+  "elapsed_seconds": 44.27598681199743,
+  "build_uid": 1001,
+  "clean_generated_directories": true,
+  "normal_build": true,
+  "sqlite_object_reuse": false,
+  "limits": {
+    "cpu.max": "100000 100000",
+    "memory.max": "2147483648",
+    "memory.swap.max": "0",
+    "cpuset.cpus.effective": "0-9"
+  },
+  "memory_peak_bytes": 412934144,
+  "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+  "cpu_stat": "usage_usec 43737548\nuser_usec 42721928\nsystem_usec 1015619\nnice_usec 0\nnr_periods 443\nnr_throttled 132\nthrottled_usec 3084720\nnr_bursts 0\nburst_usec 0\n",
+  "bin/server": {
+    "sha256": "a5e1c087110e0dde7bda696620327a6c37178ee62e09d3c56d53c49a708c10fb",
+    "bytes": 1220152
+  },
+  ".build/sqlite-pgo.o": {
+    "sha256": "aacede3dd4e6845d158cba5e65d7ef41e9a7687c1c006a3e7eaeb3323a0b82c0",
+    "bytes": 1398648
+  },
+  ".build/app.c": {
+    "sha256": "2959b0a51d1e0d60784b989745fa45226d8e67ed55a6b23cb1b3924f76b86729",
+    "bytes": 532785
+  }
+}

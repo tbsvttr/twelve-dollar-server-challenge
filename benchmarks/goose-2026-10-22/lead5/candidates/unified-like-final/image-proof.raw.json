@@ -1,0 +1,229 @@
+{
+  "source_files_verified": 19,
+  "source_snapshot_sha256": "eee8140ae61a30401c20241257344f13d63f401f8398d89d74a2ab00d8f8433f",
+  "source_hashes": {
+    ".gitignore": "1ee00c3768b764a999544de814cafa138aeca02bf295873337081540152d4f06",
+    "README.md": "63da7b67388c5a962e09803177ef54d07bb77fa5a5dc00f9471420f7898b4402",
+    "app.build": "0752b8f45d545518a8f9ad05a7e90f03cfb49315cb6bea4e2fe83d7ab6baa9d6",
+    "app.goose": "46494e94c2c6d56ea209f16f1338792b3c540b2c0647c3cda4ecd1bf34d9eb98",
+    "bench/TRAINER-LICENSE": "1c809f52dd742570746a8ac00694ad4ddd9229e12accc7d5c598075861b478a0",
+    "bench/TRAINER-NOTICE.md": "2c1f353fb01177091b62b55f535cf961ae2a6280aed98514a8f49b060f629ea7",
+    "bench/app_pgo_exit.c": "9187d9d0dedbdcf3e6665b9ae60a900259b8af0f965db75baea08af0cccc7e41",
+    "bench/train_app.py": "5e618377cda9bf3bfe7d50e227113eeb995bddc90fcc7fcb59f981186171b06e",
+    "bench/train_sqlite.c": "dd7d056bf259e587e8a21b902bb5469b4ea75b41a511c00d328eacb019a48967",
+    "build.sh": "0c4b339254c7496813521b0e13d207181c4f22bfe9ef777b70a4647e44f51dc8",
+    "db.c": "43213a121ce787c87a9253ea260765f27e53dadd96e7674186e4064291d2b2b2",
+    "install.sh": "c629207a8d0c99f6da625efabd18160af776b69127d54b1fa8129285e7979a56",
+    "json_fast.c": "f393c3e8c02389b9d7344e45351353dbf753f0f397cc1785bb599afe0332fd1e",
+    "json_fast.h": "8b2e84d4b63edd08d146e61420bcebf6737ef41541e7992a77d853b73659ecad",
+    "net.c": "0773ddfd7b89b0d34a717e5e9eb63fd0ee18026a5458ddf837bae4c0fb4ec9be",
+    "net.h": "25c8688957508264aaa0a2485f6d8714caede9570f865cb91217de32f4e548af",
+    "net_epoll.inc": "4a2a316e861b7d1fb8c80930574f0c8ab068be977c6424dffaa6a5d3a351a7ad",
+    "net_uring.inc": "f01531f5d63af6ec4e93e14d5ec0bbf3f56f49af657496ccb71e85add3bd33f9",
+    "start.sh": "9a23eeaa024a08f898c3b904f1c362b21398732e7b0e71923876d286ef70825f"
+  },
+  "binary_path": "/suite/sources/prgoose/bin/server",
+  "binary_sha256": "27fe3cd23b2f62f8b7c022f976d3a119c3f355062e3c149f4749d14651de524e",
+  "binary_bytes": 1416800,
+  "binary_owner_uid": 1001,
+  "generated_c_sha256": "2959b0a51d1e0d60784b989745fa45226d8e67ed55a6b23cb1b3924f76b86729",
+  "sqlite_object_sha256": "5e765ec848a05329cdb4b1e389140225417bfc6b8576e6440aa237d74fa074fb",
+  "compiler": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+  "goose_runtime": "goose runtime df5f78ce88d4",
+  "architecture": "aarch64",
+  "inspection_uid": 1001,
+  "sqlite_version": "3.53.4",
+  "sqlite_pgo_enabled": true,
+  "application_pgo_enabled": true,
+  "production_training_symbols_absent": true,
+  "production_epoll_interposer_absent": true,
+  "backend": "epoll",
+  "sqlite_pgo_profile_files": [
+    {
+      "path": ".build/unified-profile/suite/sources/prgoose/.build/sqlite-pgo.gcda",
+      "bytes": 276008,
+      "sha256": "047adc6f8c8018fe42df2da670bc6b30f3ae72c1295421d3f004e5d741450d73"
+    }
+  ],
+  "sqlite_pgo_profile_file_count": 1,
+  "sqlite_trainer_sha256": "5e618377cda9bf3bfe7d50e227113eeb995bddc90fcc7fcb59f981186171b06e",
+  "trainer_sha256": "5e618377cda9bf3bfe7d50e227113eeb995bddc90fcc7fcb59f981186171b06e",
+  "unified_pgo_enabled": true,
+  "sqlite_app_pgo_enabled": true,
+  "unified_lto_enabled": true,
+  "unified_pgo_profile_files": [
+    {
+      "path": ".build/unified-profile/suite/sources/prgoose/.build/sqlite-pgo.gcda",
+      "bytes": 276008,
+      "sha256": "047adc6f8c8018fe42df2da670bc6b30f3ae72c1295421d3f004e5d741450d73"
+    },
+    {
+      "path": ".build/unified-profile/suite/sources/prgoose/.build/unified-native/app.gcda",
+      "bytes": 11360,
+      "sha256": "3984687ce7bf4886de27f5a45831cc585b936c1ca69e8c08275447d15e318cc3"
+    },
+    {
+      "path": ".build/unified-profile/suite/sources/prgoose/.build/unified-native/db.gcda",
+      "bytes": 2064,
+      "sha256": "29b04dc035031de788b534f2560d4f8ec77394c949725fba3af6c231678e6bf9"
+    },
+    {
+      "path": ".build/unified-profile/suite/sources/prgoose/.build/unified-native/json_fast.gcda",
+      "bytes": 352,
+      "sha256": "b011cc4109c79f5039527e6b1fb198b377843e4f3e2663412c1e6394aeda4dde"
+    },
+    {
+      "path": ".build/unified-profile/suite/sources/prgoose/.build/unified-native/net.gcda",
+      "bytes": 6196,
+      "sha256": "3d73f8572c4b578e5e91764f6cc8822402c39c84799c78460eccfa89cf139675"
+    }
+  ],
+  "unified_pgo_profile_file_count": 5,
+  "application_pgo_profile_files": [
+    {
+      "path": ".build/unified-profile/suite/sources/prgoose/.build/unified-native/app.gcda",
+      "bytes": 11360,
+      "sha256": "3984687ce7bf4886de27f5a45831cc585b936c1ca69e8c08275447d15e318cc3"
+    },
+    {
+      "path": ".build/unified-profile/suite/sources/prgoose/.build/unified-native/db.gcda",
+      "bytes": 2064,
+      "sha256": "29b04dc035031de788b534f2560d4f8ec77394c949725fba3af6c231678e6bf9"
+    },
+    {
+      "path": ".build/unified-profile/suite/sources/prgoose/.build/unified-native/json_fast.gcda",
+      "bytes": 352,
+      "sha256": "b011cc4109c79f5039527e6b1fb198b377843e4f3e2663412c1e6394aeda4dde"
+    },
+    {
+      "path": ".build/unified-profile/suite/sources/prgoose/.build/unified-native/net.gcda",
+      "bytes": 6196,
+      "sha256": "3d73f8572c4b578e5e91764f6cc8822402c39c84799c78460eccfa89cf139675"
+    }
+  ],
+  "application_pgo_profile_file_count": 4,
+  "lto_objects": [
+    {
+      "path": ".build/unified-native/app.o",
+      "sha256": "d5468eb981c86f27046e3e59889fa24a99ab6e022c9c1d853d6866c3a253f1bc",
+      "gcc_lto_sections_verified": true
+    },
+    {
+      "path": ".build/unified-native/net.o",
+      "sha256": "b22055454d4a7837e3bdc928ef249e2f0e2bd53ab6a9149fc7f08e62beb6bee8",
+      "gcc_lto_sections_verified": true
+    },
+    {
+      "path": ".build/unified-native/db.o",
+      "sha256": "8cf11d5fae375eb4e04565a78352ba7f4e9714df412cdf420a3914db5a41dc56",
+      "gcc_lto_sections_verified": true
+    },
+    {
+      "path": ".build/unified-native/json_fast.o",
+      "sha256": "ad6320995b9c32c56179d0af175cc9a102eb06faf7f661821a3fceb2bb4706d1",
+      "gcc_lto_sections_verified": true
+    },
+    {
+      "path": ".build/sqlite-pgo.o",
+      "sha256": "5e765ec848a05329cdb4b1e389140225417bfc6b8576e6440aa237d74fa074fb",
+      "gcc_lto_sections_verified": true
+    }
+  ],
+  "sqlite_trainer_source": "bench/train_app.py",
+  "legacy_sqlite_trainer_unused": true,
+  "legacy_sqlite_trainer_sha256": "dd7d056bf259e587e8a21b902bb5469b4ea75b41a511c00d328eacb019a48967",
+  "app_trainer_sha256": "5e618377cda9bf3bfe7d50e227113eeb995bddc90fcc7fcb59f981186171b06e",
+  "profile_dump_helper_sha256": "9187d9d0dedbdcf3e6665b9ae60a900259b8af0f965db75baea08af0cccc7e41",
+  "training_metadata_sha256": "c093f81cd6c19659c988c004fbd1e83ccf20cf33405b1b07bf2f59cf0e797a63",
+  "training_requests": 16953,
+  "training_databases_removed": true,
+  "instrumented_epoll_interposer_verified": true,
+  "profile_dump_lifecycle": "SIGUSR1 flag only in handler; atomically unblocked in epoll_pwait; main-thread dump before/after wait",
+  "training_phases": [
+    {
+      "stage": "unified",
+      "phase": "dense",
+      "requests": 16411,
+      "database_integrity": "ok",
+      "server_exit_code": 0
+    },
+    {
+      "stage": "unified",
+      "phase": "sparse",
+      "requests": 539,
+      "database_integrity": "ok",
+      "server_exit_code": 0
+    },
+    {
+      "stage": "unified",
+      "phase": "empty",
+      "requests": 3,
+      "database_integrity": "ok",
+      "server_exit_code": 0
+    }
+  ],
+  "ipa_optimization_report_sha256": "ce1f5384ef9832f7befd25eb03dd1873a2808d1a9d2139eedc1aef97fee4292e",
+  "ipa_optimization_report_bytes": 438850,
+  "sqlite_api_inlining_report_lines": [
+    "optimized:  Inlined sqlite3_column_text/15835 into db_column_json/1438 which now has time 66.000000 and size 22, net change of +6 (cross module).",
+    "optimized:  Inlined sqlite3_column_bytes/6718 into db_column_json/1438 which now has time 90.000000 and size 28, net change of -7 (cross module).",
+    "optimized:  Inlined vdbeSafetyNotNull/15837 into sqlite3_step/6699 which now has time 23.500000 and size 67, net change of +7.",
+    "optimized:  Inlined sqlite3_column_int64/15839 into db_column_int/15820 which now has time 9273.983093 and size 7, net change of +5 (cross module).",
+    "optimized:  Inlined sqlite3_column_int64/15840 into db_column_int/15814 which now has time 9721.321503 and size 7, net change of +5 (cross module).",
+    "optimized:  Inlined sqlite3_column_int64/15841 into db_column_int/15816 which now has time 10168.659912 and size 7, net change of +5 (cross module).",
+    "optimized:  Inlined sqlite3_bind_text.constprop/15529 into db_bind_text.constprop/15528 which now has time 21.000000 and size 13, net change of -10 (cross module).",
+    "optimized:  Inlined sqlite3_column_int64/15842 into db_column_int/15792 which now has time 207.000000 and size 7, net change of +5 (cross module).",
+    "optimized:  Inlined sqlite3_column_int64/15843 into db_column_int/15801 which now has time 152.965494 and size 7, net change of +5 (cross module).",
+    "optimized:  Inlined sqlite3_bind_int64/15845 into db_bind_int/15810 which now has time 161.465494 and size 8, net change of +12 (cross module).",
+    "optimized:  Inlined sqlite3_column_int64/15846 into db_column_int/1436 which now has time 10210.917953 and size 7, net change of +5 (cross module).",
+    "optimized:  Inlined sqlite3_column_int64/15847 into db_column_int/15796 which now has time 166.861760 and size 7, net change of +5 (cross module).",
+    "optimized:  Inlined sqlite3_column_int64/6722 into db_column_int/15805 which now has time 179.466823 and size 7, net change of -7 (cross module).",
+    "optimized:  Inlined sqlite3Step/6698 into sqlite3_step/6699 which now has time 49.306974 and size 207, net change of -16.",
+    "optimized:  Inlined sqlite3_bind_int64/15849 into db_bind_int/15815 which now has time 10219.183990 and size 8, net change of +12 (cross module).",
+    "optimized:  Inlined sqlite3_bind_int64/15850 into db_bind_int/15813 which now has time 10227.450027 and size 8, net change of +11 (cross module).",
+    "optimized:  Inlined sqlite3_bind_int64/15851 into db_bind_int/1432 which now has time 10235.716064 and size 8, net change of +12 (cross module).",
+    "optimized:  Inlined bindText.constprop/15530 into sqlite3_bind_text.constprop/15529 which now has time 50.000000 and size 11, net change of -13.",
+    "optimized:  Inlined columnMallocFailure/15859 into sqlite3_column_text/15835 which now has time 87.500000 and size 13, net change of +11.",
+    "optimized:  Inlined sqlite3_column_text/15861 into sqlite3_exec/7423 which now has time 1118.333336 and size 203, net change of +6.",
+    "optimized:  Inlined columnMallocFailure/15862 into sqlite3_column_bytes/6718 which now has time 85.000000 and size 13, net change of +10.",
+    "optimized:  Inlined columnMem/15864 into sqlite3_column_bytes/6718 which now has time 83.000000 and size 13, net change of +12.",
+    "optimized:  Inlined columnMem/15867 into sqlite3_column_text/15835 which now has time 81.000000 and size 13, net change of +11.",
+    "optimized:  Inlined sqlite3_column_text.constprop/15592 into execSql/7635 which now has time 330.955734 and size 66, net change of -7.",
+    "optimized:  Inlined sqlite3_column_value/6724 into pragmaVtabColumn.part.0/13653 which now has time 44.500000 and size 20, net change of -7.",
+    "optimized:  Inlined sqlite3_column_type/6726 into sqlite3_exec/7423 which now has time 1135.000002 and size 211, net change of -7.",
+    "optimized:  Inlined columnMem/15906 into sqlite3_column_int64/15839 which now has time 10138.673325 and size 12, net change of +8.",
+    "optimized:  Inlined columnMem/15907 into sqlite3_column_int64/15840 which now has time 10041.425842 and size 12, net change of +9.",
+    "optimized:  Inlined columnMem/15911 into sqlite3_column_int64/15841 which now has time 9944.178360 and size 12, net change of +8.",
+    "optimized:  Inlined columnMallocFailure/15923 into sqlite3_column_int64/15839 which now has time 9894.184509 and size 12, net change of +11.",
+    "optimized:  Inlined columnMallocFailure/15926 into sqlite3_column_int64/15840 which now has time 9845.560776 and size 12, net change of +10.",
+    "optimized:  Inlined columnMallocFailure/15927 into sqlite3_column_int64/15841 which now has time 9796.937027 and size 12, net change of +11.",
+    "optimized:  Inlined sqlite3ValueBytes/15944 into sqlite3_column_bytes/6718 which now has time 74.500000 and size 13, net change of +20.",
+    "optimized:  Inlined columnMem/15970 into sqlite3_column_int64/15843 which now has time 338.891700 and size 12, net change of +8.",
+    "optimized:  Inlined columnMem/15973 into sqlite3_column_int64/15842 which now has time 333.893778 and size 12, net change of +9.",
+    "optimized:  Inlined sqlite3ValueText/15977 into sqlite3_column_text/15835 which now has time 70.009555 and size 13, net change of +12.",
+    "optimized:  Inlined sqlite3Reprepare/7475 into sqlite3_step/6699 which now has time 49.306974 and size 491, net change of -8.",
+    "optimized:  Inlined columnMem/15983 into sqlite3_column_int64/6722 which now has time 176.726592 and size 12, net change of +9.",
+    "optimized:  Inlined columnMem/15986 into sqlite3_column_int64/15847 which now has time 173.986361 and size 12, net change of +8.",
+    "optimized:  Inlined columnMem/15989 into sqlite3_column_int64/15846 which now has time 10227.699860 and size 12, net change of +8."
+  ],
+  "training_database_configurations": [
+    {
+      "stage": "unified",
+      "phase": "dense",
+      "cache_kib": 8192,
+      "mmap_mib": 0
+    },
+    {
+      "stage": "unified",
+      "phase": "sparse",
+      "cache_kib": 8192,
+      "mmap_mib": 0
+    },
+    {
+      "stage": "unified",
+      "phase": "empty",
+      "cache_kib": 8192,
+      "mmap_mib": 0
+    }
+  ]
+}

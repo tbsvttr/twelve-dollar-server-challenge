@@ -1,0 +1,17 @@
+{
+  "purpose": "Whole-app PGO, main-thread poll-boundary profile dump; v1 retained unchanged",
+  "source_sha256": "dec5f409289f634669b64c8b894e2acd5e4f4e247c0846e6cd110aa863abe9a5",
+  "source_files": 19,
+  "base_source_sha256": "73148f5d49e07fc62289bf582e261b8df0e1ef51d478d6fb9d44a68fec87b88a",
+  "changed_files": [
+    "build.sh",
+    "install.sh",
+    "bench/train_app.py",
+    "bench/app_pgo_exit.c"
+  ],
+  "sqlite_object_sha256": "2c5663ef60e2bbc9f87a54f05f8eca1057b64614f5ced6fc34591ed3ef3b2178",
+  "status": "built; source/binary/profile proof verified; API/performance gates pending",
+  "image": "twelve-goose-app-pgo-v2:2026-10-22",
+  "image_id": "sha256:f801d97c63c28c62fdec112d19ee6fc5cba32e4f61a1ac16225b08f70d8ffe16",
+  "binary_sha256": "c985cb01520e7d3b41de9b6315078c4ba627ed0dd785ca26e132c6c6db01073a"
+}

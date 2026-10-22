@@ -1,0 +1,56 @@
+{
+  "purpose": "Independent static final source/docs/runtime review before any dedicatedCPU holdout; no load/container executed by this review",
+  "recorded_at": "2026-10-22T12:29:16.558385+00:00",
+  "source_sha256": "eee8140ae61a30401c20241257344f13d63f401f8398d89d74a2ab00d8f8433f",
+  "image_id": "sha256:156abeecae6919eaf8457b304507c4a97262a911be7882ca60700f8fce58ef24",
+  "binary_sha256": "27fe3cd23b2f62f8b7c022f976d3a119c3f355062e3c149f4749d14651de524e",
+  "source_file_count": 19,
+  "checks": [
+    {
+      "area": "documentation",
+      "passed": true,
+      "finding": "README matches actual directHTTP architecture, Goose/Cownership, unified fresh5unitPGO+LTO normal build, live lower-bound likes scan,8MiB/mmap0defaults, optional uring and localARM64 limitations. Corrected NOTICE preserves MIT attribution and accurately says legacy SQLtrainer is retained historical material."
+    },
+    {
+      "area": "documentation-only repack",
+      "passed": true,
+      "finding": "Only bench/TRAINER-NOTICE.md changed after parent fullnormalbuild. Every compiled source/build/trainer byte, finalbinary, generatedC, object, fiveprofile files and trainingmetadata hash matches retained parentproof; currenttrainer itself is unchanged."
+    },
+    {
+      "area": "Goose application ownership",
+      "passed": true,
+      "finding": "Exact frozen app46494... owns routing, strictcompleteJSON/JWTclaim/error decisions, Unicode limits, applicationSQL, rowtraversal, ordering and JSONstructure. C helpers remain generic transport/SQLite/HMAC/time/quoting adapters."
+    },
+    {
+      "area": "live bounded likes",
+      "passed": true,
+      "finding": "Current newest20IDs are discovered per request; sparse fallback remains. Indexedlowerbound scan is ascending and stops above currentmaximum before arrayaccess, skips omittedslots, resetsstatementonexit and counts currentdatabase likes. No assumption about original seed IDs or currenttimestamporder."
+    },
+    {
+      "area": "durability and response lifetime",
+      "passed": true,
+      "finding": "UnchangedGoosemain commits readybatch transaction before net_flush; failedcommit substitutes500. SQLite WAL/NORMAL, foreignkeys, exclusive lock and checkpoint remain. BorrowedRX slices stay synchronous; responses copy into connection-owned storage before asynchronousSEND."
+    },
+    {
+      "area": "no benchmark-specific runtime behavior",
+      "passed": true,
+      "finding": "Compared runtime/native bytes are unchanged versus reviewedcombined except generic Goose likes-bound query. No request/result/JWT/row cache, challengeID/token/sourcefile lookup, UserAgent/load detection, precomputed feed/golden payload or benchmark-onlyroute is introduced. Service/JWTtime staysrealtime and socketidle time remainsmonotonic."
+    },
+    {
+      "area": "training separation",
+      "passed": true,
+      "finding": "Unchangedindependent trainer builds exactschema/dense+sparse+empty syntheticDBs, reads nochallengefixtures, exercises realHTTP includingwrites/errors, and exits through approved synchronizedmainthread helper. Fullnormalbuild uses fresh5unitfeedback with hard missingprofile/CFG/LTOABI errors."
+    },
+    {
+      "area": "production proof",
+      "passed": true,
+      "finding": "Exact19source inventory andimage identity verified;5PGO files andLTO objects retained; helper/gcov/interposer absentfromproduction. Proof records16953syntheticrequests and3posttrainingDBintegrity/config checks, all8MiB/mmap0."
+    }
+  ],
+  "blocking_findings": [],
+  "limitations": [
+    "Performancelead remains unproven until a separately frozen dedicatedCPU holdout satisfies the unchanged protocol. SharedCPU selection results cannot establish the target.",
+    "This corrected image reuses the exact normal-buildbinary/profiles while changing only noncompiled NOTICE; proof preserves original fullbuildidentity rather than claiming retraining occurred in the documentation repack."
+  ],
+  "passed_all": true
+}

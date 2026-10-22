@@ -1,0 +1,156 @@
+{
+  "built_at": "2026-10-22T11:42:51.413400+00:00",
+  "source_package": "wrk4.1.0-4build2",
+  "clock_only_source_change": "src/wrk.c:time_us",
+  "variants": {
+    "stock": {
+      "binary_sha256": "443ca5eb3e943666d6e25e3df9d88532ed2df81a95035665a69f1b756d007ead",
+      "version": {
+        "args": [
+          "/output/stock/wrk",
+          "--version"
+        ],
+        "exit_code": 1,
+        "stdout": "wrk debian/4.1.0-4build2 [epoll] Copyright (C) 2012 Will Glozer\nUsage: wrk <options> <url>                            \n  Options:                                            \n    -c, --connections <N>  Connections to keep open   \n    -d, --duration    <T>  Duration of test           \n    -t, --threads     <N>  Number of threads to use   \n                                                      \n    -s, --script      <S>  Load Lua script file       \n    -H, --header      <H>  Add header to request      \n        --latency          Print latency statistics   \n        --timeout     <T>  Socket/request timeout     \n    -v, --version          Print version details      \n                                                      \n  Numeric arguments may include a SI unit (1k, 1M, 1G)\n  Time arguments may include a time unit (2s, 2m, 2h)\n",
+        "stderr": ""
+      },
+      "linkage": {
+        "args": [
+          "ldd",
+          "/output/stock/wrk"
+        ],
+        "exit_code": 0,
+        "stdout": "\tlinux-vdso.so.1 (0x0000ffffb487b000)\n\tlibluajit-5.1.so.2 => /lib/aarch64-linux-gnu/libluajit-5.1.so.2 (0x0000ffffb4740000)\n\tlibm.so.6 => /lib/aarch64-linux-gnu/libm.so.6 (0x0000ffffb4690000)\n\tlibssl.so.3 => /lib/aarch64-linux-gnu/libssl.so.3 (0x0000ffffb45c0000)\n\tlibcrypto.so.3 => /lib/aarch64-linux-gnu/libcrypto.so.3 (0x0000ffffb4130000)\n\tlibc.so.6 => /lib/aarch64-linux-gnu/libc.so.6 (0x0000ffffb3f70000)\n\t/lib/ld-linux-aarch64.so.1 (0x0000ffffb4830000)\n\tlibgcc_s.so.1 => /lib/aarch64-linux-gnu/libgcc_s.so.1 (0x0000ffffb3f30000)\n",
+        "stderr": ""
+      }
+    },
+    "monotonic": {
+      "binary_sha256": "20ec627b07490f94b7d1ed73e16ed64e04d993457ceacf4cb92fd66f93f7cb39",
+      "version": {
+        "args": [
+          "/output/monotonic/wrk",
+          "--version"
+        ],
+        "exit_code": 1,
+        "stdout": "wrk debian/4.1.0-4build2 [epoll] Copyright (C) 2012 Will Glozer\nUsage: wrk <options> <url>                            \n  Options:                                            \n    -c, --connections <N>  Connections to keep open   \n    -d, --duration    <T>  Duration of test           \n    -t, --threads     <N>  Number of threads to use   \n                                                      \n    -s, --script      <S>  Load Lua script file       \n    -H, --header      <H>  Add header to request      \n        --latency          Print latency statistics   \n        --timeout     <T>  Socket/request timeout     \n    -v, --version          Print version details      \n                                                      \n  Numeric arguments may include a SI unit (1k, 1M, 1G)\n  Time arguments may include a time unit (2s, 2m, 2h)\n",
+        "stderr": ""
+      },
+      "linkage": {
+        "args": [
+          "ldd",
+          "/output/monotonic/wrk"
+        ],
+        "exit_code": 0,
+        "stdout": "\tlinux-vdso.so.1 (0x0000ffffb85de000)\n\tlibluajit-5.1.so.2 => /lib/aarch64-linux-gnu/libluajit-5.1.so.2 (0x0000ffffb84a0000)\n\tlibm.so.6 => /lib/aarch64-linux-gnu/libm.so.6 (0x0000ffffb83f0000)\n\tlibssl.so.3 => /lib/aarch64-linux-gnu/libssl.so.3 (0x0000ffffb8320000)\n\tlibcrypto.so.3 => /lib/aarch64-linux-gnu/libcrypto.so.3 (0x0000ffffb7e90000)\n\tlibc.so.6 => /lib/aarch64-linux-gnu/libc.so.6 (0x0000ffffb7cd0000)\n\t/lib/ld-linux-aarch64.so.1 (0x0000ffffb8590000)\n\tlibgcc_s.so.1 => /lib/aarch64-linux-gnu/libgcc_s.so.1 (0x0000ffffb7c90000)\n",
+        "stderr": ""
+      }
+    }
+  },
+  "object_sha256": {
+    "stock": {
+      "ae.o": "9f98a7d8eaee0b249013a9e2ad4e37c1f29b74b763c651f585c0c2073386f412",
+      "aprintf.o": "1be997be26f043c5304829cc10afef518db57b14aa15a83a144ab2f9d31b9b40",
+      "bytecode.o": "d4c6a3bb7a3a22563852f415ae3fe0f8db459d7ed346d3b5dfe2692463d7cc42",
+      "http_parser.o": "4d78446fbe733df57fa18b6577158544497501f0abe186c16ad8ee78034db3ef",
+      "net.o": "f14803f81b52aa31df1a516dff70f3ed38f5b6e972c0ba55d285de617b84ebcd",
+      "script.o": "7eea3e61a2b4b1f30932b2423f0526067ce9bfe915c4619f85c8ec65e449b4d3",
+      "ssl.o": "982dc42603b1dd432f0d1ac14fbae158573e8b1677166053542d07bb1140b819",
+      "stats.o": "8d08868e149f14b8728e8f6a6a258e01a130713440c10e03ea0ed9b114c73707",
+      "units.o": "789c0e3a22648193952c9702149516ecb22d21fa7b9be8283520cd35eb73e08b",
+      "version.o": "5020c6d22e650596617235c03ed0f51624a5ea89e71f880ecef4743eeaa7ad0f",
+      "wrk.o": "40feef182df2a5d05ae99ccbbb80e89b96a1f19118558bed14611fbb9680e5e8",
+      "zmalloc.o": "4cac43b833c7b04caa94e5f3567418c8bbfc222c753d2728733042de2bf2e42a"
+    },
+    "monotonic": {
+      "ae.o": "67712c46fd344477c91df98e755fd800dc693cef8423e4f7469dd4e4be4a5df2",
+      "aprintf.o": "c126bd146aeca97eca5f97c5d5c2d819140c40eb8a943d500ea698cc88d39da9",
+      "bytecode.o": "a66886dde3dc86221d3fcc15cf883acd4466cc04a864da52be2f9cd5be4c9fc4",
+      "http_parser.o": "41b44bb9b58cbc67e8fbc55259b790899ce115fabf5387cddc7770e3ee061215",
+      "net.o": "2b31072c6303eb56a333c852b60dac21d3e5544c6f5e74c7e755368db3a370ab",
+      "script.o": "5a62d181caed3aee48514685dfc3318c55e0ef38aa069f8a1c2900f9125fb994",
+      "ssl.o": "358305a309d8a1d2a9d1133d4b7d144810c12a2e4097020e6a7a6ee6b1c80c6d",
+      "stats.o": "906afb615f1261e065648bb6548733acda6a3863e732d7af2856f7c6e25400f1",
+      "units.o": "1836cfe512ed405ff520a8133d7206113bc20e864a435f24710806736b2c7264",
+      "version.o": "5020c6d22e650596617235c03ed0f51624a5ea89e71f880ecef4743eeaa7ad0f",
+      "wrk.o": "f1e4d50be97aa57e9349502d74549c16a374a8e72c49a9d20a34e8038f74b403",
+      "zmalloc.o": "26a200f168b6e7f2ce8bd68f581ca15f1c684ac91e446f7144c2a3f934957367"
+    }
+  },
+  "changed_object_files": [
+    "ae.o",
+    "aprintf.o",
+    "bytecode.o",
+    "http_parser.o",
+    "net.o",
+    "script.o",
+    "ssl.o",
+    "stats.o",
+    "units.o",
+    "wrk.o",
+    "zmalloc.o"
+  ],
+  "mock_clock_test": {
+    "passed": true,
+    "stock_backwards_delta_us": 18446744073709541616,
+    "monotonic_delta_us": 500,
+    "backward_step_stock_timeouts": 1,
+    "backward_step_monotonic_timeouts": 0,
+    "real_over_two_second_duration_counted_by_both": true,
+    "timeout_logic_unchanged": true,
+    "clock_functions_extracted_from_actual_sources": true,
+    "actual_stats_c_sha256": "29ed9ac771ac1309137307d26df8a7e56150e79b4655ba915d0dd3e368d612de",
+    "timeout_condition_sha256": "889b54c5d5091c8fafff59043dba7ad57c938f0785c480caab74ff43269066c6",
+    "compile_command": [
+      "cc",
+      "-O2",
+      "-std=c99",
+      "-D_POSIX_C_SOURCE=200112L",
+      "-D_DEFAULT_SOURCE",
+      "-I/tmp/wrk-clock-build.9Rxm5G/stock/src",
+      "/output/mock-clock.c",
+      "/tmp/wrk-clock-build.9Rxm5G/stock/src/stats.c",
+      "/tmp/wrk-clock-build.9Rxm5G/stock/src/zmalloc.c",
+      "-pthread",
+      "-lm",
+      "-o",
+      "/output/mock-clock"
+    ],
+    "process_exit_code": 0
+  },
+  "compiler": {
+    "args": [
+      "cc",
+      "--version"
+    ],
+    "exit_code": 0,
+    "stdout": "cc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0\nCopyright (C) 2023 Free Software Foundation, Inc.\nThis is free software; see the source for copying conditions.  There is NO\nwarranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.\n\n",
+    "stderr": ""
+  },
+  "flags": {
+    "args": [
+      "dpkg-buildflags"
+    ],
+    "exit_code": 0,
+    "stdout": "ASFLAGS=\nASFLAGS_FOR_BUILD=\nCFLAGS=-g -O2 -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -ffile-prefix-map=/recipe/source-archives=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat -Werror=format-security -mbranch-protection=standard\nCFLAGS_FOR_BUILD=-g -O2\nCPPFLAGS=-Wdate-time -D_FORTIFY_SOURCE=3\nCPPFLAGS_FOR_BUILD=\nCXXFLAGS=-g -O2 -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -ffile-prefix-map=/recipe/source-archives=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat -Werror=format-security -mbranch-protection=standard\nCXXFLAGS_FOR_BUILD=-g -O2\nDFLAGS=-frelease\nDFLAGS_FOR_BUILD=-frelease\nFCFLAGS=-g -O2 -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -ffile-prefix-map=/recipe/source-archives=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -mbranch-protection=standard\nFCFLAGS_FOR_BUILD=-g -O2\nFFLAGS=-g -O2 -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -ffile-prefix-map=/recipe/source-archives=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -mbranch-protection=standard\nFFLAGS_FOR_BUILD=-g -O2\nLDFLAGS=-Wl,-Bsymbolic-functions -flto=auto -ffat-lto-objects -Wl,-z,relro -Wl,-z,now\nLDFLAGS_FOR_BUILD=\nOBJCFLAGS=-g -O2 -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -ffile-prefix-map=/recipe/source-archives=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat -Werror=format-security -mbranch-protection=standard\nOBJCFLAGS_FOR_BUILD=-g -O2\nOBJCXXFLAGS=-g -O2 -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer -ffile-prefix-map=/recipe/source-archives=. -flto=auto -ffat-lto-objects -fstack-protector-strong -fstack-clash-protection -Wformat -Werror=format-security -mbranch-protection=standard\nOBJCXXFLAGS_FOR_BUILD=-g -O2\nRUSTFLAGS=-Cforce-frame-pointers=yes\nRUSTFLAGS_FOR_BUILD=\n",
+    "stderr": ""
+  },
+  "dependencies": {
+    "args": [
+      "dpkg-query",
+      "-W",
+      "gcc",
+      "make",
+      "libc6",
+      "libc6-dev",
+      "libssl-dev",
+      "libssl3t64",
+      "libluajit-5.1-dev",
+      "libluajit-5.1-2",
+      "luajit"
+    ],
+    "exit_code": 0,
+    "stdout": "gcc\t4:13.2.0-7ubuntu1\nlibc6:arm64\t2.39-0ubuntu8.9\nlibc6-dev:arm64\t2.39-0ubuntu8.9\nlibluajit-5.1-2:arm64\t2.1.0+git20231223.c525bcb+dfsg-1ubuntu0.1\nlibluajit-5.1-dev:arm64\t2.1.0+git20231223.c525bcb+dfsg-1ubuntu0.1\nlibssl-dev:arm64\t3.0.13-0ubuntu3.16\nlibssl3t64:arm64\t3.0.13-0ubuntu3.16\nluajit\t2.1.0+git20231223.c525bcb+dfsg-1ubuntu0.1\nmake\t4.3-4.1build2\n",
+    "stderr": ""
+  },
+  "limitation": "Source/flags/dependencies are controlled; rebuilt binaries need not equal the historical Ubuntu package binary."
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "case_id": "goose",
+    "source_batch": "hmac-budget-checks",
+    "source_verification_sha256": "ffa1454a5cc972085677c7385f2207443e613bc0e2c41900774e8d7fda9a5df2",
+    "preserved_record": "inherited-verification/goose.json",
+    "preserved_record_sha256": "41d0a779797ecf77cc54c30488433a29ad9508a22eb4367d4400500b514e1386",
+    "raw_log_sha256": "0126bdd824f0954eb022d32dde905e156c3125860943db70b43ab896937233c5"
+  },
+  {
+    "case_id": "82",
+    "source_batch": "hmac-budget-checks",
+    "source_verification_sha256": "ffa1454a5cc972085677c7385f2207443e613bc0e2c41900774e8d7fda9a5df2",
+    "preserved_record": "inherited-verification/82.json",
+    "preserved_record_sha256": "183a311dd52904bd791545afec40688461af2983fb642d84be2ee9f7d2d4ec6c",
+    "raw_log_sha256": "6b039953841a7cf5e34d2f8440ba72e49d809f44941507e6b112e445601f1133"
+  },
+  {
+    "case_id": "baseline",
+    "source_batch": "isolated-screen",
+    "source_verification_sha256": "e2b7f545a11a802a3ac4f1d2b323036d0139d5d91b081183748b273192927c19",
+    "preserved_record": "inherited-verification/baseline.json",
+    "preserved_record_sha256": "b91d76e3f089827db97b590b93853c265fc8dc717241cd0fb0e65b961a74d6d7",
+    "raw_log_sha256": "47aa5a640e15fa507f54abb9fd4c9eaa8bdee67c7182c6b604fd436c7866f7b0"
+  }
+]

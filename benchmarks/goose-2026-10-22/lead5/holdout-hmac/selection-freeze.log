@@ -1,0 +1,46 @@
+{
+  "recorded_at": "2026-10-22T13:36:36Z",
+  "candidate": {
+    "id": "goose",
+    "source_sha256": "9a298580809e2a6821c7a8068b6a45315ae7aaa4b58bb79edc3f94606b9f861b",
+    "image_id": "sha256:afde328ec4a000f300730f264ee883f973769130994762ebd8c8efdf794a8508",
+    "binary_sha256": "a5e1c087110e0dde7bda696620327a6c37178ee62e09d3c56d53c49a708c10fb"
+  },
+  "manifest_sha256": "8c42e2a93ba32cf5ba078c94764a2e68843209ef182110207bb740ccf4a0eea9",
+  "build_status_sha256": "5059a0a76cd4298daf6f343cec3764304592bc62ae0951baf0610dbf21293053",
+  "protocol_sha256": "55c3ffccb5d441de481d8d631ff49a64735194ea2fa814759e599b296a50185a",
+  "declaration_sha256": "cd94705b618c95367a63b17ef9a54adb30796bbc43de0f652b77a9113e1579b3",
+  "additional_protocol": "PROTOCOL-resource-budget.md",
+  "candidate_protocol_sha256": "eae6e9ee29c27c89846bed47eb194c9eb1b5abe49ee733f484862055f3f7307f",
+  "additional_protocol_sha256": "eae6e9ee29c27c89846bed47eb194c9eb1b5abe49ee733f484862055f3f7307f",
+  "hmac_protocol_sha256": "cc4c143c77155537a14bb39e98e30dc38b0b93a0d109aea1ca079363723ae6c2",
+  "resource_budget_build_proof": "candidates/hmac-budget/resource-budget-build.json",
+  "resource_budget_build_proof_sha256": "7fd3a8514f45a11eb69fc323555ee444aee92214eaf1c5028ef5000d4671dffe",
+  "load_generator_sha256": "0c69abc4b25232fafe02c850ae21e970c4bfe27f6a3f196caa2b366f6f64b825",
+  "verification_sha256": "81a6ffa081dfe872b6f17c2879867ac0c16f618b53986f1b286442efa05022dc",
+  "parser_checks_sha256": "e00ab077fb763ce48e88fb9480de714bdaf8c9a6412fbe720d4148466815fb55",
+  "edge_checks_sha256": "3b350acf9d27bdac671c2de0cba9f4956203178bfbdcfbea3104e9736a56d99c",
+  "selection_diagnostic": "hmac-budget-checks/measurements.json",
+  "selection_diagnostic_sha256": "5dff2b17b2c5550b844bb3939e3d847c48859cf3cf4ff3702ee34444e9ce9783",
+  "diagnostic_scope": "selection only; sequential one-server budget",
+  "selected_diagnostic_ratios": [
+    1.0985890568303294,
+    1.1035077391960868
+  ],
+  "selected_previous_ratios": [
+    1.1308064264819244,
+    0.9985132812018777
+  ],
+  "previous_completed_holdout": "holdout-selected/finalholdout-summary.json",
+  "previous_completed_holdout_sha256": "fcc6590cd3fd4f8d7bb518521d4d8fd434a540a1e1503723d1586996d279a8ae",
+  "planned_confirmation": {
+    "rounds": 10,
+    "maximum_replacement_rounds": 2,
+    "seconds": 45,
+    "warmup_seconds": 2,
+    "controls": [
+      "82",
+      "baseline"
+    ]
+  }
+}

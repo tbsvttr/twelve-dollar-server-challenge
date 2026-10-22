@@ -1,0 +1,22 @@
+{
+  "purpose": "Unified-PGO/LTO correctness gates and isolated case attachment; no throughput run",
+  "recorded_at": "2026-10-22T12:15:24.824874+00:00",
+  "image_id": "sha256:d9b2f230bc0519a85ba0bbab9fe3c92088b31526b845103f86b36cb4f285840a",
+  "source_sha256": "62f77add50ed76f70469cb1b091eb8a4adf74c3a11b754cea1d79a213f9beb73",
+  "app_goose_sha256": "1b9d5eaacf03b58be58818197707ac2269e135a4a010bfeb90cc3bbcc4d00509",
+  "binary_sha256": "6f9df673ddf3a9fb4a911777881106f47788e90bfa2f0107d8f843c6f4e5df50",
+  "official_fresh_cases": 2,
+  "official_passed_per_case": 42,
+  "semantic_and_postshutdown_integrity_passed": true,
+  "supplemental_parser_passed": 18,
+  "supplemental_edge_passed": 25,
+  "epoll_backend_confirmed": true,
+  "renamed_case": "unified-pgo-lto",
+  "renamed_case_verified": true,
+  "previous_verification_records_unchanged": true,
+  "previous_verification_record_count": 10,
+  "previous_verification_canonical_sha256": "4715d2c42f08ea7a64898d42e78d881f4d14382af94f8592eb1b4c5a25adcc52",
+  "total_isolated_screen_verified_cases": 11,
+  "live_source_modified": false,
+  "passed_all": true
+}

@@ -1,0 +1,25 @@
+  542     1  0  20 Ss     0.0 /Library/PrivilegedHelperTools/com.docker.vmnetd
+  927   850  0  20 S      0.0 python3
+ 1121     1  0  20 S      0.0 /Applications/Docker.app/Contents/MacOS/com.docker.backend
+ 1130  1121  0  46 S      0.0 /Applications/Docker.app/Contents/MacOS/com.docker.backend
+ 1131  1121  0  31 S      0.0 /Applications/Docker.app/Contents/MacOS/com.docker.backend
+ 1152  1131  0  31 S      0.0 /Applications/Docker.app/Contents/MacOS/com.docker.build
+ 1226  1131  0  46 S      2.4 /Applications/Docker.app/Contents/MacOS/Docker Desktop.app/Contents/MacOS/Docker Desktop
+ 1234  1226  0  47 S      0.0 /Applications/Docker.app/Contents/MacOS/Docker Desktop.app/Contents/Frameworks/Docker Desktop Helper.app/Contents/MacOS/Docker Desktop Helper
+ 1235  1226  0  47 S      0.0 /Applications/Docker.app/Contents/MacOS/Docker Desktop.app/Contents/Frameworks/Docker Desktop Helper.app/Contents/MacOS/Docker Desktop Helper
+ 1739  1649  0  31 S      0.0 /Users/tvcc/Code/controlling-fullstack/tools/openproject-mcp/.venv/bin/python3.14
+15431  1130  0  46 S      0.0 /Applications/Docker.app/Contents/MacOS/com.docker.virtualization
+15432     1  0  31 Rs   236.9 /System/Library/Frameworks/Virtualization.framework/Versions/A/XPCServices/com.apple.Virtualization.VirtualMachine.xpc/Contents/MacOS/com.apple.Virtualization.VirtualMachine
+25179 25178  0  31 S      0.0 python3
+25181 25180  0  31 S      0.4 /Users/tvcc/agent-work/wt/zpa-87/.venv/bin/python
+25186 25181  0  31 R     85.2 /Users/tvcc/agent-work/wt/zpa-87/.venv/bin/python
+25187 25181  0  31 R     94.3 /Users/tvcc/agent-work/wt/zpa-87/.venv/bin/python
+25218 25181  0  31 R     90.5 /Users/tvcc/agent-work/wt/zpa-87/.venv/bin/python
+25219 25181  0  31 R     87.3 /Users/tvcc/agent-work/wt/zpa-87/.venv/bin/python
+25281 90130  0  31 S      0.0 docker
+25342 90130  0  31 S      0.0 docker
+40421 21662  0  31 Ss     0.0 /Users/tvcc/.asdf/installs/python/3.14.3/bin/python3
+69426 69369  0  31 S      0.0 /Users/tvcc/.vscode/extensions/ms-python.vscode-python-envs-1.40.0-darwin-arm64/python-env-tools/bin/pet
+69475 69369  0  31 S      0.0 /Users/tvcc/.local/bin/python3.14
+69835 69817  0  31 S      0.0 tools/openproject-mcp/.venv/bin/python3.14
+90130 21662  0  31 Ss     0.0 /Users/tvcc/.asdf/installs/python/3.14.3/bin/python3

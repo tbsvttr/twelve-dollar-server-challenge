@@ -1,0 +1,7 @@
+PASS: 2320 exact-byte baseline comparisons, all HTTP statuses, invalid statuses, decimal boundaries, 204/304 suppression and size overflow
+Goose native transport: epoll
+PASS: fragmented bodies, 900k body across many reads, 200-request pipeline, keepalive, pipelining, chunked trailers, commit failure, large partial writes, ambiguous framing rejection, peer half-close
+Goose native transport: epoll
+PASS: fixed/chunked fragmented close, HTTP1.0 close, blocked-send input cancellation/rearm, pipeline, resets/slot reuse, exact failed-commit500, explicit net_close with pending accept/timer/receives
+Goose native transport: io_uring multishot, 4096 receive buffers
+PASS: fixed/chunked fragmented close, HTTP1.0 close, blocked-send input cancellation/rearm, pipeline, resets/slot reuse, exact failed-commit500, explicit net_close with pending accept/timer/receives

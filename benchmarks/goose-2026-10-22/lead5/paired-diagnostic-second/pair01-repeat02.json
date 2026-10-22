@@ -1,0 +1,2365 @@
+{
+  "attempt_id": "pair01-repeat02",
+  "pair_index": 1,
+  "repeat": 2,
+  "requested_pair": [
+    "baseline",
+    "baseline"
+  ],
+  "scope": "selection_only_two_servers_share_one_guest_cpu_not_dedicated_cpu_holdout",
+  "started_at": 1792671394.856711,
+  "instances": [
+    {
+      "case_id": "baseline",
+      "pr": 0,
+      "commit": "73148f5d49e07fc62289bf582e261b8df0e1ef51d478d6fb9d44a68fec87b88a",
+      "image": "twelve-goose-final:2026-10-22",
+      "source_sha256": "73148f5d49e07fc62289bf582e261b8df0e1ef51d478d6fb9d44a68fec87b88a",
+      "shared_hashes": {
+        "seed/feed.db": "ef5f135c16a2277a68ef37f1f1a66e4100f9dbc6743d2ef54dbeb533c4dceb0e",
+        "seed/tokens.json": "b39f1edf8a3545ab5851031d1cee8d2d1192e4b598361e516f4560f6893a939a",
+        "mixed.lua": "eb8d49273c56fe4b558a58bd6c7e65551ec683c53d299e2b3a69e0b71421d701",
+        "test/test.sh": "679e722044fd1f366d85093232e7f2ec2e3398ea312032dd9eb6cbdf8b17306a",
+        "semantic.py": "785f8ce565b469e4f4d702d01a9d868cd7458d64e3f1362c3fb8728560215fbc",
+        "serve.py": "52d8bdd75c0dc2477fc5b2391c797a2832eab5ac61a72d3bbe4dac4cb94bf311",
+        "bench/nginx.conf": "1b4b00789b0d138759bebde391d4cd05a9598dc10a17df3d09eb569512b8f654",
+        "seccomp-io-uring.json": "4baf3b268185f55527933e7df090e85936003674e34b5f5396461fd9d3efeb17",
+        "test/golden/feed.json": "8c9b3d6cb46e650c4786ab9281bc3a72ba7bd75b7926021d2b0c431dd9bd3d68",
+        "test/golden/post-1.json": "8035350dc55714c9a673af9f441ab07d2b269047e1137612f022877b9e8f3652",
+        "test/golden/post-250000.json": "febb2506b9d4a99bc34f1f182c61ced6b3ba3b2533724485c6e5206604a65b71",
+        "test/golden/post-500000.json": "662fe8c7282dee8aab00dab6cdb15e64e953f10a2c1c923e2ea67fab1429a4de"
+      },
+      "image_id": "sha256:a69064953b766ec5c800389b8e17a7d184f73aa8dd46cd4aa2048955ee86eb0f",
+      "fingerprint": "476db10ba06ac1056267571246e0a55195b3d7eaf9f39a7595dd1fe388013384",
+      "source_inventory": {
+        ".gitignore": "1ee00c3768b764a999544de814cafa138aeca02bf295873337081540152d4f06",
+        "README.md": "5d5667464da1441df7fc42d08b875a709cbc672b907c9bed547846f87720da95",
+        "app.build": "0752b8f45d545518a8f9ad05a7e90f03cfb49315cb6bea4e2fe83d7ab6baa9d6",
+        "app.goose": "1b9d5eaacf03b58be58818197707ac2269e135a4a010bfeb90cc3bbcc4d00509",
+        "bench/TRAINER-LICENSE": "1c809f52dd742570746a8ac00694ad4ddd9229e12accc7d5c598075861b478a0",
+        "bench/TRAINER-NOTICE.md": "e674c245d3e2f21f271ed644b04b30981cc342de1dc0010af8a09b2dd7dfd62e",
+        "bench/train_sqlite.c": "dd7d056bf259e587e8a21b902bb5469b4ea75b41a511c00d328eacb019a48967",
+        "build.sh": "203e5d65186f08edb2ee5b3c50397ed1ce03069e2b412c0ba1555a055f507405",
+        "db.c": "483c6d89d119a98f03e68ea883b1e51fb217961d242a2be88f270dea1b969ee8",
+        "install.sh": "d81573667bbc3ea461101fc6377ca27262678fb7e139f6d6aea1923683d7e163",
+        "json_fast.c": "f393c3e8c02389b9d7344e45351353dbf753f0f397cc1785bb599afe0332fd1e",
+        "json_fast.h": "8b2e84d4b63edd08d146e61420bcebf6737ef41541e7992a77d853b73659ecad",
+        "net.c": "0773ddfd7b89b0d34a717e5e9eb63fd0ee18026a5458ddf837bae4c0fb4ec9be",
+        "net.h": "25c8688957508264aaa0a2485f6d8714caede9570f865cb91217de32f4e548af",
+        "net_epoll.inc": "3773f819a4f5c594e916c2df31245bb60172e66cec15b3a824ccd750fa919a9e",
+        "net_uring.inc": "f01531f5d63af6ec4e93e14d5ec0bbf3f56f49af657496ccb71e85add3bd33f9",
+        "start.sh": "9a23eeaa024a08f898c3b904f1c362b21398732e7b0e71923876d286ef70825f"
+      },
+      "source_inventory_file": "archives/prbaseline-sha256.json",
+      "source_inventory_file_sha256": "f04787b1bceaea35eb88a611aed020acb2c2d07d480715b7a0b921b4f23aaa8e",
+      "binary_path": "/suite/sources/prgoose/bin/server",
+      "binary_sha256": "f0b086e53343263381c55a9046dbd65f400c4ec5ebbfc872c5d682d20a5679ab",
+      "passing_verification_fingerprint": "476db10ba06ac1056267571246e0a55195b3d7eaf9f39a7595dd1fe388013384",
+      "side": "left",
+      "instance_id": "pair01-repeat02-left-baseline",
+      "server_name": "twelve-paired-s-7760a6137bcd-pair01-repeat02-left-baseline",
+      "load_name": "twelve-paired-l-7760a6137bcd-pair01-repeat02-left-baseline",
+      "commands": [
+        [
+          "docker",
+          "run",
+          "-d",
+          "--name",
+          "twelve-paired-s-7760a6137bcd-pair01-repeat02-left-baseline",
+          "--cpuset-cpus",
+          "0",
+          "--cpus",
+          "1",
+          "--security-opt",
+          "seccomp=/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/goose-2026-10-22/lead5/isolated-screen/seccomp-io-uring.json",
+          "--platform",
+          "linux/arm64",
+          "--memory",
+          "2g",
+          "--memory-swap",
+          "2g",
+          "--ulimit",
+          "nofile=65535:65535",
+          "--mount",
+          "type=bind,src=/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/goose-2026-10-22/lead5/isolated-screen,dst=/evidence,readonly",
+          "sha256:a69064953b766ec5c800389b8e17a7d184f73aa8dd46cd4aa2048955ee86eb0f",
+          "sleep",
+          "infinity"
+        ],
+        [
+          "docker",
+          "run",
+          "-d",
+          "--name",
+          "twelve-paired-l-7760a6137bcd-pair01-repeat02-left-baseline",
+          "--cpuset-cpus",
+          "1,2",
+          "--cpus",
+          "2",
+          "--network",
+          "container:twelve-paired-s-7760a6137bcd-pair01-repeat02-left-baseline",
+          "--platform",
+          "linux/arm64",
+          "--memory",
+          "2g",
+          "--memory-swap",
+          "2g",
+          "--ulimit",
+          "nofile=65535:65535",
+          "--mount",
+          "type=bind,src=/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/goose-2026-10-22/lead5/isolated-screen,dst=/evidence,readonly",
+          "sha256:a5e8736dcfaf72bf79c0196a89fe3fd49774916ab7ea4ce06a8a2cdfd3a4b504",
+          "sleep",
+          "infinity"
+        ],
+        [
+          "docker",
+          "exec",
+          "--user",
+          "bench",
+          "twelve-paired-s-7760a6137bcd-pair01-repeat02-left-baseline",
+          "python3",
+          "-c",
+          "import hashlib,json,pathlib,shutil,sys\nbinary=pathlib.Path(sys.argv[1]) if sys.argv[1] else pathlib.Path(shutil.which('wrk'))\nlimits={}\nfor name in ('cpu.max','cpu.weight','cpuset.cpus.effective','memory.max','memory.swap.max'):\n p=pathlib.Path('/sys/fs/cgroup')/name\n limits[name]=p.read_text().strip() if p.exists() else None\nprint(json.dumps(dict(binary_path=str(binary),binary_sha256=hashlib.sha256(binary.read_bytes()).hexdigest(),\n                     selected_wrk=shutil.which('wrk'),cgroup=limits)))\n",
+          "/suite/sources/prgoose/bin/server"
+        ],
+        [
+          "docker",
+          "exec",
+          "--user",
+          "bench",
+          "twelve-paired-l-7760a6137bcd-pair01-repeat02-left-baseline",
+          "python3",
+          "-c",
+          "import hashlib,json,pathlib,shutil,sys\nbinary=pathlib.Path(sys.argv[1]) if sys.argv[1] else pathlib.Path(shutil.which('wrk'))\nlimits={}\nfor name in ('cpu.max','cpu.weight','cpuset.cpus.effective','memory.max','memory.swap.max'):\n p=pathlib.Path('/sys/fs/cgroup')/name\n limits[name]=p.read_text().strip() if p.exists() else None\nprint(json.dumps(dict(binary_path=str(binary),binary_sha256=hashlib.sha256(binary.read_bytes()).hexdigest(),\n                     selected_wrk=shutil.which('wrk'),cgroup=limits)))\n",
+          ""
+        ],
+        [
+          "docker",
+          "exec",
+          "-i",
+          "--user",
+          "bench",
+          "twelve-paired-s-7760a6137bcd-pair01-repeat02-left-baseline",
+          "python3",
+          "/evidence/serve.py",
+          "baseline",
+          "24000"
+        ],
+        [
+          "docker",
+          "exec",
+          "-w",
+          "/evidence",
+          "twelve-paired-l-7760a6137bcd-pair01-repeat02-left-baseline",
+          "python3",
+          "-c",
+          "import json,subprocess,sys,time\nstart=time.monotonic()\np=subprocess.run(sys.argv[1:],capture_output=True,text=True)\nend=time.monotonic()\nprint(json.dumps(dict(start_monotonic=start,end_monotonic=end,exit_code=p.returncode,\n                     output=p.stdout,stderr=p.stderr,argv=sys.argv[1:])),flush=True)\n",
+          "wrk",
+          "-t2",
+          "-c64",
+          "--latency",
+          "-s",
+          "/evidence/mixed.lua",
+          "-d2s",
+          "http://127.0.0.1:24000/feed"
+        ],
+        [
+          "docker",
+          "exec",
+          "-w",
+          "/evidence",
+          "twelve-paired-l-7760a6137bcd-pair01-repeat02-left-baseline",
+          "python3",
+          "-c",
+          "import json,subprocess,sys,time\nstart=time.monotonic()\np=subprocess.run(sys.argv[1:],capture_output=True,text=True)\nend=time.monotonic()\nprint(json.dumps(dict(start_monotonic=start,end_monotonic=end,exit_code=p.returncode,\n                     output=p.stdout,stderr=p.stderr,argv=sys.argv[1:])),flush=True)\n",
+          "wrk",
+          "-t2",
+          "-c64",
+          "--latency",
+          "-s",
+          "/evidence/mixed.lua",
+          "-d30s",
+          "http://127.0.0.1:24000/feed"
+        ]
+      ],
+      "server_inspect_before": {
+        "Id": "e15900135c8b6b30f8b3c5a02bad19fdd52ed4e96e1c7e12f6f504458ef1f93b",
+        "Created": "2026-10-22T12:16:34.890557134Z",
+        "Path": "sleep",
+        "Args": [
+          "infinity"
+        ],
+        "State": {
+          "Status": "running",
+          "Running": true,
+          "Paused": false,
+          "Restarting": false,
+          "OOMKilled": false,
+          "Dead": false,
+          "Pid": 34143,
+          "ExitCode": 0,
+          "Error": "",
+          "StartedAt": "2026-10-22T12:16:35.029477468Z",
+          "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:a69064953b766ec5c800389b8e17a7d184f73aa8dd46cd4aa2048955ee86eb0f",
+        "ResolvConfPath": "/var/lib/docker/containers/e15900135c8b6b30f8b3c5a02bad19fdd52ed4e96e1c7e12f6f504458ef1f93b/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/e15900135c8b6b30f8b3c5a02bad19fdd52ed4e96e1c7e12f6f504458ef1f93b/hostname",
+        "HostsPath": "/var/lib/docker/containers/e15900135c8b6b30f8b3c5a02bad19fdd52ed4e96e1c7e12f6f504458ef1f93b/hosts",
+        "LogPath": "",
+        "Name": "/twelve-paired-s-7760a6137bcd-pair01-repeat02-left-baseline",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+          "Binds": null,
+          "ContainerIDFile": "",
+          "LogConfig": {
+            "Type": "local",
+            "Config": {}
+          },
+          "NetworkMode": "bridge",
+          "PortBindings": {},
+          "RestartPolicy": {
+            "Name": "no",
+            "MaximumRetryCount": 0
+          },
+          "AutoRemove": false,
+          "VolumeDriver": "",
+          "VolumesFrom": null,
+          "ConsoleSize": [
+            0,
+            0
+          ],
+          "CapAdd": null,
+          "CapDrop": null,
+          "CgroupnsMode": "private",
+          "Dns": null,
+          "DnsOptions": [],
+          "DnsSearch": [],
+          "ExtraHosts": null,
+          "GroupAdd": null,
+          "IpcMode": "private",
+          "Cgroup": "",
+          "Links": null,
+          "OomScoreAdj": 0,
+          "PidMode": "",
+          "Privileged": false,
+          "PublishAllPorts": false,
+          "ReadonlyRootfs": false,
+          "SecurityOpt": [
+            "seccomp={\"defaultAction\":\"SCMP_ACT_ERRNO\",\"defaultErrnoRet\":1,\"archMap\":[{\"architecture\":\"SCMP_ARCH_X86_64\",\"subArchitectures\":[\"SCMP_ARCH_X86\",\"SCMP_ARCH_X32\"]},{\"architecture\":\"SCMP_ARCH_AARCH64\",\"subArchitectures\":[\"SCMP_ARCH_ARM\"]},{\"architecture\":\"SCMP_ARCH_MIPS64\",\"subArchitectures\":[\"SCMP_ARCH_MIPS\",\"SCMP_ARCH_MIPS64N32\"]},{\"architecture\":\"SCMP_ARCH_MIPS64N32\",\"subArchitectures\":[\"SCMP_ARCH_MIPS\",\"SCMP_ARCH_MIPS64\"]},{\"architecture\":\"SCMP_ARCH_MIPSEL64\",\"subArchitectures\":[\"SCMP_ARCH_MIPSEL\",\"SCMP_ARCH_MIPSEL64N32\"]},{\"architecture\":\"SCMP_ARCH_MIPSEL64N32\",\"subArchitectures\":[\"SCMP_ARCH_MIPSEL\",\"SCMP_ARCH_MIPSEL64\"]},{\"architecture\":\"SCMP_ARCH_S390X\",\"subArchitectures\":[\"SCMP_ARCH_S390\"]},{\"architecture\":\"SCMP_ARCH_RISCV64\",\"subArchitectures\":null},{\"architecture\":\"SCMP_ARCH_LOONGARCH64\",\"subArchitectures\":null}],\"syscalls\":[{\"names\":[\"accept\",\"accept4\",\"access\",\"adjtimex\",\"alarm\",\"bind\",\"brk\",\"cachestat\",\"capget\",\"capset\",\"chdir\",\"chmod\",\"chown\",\"chown32\",\"clock_adjtime\",\"clock_adjtime64\",\"clock_getres\",\"clock_getres_time64\",\"clock_gettime\",\"clock_gettime64\",\"clock_nanosleep\",\"clock_nanosleep_time64\",\"close\",\"close_range\",\"connect\",\"copy_file_range\",\"creat\",\"dup\",\"dup2\",\"dup3\",\"epoll_create\",\"epoll_create1\",\"epoll_ctl\",\"epoll_ctl_old\",\"epoll_pwait\",\"epoll_pwait2\",\"epoll_wait\",\"epoll_wait_old\",\"eventfd\",\"eventfd2\",\"execve\",\"execveat\",\"exit\",\"exit_group\",\"faccessat\",\"faccessat2\",\"fadvise64\",\"fadvise64_64\",\"fallocate\",\"fanotify_mark\",\"fchdir\",\"fchmod\",\"fchmodat\",\"fchmodat2\",\"fchown\",\"fchown32\",\"fchownat\",\"fcntl\",\"fcntl64\",\"fdatasync\",\"fgetxattr\",\"flistxattr\",\"flock\",\"fork\",\"fremovexattr\",\"fsetxattr\",\"fstat\",\"fstat64\",\"fstatat64\",\"fstatfs\",\"fstatfs64\",\"fsync\",\"ftruncate\",\"ftruncate64\",\"futex\",\"futex_requeue\",\"futex_time64\",\"futex_wait\",\"futex_waitv\",\"futex_wake\",\"futimesat\",\"getcpu\",\"getcwd\",\"getdents\",\"getdents64\",\"getegid\",\"getegid32\",\"geteuid\",\"geteuid32\",\"getgid\",\"getgid32\",\"getgroups\",\"getgroups32\",\"getitimer\",\"getpeername\",\"getpgid\",\"getpgrp\",\"getpid\",\"getppid\",\"getpriority\",\"getrandom\",\"getresgid\",\"getresgid32\",\"getresuid\",\"getresuid32\",\"getrlimit\",\"get_robust_list\",\"getrusage\",\"getsid\",\"getsockname\",\"getsockopt\",\"get_thread_area\",\"gettid\",\"gettimeofday\",\"getuid\",\"getuid32\",\"getxattr\",\"getxattrat\",\"inotify_add_watch\",\"inotify_init\",\"inotify_init1\",\"inotify_rm_watch\",\"io_cancel\",\"ioctl\",\"io_destroy\",\"io_getevents\",\"io_pgetevents\",\"io_pgetevents_time64\",\"ioprio_get\",\"ioprio_set\",\"io_setup\",\"io_submit\",\"ipc\",\"kill\",\"landlock_add_rule\",\"landlock_create_ruleset\",\"landlock_restrict_self\",\"lchown\",\"lchown32\",\"lgetxattr\",\"link\",\"linkat\",\"listen\",\"listmount\",\"listxattr\",\"listxattrat\",\"llistxattr\",\"_llseek\",\"lremovexattr\",\"lseek\",\"lsetxattr\",\"lstat\",\"lstat64\",\"madvise\",\"map_shadow_stack\",\"membarrier\",\"memfd_create\",\"memfd_secret\",\"mincore\",\"mkdir\",\"mkdirat\",\"mknod\",\"mknodat\",\"mlock\",\"mlock2\",\"mlockall\",\"mmap\",\"mmap2\",\"mprotect\",\"mq_getsetattr\",\"mq_notify\",\"mq_open\",\"mq_timedreceive\",\"mq_timedreceive_time64\",\"mq_timedsend\",\"mq_timedsend_time64\",\"mq_unlink\",\"mremap\",\"mseal\",\"msgctl\",\"msgget\",\"msgrcv\",\"msgsnd\",\"msync\",\"munlock\",\"munlockall\",\"munmap\",\"name_to_handle_at\",\"nanosleep\",\"newfstatat\",\"_newselect\",\"open\",\"openat\",\"openat2\",\"pause\",\"pidfd_open\",\"pidfd_send_signal\",\"pipe\",\"pipe2\",\"pkey_alloc\",\"pkey_free\",\"pkey_mprotect\",\"poll\",\"ppoll\",\"ppoll_time64\",\"prctl\",\"pread64\",\"preadv\",\"preadv2\",\"prlimit64\",\"process_mrelease\",\"pselect6\",\"pselect6_time64\",\"pwrite64\",\"pwritev\",\"pwritev2\",\"read\",\"readahead\",\"readlink\",\"readlinkat\",\"readv\",\"recv\",\"recvfrom\",\"recvmmsg\",\"recvmmsg_time64\",\"recvmsg\",\"remap_file_pages\",\"removexattr\",\"removexattrat\",\"rename\",\"renameat\",\"renameat2\",\"restart_syscall\",\"riscv_hwprobe\",\"rmdir\",\"rseq\",\"rt_sigaction\",\"rt_sigpending\",\"rt_sigprocmask\",\"rt_sigqueueinfo\",\"rt_sigreturn\",\"rt_sigsuspend\",\"rt_sigtimedwait\",\"rt_sigtimedwait_time64\",\"rt_tgsigqueueinfo\",\"sched_getaffinity\",\"sched_getattr\",\"sched_getparam\",\"sched_get_priority_max\",\"sched_get_priority_min\",\"sched_getscheduler\",\"sched_rr_get_interval\",\"sched_rr_get_interval_time64\",\"sched_setaffinity\",\"sched_setattr\",\"sched_setparam\",\"sched_setscheduler\",\"sched_yield\",\"seccomp\",\"select\",\"semctl\",\"semget\",\"semop\",\"semtimedop\",\"semtimedop_time64\",\"send\",\"sendfile\",\"sendfile64\",\"sendmmsg\",\"sendmsg\",\"sendto\",\"setfsgid\",\"setfsgid32\",\"setfsuid\",\"setfsuid32\",\"setgid\",\"setgid32\",\"setgroups\",\"setgroups32\",\"setitimer\",\"setpgid\",\"setpriority\",\"setregid\",\"setregid32\",\"setresgid\",\"setresgid32\",\"setresuid\",\"setresuid32\",\"setreuid\",\"setreuid32\",\"setrlimit\",\"set_robust_list\",\"setsid\",\"setsockopt\",\"set_thread_area\",\"set_tid_address\",\"setuid\",\"setuid32\",\"setxattr\",\"setxattrat\",\"shmat\",\"shmctl\",\"shmdt\",\"shmget\",\"shutdown\",\"sigaltstack\",\"signalfd\",\"signalfd4\",\"sigprocmask\",\"sigreturn\",\"socketcall\",\"socketpair\",\"splice\",\"stat\",\"stat64\",\"statfs\",\"statfs64\",\"statmount\",\"statx\",\"symlink\",\"symlinkat\",\"sync\",\"sync_file_range\",\"syncfs\",\"sysinfo\",\"tee\",\"tgkill\",\"time\",\"timer_create\",\"timer_delete\",\"timer_getoverrun\",\"timer_gettime\",\"timer_gettime64\",\"timer_settime\",\"timer_settime64\",\"timerfd_create\",\"timerfd_gettime\",\"timerfd_gettime64\",\"timerfd_settime\",\"timerfd_settime64\",\"times\",\"tkill\",\"truncate\",\"truncate64\",\"ugetrlimit\",\"umask\",\"uname\",\"unlink\",\"unlinkat\",\"uretprobe\",\"utime\",\"utimensat\",\"utimensat_time64\",\"utimes\",\"vfork\",\"vmsplice\",\"wait4\",\"waitid\",\"waitpid\",\"write\",\"writev\"],\"action\":\"SCMP_ACT_ALLOW\"},{\"names\":[\"process_vm_readv\",\"process_vm_writev\",\"ptrace\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"minKernel\":\"4.8\"}},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":3,\"op\":\"SCMP_CMP_LT\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":7,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":8,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":9,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":10,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":13,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":14,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":15,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":16,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":17,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":18,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":21,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":22,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":24,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":26,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":27,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":28,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":29,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":30,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":31,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":32,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":33,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":35,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":36,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":39,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":41,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":42,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":43,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":44,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":45,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":0,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":8,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":131072,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":131080,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":4294967295,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"sync_file_range2\",\"swapcontext\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"ppc64le\"]}},{\"names\":[\"arm_fadvise64_64\",\"arm_sync_file_range\",\"sync_file_range2\",\"breakpoint\",\"cacheflush\",\"set_tls\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"arm\",\"arm64\"]}},{\"names\":[\"arch_prctl\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"amd64\",\"x32\"]}},{\"names\":[\"modify_ldt\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"amd64\",\"x32\",\"x86\"]}},{\"names\":[\"s390_pci_mmio_read\",\"s390_pci_mmio_write\",\"s390_runtime_instr\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"s390\",\"s390x\"]}},{\"names\":[\"riscv_flush_icache\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"riscv64\"]}},{\"names\":[\"open_by_handle_at\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_DAC_READ_SEARCH\"]}},{\"names\":[\"bpf\",\"clone\",\"clone3\",\"fanotify_init\",\"fsconfig\",\"fsmount\",\"fsopen\",\"fspick\",\"lookup_dcookie\",\"lsm_get_self_attr\",\"lsm_list_modules\",\"lsm_set_self_attr\",\"mount\",\"mount_setattr\",\"move_mount\",\"open_tree\",\"perf_event_open\",\"quotactl\",\"quotactl_fd\",\"setdomainname\",\"sethostname\",\"setns\",\"syslog\",\"umount\",\"umount2\",\"unshare\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_ADMIN\"]}},{\"names\":[\"clone\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":2114060288,\"op\":\"SCMP_CMP_MASKED_EQ\"}],\"excludes\":{\"caps\":[\"CAP_SYS_ADMIN\"],\"arches\":[\"s390\",\"s390x\"]}},{\"names\":[\"clone\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":1,\"value\":2114060288,\"op\":\"SCMP_CMP_MASKED_EQ\"}],\"comment\":\"s390 parameter ordering for clone is different\",\"includes\":{\"arches\":[\"s390\",\"s390x\"]},\"excludes\":{\"caps\":[\"CAP_SYS_ADMIN\"]}},{\"names\":[\"clone3\"],\"action\":\"SCMP_ACT_ERRNO\",\"errnoRet\":38,\"excludes\":{\"caps\":[\"CAP_SYS_ADMIN\"]}},{\"names\":[\"reboot\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_BOOT\"]}},{\"names\":[\"chroot\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_CHROOT\"]}},{\"names\":[\"delete_module\",\"init_module\",\"finit_module\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_MODULE\"]}},{\"names\":[\"acct\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_PACCT\"]}},{\"names\":[\"kcmp\",\"pidfd_getfd\",\"process_madvise\",\"process_vm_readv\",\"process_vm_writev\",\"ptrace\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_PTRACE\"]}},{\"names\":[\"iopl\",\"ioperm\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_RAWIO\"]}},{\"names\":[\"settimeofday\",\"stime\",\"clock_settime\",\"clock_settime64\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_TIME\"]}},{\"names\":[\"vhangup\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_TTY_CONFIG\"]}},{\"names\":[\"get_mempolicy\",\"mbind\",\"set_mempolicy\",\"set_mempolicy_home_node\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_NICE\"]}},{\"names\":[\"syslog\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYSLOG\"]}},{\"names\":[\"bpf\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_BPF\"]}},{\"names\":[\"perf_event_open\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_PERFMON\"]}},{\"names\":[\"io_uring_enter\",\"io_uring_register\",\"io_uring_setup\"],\"action\":\"SCMP_ACT_ALLOW\"}]}"
+          ],
+          "UTSMode": "",
+          "UsernsMode": "",
+          "ShmSize": 67108864,
+          "Runtime": "runc",
+          "Isolation": "",
+          "CpuShares": 0,
+          "Memory": 2147483648,
+          "NanoCpus": 1000000000,
+          "CgroupParent": "",
+          "BlkioWeight": 0,
+          "BlkioWeightDevice": [],
+          "BlkioDeviceReadBps": [],
+          "BlkioDeviceWriteBps": [],
+          "BlkioDeviceReadIOps": [],
+          "BlkioDeviceWriteIOps": [],
+          "CpuPeriod": 0,
+          "CpuQuota": 0,
+          "CpuRealtimePeriod": 0,
+          "CpuRealtimeRuntime": 0,
+          "CpusetCpus": "0",
+          "CpusetMems": "",
+          "Devices": [],
+          "DeviceCgroupRules": null,
+          "DeviceRequests": null,
+          "MemoryReservation": 0,
+          "MemorySwap": 2147483648,
+          "MemorySwappiness": null,
+          "OomKillDisable": null,
+          "PidsLimit": null,
+          "Ulimits": [
+            {
+              "Name": "nofile",
+              "Hard": 65535,
+              "Soft": 65535
+            }
+          ],
+          "CpuCount": 0,
+          "CpuPercent": 0,
+          "IOMaximumIOps": 0,
+          "IOMaximumBandwidth": 0,
+          "Mounts": [
+            {
+              "Type": "bind",
+              "Source": "/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/goose-2026-10-22/lead5/isolated-screen",
+              "Target": "/evidence",
+              "ReadOnly": true
+            }
+          ],
+          "MaskedPaths": [
+            "/proc/acpi",
+            "/proc/asound",
+            "/proc/interrupts",
+            "/proc/kcore",
+            "/proc/keys",
+            "/proc/latency_stats",
+            "/proc/sched_debug",
+            "/proc/scsi",
+            "/proc/timer_list",
+            "/proc/timer_stats",
+            "/sys/devices/virtual/powercap",
+            "/sys/firmware"
+          ],
+          "ReadonlyPaths": [
+            "/proc/bus",
+            "/proc/fs",
+            "/proc/irq",
+            "/proc/sys",
+            "/proc/sysrq-trigger"
+          ]
+        },
+        "GraphDriver": {
+          "Data": {
+            "ID": "e15900135c8b6b30f8b3c5a02bad19fdd52ed4e96e1c7e12f6f504458ef1f93b",
+            "LowerDir": "/var/lib/docker/overlay2/31afb9eb4fba77412ccefecf9238803a7abe30a558a01845a5bbc7035bbef85a-init/diff:/var/lib/docker/overlay2/x147rubcswa275f41ag311api/diff:/var/lib/docker/overlay2/omp2msezcqr5ca69jaxc9frnz/diff:/var/lib/docker/overlay2/1mwjqtjdpvs3nfga4owlp4lix/diff:/var/lib/docker/overlay2/u4hyvyi0tuimwlu2sxdv7dd41/diff:/var/lib/docker/overlay2/z8mgenqrbshae6oy9pdagx7ci/diff:/var/lib/docker/overlay2/axcptz3c47hgwdfwrh3sazt4l/diff:/var/lib/docker/overlay2/0jcoflasca8na0jp3nszwl8kn/diff:/var/lib/docker/overlay2/8bd0rtxz2ojs9ueq13sa6dqyl/diff:/var/lib/docker/overlay2/pbccsqiaexhj4qa9ne7qwe68q/diff:/var/lib/docker/overlay2/zqjxejbfseh7ohcg84a5jdp48/diff:/var/lib/docker/overlay2/zpfb38dk81mxc2tmosmqqlves/diff:/var/lib/docker/overlay2/e2fd3ea9e88ae61b26964e52fdfa043a1d34db2a27770669909e351194b19d00/diff:/var/lib/docker/overlay2/2384b46cf7fddafea7e6da88f6c88961ccac9f8351644805697a28eed555c106/diff",
+            "MergedDir": "/var/lib/docker/overlay2/31afb9eb4fba77412ccefecf9238803a7abe30a558a01845a5bbc7035bbef85a/merged",
+            "UpperDir": "/var/lib/docker/overlay2/31afb9eb4fba77412ccefecf9238803a7abe30a558a01845a5bbc7035bbef85a/diff",
+            "WorkDir": "/var/lib/docker/overlay2/31afb9eb4fba77412ccefecf9238803a7abe30a558a01845a5bbc7035bbef85a/work"
+          },
+          "Name": "overlay2"
+        },
+        "Mounts": [
+          {
+            "Type": "bind",
+            "Source": "/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/goose-2026-10-22/lead5/isolated-screen",
+            "Destination": "/evidence",
+            "Mode": "",
+            "RW": false,
+            "Propagation": "rprivate"
+          }
+        ],
+        "Config": {
+          "Hostname": "e15900135c8b",
+          "Domainname": "",
+          "User": "root",
+          "AttachStdin": false,
+          "AttachStdout": false,
+          "AttachStderr": false,
+          "Tty": false,
+          "OpenStdin": false,
+          "StdinOnce": false,
+          "Env": [
+            "PATH=/opt/goose/build:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+            "GOOSE_IO_BACKEND=epoll"
+          ],
+          "Cmd": [
+            "sleep",
+            "infinity"
+          ],
+          "Image": "sha256:a69064953b766ec5c800389b8e17a7d184f73aa8dd46cd4aa2048955ee86eb0f",
+          "Volumes": null,
+          "WorkingDir": "/suite/sources/prgoose",
+          "Entrypoint": null,
+          "Labels": {
+            "org.opencontainers.image.version": "24.04"
+          }
+        },
+        "NetworkSettings": {
+          "SandboxID": "3163ced33c74a35c18af66425e42d41de61df27865b0afae49fa5200c3e94461",
+          "SandboxKey": "/var/run/docker/netns/3163ced33c74",
+          "Ports": {},
+          "Networks": {
+            "bridge": {
+              "IPAMConfig": null,
+              "Links": null,
+              "Aliases": null,
+              "DriverOpts": null,
+              "GwPriority": 0,
+              "NetworkID": "b7e78b3ce9d3985aefa551ced029ca262805bd382e4778e42cd4bee8045f0c20",
+              "EndpointID": "3d06ce66e4bb7ba229a1ae05815676e3c24549116a821c1c170da66ee56d9678",
+              "Gateway": "172.17.0.1",
+              "IPAddress": "172.17.0.3",
+              "MacAddress": "4a:43:94:04:66:20",
+              "IPPrefixLen": 16,
+              "IPv6Gateway": "",
+              "GlobalIPv6Address": "",
+              "GlobalIPv6PrefixLen": 0,
+              "DNSNames": null
+            }
+          }
+        }
+      },
+      "server_runtime": {
+        "binary_path": "/suite/sources/prgoose/bin/server",
+        "binary_sha256": "f0b086e53343263381c55a9046dbd65f400c4ec5ebbfc872c5d682d20a5679ab",
+        "selected_wrk": "/usr/bin/wrk",
+        "cgroup": {
+          "cpu.max": "100000 100000",
+          "cpu.weight": "100",
+          "cpuset.cpus.effective": "0",
+          "memory.max": "2147483648",
+          "memory.swap.max": "0"
+        }
+      },
+      "load_inspect_before": {
+        "Id": "8ab4b3f329181371395404fd493bd21ce6d6a5be5224568e91a5b9ad75f4371b",
+        "Created": "2026-10-22T12:16:35.269126301Z",
+        "Path": "sleep",
+        "Args": [
+          "infinity"
+        ],
+        "State": {
+          "Status": "running",
+          "Running": true,
+          "Paused": false,
+          "Restarting": false,
+          "OOMKilled": false,
+          "Dead": false,
+          "Pid": 34225,
+          "ExitCode": 0,
+          "Error": "",
+          "StartedAt": "2026-10-22T12:16:35.408121051Z",
+          "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:a5e8736dcfaf72bf79c0196a89fe3fd49774916ab7ea4ce06a8a2cdfd3a4b504",
+        "ResolvConfPath": "/var/lib/docker/containers/e15900135c8b6b30f8b3c5a02bad19fdd52ed4e96e1c7e12f6f504458ef1f93b/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/e15900135c8b6b30f8b3c5a02bad19fdd52ed4e96e1c7e12f6f504458ef1f93b/hostname",
+        "HostsPath": "/var/lib/docker/containers/e15900135c8b6b30f8b3c5a02bad19fdd52ed4e96e1c7e12f6f504458ef1f93b/hosts",
+        "LogPath": "",
+        "Name": "/twelve-paired-l-7760a6137bcd-pair01-repeat02-left-baseline",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+          "Binds": null,
+          "ContainerIDFile": "",
+          "LogConfig": {
+            "Type": "local",
+            "Config": {}
+          },
+          "NetworkMode": "container:e15900135c8b6b30f8b3c5a02bad19fdd52ed4e96e1c7e12f6f504458ef1f93b",
+          "PortBindings": {},
+          "RestartPolicy": {
+            "Name": "no",
+            "MaximumRetryCount": 0
+          },
+          "AutoRemove": false,
+          "VolumeDriver": "",
+          "VolumesFrom": null,
+          "ConsoleSize": [
+            0,
+            0
+          ],
+          "CapAdd": null,
+          "CapDrop": null,
+          "CgroupnsMode": "private",
+          "Dns": null,
+          "DnsOptions": [],
+          "DnsSearch": [],
+          "ExtraHosts": null,
+          "GroupAdd": null,
+          "IpcMode": "private",
+          "Cgroup": "",
+          "Links": null,
+          "OomScoreAdj": 0,
+          "PidMode": "",
+          "Privileged": false,
+          "PublishAllPorts": false,
+          "ReadonlyRootfs": false,
+          "SecurityOpt": null,
+          "UTSMode": "",
+          "UsernsMode": "",
+          "ShmSize": 67108864,
+          "Runtime": "runc",
+          "Isolation": "",
+          "CpuShares": 0,
+          "Memory": 2147483648,
+          "NanoCpus": 2000000000,
+          "CgroupParent": "",
+          "BlkioWeight": 0,
+          "BlkioWeightDevice": [],
+          "BlkioDeviceReadBps": [],
+          "BlkioDeviceWriteBps": [],
+          "BlkioDeviceReadIOps": [],
+          "BlkioDeviceWriteIOps": [],
+          "CpuPeriod": 0,
+          "CpuQuota": 0,
+          "CpuRealtimePeriod": 0,
+          "CpuRealtimeRuntime": 0,
+          "CpusetCpus": "1,2",
+          "CpusetMems": "",
+          "Devices": [],
+          "DeviceCgroupRules": null,
+          "DeviceRequests": null,
+          "MemoryReservation": 0,
+          "MemorySwap": 2147483648,
+          "MemorySwappiness": null,
+          "OomKillDisable": null,
+          "PidsLimit": null,
+          "Ulimits": [
+            {
+              "Name": "nofile",
+              "Hard": 65535,
+              "Soft": 65535
+            }
+          ],
+          "CpuCount": 0,
+          "CpuPercent": 0,
+          "IOMaximumIOps": 0,
+          "IOMaximumBandwidth": 0,
+          "Mounts": [
+            {
+              "Type": "bind",
+              "Source": "/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/goose-2026-10-22/lead5/isolated-screen",
+              "Target": "/evidence",
+              "ReadOnly": true
+            }
+          ],
+          "MaskedPaths": [
+            "/proc/acpi",
+            "/proc/asound",
+            "/proc/interrupts",
+            "/proc/kcore",
+            "/proc/keys",
+            "/proc/latency_stats",
+            "/proc/sched_debug",
+            "/proc/scsi",
+            "/proc/timer_list",
+            "/proc/timer_stats",
+            "/sys/devices/virtual/powercap",
+            "/sys/firmware"
+          ],
+          "ReadonlyPaths": [
+            "/proc/bus",
+            "/proc/fs",
+            "/proc/irq",
+            "/proc/sys",
+            "/proc/sysrq-trigger"
+          ]
+        },
+        "GraphDriver": {
+          "Data": {
+            "ID": "8ab4b3f329181371395404fd493bd21ce6d6a5be5224568e91a5b9ad75f4371b",
+            "LowerDir": "/var/lib/docker/overlay2/25f805febf867ff15820207252a0df6338476100b835816848b06b04adc91b70-init/diff:/var/lib/docker/overlay2/u1lvda5ahnw1fri2ohw21n4l7/diff:/var/lib/docker/overlay2/zsvnpoq8le77zo0hoaq84ml5p/diff:/var/lib/docker/overlay2/uibiu8hxvooqy279yxc85u8yu/diff:/var/lib/docker/overlay2/cxq20m50teee3z5x588mkd9zu/diff:/var/lib/docker/overlay2/e2fd3ea9e88ae61b26964e52fdfa043a1d34db2a27770669909e351194b19d00/diff:/var/lib/docker/overlay2/2384b46cf7fddafea7e6da88f6c88961ccac9f8351644805697a28eed555c106/diff",
+            "MergedDir": "/var/lib/docker/overlay2/25f805febf867ff15820207252a0df6338476100b835816848b06b04adc91b70/merged",
+            "UpperDir": "/var/lib/docker/overlay2/25f805febf867ff15820207252a0df6338476100b835816848b06b04adc91b70/diff",
+            "WorkDir": "/var/lib/docker/overlay2/25f805febf867ff15820207252a0df6338476100b835816848b06b04adc91b70/work"
+          },
+          "Name": "overlay2"
+        },
+        "Mounts": [
+          {
+            "Type": "bind",
+            "Source": "/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/goose-2026-10-22/lead5/isolated-screen",
+            "Destination": "/evidence",
+            "Mode": "",
+            "RW": false,
+            "Propagation": "rprivate"
+          }
+        ],
+        "Config": {
+          "Hostname": "e15900135c8b",
+          "Domainname": "",
+          "User": "",
+          "AttachStdin": false,
+          "AttachStdout": false,
+          "AttachStderr": false,
+          "Tty": false,
+          "OpenStdin": false,
+          "StdinOnce": false,
+          "Env": [
+            "PATH=/opt/wrk-clock/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+          ],
+          "Cmd": [
+            "sleep",
+            "infinity"
+          ],
+          "Image": "sha256:a5e8736dcfaf72bf79c0196a89fe3fd49774916ab7ea4ce06a8a2cdfd3a4b504",
+          "Volumes": null,
+          "WorkingDir": "",
+          "Entrypoint": null,
+          "Labels": {
+            "org.opencontainers.image.version": "24.04",
+            "wrk.clock_variant": "monotonic",
+            "wrk.source_package": "4.1.0-4build2"
+          }
+        },
+        "NetworkSettings": {
+          "SandboxID": "",
+          "SandboxKey": "",
+          "Ports": {},
+          "Networks": {}
+        }
+      },
+      "load_runtime": {
+        "binary_path": "/opt/wrk-clock/bin/wrk",
+        "binary_sha256": "20ec627b07490f94b7d1ed73e16ed64e04d993457ceacf4cb92fd66f93f7cb39",
+        "selected_wrk": "/opt/wrk-clock/bin/wrk",
+        "cgroup": {
+          "cpu.max": "200000 100000",
+          "cpu.weight": "100",
+          "cpuset.cpus.effective": "1-2",
+          "memory.max": "2147483648",
+          "memory.swap.max": "0"
+        }
+      },
+      "service": {
+        "ready": true,
+        "roots": [
+          19
+        ],
+        "port": 24000,
+        "log": "/tmp/current-prbaseline-24000.log",
+        "nginx": false,
+        "initial_post_count": 500000,
+        "source_files_verified": 17,
+        "source_sha256": "73148f5d49e07fc62289bf582e261b8df0e1ef51d478d6fb9d44a68fec87b88a",
+        "start_script": "/suite/sources/prgoose/start.sh"
+      },
+      "warmup_host_launch_monotonic": 45964.083373083,
+      "warmup_host_done_monotonic": 45966.568508541,
+      "warmup": {
+        "start_monotonic": 44465.926286965,
+        "end_monotonic": 44468.263478758,
+        "exit_code": 0,
+        "output": "Running 2s test @ http://127.0.0.1:24000/feed\n  2 threads and 64 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency    45.26ms  106.01ms 468.74ms   87.75%\n    Req/Sec     7.75k     3.19k   14.30k    77.14%\n  Latency Distribution\n     50%    3.43ms\n     75%    7.37ms\n     90%  211.29ms\n     99%  444.37ms\n  27586 requests in 2.05s, 46.63MB read\nRequests/sec:  13439.58\nTransfer/sec:     22.72MB\n  95% 339.926000ms\n",
+        "stderr": "",
+        "argv": [
+          "wrk",
+          "-t2",
+          "-c64",
+          "--latency",
+          "-s",
+          "/evidence/mixed.lua",
+          "-d2s",
+          "http://127.0.0.1:24000/feed"
+        ],
+        "requests": 27586,
+        "duration_s": 2.05,
+        "rps": 13439.58,
+        "p50_ms": 3.43,
+        "p95_ms": 339.926,
+        "p99_ms": 444.37,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 13439.58
+      },
+      "before": {
+        "monotonic": 44468.295094258,
+        "processes": {
+          "19": {
+            "ppid": 13,
+            "cpu_s": 0.76,
+            "cpu_self_s": 0.76,
+            "cpu_waited_children_s": 0.0,
+            "rss_kib": 29872,
+            "hwm_kib": 29872,
+            "threads": 1
+          }
+        },
+        "cpu_s": 0.76,
+        "cpu_self_s": 0.76,
+        "cpu_waited_children_s": 0.0,
+        "rss_kib": 29872,
+        "hwm_kib": 29872
+      },
+      "measured_host_launch_monotonic": 45966.587273875,
+      "measured_host_done_monotonic": 45996.991460541,
+      "measured": {
+        "start_monotonic": 44468.440260175,
+        "end_monotonic": 44498.700052147,
+        "exit_code": 0,
+        "output": "Running 30s test @ http://127.0.0.1:24000/feed\n  2 threads and 64 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     3.21ms    8.26ms 114.33ms   94.29%\n    Req/Sec    22.85k     9.53k   38.26k    68.78%\n  Latency Distribution\n     50%  735.00us\n     75%    2.33ms\n     90%    5.01ms\n     99%   43.89ms\n  1366059 requests in 30.06s, 2.27GB read\nRequests/sec:  45447.26\nTransfer/sec:     77.24MB\n  95% 15.077000ms\n",
+        "stderr": "",
+        "argv": [
+          "wrk",
+          "-t2",
+          "-c64",
+          "--latency",
+          "-s",
+          "/evidence/mixed.lua",
+          "-d30s",
+          "http://127.0.0.1:24000/feed"
+        ],
+        "requests": 1366059,
+        "duration_s": 30.06,
+        "rps": 45447.26,
+        "p50_ms": 0.735,
+        "p95_ms": 15.077,
+        "p99_ms": 43.89,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 45447.26
+      },
+      "after": {
+        "monotonic": 44498.714058314,
+        "processes": {
+          "19": {
+            "ppid": 13,
+            "cpu_s": 14.69,
+            "cpu_self_s": 14.69,
+            "cpu_waited_children_s": 0.0,
+            "rss_kib": 37428,
+            "hwm_kib": 37428,
+            "threads": 1
+          }
+        },
+        "cpu_s": 14.69,
+        "cpu_self_s": 14.69,
+        "cpu_waited_children_s": 0.0,
+        "rss_kib": 37428,
+        "hwm_kib": 37428
+      },
+      "stop_metrics": {
+        "monotonic": 44498.714806939,
+        "processes": {
+          "19": {
+            "ppid": 13,
+            "cpu_s": 14.69,
+            "cpu_self_s": 14.69,
+            "cpu_waited_children_s": 0.0,
+            "rss_kib": 37428,
+            "hwm_kib": 37428,
+            "threads": 1
+          }
+        },
+        "cpu_s": 14.69,
+        "cpu_self_s": 14.69,
+        "cpu_waited_children_s": 0.0,
+        "rss_kib": 37428,
+        "hwm_kib": 37428
+      },
+      "controller_stderr": "",
+      "controller_exit_code": 0,
+      "final": [
+        {
+          "database_after": {
+            "initial_post_count": 500000,
+            "post_count": 512799,
+            "max_post_id": 512799,
+            "integrity": "ok"
+          }
+        }
+      ],
+      "database_valid": true,
+      "valid_duration": true,
+      "cpu_s_delta": 13.93,
+      "cpu_percent_of_one_shared_guest_cpu": 45.793801440297415,
+      "cpu_s_per_completed_request": 1.0197216957686308e-05,
+      "rss_mib": 36.55078125,
+      "clean": true,
+      "server_log_copy_exit_code": 0,
+      "server_inspect_after": {
+        "Id": "e15900135c8b6b30f8b3c5a02bad19fdd52ed4e96e1c7e12f6f504458ef1f93b",
+        "Created": "2026-10-22T12:16:34.890557134Z",
+        "Path": "sleep",
+        "Args": [
+          "infinity"
+        ],
+        "State": {
+          "Status": "running",
+          "Running": true,
+          "Paused": false,
+          "Restarting": false,
+          "OOMKilled": false,
+          "Dead": false,
+          "Pid": 34143,
+          "ExitCode": 0,
+          "Error": "",
+          "StartedAt": "2026-10-22T12:16:35.029477468Z",
+          "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:a69064953b766ec5c800389b8e17a7d184f73aa8dd46cd4aa2048955ee86eb0f",
+        "ResolvConfPath": "/var/lib/docker/containers/e15900135c8b6b30f8b3c5a02bad19fdd52ed4e96e1c7e12f6f504458ef1f93b/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/e15900135c8b6b30f8b3c5a02bad19fdd52ed4e96e1c7e12f6f504458ef1f93b/hostname",
+        "HostsPath": "/var/lib/docker/containers/e15900135c8b6b30f8b3c5a02bad19fdd52ed4e96e1c7e12f6f504458ef1f93b/hosts",
+        "LogPath": "",
+        "Name": "/twelve-paired-s-7760a6137bcd-pair01-repeat02-left-baseline",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+          "Binds": null,
+          "ContainerIDFile": "",
+          "LogConfig": {
+            "Type": "local",
+            "Config": {}
+          },
+          "NetworkMode": "bridge",
+          "PortBindings": {},
+          "RestartPolicy": {
+            "Name": "no",
+            "MaximumRetryCount": 0
+          },
+          "AutoRemove": false,
+          "VolumeDriver": "",
+          "VolumesFrom": null,
+          "ConsoleSize": [
+            0,
+            0
+          ],
+          "CapAdd": null,
+          "CapDrop": null,
+          "CgroupnsMode": "private",
+          "Dns": null,
+          "DnsOptions": [],
+          "DnsSearch": [],
+          "ExtraHosts": null,
+          "GroupAdd": null,
+          "IpcMode": "private",
+          "Cgroup": "",
+          "Links": null,
+          "OomScoreAdj": 0,
+          "PidMode": "",
+          "Privileged": false,
+          "PublishAllPorts": false,
+          "ReadonlyRootfs": false,
+          "SecurityOpt": [
+            "seccomp={\"defaultAction\":\"SCMP_ACT_ERRNO\",\"defaultErrnoRet\":1,\"archMap\":[{\"architecture\":\"SCMP_ARCH_X86_64\",\"subArchitectures\":[\"SCMP_ARCH_X86\",\"SCMP_ARCH_X32\"]},{\"architecture\":\"SCMP_ARCH_AARCH64\",\"subArchitectures\":[\"SCMP_ARCH_ARM\"]},{\"architecture\":\"SCMP_ARCH_MIPS64\",\"subArchitectures\":[\"SCMP_ARCH_MIPS\",\"SCMP_ARCH_MIPS64N32\"]},{\"architecture\":\"SCMP_ARCH_MIPS64N32\",\"subArchitectures\":[\"SCMP_ARCH_MIPS\",\"SCMP_ARCH_MIPS64\"]},{\"architecture\":\"SCMP_ARCH_MIPSEL64\",\"subArchitectures\":[\"SCMP_ARCH_MIPSEL\",\"SCMP_ARCH_MIPSEL64N32\"]},{\"architecture\":\"SCMP_ARCH_MIPSEL64N32\",\"subArchitectures\":[\"SCMP_ARCH_MIPSEL\",\"SCMP_ARCH_MIPSEL64\"]},{\"architecture\":\"SCMP_ARCH_S390X\",\"subArchitectures\":[\"SCMP_ARCH_S390\"]},{\"architecture\":\"SCMP_ARCH_RISCV64\",\"subArchitectures\":null},{\"architecture\":\"SCMP_ARCH_LOONGARCH64\",\"subArchitectures\":null}],\"syscalls\":[{\"names\":[\"accept\",\"accept4\",\"access\",\"adjtimex\",\"alarm\",\"bind\",\"brk\",\"cachestat\",\"capget\",\"capset\",\"chdir\",\"chmod\",\"chown\",\"chown32\",\"clock_adjtime\",\"clock_adjtime64\",\"clock_getres\",\"clock_getres_time64\",\"clock_gettime\",\"clock_gettime64\",\"clock_nanosleep\",\"clock_nanosleep_time64\",\"close\",\"close_range\",\"connect\",\"copy_file_range\",\"creat\",\"dup\",\"dup2\",\"dup3\",\"epoll_create\",\"epoll_create1\",\"epoll_ctl\",\"epoll_ctl_old\",\"epoll_pwait\",\"epoll_pwait2\",\"epoll_wait\",\"epoll_wait_old\",\"eventfd\",\"eventfd2\",\"execve\",\"execveat\",\"exit\",\"exit_group\",\"faccessat\",\"faccessat2\",\"fadvise64\",\"fadvise64_64\",\"fallocate\",\"fanotify_mark\",\"fchdir\",\"fchmod\",\"fchmodat\",\"fchmodat2\",\"fchown\",\"fchown32\",\"fchownat\",\"fcntl\",\"fcntl64\",\"fdatasync\",\"fgetxattr\",\"flistxattr\",\"flock\",\"fork\",\"fremovexattr\",\"fsetxattr\",\"fstat\",\"fstat64\",\"fstatat64\",\"fstatfs\",\"fstatfs64\",\"fsync\",\"ftruncate\",\"ftruncate64\",\"futex\",\"futex_requeue\",\"futex_time64\",\"futex_wait\",\"futex_waitv\",\"futex_wake\",\"futimesat\",\"getcpu\",\"getcwd\",\"getdents\",\"getdents64\",\"getegid\",\"getegid32\",\"geteuid\",\"geteuid32\",\"getgid\",\"getgid32\",\"getgroups\",\"getgroups32\",\"getitimer\",\"getpeername\",\"getpgid\",\"getpgrp\",\"getpid\",\"getppid\",\"getpriority\",\"getrandom\",\"getresgid\",\"getresgid32\",\"getresuid\",\"getresuid32\",\"getrlimit\",\"get_robust_list\",\"getrusage\",\"getsid\",\"getsockname\",\"getsockopt\",\"get_thread_area\",\"gettid\",\"gettimeofday\",\"getuid\",\"getuid32\",\"getxattr\",\"getxattrat\",\"inotify_add_watch\",\"inotify_init\",\"inotify_init1\",\"inotify_rm_watch\",\"io_cancel\",\"ioctl\",\"io_destroy\",\"io_getevents\",\"io_pgetevents\",\"io_pgetevents_time64\",\"ioprio_get\",\"ioprio_set\",\"io_setup\",\"io_submit\",\"ipc\",\"kill\",\"landlock_add_rule\",\"landlock_create_ruleset\",\"landlock_restrict_self\",\"lchown\",\"lchown32\",\"lgetxattr\",\"link\",\"linkat\",\"listen\",\"listmount\",\"listxattr\",\"listxattrat\",\"llistxattr\",\"_llseek\",\"lremovexattr\",\"lseek\",\"lsetxattr\",\"lstat\",\"lstat64\",\"madvise\",\"map_shadow_stack\",\"membarrier\",\"memfd_create\",\"memfd_secret\",\"mincore\",\"mkdir\",\"mkdirat\",\"mknod\",\"mknodat\",\"mlock\",\"mlock2\",\"mlockall\",\"mmap\",\"mmap2\",\"mprotect\",\"mq_getsetattr\",\"mq_notify\",\"mq_open\",\"mq_timedreceive\",\"mq_timedreceive_time64\",\"mq_timedsend\",\"mq_timedsend_time64\",\"mq_unlink\",\"mremap\",\"mseal\",\"msgctl\",\"msgget\",\"msgrcv\",\"msgsnd\",\"msync\",\"munlock\",\"munlockall\",\"munmap\",\"name_to_handle_at\",\"nanosleep\",\"newfstatat\",\"_newselect\",\"open\",\"openat\",\"openat2\",\"pause\",\"pidfd_open\",\"pidfd_send_signal\",\"pipe\",\"pipe2\",\"pkey_alloc\",\"pkey_free\",\"pkey_mprotect\",\"poll\",\"ppoll\",\"ppoll_time64\",\"prctl\",\"pread64\",\"preadv\",\"preadv2\",\"prlimit64\",\"process_mrelease\",\"pselect6\",\"pselect6_time64\",\"pwrite64\",\"pwritev\",\"pwritev2\",\"read\",\"readahead\",\"readlink\",\"readlinkat\",\"readv\",\"recv\",\"recvfrom\",\"recvmmsg\",\"recvmmsg_time64\",\"recvmsg\",\"remap_file_pages\",\"removexattr\",\"removexattrat\",\"rename\",\"renameat\",\"renameat2\",\"restart_syscall\",\"riscv_hwprobe\",\"rmdir\",\"rseq\",\"rt_sigaction\",\"rt_sigpending\",\"rt_sigprocmask\",\"rt_sigqueueinfo\",\"rt_sigreturn\",\"rt_sigsuspend\",\"rt_sigtimedwait\",\"rt_sigtimedwait_time64\",\"rt_tgsigqueueinfo\",\"sched_getaffinity\",\"sched_getattr\",\"sched_getparam\",\"sched_get_priority_max\",\"sched_get_priority_min\",\"sched_getscheduler\",\"sched_rr_get_interval\",\"sched_rr_get_interval_time64\",\"sched_setaffinity\",\"sched_setattr\",\"sched_setparam\",\"sched_setscheduler\",\"sched_yield\",\"seccomp\",\"select\",\"semctl\",\"semget\",\"semop\",\"semtimedop\",\"semtimedop_time64\",\"send\",\"sendfile\",\"sendfile64\",\"sendmmsg\",\"sendmsg\",\"sendto\",\"setfsgid\",\"setfsgid32\",\"setfsuid\",\"setfsuid32\",\"setgid\",\"setgid32\",\"setgroups\",\"setgroups32\",\"setitimer\",\"setpgid\",\"setpriority\",\"setregid\",\"setregid32\",\"setresgid\",\"setresgid32\",\"setresuid\",\"setresuid32\",\"setreuid\",\"setreuid32\",\"setrlimit\",\"set_robust_list\",\"setsid\",\"setsockopt\",\"set_thread_area\",\"set_tid_address\",\"setuid\",\"setuid32\",\"setxattr\",\"setxattrat\",\"shmat\",\"shmctl\",\"shmdt\",\"shmget\",\"shutdown\",\"sigaltstack\",\"signalfd\",\"signalfd4\",\"sigprocmask\",\"sigreturn\",\"socketcall\",\"socketpair\",\"splice\",\"stat\",\"stat64\",\"statfs\",\"statfs64\",\"statmount\",\"statx\",\"symlink\",\"symlinkat\",\"sync\",\"sync_file_range\",\"syncfs\",\"sysinfo\",\"tee\",\"tgkill\",\"time\",\"timer_create\",\"timer_delete\",\"timer_getoverrun\",\"timer_gettime\",\"timer_gettime64\",\"timer_settime\",\"timer_settime64\",\"timerfd_create\",\"timerfd_gettime\",\"timerfd_gettime64\",\"timerfd_settime\",\"timerfd_settime64\",\"times\",\"tkill\",\"truncate\",\"truncate64\",\"ugetrlimit\",\"umask\",\"uname\",\"unlink\",\"unlinkat\",\"uretprobe\",\"utime\",\"utimensat\",\"utimensat_time64\",\"utimes\",\"vfork\",\"vmsplice\",\"wait4\",\"waitid\",\"waitpid\",\"write\",\"writev\"],\"action\":\"SCMP_ACT_ALLOW\"},{\"names\":[\"process_vm_readv\",\"process_vm_writev\",\"ptrace\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"minKernel\":\"4.8\"}},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":3,\"op\":\"SCMP_CMP_LT\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":7,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":8,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":9,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":10,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":13,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":14,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":15,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":16,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":17,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":18,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":21,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":22,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":24,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":26,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":27,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":28,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":29,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":30,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":31,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":32,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":33,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":35,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":36,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":39,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":41,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":42,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":43,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":44,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":45,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":0,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":8,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":131072,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":131080,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":4294967295,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"sync_file_range2\",\"swapcontext\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"ppc64le\"]}},{\"names\":[\"arm_fadvise64_64\",\"arm_sync_file_range\",\"sync_file_range2\",\"breakpoint\",\"cacheflush\",\"set_tls\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"arm\",\"arm64\"]}},{\"names\":[\"arch_prctl\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"amd64\",\"x32\"]}},{\"names\":[\"modify_ldt\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"amd64\",\"x32\",\"x86\"]}},{\"names\":[\"s390_pci_mmio_read\",\"s390_pci_mmio_write\",\"s390_runtime_instr\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"s390\",\"s390x\"]}},{\"names\":[\"riscv_flush_icache\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"riscv64\"]}},{\"names\":[\"open_by_handle_at\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_DAC_READ_SEARCH\"]}},{\"names\":[\"bpf\",\"clone\",\"clone3\",\"fanotify_init\",\"fsconfig\",\"fsmount\",\"fsopen\",\"fspick\",\"lookup_dcookie\",\"lsm_get_self_attr\",\"lsm_list_modules\",\"lsm_set_self_attr\",\"mount\",\"mount_setattr\",\"move_mount\",\"open_tree\",\"perf_event_open\",\"quotactl\",\"quotactl_fd\",\"setdomainname\",\"sethostname\",\"setns\",\"syslog\",\"umount\",\"umount2\",\"unshare\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_ADMIN\"]}},{\"names\":[\"clone\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":2114060288,\"op\":\"SCMP_CMP_MASKED_EQ\"}],\"excludes\":{\"caps\":[\"CAP_SYS_ADMIN\"],\"arches\":[\"s390\",\"s390x\"]}},{\"names\":[\"clone\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":1,\"value\":2114060288,\"op\":\"SCMP_CMP_MASKED_EQ\"}],\"comment\":\"s390 parameter ordering for clone is different\",\"includes\":{\"arches\":[\"s390\",\"s390x\"]},\"excludes\":{\"caps\":[\"CAP_SYS_ADMIN\"]}},{\"names\":[\"clone3\"],\"action\":\"SCMP_ACT_ERRNO\",\"errnoRet\":38,\"excludes\":{\"caps\":[\"CAP_SYS_ADMIN\"]}},{\"names\":[\"reboot\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_BOOT\"]}},{\"names\":[\"chroot\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_CHROOT\"]}},{\"names\":[\"delete_module\",\"init_module\",\"finit_module\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_MODULE\"]}},{\"names\":[\"acct\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_PACCT\"]}},{\"names\":[\"kcmp\",\"pidfd_getfd\",\"process_madvise\",\"process_vm_readv\",\"process_vm_writev\",\"ptrace\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_PTRACE\"]}},{\"names\":[\"iopl\",\"ioperm\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_RAWIO\"]}},{\"names\":[\"settimeofday\",\"stime\",\"clock_settime\",\"clock_settime64\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_TIME\"]}},{\"names\":[\"vhangup\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_TTY_CONFIG\"]}},{\"names\":[\"get_mempolicy\",\"mbind\",\"set_mempolicy\",\"set_mempolicy_home_node\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_NICE\"]}},{\"names\":[\"syslog\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYSLOG\"]}},{\"names\":[\"bpf\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_BPF\"]}},{\"names\":[\"perf_event_open\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_PERFMON\"]}},{\"names\":[\"io_uring_enter\",\"io_uring_register\",\"io_uring_setup\"],\"action\":\"SCMP_ACT_ALLOW\"}]}"
+          ],
+          "UTSMode": "",
+          "UsernsMode": "",
+          "ShmSize": 67108864,
+          "Runtime": "runc",
+          "Isolation": "",
+          "CpuShares": 0,
+          "Memory": 2147483648,
+          "NanoCpus": 1000000000,
+          "CgroupParent": "",
+          "BlkioWeight": 0,
+          "BlkioWeightDevice": [],
+          "BlkioDeviceReadBps": [],
+          "BlkioDeviceWriteBps": [],
+          "BlkioDeviceReadIOps": [],
+          "BlkioDeviceWriteIOps": [],
+          "CpuPeriod": 0,
+          "CpuQuota": 0,
+          "CpuRealtimePeriod": 0,
+          "CpuRealtimeRuntime": 0,
+          "CpusetCpus": "0",
+          "CpusetMems": "",
+          "Devices": [],
+          "DeviceCgroupRules": null,
+          "DeviceRequests": null,
+          "MemoryReservation": 0,
+          "MemorySwap": 2147483648,
+          "MemorySwappiness": null,
+          "OomKillDisable": null,
+          "PidsLimit": null,
+          "Ulimits": [
+            {
+              "Name": "nofile",
+              "Hard": 65535,
+              "Soft": 65535
+            }
+          ],
+          "CpuCount": 0,
+          "CpuPercent": 0,
+          "IOMaximumIOps": 0,
+          "IOMaximumBandwidth": 0,
+          "Mounts": [
+            {
+              "Type": "bind",
+              "Source": "/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/goose-2026-10-22/lead5/isolated-screen",
+              "Target": "/evidence",
+              "ReadOnly": true
+            }
+          ],
+          "MaskedPaths": [
+            "/proc/acpi",
+            "/proc/asound",
+            "/proc/interrupts",
+            "/proc/kcore",
+            "/proc/keys",
+            "/proc/latency_stats",
+            "/proc/sched_debug",
+            "/proc/scsi",
+            "/proc/timer_list",
+            "/proc/timer_stats",
+            "/sys/devices/virtual/powercap",
+            "/sys/firmware"
+          ],
+          "ReadonlyPaths": [
+            "/proc/bus",
+            "/proc/fs",
+            "/proc/irq",
+            "/proc/sys",
+            "/proc/sysrq-trigger"
+          ]
+        },
+        "GraphDriver": {
+          "Data": {
+            "ID": "e15900135c8b6b30f8b3c5a02bad19fdd52ed4e96e1c7e12f6f504458ef1f93b",
+            "LowerDir": "/var/lib/docker/overlay2/31afb9eb4fba77412ccefecf9238803a7abe30a558a01845a5bbc7035bbef85a-init/diff:/var/lib/docker/overlay2/x147rubcswa275f41ag311api/diff:/var/lib/docker/overlay2/omp2msezcqr5ca69jaxc9frnz/diff:/var/lib/docker/overlay2/1mwjqtjdpvs3nfga4owlp4lix/diff:/var/lib/docker/overlay2/u4hyvyi0tuimwlu2sxdv7dd41/diff:/var/lib/docker/overlay2/z8mgenqrbshae6oy9pdagx7ci/diff:/var/lib/docker/overlay2/axcptz3c47hgwdfwrh3sazt4l/diff:/var/lib/docker/overlay2/0jcoflasca8na0jp3nszwl8kn/diff:/var/lib/docker/overlay2/8bd0rtxz2ojs9ueq13sa6dqyl/diff:/var/lib/docker/overlay2/pbccsqiaexhj4qa9ne7qwe68q/diff:/var/lib/docker/overlay2/zqjxejbfseh7ohcg84a5jdp48/diff:/var/lib/docker/overlay2/zpfb38dk81mxc2tmosmqqlves/diff:/var/lib/docker/overlay2/e2fd3ea9e88ae61b26964e52fdfa043a1d34db2a27770669909e351194b19d00/diff:/var/lib/docker/overlay2/2384b46cf7fddafea7e6da88f6c88961ccac9f8351644805697a28eed555c106/diff",
+            "MergedDir": "/var/lib/docker/overlay2/31afb9eb4fba77412ccefecf9238803a7abe30a558a01845a5bbc7035bbef85a/merged",
+            "UpperDir": "/var/lib/docker/overlay2/31afb9eb4fba77412ccefecf9238803a7abe30a558a01845a5bbc7035bbef85a/diff",
+            "WorkDir": "/var/lib/docker/overlay2/31afb9eb4fba77412ccefecf9238803a7abe30a558a01845a5bbc7035bbef85a/work"
+          },
+          "Name": "overlay2"
+        },
+        "Mounts": [
+          {
+            "Type": "bind",
+            "Source": "/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/goose-2026-10-22/lead5/isolated-screen",
+            "Destination": "/evidence",
+            "Mode": "",
+            "RW": false,
+            "Propagation": "rprivate"
+          }
+        ],
+        "Config": {
+          "Hostname": "e15900135c8b",
+          "Domainname": "",
+          "User": "root",
+          "AttachStdin": false,
+          "AttachStdout": false,
+          "AttachStderr": false,
+          "Tty": false,
+          "OpenStdin": false,
+          "StdinOnce": false,
+          "Env": [
+            "PATH=/opt/goose/build:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+            "GOOSE_IO_BACKEND=epoll"
+          ],
+          "Cmd": [
+            "sleep",
+            "infinity"
+          ],
+          "Image": "sha256:a69064953b766ec5c800389b8e17a7d184f73aa8dd46cd4aa2048955ee86eb0f",
+          "Volumes": null,
+          "WorkingDir": "/suite/sources/prgoose",
+          "Entrypoint": null,
+          "Labels": {
+            "org.opencontainers.image.version": "24.04"
+          }
+        },
+        "NetworkSettings": {
+          "SandboxID": "3163ced33c74a35c18af66425e42d41de61df27865b0afae49fa5200c3e94461",
+          "SandboxKey": "/var/run/docker/netns/3163ced33c74",
+          "Ports": {},
+          "Networks": {
+            "bridge": {
+              "IPAMConfig": null,
+              "Links": null,
+              "Aliases": null,
+              "DriverOpts": null,
+              "GwPriority": 0,
+              "NetworkID": "b7e78b3ce9d3985aefa551ced029ca262805bd382e4778e42cd4bee8045f0c20",
+              "EndpointID": "3d06ce66e4bb7ba229a1ae05815676e3c24549116a821c1c170da66ee56d9678",
+              "Gateway": "172.17.0.1",
+              "IPAddress": "172.17.0.3",
+              "MacAddress": "4a:43:94:04:66:20",
+              "IPPrefixLen": 16,
+              "IPv6Gateway": "",
+              "GlobalIPv6Address": "",
+              "GlobalIPv6PrefixLen": 0,
+              "DNSNames": null
+            }
+          }
+        }
+      },
+      "load_inspect_after": {
+        "Id": "8ab4b3f329181371395404fd493bd21ce6d6a5be5224568e91a5b9ad75f4371b",
+        "Created": "2026-10-22T12:16:35.269126301Z",
+        "Path": "sleep",
+        "Args": [
+          "infinity"
+        ],
+        "State": {
+          "Status": "running",
+          "Running": true,
+          "Paused": false,
+          "Restarting": false,
+          "OOMKilled": false,
+          "Dead": false,
+          "Pid": 34225,
+          "ExitCode": 0,
+          "Error": "",
+          "StartedAt": "2026-10-22T12:16:35.408121051Z",
+          "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:a5e8736dcfaf72bf79c0196a89fe3fd49774916ab7ea4ce06a8a2cdfd3a4b504",
+        "ResolvConfPath": "/var/lib/docker/containers/e15900135c8b6b30f8b3c5a02bad19fdd52ed4e96e1c7e12f6f504458ef1f93b/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/e15900135c8b6b30f8b3c5a02bad19fdd52ed4e96e1c7e12f6f504458ef1f93b/hostname",
+        "HostsPath": "/var/lib/docker/containers/e15900135c8b6b30f8b3c5a02bad19fdd52ed4e96e1c7e12f6f504458ef1f93b/hosts",
+        "LogPath": "",
+        "Name": "/twelve-paired-l-7760a6137bcd-pair01-repeat02-left-baseline",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+          "Binds": null,
+          "ContainerIDFile": "",
+          "LogConfig": {
+            "Type": "local",
+            "Config": {}
+          },
+          "NetworkMode": "container:e15900135c8b6b30f8b3c5a02bad19fdd52ed4e96e1c7e12f6f504458ef1f93b",
+          "PortBindings": {},
+          "RestartPolicy": {
+            "Name": "no",
+            "MaximumRetryCount": 0
+          },
+          "AutoRemove": false,
+          "VolumeDriver": "",
+          "VolumesFrom": null,
+          "ConsoleSize": [
+            0,
+            0
+          ],
+          "CapAdd": null,
+          "CapDrop": null,
+          "CgroupnsMode": "private",
+          "Dns": null,
+          "DnsOptions": [],
+          "DnsSearch": [],
+          "ExtraHosts": null,
+          "GroupAdd": null,
+          "IpcMode": "private",
+          "Cgroup": "",
+          "Links": null,
+          "OomScoreAdj": 0,
+          "PidMode": "",
+          "Privileged": false,
+          "PublishAllPorts": false,
+          "ReadonlyRootfs": false,
+          "SecurityOpt": null,
+          "UTSMode": "",
+          "UsernsMode": "",
+          "ShmSize": 67108864,
+          "Runtime": "runc",
+          "Isolation": "",
+          "CpuShares": 0,
+          "Memory": 2147483648,
+          "NanoCpus": 2000000000,
+          "CgroupParent": "",
+          "BlkioWeight": 0,
+          "BlkioWeightDevice": [],
+          "BlkioDeviceReadBps": [],
+          "BlkioDeviceWriteBps": [],
+          "BlkioDeviceReadIOps": [],
+          "BlkioDeviceWriteIOps": [],
+          "CpuPeriod": 0,
+          "CpuQuota": 0,
+          "CpuRealtimePeriod": 0,
+          "CpuRealtimeRuntime": 0,
+          "CpusetCpus": "1,2",
+          "CpusetMems": "",
+          "Devices": [],
+          "DeviceCgroupRules": null,
+          "DeviceRequests": null,
+          "MemoryReservation": 0,
+          "MemorySwap": 2147483648,
+          "MemorySwappiness": null,
+          "OomKillDisable": null,
+          "PidsLimit": null,
+          "Ulimits": [
+            {
+              "Name": "nofile",
+              "Hard": 65535,
+              "Soft": 65535
+            }
+          ],
+          "CpuCount": 0,
+          "CpuPercent": 0,
+          "IOMaximumIOps": 0,
+          "IOMaximumBandwidth": 0,
+          "Mounts": [
+            {
+              "Type": "bind",
+              "Source": "/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/goose-2026-10-22/lead5/isolated-screen",
+              "Target": "/evidence",
+              "ReadOnly": true
+            }
+          ],
+          "MaskedPaths": [
+            "/proc/acpi",
+            "/proc/asound",
+            "/proc/interrupts",
+            "/proc/kcore",
+            "/proc/keys",
+            "/proc/latency_stats",
+            "/proc/sched_debug",
+            "/proc/scsi",
+            "/proc/timer_list",
+            "/proc/timer_stats",
+            "/sys/devices/virtual/powercap",
+            "/sys/firmware"
+          ],
+          "ReadonlyPaths": [
+            "/proc/bus",
+            "/proc/fs",
+            "/proc/irq",
+            "/proc/sys",
+            "/proc/sysrq-trigger"
+          ]
+        },
+        "GraphDriver": {
+          "Data": {
+            "ID": "8ab4b3f329181371395404fd493bd21ce6d6a5be5224568e91a5b9ad75f4371b",
+            "LowerDir": "/var/lib/docker/overlay2/25f805febf867ff15820207252a0df6338476100b835816848b06b04adc91b70-init/diff:/var/lib/docker/overlay2/u1lvda5ahnw1fri2ohw21n4l7/diff:/var/lib/docker/overlay2/zsvnpoq8le77zo0hoaq84ml5p/diff:/var/lib/docker/overlay2/uibiu8hxvooqy279yxc85u8yu/diff:/var/lib/docker/overlay2/cxq20m50teee3z5x588mkd9zu/diff:/var/lib/docker/overlay2/e2fd3ea9e88ae61b26964e52fdfa043a1d34db2a27770669909e351194b19d00/diff:/var/lib/docker/overlay2/2384b46cf7fddafea7e6da88f6c88961ccac9f8351644805697a28eed555c106/diff",
+            "MergedDir": "/var/lib/docker/overlay2/25f805febf867ff15820207252a0df6338476100b835816848b06b04adc91b70/merged",
+            "UpperDir": "/var/lib/docker/overlay2/25f805febf867ff15820207252a0df6338476100b835816848b06b04adc91b70/diff",
+            "WorkDir": "/var/lib/docker/overlay2/25f805febf867ff15820207252a0df6338476100b835816848b06b04adc91b70/work"
+          },
+          "Name": "overlay2"
+        },
+        "Mounts": [
+          {
+            "Type": "bind",
+            "Source": "/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/goose-2026-10-22/lead5/isolated-screen",
+            "Destination": "/evidence",
+            "Mode": "",
+            "RW": false,
+            "Propagation": "rprivate"
+          }
+        ],
+        "Config": {
+          "Hostname": "e15900135c8b",
+          "Domainname": "",
+          "User": "",
+          "AttachStdin": false,
+          "AttachStdout": false,
+          "AttachStderr": false,
+          "Tty": false,
+          "OpenStdin": false,
+          "StdinOnce": false,
+          "Env": [
+            "PATH=/opt/wrk-clock/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+          ],
+          "Cmd": [
+            "sleep",
+            "infinity"
+          ],
+          "Image": "sha256:a5e8736dcfaf72bf79c0196a89fe3fd49774916ab7ea4ce06a8a2cdfd3a4b504",
+          "Volumes": null,
+          "WorkingDir": "",
+          "Entrypoint": null,
+          "Labels": {
+            "org.opencontainers.image.version": "24.04",
+            "wrk.clock_variant": "monotonic",
+            "wrk.source_package": "4.1.0-4build2"
+          }
+        },
+        "NetworkSettings": {
+          "SandboxID": "",
+          "SandboxKey": "",
+          "Ports": {},
+          "Networks": {}
+        }
+      },
+      "cleanup_exit_code": 0,
+      "cleanup_stderr": ""
+    },
+    {
+      "case_id": "baseline",
+      "pr": 0,
+      "commit": "73148f5d49e07fc62289bf582e261b8df0e1ef51d478d6fb9d44a68fec87b88a",
+      "image": "twelve-goose-final:2026-10-22",
+      "source_sha256": "73148f5d49e07fc62289bf582e261b8df0e1ef51d478d6fb9d44a68fec87b88a",
+      "shared_hashes": {
+        "seed/feed.db": "ef5f135c16a2277a68ef37f1f1a66e4100f9dbc6743d2ef54dbeb533c4dceb0e",
+        "seed/tokens.json": "b39f1edf8a3545ab5851031d1cee8d2d1192e4b598361e516f4560f6893a939a",
+        "mixed.lua": "eb8d49273c56fe4b558a58bd6c7e65551ec683c53d299e2b3a69e0b71421d701",
+        "test/test.sh": "679e722044fd1f366d85093232e7f2ec2e3398ea312032dd9eb6cbdf8b17306a",
+        "semantic.py": "785f8ce565b469e4f4d702d01a9d868cd7458d64e3f1362c3fb8728560215fbc",
+        "serve.py": "52d8bdd75c0dc2477fc5b2391c797a2832eab5ac61a72d3bbe4dac4cb94bf311",
+        "bench/nginx.conf": "1b4b00789b0d138759bebde391d4cd05a9598dc10a17df3d09eb569512b8f654",
+        "seccomp-io-uring.json": "4baf3b268185f55527933e7df090e85936003674e34b5f5396461fd9d3efeb17",
+        "test/golden/feed.json": "8c9b3d6cb46e650c4786ab9281bc3a72ba7bd75b7926021d2b0c431dd9bd3d68",
+        "test/golden/post-1.json": "8035350dc55714c9a673af9f441ab07d2b269047e1137612f022877b9e8f3652",
+        "test/golden/post-250000.json": "febb2506b9d4a99bc34f1f182c61ced6b3ba3b2533724485c6e5206604a65b71",
+        "test/golden/post-500000.json": "662fe8c7282dee8aab00dab6cdb15e64e953f10a2c1c923e2ea67fab1429a4de"
+      },
+      "image_id": "sha256:a69064953b766ec5c800389b8e17a7d184f73aa8dd46cd4aa2048955ee86eb0f",
+      "fingerprint": "476db10ba06ac1056267571246e0a55195b3d7eaf9f39a7595dd1fe388013384",
+      "source_inventory": {
+        ".gitignore": "1ee00c3768b764a999544de814cafa138aeca02bf295873337081540152d4f06",
+        "README.md": "5d5667464da1441df7fc42d08b875a709cbc672b907c9bed547846f87720da95",
+        "app.build": "0752b8f45d545518a8f9ad05a7e90f03cfb49315cb6bea4e2fe83d7ab6baa9d6",
+        "app.goose": "1b9d5eaacf03b58be58818197707ac2269e135a4a010bfeb90cc3bbcc4d00509",
+        "bench/TRAINER-LICENSE": "1c809f52dd742570746a8ac00694ad4ddd9229e12accc7d5c598075861b478a0",
+        "bench/TRAINER-NOTICE.md": "e674c245d3e2f21f271ed644b04b30981cc342de1dc0010af8a09b2dd7dfd62e",
+        "bench/train_sqlite.c": "dd7d056bf259e587e8a21b902bb5469b4ea75b41a511c00d328eacb019a48967",
+        "build.sh": "203e5d65186f08edb2ee5b3c50397ed1ce03069e2b412c0ba1555a055f507405",
+        "db.c": "483c6d89d119a98f03e68ea883b1e51fb217961d242a2be88f270dea1b969ee8",
+        "install.sh": "d81573667bbc3ea461101fc6377ca27262678fb7e139f6d6aea1923683d7e163",
+        "json_fast.c": "f393c3e8c02389b9d7344e45351353dbf753f0f397cc1785bb599afe0332fd1e",
+        "json_fast.h": "8b2e84d4b63edd08d146e61420bcebf6737ef41541e7992a77d853b73659ecad",
+        "net.c": "0773ddfd7b89b0d34a717e5e9eb63fd0ee18026a5458ddf837bae4c0fb4ec9be",
+        "net.h": "25c8688957508264aaa0a2485f6d8714caede9570f865cb91217de32f4e548af",
+        "net_epoll.inc": "3773f819a4f5c594e916c2df31245bb60172e66cec15b3a824ccd750fa919a9e",
+        "net_uring.inc": "f01531f5d63af6ec4e93e14d5ec0bbf3f56f49af657496ccb71e85add3bd33f9",
+        "start.sh": "9a23eeaa024a08f898c3b904f1c362b21398732e7b0e71923876d286ef70825f"
+      },
+      "source_inventory_file": "archives/prbaseline-sha256.json",
+      "source_inventory_file_sha256": "f04787b1bceaea35eb88a611aed020acb2c2d07d480715b7a0b921b4f23aaa8e",
+      "binary_path": "/suite/sources/prgoose/bin/server",
+      "binary_sha256": "f0b086e53343263381c55a9046dbd65f400c4ec5ebbfc872c5d682d20a5679ab",
+      "passing_verification_fingerprint": "476db10ba06ac1056267571246e0a55195b3d7eaf9f39a7595dd1fe388013384",
+      "side": "right",
+      "instance_id": "pair01-repeat02-right-baseline",
+      "server_name": "twelve-paired-s-7760a6137bcd-pair01-repeat02-right-baseline",
+      "load_name": "twelve-paired-l-7760a6137bcd-pair01-repeat02-right-baseline",
+      "commands": [
+        [
+          "docker",
+          "run",
+          "-d",
+          "--name",
+          "twelve-paired-s-7760a6137bcd-pair01-repeat02-right-baseline",
+          "--cpuset-cpus",
+          "0",
+          "--cpus",
+          "1",
+          "--security-opt",
+          "seccomp=/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/goose-2026-10-22/lead5/isolated-screen/seccomp-io-uring.json",
+          "--platform",
+          "linux/arm64",
+          "--memory",
+          "2g",
+          "--memory-swap",
+          "2g",
+          "--ulimit",
+          "nofile=65535:65535",
+          "--mount",
+          "type=bind,src=/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/goose-2026-10-22/lead5/isolated-screen,dst=/evidence,readonly",
+          "sha256:a69064953b766ec5c800389b8e17a7d184f73aa8dd46cd4aa2048955ee86eb0f",
+          "sleep",
+          "infinity"
+        ],
+        [
+          "docker",
+          "run",
+          "-d",
+          "--name",
+          "twelve-paired-l-7760a6137bcd-pair01-repeat02-right-baseline",
+          "--cpuset-cpus",
+          "1,2",
+          "--cpus",
+          "2",
+          "--network",
+          "container:twelve-paired-s-7760a6137bcd-pair01-repeat02-right-baseline",
+          "--platform",
+          "linux/arm64",
+          "--memory",
+          "2g",
+          "--memory-swap",
+          "2g",
+          "--ulimit",
+          "nofile=65535:65535",
+          "--mount",
+          "type=bind,src=/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/goose-2026-10-22/lead5/isolated-screen,dst=/evidence,readonly",
+          "sha256:a5e8736dcfaf72bf79c0196a89fe3fd49774916ab7ea4ce06a8a2cdfd3a4b504",
+          "sleep",
+          "infinity"
+        ],
+        [
+          "docker",
+          "exec",
+          "--user",
+          "bench",
+          "twelve-paired-s-7760a6137bcd-pair01-repeat02-right-baseline",
+          "python3",
+          "-c",
+          "import hashlib,json,pathlib,shutil,sys\nbinary=pathlib.Path(sys.argv[1]) if sys.argv[1] else pathlib.Path(shutil.which('wrk'))\nlimits={}\nfor name in ('cpu.max','cpu.weight','cpuset.cpus.effective','memory.max','memory.swap.max'):\n p=pathlib.Path('/sys/fs/cgroup')/name\n limits[name]=p.read_text().strip() if p.exists() else None\nprint(json.dumps(dict(binary_path=str(binary),binary_sha256=hashlib.sha256(binary.read_bytes()).hexdigest(),\n                     selected_wrk=shutil.which('wrk'),cgroup=limits)))\n",
+          "/suite/sources/prgoose/bin/server"
+        ],
+        [
+          "docker",
+          "exec",
+          "--user",
+          "bench",
+          "twelve-paired-l-7760a6137bcd-pair01-repeat02-right-baseline",
+          "python3",
+          "-c",
+          "import hashlib,json,pathlib,shutil,sys\nbinary=pathlib.Path(sys.argv[1]) if sys.argv[1] else pathlib.Path(shutil.which('wrk'))\nlimits={}\nfor name in ('cpu.max','cpu.weight','cpuset.cpus.effective','memory.max','memory.swap.max'):\n p=pathlib.Path('/sys/fs/cgroup')/name\n limits[name]=p.read_text().strip() if p.exists() else None\nprint(json.dumps(dict(binary_path=str(binary),binary_sha256=hashlib.sha256(binary.read_bytes()).hexdigest(),\n                     selected_wrk=shutil.which('wrk'),cgroup=limits)))\n",
+          ""
+        ],
+        [
+          "docker",
+          "exec",
+          "-i",
+          "--user",
+          "bench",
+          "twelve-paired-s-7760a6137bcd-pair01-repeat02-right-baseline",
+          "python3",
+          "/evidence/serve.py",
+          "baseline",
+          "24000"
+        ],
+        [
+          "docker",
+          "exec",
+          "-w",
+          "/evidence",
+          "twelve-paired-l-7760a6137bcd-pair01-repeat02-right-baseline",
+          "python3",
+          "-c",
+          "import json,subprocess,sys,time\nstart=time.monotonic()\np=subprocess.run(sys.argv[1:],capture_output=True,text=True)\nend=time.monotonic()\nprint(json.dumps(dict(start_monotonic=start,end_monotonic=end,exit_code=p.returncode,\n                     output=p.stdout,stderr=p.stderr,argv=sys.argv[1:])),flush=True)\n",
+          "wrk",
+          "-t2",
+          "-c64",
+          "--latency",
+          "-s",
+          "/evidence/mixed.lua",
+          "-d2s",
+          "http://127.0.0.1:24000/feed"
+        ],
+        [
+          "docker",
+          "exec",
+          "-w",
+          "/evidence",
+          "twelve-paired-l-7760a6137bcd-pair01-repeat02-right-baseline",
+          "python3",
+          "-c",
+          "import json,subprocess,sys,time\nstart=time.monotonic()\np=subprocess.run(sys.argv[1:],capture_output=True,text=True)\nend=time.monotonic()\nprint(json.dumps(dict(start_monotonic=start,end_monotonic=end,exit_code=p.returncode,\n                     output=p.stdout,stderr=p.stderr,argv=sys.argv[1:])),flush=True)\n",
+          "wrk",
+          "-t2",
+          "-c64",
+          "--latency",
+          "-s",
+          "/evidence/mixed.lua",
+          "-d30s",
+          "http://127.0.0.1:24000/feed"
+        ]
+      ],
+      "server_inspect_before": {
+        "Id": "68753230d5c293832e052d1f321ee41c56b665bef49ecd1cd823ac1f320350ac",
+        "Created": "2026-10-22T12:16:34.888919134Z",
+        "Path": "sleep",
+        "Args": [
+          "infinity"
+        ],
+        "State": {
+          "Status": "running",
+          "Running": true,
+          "Paused": false,
+          "Restarting": false,
+          "OOMKilled": false,
+          "Dead": false,
+          "Pid": 34139,
+          "ExitCode": 0,
+          "Error": "",
+          "StartedAt": "2026-10-22T12:16:35.022080718Z",
+          "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:a69064953b766ec5c800389b8e17a7d184f73aa8dd46cd4aa2048955ee86eb0f",
+        "ResolvConfPath": "/var/lib/docker/containers/68753230d5c293832e052d1f321ee41c56b665bef49ecd1cd823ac1f320350ac/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/68753230d5c293832e052d1f321ee41c56b665bef49ecd1cd823ac1f320350ac/hostname",
+        "HostsPath": "/var/lib/docker/containers/68753230d5c293832e052d1f321ee41c56b665bef49ecd1cd823ac1f320350ac/hosts",
+        "LogPath": "",
+        "Name": "/twelve-paired-s-7760a6137bcd-pair01-repeat02-right-baseline",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+          "Binds": null,
+          "ContainerIDFile": "",
+          "LogConfig": {
+            "Type": "local",
+            "Config": {}
+          },
+          "NetworkMode": "bridge",
+          "PortBindings": {},
+          "RestartPolicy": {
+            "Name": "no",
+            "MaximumRetryCount": 0
+          },
+          "AutoRemove": false,
+          "VolumeDriver": "",
+          "VolumesFrom": null,
+          "ConsoleSize": [
+            0,
+            0
+          ],
+          "CapAdd": null,
+          "CapDrop": null,
+          "CgroupnsMode": "private",
+          "Dns": null,
+          "DnsOptions": [],
+          "DnsSearch": [],
+          "ExtraHosts": null,
+          "GroupAdd": null,
+          "IpcMode": "private",
+          "Cgroup": "",
+          "Links": null,
+          "OomScoreAdj": 0,
+          "PidMode": "",
+          "Privileged": false,
+          "PublishAllPorts": false,
+          "ReadonlyRootfs": false,
+          "SecurityOpt": [
+            "seccomp={\"defaultAction\":\"SCMP_ACT_ERRNO\",\"defaultErrnoRet\":1,\"archMap\":[{\"architecture\":\"SCMP_ARCH_X86_64\",\"subArchitectures\":[\"SCMP_ARCH_X86\",\"SCMP_ARCH_X32\"]},{\"architecture\":\"SCMP_ARCH_AARCH64\",\"subArchitectures\":[\"SCMP_ARCH_ARM\"]},{\"architecture\":\"SCMP_ARCH_MIPS64\",\"subArchitectures\":[\"SCMP_ARCH_MIPS\",\"SCMP_ARCH_MIPS64N32\"]},{\"architecture\":\"SCMP_ARCH_MIPS64N32\",\"subArchitectures\":[\"SCMP_ARCH_MIPS\",\"SCMP_ARCH_MIPS64\"]},{\"architecture\":\"SCMP_ARCH_MIPSEL64\",\"subArchitectures\":[\"SCMP_ARCH_MIPSEL\",\"SCMP_ARCH_MIPSEL64N32\"]},{\"architecture\":\"SCMP_ARCH_MIPSEL64N32\",\"subArchitectures\":[\"SCMP_ARCH_MIPSEL\",\"SCMP_ARCH_MIPSEL64\"]},{\"architecture\":\"SCMP_ARCH_S390X\",\"subArchitectures\":[\"SCMP_ARCH_S390\"]},{\"architecture\":\"SCMP_ARCH_RISCV64\",\"subArchitectures\":null},{\"architecture\":\"SCMP_ARCH_LOONGARCH64\",\"subArchitectures\":null}],\"syscalls\":[{\"names\":[\"accept\",\"accept4\",\"access\",\"adjtimex\",\"alarm\",\"bind\",\"brk\",\"cachestat\",\"capget\",\"capset\",\"chdir\",\"chmod\",\"chown\",\"chown32\",\"clock_adjtime\",\"clock_adjtime64\",\"clock_getres\",\"clock_getres_time64\",\"clock_gettime\",\"clock_gettime64\",\"clock_nanosleep\",\"clock_nanosleep_time64\",\"close\",\"close_range\",\"connect\",\"copy_file_range\",\"creat\",\"dup\",\"dup2\",\"dup3\",\"epoll_create\",\"epoll_create1\",\"epoll_ctl\",\"epoll_ctl_old\",\"epoll_pwait\",\"epoll_pwait2\",\"epoll_wait\",\"epoll_wait_old\",\"eventfd\",\"eventfd2\",\"execve\",\"execveat\",\"exit\",\"exit_group\",\"faccessat\",\"faccessat2\",\"fadvise64\",\"fadvise64_64\",\"fallocate\",\"fanotify_mark\",\"fchdir\",\"fchmod\",\"fchmodat\",\"fchmodat2\",\"fchown\",\"fchown32\",\"fchownat\",\"fcntl\",\"fcntl64\",\"fdatasync\",\"fgetxattr\",\"flistxattr\",\"flock\",\"fork\",\"fremovexattr\",\"fsetxattr\",\"fstat\",\"fstat64\",\"fstatat64\",\"fstatfs\",\"fstatfs64\",\"fsync\",\"ftruncate\",\"ftruncate64\",\"futex\",\"futex_requeue\",\"futex_time64\",\"futex_wait\",\"futex_waitv\",\"futex_wake\",\"futimesat\",\"getcpu\",\"getcwd\",\"getdents\",\"getdents64\",\"getegid\",\"getegid32\",\"geteuid\",\"geteuid32\",\"getgid\",\"getgid32\",\"getgroups\",\"getgroups32\",\"getitimer\",\"getpeername\",\"getpgid\",\"getpgrp\",\"getpid\",\"getppid\",\"getpriority\",\"getrandom\",\"getresgid\",\"getresgid32\",\"getresuid\",\"getresuid32\",\"getrlimit\",\"get_robust_list\",\"getrusage\",\"getsid\",\"getsockname\",\"getsockopt\",\"get_thread_area\",\"gettid\",\"gettimeofday\",\"getuid\",\"getuid32\",\"getxattr\",\"getxattrat\",\"inotify_add_watch\",\"inotify_init\",\"inotify_init1\",\"inotify_rm_watch\",\"io_cancel\",\"ioctl\",\"io_destroy\",\"io_getevents\",\"io_pgetevents\",\"io_pgetevents_time64\",\"ioprio_get\",\"ioprio_set\",\"io_setup\",\"io_submit\",\"ipc\",\"kill\",\"landlock_add_rule\",\"landlock_create_ruleset\",\"landlock_restrict_self\",\"lchown\",\"lchown32\",\"lgetxattr\",\"link\",\"linkat\",\"listen\",\"listmount\",\"listxattr\",\"listxattrat\",\"llistxattr\",\"_llseek\",\"lremovexattr\",\"lseek\",\"lsetxattr\",\"lstat\",\"lstat64\",\"madvise\",\"map_shadow_stack\",\"membarrier\",\"memfd_create\",\"memfd_secret\",\"mincore\",\"mkdir\",\"mkdirat\",\"mknod\",\"mknodat\",\"mlock\",\"mlock2\",\"mlockall\",\"mmap\",\"mmap2\",\"mprotect\",\"mq_getsetattr\",\"mq_notify\",\"mq_open\",\"mq_timedreceive\",\"mq_timedreceive_time64\",\"mq_timedsend\",\"mq_timedsend_time64\",\"mq_unlink\",\"mremap\",\"mseal\",\"msgctl\",\"msgget\",\"msgrcv\",\"msgsnd\",\"msync\",\"munlock\",\"munlockall\",\"munmap\",\"name_to_handle_at\",\"nanosleep\",\"newfstatat\",\"_newselect\",\"open\",\"openat\",\"openat2\",\"pause\",\"pidfd_open\",\"pidfd_send_signal\",\"pipe\",\"pipe2\",\"pkey_alloc\",\"pkey_free\",\"pkey_mprotect\",\"poll\",\"ppoll\",\"ppoll_time64\",\"prctl\",\"pread64\",\"preadv\",\"preadv2\",\"prlimit64\",\"process_mrelease\",\"pselect6\",\"pselect6_time64\",\"pwrite64\",\"pwritev\",\"pwritev2\",\"read\",\"readahead\",\"readlink\",\"readlinkat\",\"readv\",\"recv\",\"recvfrom\",\"recvmmsg\",\"recvmmsg_time64\",\"recvmsg\",\"remap_file_pages\",\"removexattr\",\"removexattrat\",\"rename\",\"renameat\",\"renameat2\",\"restart_syscall\",\"riscv_hwprobe\",\"rmdir\",\"rseq\",\"rt_sigaction\",\"rt_sigpending\",\"rt_sigprocmask\",\"rt_sigqueueinfo\",\"rt_sigreturn\",\"rt_sigsuspend\",\"rt_sigtimedwait\",\"rt_sigtimedwait_time64\",\"rt_tgsigqueueinfo\",\"sched_getaffinity\",\"sched_getattr\",\"sched_getparam\",\"sched_get_priority_max\",\"sched_get_priority_min\",\"sched_getscheduler\",\"sched_rr_get_interval\",\"sched_rr_get_interval_time64\",\"sched_setaffinity\",\"sched_setattr\",\"sched_setparam\",\"sched_setscheduler\",\"sched_yield\",\"seccomp\",\"select\",\"semctl\",\"semget\",\"semop\",\"semtimedop\",\"semtimedop_time64\",\"send\",\"sendfile\",\"sendfile64\",\"sendmmsg\",\"sendmsg\",\"sendto\",\"setfsgid\",\"setfsgid32\",\"setfsuid\",\"setfsuid32\",\"setgid\",\"setgid32\",\"setgroups\",\"setgroups32\",\"setitimer\",\"setpgid\",\"setpriority\",\"setregid\",\"setregid32\",\"setresgid\",\"setresgid32\",\"setresuid\",\"setresuid32\",\"setreuid\",\"setreuid32\",\"setrlimit\",\"set_robust_list\",\"setsid\",\"setsockopt\",\"set_thread_area\",\"set_tid_address\",\"setuid\",\"setuid32\",\"setxattr\",\"setxattrat\",\"shmat\",\"shmctl\",\"shmdt\",\"shmget\",\"shutdown\",\"sigaltstack\",\"signalfd\",\"signalfd4\",\"sigprocmask\",\"sigreturn\",\"socketcall\",\"socketpair\",\"splice\",\"stat\",\"stat64\",\"statfs\",\"statfs64\",\"statmount\",\"statx\",\"symlink\",\"symlinkat\",\"sync\",\"sync_file_range\",\"syncfs\",\"sysinfo\",\"tee\",\"tgkill\",\"time\",\"timer_create\",\"timer_delete\",\"timer_getoverrun\",\"timer_gettime\",\"timer_gettime64\",\"timer_settime\",\"timer_settime64\",\"timerfd_create\",\"timerfd_gettime\",\"timerfd_gettime64\",\"timerfd_settime\",\"timerfd_settime64\",\"times\",\"tkill\",\"truncate\",\"truncate64\",\"ugetrlimit\",\"umask\",\"uname\",\"unlink\",\"unlinkat\",\"uretprobe\",\"utime\",\"utimensat\",\"utimensat_time64\",\"utimes\",\"vfork\",\"vmsplice\",\"wait4\",\"waitid\",\"waitpid\",\"write\",\"writev\"],\"action\":\"SCMP_ACT_ALLOW\"},{\"names\":[\"process_vm_readv\",\"process_vm_writev\",\"ptrace\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"minKernel\":\"4.8\"}},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":3,\"op\":\"SCMP_CMP_LT\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":7,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":8,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":9,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":10,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":13,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":14,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":15,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":16,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":17,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":18,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":21,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":22,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":24,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":26,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":27,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":28,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":29,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":30,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":31,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":32,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":33,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":35,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":36,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":39,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":41,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":42,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":43,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":44,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":45,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":0,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":8,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":131072,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":131080,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":4294967295,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"sync_file_range2\",\"swapcontext\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"ppc64le\"]}},{\"names\":[\"arm_fadvise64_64\",\"arm_sync_file_range\",\"sync_file_range2\",\"breakpoint\",\"cacheflush\",\"set_tls\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"arm\",\"arm64\"]}},{\"names\":[\"arch_prctl\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"amd64\",\"x32\"]}},{\"names\":[\"modify_ldt\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"amd64\",\"x32\",\"x86\"]}},{\"names\":[\"s390_pci_mmio_read\",\"s390_pci_mmio_write\",\"s390_runtime_instr\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"s390\",\"s390x\"]}},{\"names\":[\"riscv_flush_icache\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"riscv64\"]}},{\"names\":[\"open_by_handle_at\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_DAC_READ_SEARCH\"]}},{\"names\":[\"bpf\",\"clone\",\"clone3\",\"fanotify_init\",\"fsconfig\",\"fsmount\",\"fsopen\",\"fspick\",\"lookup_dcookie\",\"lsm_get_self_attr\",\"lsm_list_modules\",\"lsm_set_self_attr\",\"mount\",\"mount_setattr\",\"move_mount\",\"open_tree\",\"perf_event_open\",\"quotactl\",\"quotactl_fd\",\"setdomainname\",\"sethostname\",\"setns\",\"syslog\",\"umount\",\"umount2\",\"unshare\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_ADMIN\"]}},{\"names\":[\"clone\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":2114060288,\"op\":\"SCMP_CMP_MASKED_EQ\"}],\"excludes\":{\"caps\":[\"CAP_SYS_ADMIN\"],\"arches\":[\"s390\",\"s390x\"]}},{\"names\":[\"clone\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":1,\"value\":2114060288,\"op\":\"SCMP_CMP_MASKED_EQ\"}],\"comment\":\"s390 parameter ordering for clone is different\",\"includes\":{\"arches\":[\"s390\",\"s390x\"]},\"excludes\":{\"caps\":[\"CAP_SYS_ADMIN\"]}},{\"names\":[\"clone3\"],\"action\":\"SCMP_ACT_ERRNO\",\"errnoRet\":38,\"excludes\":{\"caps\":[\"CAP_SYS_ADMIN\"]}},{\"names\":[\"reboot\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_BOOT\"]}},{\"names\":[\"chroot\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_CHROOT\"]}},{\"names\":[\"delete_module\",\"init_module\",\"finit_module\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_MODULE\"]}},{\"names\":[\"acct\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_PACCT\"]}},{\"names\":[\"kcmp\",\"pidfd_getfd\",\"process_madvise\",\"process_vm_readv\",\"process_vm_writev\",\"ptrace\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_PTRACE\"]}},{\"names\":[\"iopl\",\"ioperm\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_RAWIO\"]}},{\"names\":[\"settimeofday\",\"stime\",\"clock_settime\",\"clock_settime64\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_TIME\"]}},{\"names\":[\"vhangup\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_TTY_CONFIG\"]}},{\"names\":[\"get_mempolicy\",\"mbind\",\"set_mempolicy\",\"set_mempolicy_home_node\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_NICE\"]}},{\"names\":[\"syslog\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYSLOG\"]}},{\"names\":[\"bpf\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_BPF\"]}},{\"names\":[\"perf_event_open\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_PERFMON\"]}},{\"names\":[\"io_uring_enter\",\"io_uring_register\",\"io_uring_setup\"],\"action\":\"SCMP_ACT_ALLOW\"}]}"
+          ],
+          "UTSMode": "",
+          "UsernsMode": "",
+          "ShmSize": 67108864,
+          "Runtime": "runc",
+          "Isolation": "",
+          "CpuShares": 0,
+          "Memory": 2147483648,
+          "NanoCpus": 1000000000,
+          "CgroupParent": "",
+          "BlkioWeight": 0,
+          "BlkioWeightDevice": [],
+          "BlkioDeviceReadBps": [],
+          "BlkioDeviceWriteBps": [],
+          "BlkioDeviceReadIOps": [],
+          "BlkioDeviceWriteIOps": [],
+          "CpuPeriod": 0,
+          "CpuQuota": 0,
+          "CpuRealtimePeriod": 0,
+          "CpuRealtimeRuntime": 0,
+          "CpusetCpus": "0",
+          "CpusetMems": "",
+          "Devices": [],
+          "DeviceCgroupRules": null,
+          "DeviceRequests": null,
+          "MemoryReservation": 0,
+          "MemorySwap": 2147483648,
+          "MemorySwappiness": null,
+          "OomKillDisable": null,
+          "PidsLimit": null,
+          "Ulimits": [
+            {
+              "Name": "nofile",
+              "Hard": 65535,
+              "Soft": 65535
+            }
+          ],
+          "CpuCount": 0,
+          "CpuPercent": 0,
+          "IOMaximumIOps": 0,
+          "IOMaximumBandwidth": 0,
+          "Mounts": [
+            {
+              "Type": "bind",
+              "Source": "/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/goose-2026-10-22/lead5/isolated-screen",
+              "Target": "/evidence",
+              "ReadOnly": true
+            }
+          ],
+          "MaskedPaths": [
+            "/proc/acpi",
+            "/proc/asound",
+            "/proc/interrupts",
+            "/proc/kcore",
+            "/proc/keys",
+            "/proc/latency_stats",
+            "/proc/sched_debug",
+            "/proc/scsi",
+            "/proc/timer_list",
+            "/proc/timer_stats",
+            "/sys/devices/virtual/powercap",
+            "/sys/firmware"
+          ],
+          "ReadonlyPaths": [
+            "/proc/bus",
+            "/proc/fs",
+            "/proc/irq",
+            "/proc/sys",
+            "/proc/sysrq-trigger"
+          ]
+        },
+        "GraphDriver": {
+          "Data": {
+            "ID": "68753230d5c293832e052d1f321ee41c56b665bef49ecd1cd823ac1f320350ac",
+            "LowerDir": "/var/lib/docker/overlay2/8bcca19857bd5304b41838d20ed6257570e62c2a33be0f1023d9090861891f0f-init/diff:/var/lib/docker/overlay2/x147rubcswa275f41ag311api/diff:/var/lib/docker/overlay2/omp2msezcqr5ca69jaxc9frnz/diff:/var/lib/docker/overlay2/1mwjqtjdpvs3nfga4owlp4lix/diff:/var/lib/docker/overlay2/u4hyvyi0tuimwlu2sxdv7dd41/diff:/var/lib/docker/overlay2/z8mgenqrbshae6oy9pdagx7ci/diff:/var/lib/docker/overlay2/axcptz3c47hgwdfwrh3sazt4l/diff:/var/lib/docker/overlay2/0jcoflasca8na0jp3nszwl8kn/diff:/var/lib/docker/overlay2/8bd0rtxz2ojs9ueq13sa6dqyl/diff:/var/lib/docker/overlay2/pbccsqiaexhj4qa9ne7qwe68q/diff:/var/lib/docker/overlay2/zqjxejbfseh7ohcg84a5jdp48/diff:/var/lib/docker/overlay2/zpfb38dk81mxc2tmosmqqlves/diff:/var/lib/docker/overlay2/e2fd3ea9e88ae61b26964e52fdfa043a1d34db2a27770669909e351194b19d00/diff:/var/lib/docker/overlay2/2384b46cf7fddafea7e6da88f6c88961ccac9f8351644805697a28eed555c106/diff",
+            "MergedDir": "/var/lib/docker/overlay2/8bcca19857bd5304b41838d20ed6257570e62c2a33be0f1023d9090861891f0f/merged",
+            "UpperDir": "/var/lib/docker/overlay2/8bcca19857bd5304b41838d20ed6257570e62c2a33be0f1023d9090861891f0f/diff",
+            "WorkDir": "/var/lib/docker/overlay2/8bcca19857bd5304b41838d20ed6257570e62c2a33be0f1023d9090861891f0f/work"
+          },
+          "Name": "overlay2"
+        },
+        "Mounts": [
+          {
+            "Type": "bind",
+            "Source": "/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/goose-2026-10-22/lead5/isolated-screen",
+            "Destination": "/evidence",
+            "Mode": "",
+            "RW": false,
+            "Propagation": "rprivate"
+          }
+        ],
+        "Config": {
+          "Hostname": "68753230d5c2",
+          "Domainname": "",
+          "User": "root",
+          "AttachStdin": false,
+          "AttachStdout": false,
+          "AttachStderr": false,
+          "Tty": false,
+          "OpenStdin": false,
+          "StdinOnce": false,
+          "Env": [
+            "PATH=/opt/goose/build:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+            "GOOSE_IO_BACKEND=epoll"
+          ],
+          "Cmd": [
+            "sleep",
+            "infinity"
+          ],
+          "Image": "sha256:a69064953b766ec5c800389b8e17a7d184f73aa8dd46cd4aa2048955ee86eb0f",
+          "Volumes": null,
+          "WorkingDir": "/suite/sources/prgoose",
+          "Entrypoint": null,
+          "Labels": {
+            "org.opencontainers.image.version": "24.04"
+          }
+        },
+        "NetworkSettings": {
+          "SandboxID": "5b3a8a899e674244c45c71ca65769c190789bd023b0223ba096892551e937a33",
+          "SandboxKey": "/var/run/docker/netns/5b3a8a899e67",
+          "Ports": {},
+          "Networks": {
+            "bridge": {
+              "IPAMConfig": null,
+              "Links": null,
+              "Aliases": null,
+              "DriverOpts": null,
+              "GwPriority": 0,
+              "NetworkID": "b7e78b3ce9d3985aefa551ced029ca262805bd382e4778e42cd4bee8045f0c20",
+              "EndpointID": "09f1fdf1445a42d5553aac0f9236237cbbcbdf27d1a5066f3e20a3fed1d1e8bc",
+              "Gateway": "172.17.0.1",
+              "IPAddress": "172.17.0.4",
+              "MacAddress": "f2:30:01:a3:11:8a",
+              "IPPrefixLen": 16,
+              "IPv6Gateway": "",
+              "GlobalIPv6Address": "",
+              "GlobalIPv6PrefixLen": 0,
+              "DNSNames": null
+            }
+          }
+        }
+      },
+      "server_runtime": {
+        "binary_path": "/suite/sources/prgoose/bin/server",
+        "binary_sha256": "f0b086e53343263381c55a9046dbd65f400c4ec5ebbfc872c5d682d20a5679ab",
+        "selected_wrk": "/usr/bin/wrk",
+        "cgroup": {
+          "cpu.max": "100000 100000",
+          "cpu.weight": "100",
+          "cpuset.cpus.effective": "0",
+          "memory.max": "2147483648",
+          "memory.swap.max": "0"
+        }
+      },
+      "load_inspect_before": {
+        "Id": "835488d3fbd37e6ef592ab1eaa48553aac5d16ae0fe49455cea125a794b8833e",
+        "Created": "2026-10-22T12:16:35.27825951Z",
+        "Path": "sleep",
+        "Args": [
+          "infinity"
+        ],
+        "State": {
+          "Status": "running",
+          "Running": true,
+          "Paused": false,
+          "Restarting": false,
+          "OOMKilled": false,
+          "Dead": false,
+          "Pid": 34237,
+          "ExitCode": 0,
+          "Error": "",
+          "StartedAt": "2026-10-22T12:16:35.417946968Z",
+          "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:a5e8736dcfaf72bf79c0196a89fe3fd49774916ab7ea4ce06a8a2cdfd3a4b504",
+        "ResolvConfPath": "/var/lib/docker/containers/68753230d5c293832e052d1f321ee41c56b665bef49ecd1cd823ac1f320350ac/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/68753230d5c293832e052d1f321ee41c56b665bef49ecd1cd823ac1f320350ac/hostname",
+        "HostsPath": "/var/lib/docker/containers/68753230d5c293832e052d1f321ee41c56b665bef49ecd1cd823ac1f320350ac/hosts",
+        "LogPath": "",
+        "Name": "/twelve-paired-l-7760a6137bcd-pair01-repeat02-right-baseline",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+          "Binds": null,
+          "ContainerIDFile": "",
+          "LogConfig": {
+            "Type": "local",
+            "Config": {}
+          },
+          "NetworkMode": "container:68753230d5c293832e052d1f321ee41c56b665bef49ecd1cd823ac1f320350ac",
+          "PortBindings": {},
+          "RestartPolicy": {
+            "Name": "no",
+            "MaximumRetryCount": 0
+          },
+          "AutoRemove": false,
+          "VolumeDriver": "",
+          "VolumesFrom": null,
+          "ConsoleSize": [
+            0,
+            0
+          ],
+          "CapAdd": null,
+          "CapDrop": null,
+          "CgroupnsMode": "private",
+          "Dns": null,
+          "DnsOptions": [],
+          "DnsSearch": [],
+          "ExtraHosts": null,
+          "GroupAdd": null,
+          "IpcMode": "private",
+          "Cgroup": "",
+          "Links": null,
+          "OomScoreAdj": 0,
+          "PidMode": "",
+          "Privileged": false,
+          "PublishAllPorts": false,
+          "ReadonlyRootfs": false,
+          "SecurityOpt": null,
+          "UTSMode": "",
+          "UsernsMode": "",
+          "ShmSize": 67108864,
+          "Runtime": "runc",
+          "Isolation": "",
+          "CpuShares": 0,
+          "Memory": 2147483648,
+          "NanoCpus": 2000000000,
+          "CgroupParent": "",
+          "BlkioWeight": 0,
+          "BlkioWeightDevice": [],
+          "BlkioDeviceReadBps": [],
+          "BlkioDeviceWriteBps": [],
+          "BlkioDeviceReadIOps": [],
+          "BlkioDeviceWriteIOps": [],
+          "CpuPeriod": 0,
+          "CpuQuota": 0,
+          "CpuRealtimePeriod": 0,
+          "CpuRealtimeRuntime": 0,
+          "CpusetCpus": "1,2",
+          "CpusetMems": "",
+          "Devices": [],
+          "DeviceCgroupRules": null,
+          "DeviceRequests": null,
+          "MemoryReservation": 0,
+          "MemorySwap": 2147483648,
+          "MemorySwappiness": null,
+          "OomKillDisable": null,
+          "PidsLimit": null,
+          "Ulimits": [
+            {
+              "Name": "nofile",
+              "Hard": 65535,
+              "Soft": 65535
+            }
+          ],
+          "CpuCount": 0,
+          "CpuPercent": 0,
+          "IOMaximumIOps": 0,
+          "IOMaximumBandwidth": 0,
+          "Mounts": [
+            {
+              "Type": "bind",
+              "Source": "/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/goose-2026-10-22/lead5/isolated-screen",
+              "Target": "/evidence",
+              "ReadOnly": true
+            }
+          ],
+          "MaskedPaths": [
+            "/proc/acpi",
+            "/proc/asound",
+            "/proc/interrupts",
+            "/proc/kcore",
+            "/proc/keys",
+            "/proc/latency_stats",
+            "/proc/sched_debug",
+            "/proc/scsi",
+            "/proc/timer_list",
+            "/proc/timer_stats",
+            "/sys/devices/virtual/powercap",
+            "/sys/firmware"
+          ],
+          "ReadonlyPaths": [
+            "/proc/bus",
+            "/proc/fs",
+            "/proc/irq",
+            "/proc/sys",
+            "/proc/sysrq-trigger"
+          ]
+        },
+        "GraphDriver": {
+          "Data": {
+            "ID": "835488d3fbd37e6ef592ab1eaa48553aac5d16ae0fe49455cea125a794b8833e",
+            "LowerDir": "/var/lib/docker/overlay2/e84ffe32993d28317b2dbf7949a458ee4e8e246e0a22fec212bdbab95bf21a26-init/diff:/var/lib/docker/overlay2/u1lvda5ahnw1fri2ohw21n4l7/diff:/var/lib/docker/overlay2/zsvnpoq8le77zo0hoaq84ml5p/diff:/var/lib/docker/overlay2/uibiu8hxvooqy279yxc85u8yu/diff:/var/lib/docker/overlay2/cxq20m50teee3z5x588mkd9zu/diff:/var/lib/docker/overlay2/e2fd3ea9e88ae61b26964e52fdfa043a1d34db2a27770669909e351194b19d00/diff:/var/lib/docker/overlay2/2384b46cf7fddafea7e6da88f6c88961ccac9f8351644805697a28eed555c106/diff",
+            "MergedDir": "/var/lib/docker/overlay2/e84ffe32993d28317b2dbf7949a458ee4e8e246e0a22fec212bdbab95bf21a26/merged",
+            "UpperDir": "/var/lib/docker/overlay2/e84ffe32993d28317b2dbf7949a458ee4e8e246e0a22fec212bdbab95bf21a26/diff",
+            "WorkDir": "/var/lib/docker/overlay2/e84ffe32993d28317b2dbf7949a458ee4e8e246e0a22fec212bdbab95bf21a26/work"
+          },
+          "Name": "overlay2"
+        },
+        "Mounts": [
+          {
+            "Type": "bind",
+            "Source": "/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/goose-2026-10-22/lead5/isolated-screen",
+            "Destination": "/evidence",
+            "Mode": "",
+            "RW": false,
+            "Propagation": "rprivate"
+          }
+        ],
+        "Config": {
+          "Hostname": "68753230d5c2",
+          "Domainname": "",
+          "User": "",
+          "AttachStdin": false,
+          "AttachStdout": false,
+          "AttachStderr": false,
+          "Tty": false,
+          "OpenStdin": false,
+          "StdinOnce": false,
+          "Env": [
+            "PATH=/opt/wrk-clock/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+          ],
+          "Cmd": [
+            "sleep",
+            "infinity"
+          ],
+          "Image": "sha256:a5e8736dcfaf72bf79c0196a89fe3fd49774916ab7ea4ce06a8a2cdfd3a4b504",
+          "Volumes": null,
+          "WorkingDir": "",
+          "Entrypoint": null,
+          "Labels": {
+            "org.opencontainers.image.version": "24.04",
+            "wrk.clock_variant": "monotonic",
+            "wrk.source_package": "4.1.0-4build2"
+          }
+        },
+        "NetworkSettings": {
+          "SandboxID": "",
+          "SandboxKey": "",
+          "Ports": {},
+          "Networks": {}
+        }
+      },
+      "load_runtime": {
+        "binary_path": "/opt/wrk-clock/bin/wrk",
+        "binary_sha256": "20ec627b07490f94b7d1ed73e16ed64e04d993457ceacf4cb92fd66f93f7cb39",
+        "selected_wrk": "/opt/wrk-clock/bin/wrk",
+        "cgroup": {
+          "cpu.max": "200000 100000",
+          "cpu.weight": "100",
+          "cpuset.cpus.effective": "1-2",
+          "memory.max": "2147483648",
+          "memory.swap.max": "0"
+        }
+      },
+      "service": {
+        "ready": true,
+        "roots": [
+          19
+        ],
+        "port": 24000,
+        "log": "/tmp/current-prbaseline-24000.log",
+        "nginx": false,
+        "initial_post_count": 500000,
+        "source_files_verified": 17,
+        "source_sha256": "73148f5d49e07fc62289bf582e261b8df0e1ef51d478d6fb9d44a68fec87b88a",
+        "start_script": "/suite/sources/prgoose/start.sh"
+      },
+      "warmup_host_launch_monotonic": 45964.083473416,
+      "warmup_host_done_monotonic": 45966.567462416,
+      "warmup": {
+        "start_monotonic": 44465.916388674,
+        "end_monotonic": 44468.263480216,
+        "exit_code": 0,
+        "output": "Running 2s test @ http://127.0.0.1:24000/feed\n  2 threads and 64 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency    47.74ms  110.36ms 480.21ms   87.52%\n    Req/Sec     7.61k     2.88k   13.26k    76.47%\n  Latency Distribution\n     50%    3.53ms\n     75%    7.43ms\n     90%  222.33ms\n     99%  455.25ms\n  26418 requests in 2.04s, 44.65MB read\nRequests/sec:  12935.04\nTransfer/sec:     21.86MB\n  95% 351.316000ms\n",
+        "stderr": "",
+        "argv": [
+          "wrk",
+          "-t2",
+          "-c64",
+          "--latency",
+          "-s",
+          "/evidence/mixed.lua",
+          "-d2s",
+          "http://127.0.0.1:24000/feed"
+        ],
+        "requests": 26418,
+        "duration_s": 2.04,
+        "rps": 12935.04,
+        "p50_ms": 3.53,
+        "p95_ms": 351.316,
+        "p99_ms": 455.25,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 12935.04
+      },
+      "before": {
+        "monotonic": 44468.297936716,
+        "processes": {
+          "19": {
+            "ppid": 13,
+            "cpu_s": 0.79,
+            "cpu_self_s": 0.79,
+            "cpu_waited_children_s": 0.0,
+            "rss_kib": 29708,
+            "hwm_kib": 29708,
+            "threads": 1
+          }
+        },
+        "cpu_s": 0.79,
+        "cpu_self_s": 0.79,
+        "cpu_waited_children_s": 0.0,
+        "rss_kib": 29708,
+        "hwm_kib": 29708
+      },
+      "measured_host_launch_monotonic": 45966.587416125,
+      "measured_host_done_monotonic": 45996.991059875,
+      "measured": {
+        "start_monotonic": 44468.4293508,
+        "end_monotonic": 44498.699362189,
+        "exit_code": 0,
+        "output": "Running 30s test @ http://127.0.0.1:24000/feed\n  2 threads and 64 connections\n  Thread Stats   Avg      Stdev     Max   +/- Stdev\n    Latency     3.23ms    8.06ms  98.65ms   94.04%\n    Req/Sec    22.77k     9.49k   38.17k    70.45%\n  Latency Distribution\n     50%  739.00us\n     75%    2.34ms\n     90%    5.16ms\n     99%   43.94ms\n  1359970 requests in 30.04s, 2.26GB read\nRequests/sec:  45273.68\nTransfer/sec:     76.94MB\n  95% 15.733000ms\n",
+        "stderr": "",
+        "argv": [
+          "wrk",
+          "-t2",
+          "-c64",
+          "--latency",
+          "-s",
+          "/evidence/mixed.lua",
+          "-d30s",
+          "http://127.0.0.1:24000/feed"
+        ],
+        "requests": 1359970,
+        "duration_s": 30.04,
+        "rps": 45273.68,
+        "p50_ms": 0.739,
+        "p95_ms": 15.733,
+        "p99_ms": 43.94,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 45273.68
+      },
+      "after": {
+        "monotonic": 44498.713479272,
+        "processes": {
+          "19": {
+            "ppid": 13,
+            "cpu_s": 14.72,
+            "cpu_self_s": 14.72,
+            "cpu_waited_children_s": 0.0,
+            "rss_kib": 37224,
+            "hwm_kib": 37224,
+            "threads": 1
+          }
+        },
+        "cpu_s": 14.72,
+        "cpu_self_s": 14.72,
+        "cpu_waited_children_s": 0.0,
+        "rss_kib": 37224,
+        "hwm_kib": 37224
+      },
+      "stop_metrics": {
+        "monotonic": 44498.715103897,
+        "processes": {
+          "19": {
+            "ppid": 13,
+            "cpu_s": 14.72,
+            "cpu_self_s": 14.72,
+            "cpu_waited_children_s": 0.0,
+            "rss_kib": 37224,
+            "hwm_kib": 37224,
+            "threads": 1
+          }
+        },
+        "cpu_s": 14.72,
+        "cpu_self_s": 14.72,
+        "cpu_waited_children_s": 0.0,
+        "rss_kib": 37224,
+        "hwm_kib": 37224
+      },
+      "controller_stderr": "",
+      "controller_exit_code": 0,
+      "final": [
+        {
+          "database_after": {
+            "initial_post_count": 500000,
+            "post_count": 512725,
+            "max_post_id": 512725,
+            "integrity": "ok"
+          }
+        }
+      ],
+      "database_valid": true,
+      "valid_duration": true,
+      "cpu_s_delta": 13.93,
+      "cpu_percent_of_one_shared_guest_cpu": 45.798952868756665,
+      "cpu_s_per_completed_request": 1.0242873004551571e-05,
+      "rss_mib": 36.3515625,
+      "clean": true,
+      "server_log_copy_exit_code": 0,
+      "server_inspect_after": {
+        "Id": "68753230d5c293832e052d1f321ee41c56b665bef49ecd1cd823ac1f320350ac",
+        "Created": "2026-10-22T12:16:34.888919134Z",
+        "Path": "sleep",
+        "Args": [
+          "infinity"
+        ],
+        "State": {
+          "Status": "running",
+          "Running": true,
+          "Paused": false,
+          "Restarting": false,
+          "OOMKilled": false,
+          "Dead": false,
+          "Pid": 34139,
+          "ExitCode": 0,
+          "Error": "",
+          "StartedAt": "2026-10-22T12:16:35.022080718Z",
+          "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:a69064953b766ec5c800389b8e17a7d184f73aa8dd46cd4aa2048955ee86eb0f",
+        "ResolvConfPath": "/var/lib/docker/containers/68753230d5c293832e052d1f321ee41c56b665bef49ecd1cd823ac1f320350ac/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/68753230d5c293832e052d1f321ee41c56b665bef49ecd1cd823ac1f320350ac/hostname",
+        "HostsPath": "/var/lib/docker/containers/68753230d5c293832e052d1f321ee41c56b665bef49ecd1cd823ac1f320350ac/hosts",
+        "LogPath": "",
+        "Name": "/twelve-paired-s-7760a6137bcd-pair01-repeat02-right-baseline",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+          "Binds": null,
+          "ContainerIDFile": "",
+          "LogConfig": {
+            "Type": "local",
+            "Config": {}
+          },
+          "NetworkMode": "bridge",
+          "PortBindings": {},
+          "RestartPolicy": {
+            "Name": "no",
+            "MaximumRetryCount": 0
+          },
+          "AutoRemove": false,
+          "VolumeDriver": "",
+          "VolumesFrom": null,
+          "ConsoleSize": [
+            0,
+            0
+          ],
+          "CapAdd": null,
+          "CapDrop": null,
+          "CgroupnsMode": "private",
+          "Dns": null,
+          "DnsOptions": [],
+          "DnsSearch": [],
+          "ExtraHosts": null,
+          "GroupAdd": null,
+          "IpcMode": "private",
+          "Cgroup": "",
+          "Links": null,
+          "OomScoreAdj": 0,
+          "PidMode": "",
+          "Privileged": false,
+          "PublishAllPorts": false,
+          "ReadonlyRootfs": false,
+          "SecurityOpt": [
+            "seccomp={\"defaultAction\":\"SCMP_ACT_ERRNO\",\"defaultErrnoRet\":1,\"archMap\":[{\"architecture\":\"SCMP_ARCH_X86_64\",\"subArchitectures\":[\"SCMP_ARCH_X86\",\"SCMP_ARCH_X32\"]},{\"architecture\":\"SCMP_ARCH_AARCH64\",\"subArchitectures\":[\"SCMP_ARCH_ARM\"]},{\"architecture\":\"SCMP_ARCH_MIPS64\",\"subArchitectures\":[\"SCMP_ARCH_MIPS\",\"SCMP_ARCH_MIPS64N32\"]},{\"architecture\":\"SCMP_ARCH_MIPS64N32\",\"subArchitectures\":[\"SCMP_ARCH_MIPS\",\"SCMP_ARCH_MIPS64\"]},{\"architecture\":\"SCMP_ARCH_MIPSEL64\",\"subArchitectures\":[\"SCMP_ARCH_MIPSEL\",\"SCMP_ARCH_MIPSEL64N32\"]},{\"architecture\":\"SCMP_ARCH_MIPSEL64N32\",\"subArchitectures\":[\"SCMP_ARCH_MIPSEL\",\"SCMP_ARCH_MIPSEL64\"]},{\"architecture\":\"SCMP_ARCH_S390X\",\"subArchitectures\":[\"SCMP_ARCH_S390\"]},{\"architecture\":\"SCMP_ARCH_RISCV64\",\"subArchitectures\":null},{\"architecture\":\"SCMP_ARCH_LOONGARCH64\",\"subArchitectures\":null}],\"syscalls\":[{\"names\":[\"accept\",\"accept4\",\"access\",\"adjtimex\",\"alarm\",\"bind\",\"brk\",\"cachestat\",\"capget\",\"capset\",\"chdir\",\"chmod\",\"chown\",\"chown32\",\"clock_adjtime\",\"clock_adjtime64\",\"clock_getres\",\"clock_getres_time64\",\"clock_gettime\",\"clock_gettime64\",\"clock_nanosleep\",\"clock_nanosleep_time64\",\"close\",\"close_range\",\"connect\",\"copy_file_range\",\"creat\",\"dup\",\"dup2\",\"dup3\",\"epoll_create\",\"epoll_create1\",\"epoll_ctl\",\"epoll_ctl_old\",\"epoll_pwait\",\"epoll_pwait2\",\"epoll_wait\",\"epoll_wait_old\",\"eventfd\",\"eventfd2\",\"execve\",\"execveat\",\"exit\",\"exit_group\",\"faccessat\",\"faccessat2\",\"fadvise64\",\"fadvise64_64\",\"fallocate\",\"fanotify_mark\",\"fchdir\",\"fchmod\",\"fchmodat\",\"fchmodat2\",\"fchown\",\"fchown32\",\"fchownat\",\"fcntl\",\"fcntl64\",\"fdatasync\",\"fgetxattr\",\"flistxattr\",\"flock\",\"fork\",\"fremovexattr\",\"fsetxattr\",\"fstat\",\"fstat64\",\"fstatat64\",\"fstatfs\",\"fstatfs64\",\"fsync\",\"ftruncate\",\"ftruncate64\",\"futex\",\"futex_requeue\",\"futex_time64\",\"futex_wait\",\"futex_waitv\",\"futex_wake\",\"futimesat\",\"getcpu\",\"getcwd\",\"getdents\",\"getdents64\",\"getegid\",\"getegid32\",\"geteuid\",\"geteuid32\",\"getgid\",\"getgid32\",\"getgroups\",\"getgroups32\",\"getitimer\",\"getpeername\",\"getpgid\",\"getpgrp\",\"getpid\",\"getppid\",\"getpriority\",\"getrandom\",\"getresgid\",\"getresgid32\",\"getresuid\",\"getresuid32\",\"getrlimit\",\"get_robust_list\",\"getrusage\",\"getsid\",\"getsockname\",\"getsockopt\",\"get_thread_area\",\"gettid\",\"gettimeofday\",\"getuid\",\"getuid32\",\"getxattr\",\"getxattrat\",\"inotify_add_watch\",\"inotify_init\",\"inotify_init1\",\"inotify_rm_watch\",\"io_cancel\",\"ioctl\",\"io_destroy\",\"io_getevents\",\"io_pgetevents\",\"io_pgetevents_time64\",\"ioprio_get\",\"ioprio_set\",\"io_setup\",\"io_submit\",\"ipc\",\"kill\",\"landlock_add_rule\",\"landlock_create_ruleset\",\"landlock_restrict_self\",\"lchown\",\"lchown32\",\"lgetxattr\",\"link\",\"linkat\",\"listen\",\"listmount\",\"listxattr\",\"listxattrat\",\"llistxattr\",\"_llseek\",\"lremovexattr\",\"lseek\",\"lsetxattr\",\"lstat\",\"lstat64\",\"madvise\",\"map_shadow_stack\",\"membarrier\",\"memfd_create\",\"memfd_secret\",\"mincore\",\"mkdir\",\"mkdirat\",\"mknod\",\"mknodat\",\"mlock\",\"mlock2\",\"mlockall\",\"mmap\",\"mmap2\",\"mprotect\",\"mq_getsetattr\",\"mq_notify\",\"mq_open\",\"mq_timedreceive\",\"mq_timedreceive_time64\",\"mq_timedsend\",\"mq_timedsend_time64\",\"mq_unlink\",\"mremap\",\"mseal\",\"msgctl\",\"msgget\",\"msgrcv\",\"msgsnd\",\"msync\",\"munlock\",\"munlockall\",\"munmap\",\"name_to_handle_at\",\"nanosleep\",\"newfstatat\",\"_newselect\",\"open\",\"openat\",\"openat2\",\"pause\",\"pidfd_open\",\"pidfd_send_signal\",\"pipe\",\"pipe2\",\"pkey_alloc\",\"pkey_free\",\"pkey_mprotect\",\"poll\",\"ppoll\",\"ppoll_time64\",\"prctl\",\"pread64\",\"preadv\",\"preadv2\",\"prlimit64\",\"process_mrelease\",\"pselect6\",\"pselect6_time64\",\"pwrite64\",\"pwritev\",\"pwritev2\",\"read\",\"readahead\",\"readlink\",\"readlinkat\",\"readv\",\"recv\",\"recvfrom\",\"recvmmsg\",\"recvmmsg_time64\",\"recvmsg\",\"remap_file_pages\",\"removexattr\",\"removexattrat\",\"rename\",\"renameat\",\"renameat2\",\"restart_syscall\",\"riscv_hwprobe\",\"rmdir\",\"rseq\",\"rt_sigaction\",\"rt_sigpending\",\"rt_sigprocmask\",\"rt_sigqueueinfo\",\"rt_sigreturn\",\"rt_sigsuspend\",\"rt_sigtimedwait\",\"rt_sigtimedwait_time64\",\"rt_tgsigqueueinfo\",\"sched_getaffinity\",\"sched_getattr\",\"sched_getparam\",\"sched_get_priority_max\",\"sched_get_priority_min\",\"sched_getscheduler\",\"sched_rr_get_interval\",\"sched_rr_get_interval_time64\",\"sched_setaffinity\",\"sched_setattr\",\"sched_setparam\",\"sched_setscheduler\",\"sched_yield\",\"seccomp\",\"select\",\"semctl\",\"semget\",\"semop\",\"semtimedop\",\"semtimedop_time64\",\"send\",\"sendfile\",\"sendfile64\",\"sendmmsg\",\"sendmsg\",\"sendto\",\"setfsgid\",\"setfsgid32\",\"setfsuid\",\"setfsuid32\",\"setgid\",\"setgid32\",\"setgroups\",\"setgroups32\",\"setitimer\",\"setpgid\",\"setpriority\",\"setregid\",\"setregid32\",\"setresgid\",\"setresgid32\",\"setresuid\",\"setresuid32\",\"setreuid\",\"setreuid32\",\"setrlimit\",\"set_robust_list\",\"setsid\",\"setsockopt\",\"set_thread_area\",\"set_tid_address\",\"setuid\",\"setuid32\",\"setxattr\",\"setxattrat\",\"shmat\",\"shmctl\",\"shmdt\",\"shmget\",\"shutdown\",\"sigaltstack\",\"signalfd\",\"signalfd4\",\"sigprocmask\",\"sigreturn\",\"socketcall\",\"socketpair\",\"splice\",\"stat\",\"stat64\",\"statfs\",\"statfs64\",\"statmount\",\"statx\",\"symlink\",\"symlinkat\",\"sync\",\"sync_file_range\",\"syncfs\",\"sysinfo\",\"tee\",\"tgkill\",\"time\",\"timer_create\",\"timer_delete\",\"timer_getoverrun\",\"timer_gettime\",\"timer_gettime64\",\"timer_settime\",\"timer_settime64\",\"timerfd_create\",\"timerfd_gettime\",\"timerfd_gettime64\",\"timerfd_settime\",\"timerfd_settime64\",\"times\",\"tkill\",\"truncate\",\"truncate64\",\"ugetrlimit\",\"umask\",\"uname\",\"unlink\",\"unlinkat\",\"uretprobe\",\"utime\",\"utimensat\",\"utimensat_time64\",\"utimes\",\"vfork\",\"vmsplice\",\"wait4\",\"waitid\",\"waitpid\",\"write\",\"writev\"],\"action\":\"SCMP_ACT_ALLOW\"},{\"names\":[\"process_vm_readv\",\"process_vm_writev\",\"ptrace\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"minKernel\":\"4.8\"}},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":3,\"op\":\"SCMP_CMP_LT\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":7,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":8,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":9,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":10,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":13,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":14,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":15,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":16,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":17,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":18,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":21,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":22,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":24,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":26,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":27,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":28,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":29,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":30,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":31,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":32,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":33,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":35,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":36,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":39,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":41,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":42,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":43,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":44,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"socket\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":45,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":0,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":8,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":131072,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":131080,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"personality\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":4294967295,\"op\":\"SCMP_CMP_EQ\"}]},{\"names\":[\"sync_file_range2\",\"swapcontext\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"ppc64le\"]}},{\"names\":[\"arm_fadvise64_64\",\"arm_sync_file_range\",\"sync_file_range2\",\"breakpoint\",\"cacheflush\",\"set_tls\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"arm\",\"arm64\"]}},{\"names\":[\"arch_prctl\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"amd64\",\"x32\"]}},{\"names\":[\"modify_ldt\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"amd64\",\"x32\",\"x86\"]}},{\"names\":[\"s390_pci_mmio_read\",\"s390_pci_mmio_write\",\"s390_runtime_instr\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"s390\",\"s390x\"]}},{\"names\":[\"riscv_flush_icache\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"arches\":[\"riscv64\"]}},{\"names\":[\"open_by_handle_at\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_DAC_READ_SEARCH\"]}},{\"names\":[\"bpf\",\"clone\",\"clone3\",\"fanotify_init\",\"fsconfig\",\"fsmount\",\"fsopen\",\"fspick\",\"lookup_dcookie\",\"lsm_get_self_attr\",\"lsm_list_modules\",\"lsm_set_self_attr\",\"mount\",\"mount_setattr\",\"move_mount\",\"open_tree\",\"perf_event_open\",\"quotactl\",\"quotactl_fd\",\"setdomainname\",\"sethostname\",\"setns\",\"syslog\",\"umount\",\"umount2\",\"unshare\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_ADMIN\"]}},{\"names\":[\"clone\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":0,\"value\":2114060288,\"op\":\"SCMP_CMP_MASKED_EQ\"}],\"excludes\":{\"caps\":[\"CAP_SYS_ADMIN\"],\"arches\":[\"s390\",\"s390x\"]}},{\"names\":[\"clone\"],\"action\":\"SCMP_ACT_ALLOW\",\"args\":[{\"index\":1,\"value\":2114060288,\"op\":\"SCMP_CMP_MASKED_EQ\"}],\"comment\":\"s390 parameter ordering for clone is different\",\"includes\":{\"arches\":[\"s390\",\"s390x\"]},\"excludes\":{\"caps\":[\"CAP_SYS_ADMIN\"]}},{\"names\":[\"clone3\"],\"action\":\"SCMP_ACT_ERRNO\",\"errnoRet\":38,\"excludes\":{\"caps\":[\"CAP_SYS_ADMIN\"]}},{\"names\":[\"reboot\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_BOOT\"]}},{\"names\":[\"chroot\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_CHROOT\"]}},{\"names\":[\"delete_module\",\"init_module\",\"finit_module\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_MODULE\"]}},{\"names\":[\"acct\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_PACCT\"]}},{\"names\":[\"kcmp\",\"pidfd_getfd\",\"process_madvise\",\"process_vm_readv\",\"process_vm_writev\",\"ptrace\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_PTRACE\"]}},{\"names\":[\"iopl\",\"ioperm\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_RAWIO\"]}},{\"names\":[\"settimeofday\",\"stime\",\"clock_settime\",\"clock_settime64\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_TIME\"]}},{\"names\":[\"vhangup\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_TTY_CONFIG\"]}},{\"names\":[\"get_mempolicy\",\"mbind\",\"set_mempolicy\",\"set_mempolicy_home_node\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYS_NICE\"]}},{\"names\":[\"syslog\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_SYSLOG\"]}},{\"names\":[\"bpf\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_BPF\"]}},{\"names\":[\"perf_event_open\"],\"action\":\"SCMP_ACT_ALLOW\",\"includes\":{\"caps\":[\"CAP_PERFMON\"]}},{\"names\":[\"io_uring_enter\",\"io_uring_register\",\"io_uring_setup\"],\"action\":\"SCMP_ACT_ALLOW\"}]}"
+          ],
+          "UTSMode": "",
+          "UsernsMode": "",
+          "ShmSize": 67108864,
+          "Runtime": "runc",
+          "Isolation": "",
+          "CpuShares": 0,
+          "Memory": 2147483648,
+          "NanoCpus": 1000000000,
+          "CgroupParent": "",
+          "BlkioWeight": 0,
+          "BlkioWeightDevice": [],
+          "BlkioDeviceReadBps": [],
+          "BlkioDeviceWriteBps": [],
+          "BlkioDeviceReadIOps": [],
+          "BlkioDeviceWriteIOps": [],
+          "CpuPeriod": 0,
+          "CpuQuota": 0,
+          "CpuRealtimePeriod": 0,
+          "CpuRealtimeRuntime": 0,
+          "CpusetCpus": "0",
+          "CpusetMems": "",
+          "Devices": [],
+          "DeviceCgroupRules": null,
+          "DeviceRequests": null,
+          "MemoryReservation": 0,
+          "MemorySwap": 2147483648,
+          "MemorySwappiness": null,
+          "OomKillDisable": null,
+          "PidsLimit": null,
+          "Ulimits": [
+            {
+              "Name": "nofile",
+              "Hard": 65535,
+              "Soft": 65535
+            }
+          ],
+          "CpuCount": 0,
+          "CpuPercent": 0,
+          "IOMaximumIOps": 0,
+          "IOMaximumBandwidth": 0,
+          "Mounts": [
+            {
+              "Type": "bind",
+              "Source": "/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/goose-2026-10-22/lead5/isolated-screen",
+              "Target": "/evidence",
+              "ReadOnly": true
+            }
+          ],
+          "MaskedPaths": [
+            "/proc/acpi",
+            "/proc/asound",
+            "/proc/interrupts",
+            "/proc/kcore",
+            "/proc/keys",
+            "/proc/latency_stats",
+            "/proc/sched_debug",
+            "/proc/scsi",
+            "/proc/timer_list",
+            "/proc/timer_stats",
+            "/sys/devices/virtual/powercap",
+            "/sys/firmware"
+          ],
+          "ReadonlyPaths": [
+            "/proc/bus",
+            "/proc/fs",
+            "/proc/irq",
+            "/proc/sys",
+            "/proc/sysrq-trigger"
+          ]
+        },
+        "GraphDriver": {
+          "Data": {
+            "ID": "68753230d5c293832e052d1f321ee41c56b665bef49ecd1cd823ac1f320350ac",
+            "LowerDir": "/var/lib/docker/overlay2/8bcca19857bd5304b41838d20ed6257570e62c2a33be0f1023d9090861891f0f-init/diff:/var/lib/docker/overlay2/x147rubcswa275f41ag311api/diff:/var/lib/docker/overlay2/omp2msezcqr5ca69jaxc9frnz/diff:/var/lib/docker/overlay2/1mwjqtjdpvs3nfga4owlp4lix/diff:/var/lib/docker/overlay2/u4hyvyi0tuimwlu2sxdv7dd41/diff:/var/lib/docker/overlay2/z8mgenqrbshae6oy9pdagx7ci/diff:/var/lib/docker/overlay2/axcptz3c47hgwdfwrh3sazt4l/diff:/var/lib/docker/overlay2/0jcoflasca8na0jp3nszwl8kn/diff:/var/lib/docker/overlay2/8bd0rtxz2ojs9ueq13sa6dqyl/diff:/var/lib/docker/overlay2/pbccsqiaexhj4qa9ne7qwe68q/diff:/var/lib/docker/overlay2/zqjxejbfseh7ohcg84a5jdp48/diff:/var/lib/docker/overlay2/zpfb38dk81mxc2tmosmqqlves/diff:/var/lib/docker/overlay2/e2fd3ea9e88ae61b26964e52fdfa043a1d34db2a27770669909e351194b19d00/diff:/var/lib/docker/overlay2/2384b46cf7fddafea7e6da88f6c88961ccac9f8351644805697a28eed555c106/diff",
+            "MergedDir": "/var/lib/docker/overlay2/8bcca19857bd5304b41838d20ed6257570e62c2a33be0f1023d9090861891f0f/merged",
+            "UpperDir": "/var/lib/docker/overlay2/8bcca19857bd5304b41838d20ed6257570e62c2a33be0f1023d9090861891f0f/diff",
+            "WorkDir": "/var/lib/docker/overlay2/8bcca19857bd5304b41838d20ed6257570e62c2a33be0f1023d9090861891f0f/work"
+          },
+          "Name": "overlay2"
+        },
+        "Mounts": [
+          {
+            "Type": "bind",
+            "Source": "/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/goose-2026-10-22/lead5/isolated-screen",
+            "Destination": "/evidence",
+            "Mode": "",
+            "RW": false,
+            "Propagation": "rprivate"
+          }
+        ],
+        "Config": {
+          "Hostname": "68753230d5c2",
+          "Domainname": "",
+          "User": "root",
+          "AttachStdin": false,
+          "AttachStdout": false,
+          "AttachStderr": false,
+          "Tty": false,
+          "OpenStdin": false,
+          "StdinOnce": false,
+          "Env": [
+            "PATH=/opt/goose/build:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+            "GOOSE_IO_BACKEND=epoll"
+          ],
+          "Cmd": [
+            "sleep",
+            "infinity"
+          ],
+          "Image": "sha256:a69064953b766ec5c800389b8e17a7d184f73aa8dd46cd4aa2048955ee86eb0f",
+          "Volumes": null,
+          "WorkingDir": "/suite/sources/prgoose",
+          "Entrypoint": null,
+          "Labels": {
+            "org.opencontainers.image.version": "24.04"
+          }
+        },
+        "NetworkSettings": {
+          "SandboxID": "5b3a8a899e674244c45c71ca65769c190789bd023b0223ba096892551e937a33",
+          "SandboxKey": "/var/run/docker/netns/5b3a8a899e67",
+          "Ports": {},
+          "Networks": {
+            "bridge": {
+              "IPAMConfig": null,
+              "Links": null,
+              "Aliases": null,
+              "DriverOpts": null,
+              "GwPriority": 0,
+              "NetworkID": "b7e78b3ce9d3985aefa551ced029ca262805bd382e4778e42cd4bee8045f0c20",
+              "EndpointID": "09f1fdf1445a42d5553aac0f9236237cbbcbdf27d1a5066f3e20a3fed1d1e8bc",
+              "Gateway": "172.17.0.1",
+              "IPAddress": "172.17.0.4",
+              "MacAddress": "f2:30:01:a3:11:8a",
+              "IPPrefixLen": 16,
+              "IPv6Gateway": "",
+              "GlobalIPv6Address": "",
+              "GlobalIPv6PrefixLen": 0,
+              "DNSNames": null
+            }
+          }
+        }
+      },
+      "load_inspect_after": {
+        "Id": "835488d3fbd37e6ef592ab1eaa48553aac5d16ae0fe49455cea125a794b8833e",
+        "Created": "2026-10-22T12:16:35.27825951Z",
+        "Path": "sleep",
+        "Args": [
+          "infinity"
+        ],
+        "State": {
+          "Status": "running",
+          "Running": true,
+          "Paused": false,
+          "Restarting": false,
+          "OOMKilled": false,
+          "Dead": false,
+          "Pid": 34237,
+          "ExitCode": 0,
+          "Error": "",
+          "StartedAt": "2026-10-22T12:16:35.417946968Z",
+          "FinishedAt": "0001-01-01T00:00:00Z"
+        },
+        "Image": "sha256:a5e8736dcfaf72bf79c0196a89fe3fd49774916ab7ea4ce06a8a2cdfd3a4b504",
+        "ResolvConfPath": "/var/lib/docker/containers/68753230d5c293832e052d1f321ee41c56b665bef49ecd1cd823ac1f320350ac/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/68753230d5c293832e052d1f321ee41c56b665bef49ecd1cd823ac1f320350ac/hostname",
+        "HostsPath": "/var/lib/docker/containers/68753230d5c293832e052d1f321ee41c56b665bef49ecd1cd823ac1f320350ac/hosts",
+        "LogPath": "",
+        "Name": "/twelve-paired-l-7760a6137bcd-pair01-repeat02-right-baseline",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+          "Binds": null,
+          "ContainerIDFile": "",
+          "LogConfig": {
+            "Type": "local",
+            "Config": {}
+          },
+          "NetworkMode": "container:68753230d5c293832e052d1f321ee41c56b665bef49ecd1cd823ac1f320350ac",
+          "PortBindings": {},
+          "RestartPolicy": {
+            "Name": "no",
+            "MaximumRetryCount": 0
+          },
+          "AutoRemove": false,
+          "VolumeDriver": "",
+          "VolumesFrom": null,
+          "ConsoleSize": [
+            0,
+            0
+          ],
+          "CapAdd": null,
+          "CapDrop": null,
+          "CgroupnsMode": "private",
+          "Dns": null,
+          "DnsOptions": [],
+          "DnsSearch": [],
+          "ExtraHosts": null,
+          "GroupAdd": null,
+          "IpcMode": "private",
+          "Cgroup": "",
+          "Links": null,
+          "OomScoreAdj": 0,
+          "PidMode": "",
+          "Privileged": false,
+          "PublishAllPorts": false,
+          "ReadonlyRootfs": false,
+          "SecurityOpt": null,
+          "UTSMode": "",
+          "UsernsMode": "",
+          "ShmSize": 67108864,
+          "Runtime": "runc",
+          "Isolation": "",
+          "CpuShares": 0,
+          "Memory": 2147483648,
+          "NanoCpus": 2000000000,
+          "CgroupParent": "",
+          "BlkioWeight": 0,
+          "BlkioWeightDevice": [],
+          "BlkioDeviceReadBps": [],
+          "BlkioDeviceWriteBps": [],
+          "BlkioDeviceReadIOps": [],
+          "BlkioDeviceWriteIOps": [],
+          "CpuPeriod": 0,
+          "CpuQuota": 0,
+          "CpuRealtimePeriod": 0,
+          "CpuRealtimeRuntime": 0,
+          "CpusetCpus": "1,2",
+          "CpusetMems": "",
+          "Devices": [],
+          "DeviceCgroupRules": null,
+          "DeviceRequests": null,
+          "MemoryReservation": 0,
+          "MemorySwap": 2147483648,
+          "MemorySwappiness": null,
+          "OomKillDisable": null,
+          "PidsLimit": null,
+          "Ulimits": [
+            {
+              "Name": "nofile",
+              "Hard": 65535,
+              "Soft": 65535
+            }
+          ],
+          "CpuCount": 0,
+          "CpuPercent": 0,
+          "IOMaximumIOps": 0,
+          "IOMaximumBandwidth": 0,
+          "Mounts": [
+            {
+              "Type": "bind",
+              "Source": "/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/goose-2026-10-22/lead5/isolated-screen",
+              "Target": "/evidence",
+              "ReadOnly": true
+            }
+          ],
+          "MaskedPaths": [
+            "/proc/acpi",
+            "/proc/asound",
+            "/proc/interrupts",
+            "/proc/kcore",
+            "/proc/keys",
+            "/proc/latency_stats",
+            "/proc/sched_debug",
+            "/proc/scsi",
+            "/proc/timer_list",
+            "/proc/timer_stats",
+            "/sys/devices/virtual/powercap",
+            "/sys/firmware"
+          ],
+          "ReadonlyPaths": [
+            "/proc/bus",
+            "/proc/fs",
+            "/proc/irq",
+            "/proc/sys",
+            "/proc/sysrq-trigger"
+          ]
+        },
+        "GraphDriver": {
+          "Data": {
+            "ID": "835488d3fbd37e6ef592ab1eaa48553aac5d16ae0fe49455cea125a794b8833e",
+            "LowerDir": "/var/lib/docker/overlay2/e84ffe32993d28317b2dbf7949a458ee4e8e246e0a22fec212bdbab95bf21a26-init/diff:/var/lib/docker/overlay2/u1lvda5ahnw1fri2ohw21n4l7/diff:/var/lib/docker/overlay2/zsvnpoq8le77zo0hoaq84ml5p/diff:/var/lib/docker/overlay2/uibiu8hxvooqy279yxc85u8yu/diff:/var/lib/docker/overlay2/cxq20m50teee3z5x588mkd9zu/diff:/var/lib/docker/overlay2/e2fd3ea9e88ae61b26964e52fdfa043a1d34db2a27770669909e351194b19d00/diff:/var/lib/docker/overlay2/2384b46cf7fddafea7e6da88f6c88961ccac9f8351644805697a28eed555c106/diff",
+            "MergedDir": "/var/lib/docker/overlay2/e84ffe32993d28317b2dbf7949a458ee4e8e246e0a22fec212bdbab95bf21a26/merged",
+            "UpperDir": "/var/lib/docker/overlay2/e84ffe32993d28317b2dbf7949a458ee4e8e246e0a22fec212bdbab95bf21a26/diff",
+            "WorkDir": "/var/lib/docker/overlay2/e84ffe32993d28317b2dbf7949a458ee4e8e246e0a22fec212bdbab95bf21a26/work"
+          },
+          "Name": "overlay2"
+        },
+        "Mounts": [
+          {
+            "Type": "bind",
+            "Source": "/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/goose-2026-10-22/lead5/isolated-screen",
+            "Destination": "/evidence",
+            "Mode": "",
+            "RW": false,
+            "Propagation": "rprivate"
+          }
+        ],
+        "Config": {
+          "Hostname": "68753230d5c2",
+          "Domainname": "",
+          "User": "",
+          "AttachStdin": false,
+          "AttachStdout": false,
+          "AttachStderr": false,
+          "Tty": false,
+          "OpenStdin": false,
+          "StdinOnce": false,
+          "Env": [
+            "PATH=/opt/wrk-clock/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin"
+          ],
+          "Cmd": [
+            "sleep",
+            "infinity"
+          ],
+          "Image": "sha256:a5e8736dcfaf72bf79c0196a89fe3fd49774916ab7ea4ce06a8a2cdfd3a4b504",
+          "Volumes": null,
+          "WorkingDir": "",
+          "Entrypoint": null,
+          "Labels": {
+            "org.opencontainers.image.version": "24.04",
+            "wrk.clock_variant": "monotonic",
+            "wrk.source_package": "4.1.0-4build2"
+          }
+        },
+        "NetworkSettings": {
+          "SandboxID": "",
+          "SandboxKey": "",
+          "Ports": {},
+          "Networks": {}
+        }
+      },
+      "cleanup_exit_code": 0,
+      "cleanup_stderr": ""
+    }
+  ],
+  "warmup_start_skew_s": 0.00989829099853523,
+  "measured_start_skew_s": 0.010909374999755528,
+  "valid": true,
+  "left_right_ratio": 1.0038340157018384,
+  "requested_first_second_ratio": 1.0038340157018384,
+  "aa_symmetric_imbalance": 0.003834015701838389,
+  "aa_cpu_symmetric_imbalance": 0.0,
+  "completed": true,
+  "finished_at": 1792671431.5414982,
+  "evidence_errors": []
+}

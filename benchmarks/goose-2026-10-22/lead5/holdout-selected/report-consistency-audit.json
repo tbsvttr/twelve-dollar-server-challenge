@@ -1,0 +1,17 @@
+{
+  "purpose": "Independent post-render consistency review of completed first holdout UNMET report",
+  "recorded_at": "2026-10-22T13:15:07.790333+00:00",
+  "result_sha256": "77587b0f2a620d05e269276d5c0180ac659ef15ff4c351f169a5e56cd47721d3",
+  "index_sha256": "2f6a58d9341d5ca16aef2230ce269337104eb5f2ded113d2e1e0619615a51711",
+  "primary_summary_sha256": "fcc6590cd3fd4f8d7bb518521d4d8fd434a540a1e1503723d1586996d279a8ae",
+  "independent_audit_sha256": "b9008c2c69581ec350a21b2b77b2f8c9ec455160fbb7dd003de9fe8d55d3afba",
+  "attempt_count": 30,
+  "all30_raw_attempt_links_present": true,
+  "outcome": "UNMET",
+  "audit_passed": true,
+  "target_passed": false,
+  "point_estimate_ci_and7of10_match": true,
+  "all_source_image_binary_controls_preserved": true,
+  "unmeasured_different_reproduction_explicit": true,
+  "passed_all": true
+}

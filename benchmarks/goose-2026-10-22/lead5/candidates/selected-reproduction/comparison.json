@@ -1,0 +1,66 @@
+{
+  "selected_image_id": "sha256:d0a2f1e95817cefd26c9563d86849efff6cb2bb5dc0e2ff733ed7656577ef9ea",
+  "selected_source_sha256": "09e695a0652cc4654e12d5382b423adf75b7ea7c5ef18978313ddff3cc9d13ed",
+  "selected_binary_sha256": "309f1138b9c5d6b404670a8c0eaf1d42c2f96d4fc7e30d7a89f5bff326a5af2e",
+  "reproduction_image_id": "sha256:a1fb183d9156a344210065de176bc64b8219e6c2cd6ff2ac882ea7617cb8430a",
+  "reproduction_source_sha256": "09e695a0652cc4654e12d5382b423adf75b7ea7c5ef18978313ddff3cc9d13ed",
+  "reproduction_binary_sha256": "c4aa7c89126bd854d14d2c3d0fccef9ef8b2523d3d17d683193480abe77f226b",
+  "source_bytes_identical": true,
+  "generated_c_identical": true,
+  "compiler_identical": true,
+  "goose_runtime_identical": true,
+  "sqlite_object_identical": false,
+  "selected_sqlite_object_sha256": "2c5663ef60e2bbc9f87a54f05f8eca1057b64614f5ced6fc34591ed3ef3b2178",
+  "reproduction_sqlite_object_sha256": "56e381b79ad4a29a5b6d5a966cba49da02e7581f98ff0c3eb43d878b51e0dab5",
+  "binary_identical": false,
+  "selected_binary_bytes": 1219344,
+  "reproduction_binary_bytes": 1219320,
+  "binary_size_difference_bytes": -24,
+  "sqlite_profile_function_layout_identical": true,
+  "sqlite_profile_function_records": 1957,
+  "sqlite_profile_dump_differing_lines": 15,
+  "sqlite_profile_feedback_difference_beyond_stamp": true,
+  "interpretation": "Full normal source build succeeds, but is not bit-identical. Fresh profiling contains different execution counters beyond a changed compilation stamp. Selected source/image/binary remain frozen; this independent rebuild is unmeasured and does not replace them.",
+  "profile_comparisons": {
+    "sqlite_pgo_profile_files": [
+      {
+        "path": ".build/sqlite-profile/suite/sources/prgoose/.build/sqlite-pgo.gcda",
+        "selected_sha256": "432cd8a07ba2bb1ed3355d68b608e82404892cdb29a4e9f33e37dba909e3c124",
+        "reproduced_sha256": "49b37d2b8777093c69a98cb3151a63af1affe5314ed520f395e574281530bfb8",
+        "identical": false
+      },
+      {
+        "path": ".build/sqlite-profile/suite/sources/prgoose/.build/sqlite-train-train_sqlite.gcda",
+        "selected_sha256": "901aa253c0af891771604e576b3ed31c3635f5491745fca24c2f07168cd2f06f",
+        "reproduced_sha256": "6f826eba887eb8888ac16e7365a8ebc71fdc542927a07ea33eff0b349b6ee4fd",
+        "identical": false
+      }
+    ],
+    "application_pgo_profile_files": [
+      {
+        "path": ".build/app-profile/suite/sources/prgoose/.build/app-native/app.gcda",
+        "selected_sha256": "90254ea64de3b172737913c5635ade1821642e0237d5e8483c31459b941743cd",
+        "reproduced_sha256": "9f351c7af90e9f1688d95eed0da254f8e088d4a43acecfd2f5c3d79562cb2c10",
+        "identical": false
+      },
+      {
+        "path": ".build/app-profile/suite/sources/prgoose/.build/app-native/db.gcda",
+        "selected_sha256": "58eb87b9e8a0eebd2f30f312058fdd12de09ade73e87bcc57b91d1a2449bd124",
+        "reproduced_sha256": "7ef36b894a0aa33a6bba114b0ebf3fdf26552129a48db25739ed7aa81cc6fef4",
+        "identical": false
+      },
+      {
+        "path": ".build/app-profile/suite/sources/prgoose/.build/app-native/json_fast.gcda",
+        "selected_sha256": "724d92cd78bca5e695117bd6a308afb29144cc57a108dcbebf4e043a7238ab7f",
+        "reproduced_sha256": "c44b54bf630c71fda7bf51ef7bc5922c2e7395c015706d6e6e6ff88decdece4e",
+        "identical": false
+      },
+      {
+        "path": ".build/app-profile/suite/sources/prgoose/.build/app-native/net.gcda",
+        "selected_sha256": "15bfd7beec853d31296e7d786adf13a43a81cf4ba52edb6d137827f8254d7822",
+        "reproduced_sha256": "23a244782ad739ab0149cab5ca0ad35cb0eb5e94f1718f3b6feb90e5df924d2d",
+        "identical": false
+      }
+    ]
+  }
+}

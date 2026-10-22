@@ -1,0 +1,18 @@
+{
+  "source_sha256": "09e695a0652cc4654e12d5382b423adf75b7ea7c5ef18978313ddff3cc9d13ed",
+  "changed_parent_source_files": [
+    "app.goose"
+  ],
+  "invariants": [
+    "Newest20IDselection and span<256 fastpath gate unchanged.",
+    "likes WHEREpost_id>=minimum guarantees nonnegative slot offset; ascendingORDERBY guarantees no selected row follows the first post_id>maximum.",
+    "Above-maximum row is rejected before slot indexing; every query exit resets the prepared statement.",
+    "Omitted in-range IDs retain slot=-1 and do not contribute to selected rows.",
+    "Timestamp ordering, live like counts, sparse fallback, SQLrow selection, JSONoutput and commit-before-flush remain unchanged.",
+    "No database schema/index/result/JWT cache change.",
+    "Verified same legacySQLitePGO object2c566...; fresh four-unit app PGO profiles, production helper/interposer absent."
+  ],
+  "correctness_summary": "../../combined-like-bound/verification-summary.json",
+  "above_max_fixture": "../../combined-like-bound/above-max-checks.json",
+  "passed_all": true
+}

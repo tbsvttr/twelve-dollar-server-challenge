@@ -1,0 +1,14 @@
+{
+  "purpose": "Isolated response header formatter and batched I/O clock optimization; ordinary native app build",
+  "source_sha256": "f532e1578c5d8d9e36505471ae33c22001d98f3a4df0a5538cf701d3945f9308",
+  "source_files": 17,
+  "base_source_sha256": "73148f5d49e07fc62289bf582e261b8df0e1ef51d478d6fb9d44a68fec87b88a",
+  "changed_files": [
+    "net_epoll.inc"
+  ],
+  "sqlite_object_sha256": "2c5663ef60e2bbc9f87a54f05f8eca1057b64614f5ced6fc34591ed3ef3b2178",
+  "status": "built; source/binary/profile proof verified; API/performance gates pending",
+  "image": "twelve-goose-transport:2026-10-22",
+  "image_id": "sha256:43476afd86dfa2255a7dd32be98cf70dcfe844e26aa66d0827a8703998d2a843",
+  "binary_sha256": "33ea866ac37f2f9b28328b7c8271d70178a9efada87a8b9346c41cfa15e7e720"
+}

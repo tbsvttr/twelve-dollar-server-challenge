@@ -1,0 +1,2 @@
+clock-check: /checks/clock_check.c:28: live: Assertion `recv(peer,&ch,1,0)==-1&&(errno==EAGAIN||errno==EWOULDBLOCK)' failed.
+Aborted

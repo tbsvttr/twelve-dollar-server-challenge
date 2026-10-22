@@ -1,0 +1,20 @@
+{
+  "purpose": "Combined SQLite/App PGO correctness gates and case attachment; no throughput workload",
+  "recorded_at": "2026-10-22T12:02:13.901771+00:00",
+  "image_id": "sha256:2797d68fbf424e42b23cfbbbc243b6b026e7dcc4f9ac7748ab0fb883a143cf74",
+  "source_sha256": "27a404880d6357dd853a6731d96c034de59fcb535b5e5b6953cbe04d5ebb203e",
+  "binary_sha256": "d45e5efb4abbe17326d49a7b5f236147a1ec5b5477d774b3ddf80f877314367b",
+  "official_fresh_cases": 2,
+  "official_passed_per_case": 42,
+  "semantic_and_postshutdown_integrity_passed": true,
+  "supplemental_parser_passed": 18,
+  "supplemental_edge_passed": 25,
+  "epoll_backend_confirmed": true,
+  "renamed_case": "combined-sqlite",
+  "renamed_case_verified": true,
+  "previous_verification_records_unchanged": true,
+  "previous_verification_record_count": 8,
+  "previous_verification_canonical_sha256": "facf3235bbaf76d37c13ff1d211c3cd2301d3bd9bdafff7102ac0c44964309aa",
+  "total_isolated_screen_verified_cases": 9,
+  "passed_all": true
+}

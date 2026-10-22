@@ -1,0 +1,21 @@
+{
+  "purpose": "New-campaign app-only candidate; unbuilt/unmeasured, no live source modification",
+  "parent_app_sha256": "1b9d5eaacf03b58be58818197707ac2269e135a4a010bfeb90cc3bbcc4d00509",
+  "candidate_app_sha256": "46494e94c2c6d56ea209f16f1338792b3c540b2c0647c3cda4ecd1bf34d9eb98",
+  "change": "Use ordered likes scan with only SQL lower bound; Goose terminates at first integer post_id greater than the current maximum.",
+  "profile_hypothesis": "sqlite3VdbeRecordCompareWithSkip consumes 3.62% sampled user CPU (3.24% via range_feed); current upper-bound index check compares encoded keys before the output column is decoded again. Let Goose compare its already-decoded integer, avoiding that encoded upper-bound comparison per row. Some adjacent VM/cell work might also disappear; no measured gain claimed.",
+  "invariants": [
+    "Explicit ORDER BY post_id guarantees that no in-range row follows the first row above maximum.",
+    "The lower-bound filter guarantees slot indices cannot be negative; the existing span<256 condition and upper-bound guard preserve the array bound.",
+    "The scan is reset immediately on either intentional upper-bound completion or normal SQLITE_DONE; no SQLite error encountered within the requested range is suppressed.",
+    "Existing newest-ID discovery, current transaction, per-request counts, output ordering and sparse-range fallback are unchanged.",
+    "No rows, counts, responses or tokens are cached, and no schema/index/durability change is involved."
+  ],
+  "validation_needed": [
+    "Goose typecheck, official42, parser18 and edge25 on the exact new image.",
+    "Additional dense-ID fixtures containing many likes ABOVE the selected maximum, to prove early stopping; include timestamp order different from IDs and in-range IDs omitted from newest20.",
+    "SQLite EXPLAIN plan should use the existing covering likes_post_id_idx and no temporary sort.",
+    "One bounded matched screen with unchanged controls, then independent confirmation if the screen clears the predeclared threshold."
+  ],
+  "status": "Prepared statically only; no compiler, server, Docker or benchmark executed."
+}

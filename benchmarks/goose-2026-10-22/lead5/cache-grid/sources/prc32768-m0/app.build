@@ -1,0 +1,11 @@
+c_sources = ["net.c", "db.c", "json_fast.c", ".deps/sqlite3.c"];
+c_include = [".deps"];
+c_flags_cc = ["-O3", "-march=native", "-pthread"];
+c_defines = [
+    "NDEBUG", "SQLITE_THREADSAFE=0", "SQLITE_DEFAULT_MEMSTATUS=0", "SQLITE_DQS=0",
+    "SQLITE_OMIT_LOAD_EXTENSION", "SQLITE_OMIT_DEPRECATED", "SQLITE_OMIT_SHARED_CACHE",
+    "SQLITE_OMIT_PROGRESS_CALLBACK", "SQLITE_LIKE_DOESNT_MATCH_BLOBS", "SQLITE_USE_ALLOCA",
+    "HAVE_FDATASYNC=1"
+];
+c_libs = ["crypto", "m", "pthread"];
+output = "bin/server";

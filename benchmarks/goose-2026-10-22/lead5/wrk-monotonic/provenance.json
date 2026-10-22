@@ -1,0 +1,109 @@
+{
+  "status": "prepared_not_built_or_run",
+  "recorded_at": "2026-10-22T11:37:43.873514+00:00",
+  "load_image": {
+    "tag": "twelve-unified:2026-10-07",
+    "id": "sha256:901ab577025cfdcf7abc716fb4158774615b881383529bb77163b5f07f963898",
+    "architecture": "linux/arm64"
+  },
+  "measured_executable": {
+    "path": "/usr/bin/wrk",
+    "version": "wrk debian/4.1.0-4build2 [epoll]",
+    "package": "wrk",
+    "package_version": "4.1.0-4build2",
+    "architecture": "arm64",
+    "sha256": "55157ab26d15f39e68d80ed3e16240dcdcb1722abf0fa7d74bfd3e20dd50254c",
+    "elf_build_id": "b768847397ae704c772b054c1d70c20aa8c7bec5",
+    "matches_official_package_binary_exactly": true,
+    "clock_imports": [
+      "gettimeofday@GLIBC_2.17"
+    ],
+    "clock_gettime_import_present": false,
+    "disassembly_observation": "Actual executable contains gettimeofday PLT calls followed by seconds*1000000+microseconds arithmetic and unsigned elapsed subtraction."
+  },
+  "retained_alternative_search": {
+    "paths": [
+      "/bench",
+      "/opt",
+      "/usr/local",
+      "/tmp",
+      "/home/bench",
+      "/root"
+    ],
+    "max_depth": 5,
+    "matching_retained_wrk_binaries": [],
+    "scope": "Targeted search; not a complete filesystem inventory."
+  },
+  "source_archives": [
+    {
+      "file": "wrk_4.1.0-4build2.debian.tar.xz",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/w/wrk/wrk_4.1.0-4build2.debian.tar.xz",
+      "bytes": 8216,
+      "sha256": "3bbc69e3f1a50086110632f0e8e329a4240388e2e2477e70087a50f4b644c54e"
+    },
+    {
+      "file": "wrk_4.1.0-4build2.dsc",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/w/wrk/wrk_4.1.0-4build2.dsc",
+      "bytes": 1918,
+      "sha256": "52c2901729d02b1c348be18bf4ebf8a061f07e0dfdb27e2c84aa515235f5d0d2"
+    },
+    {
+      "file": "wrk_4.1.0-4build2_arm64.deb",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/w/wrk/wrk_4.1.0-4build2_arm64.deb",
+      "bytes": 54802,
+      "sha256": "5182faac33f35ec57a9d47d67a10b5a1ca35eb922e4c06bfe8bfa601844405ce"
+    },
+    {
+      "file": "wrk_4.1.0.orig.tar.gz",
+      "url": "https://archive.ubuntu.com/ubuntu/pool/universe/w/wrk/wrk_4.1.0.orig.tar.gz",
+      "bytes": 58494,
+      "sha256": "d8f1ba8b70ae5e10aef63ef4d5b6520bc0da103f7f1c59c79f50e2efd6810f8f"
+    }
+  ],
+  "package_source_provenance": "The .dsc SHA256 and Debian tar SHA256 match the official Ubuntu release announcement; original source tar SHA256 matches that .dsc. Detached PGP signature verification was not performed.",
+  "source_announcement": "https://lists.ubuntu.com/archives/noble-changes/2024-April/034391.html",
+  "upstream_sources": [
+    "https://github.com/wg/wrk/blob/4.1.0/src/wrk.c",
+    "https://github.com/wg/wrk/blob/4.1.0/src/stats.c",
+    "https://github.com/wg/wrk/blob/4.1.0/src/wrk.h"
+  ],
+  "patch": {
+    "file": "monotonic-clock-only.patch",
+    "sha256": "6549324044f8c3d1d619d642f59e0979031f2a7a180d12a21c402b7b00d479c8",
+    "changed_files": [
+      "src/wrk.c"
+    ],
+    "changes": [
+      "include time.h",
+      "time_us uses clock_gettime(CLOCK_MONOTONIC) and converts nanoseconds to microseconds"
+    ],
+    "untouched": [
+      "response_complete timeout accounting",
+      "stats_record histogram limits",
+      "default2000ms timeout",
+      "event-loop scheduling in ae.c",
+      "request generation/scripts/socket behavior",
+      "version string"
+    ]
+  },
+  "code_path": {
+    "latency_start": "src/wrk.c:399",
+    "response_complete": "src/wrk.c:324",
+    "unsigned_delta_timeout": "src/wrk.c:344",
+    "histogram_reject": "src/stats.c:23",
+    "default_timeout": "src/wrk.h:22",
+    "measurement_duration": "src/wrk.c:163"
+  },
+  "semantics": {
+    "timeout_counter": "Completed responses whose unsigned measured latency is outside the configured histogram range increment timeout; the counter is not proof of a socket-level disconnect or elapsed two-second deadline.",
+    "underflow": "A backwards wall-clock step larger than the true request interval makes now-start wrap modulo2^64, above the histogram limit; completed request and byte totals still include that response, while latency statistics omit its rejected sample.",
+    "monotonic_change": "Only request/rate/overall elapsed timestamps change clock domain; actual durations above the same timeout continue to increment the original counter."
+  },
+  "limitations": [
+    "Observed clock steps and short printed maximum latency are consistent with unsigned underflow, but do not prove every historical timeout has this cause. Root is correlating stock-wrk windows with the independent monitor before any new workload.",
+    "The minimal patch leaves ae.c event-loop scheduling on wall time; this is deliberately not a broader event-loop rewrite.",
+    "Rebuilding may change code generation relative to the distro binary. Recipe builds matched stock and monotonic executables with identical compiler/flags/libraries; only src/wrk.c may differ between the matched source trees.",
+    "No compilation, patch application test, or load workload has run for this candidate; source/recipe only."
+  ],
+  "historical_reference": "Pinned Rust submission bench/build_wrk.sh uses the same time_us-only approach on wrk4.2.0. This candidate retains the measured4.1.0 package version instead."
+}

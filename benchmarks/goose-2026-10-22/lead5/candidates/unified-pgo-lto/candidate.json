@@ -1,0 +1,19 @@
+{
+  "purpose": "One PGO feedback scope and full five-unit LTO across generated Goose, transport, adapters, SIMD JSON and SQLite; same approved runtime source/cache/header settings",
+  "source_sha256": "62f77add50ed76f70469cb1b091eb8a4adf74c3a11b754cea1d79a213f9beb73",
+  "source_files": 19,
+  "base_source_sha256": "27a404880d6357dd853a6731d96c034de59fcb535b5e5b6953cbe04d5ebb203e",
+  "changed_files": [
+    "build.sh"
+  ],
+  "application_pgo_enabled": true,
+  "sqlite_pgo_enabled": true,
+  "unified_lto": true,
+  "cache_kib": 8192,
+  "mmap_mib": 0,
+  "training_fixture": "Existing independent synthetic exact-schema HTTP fixtures; no benchmark data",
+  "status": "fresh full unified source build/profiles/LTO/source hashes verified; API/performance gates pending",
+  "image": "twelve-goose-unified-pgo-lto:2026-10-22",
+  "image_id": "sha256:d9b2f230bc0519a85ba0bbab9fe3c92088b31526b845103f86b36cb4f285840a",
+  "binary_sha256": "6f9df673ddf3a9fb4a911777881106f47788e90bfa2f0107d8f843c6f4e5df50"
+}

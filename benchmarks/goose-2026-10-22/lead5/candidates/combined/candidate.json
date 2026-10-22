@@ -1,0 +1,10 @@
+{
+  "source_sha256": "b1642ad34c40bdf7b8af44351375c228aa94ec335e197d9b8026954fb28b3016",
+  "source_file_count": 19,
+  "changes": [
+    "whole application PGO",
+    "fixed response headers and cached per-batch monotonic socket time",
+    "8 MiB SQLite pagecache, mmap disabled"
+  ],
+  "parent_image": "sha256:a69064953b766ec5c800389b8e17a7d184f73aa8dd46cd4aa2048955ee86eb0f"
+}

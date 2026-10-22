@@ -1,0 +1,16 @@
+{
+  "review": "Independent static peer review of strict application-PGO dump helper v2",
+  "schema_literal_identical_to_independently_verified_v1": true,
+  "exact_challenge_schema_verified_in": "../app-pgo/independent-trainer-review.json",
+  "fixture_uses_no_seed_or_presigned_tokens": true,
+  "dump_on_application_main_thread_at_epoll_poll_boundary": true,
+  "signal_handler_only_sets_sig_atomic_t_flag": true,
+  "lost_wakeup_prevented_by_blocking_SIGUSR1_and_atomically_unmasking_in_epoll_pwait": true,
+  "errno_preserved_after_poll": true,
+  "training_driver_forces_epoll_and_drains_committed_responses_before_signal": true,
+  "settle_delay_is_not_used_as_synchronization": true,
+  "helper_is_uninstrumented_and_omitted_from_production_link": true,
+  "production_absence_confirmed_by_saved_image_proof": true,
+  "production_binary_identical_to_v1": true,
+  "scope": "Static review plus immutable saved image proof; no server, container, training or throughput work run by this review."
+}

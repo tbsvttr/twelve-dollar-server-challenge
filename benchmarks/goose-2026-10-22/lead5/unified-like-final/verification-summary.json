@@ -1,0 +1,20 @@
+{
+  "purpose": "Final-form unified-like correctness gates; no performance run",
+  "recorded_at": "2026-10-22T12:30:32.920080+00:00",
+  "image_id": "sha256:156abeecae6919eaf8457b304507c4a97262a911be7882ca60700f8fce58ef24",
+  "source_sha256": "eee8140ae61a30401c20241257344f13d63f401f8398d89d74a2ab00d8f8433f",
+  "binary_sha256": "27fe3cd23b2f62f8b7c022f976d3a119c3f355062e3c149f4749d14651de524e",
+  "official_fresh_cases": 2,
+  "official_passed_per_case": 42,
+  "semantic_and_postshutdown_integrity_passed": true,
+  "supplemental_parser_passed": 18,
+  "supplemental_edge_passed": 25,
+  "above_max_likes_passed": 9,
+  "epoll_backend_confirmed": true,
+  "renamed_case": "unified-like-final",
+  "renamed_case_verified": true,
+  "previous_verification_records_unchanged": true,
+  "previous_verification_record_count": 11,
+  "total_isolated_screen_verified_cases": 12,
+  "passed_all": true
+}

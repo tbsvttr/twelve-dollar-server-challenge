@@ -1,0 +1,19 @@
+{
+  "purpose": "Isolate SQLite PGO feedback collected through actual application HTTP queries on independent synthetic data; app/native compile without PGO",
+  "source_sha256": "ac8ac7b5104ef86ccc15021351e9a510fad584d26d5ea1916166aa114a6f1c60",
+  "source_files": 19,
+  "base_source_sha256": "73148f5d49e07fc62289bf582e261b8df0e1ef51d478d6fb9d44a68fec87b88a",
+  "changed_files": [
+    "build.sh",
+    "install.sh",
+    "bench/train_app.py",
+    "bench/app_pgo_exit.c"
+  ],
+  "application_pgo_enabled": false,
+  "sqlite_app_pgo_enabled": true,
+  "training_fixture": "Independent synthetic exact-schema databases only; no benchmark fixture read or mounted",
+  "status": "built and all source/profile/production-symbol proofs verified; correctness/performance gates pending",
+  "image": "twelve-goose-sqlite-app-pgo:2026-10-22",
+  "image_id": "sha256:ae04186792d89386f10930de6a3e776d1a255ba22a8b3fe6bc291dab79e8b7e1",
+  "binary_sha256": "cd704b7c00bf32b1c1faae03007853fa57c1e061214555a71440157fc072aa97"
+}

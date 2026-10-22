@@ -1,0 +1,45 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 354B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/twelve-goose-final:2026-10-22
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [internal] load build context
+#4 transferring context: 117.38kB 0.0s done
+#4 DONE 0.0s
+
+#5 [1/4] FROM docker.io/library/twelve-goose-final:2026-10-22
+#5 CACHED
+
+#6 [2/4] COPY --chown=bench:bench source /suite/sources/prgoose
+#6 DONE 0.1s
+
+#7 [3/4] WORKDIR /suite/sources/prgoose
+#7 DONE 0.0s
+
+#8 [4/4] RUN GOOSE_BIN=/opt/goose/build/goose GOOSE_REUSE_SQLITE_PGO_SHA256=2c5663ef60e2bbc9f87a54f05f8eca1057b64614f5ced6fc34591ed3ef3b2178 bash build.sh
+#8 0.203 .deps/sqlite.tar.gz: OK
+#8 0.363 parsed ok: 258 top-level declarations, 3 file(s)
+#8 0.363 typechecked ok: 236 specialization(s), 7 struct/1 enum instance(s); optimized -O2: 102 inlined, 0 base case(s), 41 folded, 46 propagated, 0 tail loop(s), 0 reassociated
+#8 0.363 bce: elided 71/120 index and 21/43 slice checks
+#8 0.363 wrote .build/app.c (532910 bytes)
+#8 0.371 /suite/sources/prgoose/.build/sqlite-pgo.o: OK
+#8 7.029 goose runtime df5f78ce88d4
+#8 7.030 gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+#8 7.032 79667eb9c5f42b48d76626dd783800e7358b2eb0bbaf6ec041da509970e9a194  bin/server
+#8 DONE 7.1s
+
+#9 exporting to image
+#9 exporting layers 0.0s done
+#9 writing image sha256:3fa55781702a43d9138a4ff31cd0ab18718fdc6feaa3c67a054368303ce03c6f done
+#9 naming to docker.io/library/twelve-goose-lead5-combined:2026-10-22 done
+#9 DONE 0.1s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/kvy96tusajii2dnk9wwp9qf5m

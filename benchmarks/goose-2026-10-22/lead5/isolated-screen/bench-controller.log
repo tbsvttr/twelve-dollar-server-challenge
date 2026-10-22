@@ -1,0 +1,17 @@
+baseline trial 1: 79,432.28 successful req/s; 35.75 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+transport trial 1: 89,848.09 successful req/s; 37.31 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+82 trial 1: 62,544.82 successful req/s; 45.26 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+sqlite-pgo trial 1: 57,697.01 successful req/s; 34.78 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+cache8 trial 1: 49,849.85 successful req/s; 15.38 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+goose trial 1: 57,037.09 successful req/s; 15.38 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+app-pgo trial 1: 55,224.82 successful req/s; 35.23 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+like-bound trial 1: 67,802.45 successful req/s; 36.19 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+like-bound trial 2: 33,810.82 successful req/s; 33.88 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+sqlite-pgo trial 2: 52,983.99 successful req/s; 34.33 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+cache8 trial 2: 112,904.61 successful req/s; 15.26 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+goose trial 2: 100,900.05 successful req/s; 15.26 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+82 trial 2: 48,966.84 successful req/s; 44.60 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+baseline trial 2: 32,874.33 successful req/s; 33.95 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+app-pgo trial 2: 42,386.73 successful req/s; 34.14 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+transport trial 2: 39,408.47 successful req/s; 34.38 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/goose-2026-10-22/lead5/isolated-screen/measurements.json

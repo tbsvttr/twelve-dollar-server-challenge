@@ -1,0 +1,94 @@
+{
+  "purpose": "Independent static correctness, ownership and protocol review; no build, container, test or load executed",
+  "reviewed_source_sha256": "b1642ad34c40bdf7b8af44351375c228aa94ec335e197d9b8026954fb28b3016",
+  "source_file_count": 19,
+  "image_id": "sha256:3fa55781702a43d9138a4ff31cd0ab18718fdc6feaa3c67a054368303ce03c6f",
+  "binary_sha256": "79667eb9c5f42b48d76626dd783800e7358b2eb0bbaf6ec041da509970e9a194",
+  "baseline_source_sha256": "73148f5d49e07fc62289bf582e261b8df0e1ef51d478d6fb9d44a68fec87b88a",
+  "changed_baseline_files": [
+    "README.md",
+    "build.sh",
+    "db.c",
+    "install.sh",
+    "net_epoll.inc"
+  ],
+  "added_files": [
+    "bench/app_pgo_exit.c",
+    "bench/train_app.py"
+  ],
+  "blocking_findings": [],
+  "checks": [
+    {
+      "area": "frozen identity",
+      "passed": true,
+      "finding": "All nineteen source bytes match the immutable image proof; baseline application Goose, native API header, JSON primitive and io_uring implementation are unchanged."
+    },
+    {
+      "area": "application semantics",
+      "passed": true,
+      "finding": "Routing, JWT claim/error decisions, complete JSON parsing, SQL selection, live like counting, feed ordering/fallback and transaction loop remain in unchanged Goose app SHA1b9d5eaa... . No application SQL moved to C."
+    },
+    {
+      "area": "SQLite config parsing",
+      "passed": true,
+      "finding": "Defaults are 8192 KiB cache and zero mmap. strtoll checks ERANGE, complete consumption and bounds; cache1..524288 KiB and mmap0..4096 MiB fit signed64 arithmetic. Only formatted validated integers enter operational PRAGMA SQL. Invalid config fails startup and cleans the database handle."
+    },
+    {
+      "area": "durability and commit gate",
+      "passed": true,
+      "finding": "WAL/NORMAL, foreign_keys=ON, exclusive locking, 4096-frame post-commit RESTART checkpoint and failed-commit rollback are unchanged. Goose commits before net_flush; failed commits still replace queued application responses with500 before send."
+    },
+    {
+      "area": "caching policy",
+      "passed": true,
+      "finding": "Only SQLite page-cache/mmap policy and reusable transport storage change. There is no application row, result, response or JWT cache. HMAC verification still occurs per authenticated request."
+    },
+    {
+      "area": "native header bounds",
+      "passed": true,
+      "finding": "Status is normalized to100..599; fixed reason literals bound reason length, 3*sizeof(size_t) decimal storage fits every size_t value, header+body overflow is checked before allocation, and full headers/bodies are copied into connection-owned TX storage."
+    },
+    {
+      "area": "native clock/ownership integration",
+      "passed": true,
+      "finding": "Per-batch activity time uses CLOCK_MONOTONIC refreshed at poll entry, after blocking wait and before flush after commit. JWT/creation clocks are unchanged. RX borrow, TX lifetime, partial writes, pipelining and commit gate are unchanged."
+    },
+    {
+      "area": "application PGO lifecycle",
+      "passed": true,
+      "finding": "Independent synthetic exact-schema HTTP training uses the already reviewed flag-only SIGUSR1 helper; epoll_pwait atomically unmasks the signal and dumping occurs on the main thread at a poll boundary. Helper is uninstrumented and omitted from the production link; saved proof confirms no production training symbols."
+    },
+    {
+      "area": "monotonic load guardrails",
+      "passed": true,
+      "finding": "The additional driver patch changes only the time.h include and time_us helper; source inventory differs only atsrc/wrk.c. Counter/histogram/timeout/event-loop source and request script remain unchanged. Both driver variants still count genuine >2-second durations in retained deterministic evidence. All remaining cases use one pinned corrected driver; historical stock results stay separate."
+    },
+    {
+      "area": "historical timeout attribution",
+      "passed": true,
+      "finding": "Protocol explicitly does not attribute every historical timeout to clocks, preserves the26-timeout sample without a >1ms monitor step, retains original errors, and says host scheduling noise remains. ae.c still uses wall time; this is not a complete event-loop clock rewrite."
+    },
+    {
+      "area": "confirmation rules",
+      "passed": true,
+      "finding": "The amendment preserves predeclared45-second confirmation, paired5% geometric mean and one-sided95% log-ratio lower-bound thresholds,9/10 individual5% wins, candidate error prohibition, bounded whole-round retries, p99 condition and immutable historical evidence."
+    }
+  ],
+  "protocol_evidence": {
+    "path": "../../PROTOCOL-monotonic.md",
+    "sha256": "cd94705b618c95367a63b17ef9a54adb30796bbc43de0f652b77a9113e1579b3",
+    "filesystem_last_modified_utc": "2026-10-22T11:46:40.178560+00:00",
+    "first_monotonic_discovery_attempt_utc": "2026-10-22T11:47:14+00:00",
+    "filesystem_declaration_precedes_first_attempt": true,
+    "timing_caveat": "Filesystem timing corroborates the declared sequence; it is not a cryptographic timestamp.",
+    "driver_image_id": "sha256:a5e8736dcfaf72bf79c0196a89fe3fd49774916ab7ea4ce06a8a2cdfd3a4b504",
+    "driver_binary_sha256": "20ec627b07490f94b7d1ed73e16ed64e04d993457ceacf4cb92fd66f93f7cb39",
+    "changed_driver_source_files": [
+      "src/wrk.c"
+    ],
+    "mock_timeout_test_passed": true,
+    "genuine_long_duration_counted_by_both": true
+  },
+  "review_result": "No blocking correctness, ownership, API-regression or protocol guardrail issue found. Performance gains remain a separate measurement question.",
+  "passed_all": true
+}

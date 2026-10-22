@@ -1,0 +1,91 @@
+{
+  "status": "built_verified_no_http_workload_run_by_driver_builder",
+  "recorded_at": "2026-10-22T11:47:55.252384+00:00",
+  "image": "twelve-load-wrk-monotonic:2026-10-22",
+  "image_id": "sha256:a5e8736dcfaf72bf79c0196a89fe3fd49774916ab7ea4ce06a8a2cdfd3a4b504",
+  "binary_path": "/opt/wrk-clock/bin/wrk",
+  "binary_sha256": "20ec627b07490f94b7d1ed73e16ed64e04d993457ceacf4cb92fd66f93f7cb39",
+  "selected_path": "/opt/wrk-clock/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+  "source_package": "4.1.0-4build2",
+  "source_upstream_version": "4.1.0",
+  "base_image": "twelve-unified:2026-10-07",
+  "base_image_id": "sha256:901ab577025cfdcf7abc716fb4158774615b881383529bb77163b5f07f963898",
+  "patch_sha256": "6549324044f8c3d1d619d642f59e0979031f2a7a180d12a21c402b7b00d479c8",
+  "changed_source_files": [
+    "src/wrk.c"
+  ],
+  "stock_wrk_c_sha256": "35598eb21cd21d0b4247ae1d7acbf4492f8cbca92f414ddab0fdfada996867a9",
+  "monotonic_wrk_c_sha256": "e0b1114897d91911d556231666c08c992bddcd2de2b3b8e864a757da7fd33dfa",
+  "stats_c_sha256": "29ed9ac771ac1309137307d26df8a7e56150e79b4655ba915d0dd3e368d612de",
+  "wrk_h_sha256": "e24694a5785238be8e59e256db08a4e2c2cdefe3fe7f61348282b69c3b823b6d",
+  "matched_stock": {
+    "image": "twelve-load-wrk-stock:2026-10-22",
+    "image_id": "sha256:e9ff0779c201efd493adb8f7a38a4d11180ff9061267374cb666b63d698afe54",
+    "binary_path": "/opt/wrk-clock/bin/wrk",
+    "binary_sha256": "443ca5eb3e943666d6e25e3df9d88532ed2df81a95035665a69f1b756d007ead"
+  },
+  "original_stock": {
+    "binary_path": "/usr/bin/wrk",
+    "binary_sha256": "55157ab26d15f39e68d80ed3e16240dcdcb1722abf0fa7d74bfd3e20dd50254c"
+  },
+  "mock_clock_test": {
+    "passed": true,
+    "stock_backwards_delta_us": 18446744073709541616,
+    "monotonic_delta_us": 500,
+    "backward_step_stock_timeouts": 1,
+    "backward_step_monotonic_timeouts": 0,
+    "real_over_two_second_duration_counted_by_both": true,
+    "timeout_logic_unchanged": true,
+    "clock_functions_extracted_from_actual_sources": true,
+    "actual_stats_c_sha256": "29ed9ac771ac1309137307d26df8a7e56150e79b4655ba915d0dd3e368d612de",
+    "timeout_condition_sha256": "889b54c5d5091c8fafff59043dba7ad57c938f0785c480caab74ff43269066c6",
+    "compile_command": [
+      "cc",
+      "-O2",
+      "-std=c99",
+      "-D_POSIX_C_SOURCE=200112L",
+      "-D_DEFAULT_SOURCE",
+      "-I/tmp/wrk-clock-build.9Rxm5G/stock/src",
+      "/output/mock-clock.c",
+      "/tmp/wrk-clock-build.9Rxm5G/stock/src/stats.c",
+      "/tmp/wrk-clock-build.9Rxm5G/stock/src/zmalloc.c",
+      "-pthread",
+      "-lm",
+      "-o",
+      "/output/mock-clock"
+    ],
+    "process_exit_code": 0
+  },
+  "clock_imports": {
+    "stock": [
+      "    46: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND gettimeofday@GLIBC_2.17 (3)",
+      "   871: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND gettimeofday@GLIBC_2.17"
+    ],
+    "monotonic": [
+      "    46: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND gettimeofday@GLIBC_2.17 (3)",
+      "    62: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND clock_gettime@GLIBC_2.17 (3)",
+      "   873: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND gettimeofday@GLIBC_2.17",
+      "   900: 0000000000000000     0 FUNC    GLOBAL DEFAULT  UND clock_gettime@GLIBC_2.17"
+    ]
+  },
+  "runtime_probes_file": "runtime-probes.json",
+  "runtime_probes_sha256": "bc9ee3d417c0f409388ba5475fb574511fb023719fdc2cb77d0e8bf8c86ab9b6",
+  "build_proof_file": "built-monotonic/build-proof.json",
+  "build_proof_sha256": "8ef848520b6cbd1f4c7bc35681ce60481757d2da7b7fb86835e9e9b4635f5bcd",
+  "source_inventory_file": "built-monotonic/source-identities.json",
+  "source_inventory_sha256": "100e84413f8e44b0c3bc5e381ce6c27e795b912d183c29af6c01ee8e23332db1",
+  "recipe_sha256": {
+    "Dockerfile": "ca70c065f419b29cb8ea51070d6e27d2ecfb637341898261445c61dc015e422d",
+    "build.sh": "2213edb3d4920537f73e69fd27f5ce5549b303b1666c5db7590e60f0eb595cc7",
+    "build-images.sh": "27219f3089af007bd8ff3f0a59baf66d9b24aa3996468d0b476bae67cd08ef55",
+    "mock_clock_test.py": "719d170f1c806c439dccf848bad684ccaf8e1fbb41c9bdd8816d51bf4abeebcf"
+  },
+  "limitations": [
+    "This is a source-only clock change between two matched rebuilt variants, not a byte-identical rebuild of the historical Ubuntu binary.",
+    "Object-file bytes differ beyond wrk.o under GCC LTO/debug generation; source inventories, flags and dependencies establish the controlled change. No claim of bit-reproducible objects is made.",
+    "ae.c event-loop scheduling remains on wall time and still imports gettimeofday; the selected monotonic binary additionally imports clock_gettime.",
+    "The deterministic mock proves backward-clock underflow and unchanged real-duration timeout accounting; it does not attribute every historical timeout to clocks. CPU5 monitor had no >1ms offset step during the latest 26-timeout stock sample.",
+    "PGP signature was not independently verified; archive SHA256 identities match the official Ubuntu announcement/source descriptor.",
+    "provenance.json embedded in the images is the preserved preparation-stage record; this runtime-proof.json records completed build/runtime verification."
+  ]
+}

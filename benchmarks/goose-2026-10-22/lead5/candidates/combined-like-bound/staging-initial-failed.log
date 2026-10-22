@@ -1,0 +1,26 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 229B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/sha256:3fa55781702a43d9138a4ff31cd0ab18718fdc6feaa3c67a054368303ce03c6f
+#2 ...
+
+#3 [auth] library/sha256:pull token for registry-1.docker.io
+#3 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/sha256:3fa55781702a43d9138a4ff31cd0ab18718fdc6feaa3c67a054368303ce03c6f
+#2 ERROR: pull access denied, repository does not exist or may require authorization: server message: insufficient_scope: authorization failed
+------
+ > [internal] load metadata for docker.io/library/sha256:3fa55781702a43d9138a4ff31cd0ab18718fdc6feaa3c67a054368303ce03c6f:
+------
+Dockerfile:1
+--------------------
+   1 | >>> FROM sha256:3fa55781702a43d9138a4ff31cd0ab18718fdc6feaa3c67a054368303ce03c6f
+   2 |     COPY --chown=bench:bench source /suite/sources/prgoose
+   3 |     WORKDIR /suite/sources/prgoose
+--------------------
+ERROR: failed to build: failed to solve: sha256:3fa55781702a43d9138a4ff31cd0ab18718fdc6feaa3c67a054368303ce03c6f: failed to resolve source metadata for docker.io/library/sha256:3fa55781702a43d9138a4ff31cd0ab18718fdc6feaa3c67a054368303ce03c6f: pull access denied, repository does not exist or may require authorization: server message: insufficient_scope: authorization failed
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/n4mhjnp1pcjcqql2kcvjrj76v

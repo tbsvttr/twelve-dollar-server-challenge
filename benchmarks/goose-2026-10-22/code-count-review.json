@@ -1,0 +1,9 @@
+{
+  "status": "file-only classification audit passed",
+  "audit_file": "code-count-audit.json",
+  "audit_sha256": "7cfee4df05a009c73c530174b7156291eba00f79ade0f0cddd5bbdcbc90abe85",
+  "app_loc": 2229,
+  "own_loc": 2699,
+  "recorded_manifest_own_loc": 2493,
+  "manifest_unchanged": true
+}

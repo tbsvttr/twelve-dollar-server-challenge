@@ -1,0 +1,293 @@
+{
+  "purpose": "discovery only; all attempts retained",
+  "cases": {
+    "c2000-m1024": {
+      "attempts": 2,
+      "rps": [
+        {
+          "trial": 1,
+          "rps": 84788.7,
+          "http_errors": 0,
+          "socket_errors": {
+            "connect": 0,
+            "read": 0,
+            "write": 0,
+            "timeout": 0
+          },
+          "error": null,
+          "database_valid": true
+        },
+        {
+          "trial": 2,
+          "rps": 54916.99,
+          "http_errors": 0,
+          "socket_errors": {
+            "connect": 0,
+            "read": 0,
+            "write": 0,
+            "timeout": 26
+          },
+          "error": null,
+          "database_valid": true
+        }
+      ],
+      "median_rps_all_completed_attempts": 69852.845,
+      "median_p99_ms_all_completed_attempts": 34.339999999999996,
+      "median_rss_mib": 35.5078125,
+      "paired_geomean_ratio_to_82": 0.9228851648187076,
+      "paired_geomean_ratio_to_baseline": 0.6900533254096766
+    },
+    "c131072-m0": {
+      "attempts": 2,
+      "rps": [
+        {
+          "trial": 1,
+          "rps": 106554.49,
+          "http_errors": 0,
+          "socket_errors": {
+            "connect": 0,
+            "read": 0,
+            "write": 0,
+            "timeout": 0
+          },
+          "error": null,
+          "database_valid": true
+        },
+        {
+          "trial": 2,
+          "rps": 79842.81,
+          "http_errors": 0,
+          "socket_errors": {
+            "connect": 0,
+            "read": 0,
+            "write": 0,
+            "timeout": 0
+          },
+          "error": null,
+          "database_valid": true
+        }
+      ],
+      "median_rps_all_completed_attempts": 93198.65,
+      "median_p99_ms_all_completed_attempts": 24.92,
+      "median_rss_mib": 37.701171875,
+      "paired_geomean_ratio_to_82": 1.2474670917851167,
+      "paired_geomean_ratio_to_baseline": 0.9327474834797653
+    },
+    "82": {
+      "attempts": 2,
+      "rps": [
+        {
+          "trial": 1,
+          "rps": 101907.17,
+          "http_errors": 0,
+          "socket_errors": {
+            "connect": 0,
+            "read": 0,
+            "write": 0,
+            "timeout": 0
+          },
+          "error": null,
+          "database_valid": true
+        },
+        {
+          "trial": 2,
+          "rps": 53646.9,
+          "http_errors": 0,
+          "socket_errors": {
+            "connect": 0,
+            "read": 0,
+            "write": 0,
+            "timeout": 0
+          },
+          "error": null,
+          "database_valid": true
+        }
+      ],
+      "median_rps_all_completed_attempts": 77777.035,
+      "median_p99_ms_all_completed_attempts": 31.5,
+      "median_rss_mib": 45.986328125,
+      "paired_geomean_ratio_to_82": 1.0,
+      "paired_geomean_ratio_to_baseline": 0.7477130977018481
+    },
+    "c131072-m1024": {
+      "attempts": 2,
+      "rps": [
+        {
+          "trial": 1,
+          "rps": 106897.1,
+          "http_errors": 0,
+          "socket_errors": {
+            "connect": 0,
+            "read": 0,
+            "write": 0,
+            "timeout": 0
+          },
+          "error": null,
+          "database_valid": true
+        },
+        {
+          "trial": 2,
+          "rps": 76182.17,
+          "http_errors": 0,
+          "socket_errors": {
+            "connect": 0,
+            "read": 0,
+            "write": 0,
+            "timeout": 0
+          },
+          "error": null,
+          "database_valid": true
+        }
+      ],
+      "median_rps_all_completed_attempts": 91539.63500000001,
+      "median_p99_ms_all_completed_attempts": 25.18,
+      "median_rss_mib": 58.9453125,
+      "paired_geomean_ratio_to_82": 1.2204920223948952,
+      "paired_geomean_ratio_to_baseline": 0.9125778707852804
+    },
+    "c8192-m0": {
+      "attempts": 2,
+      "rps": [
+        {
+          "trial": 1,
+          "rps": 116321.87,
+          "http_errors": 0,
+          "socket_errors": {
+            "connect": 0,
+            "read": 0,
+            "write": 0,
+            "timeout": 0
+          },
+          "error": null,
+          "database_valid": true
+        },
+        {
+          "trial": 2,
+          "rps": 113626.75,
+          "http_errors": 0,
+          "socket_errors": {
+            "connect": 0,
+            "read": 0,
+            "write": 0,
+            "timeout": 0
+          },
+          "error": null,
+          "database_valid": true
+        }
+      ],
+      "median_rps_all_completed_attempts": 114974.31,
+      "median_p99_ms_all_completed_attempts": 23.450000000000003,
+      "median_rss_mib": 15.32421875,
+      "paired_geomean_ratio_to_82": 1.5548779111007418,
+      "paired_geomean_ratio_to_baseline": 1.1626025794573145
+    },
+    "baseline": {
+      "attempts": 2,
+      "rps": [
+        {
+          "trial": 1,
+          "rps": 109633.78,
+          "http_errors": 0,
+          "socket_errors": {
+            "connect": 0,
+            "read": 0,
+            "write": 0,
+            "timeout": 0
+          },
+          "error": null,
+          "database_valid": true
+        },
+        {
+          "trial": 2,
+          "rps": 89193.87,
+          "http_errors": 0,
+          "socket_errors": {
+            "connect": 0,
+            "read": 0,
+            "write": 0,
+            "timeout": 0
+          },
+          "error": null,
+          "database_valid": true
+        }
+      ],
+      "median_rps_all_completed_attempts": 99413.825,
+      "median_p99_ms_all_completed_attempts": 24.43,
+      "median_rss_mib": 38.251953125,
+      "paired_geomean_ratio_to_82": 1.3374113721875067,
+      "paired_geomean_ratio_to_baseline": 1.0
+    },
+    "c32768-m0": {
+      "attempts": 2,
+      "rps": [
+        {
+          "trial": 1,
+          "rps": 117819.0,
+          "http_errors": 0,
+          "socket_errors": {
+            "connect": 0,
+            "read": 0,
+            "write": 0,
+            "timeout": 0
+          },
+          "error": null,
+          "database_valid": true
+        },
+        {
+          "trial": 2,
+          "rps": 66465.13,
+          "http_errors": 0,
+          "socket_errors": {
+            "connect": 0,
+            "read": 0,
+            "write": 0,
+            "timeout": 0
+          },
+          "error": null,
+          "database_valid": true
+        }
+      ],
+      "median_rps_all_completed_attempts": 92142.065,
+      "median_p99_ms_all_completed_attempts": 26.35,
+      "median_rss_mib": 37.615234375,
+      "paired_geomean_ratio_to_82": 1.1968229518224687,
+      "paired_geomean_ratio_to_baseline": 0.8948801967078477
+    },
+    "c32768-m1024": {
+      "attempts": 2,
+      "rps": [
+        {
+          "trial": 1,
+          "rps": 96817.1,
+          "http_errors": 0,
+          "socket_errors": {
+            "connect": 0,
+            "read": 0,
+            "write": 0,
+            "timeout": 0
+          },
+          "error": null,
+          "database_valid": true
+        },
+        {
+          "trial": 2,
+          "rps": 105668.23,
+          "http_errors": 0,
+          "socket_errors": {
+            "connect": 0,
+            "read": 0,
+            "write": 0,
+            "timeout": 0
+          },
+          "error": null,
+          "database_valid": true
+        }
+      ],
+      "median_rps_all_completed_attempts": 101242.66500000001,
+      "median_p99_ms_all_completed_attempts": 24.395,
+      "median_rss_mib": 60.603515625,
+      "paired_geomean_ratio_to_82": 1.367960524798006,
+      "paired_geomean_ratio_to_baseline": 1.0228420015305628
+    }
+  }
+}

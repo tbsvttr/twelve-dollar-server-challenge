@@ -1,0 +1,37 @@
+.deps/sqlite.tar.gz: OK
+parsed ok: 258 top-level declarations, 3 file(s)
+typechecked ok: 236 specialization(s), 7 struct/1 enum instance(s); optimized -O2: 102 inlined, 0 base case(s), 41 folded, 46 propagated, 0 tail loop(s), 0 reassociated
+bce: elided 71/120 index and 21/43 slice checks
+wrote .build/app.c (533191 bytes)
+goose runtime df5f78ce88d4
+gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+51c1572534512add7ae1d02b207439689bb448114bb2c0c6a03451ab5c7a08db  bin/server
+{
+  "exit_code": 0,
+  "elapsed_seconds": 44.56708847900154,
+  "build_uid": 1001,
+  "clean_generated_directories": true,
+  "normal_build": true,
+  "sqlite_object_reuse": false,
+  "limits": {
+    "cpu.max": "100000 100000",
+    "memory.max": "2147483648",
+    "memory.swap.max": "0",
+    "cpuset.cpus.effective": "0-9"
+  },
+  "memory_peak_bytes": 415154176,
+  "memory_events": "low 0\nhigh 0\nmax 0\noom 0\noom_kill 0\noom_group_kill 0\nsock_throttled 0\n",
+  "cpu_stat": "usage_usec 43449180\nuser_usec 42408649\nsystem_usec 1040531\nnice_usec 0\nnr_periods 446\nnr_throttled 139\nthrottled_usec 3760647\nnr_bursts 0\nburst_usec 0\n",
+  "bin/server": {
+    "sha256": "51c1572534512add7ae1d02b207439689bb448114bb2c0c6a03451ab5c7a08db",
+    "bytes": 1220128
+  },
+  ".build/sqlite-pgo.o": {
+    "sha256": "748b6e18c1650c1a0f4d24e2513d55518644ee1639cd33c3eb7205ce753fbec2",
+    "bytes": 1398784
+  },
+  ".build/app.c": {
+    "sha256": "db8330c12e5a06efa7ba925166e8967c5fee516a049f7c9f39389c80e27720a6",
+    "bytes": 533191
+  }
+}

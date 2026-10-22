@@ -1,0 +1,27 @@
+{
+  "candidate_db_sha256": "425bfd09e1729a5578393a61884997104e76eee467434fffb83946c1273429f7",
+  "reference_db_sha256": "43213a121ce787c87a9253ea260765f27e53dadd96e7674186e4064291d2b2b2",
+  "implementation": "Persistent OpenSSL3 EVP_MAC HMAC/SHA256 keyed state; per-token update/final and constant-time signature comparison; same-secret reset; transactional changed-secret replacement; fail-closed crypto errors; owned and cleansed secret; atexit cleanup registered after OpenSSL initialization.",
+  "runtime": "OpenSSL3.0.13 native LinuxARM64",
+  "equivalence_results": "results.json",
+  "equivalence_checks": 139,
+  "sanitizer_log": "sanitizer.log",
+  "sanitizer_exit_code": 0,
+  "sanitizer_calls": {
+    "valid": 10000,
+    "invalid_signature": 10000
+  },
+  "source_api_evidence": [
+    "https://docs.openssl.org/3.0/man3/EVP_MAC/",
+    "https://raw.githubusercontent.com/openssl/openssl/openssl-3.0.13/providers/implementations/macs/hmac_prov.c",
+    "https://raw.githubusercontent.com/openssl/openssl/openssl-3.0.13/crypto/hmac/hmac.c"
+  ],
+  "notes": [
+    "OpenSSL3.0.13 provider hmac_init lines159-171 explicitly reset existing keyed HMAC when key=NULL.",
+    "The cached state contains no token, verification result, user, claim or response.",
+    "Tests isolate crypto with a bounded builder ABI stub; full Goose API gates remain required.",
+    "The old and candidate auth_decode return identical decoded bytes for tested tokens, including NULL/empty, binary and up-to-1MiB secrets.",
+    "Production callbacks must remain serialized as with the server single-thread event loop.",
+    "No end-to-end performance result is claimed by correctness/sanitizer tests."
+  ]
+}

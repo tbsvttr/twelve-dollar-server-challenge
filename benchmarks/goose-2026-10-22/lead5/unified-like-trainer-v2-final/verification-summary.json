@@ -1,0 +1,22 @@
+{
+  "purpose": "Final-form unified-like-v2 correctness gates; no performance run",
+  "recorded_at": "2026-10-22T12:32:58.480180+00:00",
+  "image_id": "sha256:2eb01e5b62c27013ce3374c372e93becc1aa2e63f33293441a78e605aef3fdfb",
+  "source_sha256": "333f9ae3364189cd880ed37f7e491773ffed92be3e2d516ca5eac27aae9d16a4",
+  "binary_sha256": "d39ced515dc58a8ea93b3010f7def21805fffa58e388dfe89211b25de7ed01be",
+  "official_fresh_cases": 2,
+  "official_passed_per_case": 42,
+  "semantic_and_postshutdown_integrity_passed": true,
+  "supplemental_parser_passed": 18,
+  "supplemental_edge_passed": 25,
+  "above_max_likes_passed": 9,
+  "epoll_backend_confirmed": true,
+  "renamed_case": "unified-like-trainer-v2-final",
+  "renamed_case_verified": true,
+  "previous_verification_records_unchanged": true,
+  "previous_verification_record_count": 12,
+  "total_isolated_screen_verified_cases": 13,
+  "actual_feedback_trainer_sha256": "53ba1822774e973253a89dc1bfa32d7948a6a900c5585a3005b634d87f2d92f7",
+  "final_source_trainer_sha256": "fd55841b9ded6df79c0b41d26a81acee1752dea68c1c026f3706d3c4b641bf51",
+  "passed_all": true
+}

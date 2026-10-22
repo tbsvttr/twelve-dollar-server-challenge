@@ -1,0 +1,54 @@
+{
+  "purpose": "Independent file-only consistency review after rendering the completed second holdout; no workloads or renderer execution",
+  "reviewed_at": "2026-10-22T14:05:30.562726+00:00",
+  "passed_all": true,
+  "checks": {
+    "target_is_explicitly_unmet_in_both_outputs": true,
+    "reported_mean_lower_bound_and_consistency_match_frozen_summary": true,
+    "exactly_failed_statistical_gates_are_retained": true,
+    "all_thirty_attempts_in_ten_rounds_retained_without_exclusion": true,
+    "thirty_unique_raw_links_match_every_attempt_exactly": true,
+    "every_attempt_rate_duration_p99_and_zero_errors_match_raw": true,
+    "all_four_error_categories_are_zero_for_all_three_cases": true,
+    "reported_median_rps_p95_p99_rss_cpu_match_raw": true,
+    "normal_build_time_and_peak_memory_match_actual_budget_proof": true,
+    "scope_states_single_server_quota_memory_no_swap_and_external_load": true,
+    "new_selection_is_explicitly_six_sequential_selection_only_runs": true,
+    "local_arm64_scope_does_not_claim_official_x86_k6": true,
+    "first_failed_holdout_is_linked_and_not_pooled": true,
+    "all_first_holdout_artifact_and_auditor_pins_remain_unchanged": true,
+    "all_local_markdown_links_exist": true,
+    "aggregate_complete_passes_evidence_and_preserves_failed_target": true,
+    "renderer_change_since_static_review_is_only_official_semantics_prose": true,
+    "correctness_scopes_distinguish_official_42_from_semantics": true
+  },
+  "issues": [],
+  "missing_links": [],
+  "artifacts": {
+    "holdout-hmac/RESULT.md": "75e561e9d3c60d1cd141f5bc27686dda568b477b7397e7ede527fabe909285a9",
+    "README.md": "aa4fee170c85b74556ad3d92e7750d1c501dae1e14d32ac64c35923d28adabee",
+    "render_next_report.py": "2ed80670e422d5362b1a41ef8cbcfe30716d04aac4f2bd38db40e37bb4fece94",
+    "holdout-hmac/measurements.json": "52e56cecd0b75279b4fa7301d4b561ccef4b06a3452eb6ccbb1c8c2167cc27ab",
+    "holdout-hmac/finalholdout-summary.json": "c4f873838637c4ea99ce8ce3ed187465f1ff1dc23a921db1f60875e71fc51070",
+    "holdout-hmac/independent-audit.json": "d8a3674721e4d96223c102a4af5e2f0e095b99504685a3ec300a81937a29c5a6",
+    "candidates/hmac-budget/resource-budget-build.json": "7fd3a8514f45a11eb69fc323555ee444aee92214eaf1c5028ef5000d4671dffe"
+  },
+  "target_passed": false,
+  "geometric_mean_ratio": 1.1372486251112932,
+  "one_sided_95_percent_lower_ratio": 1.0185352464394157,
+  "pairs_strictly_above_1_05": 8,
+  "normal_build": {
+    "seconds": 44.27598681199743,
+    "peak_cgroup_bytes": 412934144,
+    "limits": {
+      "cpu.max": "100000 100000",
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "cpuset.cpus.effective": "0-9"
+    },
+    "uid": 1001
+  },
+  "limitations": [
+    "This review checks retained local ARM64 evidence and prose; it does not run a new benchmark or establish official x86-64 capacity."
+  ]
+}

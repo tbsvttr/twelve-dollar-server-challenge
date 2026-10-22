@@ -1,0 +1,60 @@
+{
+  "purpose": "Independent STATIC review of staged synthetic trainer-v2 feed/probe semantics",
+  "recorded_at": "2026-10-22T12:16:56.308785+00:00",
+  "trainer_sha256": "31a0fc427bf94ecacdbd3b31c0e9fbe32da517b30f8222534ee9359ee05e7678",
+  "previous_trainer_sha256": "5e618377cda9bf3bfe7d50e227113eeb995bddc90fcc7fcb59f981186171b06e",
+  "checks": [
+    {
+      "area": "exact original schema and diagnostics",
+      "passed": true,
+      "finding": "AST comparison confirms SCHEMA, TEXTS, SECRET, authorization and diagnostics are unchanged. No seed/tokens/golden benchmark files are read; fixture construction uses local constants and independent generators."
+    },
+    {
+      "area": "fixture size and coverage",
+      "passed": true,
+      "finding": "Dense131072posts and variable0..10likes create a database explicitly checked larger than8MiB. Sparse8192posts retain37-IDspacing and the empty case remains separate. Foreign keys and integrity checks cover fixture construction; configured CLI minima prevent a tiny default substitute."
+    },
+    {
+      "area": "live feed targets",
+      "passed": true,
+      "finding": "Workload.recent is populated only by successful parsed HTTPfeed responses, including initial bootstrap. Create-response IDs label created diagnostics but do not independently populate hot targets.80%recent/20%uniformseed selection occurs per targeted read/like, with observed source/kind counts retained."
+    },
+    {
+      "area": "request proportions and users",
+      "passed": true,
+      "finding": "Independent RNG choice0..216 implements100feed/100post/15like/2create weights; request/target selection chooses from existing seed or observed live IDs.256synthetic HMAC tokens correspond to the generated users; no JWT validation or production path is bypassed."
+    },
+    {
+      "area": "pipeline observation order",
+      "passed": true,
+      "finding": "A batch of at most32requests is generated from the latest fully observed feed, then responses are parsed in request order and update state. The bounded batch lag affects training mix only; no deleted targets exist in this workload."
+    },
+    {
+      "area": "fresh deterministic probes",
+      "passed": true,
+      "finding": "Probe-create201 must appear in a subsequent live feed. User1new-like201 and same-user duplicate200 then require exact like_count1 in GETpost and updated feed, proving fresh insertion, duplicate handling and live count traversal."
+    },
+    {
+      "area": "main workload coverage",
+      "passed": true,
+      "finding": "Main coverage is captured before deterministic probes and requires actual feed observations of positive like counts on created posts, plus like:recent:created targets in dense training. The deterministic probe cannot satisfy those main-only coverage assertions."
+    },
+    {
+      "area": "lifecycle and provenance",
+      "passed": true,
+      "finding": "All responses drain before the unchanged approved main-thread SIGUSR1dump helper exits; aftershutdown DBintegrity and counts are checked, disposable directories removed, and metadata preserves request counts, source/fixture sizes, target frequencies and seen created posts."
+    },
+    {
+      "area": "static-only scope",
+      "passed": true,
+      "finding": "This review parsed Python source and compared ASTs only. No database construction, HTTP trainer execution, compilation, profile inspection or throughput workload occurred; existing/live trainers were not changed."
+    }
+  ],
+  "blocking_findings": [],
+  "limitations": [
+    "Correctness of the proposed weighted target selection is established statically; actual branch profiles, request counts, schema/data integrity and production helper absence require the candidate build proof and normal API gates before measurement.",
+    "Training batches intentionally use a feed list up to32requests old. Metadata exposes observed targets rather than asserting an exact realized80/20 frequency.",
+    "The staged docstring/variant labels must be made accurate if this trainer is promoted; no current candidate or live source uses these staged bytes."
+  ],
+  "passed_all": true
+}

@@ -1,0 +1,192 @@
+[
+    {
+        "Id": "984e14b329259eddbbe4ec025d2f5bfbfb08e27b5040813f74a1256b7a9d1f62",
+        "Created": "2026-10-22T12:23:27.875549089Z",
+        "Path": "bash",
+        "Args": [
+            "-x",
+            "build.sh"
+        ],
+        "State": {
+            "Status": "exited",
+            "Running": false,
+            "Paused": false,
+            "Restarting": false,
+            "OOMKilled": false,
+            "Dead": false,
+            "Pid": 0,
+            "ExitCode": 0,
+            "Error": "",
+            "StartedAt": "2026-10-22T12:23:27.936018048Z",
+            "FinishedAt": "2026-10-22T12:24:09.397430595Z"
+        },
+        "Image": "sha256:27181e6dc22849f21fe3c1c57237e1b49a3964c4f84b00ab7030367be7cac3d7",
+        "ResolvConfPath": "/var/lib/docker/containers/984e14b329259eddbbe4ec025d2f5bfbfb08e27b5040813f74a1256b7a9d1f62/resolv.conf",
+        "HostnamePath": "/var/lib/docker/containers/984e14b329259eddbbe4ec025d2f5bfbfb08e27b5040813f74a1256b7a9d1f62/hostname",
+        "HostsPath": "/var/lib/docker/containers/984e14b329259eddbbe4ec025d2f5bfbfb08e27b5040813f74a1256b7a9d1f62/hosts",
+        "LogPath": "",
+        "Name": "/twelve-goose-unified-like-build-20261022",
+        "RestartCount": 0,
+        "Driver": "overlay2",
+        "Platform": "linux",
+        "MountLabel": "",
+        "ProcessLabel": "",
+        "AppArmorProfile": "",
+        "ExecIDs": null,
+        "HostConfig": {
+            "Binds": null,
+            "ContainerIDFile": "",
+            "LogConfig": {
+                "Type": "local",
+                "Config": {}
+            },
+            "NetworkMode": "none",
+            "PortBindings": {},
+            "RestartPolicy": {
+                "Name": "no",
+                "MaximumRetryCount": 0
+            },
+            "AutoRemove": false,
+            "VolumeDriver": "",
+            "VolumesFrom": null,
+            "ConsoleSize": [
+                0,
+                0
+            ],
+            "CapAdd": null,
+            "CapDrop": null,
+            "CgroupnsMode": "private",
+            "Dns": null,
+            "DnsOptions": [],
+            "DnsSearch": [],
+            "ExtraHosts": null,
+            "GroupAdd": null,
+            "IpcMode": "private",
+            "Cgroup": "",
+            "Links": null,
+            "OomScoreAdj": 0,
+            "PidMode": "",
+            "Privileged": false,
+            "PublishAllPorts": false,
+            "ReadonlyRootfs": false,
+            "SecurityOpt": null,
+            "UTSMode": "",
+            "UsernsMode": "",
+            "ShmSize": 67108864,
+            "Runtime": "runc",
+            "Isolation": "",
+            "CpuShares": 0,
+            "Memory": 3221225472,
+            "NanoCpus": 2000000000,
+            "CgroupParent": "",
+            "BlkioWeight": 0,
+            "BlkioWeightDevice": [],
+            "BlkioDeviceReadBps": [],
+            "BlkioDeviceWriteBps": [],
+            "BlkioDeviceReadIOps": [],
+            "BlkioDeviceWriteIOps": [],
+            "CpuPeriod": 0,
+            "CpuQuota": 0,
+            "CpuRealtimePeriod": 0,
+            "CpuRealtimeRuntime": 0,
+            "CpusetCpus": "3,4",
+            "CpusetMems": "",
+            "Devices": [],
+            "DeviceCgroupRules": null,
+            "DeviceRequests": null,
+            "MemoryReservation": 0,
+            "MemorySwap": 3221225472,
+            "MemorySwappiness": null,
+            "OomKillDisable": null,
+            "PidsLimit": null,
+            "Ulimits": null,
+            "CpuCount": 0,
+            "CpuPercent": 0,
+            "IOMaximumIOps": 0,
+            "IOMaximumBandwidth": 0,
+            "MaskedPaths": [
+                "/proc/acpi",
+                "/proc/asound",
+                "/proc/interrupts",
+                "/proc/kcore",
+                "/proc/keys",
+                "/proc/latency_stats",
+                "/proc/sched_debug",
+                "/proc/scsi",
+                "/proc/timer_list",
+                "/proc/timer_stats",
+                "/sys/devices/virtual/powercap",
+                "/sys/firmware"
+            ],
+            "ReadonlyPaths": [
+                "/proc/bus",
+                "/proc/fs",
+                "/proc/irq",
+                "/proc/sys",
+                "/proc/sysrq-trigger"
+            ]
+        },
+        "GraphDriver": {
+            "Data": {
+                "ID": "984e14b329259eddbbe4ec025d2f5bfbfb08e27b5040813f74a1256b7a9d1f62",
+                "LowerDir": "/var/lib/docker/overlay2/e84a11541c4b73d419114597bfde0780d49a89c59b8241f53d82ddef51fb4eb1-init/diff:/var/lib/docker/overlay2/h4h175cbpzqapaimvj6yhd8ii/diff:/var/lib/docker/overlay2/2m3u3p0pjau5n9qs3rd089tue/diff:/var/lib/docker/overlay2/x147rubcswa275f41ag311api/diff:/var/lib/docker/overlay2/omp2msezcqr5ca69jaxc9frnz/diff:/var/lib/docker/overlay2/1mwjqtjdpvs3nfga4owlp4lix/diff:/var/lib/docker/overlay2/u4hyvyi0tuimwlu2sxdv7dd41/diff:/var/lib/docker/overlay2/z8mgenqrbshae6oy9pdagx7ci/diff:/var/lib/docker/overlay2/axcptz3c47hgwdfwrh3sazt4l/diff:/var/lib/docker/overlay2/0jcoflasca8na0jp3nszwl8kn/diff:/var/lib/docker/overlay2/8bd0rtxz2ojs9ueq13sa6dqyl/diff:/var/lib/docker/overlay2/pbccsqiaexhj4qa9ne7qwe68q/diff:/var/lib/docker/overlay2/zqjxejbfseh7ohcg84a5jdp48/diff:/var/lib/docker/overlay2/zpfb38dk81mxc2tmosmqqlves/diff:/var/lib/docker/overlay2/e2fd3ea9e88ae61b26964e52fdfa043a1d34db2a27770669909e351194b19d00/diff:/var/lib/docker/overlay2/2384b46cf7fddafea7e6da88f6c88961ccac9f8351644805697a28eed555c106/diff",
+                "MergedDir": "/var/lib/docker/overlay2/e84a11541c4b73d419114597bfde0780d49a89c59b8241f53d82ddef51fb4eb1/merged",
+                "UpperDir": "/var/lib/docker/overlay2/e84a11541c4b73d419114597bfde0780d49a89c59b8241f53d82ddef51fb4eb1/diff",
+                "WorkDir": "/var/lib/docker/overlay2/e84a11541c4b73d419114597bfde0780d49a89c59b8241f53d82ddef51fb4eb1/work"
+            },
+            "Name": "overlay2"
+        },
+        "Mounts": [],
+        "Config": {
+            "Hostname": "984e14b32925",
+            "Domainname": "",
+            "User": "bench",
+            "AttachStdin": false,
+            "AttachStdout": true,
+            "AttachStderr": true,
+            "Tty": false,
+            "OpenStdin": false,
+            "StdinOnce": false,
+            "Env": [
+                "PATH=/opt/goose/build:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+                "GOOSE_IO_BACKEND=epoll"
+            ],
+            "Cmd": [
+                "bash",
+                "-x",
+                "build.sh"
+            ],
+            "Image": "twelve-goose-unified-like-staged:2026-10-22",
+            "Volumes": null,
+            "WorkingDir": "/suite/sources/prgoose",
+            "Entrypoint": null,
+            "Labels": {
+                "org.opencontainers.image.version": "24.04"
+            }
+        },
+        "NetworkSettings": {
+            "SandboxID": "",
+            "SandboxKey": "",
+            "Ports": {},
+            "Networks": {
+                "none": {
+                    "IPAMConfig": null,
+                    "Links": null,
+                    "Aliases": null,
+                    "DriverOpts": null,
+                    "GwPriority": 0,
+                    "NetworkID": "bd7233eb8543f81569b5f6ac1a8790276b722ee30fb086b0c5ecd77455dca03a",
+                    "EndpointID": "",
+                    "Gateway": "",
+                    "IPAddress": "",
+                    "MacAddress": "",
+                    "IPPrefixLen": 0,
+                    "IPv6Gateway": "",
+                    "GlobalIPv6Address": "",
+                    "GlobalIPv6PrefixLen": 0,
+                    "DNSNames": null
+                }
+            }
+        }
+    }
+]

@@ -1,0 +1,1445 @@
+{
+  "recorded_at": "2026-10-22T14:03:41.097497+00:00",
+  "complete": true,
+  "audit_passed": true,
+  "target_passed": false,
+  "analyzer_matches": true,
+  "analyzer_summary_present": true,
+  "primary_summary_file": "holdout-summary.json",
+  "primary_summary_sha256": "c4f873838637c4ea99ce8ce3ed187465f1ff1dc23a921db1f60875e71fc51070",
+  "primary_comparison_differences": [],
+  "attempts_count": 30,
+  "measurements_sha256": "52e56cecd0b75279b4fa7301d4b561ccef4b06a3452eb6ccbb1c8c2167cc27ab",
+  "analyzer_sha256": "a759420725083ecc24e4a132eeb5633a2849faa8eb21152ca48641e30fa895d1",
+  "reviewed_analyzer_sha256": "a759420725083ecc24e4a132eeb5633a2849faa8eb21152ca48641e30fa895d1",
+  "reviewed_analyzer_unchanged": true,
+  "auditor_sha256": "9508741fae4d336a913b43891f0b1307ab6c792daa050aab08febd1cc53451f8",
+  "analyzer_helper_sha256": "bb308729a6dfbeb33893831ea97681a93c2baf6a7580cb112e76a431975abb8f",
+  "protocol_sha256": "55c3ffccb5d441de481d8d631ff49a64735194ea2fa814759e599b296a50185a",
+  "selection_sha256": "4ea8ee3ee5211e0fb4fefb2747ece18b91c612d1b694393f11085e148ed15472",
+  "computed_statistics": {
+    "attempted_rounds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "selected_rounds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10
+    ],
+    "clean_rounds_available": 10,
+    "excluded_rounds": [],
+    "pending_rounds": [],
+    "invalid_trial_record_indices": [],
+    "rounds_contiguous": true,
+    "paired_rounds": [
+      {
+        "trial": 1,
+        "rps": {
+          "goose": 115939.73,
+          "82": 78990.26,
+          "baseline": 108814.27
+        },
+        "p99_ms": {
+          "goose": 26.82,
+          "82": 25.96,
+          "baseline": 22.8
+        },
+        "candidate_rust_ratio": 1.467772482328834
+      },
+      {
+        "trial": 2,
+        "rps": {
+          "goose": 114092.22,
+          "82": 85960.2,
+          "baseline": 106147.24
+        },
+        "p99_ms": {
+          "goose": 24.58,
+          "82": 25.88,
+          "baseline": 25.25
+        },
+        "candidate_rust_ratio": 1.3272679681992365
+      },
+      {
+        "trial": 3,
+        "rps": {
+          "goose": 116771.41,
+          "baseline": 106932.13,
+          "82": 85046.92
+        },
+        "p99_ms": {
+          "goose": 24.26,
+          "baseline": 26.02,
+          "82": 25.33
+        },
+        "candidate_rust_ratio": 1.3730233852090117
+      },
+      {
+        "trial": 4,
+        "rps": {
+          "82": 108752.77,
+          "goose": 116522.38,
+          "baseline": 104168.07
+        },
+        "p99_ms": {
+          "82": 24.61,
+          "goose": 25.52,
+          "baseline": 26.11
+        },
+        "candidate_rust_ratio": 1.0714428699149456
+      },
+      {
+        "trial": 5,
+        "rps": {
+          "goose": 113174.28,
+          "baseline": 97500.41,
+          "82": 104193.53
+        },
+        "p99_ms": {
+          "goose": 24.13,
+          "baseline": 25.34,
+          "82": 25.77
+        },
+        "candidate_rust_ratio": 1.0861929718668712
+      },
+      {
+        "trial": 6,
+        "rps": {
+          "82": 101750.06,
+          "baseline": 113404.49,
+          "goose": 124384.82
+        },
+        "p99_ms": {
+          "82": 24.09,
+          "baseline": 24.32,
+          "goose": 24.54
+        },
+        "candidate_rust_ratio": 1.2224545125575357
+      },
+      {
+        "trial": 7,
+        "rps": {
+          "82": 112421.82,
+          "baseline": 69879.99,
+          "goose": 83878.52
+        },
+        "p99_ms": {
+          "82": 24.33,
+          "baseline": 23.94,
+          "goose": 25.23
+        },
+        "candidate_rust_ratio": 0.7461053379139387
+      },
+      {
+        "trial": 8,
+        "rps": {
+          "82": 102762.44,
+          "goose": 118321.99,
+          "baseline": 108533.8
+        },
+        "p99_ms": {
+          "82": 26.98,
+          "goose": 25.3,
+          "baseline": 26.57
+        },
+        "candidate_rust_ratio": 1.1514128119184404
+      },
+      {
+        "trial": 9,
+        "rps": {
+          "goose": 118892.31,
+          "82": 114295.94,
+          "baseline": 111919.1
+        },
+        "p99_ms": {
+          "goose": 25.41,
+          "82": 25.23,
+          "baseline": 26.68
+        },
+        "candidate_rust_ratio": 1.040214639295149
+      },
+      {
+        "trial": 10,
+        "rps": {
+          "82": 109984.36,
+          "goose": 117038.02,
+          "baseline": 103779.63
+        },
+        "p99_ms": {
+          "82": 26.59,
+          "goose": 26.63,
+          "baseline": 26.62
+        },
+        "candidate_rust_ratio": 1.0641333004074398
+      }
+    ],
+    "ratios": [
+      1.467772482328834,
+      1.3272679681992365,
+      1.3730233852090117,
+      1.0714428699149456,
+      1.0861929718668712,
+      1.2224545125575357,
+      0.7461053379139387,
+      1.1514128119184404,
+      1.040214639295149,
+      1.0641333004074398
+    ],
+    "geometric_mean_ratio": 1.1372486251112932,
+    "log_ratio_sample_stdev": 0.19018435436950695,
+    "one_sided_95_percent_lower_ratio": 1.0185352464392563,
+    "independent_t9_95_quantile": 1.8331129326562356,
+    "independent_t9_cdf_at_analyzer_constant": 0.9499999999997931,
+    "median_p99_ms": {
+      "goose": 25.265,
+      "baseline": 25.68,
+      "82": 25.549999999999997
+    },
+    "candidate_error_trials": [],
+    "candidate_invalid_attempt_trials": [],
+    "gates": {
+      "ten_clean_rounds": true,
+      "replacement_limit": true,
+      "zero_candidate_errors_in_all_attempts": true,
+      "candidate_valid_in_all_attempts": true,
+      "geometric_mean_at_least_5_percent": true,
+      "one_sided_95_percent_lower_bound_at_least_5_percent": false,
+      "nine_of_ten_pairs_at_least_5_percent": false,
+      "median_p99_within_5_percent_of_rust": true
+    }
+  },
+  "all_attempt_error_totals": {
+    "goose": {
+      "http_errors": 0,
+      "socket_errors": 0,
+      "warmup_http_errors": 0,
+      "warmup_socket_errors": 0,
+      "socket_error_categories": {
+        "connect": 0,
+        "read": 0,
+        "write": 0,
+        "timeout": 0
+      },
+      "warmup_socket_error_categories": {
+        "connect": 0,
+        "read": 0,
+        "write": 0,
+        "timeout": 0
+      }
+    },
+    "82": {
+      "http_errors": 0,
+      "socket_errors": 0,
+      "warmup_http_errors": 0,
+      "warmup_socket_errors": 0,
+      "socket_error_categories": {
+        "connect": 0,
+        "read": 0,
+        "write": 0,
+        "timeout": 0
+      },
+      "warmup_socket_error_categories": {
+        "connect": 0,
+        "read": 0,
+        "write": 0,
+        "timeout": 0
+      }
+    },
+    "baseline": {
+      "http_errors": 0,
+      "socket_errors": 0,
+      "warmup_http_errors": 0,
+      "warmup_socket_errors": 0,
+      "socket_error_categories": {
+        "connect": 0,
+        "read": 0,
+        "write": 0,
+        "timeout": 0
+      },
+      "warmup_socket_error_categories": {
+        "connect": 0,
+        "read": 0,
+        "write": 0,
+        "timeout": 0
+      }
+    }
+  },
+  "unknown_error_counter_attempt_indices": [],
+  "evidence_issues": [],
+  "per_attempt_reviews": [
+    {
+      "trial": 1,
+      "case_id": "goose",
+      "raw": {
+        "requests": 5226718,
+        "duration_s": 45.08,
+        "rps": 115939.73,
+        "p50_ms": 0.375,
+        "p95_ms": 18.113,
+        "p99_ms": 26.82,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 115939.73
+      },
+      "warmup": {
+        "requests": 223855,
+        "duration_s": 2.08,
+        "rps": 107573.83,
+        "p50_ms": 0.38,
+        "p95_ms": 81.196,
+        "p99_ms": 182.46,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 107573.83
+      },
+      "issues": [],
+      "evidence_issues": []
+    },
+    {
+      "trial": 1,
+      "case_id": "82",
+      "raw": {
+        "requests": 3558759,
+        "duration_s": 45.05,
+        "rps": 78990.26,
+        "p50_ms": 0.486,
+        "p95_ms": 11.668,
+        "p99_ms": 25.96,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 78990.26
+      },
+      "warmup": {
+        "requests": 160558,
+        "duration_s": 2.09,
+        "rps": 76642.8,
+        "p50_ms": 0.522,
+        "p95_ms": 291.184,
+        "p99_ms": 398.41,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 76642.8
+      },
+      "issues": [],
+      "evidence_issues": []
+    },
+    {
+      "trial": 1,
+      "case_id": "baseline",
+      "raw": {
+        "requests": 4905735,
+        "duration_s": 45.08,
+        "rps": 108814.27,
+        "p50_ms": 0.446,
+        "p95_ms": 13.383,
+        "p99_ms": 22.8,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 108814.27
+      },
+      "warmup": {
+        "requests": 220522,
+        "duration_s": 2.1,
+        "rps": 105249.59,
+        "p50_ms": 0.439,
+        "p95_ms": 21.327,
+        "p99_ms": 105.87,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 105249.59
+      },
+      "issues": [],
+      "evidence_issues": []
+    },
+    {
+      "trial": 2,
+      "case_id": "goose",
+      "raw": {
+        "requests": 5141226,
+        "duration_s": 45.06,
+        "rps": 114092.22,
+        "p50_ms": 0.381,
+        "p95_ms": 15.662,
+        "p99_ms": 24.58,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 114092.22
+      },
+      "warmup": {
+        "requests": 234011,
+        "duration_s": 2.08,
+        "rps": 112446.31,
+        "p50_ms": 0.381,
+        "p95_ms": 21.091,
+        "p99_ms": 91.37,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 112446.31
+      },
+      "issues": [],
+      "evidence_issues": []
+    },
+    {
+      "trial": 2,
+      "case_id": "82",
+      "raw": {
+        "requests": 3870316,
+        "duration_s": 45.02,
+        "rps": 85960.2,
+        "p50_ms": 0.47800000000000004,
+        "p95_ms": 11.986,
+        "p99_ms": 25.88,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 85960.2
+      },
+      "warmup": {
+        "requests": 212318,
+        "duration_s": 2.08,
+        "rps": 102130.71,
+        "p50_ms": 0.456,
+        "p95_ms": 19.508,
+        "p99_ms": 90.68,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 102130.71
+      },
+      "issues": [],
+      "evidence_issues": []
+    },
+    {
+      "trial": 2,
+      "case_id": "baseline",
+      "raw": {
+        "requests": 4784841,
+        "duration_s": 45.08,
+        "rps": 106147.24,
+        "p50_ms": 0.455,
+        "p95_ms": 15.473,
+        "p99_ms": 25.25,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 106147.24
+      },
+      "warmup": {
+        "requests": 204650,
+        "duration_s": 2.08,
+        "rps": 98317.58,
+        "p50_ms": 0.47400000000000003,
+        "p95_ms": 24.071,
+        "p99_ms": 106.15,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 98317.58
+      },
+      "issues": [],
+      "evidence_issues": []
+    },
+    {
+      "trial": 3,
+      "case_id": "goose",
+      "raw": {
+        "requests": 5264856,
+        "duration_s": 45.09,
+        "rps": 116771.41,
+        "p50_ms": 0.372,
+        "p95_ms": 15.623,
+        "p99_ms": 24.26,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 116771.41
+      },
+      "warmup": {
+        "requests": 211178,
+        "duration_s": 2.09,
+        "rps": 101256.92,
+        "p50_ms": 0.405,
+        "p95_ms": 52.106,
+        "p99_ms": 151.68,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 101256.92
+      },
+      "issues": [],
+      "evidence_issues": []
+    },
+    {
+      "trial": 3,
+      "case_id": "baseline",
+      "raw": {
+        "requests": 4820781,
+        "duration_s": 45.08,
+        "rps": 106932.13,
+        "p50_ms": 0.45,
+        "p95_ms": 16.428,
+        "p99_ms": 26.02,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 106932.13
+      },
+      "warmup": {
+        "requests": 193944,
+        "duration_s": 2.08,
+        "rps": 93163.79,
+        "p50_ms": 0.468,
+        "p95_ms": 113.792,
+        "p99_ms": 215.52,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 93163.79
+      },
+      "issues": [],
+      "evidence_issues": []
+    },
+    {
+      "trial": 3,
+      "case_id": "82",
+      "raw": {
+        "requests": 3829213,
+        "duration_s": 45.02,
+        "rps": 85046.92,
+        "p50_ms": 0.481,
+        "p95_ms": 11.63,
+        "p99_ms": 25.33,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 85046.92
+      },
+      "warmup": {
+        "requests": 209693,
+        "duration_s": 2.09,
+        "rps": 100323.71,
+        "p50_ms": 0.463,
+        "p95_ms": 21.603,
+        "p99_ms": 102.06,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 100323.71
+      },
+      "issues": [],
+      "evidence_issues": []
+    },
+    {
+      "trial": 4,
+      "case_id": "82",
+      "raw": {
+        "requests": 4900503,
+        "duration_s": 45.06,
+        "rps": 108752.77,
+        "p50_ms": 0.441,
+        "p95_ms": 15.038,
+        "p99_ms": 24.61,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 108752.77
+      },
+      "warmup": {
+        "requests": 178134,
+        "duration_s": 2.05,
+        "rps": 86846.42,
+        "p50_ms": 0.47400000000000003,
+        "p95_ms": 43.059,
+        "p99_ms": 143.28,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 86846.42
+      },
+      "issues": [],
+      "evidence_issues": []
+    },
+    {
+      "trial": 4,
+      "case_id": "goose",
+      "raw": {
+        "requests": 5250597,
+        "duration_s": 45.06,
+        "rps": 116522.38,
+        "p50_ms": 0.376,
+        "p95_ms": 16.882,
+        "p99_ms": 25.52,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 116522.38
+      },
+      "warmup": {
+        "requests": 224801,
+        "duration_s": 2.08,
+        "rps": 107910.76,
+        "p50_ms": 0.395,
+        "p95_ms": 21.789,
+        "p99_ms": 81.78,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 107910.76
+      },
+      "issues": [],
+      "evidence_issues": []
+    },
+    {
+      "trial": 4,
+      "case_id": "baseline",
+      "raw": {
+        "requests": 4696881,
+        "duration_s": 45.09,
+        "rps": 104168.07,
+        "p50_ms": 0.463,
+        "p95_ms": 16.12,
+        "p99_ms": 26.11,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 104168.07
+      },
+      "warmup": {
+        "requests": 199611,
+        "duration_s": 2.08,
+        "rps": 95753.18,
+        "p50_ms": 0.483,
+        "p95_ms": 24.276,
+        "p99_ms": 114.02,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 95753.18
+      },
+      "issues": [],
+      "evidence_issues": []
+    },
+    {
+      "trial": 5,
+      "case_id": "goose",
+      "raw": {
+        "requests": 5101265,
+        "duration_s": 45.07,
+        "rps": 113174.28,
+        "p50_ms": 0.384,
+        "p95_ms": 15.076,
+        "p99_ms": 24.13,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 113174.28
+      },
+      "warmup": {
+        "requests": 218208,
+        "duration_s": 2.08,
+        "rps": 104809.18,
+        "p50_ms": 0.40700000000000003,
+        "p95_ms": 23.873,
+        "p99_ms": 115.7,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 104809.18
+      },
+      "issues": [],
+      "evidence_issues": []
+    },
+    {
+      "trial": 5,
+      "case_id": "baseline",
+      "raw": {
+        "requests": 4397293,
+        "duration_s": 45.1,
+        "rps": 97500.41,
+        "p50_ms": 0.461,
+        "p95_ms": 14.503,
+        "p99_ms": 25.34,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 97500.41
+      },
+      "warmup": {
+        "requests": 56598,
+        "duration_s": 2.05,
+        "rps": 27602.75,
+        "p50_ms": 1.68,
+        "p95_ms": 42.276,
+        "p99_ms": 114.84,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 27602.75
+      },
+      "issues": [],
+      "evidence_issues": []
+    },
+    {
+      "trial": 5,
+      "case_id": "82",
+      "raw": {
+        "requests": 4698224,
+        "duration_s": 45.09,
+        "rps": 104193.53,
+        "p50_ms": 0.425,
+        "p95_ms": 15.243,
+        "p99_ms": 25.77,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 104193.53
+      },
+      "warmup": {
+        "requests": 224959,
+        "duration_s": 2.09,
+        "rps": 107768.4,
+        "p50_ms": 0.421,
+        "p95_ms": 22.942,
+        "p99_ms": 97.71,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 107768.4
+      },
+      "issues": [],
+      "evidence_issues": []
+    },
+    {
+      "trial": 6,
+      "case_id": "82",
+      "raw": {
+        "requests": 4588839,
+        "duration_s": 45.1,
+        "rps": 101750.06,
+        "p50_ms": 0.437,
+        "p95_ms": 13.383,
+        "p99_ms": 24.09,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 101750.06
+      },
+      "warmup": {
+        "requests": 217588,
+        "duration_s": 2.08,
+        "rps": 104526.5,
+        "p50_ms": 0.437,
+        "p95_ms": 42.083,
+        "p99_ms": 139.43,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 104526.5
+      },
+      "issues": [],
+      "evidence_issues": []
+    },
+    {
+      "trial": 6,
+      "case_id": "baseline",
+      "raw": {
+        "requests": 5111148,
+        "duration_s": 45.07,
+        "rps": 113404.49,
+        "p50_ms": 0.421,
+        "p95_ms": 15.239,
+        "p99_ms": 24.32,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 113404.49
+      },
+      "warmup": {
+        "requests": 218596,
+        "duration_s": 2.09,
+        "rps": 104733.45,
+        "p50_ms": 0.434,
+        "p95_ms": 22.432,
+        "p99_ms": 95.14,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 104733.45
+      },
+      "issues": [],
+      "evidence_issues": []
+    },
+    {
+      "trial": 6,
+      "case_id": "goose",
+      "raw": {
+        "requests": 5608887,
+        "duration_s": 45.09,
+        "rps": 124384.82,
+        "p50_ms": 0.341,
+        "p95_ms": 16.597,
+        "p99_ms": 24.54,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 124384.82
+      },
+      "warmup": {
+        "requests": 222896,
+        "duration_s": 2.09,
+        "rps": 106800.83,
+        "p50_ms": 0.37,
+        "p95_ms": 139.521,
+        "p99_ms": 243.35,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 106800.83
+      },
+      "issues": [],
+      "evidence_issues": []
+    },
+    {
+      "trial": 7,
+      "case_id": "82",
+      "raw": {
+        "requests": 5069787,
+        "duration_s": 45.1,
+        "rps": 112421.82,
+        "p50_ms": 0.421,
+        "p95_ms": 14.825,
+        "p99_ms": 24.33,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 112421.82
+      },
+      "warmup": {
+        "requests": 224335,
+        "duration_s": 2.09,
+        "rps": 107579.19,
+        "p50_ms": 0.41400000000000003,
+        "p95_ms": 49.954,
+        "p99_ms": 148.47,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 107579.19
+      },
+      "issues": [],
+      "evidence_issues": []
+    },
+    {
+      "trial": 7,
+      "case_id": "baseline",
+      "raw": {
+        "requests": 3148598,
+        "duration_s": 45.06,
+        "rps": 69879.99,
+        "p50_ms": 0.589,
+        "p95_ms": 8.738,
+        "p99_ms": 23.94,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 69879.99
+      },
+      "warmup": {
+        "requests": 222191,
+        "duration_s": 2.09,
+        "rps": 106425.55,
+        "p50_ms": 0.421,
+        "p95_ms": 42.279,
+        "p99_ms": 140.97,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 106425.55
+      },
+      "issues": [],
+      "evidence_issues": []
+    },
+    {
+      "trial": 7,
+      "case_id": "goose",
+      "raw": {
+        "requests": 3780197,
+        "duration_s": 45.07,
+        "rps": 83878.52,
+        "p50_ms": 0.45,
+        "p95_ms": 12.95,
+        "p99_ms": 25.23,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 83878.52
+      },
+      "warmup": {
+        "requests": 143312,
+        "duration_s": 2.08,
+        "rps": 68799.45,
+        "p50_ms": 0.512,
+        "p95_ms": 85.209,
+        "p99_ms": 188.98,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 68799.45
+      },
+      "issues": [],
+      "evidence_issues": []
+    },
+    {
+      "trial": 8,
+      "case_id": "82",
+      "raw": {
+        "requests": 4632990,
+        "duration_s": 45.08,
+        "rps": 102762.44,
+        "p50_ms": 0.459,
+        "p95_ms": 16.598,
+        "p99_ms": 26.98,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 102762.44
+      },
+      "warmup": {
+        "requests": 205356,
+        "duration_s": 2.08,
+        "rps": 98868.12,
+        "p50_ms": 0.468,
+        "p95_ms": 18.376,
+        "p99_ms": 48.59,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 98868.12
+      },
+      "issues": [],
+      "evidence_issues": []
+    },
+    {
+      "trial": 8,
+      "case_id": "goose",
+      "raw": {
+        "requests": 5335280,
+        "duration_s": 45.09,
+        "rps": 118321.99,
+        "p50_ms": 0.365,
+        "p95_ms": 16.794,
+        "p99_ms": 25.3,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 118321.99
+      },
+      "warmup": {
+        "requests": 211745,
+        "duration_s": 2.08,
+        "rps": 101942.32,
+        "p50_ms": 0.404,
+        "p95_ms": 42.443,
+        "p99_ms": 142.45,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 101942.32
+      },
+      "issues": [],
+      "evidence_issues": []
+    },
+    {
+      "trial": 8,
+      "case_id": "baseline",
+      "raw": {
+        "requests": 4894429,
+        "duration_s": 45.1,
+        "rps": 108533.8,
+        "p50_ms": 0.437,
+        "p95_ms": 16.792,
+        "p99_ms": 26.57,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 108533.8
+      },
+      "warmup": {
+        "requests": 221326,
+        "duration_s": 2.09,
+        "rps": 105828.84,
+        "p50_ms": 0.43,
+        "p95_ms": 24.421,
+        "p99_ms": 107.1,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 105828.84
+      },
+      "issues": [],
+      "evidence_issues": []
+    },
+    {
+      "trial": 9,
+      "case_id": "goose",
+      "raw": {
+        "requests": 5360775,
+        "duration_s": 45.09,
+        "rps": 118892.31,
+        "p50_ms": 0.363,
+        "p95_ms": 17.115,
+        "p99_ms": 25.41,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 118892.31
+      },
+      "warmup": {
+        "requests": 202342,
+        "duration_s": 2.08,
+        "rps": 97096.12,
+        "p50_ms": 0.41100000000000003,
+        "p95_ms": 122.681,
+        "p99_ms": 225.09,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 97096.12
+      },
+      "issues": [],
+      "evidence_issues": []
+    },
+    {
+      "trial": 9,
+      "case_id": "82",
+      "raw": {
+        "requests": 5149892,
+        "duration_s": 45.06,
+        "rps": 114295.94,
+        "p50_ms": 0.41500000000000004,
+        "p95_ms": 16.139,
+        "p99_ms": 25.23,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 114295.94
+      },
+      "warmup": {
+        "requests": 225571,
+        "duration_s": 2.08,
+        "rps": 108382.83,
+        "p50_ms": 0.418,
+        "p95_ms": 23.959,
+        "p99_ms": 109.42,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 108382.83
+      },
+      "issues": [],
+      "evidence_issues": []
+    },
+    {
+      "trial": 9,
+      "case_id": "baseline",
+      "raw": {
+        "requests": 5045234,
+        "duration_s": 45.08,
+        "rps": 111919.1,
+        "p50_ms": 0.426,
+        "p95_ms": 17.084,
+        "p99_ms": 26.68,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 111919.1
+      },
+      "warmup": {
+        "requests": 215730,
+        "duration_s": 2.08,
+        "rps": 103754.36,
+        "p50_ms": 0.442,
+        "p95_ms": 19.01,
+        "p99_ms": 50.18,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 103754.36
+      },
+      "issues": [],
+      "evidence_issues": []
+    },
+    {
+      "trial": 10,
+      "case_id": "82",
+      "raw": {
+        "requests": 4956602,
+        "duration_s": 45.07,
+        "rps": 109984.36,
+        "p50_ms": 0.428,
+        "p95_ms": 16.939,
+        "p99_ms": 26.59,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 109984.36
+      },
+      "warmup": {
+        "requests": 225521,
+        "duration_s": 2.08,
+        "rps": 108425.54,
+        "p50_ms": 0.427,
+        "p95_ms": 19.59,
+        "p99_ms": 54.85,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 108425.54
+      },
+      "issues": [],
+      "evidence_issues": []
+    },
+    {
+      "trial": 10,
+      "case_id": "goose",
+      "raw": {
+        "requests": 5276401,
+        "duration_s": 45.08,
+        "rps": 117038.02,
+        "p50_ms": 0.368,
+        "p95_ms": 17.96,
+        "p99_ms": 26.63,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 117038.02
+      },
+      "warmup": {
+        "requests": 245217,
+        "duration_s": 2.08,
+        "rps": 117738.14,
+        "p50_ms": 0.362,
+        "p95_ms": 18.907,
+        "p99_ms": 53.2,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 117738.14
+      },
+      "issues": [],
+      "evidence_issues": []
+    },
+    {
+      "trial": 10,
+      "case_id": "baseline",
+      "raw": {
+        "requests": 4680292,
+        "duration_s": 45.1,
+        "rps": 103779.63,
+        "p50_ms": 0.461,
+        "p95_ms": 16.609,
+        "p99_ms": 26.62,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 103779.63
+      },
+      "warmup": {
+        "requests": 218485,
+        "duration_s": 2.08,
+        "rps": 105071.48,
+        "p50_ms": 0.449,
+        "p95_ms": 18.262,
+        "p99_ms": 39.85,
+        "http_errors": 0,
+        "socket_errors": {
+          "connect": 0,
+          "read": 0,
+          "write": 0,
+          "timeout": 0
+        },
+        "successful_rps": 105071.48
+      },
+      "issues": [],
+      "evidence_issues": []
+    }
+  ],
+  "static_method_review": {
+    "log_ratio_geometric_mean": true,
+    "sample_standard_deviation_n_minus_one": true,
+    "one_sided_t9_95_quantile_independently_derived": true,
+    "first_ten_clean_complete_triplets": true,
+    "maximum_two_whole_replacement_rounds": true,
+    "all_candidate_attempts_error_and_validity_gate": true,
+    "individual_exceedance_strictly_greater_than_1_05": true,
+    "median_p99_candidate_le_1_05_times_rust": true,
+    "low_throughput_never_an_exclusion_reason": true
+  },
+  "limitations": [
+    "This audit reads local evidence only; live Docker/host settings are not probed.",
+    "Source/profile/driver/correctness identity proofs are audited independently by the handler agent.",
+    "The predeclared Student-t interval treats ten paired log ratios as independent approximately normal observations; noisy host scheduling or temporal correlation may weaken coverage.",
+    "A successful audit can report target_passed=false; accurate reporting is distinct from meeting the 5% target.",
+    "Partial data are not a final target claim. No stopping or round selection is based on these interim values."
+  ]
+}

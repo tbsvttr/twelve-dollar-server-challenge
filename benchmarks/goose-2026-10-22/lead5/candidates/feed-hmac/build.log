@@ -1,0 +1,36 @@
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 348B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/twelve-goose-combined-like-bound:2026-10-22
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [internal] load build context
+#4 transferring context: 120.40kB done
+#4 DONE 0.0s
+
+#5 [1/4] FROM docker.io/library/twelve-goose-combined-like-bound:2026-10-22
+#5 DONE 0.0s
+
+#6 [2/4] COPY --chown=bench:bench source /suite/sources/prgoose
+#6 DONE 0.0s
+
+#7 [3/4] WORKDIR /suite/sources/prgoose
+#7 DONE 0.0s
+
+#8 [4/4] RUN GOOSE_REUSE_SQLITE_PGO_SHA256=2c5663ef60e2bbc9f87a54f05f8eca1057b64614f5ced6fc34591ed3ef3b2178 bash build.sh > .build/feed-hmac-build.log 2>&1
+#8 DONE 6.3s
+
+#9 exporting to image
+#9 exporting layers 0.0s done
+#9 writing image sha256:65583483e06c442bb34bed51560d93b4c9690ca85c46b56caea92a3dbf3d1421 done
+#9 naming to docker.io/library/twelve-goose-feed-hmac:2026-10-22 done
+#9 DONE 0.0s
+
+View build details: docker-desktop://dashboard/build/desktop-linux/desktop-linux/1b4my7rcpk10of9kxlzyaw7bi

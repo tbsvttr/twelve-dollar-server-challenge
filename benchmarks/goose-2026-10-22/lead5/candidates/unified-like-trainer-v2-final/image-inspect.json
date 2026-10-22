@@ -1,0 +1,67 @@
+{
+  "Id": "sha256:2eb01e5b62c27013ce3374c372e93becc1aa2e63f33293441a78e605aef3fdfb",
+  "RepoTags": [
+    "twelve-goose-unified-like-trainer-v2-final:2026-10-22"
+  ],
+  "RepoDigests": [],
+  "Comment": "buildkit.dockerfile.v0",
+  "Created": "2026-10-22T12:29:45.09430125Z",
+  "Config": {
+    "User": "root",
+    "Env": [
+      "PATH=/opt/goose/build:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+      "GOOSE_IO_BACKEND=epoll"
+    ],
+    "Cmd": [
+      "bash",
+      "-c",
+      "set -e\nrm -rf .build bin\nexec bash -x build.sh"
+    ],
+    "WorkingDir": "/suite/sources/prgoose",
+    "Labels": {
+      "desktop.docker.io/mounts/0/Source": "/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/unified-comparison-2026-10-07",
+      "desktop.docker.io/mounts/0/SourceKind": "hostFile",
+      "desktop.docker.io/mounts/0/Target": "/evidence",
+      "desktop.docker.io/ports.scheme": "v2",
+      "org.opencontainers.image.version": "24.04"
+    }
+  },
+  "Architecture": "arm64",
+  "Os": "linux",
+  "Size": 6497735185,
+  "GraphDriver": {
+    "Data": {
+      "LowerDir": "/var/lib/docker/overlay2/ofia2eo3ozq7hc6pizibre31m/diff:/var/lib/docker/overlay2/1128a1612124d256fd709b2d9bf6de6041a8843064c76463a078631abaa72539/diff:/var/lib/docker/overlay2/svpigttkg4sf0uk1h72en6u6e/diff:/var/lib/docker/overlay2/oz1ycx0unf3184m219hobtfag/diff:/var/lib/docker/overlay2/x147rubcswa275f41ag311api/diff:/var/lib/docker/overlay2/omp2msezcqr5ca69jaxc9frnz/diff:/var/lib/docker/overlay2/1mwjqtjdpvs3nfga4owlp4lix/diff:/var/lib/docker/overlay2/u4hyvyi0tuimwlu2sxdv7dd41/diff:/var/lib/docker/overlay2/z8mgenqrbshae6oy9pdagx7ci/diff:/var/lib/docker/overlay2/axcptz3c47hgwdfwrh3sazt4l/diff:/var/lib/docker/overlay2/0jcoflasca8na0jp3nszwl8kn/diff:/var/lib/docker/overlay2/8bd0rtxz2ojs9ueq13sa6dqyl/diff:/var/lib/docker/overlay2/pbccsqiaexhj4qa9ne7qwe68q/diff:/var/lib/docker/overlay2/zqjxejbfseh7ohcg84a5jdp48/diff:/var/lib/docker/overlay2/zpfb38dk81mxc2tmosmqqlves/diff:/var/lib/docker/overlay2/e2fd3ea9e88ae61b26964e52fdfa043a1d34db2a27770669909e351194b19d00/diff:/var/lib/docker/overlay2/2384b46cf7fddafea7e6da88f6c88961ccac9f8351644805697a28eed555c106/diff",
+      "MergedDir": "/var/lib/docker/overlay2/p9tanw12seuy8cqgphmbhz8z0/merged",
+      "UpperDir": "/var/lib/docker/overlay2/p9tanw12seuy8cqgphmbhz8z0/diff",
+      "WorkDir": "/var/lib/docker/overlay2/p9tanw12seuy8cqgphmbhz8z0/work"
+    },
+    "Name": "overlay2"
+  },
+  "RootFS": {
+    "Type": "layers",
+    "Layers": [
+      "sha256:1e9178dc90058fa454a60803300219ee8c17e515be8718817ed824b96fa1207b",
+      "sha256:196215630dcced0fe650951d346f78b820a2fc9b0e39da6a96d99eea387045f2",
+      "sha256:0ca1de3ce7645c0e945d6c54f4c37b2ca98adf960faa4e7fe610385ead59a12a",
+      "sha256:d01a6088fce34b39bacb439a8bd1dc0084fdeb9d66b0d2da7fc42ae287b691ad",
+      "sha256:02ed386e00849ef079a8e9a8780b569e1d16113da7f66edbbd03dcb1062812df",
+      "sha256:e598074b41533389efe0308d55fd712ee9cb5c644a1548a1c19a63313a3bc6dc",
+      "sha256:e702719fea9c47293731893840981876a67af092aa535d2a989def2258fd3409",
+      "sha256:7e3515729e70a2de20e2478e28f93c226decf5519be4d6af5f64ecf5a27521cf",
+      "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "sha256:9e5bb55363c67aa28647ae719fa923814d815be79abd55fb8a35cc5c0f5a71fc",
+      "sha256:06fcf92a02d2ba672e60dc6e121a9a1bdbe55e71be0468258e10154cbacf51c8",
+      "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "sha256:a64a38740303d17ac3dcc9c17978dbac82c719172f2918a69faa3b7a6d81cfa2",
+      "sha256:a4979b4143cb9ac18b662c94761abb367c533dff09c083a7bbb2748077a31964",
+      "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+      "sha256:5d8e21e5a1edf0d98a2c7cc285c022b3f731a05af385c0e3cbfe31aed1465730",
+      "sha256:b5880df5993f84a754db9904b719baf76f95a3d2172969a73c657c2e47319400",
+      "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef"
+    ]
+  },
+  "Metadata": {
+    "LastTagTime": "2026-10-22T12:29:45.118961333Z"
+  }
+}

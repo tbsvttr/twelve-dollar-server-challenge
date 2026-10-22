@@ -1,0 +1,9 @@
+c2000-m1024: correctness 42/42; failures=0
+c131072-m0: correctness 42/42; failures=0
+82: correctness 42/42; failures=0
+c131072-m1024: correctness 42/42; failures=0
+c8192-m0: correctness 42/42; failures=0
+baseline: correctness 42/42; failures=0
+c32768-m0: correctness 42/42; failures=0
+c32768-m1024: correctness 42/42; failures=0
+/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/goose-2026-10-22/lead5/cache-grid/verification.json

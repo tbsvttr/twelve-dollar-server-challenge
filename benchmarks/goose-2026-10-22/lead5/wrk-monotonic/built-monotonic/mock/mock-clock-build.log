@@ -1,0 +1,4 @@
+/output/mock-clock.c:3: warning: "_DEFAULT_SOURCE" redefined
+    3 | #define _DEFAULT_SOURCE
+      | 
+<command-line>: note: this is the location of the previous definition

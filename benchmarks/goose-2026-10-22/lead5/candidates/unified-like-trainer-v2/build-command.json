@@ -1,0 +1,30 @@
+{
+  "argv": [
+    "docker",
+    "run",
+    "--name",
+    "twelve-build-unified-like-trainer-v2",
+    "--platform",
+    "linux/arm64",
+    "--network",
+    "none",
+    "--cpuset-cpus",
+    "3,4",
+    "--cpus",
+    "2",
+    "--memory",
+    "3g",
+    "--memory-swap",
+    "3g",
+    "--user",
+    "bench",
+    "twelve-goose-unified-like-trainer-v2-build:2026-10-22",
+    "bash",
+    "-c",
+    "set -e\nrm -rf .build bin\nexec bash -x build.sh"
+  ],
+  "started_at": "2026-10-22T12:26:02.826194+00:00",
+  "source_files": 19,
+  "object_reuse": false,
+  "fresh_build_directories": true
+}

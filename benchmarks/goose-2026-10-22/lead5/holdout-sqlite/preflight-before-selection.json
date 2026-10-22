@@ -1,0 +1,117 @@
+{
+  "passed_all": false,
+  "gates": {
+    "evidence_checks": false,
+    "ten_clean_rounds": false,
+    "replacement_limit": true,
+    "zero_candidate_errors_in_all_attempts": true,
+    "candidate_valid_in_all_attempts": true,
+    "geometric_mean_at_least_5_percent": false,
+    "one_sided_95_percent_lower_bound_at_least_5_percent": false,
+    "nine_of_ten_pairs_at_least_5_percent": false,
+    "median_p99_within_5_percent_of_rust": false
+  },
+  "geometric_mean_ratio": null,
+  "one_sided_95_percent_lower_ratio": null,
+  "t_degrees_of_freedom": 9,
+  "one_sided_confidence": 0.95,
+  "protocol_issues": [
+    "environment shared hashes differ",
+    "environment resource differs: server_cpus",
+    "environment resource differs: server_cpu_quota",
+    "environment resource differs: server_memory",
+    "environment resource differs: server_memory_swap",
+    "environment resource differs: load_cpus",
+    "environment resource differs: load_cpu_quota",
+    "environment resource differs: load_memory",
+    "environment resource differs: nofile",
+    "unrecognized load-generator image",
+    "pre-holdout candidate selection missing or differs",
+    "pre-holdout selection differs: manifest_sha256",
+    "pre-holdout selection differs: build_status_sha256",
+    "pre-holdout selection differs: protocol_sha256",
+    "candidate selection not recorded before all throughput attempts"
+  ],
+  "candidate_error_trials": [],
+  "candidate_invalid_attempt_trials": [],
+  "all_attempts": 0,
+  "attempted_rounds": [],
+  "selected_rounds": [],
+  "clean_rounds_available": 0,
+  "excluded_rounds": [],
+  "paired_rounds": [],
+  "median_p99_ms": {},
+  "all_attempt_error_totals": {
+    "goose": {
+      "http_errors": 0,
+      "socket_errors": 0,
+      "warmup_http_errors": 0,
+      "warmup_socket_errors": 0
+    },
+    "82": {
+      "http_errors": 0,
+      "socket_errors": 0,
+      "warmup_http_errors": 0,
+      "warmup_socket_errors": 0
+    },
+    "baseline": {
+      "http_errors": 0,
+      "socket_errors": 0,
+      "warmup_http_errors": 0,
+      "warmup_socket_errors": 0
+    }
+  },
+  "attempts": [],
+  "identities": {
+    "goose": {
+      "source_sha256": "27a404880d6357dd853a6731d96c034de59fcb535b5e5b6953cbe04d5ebb203e",
+      "image_id": "sha256:2797d68fbf424e42b23cfbbbc243b6b026e7dcc4f9ac7748ab0fb883a143cf74",
+      "binary_sha256": "d45e5efb4abbe17326d49a7b5f236147a1ec5b5477d774b3ddf80f877314367b"
+    },
+    "82": {
+      "source_sha256": "b91b9491e2a7a8856f8f360bc89f376b6493ae9b9a3907c557836b94f5131438",
+      "image_id": "sha256:64227e803306084617be2a4ebc1c3623260d265f158dd8c009f647558a280135",
+      "binary_sha256": "61d48f1be2feb858a14b1617cf3221bebf68df6caaac3541116e0dfbb7562026"
+    },
+    "baseline": {
+      "source_sha256": "73148f5d49e07fc62289bf582e261b8df0e1ef51d478d6fb9d44a68fec87b88a",
+      "image_id": "sha256:a69064953b766ec5c800389b8e17a7d184f73aa8dd46cd4aa2048955ee86eb0f",
+      "binary_sha256": "f0b086e53343263381c55a9046dbd65f400c4ec5ebbfc872c5d682d20a5679ab"
+    }
+  },
+  "supplemental_proofs": {
+    "edge": {
+      "path": "edge-checks.json",
+      "sha256": "9277a1c94e38627ebf111fcece85ea54e8cedd15815527819becf691079d3d65",
+      "checks": 25,
+      "image_id": "sha256:2797d68fbf424e42b23cfbbbc243b6b026e7dcc4f9ac7748ab0fb883a143cf74",
+      "app_sha256": "1b9d5eaacf03b58be58818197707ac2269e135a4a010bfeb90cc3bbcc4d00509"
+    },
+    "parser": {
+      "path": "parser-checks.json",
+      "sha256": "f963589efc1ee53da45372bc130a76ea7e3b5b03536d6d34a6800ad2c7a49383",
+      "checks": 18,
+      "image_id": "sha256:2797d68fbf424e42b23cfbbbc243b6b026e7dcc4f9ac7748ab0fb883a143cf74",
+      "app_sha256": "1b9d5eaacf03b58be58818197707ac2269e135a4a010bfeb90cc3bbcc4d00509"
+    }
+  },
+  "shared_hashes": {
+    "seed/feed.db": "ef5f135c16a2277a68ef37f1f1a66e4100f9dbc6743d2ef54dbeb533c4dceb0e",
+    "seed/tokens.json": "b39f1edf8a3545ab5851031d1cee8d2d1192e4b598361e516f4560f6893a939a",
+    "mixed.lua": "eb8d49273c56fe4b558a58bd6c7e65551ec683c53d299e2b3a69e0b71421d701",
+    "test/test.sh": "679e722044fd1f366d85093232e7f2ec2e3398ea312032dd9eb6cbdf8b17306a",
+    "semantic.py": "785f8ce565b469e4f4d702d01a9d868cd7458d64e3f1362c3fb8728560215fbc",
+    "serve.py": "52d8bdd75c0dc2477fc5b2391c797a2832eab5ac61a72d3bbe4dac4cb94bf311",
+    "bench/nginx.conf": "1b4b00789b0d138759bebde391d4cd05a9598dc10a17df3d09eb569512b8f654",
+    "seccomp-io-uring.json": "4baf3b268185f55527933e7df090e85936003674e34b5f5396461fd9d3efeb17",
+    "test/golden/feed.json": "8c9b3d6cb46e650c4786ab9281bc3a72ba7bd75b7926021d2b0c431dd9bd3d68",
+    "test/golden/post-1.json": "8035350dc55714c9a673af9f441ab07d2b269047e1137612f022877b9e8f3652",
+    "test/golden/post-250000.json": "febb2506b9d4a99bc34f1f182c61ced6b3ba3b2533724485c6e5206604a65b71",
+    "test/golden/post-500000.json": "662fe8c7282dee8aab00dab6cdb15e64e953f10a2c1c923e2ea67fab1429a4de"
+  },
+  "load_generator": {
+    "mode": "unrecognized",
+    "image_id": null
+  },
+  "analyzer_helper_sha256": "bb308729a6dfbeb33893831ea97681a93c2baf6a7580cb112e76a431975abb8f"
+}

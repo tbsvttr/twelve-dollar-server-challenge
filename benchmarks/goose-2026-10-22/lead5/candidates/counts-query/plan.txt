@@ -1,0 +1,2 @@
+3.53.4
+SEARCH likes USING COVERING INDEX likes_post_id_idx (post_id>? AND post_id<?)

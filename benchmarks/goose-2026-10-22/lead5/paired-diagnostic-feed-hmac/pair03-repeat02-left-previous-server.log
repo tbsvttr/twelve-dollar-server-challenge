@@ -1,0 +1,3 @@
+SQLite memory: cache_kib=8192 mmap_mib=0
+Goose native transport: epoll
+Goose challenge server listening on 127.0.0.1:24000

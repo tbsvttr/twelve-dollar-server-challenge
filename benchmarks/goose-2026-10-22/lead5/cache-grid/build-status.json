@@ -1,0 +1,332 @@
+{
+  "baseline": {
+    "pr": 0,
+    "id": "goose",
+    "commit": "73148f5d49e07fc62289bf582e261b8df0e1ef51d478d6fb9d44a68fec87b88a",
+    "status": "built",
+    "exit_code": 0,
+    "image": "twelve-goose-final:2026-10-22",
+    "image_id": "sha256:a69064953b766ec5c800389b8e17a7d184f73aa8dd46cd4aa2048955ee86eb0f",
+    "backend": "epoll",
+    "compiler_commit": "f605b5a07dd2aa3a5cb3f4c9b14002bd3c9d3d1a",
+    "log": "logs/build-goose.log",
+    "proof": {
+      "source_files_verified": 17,
+      "source_snapshot_sha256": "73148f5d49e07fc62289bf582e261b8df0e1ef51d478d6fb9d44a68fec87b88a",
+      "source_hashes": {
+        ".gitignore": "1ee00c3768b764a999544de814cafa138aeca02bf295873337081540152d4f06",
+        "README.md": "5d5667464da1441df7fc42d08b875a709cbc672b907c9bed547846f87720da95",
+        "app.build": "0752b8f45d545518a8f9ad05a7e90f03cfb49315cb6bea4e2fe83d7ab6baa9d6",
+        "app.goose": "1b9d5eaacf03b58be58818197707ac2269e135a4a010bfeb90cc3bbcc4d00509",
+        "bench/TRAINER-LICENSE": "1c809f52dd742570746a8ac00694ad4ddd9229e12accc7d5c598075861b478a0",
+        "bench/TRAINER-NOTICE.md": "e674c245d3e2f21f271ed644b04b30981cc342de1dc0010af8a09b2dd7dfd62e",
+        "bench/train_sqlite.c": "dd7d056bf259e587e8a21b902bb5469b4ea75b41a511c00d328eacb019a48967",
+        "build.sh": "203e5d65186f08edb2ee5b3c50397ed1ce03069e2b412c0ba1555a055f507405",
+        "db.c": "483c6d89d119a98f03e68ea883b1e51fb217961d242a2be88f270dea1b969ee8",
+        "install.sh": "d81573667bbc3ea461101fc6377ca27262678fb7e139f6d6aea1923683d7e163",
+        "json_fast.c": "f393c3e8c02389b9d7344e45351353dbf753f0f397cc1785bb599afe0332fd1e",
+        "json_fast.h": "8b2e84d4b63edd08d146e61420bcebf6737ef41541e7992a77d853b73659ecad",
+        "net.c": "0773ddfd7b89b0d34a717e5e9eb63fd0ee18026a5458ddf837bae4c0fb4ec9be",
+        "net.h": "25c8688957508264aaa0a2485f6d8714caede9570f865cb91217de32f4e548af",
+        "net_epoll.inc": "3773f819a4f5c594e916c2df31245bb60172e66cec15b3a824ccd750fa919a9e",
+        "net_uring.inc": "f01531f5d63af6ec4e93e14d5ec0bbf3f56f49af657496ccb71e85add3bd33f9",
+        "start.sh": "9a23eeaa024a08f898c3b904f1c362b21398732e7b0e71923876d286ef70825f"
+      },
+      "binary_path": "/suite/sources/prgoose/bin/server",
+      "binary_sha256": "f0b086e53343263381c55a9046dbd65f400c4ec5ebbfc872c5d682d20a5679ab",
+      "binary_bytes": 1152680,
+      "generated_c_sha256": "a5d2e945a637018aca3019109502a0565671b8246cc96bee29cd5cff47ffe46f",
+      "sqlite_object_sha256": "2c5663ef60e2bbc9f87a54f05f8eca1057b64614f5ced6fc34591ed3ef3b2178",
+      "compiler": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+      "goose_runtime": "goose runtime df5f78ce88d4",
+      "architecture": "aarch64",
+      "build_uid": 1001,
+      "sqlite_version": "3.53.4",
+      "sqlite_pgo_enabled": true,
+      "sqlite_pgo_profile_file_count": 2,
+      "sqlite_pgo_profile_files": [
+        {
+          "path": ".build/sqlite-profile/suite/sources/prgoose/.build/sqlite-pgo.gcda",
+          "bytes": 295504,
+          "sha256": "432cd8a07ba2bb1ed3355d68b608e82404892cdb29a4e9f33e37dba909e3c124"
+        },
+        {
+          "path": ".build/sqlite-profile/suite/sources/prgoose/.build/sqlite-train-train_sqlite.gcda",
+          "bytes": 700,
+          "sha256": "901aa253c0af891771604e576b3ed31c3635f5491745fca24c2f07168cd2f06f"
+        }
+      ],
+      "trainer_sha256": "dd7d056bf259e587e8a21b902bb5469b4ea75b41a511c00d328eacb019a48967",
+      "training_database_removed": true,
+      "image": "twelve-goose-final:2026-10-22",
+      "image_id": "sha256:a69064953b766ec5c800389b8e17a7d184f73aa8dd46cd4aa2048955ee86eb0f",
+      "backend": "epoll",
+      "image_environment": {
+        "GOOSE_IO_BACKEND": "epoll"
+      },
+      "build_limits": {
+        "cpus": 2,
+        "cpuset": "3,4",
+        "memory": "3g"
+      },
+      "build_method": "Re-emitted frozen Goose source and GCC LTO relink; reused unchanged verified parent SQLite PGO object.",
+      "sqlite_object_reused_from": {
+        "image_id": "sha256:61c33991b397cbf579394d91dd4c4213ef66d43576bc3aacc083cc0f9dd5611d",
+        "sqlite_object_sha256": "2c5663ef60e2bbc9f87a54f05f8eca1057b64614f5ced6fc34591ed3ef3b2178"
+      },
+      "compiler_flags": "Goose -O2 --standalone; GCC -O3 -march=native -DNDEBUG -flto=2 -fno-semantic-interposition -fno-plt; SQLite separate source-trained PGO",
+      "elapsed_s": 2.9
+    }
+  },
+  "82": {
+    "pr": 82,
+    "commit": "95aa405a0003599dbc7fb4dfa47a09e8343239df",
+    "base": "twelve-unified:2026-10-07",
+    "architecture": "linux/arm64",
+    "image": "twelve-current-pr82:2026-10-20",
+    "source_hashes_verified": true,
+    "runtime_integrity": "official checksums or pinned apt packages; see setup log",
+    "started_at": "2026-10-20T10:55:39Z",
+    "runtime_setup": "runtime-scripts/pr82.sh",
+    "exit_code": 0,
+    "image_id": "sha256:64227e803306084617be2a4ebc1c3623260d265f158dd8c009f647558a280135",
+    "state": "built",
+    "elapsed_s": 93.54,
+    "finished_at": "2026-10-20T10:57:12Z",
+    "build_helper_removed": true,
+    "immutable_image_and_nproc_audit": "build-helper-audit-41-90.json",
+    "proof": {
+      "binary_path": "/suite/sources/pr82/target/release/twelve-rust-poll",
+      "binary_sha256": "61d48f1be2feb858a14b1617cf3221bebf68df6caaac3541116e0dfbb7562026",
+      "rustc_version": "rustc 1.94.0 (4a4ef493e 2026-03-02)",
+      "rustc_stderr": "",
+      "sqlite_static_libraries": [
+        "/suite/sources/pr82/target/release/build/twelve-rust-poll-b9bf4e96a6e5b0dd/out/libsqlite3.a"
+      ],
+      "sqlite_pgo_enabled_by_default": true,
+      "source_build_flags": "opt-level3, fatLTO, codegen-units1, target-cpu=native; SQLite3.53.4 with PGO (build.rs/Cargo.toml)"
+    }
+  },
+  "c2000-m1024": {
+    "pr": 0,
+    "id": "c2000-m1024",
+    "commit": "855861cbefb0018dc8a7f99297221032464fb55cb808f2914ef29948cd43755d",
+    "status": "built",
+    "exit_code": 0,
+    "image": "twelve-goose-c2000-m1024:2026-10-22",
+    "image_id": "sha256:ca7dacb9499322917011fe810977d9c4c4fd3c5c49cc69f7e92cf08af8c67e67",
+    "proof": {
+      "files": {
+        "bin/server": {
+          "sha256": "05c329ee5ad6436217de7872142ea40cb197f99f862734469b93c9fb26eb12ae",
+          "bytes": 1152784
+        },
+        ".build/app.c": {
+          "sha256": "a5d2e945a637018aca3019109502a0565671b8246cc96bee29cd5cff47ffe46f",
+          "bytes": 532910
+        },
+        ".build/sqlite-pgo.o": {
+          "sha256": "2c5663ef60e2bbc9f87a54f05f8eca1057b64614f5ced6fc34591ed3ef3b2178",
+          "bytes": 1398552
+        }
+      },
+      "environment": {
+        "GOOSE_IO_BACKEND": "epoll"
+      },
+      "image": "twelve-goose-c2000-m1024:2026-10-22",
+      "image_id": "sha256:ca7dacb9499322917011fe810977d9c4c4fd3c5c49cc69f7e92cf08af8c67e67",
+      "source_sha256": "855861cbefb0018dc8a7f99297221032464fb55cb808f2914ef29948cd43755d",
+      "sqlite_object_reused_from": "sha256:a69064953b766ec5c800389b8e17a7d184f73aa8dd46cd4aa2048955ee86eb0f",
+      "image_environment": {
+        "GOOSE_IO_BACKEND": "epoll",
+        "GOOSE_SQLITE_CACHE_KIB": "2000",
+        "GOOSE_SQLITE_MMAP_MIB": "1024"
+      }
+    }
+  },
+  "c8192-m0": {
+    "pr": 0,
+    "id": "c8192-m0",
+    "commit": "855861cbefb0018dc8a7f99297221032464fb55cb808f2914ef29948cd43755d",
+    "status": "built",
+    "exit_code": 0,
+    "image": "twelve-goose-c8192-m0:2026-10-22",
+    "image_id": "sha256:6f0f9263c30f1b43996879b9b318a14ff98c1ec3a333655c025b7c1523fc0a48",
+    "proof": {
+      "files": {
+        "bin/server": {
+          "sha256": "05c329ee5ad6436217de7872142ea40cb197f99f862734469b93c9fb26eb12ae",
+          "bytes": 1152784
+        },
+        ".build/app.c": {
+          "sha256": "a5d2e945a637018aca3019109502a0565671b8246cc96bee29cd5cff47ffe46f",
+          "bytes": 532910
+        },
+        ".build/sqlite-pgo.o": {
+          "sha256": "2c5663ef60e2bbc9f87a54f05f8eca1057b64614f5ced6fc34591ed3ef3b2178",
+          "bytes": 1398552
+        }
+      },
+      "environment": {
+        "GOOSE_IO_BACKEND": "epoll"
+      },
+      "image": "twelve-goose-c8192-m0:2026-10-22",
+      "image_id": "sha256:6f0f9263c30f1b43996879b9b318a14ff98c1ec3a333655c025b7c1523fc0a48",
+      "source_sha256": "855861cbefb0018dc8a7f99297221032464fb55cb808f2914ef29948cd43755d",
+      "sqlite_object_reused_from": "sha256:a69064953b766ec5c800389b8e17a7d184f73aa8dd46cd4aa2048955ee86eb0f",
+      "image_environment": {
+        "GOOSE_IO_BACKEND": "epoll",
+        "GOOSE_SQLITE_CACHE_KIB": "8192",
+        "GOOSE_SQLITE_MMAP_MIB": "0"
+      }
+    }
+  },
+  "c32768-m0": {
+    "pr": 0,
+    "id": "c32768-m0",
+    "commit": "855861cbefb0018dc8a7f99297221032464fb55cb808f2914ef29948cd43755d",
+    "status": "built",
+    "exit_code": 0,
+    "image": "twelve-goose-c32768-m0:2026-10-22",
+    "image_id": "sha256:649531bb3e3cf77258ec8b31760719c7db33a7366e5a074b09eda1f2519df75e",
+    "proof": {
+      "files": {
+        "bin/server": {
+          "sha256": "05c329ee5ad6436217de7872142ea40cb197f99f862734469b93c9fb26eb12ae",
+          "bytes": 1152784
+        },
+        ".build/app.c": {
+          "sha256": "a5d2e945a637018aca3019109502a0565671b8246cc96bee29cd5cff47ffe46f",
+          "bytes": 532910
+        },
+        ".build/sqlite-pgo.o": {
+          "sha256": "2c5663ef60e2bbc9f87a54f05f8eca1057b64614f5ced6fc34591ed3ef3b2178",
+          "bytes": 1398552
+        }
+      },
+      "environment": {
+        "GOOSE_IO_BACKEND": "epoll"
+      },
+      "image": "twelve-goose-c32768-m0:2026-10-22",
+      "image_id": "sha256:649531bb3e3cf77258ec8b31760719c7db33a7366e5a074b09eda1f2519df75e",
+      "source_sha256": "855861cbefb0018dc8a7f99297221032464fb55cb808f2914ef29948cd43755d",
+      "sqlite_object_reused_from": "sha256:a69064953b766ec5c800389b8e17a7d184f73aa8dd46cd4aa2048955ee86eb0f",
+      "image_environment": {
+        "GOOSE_IO_BACKEND": "epoll",
+        "GOOSE_SQLITE_CACHE_KIB": "32768",
+        "GOOSE_SQLITE_MMAP_MIB": "0"
+      }
+    }
+  },
+  "c131072-m0": {
+    "pr": 0,
+    "id": "c131072-m0",
+    "commit": "855861cbefb0018dc8a7f99297221032464fb55cb808f2914ef29948cd43755d",
+    "status": "built",
+    "exit_code": 0,
+    "image": "twelve-goose-c131072-m0:2026-10-22",
+    "image_id": "sha256:3e259e90679a1c86a761f942b3667491c1b0445785925cfc416f48987a839c2d",
+    "proof": {
+      "files": {
+        "bin/server": {
+          "sha256": "05c329ee5ad6436217de7872142ea40cb197f99f862734469b93c9fb26eb12ae",
+          "bytes": 1152784
+        },
+        ".build/app.c": {
+          "sha256": "a5d2e945a637018aca3019109502a0565671b8246cc96bee29cd5cff47ffe46f",
+          "bytes": 532910
+        },
+        ".build/sqlite-pgo.o": {
+          "sha256": "2c5663ef60e2bbc9f87a54f05f8eca1057b64614f5ced6fc34591ed3ef3b2178",
+          "bytes": 1398552
+        }
+      },
+      "environment": {
+        "GOOSE_IO_BACKEND": "epoll"
+      },
+      "image": "twelve-goose-c131072-m0:2026-10-22",
+      "image_id": "sha256:3e259e90679a1c86a761f942b3667491c1b0445785925cfc416f48987a839c2d",
+      "source_sha256": "855861cbefb0018dc8a7f99297221032464fb55cb808f2914ef29948cd43755d",
+      "sqlite_object_reused_from": "sha256:a69064953b766ec5c800389b8e17a7d184f73aa8dd46cd4aa2048955ee86eb0f",
+      "image_environment": {
+        "GOOSE_IO_BACKEND": "epoll",
+        "GOOSE_SQLITE_CACHE_KIB": "131072",
+        "GOOSE_SQLITE_MMAP_MIB": "0"
+      }
+    }
+  },
+  "c32768-m1024": {
+    "pr": 0,
+    "id": "c32768-m1024",
+    "commit": "855861cbefb0018dc8a7f99297221032464fb55cb808f2914ef29948cd43755d",
+    "status": "built",
+    "exit_code": 0,
+    "image": "twelve-goose-c32768-m1024:2026-10-22",
+    "image_id": "sha256:a4d92700886c7c1b24e908ff71a162ce6e2fa1887fce47ac79a9d444b24a3bc5",
+    "proof": {
+      "files": {
+        "bin/server": {
+          "sha256": "05c329ee5ad6436217de7872142ea40cb197f99f862734469b93c9fb26eb12ae",
+          "bytes": 1152784
+        },
+        ".build/app.c": {
+          "sha256": "a5d2e945a637018aca3019109502a0565671b8246cc96bee29cd5cff47ffe46f",
+          "bytes": 532910
+        },
+        ".build/sqlite-pgo.o": {
+          "sha256": "2c5663ef60e2bbc9f87a54f05f8eca1057b64614f5ced6fc34591ed3ef3b2178",
+          "bytes": 1398552
+        }
+      },
+      "environment": {
+        "GOOSE_IO_BACKEND": "epoll"
+      },
+      "image": "twelve-goose-c32768-m1024:2026-10-22",
+      "image_id": "sha256:a4d92700886c7c1b24e908ff71a162ce6e2fa1887fce47ac79a9d444b24a3bc5",
+      "source_sha256": "855861cbefb0018dc8a7f99297221032464fb55cb808f2914ef29948cd43755d",
+      "sqlite_object_reused_from": "sha256:a69064953b766ec5c800389b8e17a7d184f73aa8dd46cd4aa2048955ee86eb0f",
+      "image_environment": {
+        "GOOSE_IO_BACKEND": "epoll",
+        "GOOSE_SQLITE_CACHE_KIB": "32768",
+        "GOOSE_SQLITE_MMAP_MIB": "1024"
+      }
+    }
+  },
+  "c131072-m1024": {
+    "pr": 0,
+    "id": "c131072-m1024",
+    "commit": "855861cbefb0018dc8a7f99297221032464fb55cb808f2914ef29948cd43755d",
+    "status": "built",
+    "exit_code": 0,
+    "image": "twelve-goose-c131072-m1024:2026-10-22",
+    "image_id": "sha256:23f0b5485116bd1ed2903ef82c19d4bde01a2af469e527d8c905fec44070b1b6",
+    "proof": {
+      "files": {
+        "bin/server": {
+          "sha256": "05c329ee5ad6436217de7872142ea40cb197f99f862734469b93c9fb26eb12ae",
+          "bytes": 1152784
+        },
+        ".build/app.c": {
+          "sha256": "a5d2e945a637018aca3019109502a0565671b8246cc96bee29cd5cff47ffe46f",
+          "bytes": 532910
+        },
+        ".build/sqlite-pgo.o": {
+          "sha256": "2c5663ef60e2bbc9f87a54f05f8eca1057b64614f5ced6fc34591ed3ef3b2178",
+          "bytes": 1398552
+        }
+      },
+      "environment": {
+        "GOOSE_IO_BACKEND": "epoll"
+      },
+      "image": "twelve-goose-c131072-m1024:2026-10-22",
+      "image_id": "sha256:23f0b5485116bd1ed2903ef82c19d4bde01a2af469e527d8c905fec44070b1b6",
+      "source_sha256": "855861cbefb0018dc8a7f99297221032464fb55cb808f2914ef29948cd43755d",
+      "sqlite_object_reused_from": "sha256:a69064953b766ec5c800389b8e17a7d184f73aa8dd46cd4aa2048955ee86eb0f",
+      "image_environment": {
+        "GOOSE_IO_BACKEND": "epoll",
+        "GOOSE_SQLITE_CACHE_KIB": "131072",
+        "GOOSE_SQLITE_MMAP_MIB": "1024"
+      }
+    }
+  }
+}

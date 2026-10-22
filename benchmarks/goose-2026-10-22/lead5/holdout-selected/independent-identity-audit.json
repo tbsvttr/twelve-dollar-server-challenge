@@ -1,0 +1,2683 @@
+{
+  "purpose": "Independent source/image/driver/fixture/correctness identity audit; file-only",
+  "recorded_at": "2026-10-22T13:10:33.536134+00:00",
+  "complete": true,
+  "evidence_passed_all": true,
+  "issues": [],
+  "checks": [
+    {
+      "check": "Exactly selected Goose, pinned Rust and retained Goose cases",
+      "passed": true
+    },
+    {
+      "check": "Unchanged tested controller enforces immutable image IDs, bench user, dedicated CPU allocations and workload command",
+      "passed": true
+    },
+    {
+      "check": "Fixture/workload inventory matches pinned previous experiment",
+      "passed": true
+    },
+    {
+      "check": "Current shared bytes: seed/feed.db",
+      "passed": true
+    },
+    {
+      "check": "Current shared bytes: seed/tokens.json",
+      "passed": true
+    },
+    {
+      "check": "Current shared bytes: mixed.lua",
+      "passed": true
+    },
+    {
+      "check": "Current shared bytes: test/test.sh",
+      "passed": true
+    },
+    {
+      "check": "Current shared bytes: semantic.py",
+      "passed": true
+    },
+    {
+      "check": "Current shared bytes: serve.py",
+      "passed": true
+    },
+    {
+      "check": "Current shared bytes: bench/nginx.conf",
+      "passed": true
+    },
+    {
+      "check": "Current shared bytes: seccomp-io-uring.json",
+      "passed": true
+    },
+    {
+      "check": "Current shared bytes: test/golden/feed.json",
+      "passed": true
+    },
+    {
+      "check": "Current shared bytes: test/golden/post-1.json",
+      "passed": true
+    },
+    {
+      "check": "Current shared bytes: test/golden/post-250000.json",
+      "passed": true
+    },
+    {
+      "check": "Current shared bytes: test/golden/post-500000.json",
+      "passed": true
+    },
+    {
+      "check": "Runtime environment binds unchanged shared fixtures",
+      "passed": true
+    },
+    {
+      "check": "Dedicated sequential environment: server_cpus",
+      "passed": true
+    },
+    {
+      "check": "Dedicated sequential environment: server_cpu_quota",
+      "passed": true
+    },
+    {
+      "check": "Dedicated sequential environment: server_memory",
+      "passed": true
+    },
+    {
+      "check": "Dedicated sequential environment: server_memory_swap",
+      "passed": true
+    },
+    {
+      "check": "Dedicated sequential environment: load_cpus",
+      "passed": true
+    },
+    {
+      "check": "Dedicated sequential environment: load_cpu_quota",
+      "passed": true
+    },
+    {
+      "check": "Dedicated sequential environment: load_memory",
+      "passed": true
+    },
+    {
+      "check": "Dedicated sequential environment: nofile",
+      "passed": true
+    },
+    {
+      "check": "Controller declares 10 planned rounds plus at most 2 replacements, 45 seconds, 2-second warmup, 2 threads/64 connections",
+      "passed": true
+    },
+    {
+      "check": "Pre-holdout selection binds unchanged confirmation plan",
+      "passed": true
+    },
+    {
+      "check": "Selection binding: manifest_sha256",
+      "passed": true
+    },
+    {
+      "check": "Selection binding: build_status_sha256",
+      "passed": true
+    },
+    {
+      "check": "Selection binding: protocol_sha256",
+      "passed": true
+    },
+    {
+      "check": "Selection binding: declaration_sha256",
+      "passed": true
+    },
+    {
+      "check": "Selection binding: load_generator_sha256",
+      "passed": true
+    },
+    {
+      "check": "Selection binding: verification_sha256",
+      "passed": true
+    },
+    {
+      "check": "Selection binding: parser_checks_sha256",
+      "passed": true
+    },
+    {
+      "check": "Selection binding: edge_checks_sha256",
+      "passed": true
+    },
+    {
+      "check": "Preselection diagnostic retained unchanged",
+      "passed": true
+    },
+    {
+      "check": "Shared-CPU diagnostic explicitly excluded from holdout proof",
+      "passed": true
+    },
+    {
+      "check": "Selected candidate exact source/image/binary identity",
+      "passed": true
+    },
+    {
+      "check": "goose: source inventory identity/count",
+      "passed": true
+    },
+    {
+      "check": "goose: source bytes .gitignore",
+      "passed": true
+    },
+    {
+      "check": "goose: source bytes README.md",
+      "passed": true
+    },
+    {
+      "check": "goose: source bytes app.build",
+      "passed": true
+    },
+    {
+      "check": "goose: source bytes app.goose",
+      "passed": true
+    },
+    {
+      "check": "goose: source bytes bench/TRAINER-LICENSE",
+      "passed": true
+    },
+    {
+      "check": "goose: source bytes bench/TRAINER-NOTICE.md",
+      "passed": true
+    },
+    {
+      "check": "goose: source bytes bench/app_pgo_exit.c",
+      "passed": true
+    },
+    {
+      "check": "goose: source bytes bench/train_app.py",
+      "passed": true
+    },
+    {
+      "check": "goose: source bytes bench/train_sqlite.c",
+      "passed": true
+    },
+    {
+      "check": "goose: source bytes build.sh",
+      "passed": true
+    },
+    {
+      "check": "goose: source bytes db.c",
+      "passed": true
+    },
+    {
+      "check": "goose: source bytes install.sh",
+      "passed": true
+    },
+    {
+      "check": "goose: source bytes json_fast.c",
+      "passed": true
+    },
+    {
+      "check": "goose: source bytes json_fast.h",
+      "passed": true
+    },
+    {
+      "check": "goose: source bytes net.c",
+      "passed": true
+    },
+    {
+      "check": "goose: source bytes net.h",
+      "passed": true
+    },
+    {
+      "check": "goose: source bytes net_epoll.inc",
+      "passed": true
+    },
+    {
+      "check": "goose: source bytes net_uring.inc",
+      "passed": true
+    },
+    {
+      "check": "goose: source bytes start.sh",
+      "passed": true
+    },
+    {
+      "check": "goose: frozen pinned source/image/binary",
+      "passed": true
+    },
+    {
+      "check": "goose: successful matching build",
+      "passed": true
+    },
+    {
+      "check": "goose: image proof source_snapshot_sha256",
+      "passed": true
+    },
+    {
+      "check": "goose: image/source inventory equality",
+      "passed": true
+    },
+    {
+      "check": "82: source inventory identity/count",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes .gitignore",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes BENCHMARKS.md",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes Cargo.lock",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes Cargo.toml",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes IO_URING.md",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes LICENSE",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes LUFP.md",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes README.md",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes RESEARCH.md",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes bench/Dockerfile",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes bench/PROFILING.md",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes bench/README.md",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes bench/build_wrk.sh",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes bench/compare_all.py",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes bench/compare_revisions.py",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes bench/confirmatory-mixed.json.gz",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes bench/create.lua",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes bench/io-uring-results.json.gz",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes bench/launch.sh",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes bench/like.lua",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes bench/lufp-results.json.gz",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes bench/manifest.json",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes bench/mixed.lua",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes bench/observe.lua",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes bench/official-k6-capacity-results.json.gz",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes bench/official-k6-raised-descriptors-results.json.gz",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes bench/official-k6-results.json.gz",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes bench/optimization-results.json.gz",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes bench/prepare_environment.py",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes bench/research-results.json.gz",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes bench/results.json.gz",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes bench/score-profile-results.json.gz",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes bench/train_sqlite.c",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes build.rs",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes build.sh",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes install.sh",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes src/db.rs",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes src/lufp.rs",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes src/main.rs",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes src/net.rs",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes src/uring.rs",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes start.sh",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes tests/check.py",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes tests/feed_ranges.py",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes tests/support/allocations.rs",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes tests/support/lufp.rs",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes tests/support/serde_oracle.rs",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes tests/support/snapshots.rs",
+      "passed": true
+    },
+    {
+      "check": "82: source bytes tests/support/uring_responses.rs",
+      "passed": true
+    },
+    {
+      "check": "82: frozen pinned source/image/binary",
+      "passed": true
+    },
+    {
+      "check": "82: successful matching build",
+      "passed": true
+    },
+    {
+      "check": "baseline: source inventory identity/count",
+      "passed": true
+    },
+    {
+      "check": "baseline: source bytes .gitignore",
+      "passed": true
+    },
+    {
+      "check": "baseline: source bytes README.md",
+      "passed": true
+    },
+    {
+      "check": "baseline: source bytes app.build",
+      "passed": true
+    },
+    {
+      "check": "baseline: source bytes app.goose",
+      "passed": true
+    },
+    {
+      "check": "baseline: source bytes bench/TRAINER-LICENSE",
+      "passed": true
+    },
+    {
+      "check": "baseline: source bytes bench/TRAINER-NOTICE.md",
+      "passed": true
+    },
+    {
+      "check": "baseline: source bytes bench/train_sqlite.c",
+      "passed": true
+    },
+    {
+      "check": "baseline: source bytes build.sh",
+      "passed": true
+    },
+    {
+      "check": "baseline: source bytes db.c",
+      "passed": true
+    },
+    {
+      "check": "baseline: source bytes install.sh",
+      "passed": true
+    },
+    {
+      "check": "baseline: source bytes json_fast.c",
+      "passed": true
+    },
+    {
+      "check": "baseline: source bytes json_fast.h",
+      "passed": true
+    },
+    {
+      "check": "baseline: source bytes net.c",
+      "passed": true
+    },
+    {
+      "check": "baseline: source bytes net.h",
+      "passed": true
+    },
+    {
+      "check": "baseline: source bytes net_epoll.inc",
+      "passed": true
+    },
+    {
+      "check": "baseline: source bytes net_uring.inc",
+      "passed": true
+    },
+    {
+      "check": "baseline: source bytes start.sh",
+      "passed": true
+    },
+    {
+      "check": "baseline: frozen pinned source/image/binary",
+      "passed": true
+    },
+    {
+      "check": "baseline: successful matching build",
+      "passed": true
+    },
+    {
+      "check": "baseline: image proof source_snapshot_sha256",
+      "passed": true
+    },
+    {
+      "check": "baseline: image/source inventory equality",
+      "passed": true
+    },
+    {
+      "check": "Rust exact unchanged upstream commit",
+      "passed": true
+    },
+    {
+      "check": "Live selected source byte: .gitignore",
+      "passed": true
+    },
+    {
+      "check": "Live selected source byte: README.md",
+      "passed": true
+    },
+    {
+      "check": "Live selected source byte: app.build",
+      "passed": true
+    },
+    {
+      "check": "Live selected source byte: app.goose",
+      "passed": true
+    },
+    {
+      "check": "Live selected source byte: bench/TRAINER-LICENSE",
+      "passed": true
+    },
+    {
+      "check": "Live selected source byte: bench/TRAINER-NOTICE.md",
+      "passed": true
+    },
+    {
+      "check": "Live selected source byte: bench/app_pgo_exit.c",
+      "passed": true
+    },
+    {
+      "check": "Live selected source byte: bench/train_app.py",
+      "passed": true
+    },
+    {
+      "check": "Live selected source byte: bench/train_sqlite.c",
+      "passed": true
+    },
+    {
+      "check": "Live selected source byte: build.sh",
+      "passed": true
+    },
+    {
+      "check": "Live selected source byte: db.c",
+      "passed": true
+    },
+    {
+      "check": "Live selected source byte: install.sh",
+      "passed": true
+    },
+    {
+      "check": "Live selected source byte: json_fast.c",
+      "passed": true
+    },
+    {
+      "check": "Live selected source byte: json_fast.h",
+      "passed": true
+    },
+    {
+      "check": "Live selected source byte: net.c",
+      "passed": true
+    },
+    {
+      "check": "Live selected source byte: net.h",
+      "passed": true
+    },
+    {
+      "check": "Live selected source byte: net_epoll.inc",
+      "passed": true
+    },
+    {
+      "check": "Live selected source byte: net_uring.inc",
+      "passed": true
+    },
+    {
+      "check": "Live selected source byte: start.sh",
+      "passed": true
+    },
+    {
+      "check": "Selected 19-source image uses exact verified legacy SQLite PGO object",
+      "passed": true
+    },
+    {
+      "check": "Selected build truthfully distinguishes explicit SQLite reuse from fresh normal reproduction",
+      "passed": true
+    },
+    {
+      "check": "Production contains no profile-dump helper/interposer",
+      "passed": true
+    },
+    {
+      "check": "Fresh four-unit application PGO training proof retained",
+      "passed": true
+    },
+    {
+      "check": "Selected complete image proof copied unchanged from tested candidate",
+      "passed": true
+    },
+    {
+      "check": "Separate fresh normal build uses exact selected source and no SQLite object reuse",
+      "passed": true
+    },
+    {
+      "check": "Normal rebuild comparison truthfully preserves different binary identity without replacing selected image",
+      "passed": true
+    },
+    {
+      "check": "Heavy normal reproduction build finished before holdout environment/start",
+      "passed": true
+    },
+    {
+      "check": "Driver image/executable identities match pinned corrected driver",
+      "passed": true
+    },
+    {
+      "check": "Every holdout case uses same corrected driver image",
+      "passed": true
+    },
+    {
+      "check": "Driver retained declaration path/hash",
+      "passed": true
+    },
+    {
+      "check": "Driver retained proof path/hash",
+      "passed": true
+    },
+    {
+      "check": "Runtime driver probe unchanged",
+      "passed": true
+    },
+    {
+      "check": "Actual retained PATH probe selected corrected executable",
+      "passed": true
+    },
+    {
+      "check": "Declared clock-only source patch retained",
+      "passed": true
+    },
+    {
+      "check": "Driver proof retains real-duration timeout counters and deterministic clock-underflow evidence",
+      "passed": true
+    },
+    {
+      "check": "Exactly three inherited correctness records and origins",
+      "passed": true
+    },
+    {
+      "check": "goose: original verification archive unchanged",
+      "passed": true
+    },
+    {
+      "check": "goose: preserved original record hash",
+      "passed": true
+    },
+    {
+      "check": "goose: inherited record byte-value identical to original",
+      "passed": true
+    },
+    {
+      "check": "goose: original raw official 42/42 result",
+      "passed": true
+    },
+    {
+      "check": "goose: raw semantic roundtrip proof",
+      "passed": true
+    },
+    {
+      "check": "goose: original raw correctness log preserved",
+      "passed": true
+    },
+    {
+      "check": "82: original verification archive unchanged",
+      "passed": true
+    },
+    {
+      "check": "82: preserved original record hash",
+      "passed": true
+    },
+    {
+      "check": "82: inherited record byte-value identical to original",
+      "passed": true
+    },
+    {
+      "check": "82: original raw official 42/42 result",
+      "passed": true
+    },
+    {
+      "check": "82: raw semantic roundtrip proof",
+      "passed": true
+    },
+    {
+      "check": "82: original raw correctness log preserved",
+      "passed": true
+    },
+    {
+      "check": "baseline: original verification archive unchanged",
+      "passed": true
+    },
+    {
+      "check": "baseline: preserved original record hash",
+      "passed": true
+    },
+    {
+      "check": "baseline: inherited record byte-value identical to original",
+      "passed": true
+    },
+    {
+      "check": "baseline: original raw official 42/42 result",
+      "passed": true
+    },
+    {
+      "check": "baseline: raw semantic roundtrip proof",
+      "passed": true
+    },
+    {
+      "check": "baseline: original raw correctness log preserved",
+      "passed": true
+    },
+    {
+      "check": "Supplemental exact tested original: edge-checks.json",
+      "passed": true
+    },
+    {
+      "check": "Supplemental exact image/source/backend and all checks: edge-checks.json",
+      "passed": true
+    },
+    {
+      "check": "Supplemental exact tested original: parser-checks.json",
+      "passed": true
+    },
+    {
+      "check": "Supplemental exact image/source/backend and all checks: parser-checks.json",
+      "passed": true
+    },
+    {
+      "check": "Supplemental exact tested original: above-max-checks.json",
+      "passed": true
+    },
+    {
+      "check": "Supplemental exact image/source/backend and all checks: above-max-checks.json",
+      "passed": true
+    },
+    {
+      "check": "verify goose round 1: exact case fingerprint",
+      "passed": true
+    },
+    {
+      "check": "verify goose round 1: fresh pinned source and 500000-post database readiness",
+      "passed": true
+    },
+    {
+      "check": "verify goose round 1: actual server CPU/memory limits",
+      "passed": true
+    },
+    {
+      "check": "verify goose round 1: actual nofile limits",
+      "passed": true
+    },
+    {
+      "check": "verify goose round 1: actual seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "verify goose round 1: no OOM/death/container error",
+      "passed": true
+    },
+    {
+      "check": "verify goose round 1: post-shutdown SQLite quick_check and committed write growth",
+      "passed": true
+    },
+    {
+      "check": "verify goose round 1: complete original raw output retained",
+      "passed": true
+    },
+    {
+      "check": "verify goose round 1: actual backend retained in server log",
+      "passed": true
+    },
+    {
+      "check": "verify 82 round 1: exact case fingerprint",
+      "passed": true
+    },
+    {
+      "check": "verify 82 round 1: fresh pinned source and 500000-post database readiness",
+      "passed": true
+    },
+    {
+      "check": "verify 82 round 1: actual server CPU/memory limits",
+      "passed": true
+    },
+    {
+      "check": "verify 82 round 1: actual nofile limits",
+      "passed": true
+    },
+    {
+      "check": "verify 82 round 1: actual seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "verify 82 round 1: no OOM/death/container error",
+      "passed": true
+    },
+    {
+      "check": "verify 82 round 1: post-shutdown SQLite quick_check and committed write growth",
+      "passed": true
+    },
+    {
+      "check": "verify 82 round 1: complete original raw output retained",
+      "passed": true
+    },
+    {
+      "check": "verify 82 round 1: actual backend retained in server log",
+      "passed": true
+    },
+    {
+      "check": "verify baseline round 1: exact case fingerprint",
+      "passed": true
+    },
+    {
+      "check": "verify baseline round 1: fresh pinned source and 500000-post database readiness",
+      "passed": true
+    },
+    {
+      "check": "verify baseline round 1: actual server CPU/memory limits",
+      "passed": true
+    },
+    {
+      "check": "verify baseline round 1: actual nofile limits",
+      "passed": true
+    },
+    {
+      "check": "verify baseline round 1: actual seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "verify baseline round 1: no OOM/death/container error",
+      "passed": true
+    },
+    {
+      "check": "verify baseline round 1: post-shutdown SQLite quick_check and committed write growth",
+      "passed": true
+    },
+    {
+      "check": "verify baseline round 1: complete original raw output retained",
+      "passed": true
+    },
+    {
+      "check": "verify baseline round 1: actual backend retained in server log",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 1: exact case fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 1: fresh pinned source and 500000-post database readiness",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 1: actual server CPU/memory limits",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 1: actual nofile limits",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 1: actual seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 1: no OOM/death/container error",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 1: post-shutdown SQLite quick_check and committed write growth",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 1: complete original raw output retained",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 1: actual backend retained in server log",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 1: candidate selected before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 1: matching correctness finished before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 1: exact planned duration/load configuration and bounded round plan",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 1: raw output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 1: raw warmup_output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 1: selected runtime cache/mmap config",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 1: exact case fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 1: fresh pinned source and 500000-post database readiness",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 1: actual server CPU/memory limits",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 1: actual nofile limits",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 1: actual seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 1: no OOM/death/container error",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 1: post-shutdown SQLite quick_check and committed write growth",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 1: complete original raw output retained",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 1: actual backend retained in server log",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 1: candidate selected before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 1: matching correctness finished before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 1: exact planned duration/load configuration and bounded round plan",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 1: raw output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 1: raw warmup_output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 1: exact case fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 1: fresh pinned source and 500000-post database readiness",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 1: actual server CPU/memory limits",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 1: actual nofile limits",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 1: actual seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 1: no OOM/death/container error",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 1: post-shutdown SQLite quick_check and committed write growth",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 1: complete original raw output retained",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 1: actual backend retained in server log",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 1: candidate selected before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 1: matching correctness finished before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 1: exact planned duration/load configuration and bounded round plan",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 1: raw output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 1: raw warmup_output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 2: exact case fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 2: fresh pinned source and 500000-post database readiness",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 2: actual server CPU/memory limits",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 2: actual nofile limits",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 2: actual seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 2: no OOM/death/container error",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 2: post-shutdown SQLite quick_check and committed write growth",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 2: complete original raw output retained",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 2: actual backend retained in server log",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 2: candidate selected before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 2: matching correctness finished before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 2: exact planned duration/load configuration and bounded round plan",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 2: raw output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 2: raw warmup_output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 2: selected runtime cache/mmap config",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 2: exact case fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 2: fresh pinned source and 500000-post database readiness",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 2: actual server CPU/memory limits",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 2: actual nofile limits",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 2: actual seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 2: no OOM/death/container error",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 2: post-shutdown SQLite quick_check and committed write growth",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 2: complete original raw output retained",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 2: actual backend retained in server log",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 2: candidate selected before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 2: matching correctness finished before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 2: exact planned duration/load configuration and bounded round plan",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 2: raw output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 2: raw warmup_output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 2: exact case fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 2: fresh pinned source and 500000-post database readiness",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 2: actual server CPU/memory limits",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 2: actual nofile limits",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 2: actual seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 2: no OOM/death/container error",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 2: post-shutdown SQLite quick_check and committed write growth",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 2: complete original raw output retained",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 2: actual backend retained in server log",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 2: candidate selected before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 2: matching correctness finished before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 2: exact planned duration/load configuration and bounded round plan",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 2: raw output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 2: raw warmup_output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 3: exact case fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 3: fresh pinned source and 500000-post database readiness",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 3: actual server CPU/memory limits",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 3: actual nofile limits",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 3: actual seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 3: no OOM/death/container error",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 3: post-shutdown SQLite quick_check and committed write growth",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 3: complete original raw output retained",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 3: actual backend retained in server log",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 3: candidate selected before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 3: matching correctness finished before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 3: exact planned duration/load configuration and bounded round plan",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 3: raw output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 3: raw warmup_output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 3: selected runtime cache/mmap config",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 3: exact case fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 3: fresh pinned source and 500000-post database readiness",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 3: actual server CPU/memory limits",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 3: actual nofile limits",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 3: actual seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 3: no OOM/death/container error",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 3: post-shutdown SQLite quick_check and committed write growth",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 3: complete original raw output retained",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 3: actual backend retained in server log",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 3: candidate selected before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 3: matching correctness finished before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 3: exact planned duration/load configuration and bounded round plan",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 3: raw output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 3: raw warmup_output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 3: exact case fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 3: fresh pinned source and 500000-post database readiness",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 3: actual server CPU/memory limits",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 3: actual nofile limits",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 3: actual seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 3: no OOM/death/container error",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 3: post-shutdown SQLite quick_check and committed write growth",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 3: complete original raw output retained",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 3: actual backend retained in server log",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 3: candidate selected before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 3: matching correctness finished before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 3: exact planned duration/load configuration and bounded round plan",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 3: raw output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 3: raw warmup_output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 4: exact case fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 4: fresh pinned source and 500000-post database readiness",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 4: actual server CPU/memory limits",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 4: actual nofile limits",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 4: actual seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 4: no OOM/death/container error",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 4: post-shutdown SQLite quick_check and committed write growth",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 4: complete original raw output retained",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 4: actual backend retained in server log",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 4: candidate selected before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 4: matching correctness finished before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 4: exact planned duration/load configuration and bounded round plan",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 4: raw output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 4: raw warmup_output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 4: exact case fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 4: fresh pinned source and 500000-post database readiness",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 4: actual server CPU/memory limits",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 4: actual nofile limits",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 4: actual seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 4: no OOM/death/container error",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 4: post-shutdown SQLite quick_check and committed write growth",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 4: complete original raw output retained",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 4: actual backend retained in server log",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 4: candidate selected before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 4: matching correctness finished before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 4: exact planned duration/load configuration and bounded round plan",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 4: raw output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 4: raw warmup_output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 4: selected runtime cache/mmap config",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 4: exact case fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 4: fresh pinned source and 500000-post database readiness",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 4: actual server CPU/memory limits",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 4: actual nofile limits",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 4: actual seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 4: no OOM/death/container error",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 4: post-shutdown SQLite quick_check and committed write growth",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 4: complete original raw output retained",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 4: actual backend retained in server log",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 4: candidate selected before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 4: matching correctness finished before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 4: exact planned duration/load configuration and bounded round plan",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 4: raw output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 4: raw warmup_output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 5: exact case fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 5: fresh pinned source and 500000-post database readiness",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 5: actual server CPU/memory limits",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 5: actual nofile limits",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 5: actual seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 5: no OOM/death/container error",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 5: post-shutdown SQLite quick_check and committed write growth",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 5: complete original raw output retained",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 5: actual backend retained in server log",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 5: candidate selected before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 5: matching correctness finished before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 5: exact planned duration/load configuration and bounded round plan",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 5: raw output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 5: raw warmup_output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 5: selected runtime cache/mmap config",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 5: exact case fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 5: fresh pinned source and 500000-post database readiness",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 5: actual server CPU/memory limits",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 5: actual nofile limits",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 5: actual seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 5: no OOM/death/container error",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 5: post-shutdown SQLite quick_check and committed write growth",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 5: complete original raw output retained",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 5: actual backend retained in server log",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 5: candidate selected before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 5: matching correctness finished before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 5: exact planned duration/load configuration and bounded round plan",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 5: raw output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 5: raw warmup_output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 5: exact case fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 5: fresh pinned source and 500000-post database readiness",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 5: actual server CPU/memory limits",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 5: actual nofile limits",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 5: actual seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 5: no OOM/death/container error",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 5: post-shutdown SQLite quick_check and committed write growth",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 5: complete original raw output retained",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 5: actual backend retained in server log",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 5: candidate selected before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 5: matching correctness finished before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 5: exact planned duration/load configuration and bounded round plan",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 5: raw output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 5: raw warmup_output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 6: exact case fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 6: fresh pinned source and 500000-post database readiness",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 6: actual server CPU/memory limits",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 6: actual nofile limits",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 6: actual seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 6: no OOM/death/container error",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 6: post-shutdown SQLite quick_check and committed write growth",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 6: complete original raw output retained",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 6: actual backend retained in server log",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 6: candidate selected before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 6: matching correctness finished before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 6: exact planned duration/load configuration and bounded round plan",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 6: raw output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 6: raw warmup_output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 6: exact case fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 6: fresh pinned source and 500000-post database readiness",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 6: actual server CPU/memory limits",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 6: actual nofile limits",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 6: actual seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 6: no OOM/death/container error",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 6: post-shutdown SQLite quick_check and committed write growth",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 6: complete original raw output retained",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 6: actual backend retained in server log",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 6: candidate selected before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 6: matching correctness finished before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 6: exact planned duration/load configuration and bounded round plan",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 6: raw output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 6: raw warmup_output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 6: exact case fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 6: fresh pinned source and 500000-post database readiness",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 6: actual server CPU/memory limits",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 6: actual nofile limits",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 6: actual seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 6: no OOM/death/container error",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 6: post-shutdown SQLite quick_check and committed write growth",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 6: complete original raw output retained",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 6: actual backend retained in server log",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 6: candidate selected before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 6: matching correctness finished before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 6: exact planned duration/load configuration and bounded round plan",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 6: raw output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 6: raw warmup_output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 6: selected runtime cache/mmap config",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 7: exact case fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 7: fresh pinned source and 500000-post database readiness",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 7: actual server CPU/memory limits",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 7: actual nofile limits",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 7: actual seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 7: no OOM/death/container error",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 7: post-shutdown SQLite quick_check and committed write growth",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 7: complete original raw output retained",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 7: actual backend retained in server log",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 7: candidate selected before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 7: matching correctness finished before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 7: exact planned duration/load configuration and bounded round plan",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 7: raw output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 7: raw warmup_output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 7: exact case fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 7: fresh pinned source and 500000-post database readiness",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 7: actual server CPU/memory limits",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 7: actual nofile limits",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 7: actual seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 7: no OOM/death/container error",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 7: post-shutdown SQLite quick_check and committed write growth",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 7: complete original raw output retained",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 7: actual backend retained in server log",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 7: candidate selected before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 7: matching correctness finished before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 7: exact planned duration/load configuration and bounded round plan",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 7: raw output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 7: raw warmup_output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 7: exact case fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 7: fresh pinned source and 500000-post database readiness",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 7: actual server CPU/memory limits",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 7: actual nofile limits",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 7: actual seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 7: no OOM/death/container error",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 7: post-shutdown SQLite quick_check and committed write growth",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 7: complete original raw output retained",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 7: actual backend retained in server log",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 7: candidate selected before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 7: matching correctness finished before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 7: exact planned duration/load configuration and bounded round plan",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 7: raw output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 7: raw warmup_output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 7: selected runtime cache/mmap config",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 8: exact case fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 8: fresh pinned source and 500000-post database readiness",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 8: actual server CPU/memory limits",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 8: actual nofile limits",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 8: actual seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 8: no OOM/death/container error",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 8: post-shutdown SQLite quick_check and committed write growth",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 8: complete original raw output retained",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 8: actual backend retained in server log",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 8: candidate selected before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 8: matching correctness finished before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 8: exact planned duration/load configuration and bounded round plan",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 8: raw output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 8: raw warmup_output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 8: exact case fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 8: fresh pinned source and 500000-post database readiness",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 8: actual server CPU/memory limits",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 8: actual nofile limits",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 8: actual seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 8: no OOM/death/container error",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 8: post-shutdown SQLite quick_check and committed write growth",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 8: complete original raw output retained",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 8: actual backend retained in server log",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 8: candidate selected before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 8: matching correctness finished before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 8: exact planned duration/load configuration and bounded round plan",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 8: raw output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 8: raw warmup_output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 8: selected runtime cache/mmap config",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 8: exact case fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 8: fresh pinned source and 500000-post database readiness",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 8: actual server CPU/memory limits",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 8: actual nofile limits",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 8: actual seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 8: no OOM/death/container error",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 8: post-shutdown SQLite quick_check and committed write growth",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 8: complete original raw output retained",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 8: actual backend retained in server log",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 8: candidate selected before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 8: matching correctness finished before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 8: exact planned duration/load configuration and bounded round plan",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 8: raw output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 8: raw warmup_output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 9: exact case fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 9: fresh pinned source and 500000-post database readiness",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 9: actual server CPU/memory limits",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 9: actual nofile limits",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 9: actual seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 9: no OOM/death/container error",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 9: post-shutdown SQLite quick_check and committed write growth",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 9: complete original raw output retained",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 9: actual backend retained in server log",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 9: candidate selected before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 9: matching correctness finished before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 9: exact planned duration/load configuration and bounded round plan",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 9: raw output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 9: raw warmup_output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 9: selected runtime cache/mmap config",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 9: exact case fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 9: fresh pinned source and 500000-post database readiness",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 9: actual server CPU/memory limits",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 9: actual nofile limits",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 9: actual seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 9: no OOM/death/container error",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 9: post-shutdown SQLite quick_check and committed write growth",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 9: complete original raw output retained",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 9: actual backend retained in server log",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 9: candidate selected before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 9: matching correctness finished before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 9: exact planned duration/load configuration and bounded round plan",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 9: raw output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 9: raw warmup_output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 9: exact case fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 9: fresh pinned source and 500000-post database readiness",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 9: actual server CPU/memory limits",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 9: actual nofile limits",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 9: actual seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 9: no OOM/death/container error",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 9: post-shutdown SQLite quick_check and committed write growth",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 9: complete original raw output retained",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 9: actual backend retained in server log",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 9: candidate selected before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 9: matching correctness finished before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 9: exact planned duration/load configuration and bounded round plan",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 9: raw output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 9: raw warmup_output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 10: exact case fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 10: fresh pinned source and 500000-post database readiness",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 10: actual server CPU/memory limits",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 10: actual nofile limits",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 10: actual seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 10: no OOM/death/container error",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 10: post-shutdown SQLite quick_check and committed write growth",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 10: complete original raw output retained",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 10: actual backend retained in server log",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 10: candidate selected before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 10: matching correctness finished before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 10: exact planned duration/load configuration and bounded round plan",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 10: raw output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench 82 round 10: raw warmup_output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 10: exact case fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 10: fresh pinned source and 500000-post database readiness",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 10: actual server CPU/memory limits",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 10: actual nofile limits",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 10: actual seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 10: no OOM/death/container error",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 10: post-shutdown SQLite quick_check and committed write growth",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 10: complete original raw output retained",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 10: actual backend retained in server log",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 10: candidate selected before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 10: matching correctness finished before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 10: exact planned duration/load configuration and bounded round plan",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 10: raw output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 10: raw warmup_output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench goose round 10: selected runtime cache/mmap config",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 10: exact case fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 10: fresh pinned source and 500000-post database readiness",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 10: actual server CPU/memory limits",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 10: actual nofile limits",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 10: actual seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 10: no OOM/death/container error",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 10: post-shutdown SQLite quick_check and committed write growth",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 10: complete original raw output retained",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 10: actual backend retained in server log",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 10: candidate selected before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 10: matching correctness finished before throughput",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 10: exact planned duration/load configuration and bounded round plan",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 10: raw output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "bench baseline round 10: raw warmup_output confirms requested duration/URL/threads/connections",
+      "passed": true
+    },
+    {
+      "check": "Every measurement record observed earlier remains unchanged as an exact prefix",
+      "passed": true
+    },
+    {
+      "check": "Selection/protocol/source-build/driver/correctness bindings stay unchanged after first observation",
+      "passed": true
+    },
+    {
+      "check": "Final attempt count is within ten rounds plus at most two complete replacements",
+      "passed": true
+    }
+  ],
+  "identities": {
+    "goose": {
+      "source_sha256": "09e695a0652cc4654e12d5382b423adf75b7ea7c5ef18978313ddff3cc9d13ed",
+      "image_id": "sha256:d0a2f1e95817cefd26c9563d86849efff6cb2bb5dc0e2ff733ed7656577ef9ea",
+      "binary_sha256": "309f1138b9c5d6b404670a8c0eaf1d42c2f96d4fc7e30d7a89f5bff326a5af2e"
+    },
+    "82": {
+      "source_sha256": "b91b9491e2a7a8856f8f360bc89f376b6493ae9b9a3907c557836b94f5131438",
+      "image_id": "sha256:64227e803306084617be2a4ebc1c3623260d265f158dd8c009f647558a280135",
+      "binary_sha256": "61d48f1be2feb858a14b1617cf3221bebf68df6caaac3541116e0dfbb7562026"
+    },
+    "baseline": {
+      "source_sha256": "73148f5d49e07fc62289bf582e261b8df0e1ef51d478d6fb9d44a68fec87b88a",
+      "image_id": "sha256:a69064953b766ec5c800389b8e17a7d184f73aa8dd46cd4aa2048955ee86eb0f",
+      "binary_sha256": "f0b086e53343263381c55a9046dbd65f400c4ec5ebbfc872c5d682d20a5679ab"
+    }
+  },
+  "measurement_count": 30,
+  "measurements_sha256": "99ff301c0c7231105f57441479f20789cc5cad1ecccdcc432a700107639eb4b1",
+  "verification_sha256": "93aacc99b89fd884734510f137a1d2a18aed7e50e4f990e21cb6c518e527fa1a",
+  "selection_sha256": "1421ddc8f3de969a01e9a71fc23f141d2fe5c5a4016b25d84662f7b5e7c92939",
+  "supplemental_proofs": {
+    "edge-checks.json": {
+      "sha256": "891f52f3a91c6739372dc85ea43f9a1cb8473b7ee9b570044819ef1ecc0fa1ff",
+      "passed": 25
+    },
+    "parser-checks.json": {
+      "sha256": "2cbff417fac8bfcdf18247fcee781c0c968cd812c886f47d07371b169efe664f",
+      "passed": 18
+    },
+    "above-max-checks.json": {
+      "sha256": "4285b48d3ae66ce8ecf144dcb732bc3d57776451887a93be455620de91d4dea5",
+      "passed": 9
+    }
+  },
+  "auditor_sha256": "3ca10ef3b6f28a2642d91bf7cb271a2cec62a091d3b5181fe037417160aaed38",
+  "normal_reproduction": {
+    "image_id": "sha256:a1fb183d9156a344210065de176bc64b8219e6c2cd6ff2ac882ea7617cb8430a",
+    "binary_sha256": "c4aa7c89126bd854d14d2c3d0fccef9ef8b2523d3d17d683193480abe77f226b",
+    "source_sha256": "09e695a0652cc4654e12d5382b423adf75b7ea7c5ef18978313ddff3cc9d13ed",
+    "comparison_sha256": "07d3e2d738e6de08b4f649d79de854f22aa4349e6af8219364ba25b6cc8026d2",
+    "measured": false,
+    "binary_identical_to_selected": false
+  },
+  "limitations": [
+    "Image/binary and driver execution identities use retained immutable image/runtime proofs; this reviewer runs no new containers.",
+    "Inherited correctness records retain original timestamps and bytes; these are not newly executed tests.",
+    "A separate full normal source build succeeds but produces different SQLite feedback/object and binary bytes. It is unmeasured and does not replace the selected frozen image.",
+    "Statistics, whole-triplet selection and target gates are independently audited in independent-statistics-audit.json."
+  ]
+}

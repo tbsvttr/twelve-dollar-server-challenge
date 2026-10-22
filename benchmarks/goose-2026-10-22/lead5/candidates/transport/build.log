@@ -1,0 +1,11 @@
++ /opt/goose/build/goose -O2 --standalone -o .build/app.c app.goose
+parsed ok: 258 top-level declarations, 3 file(s)
+typechecked ok: 236 specialization(s), 7 struct/1 enum instance(s); optimized -O2: 102 inlined, 0 base case(s), 41 folded, 46 propagated, 0 tail loop(s), 0 reassociated
+bce: elided 71/120 index and 21/43 slice checks
+wrote .build/app.c (532910 bytes)
++ sha256sum -c -
++ printf '%s  %s\n' 2c5663ef60e2bbc9f87a54f05f8eca1057b64614f5ced6fc34591ed3ef3b2178 .build/sqlite-pgo.o
+.build/sqlite-pgo.o: OK
++ gcc -O3 -march=native -DNDEBUG -std=gnu11 -I.deps -I.build -pthread -flto=2 -fno-semantic-interposition -fno-plt .build/app.c net.c db.c json_fast.c .build/sqlite-pgo.o -lcrypto -lm -pthread -o bin/server
++ sha256sum bin/server
+33ea866ac37f2f9b28328b7c8271d70178a9efada87a8b9346c41cfa15e7e720  bin/server

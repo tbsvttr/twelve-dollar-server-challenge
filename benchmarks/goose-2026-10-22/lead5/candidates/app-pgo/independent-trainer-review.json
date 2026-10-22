@@ -1,0 +1,21 @@
+{
+  "review": "independent static inspection of build-only application PGO trainer",
+  "schema_matches_challenge_exactly_after_whitespace_normalization": true,
+  "schema_object_names": [
+    "likes",
+    "likes_post_id_idx",
+    "posts",
+    "posts_created_at_id_idx",
+    "posts_user_id_idx",
+    "users"
+  ],
+  "fixture_reads_benchmark_seed_or_tokens": false,
+  "fixture_rows_generated_from_independent_literals": true,
+  "feedback_dump_context": "Ordinary sigwait watcher thread, never a signal handler. Instrumented counters use -fprofile-update=atomic.",
+  "main_thread_parked_or_joined_before_dump": false,
+  "settle_delay_is_synchronization": false,
+  "synchronization_limit": "The 50ms quiet interval is a heuristic. The server main thread can remain active while feedback is dumped, so the snapshot is not guaranteed to be a globally coherent instant across all CFG counters. Atomic counter updates avoid lost-update corruption but do not prove that the main thread is parked. This is build-only approximate feedback, and profile correction plus the successful profile-use compile do not establish strict synchronization.",
+  "production_helper_omitted_by_build_command": true,
+  "runtime_application_code_changed": false,
+  "production_effect": "Only compiler feedback/code generation; no trainer or profile-dump helper is linked into the production server."
+}
