@@ -1,0 +1,21 @@
+{
+  "method": "gh CLI",
+  "verified_comments": [
+    {
+      "id": 6292218419,
+      "url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/issues/7#issuecomment-6292218419",
+      "updated_at": "2026-10-22T16:00:03Z",
+      "author": "tbsvttr",
+      "performed_via_github_app": null,
+      "body_sha256": "d487b6d4bdd9ecb9e28a81ed022f7889785c05ea7f42f05d8e93e3e03f0de7ef"
+    },
+    {
+      "id": 6343585262,
+      "url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/issues/7#issuecomment-6343585262",
+      "updated_at": "2026-10-22T16:00:06Z",
+      "author": "tbsvttr",
+      "performed_via_github_app": null,
+      "body_sha256": "cc010f1225d2ea2b710dc3c56dd54bbe760725613c583a4e7e8dd6a7badb2701"
+    }
+  ]
+}

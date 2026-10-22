@@ -1,0 +1,19 @@
+{
+  "issue_comment_url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/issues/7#issuecomment-6292218419",
+  "notice_url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/issues/7#issuecomment-6343585262",
+  "row_count": 127,
+  "local_conditions_counts": {
+    "FAIL": 13,
+    "DIFFERENT_PROTOCOL": 3,
+    "PASS": 100,
+    "UNVERIFIED": 11
+  },
+  "official_conditions_status": "UNVERIFIED for all 127; original benchmark not reproduced",
+  "metrics_and_source_records_unchanged": true,
+  "body_sha256": "d487b6d4bdd9ecb9e28a81ed022f7889785c05ea7f42f05d8e93e3e03f0de7ef",
+  "conditions_audit_checks": 859,
+  "new_benchmarks": 0,
+  "new_comments": 0,
+  "method": "gh CLI",
+  "artifact_commit": "bb2f2def4f6c2e2ef2eb1262f406a754b5757844"
+}
