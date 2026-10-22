@@ -27,11 +27,11 @@ def main():
     original = json.loads(Path('/private/tmp/goose-unified-current-20261022.json').read_text())['body']
     assert len(rows) == 127 and len({r['row_id'] for r in rows}) == 127
     status_labels = {
-        'measured': 'clean', 'measured_with_errors': 'errors',
+        'measured': 'measured', 'measured_with_errors': 'errors',
         'ineligible_reference': 'non-SQLite', 'unsupported_architecture': 'ARM64 unsupported',
         'runtime_failed': 'startup failed', 'source_missing_start': 'no start script',
         'database_check_failed': 'DB check failed', 'build_failed': 'build failed',
-        'measured; target UNMET': 'clean; target unmet', 'measured reference': 'clean reference',
+        'measured; target UNMET': 'target unmet', 'measured reference': 'measured reference',
     }
     role_labels = {'current': 'current', 'historical': 'previous',
                    'control': 'control', 'confirmation': 'confirmation'}
@@ -42,13 +42,18 @@ def main():
         'goose-hmac-2026-10-22-10x45s-monotonic': '22 Oct · confirmation',
     }
     refs = {'details': base + '/2026-10-22/report.md'}
-    lines = ['| PR / implementation / pinned source | Role / status | Batch / protocol | Req/s · min–max | p95 / p99 ms | RSS MiB / CPU % | Errors HTTP; C/R/W/T | App / Own LOC | Evidence |',
-             '|---|---|---|---:|---:|---:|---|---:|---|']
+    condition_labels = {'PASS': '✓ PASS', 'FAIL': '✗ FAIL', 'UNVERIFIED': '? UNVERIFIED',
+                        'DIFFERENT_PROTOCOL': '↔ OTHER PROTOCOL'}
+    lines = ['| PR / implementation / pinned source | Local conditions | Role / status | Batch / protocol | Req/s · min–max | p95 / p99 ms | RSS MiB / CPU % | Errors HTTP; C/R/W/T | App / Own LOC | Evidence |',
+             '|---|---|---|---|---:|---:|---:|---|---:|---|']
     for row in rows:
         assert row['measurement_batch'] in batches, row['measurement_batch']
         pr = f"#{row['pr']} " if row.get('pr') is not None else 'local '
         label = pr + f"[{safe(row['label'])}]({row['source_url']})"
         kind = role_labels[row['role']] + '<br>' + status_labels.get(row['status'], row['status'])
+        condition = '**' + condition_labels[row['requirements_status']] + '**'
+        if row['requirements_status'] != 'PASS':
+            condition += '<br>' + safe(row['requirements_reason'])
         protocol = 'mono 10×45s' if row['protocol'] == 'monotonic-wrk-10x45s' else 'stock 3×15s'
         batch = batches[row['measurement_batch']] + '<br>' + protocol
         rps = number(row.get('successful_rps'))
@@ -71,7 +76,7 @@ def main():
             refs[ref] = url
             evidence = f'[raw][{ref}]'
         evidence += f"<!-- row:{row['row_id']} -->"
-        cells = [label, kind, batch, rps, latency, resource, errors, loc, evidence]
+        cells = [label, condition, kind, batch, rps, latency, resource, errors, loc, evidence]
         lines.append('| ' + ' | '.join(cells) + ' |')
     table = '\n'.join(lines) + '\n'
     definitions = '\n'.join(f'[{name}]: {url}' for name, url in refs.items()) + '\n'
@@ -81,10 +86,14 @@ def main():
              "**120 current outcomes, all preserved, plus seven comparison rows:** two previous measured revisions, "
              "two short-run Rust controls and three longer confirmation measurements. All **127 rows** appear together, "
              "sorted by successful req/s; unmeasured outcomes follow.\n\n"
-             "Every measurement is placed by its recorded throughput. Role and status identify errors, rule exclusions, "
-             "previous revisions and reference measurements. **Stock 3×15s** uses "
-             "the original driver; **mono 10×45s** uses the declared monotonic-clock correction. Their measurements "
-             "remain separate. All servers use one CPU / 2 GiB RAM / no swap.\n\n")
+             "**Local conditions:** **✓ PASS** requires SQLite with committed data, 42/42 API and dynamic/database checks, "
+             "three stock-wrk 15s runs with 2s warmups and zero measured HTTP/socket errors, and one server CPU / 2 GiB / no swap. "
+             "**✗ FAIL** names an observed failure; **? UNVERIFIED** means missing applicable evidence; "
+             "**↔ OTHER PROTOCOL** identifies the corrected-driver 10×45s references. The column gives the reason. "
+             "Throughput order does not qualify a failed or different-protocol row.\n\n"
+             "**Original challenge conditions are not reproduced here:** these are ARM64 Docker/wrk runs with CPU affinity, "
+             "rather than the official x86-64 droplet/k6 runs without affinity. PASS confirms the recorded local runtime "
+             "checks only; full challenge-rule compliance and the source-build resource budget are not uniformly verified.\n\n")
     short_notes = ("\n<details>\n<summary>Reading the table, validation and measurement notes</summary>\n\n"
                    "Values are per-case medians; the second throughput line is the min–max range. p95/p99 are milliseconds; "
                    "RSS is end-of-load service-process memory, and CPU 100% means one server core. Error counters are totals "
@@ -158,6 +167,12 @@ def main():
              "10×45-second confirmation stay distinct in the shared table. All measurements are placed by their recorded "
              "throughput, with errors, references, historical revisions and unmeasured outcomes visible in the same view. "
              "Original ranking metadata remains in the retained source records and exports.\n\n"
+             "**Local conditions** are checked explicitly per row: PASS, FAIL with its reason, UNVERIFIED, or DIFFERENT_PROTOCOL. "
+             "PASS means the recorded SQLite/API/live-data/database/resource and zero-error stock-wrk 3×15s checks; it "
+             "does not establish official challenge compliance. The HTML can filter by this field.\n\n"
+             "**Official conditions were not reproduced:** the local runs use ARM64 Docker/wrk with CPU affinity, "
+             "rather than the official x86-64 droplet/k6 without affinity. Full source-rule compliance and the clean "
+             "source-build resource budget are not uniformly verified.\n\n"
              "All measured servers use one CPU and 2 GiB RAM with no container swap. This presentation update runs no "
              "new benchmarks and changes no source code, measurement or ranking rule. Local ARM64 throughput does not "
              "determine official x86-64 k6 maximum-user capacity. The stable ≥5% Goose/Rust confirmation target remains unmet.\n\n"

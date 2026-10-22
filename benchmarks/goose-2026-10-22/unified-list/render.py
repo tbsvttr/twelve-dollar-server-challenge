@@ -11,6 +11,7 @@ import csv
 import hashlib
 import json
 from pathlib import Path
+from conditions import classify
 
 
 HERE = Path(__file__).resolve().parent
@@ -116,6 +117,8 @@ def build_rows(summary):
 
 
 FIELDS = ['row_id', 'rank', 'pr', 'case_id', 'label', 'role', 'confirmation_role', 'status',
+          'requirements_status', 'requirements_reason', 'benchmark_requirements_met', 'requirements_scope',
+          'official_conditions_status', 'official_conditions_reason', 'runtime_budget_reason',
           'measurement_batch', 'measurement_date', 'protocol', 'protocol_label',
           'measurement_seconds', 'warmup_seconds', 'trials_recorded',
           'successful_rps', 'rps_min', 'rps_max', 'p50_ms', 'p95_ms', 'p99_ms', 'rss_mib', 'cpu_percent',
@@ -140,7 +143,7 @@ def csv_rows(rows):
 def html(rows):
     data = [{key: value for key, value in row.items() if key != 'source_record'} for row in rows]
     encoded = json.dumps(data, ensure_ascii=False).replace('<', '\\u003c')
-    headers = ['PR / pinned source', 'Role / status / checks', 'Batch / protocol',
+    headers = ['PR / pinned source', 'Local conditions', 'Role / status / checks', 'Batch / protocol',
                'Req/s (min–max)', 'p95 / p99 ms', 'RSS MiB / CPU %',
                'HTTP; C/R/W/T (warmup)', 'App / Own LOC', 'Evidence / reason']
     return '''<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
@@ -148,20 +151,24 @@ def html(rows):
 body{font:14px system-ui,sans-serif;margin:1.5rem;color:#172b36;background:#f7fafc}h1{font-size:1.6rem}p{max-width:110ch;line-height:1.5}a{color:#075c8b}input,select,button{font:inherit;padding:.45rem;margin:0 .6rem .7rem 0;border:1px solid #a9bcc7;border-radius:4px}table{border-collapse:collapse;background:#fff;width:100%}th,td{text-align:left;padding:.6rem;border-bottom:1px solid #dbe4ea;vertical-align:top}th{background:#e8f1f5;position:sticky;top:0;white-space:nowrap}td{font-variant-numeric:tabular-nums}td:first-child,td:last-child{min-width:15rem}small{display:block;color:#4c6270;font-size:.85em}code{overflow-wrap:anywhere}.wrap{overflow:auto}.reference{background:#fffaf0}#count{font-weight:600}
 </style><h1>All measurements — one comparison table</h1>
 <p>127 rows: 120 current outcomes, two previous measured revisions, two separate short-run controls and three long-confirmation medians. Every measurement is placed by recorded throughput with role, status and errors alongside it. Original source and protocol remain explicit; the shared sort does not pool batches. Stock wrk 3×15-second ranking runs and corrected-driver 10×45-second confirmation runs are separate protocols. The stable ≥5% confirmation target remains <strong>UNMET</strong>.</p>
+<p><strong>PASS means the documented local runtime comparison only:</strong> SQLite and committed data, 42/42 API and dynamic checks, three 15-second stock-wrk trials without HTTP/socket errors, one server CPU / 2 GiB / no swap. <strong>FAIL</strong> names an observed failure; <strong>UNVERIFIED</strong> means insufficient applicable evidence; <strong>OTHER PROTOCOL</strong> means the corrected-driver 10×45s reference. Sorting by throughput does not qualify a failed or different-protocol row.</p>
+<p><strong>Original challenge conditions are not reproduced here:</strong> these runs use ARM64 Docker/wrk with CPU affinity, whereas the official score uses the x86-64 droplet and k6 without affinity. Full challenge-rule compliance and the source-build budget are not uniformly audited by these results.</p>
 <p>Native Linux ARM64 on the local Mac/Docker host, one server CPU quota and 2 GiB RAM with no swap. These are local saturation measurements, not official x86-64 k6 user capacity. <a href="comparison.csv">CSV</a> · <a href="comparison-rows.json">Canonical row data</a> · <a href="report.md">Report and evidence</a></p>
-<input id="search" aria-label="Search" placeholder="Search PR, language, source or reason"><select id="protocol"><option value="">All protocols</option></select><select id="batch"><option value="">All batches</option></select><select id="status"><option value="">All statuses</option></select><select id="role"><option value="">All roles</option></select><select id="sort"><option value="successful_rps">Successful req/s descending</option><option value="rss_mib">RSS ascending</option><option value="p99_ms">p99 ascending</option><option value="pr">PR ascending</option></select><span id="count"></span><div class="wrap"><table><thead><tr>''' + ''.join('<th>' + value + '</th>' for value in headers) + '''</tr></thead><tbody></tbody></table></div><script>
+<input id="search" aria-label="Search" placeholder="Search PR, language, source or reason"><select id="requirements"><option value="">All local conditions</option></select><select id="protocol"><option value="">All protocols</option></select><select id="batch"><option value="">All batches</option></select><select id="status"><option value="">All statuses</option></select><select id="role"><option value="">All roles</option></select><select id="sort"><option value="successful_rps">Successful req/s descending</option><option value="rss_mib">RSS ascending</option><option value="p99_ms">p99 ascending</option><option value="pr">PR ascending</option></select><span id="count"></span><div class="wrap"><table><thead><tr>''' + ''.join('<th>' + value + '</th>' for value in headers) + '''</tr></thead><tbody></tbody></table></div><script>
 const rows=''' + encoded + ''';
 const $=id=>document.getElementById(id),body=document.querySelector('tbody');
 function batchLabel(value){return {'current-2026-10-20':'20 Oct','fixes-2026-10-22':'22 Oct · fixes','ranking-3x15-2026-10-22':'22 Oct · Goose','goose-hmac-2026-10-22-10x45s-monotonic':'22 Oct · confirmation'}[value]||value}
 function protocolLabel(value){return value==='stock-wrk-3x15s'?'stock 3×15s':value==='monotonic-wrk-10x45s'?'mono 10×45s':value}
-function statusLabel(value){return {'measured':'Clean','measured_with_errors':'Errors','ineligible_reference':'Non-SQLite reference','unsupported_architecture':'ARM64 unsupported','database_check_failed':'Database check failed','source_missing_start':'Missing start script','runtime_failed':'Startup failed','test_failed':'API checks failed','semantic_test_failed':'Semantic checks failed','build_failed':'Build failed','measured; target UNMET':'Target UNMET','measured reference':'Clean reference'}[value]||value}
-const selects=[['protocol','protocol'],['batch','measurement_batch'],['status','status'],['role','role']];
-for(const[id,key]of selects)for(const value of [...new Set(rows.map(r=>r[key]).filter(Boolean))].sort()){const o=document.createElement('option');o.value=value;o.textContent=id==='batch'?batchLabel(value):id==='protocol'?protocolLabel(value):id==='status'?statusLabel(value):value;o.title=value;$(id).append(o)}
+function requirementLabel(value){return {'PASS':'✓ PASS','FAIL':'✗ FAIL','UNVERIFIED':'? UNVERIFIED','DIFFERENT_PROTOCOL':'↔ OTHER PROTOCOL'}[value]||value}
+function statusLabel(value){return {'measured':'Measured','measured_with_errors':'Errors','ineligible_reference':'Non-SQLite reference','unsupported_architecture':'ARM64 unsupported','database_check_failed':'Database check failed','source_missing_start':'Missing start script','runtime_failed':'Startup failed','test_failed':'API checks failed','semantic_test_failed':'Semantic checks failed','build_failed':'Build failed','measured; target UNMET':'Target UNMET','measured reference':'Measured reference'}[value]||value}
+const selects=[['requirements','requirements_status'],['protocol','protocol'],['batch','measurement_batch'],['status','status'],['role','role']];
+for(const[id,key]of selects)for(const value of [...new Set(rows.map(r=>r[key]).filter(Boolean))].sort()){const o=document.createElement('option');o.value=value;o.textContent=id==='requirements'?requirementLabel(value):id==='batch'?batchLabel(value):id==='protocol'?protocolLabel(value):id==='status'?statusLabel(value):value;o.title=value;$(id).append(o)}
 function n(v,d=2){return typeof v==='number'?v.toLocaleString(undefined,{maximumFractionDigits:d}):'—'}
 function plain(node,value,small=false){const e=document.createElement(small?'small':'span');e.textContent=value==null?'—':String(value);node.append(e);return e}
 function link(node,label,url){if(!url)return plain(node,label);const a=document.createElement('a');a.href=url;a.textContent=label;node.append(a);return a}
 function add(row){const tr=document.createElement('tr');if(row.role!=='current')tr.className='reference';const td=()=>{const e=document.createElement('td');tr.append(e);return e};
 let e=td();link(e,(row.pr?'#'+row.pr+' ':'')+(row.label||row.case_id),row.pr_url||row.source_url);const revision=row.commit||row.source_sha256;const s=document.createElement('small');link(s,(revision||'').slice(0,12),row.source_url);s.title=revision||'';e.append(s);
+e=td();plain(e,requirementLabel(row.requirements_status));plain(e,row.requirements_reason,true);e.title=row.requirements_scope;
 e=td();plain(e,row.role+(row.confirmation_role?' · '+row.confirmation_role:''));plain(e,statusLabel(row.status),true).title=row.status;plain(e,row.tests_passed==null?'checks not run':row.tests_passed+'/42 checks',true);
 e=td();plain(e,batchLabel(row.measurement_batch)).title=row.measurement_batch;plain(e,protocolLabel(row.protocol),true).title=row.protocol_label;
 e=td();plain(e,n(row.successful_rps));plain(e,n(row.rps_min)+'–'+n(row.rps_max),true);
@@ -181,6 +188,8 @@ def main():
     summary = read(args.summary)
     assert len(summary['rows']) == 120 and summary['counts']['ranked'] == 98
     rows = read(HERE / 'rows.json') if args.html_only else build_rows(summary)
+    for row in rows:
+        row.update(classify(row))
     if not args.html_only:
         save(HERE / 'rows.json', rows)
         csv_rows(rows)

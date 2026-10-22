@@ -148,7 +148,25 @@
     "label": "cpp-epoll-memstore-khalefa-ow",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "FAIL",
+    "requirements_reason": "Custom memory store instead of SQLite; fails the local SQLite requirement.",
+    "benchmark_requirements_met": false,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "FAIL",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "FAIL",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 143,
@@ -311,7 +329,25 @@
     "label": "goose-native-tbsvttr",
     "evidence_url": "../goose-2026-10-22/ranking-3x15-2026-10-22/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "FAIL",
+    "requirements_reason": "38 wrk timeouts across the local measured trials.",
+    "benchmark_requirements_met": false,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "FAIL",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../goose-2026-10-22/list-integration/independent-audit.json",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "case_id": "goose",
@@ -446,7 +482,25 @@
     "summary_ref": {
       "path": "../goose-2026-10-22/lead5/holdout-hmac/holdout-summary.json",
       "sha256": "c4f873838637c4ea99ce8ce3ed187465f1ff1dc23a921db1f60875e71fc51070"
-    }
+    },
+    "requirements_status": "DIFFERENT_PROTOCOL",
+    "requirements_reason": "10×45s with corrected wrk; not the stock 3×15s comparison. Stable ≥5% target UNMET.",
+    "benchmark_requirements_met": false,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "UNVERIFIED",
+      "official_api_42": "UNVERIFIED",
+      "dynamic_live_data": "UNVERIFIED",
+      "committed_database": "UNVERIFIED",
+      "three_completed_stock_trials": "UNVERIFIED",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "UNVERIFIED",
+      "runtime_startup": "UNVERIFIED"
+    },
+    "runtime_budget_reason": "Recorded limits are one CPU quota / 2 GiB / no swap.",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 82,
@@ -597,7 +651,25 @@
     "label": "rust-epoll-scooter1337",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "case_id": "baseline",
@@ -732,7 +804,25 @@
     "summary_ref": {
       "path": "../goose-2026-10-22/lead5/holdout-hmac/holdout-summary.json",
       "sha256": "c4f873838637c4ea99ce8ce3ed187465f1ff1dc23a921db1f60875e71fc51070"
-    }
+    },
+    "requirements_status": "DIFFERENT_PROTOCOL",
+    "requirements_reason": "10×45s with corrected wrk; not the stock 3×15s comparison. Stable ≥5% target UNMET.",
+    "benchmark_requirements_met": false,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "UNVERIFIED",
+      "official_api_42": "UNVERIFIED",
+      "dynamic_live_data": "UNVERIFIED",
+      "committed_database": "UNVERIFIED",
+      "three_completed_stock_trials": "UNVERIFIED",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "UNVERIFIED",
+      "runtime_startup": "UNVERIFIED"
+    },
+    "runtime_budget_reason": "Recorded limits are one CPU quota / 2 GiB / no swap.",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 82,
@@ -893,7 +983,25 @@
     "label": "rust-epoll-scooter1337",
     "evidence_url": "../goose-2026-10-22/ranking-3x15-2026-10-22/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "FAIL",
+    "requirements_reason": "34 wrk timeouts across the local measured trials.",
+    "benchmark_requirements_met": false,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "FAIL",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../goose-2026-10-22/list-integration/independent-audit.json",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 82,
@@ -1042,7 +1150,25 @@
     "label": "rust-epoll-scooter1337",
     "evidence_url": "measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: audit-final.json",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "case_id": "82",
@@ -1177,7 +1303,25 @@
     "summary_ref": {
       "path": "../goose-2026-10-22/lead5/holdout-hmac/holdout-summary.json",
       "sha256": "c4f873838637c4ea99ce8ce3ed187465f1ff1dc23a921db1f60875e71fc51070"
-    }
+    },
+    "requirements_status": "DIFFERENT_PROTOCOL",
+    "requirements_reason": "10×45s with corrected wrk; not the stock 3×15s comparison. Stable ≥5% target UNMET.",
+    "benchmark_requirements_met": false,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "UNVERIFIED",
+      "official_api_42": "UNVERIFIED",
+      "dynamic_live_data": "UNVERIFIED",
+      "committed_database": "UNVERIFIED",
+      "three_completed_stock_trials": "UNVERIFIED",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "UNVERIFIED",
+      "runtime_startup": "UNVERIFIED"
+    },
+    "runtime_budget_reason": "Recorded limits are one CPU quota / 2 GiB / no swap.",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 19,
@@ -1328,7 +1472,25 @@
     "label": "rust-epoll-scooter1337",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 132,
@@ -1479,7 +1641,25 @@
     "label": "nim-io_uring-NioHast",
     "evidence_url": "measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: audit-final.json",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 32,
@@ -1630,7 +1810,25 @@
     "label": "cpp-eastl-io_uring-pgo-hendy643",
     "evidence_url": "measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: audit-final.json",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 68,
@@ -1781,7 +1979,25 @@
     "label": "c-iouring-27bhd",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 113,
@@ -1932,7 +2148,25 @@
     "label": "v-epoll-i098",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 72,
@@ -2083,7 +2317,25 @@
     "label": "go-epoll-MegaPanchamZ",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 44,
@@ -2234,7 +2486,25 @@
     "label": "go-stdlib-vkrishna03",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 64,
@@ -2385,7 +2655,25 @@
     "label": "c-epoll-TheFirstIstari",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 88,
@@ -2536,7 +2824,25 @@
     "label": "java-nio-stohirov",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 98,
@@ -2687,7 +2993,25 @@
     "label": "cpp-iouring-edwin-2024",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 55,
@@ -2838,7 +3162,25 @@
     "label": "c-iouring-einhornimmond",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 52,
@@ -2989,7 +3331,25 @@
     "label": "go-epoll-damianoneill",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 26,
@@ -3140,7 +3500,25 @@
     "label": "c-iouring-raoz",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 25,
@@ -3291,7 +3669,25 @@
     "label": "zig-usockets-tbsvttr",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 15,
@@ -3442,7 +3838,25 @@
     "label": "cpp-uwebsockets-v2-tbsvttr",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 42,
@@ -3593,7 +4007,25 @@
     "label": "c-epoll-benclawbot",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 65,
@@ -3744,7 +4176,25 @@
     "label": "go-epoll-Antheurus",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 9,
@@ -3895,7 +4345,25 @@
     "label": "cpp-epoll_inmem-khalefa-ow",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 124,
@@ -4048,7 +4516,25 @@
     "label": "java-springboot-bogdan-blaj",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "FAIL",
+    "requirements_reason": "64 wrk timeouts across the local measured trials.",
+    "benchmark_requirements_met": false,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "FAIL",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 76,
@@ -4199,7 +4685,25 @@
     "label": "go-epoll-champ3oy",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 54,
@@ -4350,7 +4854,25 @@
     "label": "c-ammarserver-AmmarkoV",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 5,
@@ -4501,7 +5023,25 @@
     "label": "c-fio-tbsvttr",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 8,
@@ -4652,7 +5192,25 @@
     "label": "cpp-epoll-khalefa-ow",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 3,
@@ -4803,7 +5361,25 @@
     "label": "typescript-bun-xxmohamed012",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 107,
@@ -4954,7 +5530,25 @@
     "label": "scala-netty-jacksonhoran",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 17,
@@ -5105,7 +5699,25 @@
     "label": "rust-axum-tbsvttr",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 6,
@@ -5256,7 +5868,25 @@
     "label": "cpp-uwebsockets-tbsvttr",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 112,
@@ -5407,7 +6037,25 @@
     "label": "c-iouring-ssmurfgg04-gif",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 48,
@@ -5558,7 +6206,25 @@
     "label": "go-gnet-kaikegm",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 39,
@@ -5709,7 +6375,25 @@
     "label": "c-h2o-einhornimmond",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 111,
@@ -5860,7 +6544,25 @@
     "label": "go-epoll-brady1408",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 77,
@@ -6011,7 +6713,25 @@
     "label": "csharp-aspnetcore-vijay-highlo",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 29,
@@ -6162,7 +6882,25 @@
     "label": "cpp-drogon-hendy643",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 38,
@@ -6313,7 +7051,25 @@
     "label": "go-gnet-Haris0059",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 102,
@@ -6464,7 +7220,25 @@
     "label": "node-uwebsockets-zahidcakici",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 63,
@@ -6615,7 +7389,25 @@
     "label": "java-netty-lfeagan",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 100,
@@ -6766,7 +7558,25 @@
     "label": "go-nethttp-mattn-vedic",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 121,
@@ -6917,7 +7727,25 @@
     "label": "c-iouring-ssmurfgg04-gif",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 71,
@@ -7068,7 +7896,25 @@
     "label": "ruby-async-cicloid",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 4,
@@ -7219,7 +8065,25 @@
     "label": "typescript-bun-tbsvttr",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 84,
@@ -7370,7 +8234,25 @@
     "label": "python-pypy-epoll-pranavds-codes",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 45,
@@ -7521,7 +8403,25 @@
     "label": "kotlin-ktor-C-Hatton",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 104,
@@ -7672,7 +8572,25 @@
     "label": "haskell-warp-staticfx",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 24,
@@ -7823,7 +8741,25 @@
     "label": "php-swoole-mattsplat",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 94,
@@ -7976,7 +8912,25 @@
     "label": "lua-openresty-yar0slav",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "FAIL",
+    "requirements_reason": "63 wrk timeouts across the local measured trials.",
+    "benchmark_requirements_met": false,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "FAIL",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 28,
@@ -8127,7 +9081,25 @@
     "label": "php-swoole-tzimpel",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 59,
@@ -8278,7 +9250,25 @@
     "label": "bun-elysia-shashishsoni",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 73,
@@ -8429,7 +9419,25 @@
     "label": "java-quarkus-panama-raisinsfried",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 118,
@@ -8580,7 +9588,25 @@
     "label": "python-stdlib-shawal-mbalire",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 106,
@@ -8731,7 +9757,25 @@
     "label": "go-fasthttp-savak1990",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 114,
@@ -8882,7 +9926,25 @@
     "label": "rust-axum-mjc",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 83,
@@ -9033,7 +10095,25 @@
     "label": "kotlin-nio-3x3xX3N0N",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 69,
@@ -9184,7 +10264,25 @@
     "label": "v-fasthttp-ulises-jeremias",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 78,
@@ -9335,7 +10433,25 @@
     "label": "node-net-barrard",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 51,
@@ -9486,7 +10602,25 @@
     "label": "typescript-fastify-melroy89",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 80,
@@ -9637,7 +10771,25 @@
     "label": "bun-elysia-brocchirodrigo",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 99,
@@ -9788,7 +10940,25 @@
     "label": "go-nethttp-fi5HiE",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 108,
@@ -9939,7 +11109,25 @@
     "label": "fsharp-oxpecker-delneg",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 14,
@@ -10090,7 +11278,25 @@
     "label": "ruby-iodine-tbsvttr",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 18,
@@ -10241,7 +11447,25 @@
     "label": "go-nethttp-tbsvttr",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 56,
@@ -10392,7 +11616,25 @@
     "label": "go-fasthttp-b3nhard",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 41,
@@ -10543,7 +11785,25 @@
     "label": "python-fastapi-granian-shawal-mbalire",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 101,
@@ -10694,7 +11954,25 @@
     "label": "java-raw-agrison",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 129,
@@ -10845,7 +12123,25 @@
     "label": "go-nethttp-NaveedZahoorKhan",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 46,
@@ -10996,7 +12292,25 @@
     "label": "dart-rawsocket-C-Hatton",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 61,
@@ -11147,7 +12461,25 @@
     "label": "node-fastify-gmr458",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 13,
@@ -11298,7 +12630,25 @@
     "label": "python-granian-tbsvttr",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 16,
@@ -11451,7 +12801,25 @@
     "label": "fortran-microhttpd-tbsvttr",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "FAIL",
+    "requirements_reason": "64 wrk timeouts across the local measured trials.",
+    "benchmark_requirements_met": false,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "FAIL",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 103,
@@ -11604,7 +12972,25 @@
     "label": "go-gin-lincolng4",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "FAIL",
+    "requirements_reason": "90 HTTP errors; 91 wrk timeouts across the local measured trials.",
+    "benchmark_requirements_met": false,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "FAIL",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 103,
@@ -11755,7 +13141,25 @@
     "label": "go-gin-lincolng4",
     "evidence_url": "measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: audit-final.json",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 92,
@@ -11906,7 +13310,25 @@
     "label": "java-vertx-super-horst",
     "evidence_url": "measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: audit-final.json",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 116,
@@ -12057,7 +13479,25 @@
     "label": "java-micronaut-Clickin",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 27,
@@ -12208,7 +13648,25 @@
     "label": "csharp-aspnetcore-maks-march",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 119,
@@ -12361,7 +13819,25 @@
     "label": "typescript-deno-JakeAve",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "FAIL",
+    "requirements_reason": "56,971 HTTP errors across the local measured trials.",
+    "benchmark_requirements_met": false,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "FAIL",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 123,
@@ -12512,7 +13988,25 @@
     "label": "d-arsd-hybridcgi-cyrusmsk",
     "evidence_url": "measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: audit-final.json",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 10,
@@ -12663,7 +14157,25 @@
     "label": "python-fastapi-tejasnafde",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 57,
@@ -12814,7 +14326,25 @@
     "label": "java-netty-itsnaveenk",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 123,
@@ -12965,7 +14495,25 @@
     "label": "d-arsd-threadedcgi-cyrusmsk",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 123,
@@ -13116,7 +14664,25 @@
     "label": "d-arsd-threadedcgi-cyrusmsk",
     "evidence_url": "measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: audit-final.json",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 43,
@@ -13267,7 +14833,25 @@
     "label": "swift-hummingbird-denizak",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 123,
@@ -13418,7 +15002,25 @@
     "label": "d-vibe-http-cyrusmsk",
     "evidence_url": "measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: audit-final.json",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 81,
@@ -13569,7 +15171,25 @@
     "label": "java-springboot-brocchirodrigo",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 70,
@@ -13720,7 +15340,25 @@
     "label": "v-veb-ulises-jeremias",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 85,
@@ -13871,7 +15509,25 @@
     "label": "java-virtualthreads-Ahosan1Siam",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 20,
@@ -14022,7 +15678,25 @@
     "label": "csharp-aspnetcore-andrexx",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 23,
@@ -14173,7 +15847,25 @@
     "label": "python-litestar-przwr",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 1,
@@ -14324,7 +16016,25 @@
     "label": "python-fastapi-cknutson12",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 109,
@@ -14475,7 +16185,25 @@
     "label": "python-granian-hoopengo",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 11,
@@ -14626,7 +16354,25 @@
     "label": "erlang-cowboy-tbsvttr",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 67,
@@ -14777,7 +16523,25 @@
     "label": "java-quarkus-wolches",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 49,
@@ -14928,7 +16692,25 @@
     "label": "typescript-effect-SeeThruHead",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 53,
@@ -15079,7 +16861,25 @@
     "label": "kotlin-ktor-graalvm-noamm9",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 40,
@@ -15230,7 +17030,25 @@
     "label": "php-symfony-pklebba",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 12,
@@ -15381,7 +17199,25 @@
     "label": "ruby-rails-tbsvttr",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 126,
@@ -15532,7 +17368,25 @@
     "label": "lua-lunet-simbo1905",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 66,
@@ -15683,7 +17537,25 @@
     "label": "kotlin-springboot-Mindstorm1750",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 33,
@@ -15834,7 +17706,25 @@
     "label": "java-spring-boot-nb-99",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 47,
@@ -15987,7 +17877,25 @@
     "label": "csharp-aspnetcore-larsholm",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "FAIL",
+    "requirements_reason": "1 wrk timeouts across the local measured trials.",
+    "benchmark_requirements_met": false,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "FAIL",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 36,
@@ -16140,7 +18048,25 @@
     "label": "kotlin-ktor-jvm-syorito-hatsuki",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "FAIL",
+    "requirements_reason": "2 wrk timeouts across the local measured trials.",
+    "benchmark_requirements_met": false,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "FAIL",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 50,
@@ -16291,7 +18217,25 @@
     "label": "php-codeigniter-melroy89",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 35,
@@ -16442,7 +18386,25 @@
     "label": "baml-http-hellovai",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 2,
@@ -16593,7 +18555,25 @@
     "label": "ruby-rails-gambitboy",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 128,
@@ -16744,7 +18724,25 @@
     "label": "kotlin-trikeshed-jnorthrup",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 89,
@@ -16895,7 +18893,25 @@
     "label": "bash-socat-framegrace",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 31,
@@ -17046,7 +19062,25 @@
     "label": "r-plumber2-josiahparry",
     "evidence_url": "../2026-10-20/measurements.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "PASS",
+    "requirements_reason": "Local 42/42 + live-data/database checks; three stock 15s trials, zero errors; one CPU / 2 GiB / no swap.",
+    "benchmark_requirements_met": true,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "PASS",
+      "three_completed_stock_trials": "PASS",
+      "zero_measured_errors": "PASS",
+      "runtime_budget": "PASS",
+      "build_start_contract": "PASS",
+      "runtime_startup": "PASS"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 115,
@@ -17131,7 +19165,25 @@
     "label": "ailang-native-2paws",
     "evidence_url": "../2026-10-20/manifest.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "UNVERIFIED",
+    "requirements_reason": "No native ARM64 execution; behavior on the official x86-64 host remains unverified.",
+    "benchmark_requirements_met": null,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "UNVERIFIED",
+      "dynamic_live_data": "UNVERIFIED",
+      "committed_database": "UNVERIFIED",
+      "three_completed_stock_trials": "UNVERIFIED",
+      "zero_measured_errors": "UNVERIFIED",
+      "runtime_budget": "PASS",
+      "build_start_contract": "UNVERIFIED",
+      "runtime_startup": "UNVERIFIED"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 117,
@@ -17216,7 +19268,25 @@
     "label": "asm-epoll-umitaltintas",
     "evidence_url": "../2026-10-20/manifest.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "UNVERIFIED",
+    "requirements_reason": "No native ARM64 execution; behavior on the official x86-64 host remains unverified.",
+    "benchmark_requirements_met": null,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "UNVERIFIED",
+      "dynamic_live_data": "UNVERIFIED",
+      "committed_database": "UNVERIFIED",
+      "three_completed_stock_trials": "UNVERIFIED",
+      "zero_measured_errors": "UNVERIFIED",
+      "runtime_budget": "PASS",
+      "build_start_contract": "UNVERIFIED",
+      "runtime_startup": "UNVERIFIED"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 121,
@@ -17301,7 +19371,25 @@
     "label": "c-libco-ssmurfgg04-gif",
     "evidence_url": "../2026-10-20/manifest.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "UNVERIFIED",
+    "requirements_reason": "No native ARM64 execution; behavior on the official x86-64 host remains unverified.",
+    "benchmark_requirements_met": null,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "UNVERIFIED",
+      "dynamic_live_data": "UNVERIFIED",
+      "committed_database": "UNVERIFIED",
+      "three_completed_stock_trials": "UNVERIFIED",
+      "zero_measured_errors": "UNVERIFIED",
+      "runtime_budget": "PASS",
+      "build_start_contract": "UNVERIFIED",
+      "runtime_startup": "UNVERIFIED"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 125,
@@ -17386,7 +19474,25 @@
     "label": "zig-iouring-marler8997",
     "evidence_url": "../2026-10-20/manifest.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "UNVERIFIED",
+    "requirements_reason": "No native ARM64 execution; behavior on the official x86-64 host remains unverified.",
+    "benchmark_requirements_met": null,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "UNVERIFIED",
+      "dynamic_live_data": "UNVERIFIED",
+      "committed_database": "UNVERIFIED",
+      "three_completed_stock_trials": "UNVERIFIED",
+      "zero_measured_errors": "UNVERIFIED",
+      "runtime_budget": "PASS",
+      "build_start_contract": "UNVERIFIED",
+      "runtime_startup": "UNVERIFIED"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 127,
@@ -17491,7 +19597,25 @@
     "label": "node-httpserver-aliskhanoff",
     "evidence_url": "manifest.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "FAIL",
+    "requirements_reason": "Local server startup failed before health/API readiness; official-host behavior unverified.",
+    "benchmark_requirements_met": false,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "FAIL",
+      "dynamic_live_data": "UNVERIFIED",
+      "committed_database": "UNVERIFIED",
+      "three_completed_stock_trials": "UNVERIFIED",
+      "zero_measured_errors": "UNVERIFIED",
+      "runtime_budget": "PASS",
+      "build_start_contract": "UNVERIFIED",
+      "runtime_startup": "FAIL"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: audit-final.json",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 130,
@@ -17576,7 +19700,25 @@
     "label": "asm-epoll-HauLTCE",
     "evidence_url": "../2026-10-20/manifest.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "UNVERIFIED",
+    "requirements_reason": "No native ARM64 execution; behavior on the official x86-64 host remains unverified.",
+    "benchmark_requirements_met": null,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "UNVERIFIED",
+      "dynamic_live_data": "UNVERIFIED",
+      "committed_database": "UNVERIFIED",
+      "three_completed_stock_trials": "UNVERIFIED",
+      "zero_measured_errors": "UNVERIFIED",
+      "runtime_budget": "PASS",
+      "build_start_contract": "UNVERIFIED",
+      "runtime_startup": "UNVERIFIED"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 34,
@@ -17661,7 +19803,25 @@
     "label": "go-fib-sirkostya009",
     "evidence_url": "../2026-10-20/manifest.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "UNVERIFIED",
+    "requirements_reason": "No native ARM64 execution; behavior on the official x86-64 host remains unverified.",
+    "benchmark_requirements_met": null,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "UNVERIFIED",
+      "dynamic_live_data": "UNVERIFIED",
+      "committed_database": "UNVERIFIED",
+      "three_completed_stock_trials": "UNVERIFIED",
+      "zero_measured_errors": "UNVERIFIED",
+      "runtime_budget": "PASS",
+      "build_start_contract": "UNVERIFIED",
+      "runtime_startup": "UNVERIFIED"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 74,
@@ -17746,7 +19906,25 @@
     "label": "csharp-epoll-gichamba",
     "evidence_url": "../2026-10-20/manifest.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "UNVERIFIED",
+    "requirements_reason": "No native ARM64 execution; behavior on the official x86-64 host remains unverified.",
+    "benchmark_requirements_met": null,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "UNVERIFIED",
+      "dynamic_live_data": "UNVERIFIED",
+      "committed_database": "UNVERIFIED",
+      "three_completed_stock_trials": "UNVERIFIED",
+      "zero_measured_errors": "UNVERIFIED",
+      "runtime_budget": "PASS",
+      "build_start_contract": "UNVERIFIED",
+      "runtime_startup": "UNVERIFIED"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 75,
@@ -17831,7 +20009,25 @@
     "label": "asm-epoll-FlavouredTux",
     "evidence_url": "../2026-10-20/manifest.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "UNVERIFIED",
+    "requirements_reason": "No native ARM64 execution; behavior on the official x86-64 host remains unverified.",
+    "benchmark_requirements_met": null,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "UNVERIFIED",
+      "dynamic_live_data": "UNVERIFIED",
+      "committed_database": "UNVERIFIED",
+      "three_completed_stock_trials": "UNVERIFIED",
+      "zero_measured_errors": "UNVERIFIED",
+      "runtime_budget": "PASS",
+      "build_start_contract": "UNVERIFIED",
+      "runtime_startup": "UNVERIFIED"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 79,
@@ -17944,7 +20140,25 @@
     "label": "pypy-twisted-perkinslr",
     "evidence_url": "../2026-10-20/manifest.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "FAIL",
+    "requirements_reason": "Acknowledged writes were not committed; database validation failed.",
+    "benchmark_requirements_met": false,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "PASS",
+      "dynamic_live_data": "PASS",
+      "committed_database": "FAIL",
+      "three_completed_stock_trials": "UNVERIFIED",
+      "zero_measured_errors": "UNVERIFIED",
+      "runtime_budget": "PASS",
+      "build_start_contract": "UNVERIFIED",
+      "runtime_startup": "UNVERIFIED"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 86,
@@ -18029,7 +20243,25 @@
     "label": "asm-nasm-melroy89",
     "evidence_url": "../2026-10-20/manifest.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "UNVERIFIED",
+    "requirements_reason": "No native ARM64 execution; behavior on the official x86-64 host remains unverified.",
+    "benchmark_requirements_met": null,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "UNVERIFIED",
+      "dynamic_live_data": "UNVERIFIED",
+      "committed_database": "UNVERIFIED",
+      "three_completed_stock_trials": "UNVERIFIED",
+      "zero_measured_errors": "UNVERIFIED",
+      "runtime_budget": "PASS",
+      "build_start_contract": "UNVERIFIED",
+      "runtime_startup": "UNVERIFIED"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 90,
@@ -18112,7 +20344,25 @@
     "label": "rust-actix-web-abeni-csa",
     "evidence_url": "../2026-10-20/manifest.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "FAIL",
+    "requirements_reason": "Required build/start scripts are missing; the local submission contract is not met.",
+    "benchmark_requirements_met": false,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "UNVERIFIED",
+      "dynamic_live_data": "UNVERIFIED",
+      "committed_database": "UNVERIFIED",
+      "three_completed_stock_trials": "UNVERIFIED",
+      "zero_measured_errors": "UNVERIFIED",
+      "runtime_budget": "PASS",
+      "build_start_contract": "FAIL",
+      "runtime_startup": "UNVERIFIED"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 91,
@@ -18197,7 +20447,25 @@
     "label": "go-lowlevel-janso123",
     "evidence_url": "../2026-10-20/manifest.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "UNVERIFIED",
+    "requirements_reason": "No native ARM64 execution; behavior on the official x86-64 host remains unverified.",
+    "benchmark_requirements_met": null,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "UNVERIFIED",
+      "dynamic_live_data": "UNVERIFIED",
+      "committed_database": "UNVERIFIED",
+      "three_completed_stock_trials": "UNVERIFIED",
+      "zero_measured_errors": "UNVERIFIED",
+      "runtime_budget": "PASS",
+      "build_start_contract": "UNVERIFIED",
+      "runtime_startup": "UNVERIFIED"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   },
   {
     "pr": 95,
@@ -18282,6 +20550,24 @@
     "label": "csharp-aspnetcore-devv-guru",
     "evidence_url": "../2026-10-20/manifest.json",
     "warmup_http_errors": null,
-    "warmup_socket_errors": null
+    "warmup_socket_errors": null,
+    "requirements_status": "UNVERIFIED",
+    "requirements_reason": "No native ARM64 execution; behavior on the official x86-64 host remains unverified.",
+    "benchmark_requirements_met": null,
+    "requirements_scope": "Local ARM64 Docker, 3×15s stock-wrk comparison only; not official challenge compliance.",
+    "requirements_detail": {
+      "sqlite_eligibility": "PASS",
+      "official_api_42": "UNVERIFIED",
+      "dynamic_live_data": "UNVERIFIED",
+      "committed_database": "UNVERIFIED",
+      "three_completed_stock_trials": "UNVERIFIED",
+      "zero_measured_errors": "UNVERIFIED",
+      "runtime_budget": "PASS",
+      "build_start_contract": "UNVERIFIED",
+      "runtime_startup": "UNVERIFIED"
+    },
+    "runtime_budget_reason": "Limits documented by retained batch audit: ../2026-10-20/report.md",
+    "official_conditions_status": "UNVERIFIED",
+    "official_conditions_reason": "Not measured on the official Ubuntu x86-64 droplet with k6; these are local ARM64 Docker/wrk runs with CPU affinity."
   }
 ]

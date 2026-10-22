@@ -2297,14 +2297,14 @@
     "results/goose-2026-10-22/lead5/holdout-hmac/finalholdout-summary.json": "c4f873838637c4ea99ce8ce3ed187465f1ff1dc23a921db1f60875e71fc51070"
   },
   "output_sha256": {
-    "rows.json": "69f33b4f3d3f2e1a65feb3549793a52d5a86ed88e1a24aea00b34afac322146b",
-    "comparison.csv": "1e543a3b263f8ddaac840a3ac123df808703085349b77170c37c1ca6a92edc54",
-    "comparison.html": "b722c512fc4626540dcc02a6fd604fe4b8ff9845aed4519f923c39821e250260",
-    "report.md": "15cdba67cbd81db48ff1c335b04246291df7ab994a1bc598004af7bd4dd4bab2",
-    "issue-comment.md": "7bd2b6cc69814c6b03ad9d0a030858652f57256e0e8dc10141cc259ee4632125",
-    "render.py": "1e0924ccc3b196ed716dfb4aeabcdbf7f8b7900136f3b0dc4db7f4f95057b12c",
-    "render_markdown.py": "8590e1c73816757ae88f66eec97917725813f0a16e4accf91eb357cc90084378",
-    "unified_audit.py": "dc8e1dc9c650fb18ff14b1226ccf75dd488197f91bf05db6344333f8193aef0a"
+    "rows.json": "1e41ba165d524af5f00364c1dbc771923971e680462af288dc7da2ee11da62fa",
+    "comparison.csv": "f321906a1e47eeeacb526fd2b447a98cfd0eaaaa04e0403e9e3a2f00c596c021",
+    "comparison.html": "1724f94300f6ad4a616d52cddd183fdffa1adc85b6628027d05fe4b96440bf37",
+    "report.md": "6b535c518463ac7e1376e7776c8885cc0075a0bd7f6b8d1ee3d89bc4f5df0240",
+    "issue-comment.md": "d487b6d4bdd9ecb9e28a81ed022f7889785c05ea7f42f05d8e93e3e03f0de7ef",
+    "render.py": "d1387567aaa520b95b7e7ca7094a55b6d4f02d7342f6d1bb8a87acfa2a642c4d",
+    "render_markdown.py": "ca60b9cf00e6e7807bfa680ccf8951cf5ab0779caf9e4bf4831d2b6243497659",
+    "unified_audit.py": "1779ded19626433f6f4eef856cbc6c9d9f49fc986240599989fbc3e478147543"
   },
   "limitations": [
     "One presentation table includes different explicitly labeled measurement protocols and dates; sorting does not establish a simultaneous head-to-head ranking.",

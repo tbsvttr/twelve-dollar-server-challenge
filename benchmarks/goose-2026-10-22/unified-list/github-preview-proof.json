@@ -1,9 +1,15 @@
 {
   "github_gfm_tables": 1,
   "data_rows": 127,
-  "columns": 9,
-  "visible_rank_columns": 0,
-  "goose_current_display_position": 2,
-  "metrics_and_rows_unchanged": true,
-  "body_sha256": "7bd2b6cc69814c6b03ad9d0a030858652f57256e0e8dc10141cc259ee4632125"
+  "columns": 10,
+  "local_conditions_counts": {
+    "FAIL": 13,
+    "DIFFERENT_PROTOCOL": 3,
+    "PASS": 100,
+    "UNVERIFIED": 11
+  },
+  "all_official_conditions_status": "UNVERIFIED",
+  "original_fields_preserved": true,
+  "audit_checks": 859,
+  "body_sha256": "d487b6d4bdd9ecb9e28a81ed022f7889785c05ea7f42f05d8e93e3e03f0de7ef"
 }
