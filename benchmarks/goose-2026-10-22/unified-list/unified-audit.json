@@ -2241,7 +2241,7 @@
       "passed": true
     },
     {
-      "check": "report.md: every displayed rank, metric, range, error counter and LOC equals rounded source data",
+      "check": "report.md: every displayed metric, range, error counter and LOC equals rounded source data",
       "passed": true
     },
     {
@@ -2253,7 +2253,7 @@
       "passed": true
     },
     {
-      "check": "issue-comment.md: every displayed rank, metric, range, error counter and LOC equals rounded source data",
+      "check": "issue-comment.md: every displayed metric, range, error counter and LOC equals rounded source data",
       "passed": true
     },
     {
@@ -2299,12 +2299,12 @@
   "output_sha256": {
     "rows.json": "69f33b4f3d3f2e1a65feb3549793a52d5a86ed88e1a24aea00b34afac322146b",
     "comparison.csv": "1e543a3b263f8ddaac840a3ac123df808703085349b77170c37c1ca6a92edc54",
-    "comparison.html": "830ae2eb79842a83085cc1b4b7f5a5d695ed3dad00b0252902db10f5b1f6ab1d",
-    "report.md": "2fb13a02fdbc91763ab042e2e21bfb01572d2eb410e253db64d072b40b188f2b",
-    "issue-comment.md": "913465622bc4146f6b9ec992153f8e1731133252a6f93b8a675a81a4daa90b8c",
-    "render.py": "fe6b9f882f0fd8027aaf374438616c3e2c64cfd9fc9d44cdcb420ac027eaa33b",
-    "render_markdown.py": "b8e4583ea2a5fd98fcc5af0a2757e6b297cb4efd50fdd8a4fb04154c21661ba9",
-    "unified_audit.py": "55ad0a397235fda4b05322443c768e7268893ac997cf434471b515e82bb062a7"
+    "comparison.html": "b722c512fc4626540dcc02a6fd604fe4b8ff9845aed4519f923c39821e250260",
+    "report.md": "15cdba67cbd81db48ff1c335b04246291df7ab994a1bc598004af7bd4dd4bab2",
+    "issue-comment.md": "7bd2b6cc69814c6b03ad9d0a030858652f57256e0e8dc10141cc259ee4632125",
+    "render.py": "1e0924ccc3b196ed716dfb4aeabcdbf7f8b7900136f3b0dc4db7f4f95057b12c",
+    "render_markdown.py": "8590e1c73816757ae88f66eec97917725813f0a16e4accf91eb357cc90084378",
+    "unified_audit.py": "dc8e1dc9c650fb18ff14b1226ccf75dd488197f91bf05db6344333f8193aef0a"
   },
   "limitations": [
     "One presentation table includes different explicitly labeled measurement protocols and dates; sorting does not establish a simultaneous head-to-head ranking.",

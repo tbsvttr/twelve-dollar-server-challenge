@@ -42,8 +42,8 @@ def main():
         'goose-hmac-2026-10-22-10x45s-monotonic': '22 Oct · confirmation',
     }
     refs = {'details': base + '/2026-10-22/report.md'}
-    lines = ['| Clean rank | PR / implementation / pinned source | Role / status | Batch / protocol | Req/s · min–max | p95 / p99 ms | RSS MiB / CPU % | Errors HTTP; C/R/W/T | App / Own LOC | Evidence |',
-             '|---:|---|---|---|---:|---:|---:|---|---:|---|']
+    lines = ['| PR / implementation / pinned source | Role / status | Batch / protocol | Req/s · min–max | p95 / p99 ms | RSS MiB / CPU % | Errors HTTP; C/R/W/T | App / Own LOC | Evidence |',
+             '|---|---|---|---:|---:|---:|---|---:|---|']
     for row in rows:
         assert row['measurement_batch'] in batches, row['measurement_batch']
         pr = f"#{row['pr']} " if row.get('pr') is not None else 'local '
@@ -71,7 +71,7 @@ def main():
             refs[ref] = url
             evidence = f'[raw][{ref}]'
         evidence += f"<!-- row:{row['row_id']} -->"
-        cells = [number(row.get('rank')), label, kind, batch, rps, latency, resource, errors, loc, evidence]
+        cells = [label, kind, batch, rps, latency, resource, errors, loc, evidence]
         lines.append('| ' + ' | '.join(cells) + ' |')
     table = '\n'.join(lines) + '\n'
     definitions = '\n'.join(f'[{name}]: {url}' for name, url in refs.items()) + '\n'
@@ -81,8 +81,8 @@ def main():
              "**120 current outcomes, all preserved, plus seven comparison rows:** two previous measured revisions, "
              "two short-run Rust controls and three longer confirmation measurements. All **127 rows** appear together, "
              "sorted by successful req/s; unmeasured outcomes follow.\n\n"
-             "**Clean rank** retains the existing 98 eligible current ranks. A dash means unranked; the adjacent status "
-             "shows errors, a rule exclusion, a previous revision or a reference measurement. **Stock 3×15s** uses "
+             "Every measurement is placed by its recorded throughput. Role and status identify errors, rule exclusions, "
+             "previous revisions and reference measurements. **Stock 3×15s** uses "
              "the original driver; **mono 10×45s** uses the declared monotonic-clock correction. Their measurements "
              "remain separate. All servers use one CPU / 2 GiB RAM / no swap.\n\n")
     short_notes = ("\n<details>\n<summary>Reading the table, validation and measurement notes</summary>\n\n"
@@ -91,14 +91,14 @@ def main():
                    "over measured runs: HTTP; socket connect/read/write/timeout. Warmups are excluded from stock-driver totals; "
                    "all three 45-second confirmation rows also had zero warmup errors. Full-precision values, check counts, "
                    "reasons, source/image identities and evidence links remain in CSV, row JSON and the report.\n\n"
-                   "Current clean ranks require 42/42 official assertions, dynamic live-data checks, committed-write/SQLite "
-                   "integrity checks, and zero measured HTTP/socket errors in all three trials. The Goose stock-driver row "
+                   "Validation records retain official assertions, dynamic live-data checks and committed-write/SQLite "
+                   "integrity checks. Throughput order includes every measured outcome with its recorded error counters. The Goose stock-driver row "
                    "retains its 38 reported timeouts; the new Rust control retains 34. No counters or historical scores were "
                    "discarded or rescaled. wrk timeout completions remain in throughput while outside its two-second latency "
                    "histogram; the raw records do not establish the cause of each timeout.\n\n"
                    "The separate 45-second Goose/Rust confirmation has a +13.72% paired geometric mean, +1.85% one-sided "
                    "95% lower bound and 8/10 pairs above 5%; the stable ≥5% target remains **UNMET**. It supplies reference "
-                   "rows in this table and changes no clean rank. These local ARM64 saturation measurements establish "
+                   "rows in this table. These local ARM64 saturation measurements establish "
                    "no official x86-64 k6 maximum-user capacity.\n\n"
                    f"[Original October 20 evidence]({base}/2026-10-20/report.md) · "
                    f"[Fixed-target before/after history]({base}/2026-10-22/before-after.csv) · "
@@ -152,11 +152,12 @@ def main():
              "[Exact row JSON](comparison-rows.json) · [Unified-table audit](unified-audit.json)\n\n"
              "The same **127 rows** appear in Markdown, HTML, CSV and row JSON, sorted by successful req/s: "
              "120 current outcomes plus two previous measured revisions, two short-run Rust controls and three longer "
-             "confirmation measurements. Every earlier value, source identity and clean rank is preserved. "
+             "confirmation measurements. Every earlier value and source identity is preserved. "
              "`summary.json` retains the 120-current-outcome inventory; `current-outcomes.csv` retains its current-only export.\n\n"
              "Columns identify each row's role, status, batch and protocol. Stock-wrk 3×15-second trials and monotonic-wrk "
-             "10×45-second confirmation stay distinct in the shared table. Only the existing 98 eligible current rows "
-             "have a clean rank; errors, references, historical revisions and unmeasured outcomes remain visible alongside them.\n\n"
+             "10×45-second confirmation stay distinct in the shared table. All measurements are placed by their recorded "
+             "throughput, with errors, references, historical revisions and unmeasured outcomes visible in the same view. "
+             "Original ranking metadata remains in the retained source records and exports.\n\n"
              "All measured servers use one CPU and 2 GiB RAM with no container swap. This presentation update runs no "
              "new benchmarks and changes no source code, measurement or ranking rule. Local ARM64 throughput does not "
              "determine official x86-64 k6 maximum-user capacity. The stable ≥5% Goose/Rust confirmation target remains unmet.\n\n"

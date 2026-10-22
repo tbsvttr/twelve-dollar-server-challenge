@@ -1,6 +1,6 @@
 # Goose local comparison — October 22, 2026
 
-The main comparison now uses **one shared table**, sorted by successful req/s: 120 current outcomes plus seven historical, control and confirmation rows. [Unified report](../2026-10-22/report.md) · [CSV](../2026-10-22/comparison.csv) · [Filterable HTML](../2026-10-22/comparison.html). Roles, status, errors and protocol are columns of that same table; no measurement or clean rank changed.
+The main comparison now uses **one shared table**, sorted by successful req/s: 120 current outcomes plus seven historical, control and confirmation rows. [Unified report](../2026-10-22/report.md) · [CSV](../2026-10-22/comparison.csv) · [Filterable HTML](../2026-10-22/comparison.html). Roles, status, errors and protocol are columns of that same table; no measurement changed.
 
 The [main comparison](../2026-10-22/README.md) now includes Goose PR #143 as outcome **120**. Every prior outcome retains its exact source identity and measurements; the [previous 119-outcome snapshot](https://github.com/tbsvttr/twelve-dollar-server-challenge/blob/b3611d6edf49c1c2ff0bd750f6ad65107626c7e5/benchmarks/2026-10-22/README.md) remains available. Both batches below use one server CPU and 2 GiB RAM with no swap; their different driver/duration protocols remain separate. Neither establishes official x86-64 k6 capacity.
 

@@ -197,14 +197,13 @@ def main():
             sockets = row.get('socket_errors')
             errors = number(row.get('http_errors')) + '; ' + ('/'.join(str(sockets[k]) for k in SOCKETS) if sockets else '—')
             expected_cells = {
-                0: number(row.get('rank')),
-                4: rps,
-                5: number(row.get('p95_ms'), 3) + ' / ' + number(row.get('p99_ms'), 3),
-                6: number(row.get('rss_mib'), 2) + ' / ' + number(row.get('cpu_percent'), 1),
-                7: errors,
-                8: number(row.get('app_loc')) + ' / ' + number(row.get('own_loc'))}
-            markdown_values_ok &= len(cells) == 10 and all(cells[k] == v for k, v in expected_cells.items())
-        check(name + ': every displayed rank, metric, range, error counter and LOC equals rounded source data', markdown_values_ok)
+                3: rps,
+                4: number(row.get('p95_ms'), 3) + ' / ' + number(row.get('p99_ms'), 3),
+                5: number(row.get('rss_mib'), 2) + ' / ' + number(row.get('cpu_percent'), 1),
+                6: errors,
+                7: number(row.get('app_loc')) + ' / ' + number(row.get('own_loc'))}
+            markdown_values_ok &= len(cells) == 9 and all(cells[k] == v for k, v in expected_cells.items())
+        check(name + ': every displayed metric, range, error counter and LOC equals rounded source data', markdown_values_ok)
     check('both final Markdown surfaces exist', not missing, missing or None)
     audit_frozen()
     files = ['rows.json', 'comparison.csv', 'comparison.html', 'report.md', 'issue-comment.md', 'render.py', 'render_markdown.py', 'unified_audit.py']
