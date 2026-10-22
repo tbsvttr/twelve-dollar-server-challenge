@@ -1,6 +1,6 @@
 {
-  "file_count": 3463,
-  "bytes": 66273802,
+  "file_count": 3464,
+  "bytes": 66274646,
   "files": {
     "README.md": {
       "bytes": 9135,
@@ -13733,6 +13733,10 @@
     "unified-list/current-only-publication/pr-body.md": {
       "bytes": 2994,
       "sha256": "aa40c630cb0acc9b9af351b6b076674e26b6d6149771886a3dd6131db9cb3cc8"
+    },
+    "unified-list/current-only-publication/publication-record.json": {
+      "bytes": 844,
+      "sha256": "e0e6467745b6f2d00b0a29142ca04f961105da13dacc5953127bec0d5adf891e"
     },
     "unified-list/current_only_audit.py": {
       "bytes": 8798,
