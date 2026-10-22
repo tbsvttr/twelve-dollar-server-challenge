@@ -1,6 +1,6 @@
 {
-  "file_count": 3179,
-  "bytes": 38058647,
+  "file_count": 3185,
+  "bytes": 38141413,
   "files": {
     "README.md": {
       "bytes": 5677,
@@ -13,6 +13,10 @@
     "audit_experiment.py": {
       "bytes": 32257,
       "sha256": "0dd34afad18da877e5a9aad0d0a0ba2ba7ffb1850a6a2b81b100e1774f489a4a"
+    },
+    "benchmark-results.json": {
+      "bytes": 50750,
+      "sha256": "8a573101385db10a55ac3ccd8db5b42ca2259172d96fd687944e60934fd2e981"
     },
     "code-count-audit.csv": {
       "bytes": 4509,
@@ -29,6 +33,18 @@
     "edge_checks.py": {
       "bytes": 11707,
       "sha256": "6927b3b234a6c4fcd1c9b105da8511c957b6294054ff519572d56ea2ceb6f735"
+    },
+    "goose-addition.csv": {
+      "bytes": 1441,
+      "sha256": "efa820dfab36aaa9ebb2e130e97a447004e55f13289fe46a369ed80cf874d46d"
+    },
+    "goose-addition.json": {
+      "bytes": 7359,
+      "sha256": "0727db81470dfa6c2a60bb75b7e3863891e0de3408d26908afd7292d81559f4f"
+    },
+    "issue-comment-addendum.md": {
+      "bytes": 1632,
+      "sha256": "24694cc0880b6184c7944c5b7183167a933731904e9664dfe17e170e36c51eb2"
     },
     "lead5/PAIRED-DIAGNOSTIC.md": {
       "bytes": 1421,
@@ -12690,6 +12706,10 @@
       "bytes": 5186,
       "sha256": "40fb0b8eefdf8d12746eb178e547e9c54ee0ddc843ac9dbe2818053d1687e5e7"
     },
+    "matched-controls.csv": {
+      "bytes": 1941,
+      "sha256": "e65d4a28a38cd2e6147d64cffac0f193f61b6fc8a6cec7877ecfcd1e53da8512"
+    },
     "mixed.lua": {
       "bytes": 1478,
       "sha256": "eb8d49273c56fe4b558a58bd6c7e65551ec683c53d299e2b3a69e0b71421d701"
@@ -12717,6 +12737,10 @@
     "serve.py": {
       "bytes": 8993,
       "sha256": "52d8bdd75c0dc2477fc5b2391c797a2832eab5ac61a72d3bbe4dac4cb94bf311"
+    },
+    "validation-results.json": {
+      "bytes": 19643,
+      "sha256": "922137e7dc6d54c3fd8a4b274670a5439df577e68341483583be844ac7583172"
     }
   }
 }

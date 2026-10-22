@@ -1,0 +1,560 @@
+{
+  "schema_version": 1,
+  "assembled_at": "2026-10-22T14:34:55.963448+00:00",
+  "scope": {
+    "purpose": "Retained correctness and application-build evidence for the submitted Goose source; this assembly did not run new tests.",
+    "date": "2026-10-22",
+    "platform": "Ubuntu 24.04 native Linux ARM64 containers on Docker Desktop, Apple M2 Pro Mac",
+    "architecture": "aarch64",
+    "transport_backend": "epoll",
+    "official_x86_64_validation_completed": false,
+    "full_compiler_bootstrap_within_2gib_verified": false,
+    "artifact_root": "benchmarks/goose-2026-10-22",
+    "artifact_paths": "Paths below identify retained experiment artifacts in the companion public report; they are provenance references, not files required to run this submission."
+  },
+  "measured_source": {
+    "snapshot_sha256": "9a298580809e2a6821c7a8068b6a45315ae7aaa4b58bb79edc3f94606b9f861b",
+    "snapshot_file_count": 19,
+    "snapshot_scope": "The original 19-file snapshot, before adding PR measurement metadata or editing documentation. Runtime and build source hashes are unchanged.",
+    "image": "twelve-goose-hmac-budget:2026-10-22",
+    "image_id": "sha256:afde328ec4a000f300730f264ee883f973769130994762ebd8c8efdf794a8508",
+    "binary_sha256": "a5e1c087110e0dde7bda696620327a6c37178ee62e09d3c56d53c49a708c10fb",
+    "app_goose_sha256": "46494e94c2c6d56ea209f16f1338792b3c540b2c0647c3cda4ecd1bf34d9eb98",
+    "db_c_sha256": "425bfd09e1729a5578393a61884997104e76eee467434fffb83946c1273429f7",
+    "goose_compiler_commit": "f605b5a07dd2aa3a5cb3f4c9b14002bd3c9d3d1a",
+    "goose_runtime": "goose runtime df5f78ce88d4",
+    "sqlite_version": "3.53.4",
+    "compiler": "gcc (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0",
+    "image_proof": {
+      "path": "benchmarks/goose-2026-10-22/lead5/candidates/hmac-budget/image-proof.json",
+      "sha256": "bb2a9496e389853949856b6eab86162198cf555fa16bed1c73d053c8b0130dc8"
+    }
+  },
+  "api_server_limits": {
+    "cpu_set": "0",
+    "cpu_quota_cores": 1,
+    "memory_bytes": 2147483648,
+    "memory_plus_swap_bytes": 2147483648,
+    "swap_enabled": false,
+    "uid": 1001,
+    "one_server_at_a_time": true
+  },
+  "official_checks": {
+    "command": "bash test/test.sh http://127.0.0.1:24000",
+    "recorded_at": "2026-10-22T13:32:06Z",
+    "passed": 42,
+    "failed": 0,
+    "passed_all": true,
+    "actual_server_limits": {
+      "CpusetCpus": "0",
+      "NanoCpus": 1000000000,
+      "Memory": 2147483648,
+      "MemorySwap": 2147483648
+    },
+    "server_ready": true,
+    "service_source_files_verified": 19,
+    "source": {
+      "path": "benchmarks/goose-2026-10-22/lead5/hmac-budget-checks/verification.json",
+      "sha256": "ffa1454a5cc972085677c7385f2207443e613bc0e2c41900774e8d7fda9a5df2"
+    },
+    "test_script": {
+      "path": "benchmarks/goose-2026-10-22/lead5/hmac-budget-checks/test/test.sh",
+      "sha256": "679e722044fd1f366d85093232e7f2ec2e3398ea312032dd9eb6cbdf8b17306a"
+    }
+  },
+  "dynamic_semantic_checks": {
+    "passed": 6,
+    "failed": 0,
+    "passed_all": true,
+    "exit_code": 0,
+    "checks": [
+      {
+        "check": "fresh unpredictable post is created and trimmed",
+        "passed": true
+      },
+      {
+        "check": "created post reads back exactly",
+        "passed": true
+      },
+      {
+        "check": "new post can be liked",
+        "passed": true
+      },
+      {
+        "check": "repeat like is idempotent",
+        "passed": true
+      },
+      {
+        "check": "fresh like count reads back",
+        "passed": true
+      },
+      {
+        "check": "fresh post and like count appear in feed",
+        "passed": true
+      }
+    ],
+    "scope": "Additional live create/read/like/feed checks, separate from the 42 official checks.",
+    "source": {
+      "path": "benchmarks/goose-2026-10-22/lead5/hmac-budget-checks/verification.json",
+      "sha256": "ffa1454a5cc972085677c7385f2207443e613bc0e2c41900774e8d7fda9a5df2"
+    },
+    "script": {
+      "path": "benchmarks/goose-2026-10-22/lead5/hmac-budget-checks/semantic.py",
+      "sha256": "785f8ce565b469e4f4d702d01a9d868cd7458d64e3f1362c3fb8728560215fbc"
+    }
+  },
+  "committed_database_check": {
+    "database_valid": true,
+    "database_after": {
+      "initial_post_count": 500000,
+      "post_count": 500003,
+      "max_post_id": 500003,
+      "integrity": "ok"
+    },
+    "scope": "After normal server shutdown, verify committed write growth and SQLite integrity; this is not a power-loss test.",
+    "source": {
+      "path": "benchmarks/goose-2026-10-22/lead5/hmac-budget-checks/verification.json",
+      "sha256": "ffa1454a5cc972085677c7385f2207443e613bc0e2c41900774e8d7fda9a5df2"
+    }
+  },
+  "supplemental_api_checks": {
+    "parser": {
+      "passed": 18,
+      "failed": 0,
+      "passed_all": true,
+      "uid": 1001,
+      "image_id": "sha256:afde328ec4a000f300730f264ee883f973769130994762ebd8c8efdf794a8508",
+      "app_goose_sha256": "46494e94c2c6d56ea209f16f1338792b3c540b2c0647c3cda4ecd1bf34d9eb98",
+      "checks": [
+        {
+          "check": "escaped claim names, subject and username",
+          "passed": true,
+          "expected_status": 201,
+          "actual_status": 201
+        },
+        {
+          "check": "unknown nested JWT values are fully parsed",
+          "passed": true,
+          "expected_status": 201,
+          "actual_status": 201
+        },
+        {
+          "check": "malformed unknown JWT value is rejected",
+          "passed": true,
+          "expected_status": 401,
+          "actual_status": 401
+        },
+        {
+          "check": "trailing JWT garbage is rejected",
+          "passed": true,
+          "expected_status": 401,
+          "actual_status": 401
+        },
+        {
+          "check": "malformed unknown header field is rejected",
+          "passed": true,
+          "expected_status": 401,
+          "actual_status": 401
+        },
+        {
+          "check": "escaped request member name and value",
+          "passed": true,
+          "expected_status": 201,
+          "actual_status": 201
+        },
+        {
+          "check": "valid nested request fields are skipped",
+          "passed": true,
+          "expected_status": 201,
+          "actual_status": 201
+        },
+        {
+          "check": "malformed nested request fields are rejected",
+          "passed": true,
+          "expected_status": 400,
+          "actual_status": 400
+        },
+        {
+          "check": "trailing request garbage is rejected",
+          "passed": true,
+          "expected_status": 400,
+          "actual_status": 400
+        },
+        {
+          "check": "unescaped control character is rejected",
+          "passed": true,
+          "expected_status": 400,
+          "actual_status": 400
+        },
+        {
+          "check": "valid non-object request has no body: null",
+          "passed": true,
+          "expected_status": 400,
+          "actual_status": 400
+        },
+        {
+          "check": "valid non-object request has no body: true",
+          "passed": true,
+          "expected_status": 400,
+          "actual_status": 400
+        },
+        {
+          "check": "valid non-object request has no body: [1,\"x\",{}]",
+          "passed": true,
+          "expected_status": 400,
+          "actual_status": 400
+        },
+        {
+          "check": "every JSON control escape round-trips",
+          "passed": true,
+          "expected_status": 201,
+          "actual_status": 201
+        },
+        {
+          "check": "JSON escapes cross SIMD boundary 15",
+          "passed": true,
+          "expected_status": 201,
+          "actual_status": 201
+        },
+        {
+          "check": "JSON escapes cross SIMD boundary 16",
+          "passed": true,
+          "expected_status": 201,
+          "actual_status": 201
+        },
+        {
+          "check": "JSON escapes cross SIMD boundary 31",
+          "passed": true,
+          "expected_status": 201,
+          "actual_status": 201
+        },
+        {
+          "check": "JSON escapes cross SIMD boundary 32",
+          "passed": true,
+          "expected_status": 201,
+          "actual_status": 201
+        }
+      ],
+      "source": {
+        "path": "benchmarks/goose-2026-10-22/lead5/hmac-budget-checks/parser-checks.json",
+        "sha256": "e00ab077fb763ce48e88fb9480de714bdaf8c9a6412fbe720d4148466815fb55"
+      },
+      "script": {
+        "path": "benchmarks/goose-2026-10-22/lead5/hmac-budget-checks/tuning_api_checks.py",
+        "sha256": "b3af6c459d70d25ccbc11f08b063ede15d299c4283dd9feee9039809e322f004"
+      }
+    },
+    "edge": {
+      "passed": 25,
+      "failed": 0,
+      "passed_all": true,
+      "uid": 1001,
+      "image_id": "sha256:afde328ec4a000f300730f264ee883f973769130994762ebd8c8efdf794a8508",
+      "app_goose_sha256": "46494e94c2c6d56ea209f16f1338792b3c540b2c0647c3cda4ecd1bf34d9eb98",
+      "checks": [
+        {
+          "check": "sparse newest IDs preserve timestamp order and distinct live counts",
+          "passed": true,
+          "expected_status": 200,
+          "actual_status": 200
+        },
+        {
+          "check": "new live like on sparse post",
+          "passed": true,
+          "expected_status": 201,
+          "actual_status": 201
+        },
+        {
+          "check": "sparse fallback feed observes live like",
+          "passed": true,
+          "expected_status": 200,
+          "actual_status": 200
+        },
+        {
+          "check": "sparse post observes live like",
+          "passed": true,
+          "expected_status": 200,
+          "actual_status": 200
+        },
+        {
+          "check": "repeat sparse like remains idempotent",
+          "passed": true,
+          "expected_status": 200,
+          "actual_status": 200
+        },
+        {
+          "check": "500 Unicode scalar body is accepted",
+          "passed": true,
+          "expected_status": 201,
+          "actual_status": 201
+        },
+        {
+          "check": "500 Unicode scalar post reads exactly using stored author",
+          "passed": true,
+          "expected_status": 200,
+          "actual_status": 200
+        },
+        {
+          "check": "501 Unicode scalars are rejected",
+          "passed": true,
+          "expected_status": 400,
+          "actual_status": 400
+        },
+        {
+          "check": "Unicode edge whitespace trims without changing inner characters",
+          "passed": true,
+          "expected_status": 201,
+          "actual_status": 201
+        },
+        {
+          "check": "all Unicode whitespace is empty",
+          "passed": true,
+          "expected_status": 400,
+          "actual_status": 400
+        },
+        {
+          "check": "authenticated invalid like ID 0",
+          "passed": true,
+          "expected_status": 400,
+          "actual_status": 400
+        },
+        {
+          "check": "authenticated invalid like ID -1",
+          "passed": true,
+          "expected_status": 400,
+          "actual_status": 400
+        },
+        {
+          "check": "authenticated invalid like ID abc",
+          "passed": true,
+          "expected_status": 400,
+          "actual_status": 400
+        },
+        {
+          "check": "authenticated invalid like ID 1.5",
+          "passed": true,
+          "expected_status": 400,
+          "actual_status": 400
+        },
+        {
+          "check": "authentication precedes invalid ID",
+          "passed": true,
+          "expected_status": 401,
+          "actual_status": 401
+        },
+        {
+          "check": "nested route is unknown before auth",
+          "passed": true,
+          "expected_status": 404,
+          "actual_status": 404
+        },
+        {
+          "check": "wrong signed algorithm",
+          "passed": true,
+          "expected_status": 401,
+          "actual_status": 401
+        },
+        {
+          "check": "expired token",
+          "passed": true,
+          "expected_status": 401,
+          "actual_status": 401
+        },
+        {
+          "check": "missing expiration",
+          "passed": true,
+          "expected_status": 401,
+          "actual_status": 401
+        },
+        {
+          "check": "numeric subject",
+          "passed": true,
+          "expected_status": 401,
+          "actual_status": 401
+        },
+        {
+          "check": "zero subject",
+          "passed": true,
+          "expected_status": 401,
+          "actual_status": 401
+        },
+        {
+          "check": "negative subject",
+          "passed": true,
+          "expected_status": 401,
+          "actual_status": 401
+        },
+        {
+          "check": "numeric username",
+          "passed": true,
+          "expected_status": 401,
+          "actual_status": 401
+        },
+        {
+          "check": "missing username",
+          "passed": true,
+          "expected_status": 401,
+          "actual_status": 401
+        },
+        {
+          "check": "malformed JWT segments",
+          "passed": true,
+          "expected_status": 401,
+          "actual_status": 401
+        }
+      ],
+      "source": {
+        "path": "benchmarks/goose-2026-10-22/lead5/hmac-budget-checks/edge-checks.json",
+        "sha256": "3b350acf9d27bdac671c2de0cba9f4956203178bfbdcfbea3104e9736a56d99c"
+      },
+      "script": {
+        "path": "benchmarks/goose-2026-10-22/lead5/hmac-budget-checks/edge_checks.py",
+        "sha256": "57cd3553e4af510d3f7a643deaa7ae9cf0fa29b962db98b8f30b1a49957f23d3"
+      }
+    },
+    "likes_above_maximum": {
+      "passed": 9,
+      "failed": 0,
+      "passed_all": true,
+      "uid": 1001,
+      "image_id": "sha256:afde328ec4a000f300730f264ee883f973769130994762ebd8c8efdf794a8508",
+      "app_goose_sha256": "46494e94c2c6d56ea209f16f1338792b3c540b2c0647c3cda4ecd1bf34d9eb98",
+      "checks": [
+        {
+          "check": "range feed excludes above-maximum and omitted-ID likes",
+          "passed": true,
+          "expected_status": 200,
+          "actual_status": 200
+        },
+        {
+          "check": "above-maximum post has its independent 64 likes",
+          "passed": true,
+          "expected_status": 200,
+          "actual_status": 200
+        },
+        {
+          "check": "omitted in-range post has its independent 64 likes",
+          "passed": true,
+          "expected_status": 200,
+          "actual_status": 200
+        },
+        {
+          "check": "selected post can receive a new live like",
+          "passed": true,
+          "expected_status": 201,
+          "actual_status": 201
+        },
+        {
+          "check": "next feed contains the selected post live count",
+          "passed": true,
+          "expected_status": 200,
+          "actual_status": 200
+        },
+        {
+          "check": "selected post repeat like is idempotent",
+          "passed": true,
+          "expected_status": 200,
+          "actual_status": 200
+        },
+        {
+          "check": "an above-maximum post can receive a live like",
+          "passed": true,
+          "expected_status": 201,
+          "actual_status": 201
+        },
+        {
+          "check": "above-maximum count updates independently",
+          "passed": true,
+          "expected_status": 200,
+          "actual_status": 200
+        },
+        {
+          "check": "outside-range like never changes selected counts",
+          "passed": true,
+          "expected_status": 200,
+          "actual_status": 200
+        }
+      ],
+      "source": {
+        "path": "benchmarks/goose-2026-10-22/lead5/hmac-budget-checks/above-max-checks.json",
+        "sha256": "0dff5f55e4869c1adde890e5148ee9ed12c74fe52813fbf59d461c818af37349"
+      },
+      "script": {
+        "path": "benchmarks/goose-2026-10-22/lead5/hmac-budget-checks/above_max_checks.py",
+        "sha256": "2d6f9588f7051e2f6e578796c94625d5434fa6f828635e139c19b72bc6c492fa"
+      }
+    }
+  },
+  "hmac_adapter_checks": {
+    "passed": 139,
+    "passed_all": true,
+    "oracle": "Frozen selected one-shot db.c plus Python hashlib/HMAC SHA-256",
+    "scope": "Crypto adapter only; Goose JSON algorithm/expiry/claim checks are exercised by full API gates.",
+    "candidate_db_sha256": "425bfd09e1729a5578393a61884997104e76eee467434fffb83946c1273429f7",
+    "reference_db_sha256": "43213a121ce787c87a9253ea260765f27e53dadd96e7674186e4064291d2b2b2",
+    "results": {
+      "path": "benchmarks/goose-2026-10-22/lead5/candidates/feed-hmac/hmac-tests/results.json",
+      "sha256": "5489c3ce24e41901e83339317c6f4f522694b06590eb397c347d59318e9da002"
+    },
+    "proof": {
+      "path": "benchmarks/goose-2026-10-22/lead5/candidates/feed-hmac/hmac-tests/proof.json",
+      "sha256": "4fab4e0c9aa8d126f87f2be42ac50e3d375b69f60b63206957518bfbc875096e"
+    },
+    "sanitizer": {
+      "exit_code": 0,
+      "valid_signature_calls": 10000,
+      "invalid_signature_calls": 10000,
+      "checks": "ASAN/UBSAN/leak checks for repeated valid/invalid signatures, key replacement/reset and actual exit cleanup. Injected crypto-failure cases belong to the separate 139-check differential/fault suite.",
+      "log": {
+        "path": "benchmarks/goose-2026-10-22/lead5/candidates/feed-hmac/hmac-tests/sanitizer.log",
+        "sha256": "7242273a4aad34b2a4eb6d3eb3df5645765d0e8e1376ddf57b1020b4c3c5b291"
+      }
+    },
+    "peer_review": {
+      "path": "benchmarks/goose-2026-10-22/lead5/candidates/feed-hmac/hmac-peer-review.json",
+      "sha256": "a4331fd528f4dc1b4ab72db46b21f8cce50b34a8c63242ccc49f53c4039c65ee"
+    },
+    "resource_scope": "These are retained isolated crypto tests on the same db.c; their execution predates the one-CPU build/API correction. Do not interpret them as a new budget-limited server run."
+  },
+  "normal_application_build": {
+    "passed": true,
+    "exit_code": 0,
+    "uid": 1001,
+    "normal_source_build": true,
+    "clean_generated_directories": true,
+    "sqlite_object_reuse": false,
+    "fresh_sqlite_and_application_pgo": true,
+    "elapsed_seconds": 44.27598681199743,
+    "peak_cgroup_memory_bytes": 412934144,
+    "limits": {
+      "cpu.max": "100000 100000",
+      "memory.max": "2147483648",
+      "memory.swap.max": "0",
+      "cpuset.cpus.effective": "0-9"
+    },
+    "memory_events": {
+      "low": 0,
+      "high": 0,
+      "max": 0,
+      "oom": 0,
+      "oom_kill": 0,
+      "oom_group_kill": 0,
+      "sock_throttled": 0
+    },
+    "binary_sha256": "a5e1c087110e0dde7bda696620327a6c37178ee62e09d3c56d53c49a708c10fb",
+    "sqlite_object_sha256": "aacede3dd4e6845d158cba5e65d7ef41e9a7687c1c006a3e7eaeb3323a0b82c0",
+    "compiler_preinstalled": true,
+    "compiler_installation_included": false,
+    "scope": "Clean normal-user application build with fresh SQLite and four-unit application PGO, one CPU quota, 2 GiB RAM and no swap. The compiler was already installed; the effective CPU set spans 0-9 but cpu.max limits total CPU to one core.",
+    "receipt": {
+      "path": "benchmarks/goose-2026-10-22/lead5/candidates/hmac-budget/resource-budget-build.json",
+      "sha256": "7fd3a8514f45a11eb69fc323555ee444aee92214eaf1c5028ef5000d4671dffe"
+    }
+  },
+  "validation_limits": [
+    "No clean Ubuntu 24.04 x86_64 install/build/API validation is claimed by these ARM64 records.",
+    "The retained source-compiler bootstrap used a larger resource allowance; install.sh bootstrap within 2 GiB remains unverified. The 412934144-byte receipt covers the application build only.",
+    "Supplemental JSON binds exact image/app bytes and UID but does not retain Docker HostConfig; the official API record retains the actual one-CPU/2GiB/no-swap limits.",
+    "These correctness results do not establish official x86_64 k6 capacity or a stable performance lead; the separate benchmark results retain both failed stability confirmations."
+  ]
+}
