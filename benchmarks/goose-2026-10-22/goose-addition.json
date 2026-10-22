@@ -46,7 +46,7 @@
       "own_loc": 2699,
       "own_loc_as_recorded": 2493,
       "original_119_row_replacement": false,
-      "evidence": "goose-2026-10-22/lead5/holdout-hmac/measurements.json"
+      "evidence": "lead5/holdout-hmac/measurements.json"
     }
   ],
   "reference_controls": [
@@ -93,7 +93,7 @@
       "own_loc": 4508,
       "own_loc_as_recorded": 4508,
       "original_119_row_replacement": false,
-      "evidence": "goose-2026-10-22/lead5/holdout-hmac/measurements.json"
+      "evidence": "lead5/holdout-hmac/measurements.json"
     },
     {
       "case_id": "baseline",
@@ -138,7 +138,7 @@
       "own_loc": 2256,
       "own_loc_as_recorded": 2256,
       "original_119_row_replacement": false,
-      "evidence": "goose-2026-10-22/lead5/holdout-hmac/measurements.json"
+      "evidence": "lead5/holdout-hmac/measurements.json"
     }
   ],
   "paired_comparison": {

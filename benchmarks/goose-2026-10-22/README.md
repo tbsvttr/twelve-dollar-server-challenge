@@ -2,6 +2,8 @@
 
 This archive adds a Goose submission and a separately identified local measurement batch. It preserves the existing [119-outcome comparison](../2026-10-22/README.md) and its files unchanged. The new batch does not replace an earlier Rust or Goose result, receive a cross-batch rank, or establish official x86-64 k6 capacity.
 
+[Submission PR #143](https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/143) · [New submission row (CSV)](goose-addition.csv) · [Matched controls (CSV)](matched-controls.csv) · [Structured addition](goose-addition.json) · [Benchmark details](benchmark-results.json) · [Validation details](validation-results.json)
+
 The current measured source is `9a298580809e2a6821c7a8068b6a45315ae7aaa4b58bb79edc3f94606b9f861b`. [The exact measured 19-file source](lead5/holdout-hmac/sources/prgoose) and [per-file hashes](lead5/holdout-hmac/archives/prgoose-sha256.json) are retained. The submission PR updates its README and adds two result JSON files; executable source and build scripts are unchanged from this snapshot.
 
 | Current batch: ten trials per case | Median successful req/s | Median p99 ms | Median RSS MiB |

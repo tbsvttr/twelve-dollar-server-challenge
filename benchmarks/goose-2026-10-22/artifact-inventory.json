@@ -1,10 +1,10 @@
 {
   "file_count": 3185,
-  "bytes": 38141413,
+  "bytes": 38141642,
   "files": {
     "README.md": {
-      "bytes": 5677,
-      "sha256": "596cbeab1fc5dc0ff5b414eacba0a37a48561ac923555b31283be8a56e41fbc2"
+      "bytes": 6013,
+      "sha256": "1d42b479ce09b1d29f3d1f687202129cb988b347b67b9c7b8f80db2db77d8d91"
     },
     "analyze.py": {
       "bytes": 27339,
@@ -35,12 +35,12 @@
       "sha256": "6927b3b234a6c4fcd1c9b105da8511c957b6294054ff519572d56ea2ceb6f735"
     },
     "goose-addition.csv": {
-      "bytes": 1441,
-      "sha256": "efa820dfab36aaa9ebb2e130e97a447004e55f13289fe46a369ed80cf874d46d"
+      "bytes": 1422,
+      "sha256": "f4a99f0382ac7555c62e09e294e4a12d22816870d84571db65a106eff452ea37"
     },
     "goose-addition.json": {
-      "bytes": 7359,
-      "sha256": "0727db81470dfa6c2a60bb75b7e3863891e0de3408d26908afd7292d81559f4f"
+      "bytes": 7308,
+      "sha256": "b2e4e5c15f371f9116e5cb4313a0c834b32d05eea53bfd31775e120918df0ff7"
     },
     "issue-comment-addendum.md": {
       "bytes": 1632,
@@ -12707,8 +12707,8 @@
       "sha256": "40fb0b8eefdf8d12746eb178e547e9c54ee0ddc843ac9dbe2818053d1687e5e7"
     },
     "matched-controls.csv": {
-      "bytes": 1941,
-      "sha256": "e65d4a28a38cd2e6147d64cffac0f193f61b6fc8a6cec7877ecfcd1e53da8512"
+      "bytes": 1904,
+      "sha256": "841ece96154c6a7c473bfef18efe5adf51f7285db2a893b4cb5250ae61f4ece7"
     },
     "mixed.lua": {
       "bytes": 1478,
