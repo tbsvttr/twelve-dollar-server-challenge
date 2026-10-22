@@ -1,0 +1,2314 @@
+{
+  "complete": true,
+  "audit_passed": true,
+  "checks_passed": 569,
+  "checks_total": 569,
+  "checks": [
+    {
+      "check": "prior evidence unchanged: results/fixes-2026-10-22/summary.json",
+      "passed": true
+    },
+    {
+      "check": "prior evidence unchanged: results/goose-2026-10-22/list-integration/summary.json",
+      "passed": true
+    },
+    {
+      "check": "prior evidence unchanged: results/goose-2026-10-22/ranking-3x15-2026-10-22/measurements.json",
+      "passed": true
+    },
+    {
+      "check": "prior evidence unchanged: results/goose-2026-10-22/lead5/holdout-hmac/measurements.json",
+      "passed": true
+    },
+    {
+      "check": "prior evidence unchanged: results/goose-2026-10-22/lead5/holdout-hmac/finalholdout-summary.json",
+      "passed": true
+    },
+    {
+      "check": "long confirmation retains all 30 original attempts",
+      "passed": true
+    },
+    {
+      "check": "long goose/1: exact raw metrics and zero measured errors",
+      "passed": true
+    },
+    {
+      "check": "long 82/1: exact raw metrics and zero measured errors",
+      "passed": true
+    },
+    {
+      "check": "long baseline/1: exact raw metrics and zero measured errors",
+      "passed": true
+    },
+    {
+      "check": "long goose/2: exact raw metrics and zero measured errors",
+      "passed": true
+    },
+    {
+      "check": "long 82/2: exact raw metrics and zero measured errors",
+      "passed": true
+    },
+    {
+      "check": "long baseline/2: exact raw metrics and zero measured errors",
+      "passed": true
+    },
+    {
+      "check": "long goose/3: exact raw metrics and zero measured errors",
+      "passed": true
+    },
+    {
+      "check": "long baseline/3: exact raw metrics and zero measured errors",
+      "passed": true
+    },
+    {
+      "check": "long 82/3: exact raw metrics and zero measured errors",
+      "passed": true
+    },
+    {
+      "check": "long 82/4: exact raw metrics and zero measured errors",
+      "passed": true
+    },
+    {
+      "check": "long goose/4: exact raw metrics and zero measured errors",
+      "passed": true
+    },
+    {
+      "check": "long baseline/4: exact raw metrics and zero measured errors",
+      "passed": true
+    },
+    {
+      "check": "long goose/5: exact raw metrics and zero measured errors",
+      "passed": true
+    },
+    {
+      "check": "long baseline/5: exact raw metrics and zero measured errors",
+      "passed": true
+    },
+    {
+      "check": "long 82/5: exact raw metrics and zero measured errors",
+      "passed": true
+    },
+    {
+      "check": "long 82/6: exact raw metrics and zero measured errors",
+      "passed": true
+    },
+    {
+      "check": "long baseline/6: exact raw metrics and zero measured errors",
+      "passed": true
+    },
+    {
+      "check": "long goose/6: exact raw metrics and zero measured errors",
+      "passed": true
+    },
+    {
+      "check": "long 82/7: exact raw metrics and zero measured errors",
+      "passed": true
+    },
+    {
+      "check": "long baseline/7: exact raw metrics and zero measured errors",
+      "passed": true
+    },
+    {
+      "check": "long goose/7: exact raw metrics and zero measured errors",
+      "passed": true
+    },
+    {
+      "check": "long 82/8: exact raw metrics and zero measured errors",
+      "passed": true
+    },
+    {
+      "check": "long goose/8: exact raw metrics and zero measured errors",
+      "passed": true
+    },
+    {
+      "check": "long baseline/8: exact raw metrics and zero measured errors",
+      "passed": true
+    },
+    {
+      "check": "long goose/9: exact raw metrics and zero measured errors",
+      "passed": true
+    },
+    {
+      "check": "long 82/9: exact raw metrics and zero measured errors",
+      "passed": true
+    },
+    {
+      "check": "long baseline/9: exact raw metrics and zero measured errors",
+      "passed": true
+    },
+    {
+      "check": "long 82/10: exact raw metrics and zero measured errors",
+      "passed": true
+    },
+    {
+      "check": "long goose/10: exact raw metrics and zero measured errors",
+      "passed": true
+    },
+    {
+      "check": "long baseline/10: exact raw metrics and zero measured errors",
+      "passed": true
+    },
+    {
+      "check": "127 unique rows contain exactly 120 current, two historical, two controls and three confirmations",
+      "passed": true
+    },
+    {
+      "check": "current:1: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:1: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:1: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:1: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:2: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:2: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:2: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:2: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:3: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:3: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:3: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:3: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:4: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:4: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:4: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:4: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:5: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:5: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:5: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:5: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:6: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:6: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:6: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:6: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:8: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:8: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:8: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:8: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:9: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:9: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:9: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:9: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:10: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:10: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:10: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:10: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:11: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:11: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:11: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:11: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:12: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:12: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:12: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:12: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:13: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:13: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:13: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:13: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:14: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:14: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:14: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:14: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:15: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:15: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:15: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:15: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:16: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:16: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:16: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:16: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:17: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:17: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:17: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:17: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:18: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:18: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:18: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:18: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:19: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:19: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:19: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:19: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:20: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:20: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:20: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:20: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:21: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:21: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:21: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:21: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:23: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:23: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:23: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:23: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:24: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:24: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:24: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:24: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:25: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:25: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:25: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:25: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:26: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:26: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:26: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:26: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:27: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:27: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:27: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:27: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:28: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:28: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:28: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:28: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:29: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:29: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:29: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:29: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:31: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:31: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:31: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:31: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:33: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:33: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:33: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:33: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:34: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:34: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:34: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:34: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:35: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:35: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:35: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:35: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:36: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:36: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:36: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:36: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:38: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:38: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:38: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:38: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:39: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:39: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:39: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:39: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:40: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:40: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:40: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:40: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:41: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:41: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:41: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:41: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:42: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:42: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:42: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:42: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:43: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:43: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:43: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:43: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:44: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:44: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:44: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:44: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:45: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:45: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:45: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:45: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:46: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:46: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:46: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:46: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:47: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:47: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:47: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:47: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:48: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:48: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:48: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:48: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:49: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:49: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:49: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:49: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:50: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:50: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:50: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:50: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:51: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:51: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:51: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:51: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:52: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:52: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:52: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:52: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:53: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:53: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:53: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:53: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:54: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:54: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:54: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:54: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:55: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:55: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:55: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:55: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:56: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:56: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:56: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:56: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:57: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:57: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:57: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:57: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:59: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:59: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:59: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:59: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:61: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:61: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:61: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:61: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:63: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:63: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:63: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:63: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:64: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:64: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:64: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:64: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:65: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:65: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:65: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:65: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:66: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:66: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:66: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:66: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:67: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:67: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:67: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:67: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:68: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:68: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:68: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:68: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:69: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:69: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:69: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:69: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:70: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:70: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:70: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:70: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:71: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:71: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:71: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:71: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:72: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:72: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:72: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:72: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:73: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:73: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:73: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:73: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:74: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:74: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:74: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:74: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:75: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:75: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:75: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:75: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:76: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:76: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:76: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:76: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:77: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:77: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:77: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:77: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:78: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:78: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:78: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:78: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:79: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:79: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:79: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:79: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:80: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:80: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:80: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:80: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:81: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:81: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:81: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:81: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:82: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:82: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:82: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:82: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:83: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:83: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:83: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:83: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:84: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:84: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:84: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:84: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:85: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:85: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:85: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:85: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:86: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:86: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:86: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:86: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:88: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:88: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:88: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:88: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:89: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:89: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:89: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:89: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:90: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:90: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:90: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:90: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:91: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:91: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:91: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:91: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:94: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:94: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:94: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:94: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:95: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:95: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:95: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:95: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:98: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:98: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:98: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:98: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:99: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:99: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:99: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:99: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:100: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:100: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:100: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:100: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:101: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:101: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:101: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:101: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:102: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:102: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:102: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:102: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:104: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:104: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:104: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:104: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:106: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:106: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:106: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:106: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:107: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:107: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:107: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:107: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:108: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:108: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:108: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:108: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:109: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:109: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:109: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:109: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:111: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:111: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:111: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:111: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:112: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:112: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:112: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:112: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:113: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:113: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:113: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:113: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:114: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:114: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:114: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:114: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:115: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:115: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:115: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:115: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:116: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:116: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:116: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:116: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:117: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:117: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:117: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:117: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:118: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:118: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:118: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:118: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:119: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:119: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:119: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:119: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:121-c-iouring-ssmurfgg04-gif: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:121-c-iouring-ssmurfgg04-gif: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:121-c-iouring-ssmurfgg04-gif: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:121-c-iouring-ssmurfgg04-gif: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:121-c-libco-ssmurfgg04-gif: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:121-c-libco-ssmurfgg04-gif: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:121-c-libco-ssmurfgg04-gif: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:121-c-libco-ssmurfgg04-gif: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:124: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:124: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:124: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:124: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:125: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:125: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:125: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:125: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:126: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:126: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:126: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:126: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:128: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:128: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:128: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:128: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:129: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:129: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:129: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:129: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:130: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:130: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:130: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:130: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:32: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:32: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:32: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:32: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:92: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:92: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:92: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:92: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:103: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:103: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:103: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:103: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:123-arsd-hybridcgi: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:123-arsd-hybridcgi: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:123-arsd-hybridcgi: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:123-arsd-hybridcgi: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:123-arsd-threadedcgi: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:123-arsd-threadedcgi: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:123-arsd-threadedcgi: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:123-arsd-threadedcgi: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:123-vibed: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:123-vibed: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:123-vibed: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:123-vibed: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:127: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:127: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:127: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:127: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:132: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:132: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:132: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:132: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "current:143: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "current:143: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "current:143: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "current:143: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "historical:103:896434055ff5278bead6112da223c5bb0670f982: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "historical:103:896434055ff5278bead6112da223c5bb0670f982: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "historical:103:896434055ff5278bead6112da223c5bb0670f982: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "historical:103:896434055ff5278bead6112da223c5bb0670f982: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "historical:123-arsd-threadedcgi:b8bd4b2e5b302d81a0bac32bd38a4bb6c258b0e2: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "historical:123-arsd-threadedcgi:b8bd4b2e5b302d81a0bac32bd38a4bb6c258b0e2: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "historical:123-arsd-threadedcgi:b8bd4b2e5b302d81a0bac32bd38a4bb6c258b0e2: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "historical:123-arsd-threadedcgi:b8bd4b2e5b302d81a0bac32bd38a4bb6c258b0e2: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "control:fixes-2026-10-22:82: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "control:fixes-2026-10-22:82: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "control:fixes-2026-10-22:82: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "control:fixes-2026-10-22:82: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "control:ranking-3x15-2026-10-22:82: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "control:ranking-3x15-2026-10-22:82: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "control:ranking-3x15-2026-10-22:82: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "control:ranking-3x15-2026-10-22:82: ranks apply only to the original clean current rows",
+      "passed": true
+    },
+    {
+      "check": "confirmation:goose: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "confirmation:goose: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "confirmation:goose: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "confirmation:goose: all ten raw trials independently reproduce confirmation medians",
+      "passed": true
+    },
+    {
+      "check": "confirmation:goose: long zero errors and UNMET outcome remain unranked",
+      "passed": true
+    },
+    {
+      "check": "confirmation:goose: exact raw/summary evidence references",
+      "passed": true
+    },
+    {
+      "check": "confirmation:82: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "confirmation:82: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "confirmation:82: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "confirmation:82: all ten raw trials independently reproduce confirmation medians",
+      "passed": true
+    },
+    {
+      "check": "confirmation:82: long zero errors and UNMET outcome remain unranked",
+      "passed": true
+    },
+    {
+      "check": "confirmation:82: exact raw/summary evidence references",
+      "passed": true
+    },
+    {
+      "check": "confirmation:baseline: complete original source record preserved exactly",
+      "passed": true
+    },
+    {
+      "check": "confirmation:baseline: original display metrics, source identities and status preserved",
+      "passed": true
+    },
+    {
+      "check": "confirmation:baseline: explicit duration and clock protocol",
+      "passed": true
+    },
+    {
+      "check": "confirmation:baseline: all ten raw trials independently reproduce confirmation medians",
+      "passed": true
+    },
+    {
+      "check": "confirmation:baseline: long zero errors and UNMET outcome remain unranked",
+      "passed": true
+    },
+    {
+      "check": "confirmation:baseline: exact raw/summary evidence references",
+      "passed": true
+    },
+    {
+      "check": "exactly 98 clean current ranks are preserved without ranking references",
+      "passed": true
+    },
+    {
+      "check": "all measured rows sorted by descending throughput, 14 unmeasured rows last",
+      "passed": true
+    },
+    {
+      "check": "short Goose38 and Rust34 timeouts remain explicit with no rank",
+      "passed": true
+    },
+    {
+      "check": "CSV has all 127 row IDs once in the shared sorted order",
+      "passed": true
+    },
+    {
+      "check": "every CSV field equals its shared-row value",
+      "passed": true
+    },
+    {
+      "check": "HTML has exactly one table/body and the same 127 rows in order",
+      "passed": true
+    },
+    {
+      "check": "report.md: exactly one measurements table with all 127 shared IDs in order",
+      "passed": true
+    },
+    {
+      "check": "report.md: every data row carries its explicit clock/duration protocol",
+      "passed": true
+    },
+    {
+      "check": "report.md: every displayed rank, metric, range, error counter and LOC equals rounded source data",
+      "passed": true
+    },
+    {
+      "check": "issue-comment.md: exactly one measurements table with all 127 shared IDs in order",
+      "passed": true
+    },
+    {
+      "check": "issue-comment.md: every data row carries its explicit clock/duration protocol",
+      "passed": true
+    },
+    {
+      "check": "issue-comment.md: every displayed rank, metric, range, error counter and LOC equals rounded source data",
+      "passed": true
+    },
+    {
+      "check": "both final Markdown surfaces exist",
+      "passed": true
+    },
+    {
+      "check": "prior evidence unchanged: results/fixes-2026-10-22/summary.json",
+      "passed": true
+    },
+    {
+      "check": "prior evidence unchanged: results/goose-2026-10-22/list-integration/summary.json",
+      "passed": true
+    },
+    {
+      "check": "prior evidence unchanged: results/goose-2026-10-22/ranking-3x15-2026-10-22/measurements.json",
+      "passed": true
+    },
+    {
+      "check": "prior evidence unchanged: results/goose-2026-10-22/lead5/holdout-hmac/measurements.json",
+      "passed": true
+    },
+    {
+      "check": "prior evidence unchanged: results/goose-2026-10-22/lead5/holdout-hmac/finalholdout-summary.json",
+      "passed": true
+    }
+  ],
+  "counts": {
+    "display_rows": 127,
+    "current": 120,
+    "historical": 2,
+    "controls": 2,
+    "confirmations": 3,
+    "ranked": 98
+  },
+  "frozen_evidence_sha256": {
+    "results/fixes-2026-10-22/summary.json": "44746123e12340a6abb2674838b59d9c14cb760a763120d4ba0d6bbe141b4933",
+    "results/goose-2026-10-22/list-integration/summary.json": "5f486bd45a79aaed781b9b928f1ecb07c82670f47b867b190bedc344a6fff613",
+    "results/goose-2026-10-22/ranking-3x15-2026-10-22/measurements.json": "88bd8ca7a4f489192f84b34000c729bca1562d1441d91b90284b6c10ebcfb1d3",
+    "results/goose-2026-10-22/lead5/holdout-hmac/measurements.json": "52e56cecd0b75279b4fa7301d4b561ccef4b06a3452eb6ccbb1c8c2167cc27ab",
+    "results/goose-2026-10-22/lead5/holdout-hmac/finalholdout-summary.json": "c4f873838637c4ea99ce8ce3ed187465f1ff1dc23a921db1f60875e71fc51070"
+  },
+  "output_sha256": {
+    "rows.json": "69f33b4f3d3f2e1a65feb3549793a52d5a86ed88e1a24aea00b34afac322146b",
+    "comparison.csv": "1e543a3b263f8ddaac840a3ac123df808703085349b77170c37c1ca6a92edc54",
+    "comparison.html": "830ae2eb79842a83085cc1b4b7f5a5d695ed3dad00b0252902db10f5b1f6ab1d",
+    "report.md": "39348d4a80926bc65a2fd18fd66cd61c3b2666949473e03bc0ce3706ef0b9cdf",
+    "issue-comment.md": "be259c5dbc9d0d63c37e5d3e7e5f706b45061c2346db751d07a0bba9bbda3380",
+    "render.py": "fe6b9f882f0fd8027aaf374438616c3e2c64cfd9fc9d44cdcb420ac027eaa33b",
+    "render_markdown.py": "b8e4583ea2a5fd98fcc5af0a2757e6b297cb4efd50fdd8a4fb04154c21661ba9",
+    "unified_audit.py": "55ad0a397235fda4b05322443c768e7268893ac997cf434471b515e82bb062a7"
+  },
+  "limitations": [
+    "One presentation table includes different explicitly labeled measurement protocols and dates; sorting does not establish a simultaneous head-to-head ranking.",
+    "The original 98 clean current ranks remain separate from display order; references and errored outcomes are unranked.",
+    "This file-only audit does not rerun servers or infer the cause of recorded timeout counters."
+  ]
+}

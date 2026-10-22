@@ -1,0 +1,20 @@
+{
+  "row_count": 127,
+  "roles": {
+    "current": 120,
+    "confirmation": 3,
+    "control": 2,
+    "historical": 2
+  },
+  "current_ranked": 98,
+  "default_sort": "successful_rps descending; unmeasured last",
+  "source_summary_sha256": "5f486bd45a79aaed781b9b928f1ecb07c82670f47b867b190bedc344a6fff613",
+  "source_addition_sha256": "f1564ca5cdd4df1657c99de1ce1483cb5ee5175321b46a540a59b729f86d306a",
+  "long_raw_sha256": "52e56cecd0b75279b4fa7301d4b561ccef4b06a3452eb6ccbb1c8c2167cc27ab",
+  "generator_sha256": "fe6b9f882f0fd8027aaf374438616c3e2c64cfd9fc9d44cdcb420ac027eaa33b",
+  "outputs": {
+    "rows.json": "69f33b4f3d3f2e1a65feb3549793a52d5a86ed88e1a24aea00b34afac322146b",
+    "comparison.csv": "1e543a3b263f8ddaac840a3ac123df808703085349b77170c37c1ca6a92edc54",
+    "comparison.html": "830ae2eb79842a83085cc1b4b7f5a5d695ed3dad00b0252902db10f5b1f6ab1d"
+  }
+}
