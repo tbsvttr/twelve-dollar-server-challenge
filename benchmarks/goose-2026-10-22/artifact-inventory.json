@@ -1,6 +1,6 @@
 {
-  "file_count": 3454,
-  "bytes": 66141183,
+  "file_count": 3455,
+  "bytes": 66142072,
   "files": {
     "README.md": {
       "bytes": 8765,
@@ -13797,6 +13797,10 @@
     "unified-list/single-goose-publication/pr-body.md": {
       "bytes": 2844,
       "sha256": "76e4f7e39fabf6da91e4fa7d1640275bc293ab3240bae47c2d287bd8a831d9b2"
+    },
+    "unified-list/single-goose-publication/publication-record.json": {
+      "bytes": 889,
+      "sha256": "a05f3d5cc26db47a630017f5cda24f307ed07f603658a8c83247393f1f841106"
     },
     "unified-list/single-goose-publication/single-goose-view-proof.json": {
       "bytes": 1648,
