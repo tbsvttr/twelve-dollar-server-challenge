@@ -1,0 +1,15 @@
+$ docker run -d --name twelve-fixes-build-103 --platform linux/arm64 --cpus 1.5 --memory 3g --memory-swap 3g --security-opt seccomp=/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/fixes-2026-10-22/seccomp-io-uring.json --mount type=bind,src=/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/fixes-2026-10-22,dst=/evidence,readonly twelve-current-pr103:2026-10-20 sleep infinity
+d37d0d04128173231c8d6095ba7194aa5e364cdc1407ac237ad8145d722f358d
+$ docker exec -i twelve-fixes-build-103 python3 - 103
+Verified pinned files: 9
+$ docker exec twelve-fixes-build-103 /usr/local/go/bin/go version
+go version go1.27.2 linux/arm64
+$ docker exec twelve-fixes-build-103 chown -R bench:bench /suite/sources/pr103
+$ docker exec twelve-fixes-build-103 runuser -u bench -- env NIM_JOBS=2 PATH=/usr/local/go/bin:/usr/local/bin:/usr/bin:/bin bash /suite/sources/pr103/build.sh
+$ docker exec -i twelve-fixes-build-103 python3 - 103
+Pinned files verified after build: 9
+binary_sha256 55d72f45a4d72fa38e88eea078a01c7e3fc6a0f38d1b46058a387807b2f37b02
+$ docker commit twelve-fixes-build-103 twelve-fixes-pr103:2026-10-22
+sha256:bd6de3940b034e8d363514d0ba2be95e10b331d2b0550f303ba7aee6c7f9bf6f
+$ docker rm -f twelve-fixes-build-103
+twelve-fixes-build-103

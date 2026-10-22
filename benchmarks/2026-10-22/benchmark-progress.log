@@ -1,0 +1,28 @@
+92 trial 1: 29,465.98 successful req/s; 1008.72 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+123-arsd-threadedcgi trial 1: 21,866.45 successful req/s; 13.57 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+82 trial 1: 109,481.20 successful req/s; 48.62 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+127: skipped throughput (no matching passing correctness run)
+103 trial 1: 28,087.54 successful req/s; 83.66 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+32 trial 1: 81,768.10 successful req/s; 78.55 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+123-arsd-hybridcgi trial 1: 21,834.29 successful req/s; 47.87 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+123-vibed trial 1: 20,159.73 successful req/s; 64.73 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+132 trial 1: 88,876.26 successful req/s; 36.93 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+103 trial 2: 25,664.69 successful req/s; 80.34 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+92 trial 2: 23,819.71 successful req/s; 1009.56 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+127: skipped throughput (no matching passing correctness run)
+132 trial 2: 89,647.66 successful req/s; 36.97 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+32 trial 2: 88,685.90 successful req/s; 79.39 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+82 trial 2: 105,045.40 successful req/s; 48.00 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+123-vibed trial 2: 20,252.53 successful req/s; 79.75 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+123-arsd-hybridcgi trial 2: 23,085.99 successful req/s; 45.68 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+123-arsd-threadedcgi trial 2: 20,683.38 successful req/s; 14.29 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+103 trial 3: 26,003.13 successful req/s; 85.53 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+123-arsd-threadedcgi trial 3: 20,875.79 successful req/s; 12.17 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+32 trial 3: 82,137.40 successful req/s; 78.75 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+92 trial 3: 25,701.45 successful req/s; 1012.01 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+127: skipped throughput (no matching passing correctness run)
+82 trial 3: 105,569.55 successful req/s; 48.36 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+123-vibed trial 3: 20,565.58 successful req/s; 63.79 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+132 trial 3: 89,377.97 successful req/s; 36.93 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+123-arsd-hybridcgi trial 3: 23,527.01 successful req/s; 46.89 MiB; errors=0/{'connect': 0, 'read': 0, 'write': 0, 'timeout': 0}
+/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/fixes-2026-10-22/measurements.json

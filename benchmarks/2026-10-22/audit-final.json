@@ -1,0 +1,2191 @@
+{
+  "recorded_at": "2026-10-22T08:38:01Z",
+  "strict": true,
+  "complete": true,
+  "passed": true,
+  "passed_all": true,
+  "checks_passed": 537,
+  "checks_total": 537,
+  "failures": [],
+  "pending": [],
+  "coverage": {
+    "cases": 9,
+    "passing_correctness": 8,
+    "verification_records": 9,
+    "measured_records": 24
+  },
+  "evidence_sha256": {
+    "manifest.json": "89caa7038e6da6538c1bf31d96212ea38426519daae6f06ecef46568948db3d9",
+    "build-status.json": "f0f809dc65b0323d0cc52652a99dc7d4431a0aaad45d4ab887b65949945b12b0",
+    "verification.json": "f9b11678ae3e9be0c3e24e393ebed429394bddaa65853839679a1611fca70797",
+    "measurements.json": "e83de3e4be4aafaa71b9e34c7f2f64b699da30ab8bcc87429bbbac2a00650bfd",
+    "shared-sha256.json": "aadccf6cbeeedd100ec927e47525ab197d6f81cd665cccae97b3dcf7f29158e3",
+    "environment-verify.json": "88ce8c5d0af2f90caaa9fcc771f42ce82436554b3c99f9c0c50467bc4183b3ba",
+    "environment-bench.json": "c795830893b02ec3ef00958e27f68e3ca7e57c740099407dc7d739aaa7ca1055",
+    "summary.json": "44746123e12340a6abb2674838b59d9c14cb760a763120d4ba0d6bbe141b4933",
+    "comparison.csv": "40a403cbeb28fff6d172f02caf61e8acff033fabe525fd5f7672d3c7ec4446fc",
+    "before-after.csv": "b2463887234865eda64a08c0a3040ce18c85ca190a8499ee5887931070a56b74",
+    "trials.csv": "9f43331d9f6b34318b372257e5314403be35ae2e5f53dd087de4593f87d56b6f",
+    "report.md": "d52dbd7f095121f68198d8961df38253e08a666792e8c6777f1bd1b3f4e2cc58",
+    "comparison.html": "5ea1a6a3ca8183a65fd3bfcfc46e49657facb5f841cde08605ea530e271fb3ec",
+    "run.py": "3d8e8a4418ca845a506ddc64ea8659271706273fb4c962da1bbd11aeab5246f4",
+    "serve.py": "52d8bdd75c0dc2477fc5b2391c797a2832eab5ac61a72d3bbe4dac4cb94bf311",
+    "semantic.py": "785f8ce565b469e4f4d702d01a9d868cd7458d64e3f1362c3fb8728560215fbc",
+    "analyze_followup.py": "c3cca7a7c8252766ca25fbe0260210c855a67b289e6abe70c5ed1fb89be266f2",
+    "audit_followup.py": "35e88aabd6ade2757fd039a0abc4c6e979a3046775de6e80670d3cdb7594285d"
+  },
+  "limitations": [
+    "Load-container settings and pinned load image are checked from the unchanged controller and phase environment records; per-trial load-container inspections were not retained.",
+    "Source LOC classification is heuristic; this audit verifies its physical-line arithmetic and file inventory, not authorship."
+  ],
+  "checks": [
+    {
+      "check": "targeted scope and single control are exact",
+      "passed": true
+    },
+    {
+      "check": "disjoint build shard build-status-103-132.json",
+      "passed": true
+    },
+    {
+      "check": "disjoint build shard build-status-123-127.json",
+      "passed": true
+    },
+    {
+      "check": "disjoint build shard build-status-32-92.json",
+      "passed": true
+    },
+    {
+      "check": "disjoint build shard build-status-82-82.json",
+      "passed": true
+    },
+    {
+      "check": "merged build provenance equals disjoint authoritative shards",
+      "passed": true
+    },
+    {
+      "check": "build provenance covers exactly the manifest cases",
+      "passed": true
+    },
+    {
+      "check": "32: exact source tree and checksum inventory",
+      "passed": true
+    },
+    {
+      "check": "32: inventory file coverage",
+      "passed": true
+    },
+    {
+      "check": "32: aggregate source identity",
+      "passed": true
+    },
+    {
+      "check": "32: inventory physical lines, bytes and hashes",
+      "passed": true
+    },
+    {
+      "check": "32: reported LOC matches inventory",
+      "passed": true
+    },
+    {
+      "check": "32: pinned archive checksum",
+      "passed": true
+    },
+    {
+      "check": "82: exact source tree and checksum inventory",
+      "passed": true
+    },
+    {
+      "check": "82: inventory file coverage",
+      "passed": true
+    },
+    {
+      "check": "82: aggregate source identity",
+      "passed": true
+    },
+    {
+      "check": "82: inventory physical lines, bytes and hashes",
+      "passed": true
+    },
+    {
+      "check": "82: reported LOC matches inventory",
+      "passed": true
+    },
+    {
+      "check": "82: pinned archive checksum",
+      "passed": true
+    },
+    {
+      "check": "92: exact source tree and checksum inventory",
+      "passed": true
+    },
+    {
+      "check": "92: inventory file coverage",
+      "passed": true
+    },
+    {
+      "check": "92: aggregate source identity",
+      "passed": true
+    },
+    {
+      "check": "92: inventory physical lines, bytes and hashes",
+      "passed": true
+    },
+    {
+      "check": "92: reported LOC matches inventory",
+      "passed": true
+    },
+    {
+      "check": "92: pinned archive checksum",
+      "passed": true
+    },
+    {
+      "check": "103: exact source tree and checksum inventory",
+      "passed": true
+    },
+    {
+      "check": "103: inventory file coverage",
+      "passed": true
+    },
+    {
+      "check": "103: aggregate source identity",
+      "passed": true
+    },
+    {
+      "check": "103: inventory physical lines, bytes and hashes",
+      "passed": true
+    },
+    {
+      "check": "103: reported LOC matches inventory",
+      "passed": true
+    },
+    {
+      "check": "103: pinned archive checksum",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-hybridcgi: exact source tree and checksum inventory",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-hybridcgi: inventory file coverage",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-hybridcgi: aggregate source identity",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-hybridcgi: inventory physical lines, bytes and hashes",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-hybridcgi: reported LOC matches inventory",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-hybridcgi: pinned archive checksum",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-threadedcgi: exact source tree and checksum inventory",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-threadedcgi: inventory file coverage",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-threadedcgi: aggregate source identity",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-threadedcgi: inventory physical lines, bytes and hashes",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-threadedcgi: reported LOC matches inventory",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-threadedcgi: pinned archive checksum",
+      "passed": true
+    },
+    {
+      "check": "123-vibed: exact source tree and checksum inventory",
+      "passed": true
+    },
+    {
+      "check": "123-vibed: inventory file coverage",
+      "passed": true
+    },
+    {
+      "check": "123-vibed: aggregate source identity",
+      "passed": true
+    },
+    {
+      "check": "123-vibed: inventory physical lines, bytes and hashes",
+      "passed": true
+    },
+    {
+      "check": "123-vibed: reported LOC matches inventory",
+      "passed": true
+    },
+    {
+      "check": "123-vibed: pinned archive checksum",
+      "passed": true
+    },
+    {
+      "check": "127: exact source tree and checksum inventory",
+      "passed": true
+    },
+    {
+      "check": "127: inventory file coverage",
+      "passed": true
+    },
+    {
+      "check": "127: aggregate source identity",
+      "passed": true
+    },
+    {
+      "check": "127: inventory physical lines, bytes and hashes",
+      "passed": true
+    },
+    {
+      "check": "127: reported LOC matches inventory",
+      "passed": true
+    },
+    {
+      "check": "127: pinned archive checksum",
+      "passed": true
+    },
+    {
+      "check": "132: exact source tree and checksum inventory",
+      "passed": true
+    },
+    {
+      "check": "132: inventory file coverage",
+      "passed": true
+    },
+    {
+      "check": "132: aggregate source identity",
+      "passed": true
+    },
+    {
+      "check": "132: inventory physical lines, bytes and hashes",
+      "passed": true
+    },
+    {
+      "check": "132: reported LOC matches inventory",
+      "passed": true
+    },
+    {
+      "check": "132: pinned archive checksum",
+      "passed": true
+    },
+    {
+      "check": "shared fixture inventory is complete",
+      "passed": true
+    },
+    {
+      "check": "shared fixture hashes match actual files",
+      "passed": true
+    },
+    {
+      "check": "shared fixture identity matches October 20",
+      "passed": true
+    },
+    {
+      "check": "controller is identical to October 20",
+      "passed": true
+    },
+    {
+      "check": "before/after fixture identity matches current files",
+      "passed": true
+    },
+    {
+      "check": "verify: configured CPU, RAM, swap and fd limits",
+      "passed": true
+    },
+    {
+      "check": "verify: shared identity and wrk configuration",
+      "passed": true
+    },
+    {
+      "check": "verify: native Linux ARM64 engine",
+      "passed": true
+    },
+    {
+      "check": "bench: configured CPU, RAM, swap and fd limits",
+      "passed": true
+    },
+    {
+      "check": "bench: shared identity and wrk configuration",
+      "passed": true
+    },
+    {
+      "check": "bench: native Linux ARM64 engine",
+      "passed": true
+    },
+    {
+      "check": "same pinned load image in verify, bench and baseline",
+      "passed": true
+    },
+    {
+      "check": "every evidence record has a known case",
+      "passed": true
+    },
+    {
+      "check": "verify 123-vibed trial 1: exact commit/image/source/shared identity",
+      "passed": true
+    },
+    {
+      "check": "verify 123-vibed trial 1: identity fingerprint",
+      "passed": true
+    },
+    {
+      "check": "verify 123-vibed trial 1: exact configuration",
+      "passed": true
+    },
+    {
+      "check": "verify 123-vibed trial 1: actual server CPU/RAM/swap limits",
+      "passed": true
+    },
+    {
+      "check": "verify 123-vibed trial 1: actual fd limit",
+      "passed": true
+    },
+    {
+      "check": "verify 123-vibed trial 1: exact seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "verify 123-vibed trial 1: no OOM kill",
+      "passed": true
+    },
+    {
+      "check": "verify 123-vibed trial 1: runtime source hash check",
+      "passed": true
+    },
+    {
+      "check": "verify 103 trial 1: exact commit/image/source/shared identity",
+      "passed": true
+    },
+    {
+      "check": "verify 103 trial 1: identity fingerprint",
+      "passed": true
+    },
+    {
+      "check": "verify 103 trial 1: exact configuration",
+      "passed": true
+    },
+    {
+      "check": "verify 103 trial 1: actual server CPU/RAM/swap limits",
+      "passed": true
+    },
+    {
+      "check": "verify 103 trial 1: actual fd limit",
+      "passed": true
+    },
+    {
+      "check": "verify 103 trial 1: exact seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "verify 103 trial 1: no OOM kill",
+      "passed": true
+    },
+    {
+      "check": "verify 103 trial 1: runtime source hash check",
+      "passed": true
+    },
+    {
+      "check": "verify 92 trial 1: exact commit/image/source/shared identity",
+      "passed": true
+    },
+    {
+      "check": "verify 92 trial 1: identity fingerprint",
+      "passed": true
+    },
+    {
+      "check": "verify 92 trial 1: exact configuration",
+      "passed": true
+    },
+    {
+      "check": "verify 92 trial 1: actual server CPU/RAM/swap limits",
+      "passed": true
+    },
+    {
+      "check": "verify 92 trial 1: actual fd limit",
+      "passed": true
+    },
+    {
+      "check": "verify 92 trial 1: exact seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "verify 92 trial 1: no OOM kill",
+      "passed": true
+    },
+    {
+      "check": "verify 92 trial 1: runtime source hash check",
+      "passed": true
+    },
+    {
+      "check": "verify 82 trial 1: exact commit/image/source/shared identity",
+      "passed": true
+    },
+    {
+      "check": "verify 82 trial 1: identity fingerprint",
+      "passed": true
+    },
+    {
+      "check": "verify 82 trial 1: exact configuration",
+      "passed": true
+    },
+    {
+      "check": "verify 82 trial 1: actual server CPU/RAM/swap limits",
+      "passed": true
+    },
+    {
+      "check": "verify 82 trial 1: actual fd limit",
+      "passed": true
+    },
+    {
+      "check": "verify 82 trial 1: exact seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "verify 82 trial 1: no OOM kill",
+      "passed": true
+    },
+    {
+      "check": "verify 82 trial 1: runtime source hash check",
+      "passed": true
+    },
+    {
+      "check": "verify 123-arsd-hybridcgi trial 1: exact commit/image/source/shared identity",
+      "passed": true
+    },
+    {
+      "check": "verify 123-arsd-hybridcgi trial 1: identity fingerprint",
+      "passed": true
+    },
+    {
+      "check": "verify 123-arsd-hybridcgi trial 1: exact configuration",
+      "passed": true
+    },
+    {
+      "check": "verify 123-arsd-hybridcgi trial 1: actual server CPU/RAM/swap limits",
+      "passed": true
+    },
+    {
+      "check": "verify 123-arsd-hybridcgi trial 1: actual fd limit",
+      "passed": true
+    },
+    {
+      "check": "verify 123-arsd-hybridcgi trial 1: exact seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "verify 123-arsd-hybridcgi trial 1: no OOM kill",
+      "passed": true
+    },
+    {
+      "check": "verify 123-arsd-hybridcgi trial 1: runtime source hash check",
+      "passed": true
+    },
+    {
+      "check": "verify 123-arsd-threadedcgi trial 1: exact commit/image/source/shared identity",
+      "passed": true
+    },
+    {
+      "check": "verify 123-arsd-threadedcgi trial 1: identity fingerprint",
+      "passed": true
+    },
+    {
+      "check": "verify 123-arsd-threadedcgi trial 1: exact configuration",
+      "passed": true
+    },
+    {
+      "check": "verify 123-arsd-threadedcgi trial 1: actual server CPU/RAM/swap limits",
+      "passed": true
+    },
+    {
+      "check": "verify 123-arsd-threadedcgi trial 1: actual fd limit",
+      "passed": true
+    },
+    {
+      "check": "verify 123-arsd-threadedcgi trial 1: exact seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "verify 123-arsd-threadedcgi trial 1: no OOM kill",
+      "passed": true
+    },
+    {
+      "check": "verify 123-arsd-threadedcgi trial 1: runtime source hash check",
+      "passed": true
+    },
+    {
+      "check": "verify 32 trial 1: exact commit/image/source/shared identity",
+      "passed": true
+    },
+    {
+      "check": "verify 32 trial 1: identity fingerprint",
+      "passed": true
+    },
+    {
+      "check": "verify 32 trial 1: exact configuration",
+      "passed": true
+    },
+    {
+      "check": "verify 32 trial 1: actual server CPU/RAM/swap limits",
+      "passed": true
+    },
+    {
+      "check": "verify 32 trial 1: actual fd limit",
+      "passed": true
+    },
+    {
+      "check": "verify 32 trial 1: exact seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "verify 32 trial 1: no OOM kill",
+      "passed": true
+    },
+    {
+      "check": "verify 32 trial 1: runtime source hash check",
+      "passed": true
+    },
+    {
+      "check": "verify 132 trial 1: exact commit/image/source/shared identity",
+      "passed": true
+    },
+    {
+      "check": "verify 132 trial 1: identity fingerprint",
+      "passed": true
+    },
+    {
+      "check": "verify 132 trial 1: exact configuration",
+      "passed": true
+    },
+    {
+      "check": "verify 132 trial 1: actual server CPU/RAM/swap limits",
+      "passed": true
+    },
+    {
+      "check": "verify 132 trial 1: actual fd limit",
+      "passed": true
+    },
+    {
+      "check": "verify 132 trial 1: exact seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "verify 132 trial 1: no OOM kill",
+      "passed": true
+    },
+    {
+      "check": "verify 132 trial 1: runtime source hash check",
+      "passed": true
+    },
+    {
+      "check": "verify 127 trial 1: exact commit/image/source/shared identity",
+      "passed": true
+    },
+    {
+      "check": "verify 127 trial 1: identity fingerprint",
+      "passed": true
+    },
+    {
+      "check": "verify 127 trial 1: exact configuration",
+      "passed": true
+    },
+    {
+      "check": "verify 127 trial 1: actual server CPU/RAM/swap limits",
+      "passed": true
+    },
+    {
+      "check": "verify 127 trial 1: actual fd limit",
+      "passed": true
+    },
+    {
+      "check": "verify 127 trial 1: exact seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "verify 127 trial 1: no OOM kill",
+      "passed": true
+    },
+    {
+      "check": "bench 92 trial 1: exact commit/image/source/shared identity",
+      "passed": true
+    },
+    {
+      "check": "bench 92 trial 1: identity fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench 92 trial 1: exact configuration",
+      "passed": true
+    },
+    {
+      "check": "bench 92 trial 1: actual server CPU/RAM/swap limits",
+      "passed": true
+    },
+    {
+      "check": "bench 92 trial 1: actual fd limit",
+      "passed": true
+    },
+    {
+      "check": "bench 92 trial 1: exact seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench 92 trial 1: no OOM kill",
+      "passed": true
+    },
+    {
+      "check": "bench 92 trial 1: runtime source hash check",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-threadedcgi trial 1: exact commit/image/source/shared identity",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-threadedcgi trial 1: identity fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-threadedcgi trial 1: exact configuration",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-threadedcgi trial 1: actual server CPU/RAM/swap limits",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-threadedcgi trial 1: actual fd limit",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-threadedcgi trial 1: exact seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-threadedcgi trial 1: no OOM kill",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-threadedcgi trial 1: runtime source hash check",
+      "passed": true
+    },
+    {
+      "check": "bench 82 trial 1: exact commit/image/source/shared identity",
+      "passed": true
+    },
+    {
+      "check": "bench 82 trial 1: identity fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench 82 trial 1: exact configuration",
+      "passed": true
+    },
+    {
+      "check": "bench 82 trial 1: actual server CPU/RAM/swap limits",
+      "passed": true
+    },
+    {
+      "check": "bench 82 trial 1: actual fd limit",
+      "passed": true
+    },
+    {
+      "check": "bench 82 trial 1: exact seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench 82 trial 1: no OOM kill",
+      "passed": true
+    },
+    {
+      "check": "bench 82 trial 1: runtime source hash check",
+      "passed": true
+    },
+    {
+      "check": "bench 103 trial 1: exact commit/image/source/shared identity",
+      "passed": true
+    },
+    {
+      "check": "bench 103 trial 1: identity fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench 103 trial 1: exact configuration",
+      "passed": true
+    },
+    {
+      "check": "bench 103 trial 1: actual server CPU/RAM/swap limits",
+      "passed": true
+    },
+    {
+      "check": "bench 103 trial 1: actual fd limit",
+      "passed": true
+    },
+    {
+      "check": "bench 103 trial 1: exact seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench 103 trial 1: no OOM kill",
+      "passed": true
+    },
+    {
+      "check": "bench 103 trial 1: runtime source hash check",
+      "passed": true
+    },
+    {
+      "check": "bench 32 trial 1: exact commit/image/source/shared identity",
+      "passed": true
+    },
+    {
+      "check": "bench 32 trial 1: identity fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench 32 trial 1: exact configuration",
+      "passed": true
+    },
+    {
+      "check": "bench 32 trial 1: actual server CPU/RAM/swap limits",
+      "passed": true
+    },
+    {
+      "check": "bench 32 trial 1: actual fd limit",
+      "passed": true
+    },
+    {
+      "check": "bench 32 trial 1: exact seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench 32 trial 1: no OOM kill",
+      "passed": true
+    },
+    {
+      "check": "bench 32 trial 1: runtime source hash check",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-hybridcgi trial 1: exact commit/image/source/shared identity",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-hybridcgi trial 1: identity fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-hybridcgi trial 1: exact configuration",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-hybridcgi trial 1: actual server CPU/RAM/swap limits",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-hybridcgi trial 1: actual fd limit",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-hybridcgi trial 1: exact seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-hybridcgi trial 1: no OOM kill",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-hybridcgi trial 1: runtime source hash check",
+      "passed": true
+    },
+    {
+      "check": "bench 123-vibed trial 1: exact commit/image/source/shared identity",
+      "passed": true
+    },
+    {
+      "check": "bench 123-vibed trial 1: identity fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench 123-vibed trial 1: exact configuration",
+      "passed": true
+    },
+    {
+      "check": "bench 123-vibed trial 1: actual server CPU/RAM/swap limits",
+      "passed": true
+    },
+    {
+      "check": "bench 123-vibed trial 1: actual fd limit",
+      "passed": true
+    },
+    {
+      "check": "bench 123-vibed trial 1: exact seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench 123-vibed trial 1: no OOM kill",
+      "passed": true
+    },
+    {
+      "check": "bench 123-vibed trial 1: runtime source hash check",
+      "passed": true
+    },
+    {
+      "check": "bench 132 trial 1: exact commit/image/source/shared identity",
+      "passed": true
+    },
+    {
+      "check": "bench 132 trial 1: identity fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench 132 trial 1: exact configuration",
+      "passed": true
+    },
+    {
+      "check": "bench 132 trial 1: actual server CPU/RAM/swap limits",
+      "passed": true
+    },
+    {
+      "check": "bench 132 trial 1: actual fd limit",
+      "passed": true
+    },
+    {
+      "check": "bench 132 trial 1: exact seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench 132 trial 1: no OOM kill",
+      "passed": true
+    },
+    {
+      "check": "bench 132 trial 1: runtime source hash check",
+      "passed": true
+    },
+    {
+      "check": "bench 103 trial 2: exact commit/image/source/shared identity",
+      "passed": true
+    },
+    {
+      "check": "bench 103 trial 2: identity fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench 103 trial 2: exact configuration",
+      "passed": true
+    },
+    {
+      "check": "bench 103 trial 2: actual server CPU/RAM/swap limits",
+      "passed": true
+    },
+    {
+      "check": "bench 103 trial 2: actual fd limit",
+      "passed": true
+    },
+    {
+      "check": "bench 103 trial 2: exact seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench 103 trial 2: no OOM kill",
+      "passed": true
+    },
+    {
+      "check": "bench 103 trial 2: runtime source hash check",
+      "passed": true
+    },
+    {
+      "check": "bench 92 trial 2: exact commit/image/source/shared identity",
+      "passed": true
+    },
+    {
+      "check": "bench 92 trial 2: identity fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench 92 trial 2: exact configuration",
+      "passed": true
+    },
+    {
+      "check": "bench 92 trial 2: actual server CPU/RAM/swap limits",
+      "passed": true
+    },
+    {
+      "check": "bench 92 trial 2: actual fd limit",
+      "passed": true
+    },
+    {
+      "check": "bench 92 trial 2: exact seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench 92 trial 2: no OOM kill",
+      "passed": true
+    },
+    {
+      "check": "bench 92 trial 2: runtime source hash check",
+      "passed": true
+    },
+    {
+      "check": "bench 132 trial 2: exact commit/image/source/shared identity",
+      "passed": true
+    },
+    {
+      "check": "bench 132 trial 2: identity fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench 132 trial 2: exact configuration",
+      "passed": true
+    },
+    {
+      "check": "bench 132 trial 2: actual server CPU/RAM/swap limits",
+      "passed": true
+    },
+    {
+      "check": "bench 132 trial 2: actual fd limit",
+      "passed": true
+    },
+    {
+      "check": "bench 132 trial 2: exact seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench 132 trial 2: no OOM kill",
+      "passed": true
+    },
+    {
+      "check": "bench 132 trial 2: runtime source hash check",
+      "passed": true
+    },
+    {
+      "check": "bench 32 trial 2: exact commit/image/source/shared identity",
+      "passed": true
+    },
+    {
+      "check": "bench 32 trial 2: identity fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench 32 trial 2: exact configuration",
+      "passed": true
+    },
+    {
+      "check": "bench 32 trial 2: actual server CPU/RAM/swap limits",
+      "passed": true
+    },
+    {
+      "check": "bench 32 trial 2: actual fd limit",
+      "passed": true
+    },
+    {
+      "check": "bench 32 trial 2: exact seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench 32 trial 2: no OOM kill",
+      "passed": true
+    },
+    {
+      "check": "bench 32 trial 2: runtime source hash check",
+      "passed": true
+    },
+    {
+      "check": "bench 82 trial 2: exact commit/image/source/shared identity",
+      "passed": true
+    },
+    {
+      "check": "bench 82 trial 2: identity fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench 82 trial 2: exact configuration",
+      "passed": true
+    },
+    {
+      "check": "bench 82 trial 2: actual server CPU/RAM/swap limits",
+      "passed": true
+    },
+    {
+      "check": "bench 82 trial 2: actual fd limit",
+      "passed": true
+    },
+    {
+      "check": "bench 82 trial 2: exact seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench 82 trial 2: no OOM kill",
+      "passed": true
+    },
+    {
+      "check": "bench 82 trial 2: runtime source hash check",
+      "passed": true
+    },
+    {
+      "check": "bench 123-vibed trial 2: exact commit/image/source/shared identity",
+      "passed": true
+    },
+    {
+      "check": "bench 123-vibed trial 2: identity fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench 123-vibed trial 2: exact configuration",
+      "passed": true
+    },
+    {
+      "check": "bench 123-vibed trial 2: actual server CPU/RAM/swap limits",
+      "passed": true
+    },
+    {
+      "check": "bench 123-vibed trial 2: actual fd limit",
+      "passed": true
+    },
+    {
+      "check": "bench 123-vibed trial 2: exact seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench 123-vibed trial 2: no OOM kill",
+      "passed": true
+    },
+    {
+      "check": "bench 123-vibed trial 2: runtime source hash check",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-hybridcgi trial 2: exact commit/image/source/shared identity",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-hybridcgi trial 2: identity fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-hybridcgi trial 2: exact configuration",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-hybridcgi trial 2: actual server CPU/RAM/swap limits",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-hybridcgi trial 2: actual fd limit",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-hybridcgi trial 2: exact seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-hybridcgi trial 2: no OOM kill",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-hybridcgi trial 2: runtime source hash check",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-threadedcgi trial 2: exact commit/image/source/shared identity",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-threadedcgi trial 2: identity fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-threadedcgi trial 2: exact configuration",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-threadedcgi trial 2: actual server CPU/RAM/swap limits",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-threadedcgi trial 2: actual fd limit",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-threadedcgi trial 2: exact seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-threadedcgi trial 2: no OOM kill",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-threadedcgi trial 2: runtime source hash check",
+      "passed": true
+    },
+    {
+      "check": "bench 103 trial 3: exact commit/image/source/shared identity",
+      "passed": true
+    },
+    {
+      "check": "bench 103 trial 3: identity fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench 103 trial 3: exact configuration",
+      "passed": true
+    },
+    {
+      "check": "bench 103 trial 3: actual server CPU/RAM/swap limits",
+      "passed": true
+    },
+    {
+      "check": "bench 103 trial 3: actual fd limit",
+      "passed": true
+    },
+    {
+      "check": "bench 103 trial 3: exact seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench 103 trial 3: no OOM kill",
+      "passed": true
+    },
+    {
+      "check": "bench 103 trial 3: runtime source hash check",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-threadedcgi trial 3: exact commit/image/source/shared identity",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-threadedcgi trial 3: identity fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-threadedcgi trial 3: exact configuration",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-threadedcgi trial 3: actual server CPU/RAM/swap limits",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-threadedcgi trial 3: actual fd limit",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-threadedcgi trial 3: exact seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-threadedcgi trial 3: no OOM kill",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-threadedcgi trial 3: runtime source hash check",
+      "passed": true
+    },
+    {
+      "check": "bench 32 trial 3: exact commit/image/source/shared identity",
+      "passed": true
+    },
+    {
+      "check": "bench 32 trial 3: identity fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench 32 trial 3: exact configuration",
+      "passed": true
+    },
+    {
+      "check": "bench 32 trial 3: actual server CPU/RAM/swap limits",
+      "passed": true
+    },
+    {
+      "check": "bench 32 trial 3: actual fd limit",
+      "passed": true
+    },
+    {
+      "check": "bench 32 trial 3: exact seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench 32 trial 3: no OOM kill",
+      "passed": true
+    },
+    {
+      "check": "bench 32 trial 3: runtime source hash check",
+      "passed": true
+    },
+    {
+      "check": "bench 92 trial 3: exact commit/image/source/shared identity",
+      "passed": true
+    },
+    {
+      "check": "bench 92 trial 3: identity fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench 92 trial 3: exact configuration",
+      "passed": true
+    },
+    {
+      "check": "bench 92 trial 3: actual server CPU/RAM/swap limits",
+      "passed": true
+    },
+    {
+      "check": "bench 92 trial 3: actual fd limit",
+      "passed": true
+    },
+    {
+      "check": "bench 92 trial 3: exact seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench 92 trial 3: no OOM kill",
+      "passed": true
+    },
+    {
+      "check": "bench 92 trial 3: runtime source hash check",
+      "passed": true
+    },
+    {
+      "check": "bench 82 trial 3: exact commit/image/source/shared identity",
+      "passed": true
+    },
+    {
+      "check": "bench 82 trial 3: identity fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench 82 trial 3: exact configuration",
+      "passed": true
+    },
+    {
+      "check": "bench 82 trial 3: actual server CPU/RAM/swap limits",
+      "passed": true
+    },
+    {
+      "check": "bench 82 trial 3: actual fd limit",
+      "passed": true
+    },
+    {
+      "check": "bench 82 trial 3: exact seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench 82 trial 3: no OOM kill",
+      "passed": true
+    },
+    {
+      "check": "bench 82 trial 3: runtime source hash check",
+      "passed": true
+    },
+    {
+      "check": "bench 123-vibed trial 3: exact commit/image/source/shared identity",
+      "passed": true
+    },
+    {
+      "check": "bench 123-vibed trial 3: identity fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench 123-vibed trial 3: exact configuration",
+      "passed": true
+    },
+    {
+      "check": "bench 123-vibed trial 3: actual server CPU/RAM/swap limits",
+      "passed": true
+    },
+    {
+      "check": "bench 123-vibed trial 3: actual fd limit",
+      "passed": true
+    },
+    {
+      "check": "bench 123-vibed trial 3: exact seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench 123-vibed trial 3: no OOM kill",
+      "passed": true
+    },
+    {
+      "check": "bench 123-vibed trial 3: runtime source hash check",
+      "passed": true
+    },
+    {
+      "check": "bench 132 trial 3: exact commit/image/source/shared identity",
+      "passed": true
+    },
+    {
+      "check": "bench 132 trial 3: identity fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench 132 trial 3: exact configuration",
+      "passed": true
+    },
+    {
+      "check": "bench 132 trial 3: actual server CPU/RAM/swap limits",
+      "passed": true
+    },
+    {
+      "check": "bench 132 trial 3: actual fd limit",
+      "passed": true
+    },
+    {
+      "check": "bench 132 trial 3: exact seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench 132 trial 3: no OOM kill",
+      "passed": true
+    },
+    {
+      "check": "bench 132 trial 3: runtime source hash check",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-hybridcgi trial 3: exact commit/image/source/shared identity",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-hybridcgi trial 3: identity fingerprint",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-hybridcgi trial 3: exact configuration",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-hybridcgi trial 3: actual server CPU/RAM/swap limits",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-hybridcgi trial 3: actual fd limit",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-hybridcgi trial 3: exact seccomp profile",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-hybridcgi trial 3: no OOM kill",
+      "passed": true
+    },
+    {
+      "check": "bench 123-arsd-hybridcgi trial 3: runtime source hash check",
+      "passed": true
+    },
+    {
+      "check": "32: build revision matches manifest",
+      "passed": true
+    },
+    {
+      "check": "32: built image identity is pinned ARM64",
+      "passed": true
+    },
+    {
+      "check": "32: correctness pass flag reflects official, dynamic and database checks",
+      "passed": true
+    },
+    {
+      "check": "32: trial identities unique and in range",
+      "passed": true
+    },
+    {
+      "check": "32 trial 1: complete valid measured trial",
+      "passed": true
+    },
+    {
+      "check": "32 trial 1: valid nonnegative metrics",
+      "passed": true
+    },
+    {
+      "check": "32 trial 1: metrics and success formula independently match raw wrk output",
+      "passed": true
+    },
+    {
+      "check": "32 trial 1: RSS/CPU formulas match process snapshots",
+      "passed": true
+    },
+    {
+      "check": "32 trial 1: committed writes and SQLite integrity",
+      "passed": true
+    },
+    {
+      "check": "32 trial 2: complete valid measured trial",
+      "passed": true
+    },
+    {
+      "check": "32 trial 2: valid nonnegative metrics",
+      "passed": true
+    },
+    {
+      "check": "32 trial 2: metrics and success formula independently match raw wrk output",
+      "passed": true
+    },
+    {
+      "check": "32 trial 2: RSS/CPU formulas match process snapshots",
+      "passed": true
+    },
+    {
+      "check": "32 trial 2: committed writes and SQLite integrity",
+      "passed": true
+    },
+    {
+      "check": "32 trial 3: complete valid measured trial",
+      "passed": true
+    },
+    {
+      "check": "32 trial 3: valid nonnegative metrics",
+      "passed": true
+    },
+    {
+      "check": "32 trial 3: metrics and success formula independently match raw wrk output",
+      "passed": true
+    },
+    {
+      "check": "32 trial 3: RSS/CPU formulas match process snapshots",
+      "passed": true
+    },
+    {
+      "check": "32 trial 3: committed writes and SQLite integrity",
+      "passed": true
+    },
+    {
+      "check": "82: build revision matches manifest",
+      "passed": true
+    },
+    {
+      "check": "82: built image identity is pinned ARM64",
+      "passed": true
+    },
+    {
+      "check": "82: correctness pass flag reflects official, dynamic and database checks",
+      "passed": true
+    },
+    {
+      "check": "82: trial identities unique and in range",
+      "passed": true
+    },
+    {
+      "check": "82 trial 1: complete valid measured trial",
+      "passed": true
+    },
+    {
+      "check": "82 trial 1: valid nonnegative metrics",
+      "passed": true
+    },
+    {
+      "check": "82 trial 1: metrics and success formula independently match raw wrk output",
+      "passed": true
+    },
+    {
+      "check": "82 trial 1: RSS/CPU formulas match process snapshots",
+      "passed": true
+    },
+    {
+      "check": "82 trial 1: committed writes and SQLite integrity",
+      "passed": true
+    },
+    {
+      "check": "82 trial 2: complete valid measured trial",
+      "passed": true
+    },
+    {
+      "check": "82 trial 2: valid nonnegative metrics",
+      "passed": true
+    },
+    {
+      "check": "82 trial 2: metrics and success formula independently match raw wrk output",
+      "passed": true
+    },
+    {
+      "check": "82 trial 2: RSS/CPU formulas match process snapshots",
+      "passed": true
+    },
+    {
+      "check": "82 trial 2: committed writes and SQLite integrity",
+      "passed": true
+    },
+    {
+      "check": "82 trial 3: complete valid measured trial",
+      "passed": true
+    },
+    {
+      "check": "82 trial 3: valid nonnegative metrics",
+      "passed": true
+    },
+    {
+      "check": "82 trial 3: metrics and success formula independently match raw wrk output",
+      "passed": true
+    },
+    {
+      "check": "82 trial 3: RSS/CPU formulas match process snapshots",
+      "passed": true
+    },
+    {
+      "check": "82 trial 3: committed writes and SQLite integrity",
+      "passed": true
+    },
+    {
+      "check": "92: build revision matches manifest",
+      "passed": true
+    },
+    {
+      "check": "92: built image identity is pinned ARM64",
+      "passed": true
+    },
+    {
+      "check": "92: correctness pass flag reflects official, dynamic and database checks",
+      "passed": true
+    },
+    {
+      "check": "92: trial identities unique and in range",
+      "passed": true
+    },
+    {
+      "check": "92 trial 1: complete valid measured trial",
+      "passed": true
+    },
+    {
+      "check": "92 trial 1: valid nonnegative metrics",
+      "passed": true
+    },
+    {
+      "check": "92 trial 1: metrics and success formula independently match raw wrk output",
+      "passed": true
+    },
+    {
+      "check": "92 trial 1: RSS/CPU formulas match process snapshots",
+      "passed": true
+    },
+    {
+      "check": "92 trial 1: committed writes and SQLite integrity",
+      "passed": true
+    },
+    {
+      "check": "92 trial 2: complete valid measured trial",
+      "passed": true
+    },
+    {
+      "check": "92 trial 2: valid nonnegative metrics",
+      "passed": true
+    },
+    {
+      "check": "92 trial 2: metrics and success formula independently match raw wrk output",
+      "passed": true
+    },
+    {
+      "check": "92 trial 2: RSS/CPU formulas match process snapshots",
+      "passed": true
+    },
+    {
+      "check": "92 trial 2: committed writes and SQLite integrity",
+      "passed": true
+    },
+    {
+      "check": "92 trial 3: complete valid measured trial",
+      "passed": true
+    },
+    {
+      "check": "92 trial 3: valid nonnegative metrics",
+      "passed": true
+    },
+    {
+      "check": "92 trial 3: metrics and success formula independently match raw wrk output",
+      "passed": true
+    },
+    {
+      "check": "92 trial 3: RSS/CPU formulas match process snapshots",
+      "passed": true
+    },
+    {
+      "check": "92 trial 3: committed writes and SQLite integrity",
+      "passed": true
+    },
+    {
+      "check": "103: build revision matches manifest",
+      "passed": true
+    },
+    {
+      "check": "103: built image identity is pinned ARM64",
+      "passed": true
+    },
+    {
+      "check": "103: correctness pass flag reflects official, dynamic and database checks",
+      "passed": true
+    },
+    {
+      "check": "103: trial identities unique and in range",
+      "passed": true
+    },
+    {
+      "check": "103 trial 1: complete valid measured trial",
+      "passed": true
+    },
+    {
+      "check": "103 trial 1: valid nonnegative metrics",
+      "passed": true
+    },
+    {
+      "check": "103 trial 1: metrics and success formula independently match raw wrk output",
+      "passed": true
+    },
+    {
+      "check": "103 trial 1: RSS/CPU formulas match process snapshots",
+      "passed": true
+    },
+    {
+      "check": "103 trial 1: committed writes and SQLite integrity",
+      "passed": true
+    },
+    {
+      "check": "103 trial 2: complete valid measured trial",
+      "passed": true
+    },
+    {
+      "check": "103 trial 2: valid nonnegative metrics",
+      "passed": true
+    },
+    {
+      "check": "103 trial 2: metrics and success formula independently match raw wrk output",
+      "passed": true
+    },
+    {
+      "check": "103 trial 2: RSS/CPU formulas match process snapshots",
+      "passed": true
+    },
+    {
+      "check": "103 trial 2: committed writes and SQLite integrity",
+      "passed": true
+    },
+    {
+      "check": "103 trial 3: complete valid measured trial",
+      "passed": true
+    },
+    {
+      "check": "103 trial 3: valid nonnegative metrics",
+      "passed": true
+    },
+    {
+      "check": "103 trial 3: metrics and success formula independently match raw wrk output",
+      "passed": true
+    },
+    {
+      "check": "103 trial 3: RSS/CPU formulas match process snapshots",
+      "passed": true
+    },
+    {
+      "check": "103 trial 3: committed writes and SQLite integrity",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-hybridcgi: build revision matches manifest",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-hybridcgi: built image identity is pinned ARM64",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-hybridcgi: correctness pass flag reflects official, dynamic and database checks",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-hybridcgi: trial identities unique and in range",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-hybridcgi trial 1: complete valid measured trial",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-hybridcgi trial 1: valid nonnegative metrics",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-hybridcgi trial 1: metrics and success formula independently match raw wrk output",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-hybridcgi trial 1: RSS/CPU formulas match process snapshots",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-hybridcgi trial 1: committed writes and SQLite integrity",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-hybridcgi trial 2: complete valid measured trial",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-hybridcgi trial 2: valid nonnegative metrics",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-hybridcgi trial 2: metrics and success formula independently match raw wrk output",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-hybridcgi trial 2: RSS/CPU formulas match process snapshots",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-hybridcgi trial 2: committed writes and SQLite integrity",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-hybridcgi trial 3: complete valid measured trial",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-hybridcgi trial 3: valid nonnegative metrics",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-hybridcgi trial 3: metrics and success formula independently match raw wrk output",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-hybridcgi trial 3: RSS/CPU formulas match process snapshots",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-hybridcgi trial 3: committed writes and SQLite integrity",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-threadedcgi: build revision matches manifest",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-threadedcgi: built image identity is pinned ARM64",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-threadedcgi: correctness pass flag reflects official, dynamic and database checks",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-threadedcgi: trial identities unique and in range",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-threadedcgi trial 1: complete valid measured trial",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-threadedcgi trial 1: valid nonnegative metrics",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-threadedcgi trial 1: metrics and success formula independently match raw wrk output",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-threadedcgi trial 1: RSS/CPU formulas match process snapshots",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-threadedcgi trial 1: committed writes and SQLite integrity",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-threadedcgi trial 2: complete valid measured trial",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-threadedcgi trial 2: valid nonnegative metrics",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-threadedcgi trial 2: metrics and success formula independently match raw wrk output",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-threadedcgi trial 2: RSS/CPU formulas match process snapshots",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-threadedcgi trial 2: committed writes and SQLite integrity",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-threadedcgi trial 3: complete valid measured trial",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-threadedcgi trial 3: valid nonnegative metrics",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-threadedcgi trial 3: metrics and success formula independently match raw wrk output",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-threadedcgi trial 3: RSS/CPU formulas match process snapshots",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-threadedcgi trial 3: committed writes and SQLite integrity",
+      "passed": true
+    },
+    {
+      "check": "123-vibed: build revision matches manifest",
+      "passed": true
+    },
+    {
+      "check": "123-vibed: built image identity is pinned ARM64",
+      "passed": true
+    },
+    {
+      "check": "123-vibed: correctness pass flag reflects official, dynamic and database checks",
+      "passed": true
+    },
+    {
+      "check": "123-vibed: trial identities unique and in range",
+      "passed": true
+    },
+    {
+      "check": "123-vibed trial 1: complete valid measured trial",
+      "passed": true
+    },
+    {
+      "check": "123-vibed trial 1: valid nonnegative metrics",
+      "passed": true
+    },
+    {
+      "check": "123-vibed trial 1: metrics and success formula independently match raw wrk output",
+      "passed": true
+    },
+    {
+      "check": "123-vibed trial 1: RSS/CPU formulas match process snapshots",
+      "passed": true
+    },
+    {
+      "check": "123-vibed trial 1: committed writes and SQLite integrity",
+      "passed": true
+    },
+    {
+      "check": "123-vibed trial 2: complete valid measured trial",
+      "passed": true
+    },
+    {
+      "check": "123-vibed trial 2: valid nonnegative metrics",
+      "passed": true
+    },
+    {
+      "check": "123-vibed trial 2: metrics and success formula independently match raw wrk output",
+      "passed": true
+    },
+    {
+      "check": "123-vibed trial 2: RSS/CPU formulas match process snapshots",
+      "passed": true
+    },
+    {
+      "check": "123-vibed trial 2: committed writes and SQLite integrity",
+      "passed": true
+    },
+    {
+      "check": "123-vibed trial 3: complete valid measured trial",
+      "passed": true
+    },
+    {
+      "check": "123-vibed trial 3: valid nonnegative metrics",
+      "passed": true
+    },
+    {
+      "check": "123-vibed trial 3: metrics and success formula independently match raw wrk output",
+      "passed": true
+    },
+    {
+      "check": "123-vibed trial 3: RSS/CPU formulas match process snapshots",
+      "passed": true
+    },
+    {
+      "check": "123-vibed trial 3: committed writes and SQLite integrity",
+      "passed": true
+    },
+    {
+      "check": "127: build revision matches manifest",
+      "passed": true
+    },
+    {
+      "check": "127: built image identity is pinned ARM64",
+      "passed": true
+    },
+    {
+      "check": "127: correctness pass flag reflects official, dynamic and database checks",
+      "passed": true
+    },
+    {
+      "check": "127: failing correctness has no benchmark measurements",
+      "passed": true
+    },
+    {
+      "check": "132: build revision matches manifest",
+      "passed": true
+    },
+    {
+      "check": "132: built image identity is pinned ARM64",
+      "passed": true
+    },
+    {
+      "check": "132: correctness pass flag reflects official, dynamic and database checks",
+      "passed": true
+    },
+    {
+      "check": "132: trial identities unique and in range",
+      "passed": true
+    },
+    {
+      "check": "132 trial 1: complete valid measured trial",
+      "passed": true
+    },
+    {
+      "check": "132 trial 1: valid nonnegative metrics",
+      "passed": true
+    },
+    {
+      "check": "132 trial 1: metrics and success formula independently match raw wrk output",
+      "passed": true
+    },
+    {
+      "check": "132 trial 1: RSS/CPU formulas match process snapshots",
+      "passed": true
+    },
+    {
+      "check": "132 trial 1: committed writes and SQLite integrity",
+      "passed": true
+    },
+    {
+      "check": "132 trial 2: complete valid measured trial",
+      "passed": true
+    },
+    {
+      "check": "132 trial 2: valid nonnegative metrics",
+      "passed": true
+    },
+    {
+      "check": "132 trial 2: metrics and success formula independently match raw wrk output",
+      "passed": true
+    },
+    {
+      "check": "132 trial 2: RSS/CPU formulas match process snapshots",
+      "passed": true
+    },
+    {
+      "check": "132 trial 2: committed writes and SQLite integrity",
+      "passed": true
+    },
+    {
+      "check": "132 trial 3: complete valid measured trial",
+      "passed": true
+    },
+    {
+      "check": "132 trial 3: valid nonnegative metrics",
+      "passed": true
+    },
+    {
+      "check": "132 trial 3: metrics and success formula independently match raw wrk output",
+      "passed": true
+    },
+    {
+      "check": "132 trial 3: RSS/CPU formulas match process snapshots",
+      "passed": true
+    },
+    {
+      "check": "132 trial 3: committed writes and SQLite integrity",
+      "passed": true
+    },
+    {
+      "check": "summary covers every target and control exactly once",
+      "passed": true
+    },
+    {
+      "check": "32: complete clean result is measured with correct control treatment",
+      "passed": true
+    },
+    {
+      "check": "32: only complete trials receive aggregate metrics",
+      "passed": true
+    },
+    {
+      "check": "32: aggregate medians independently recomputed",
+      "passed": true
+    },
+    {
+      "check": "32: aggregate range and errors independently recomputed",
+      "passed": true
+    },
+    {
+      "check": "82: complete clean result is measured with correct control treatment",
+      "passed": true
+    },
+    {
+      "check": "82: only complete trials receive aggregate metrics",
+      "passed": true
+    },
+    {
+      "check": "82: aggregate medians independently recomputed",
+      "passed": true
+    },
+    {
+      "check": "82: aggregate range and errors independently recomputed",
+      "passed": true
+    },
+    {
+      "check": "92: complete clean result is measured with correct control treatment",
+      "passed": true
+    },
+    {
+      "check": "92: only complete trials receive aggregate metrics",
+      "passed": true
+    },
+    {
+      "check": "92: aggregate medians independently recomputed",
+      "passed": true
+    },
+    {
+      "check": "92: aggregate range and errors independently recomputed",
+      "passed": true
+    },
+    {
+      "check": "103: complete clean result is measured with correct control treatment",
+      "passed": true
+    },
+    {
+      "check": "103: only complete trials receive aggregate metrics",
+      "passed": true
+    },
+    {
+      "check": "103: aggregate medians independently recomputed",
+      "passed": true
+    },
+    {
+      "check": "103: aggregate range and errors independently recomputed",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-hybridcgi: complete clean result is measured with correct control treatment",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-hybridcgi: only complete trials receive aggregate metrics",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-hybridcgi: aggregate medians independently recomputed",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-hybridcgi: aggregate range and errors independently recomputed",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-threadedcgi: complete clean result is measured with correct control treatment",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-threadedcgi: only complete trials receive aggregate metrics",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-threadedcgi: aggregate medians independently recomputed",
+      "passed": true
+    },
+    {
+      "check": "123-arsd-threadedcgi: aggregate range and errors independently recomputed",
+      "passed": true
+    },
+    {
+      "check": "123-vibed: complete clean result is measured with correct control treatment",
+      "passed": true
+    },
+    {
+      "check": "123-vibed: only complete trials receive aggregate metrics",
+      "passed": true
+    },
+    {
+      "check": "123-vibed: aggregate medians independently recomputed",
+      "passed": true
+    },
+    {
+      "check": "123-vibed: aggregate range and errors independently recomputed",
+      "passed": true
+    },
+    {
+      "check": "127: failed/errored/incomplete result has no clean rank",
+      "passed": true
+    },
+    {
+      "check": "132: complete clean result is measured with correct control treatment",
+      "passed": true
+    },
+    {
+      "check": "132: only complete trials receive aggregate metrics",
+      "passed": true
+    },
+    {
+      "check": "132: aggregate medians independently recomputed",
+      "passed": true
+    },
+    {
+      "check": "132: aggregate range and errors independently recomputed",
+      "passed": true
+    },
+    {
+      "check": "combined coverage remains 119 unique implementations",
+      "passed": true
+    },
+    {
+      "check": "replacement #132 appears once and superseded #120 is absent",
+      "passed": true
+    },
+    {
+      "check": "all unaffected baseline outcomes and metrics are retained exactly",
+      "passed": true
+    },
+    {
+      "check": "control remains a separate rerun, retains original combined score",
+      "passed": true
+    },
+    {
+      "check": "all combined ranks are clean, contiguous and sorted by successful throughput",
+      "passed": true
+    },
+    {
+      "check": "summary final flag agrees with audit completeness",
+      "passed": true
+    },
+    {
+      "check": "combined CSV covers the summary exactly",
+      "passed": true
+    },
+    {
+      "check": "combined CSV ranks, statuses and metrics match summary",
+      "passed": true
+    },
+    {
+      "check": "Markdown clean ranking contains exactly audited clean ranks",
+      "passed": true
+    },
+    {
+      "check": "interactive HTML ranks, outcomes and scores equal audited summary",
+      "passed": true
+    }
+  ]
+}

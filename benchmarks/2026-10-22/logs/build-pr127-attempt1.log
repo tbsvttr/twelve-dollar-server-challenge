@@ -1,0 +1,11 @@
+Pinned source: a3700bac14d5ae898af43d3ffe3dafdb80c57622
+
+$ docker run -d --name twelve-fixes-build-127 --cpus 1.5 --memory 3g --memory-swap 3g --security-opt seccomp=/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/fixes-2026-10-22/seccomp-io-uring.json --mount type=bind,src=/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/fixes-2026-10-22,dst=/evidence,readonly twelve-unified:2026-10-07 sleep infinity
+92fb6b47b898f18e575dcc096974cfa2b4d7ab722deb4f48cbc44a45bf09fac8
+
+$ docker exec -i twelve-fixes-build-127 python3 - 127
+Verified exact clean source snapshot: 24 files
+
+$ docker exec -w /suite/sources/pr127 twelve-fixes-build-127 bash /suite/sources/pr127/install.sh
+/suite/sources/pr127/install.sh: line 5: npm: command not found
+/suite/sources/pr127/install.sh: line 6: pnpm: command not found

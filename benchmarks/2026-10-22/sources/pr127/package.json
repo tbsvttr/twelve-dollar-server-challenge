@@ -1,0 +1,28 @@
+{
+  "name": "node-fastify-aliskhanoff",
+  "version": "1.0.0",
+  "description": "I hope this solution will be faster than BUN with his 40k requests per second",
+  "main": "index.js",
+  "scripts": {
+    "start": "SQLITE_PATH=./feed.db  node --max-semi-space-size=64 ./src/index.js",
+    "dev": "SQLITE_PATH=./feed.db  node --watch ./src/index.js",
+    "bench": "k6 run ../../bench/load.js",
+    "copy-db": "rm -rf feed.db* && cp ../../seed/feed.db* ./",
+    "profile": "node --prof ./src/index.js",
+    "profile:gc": "node --trace-gc ./src/index.js",
+    "autocannon-post": "autocannon -c 1000 -d 5 -p 5 http://localhost:3000/post/1",
+    "autocannon-feed": "autocannon -c 1000 -d 5 -p 5 http://localhost:3000/feed",
+    "autocannon-health": "autocannon -c 1000 -d 5 -p 5 http://localhost:3000/health",
+    "build": "./install.sh"
+  },
+  "keywords": [],
+  "author": "aliskhanoff (https://github.com/aliskhanoff)",
+  "license": "ISC",
+  "packageManager": "pnpm@10.17.1",
+  "devDependencies": {
+    "autocannon": "^8.0.0"
+  },
+  "dependencies": {
+    "better-sqlite3": "^13.0.3"
+  }
+}

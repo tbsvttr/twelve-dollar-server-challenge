@@ -1,0 +1,453 @@
+Pinned source: a66957652333f827cbac9a02a9c2e6bba39216b0
+
+$ docker run -d --name twelve-fixes-build-32 --platform linux/arm64 --cpus 1.5 --memory 3g --memory-swap 3g --security-opt seccomp=/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/fixes-2026-10-22/seccomp-io-uring.json --mount type=bind,src=/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/fixes-2026-10-22,dst=/evidence,readonly twelve-unified:2026-10-07 sleep infinity
+cd9f98e87d01a6c6b5448ef90f213a5ececb6e64ba8eeabcf6373bab6b3a8630
+
+$ docker exec -i twelve-fixes-build-32 python3 - 32
+Verified 50 pinned source files before build
+
+$ docker exec twelve-fixes-build-32 bash /suite/sources/pr32/install.sh
+Hit:1 http://ports.ubuntu.com/ubuntu-ports noble InRelease
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble-updates InRelease [126 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble-backports InRelease [126 kB]
+Get:4 http://ports.ubuntu.com/ubuntu-ports noble-security InRelease [126 kB]
+Get:5 http://ports.ubuntu.com/ubuntu-ports noble-updates/restricted arm64 Packages [3251 kB]
+Get:6 http://ports.ubuntu.com/ubuntu-ports noble-updates/universe arm64 Packages [2216 kB]
+Get:7 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 Packages [1790 kB]
+Get:8 http://ports.ubuntu.com/ubuntu-ports noble-updates/multiverse arm64 Packages [104 kB]
+Get:9 http://ports.ubuntu.com/ubuntu-ports noble-backports/multiverse arm64 Packages [669 B]
+Get:10 http://ports.ubuntu.com/ubuntu-ports noble-security/universe arm64 Packages [1638 kB]
+Get:11 http://ports.ubuntu.com/ubuntu-ports noble-security/main arm64 Packages [1476 kB]
+Get:12 http://ports.ubuntu.com/ubuntu-ports noble-security/multiverse arm64 Packages [99.1 kB]
+Get:13 http://ports.ubuntu.com/ubuntu-ports noble-security/restricted arm64 Packages [3129 kB]
+Fetched 14.1 MB in 2s (7359 kB/s)
+Reading package lists...
+Reading package lists...
+Building dependency tree...
+Reading state information...
+gcc is already the newest version (4:13.2.0-7ubuntu1).
+gcc set to manually installed.
+g++ is already the newest version (4:13.2.0-7ubuntu1).
+g++ set to manually installed.
+libssl-dev is already the newest version (3.0.13-0ubuntu3.16).
+The following additional packages will be installed:
+  cmake-data git-man googletest libarchive13t64 libjsoncpp25 librhash0
+  liburing2 libuv1t64
+Suggested packages:
+  cmake-doc cmake-format elpa-cmake-mode gettext-base git-daemon-run
+  | git-daemon-sysvinit git-doc git-email git-gui gitk gitweb git-cvs
+  git-mediawiki git-svn lrzip
+Recommended packages:
+  less ssh-client
+The following NEW packages will be installed:
+  cmake cmake-data googletest libarchive13t64 libgtest-dev libjsoncpp25
+  librhash0 liburing-dev liburing2 libuv1t64 ninja-build
+The following packages will be upgraded:
+  ca-certificates git git-man
+3 upgraded, 11 newly installed, 0 to remove and 20 not upgraded.
+Need to get 19.3 MB of archives.
+After this operation, 52.5 MB of additional disk space will be used.
+Get:1 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 ca-certificates all 20260816ubuntu0.24.04.1 [139 kB]
+Get:2 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libuv1t64 arm64 1.48.0-1.1build1 [95.3 kB]
+Get:3 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 libarchive13t64 arm64 3.7.2-2ubuntu0.9 [378 kB]
+Get:4 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 libjsoncpp25 arm64 1.9.5-6build1 [78.2 kB]
+Get:5 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 librhash0 arm64 1.4.3-3build1 [126 kB]
+Get:6 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 cmake-data all 3.28.3-1build7 [2155 kB]
+Get:7 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 cmake arm64 3.28.3-1build7 [10.3 MB]
+Get:8 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 git-man all 1:2.43.0-1ubuntu7.4 [1101 kB]
+Get:9 http://ports.ubuntu.com/ubuntu-ports noble-updates/main arm64 git arm64 1:2.43.0-1ubuntu7.4 [3774 kB]
+Get:10 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 googletest all 1.14.0-1 [521 kB]
+Get:11 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 libgtest-dev arm64 1.14.0-1 [266 kB]
+Get:12 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 liburing2 arm64 2.5-1build1 [21.7 kB]
+Get:13 http://ports.ubuntu.com/ubuntu-ports noble/main arm64 liburing-dev arm64 2.5-1build1 [169 kB]
+Get:14 http://ports.ubuntu.com/ubuntu-ports noble/universe arm64 ninja-build arm64 1.11.1-2 [125 kB]
+debconf: delaying package configuration, since apt-utils is not installed
+Fetched 19.3 MB in 2s (12.2 MB/s)
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 16962 files and directories currently installed.)
+Preparing to unpack .../00-ca-certificates_20260816ubuntu0.24.04.1_all.deb ...
+Unpacking ca-certificates (20260816ubuntu0.24.04.1) over (20260601~24.04.1) ...
+Selecting previously unselected package libuv1t64:arm64.
+Preparing to unpack .../01-libuv1t64_1.48.0-1.1build1_arm64.deb ...
+Unpacking libuv1t64:arm64 (1.48.0-1.1build1) ...
+Selecting previously unselected package libarchive13t64:arm64.
+Preparing to unpack .../02-libarchive13t64_3.7.2-2ubuntu0.9_arm64.deb ...
+Unpacking libarchive13t64:arm64 (3.7.2-2ubuntu0.9) ...
+Selecting previously unselected package libjsoncpp25:arm64.
+Preparing to unpack .../03-libjsoncpp25_1.9.5-6build1_arm64.deb ...
+Unpacking libjsoncpp25:arm64 (1.9.5-6build1) ...
+Selecting previously unselected package librhash0:arm64.
+Preparing to unpack .../04-librhash0_1.4.3-3build1_arm64.deb ...
+Unpacking librhash0:arm64 (1.4.3-3build1) ...
+Selecting previously unselected package cmake-data.
+Preparing to unpack .../05-cmake-data_3.28.3-1build7_all.deb ...
+Unpacking cmake-data (3.28.3-1build7) ...
+Selecting previously unselected package cmake.
+Preparing to unpack .../06-cmake_3.28.3-1build7_arm64.deb ...
+Unpacking cmake (3.28.3-1build7) ...
+Preparing to unpack .../07-git-man_1%3a2.43.0-1ubuntu7.4_all.deb ...
+Unpacking git-man (1:2.43.0-1ubuntu7.4) over (1:2.43.0-1ubuntu7.3) ...
+Preparing to unpack .../08-git_1%3a2.43.0-1ubuntu7.4_arm64.deb ...
+Unpacking git (1:2.43.0-1ubuntu7.4) over (1:2.43.0-1ubuntu7.3) ...
+Selecting previously unselected package googletest.
+Preparing to unpack .../09-googletest_1.14.0-1_all.deb ...
+Unpacking googletest (1.14.0-1) ...
+Selecting previously unselected package libgtest-dev:arm64.
+Preparing to unpack .../10-libgtest-dev_1.14.0-1_arm64.deb ...
+Unpacking libgtest-dev:arm64 (1.14.0-1) ...
+Selecting previously unselected package liburing2:arm64.
+Preparing to unpack .../11-liburing2_2.5-1build1_arm64.deb ...
+Unpacking liburing2:arm64 (2.5-1build1) ...
+Selecting previously unselected package liburing-dev:arm64.
+Preparing to unpack .../12-liburing-dev_2.5-1build1_arm64.deb ...
+Unpacking liburing-dev:arm64 (2.5-1build1) ...
+Selecting previously unselected package ninja-build.
+Preparing to unpack .../13-ninja-build_1.11.1-2_arm64.deb ...
+Unpacking ninja-build (1.11.1-2) ...
+Setting up libuv1t64:arm64 (1.48.0-1.1build1) ...
+Setting up googletest (1.14.0-1) ...
+Setting up ninja-build (1.11.1-2) ...
+Setting up ca-certificates (20260816ubuntu0.24.04.1) ...
+Updating certificates in /etc/ssl/certs...
+rehash: warning: skipping ca-certificates.crt,it does not contain exactly one certificate or CRL
+4 added, 5 removed; done.
+Setting up libjsoncpp25:arm64 (1.9.5-6build1) ...
+Setting up librhash0:arm64 (1.4.3-3build1) ...
+Setting up git-man (1:2.43.0-1ubuntu7.4) ...
+Setting up cmake-data (3.28.3-1build7) ...
+Setting up liburing2:arm64 (2.5-1build1) ...
+Setting up libarchive13t64:arm64 (3.7.2-2ubuntu0.9) ...
+Setting up liburing-dev:arm64 (2.5-1build1) ...
+Setting up libgtest-dev:arm64 (1.14.0-1) ...
+Setting up git (1:2.43.0-1ubuntu7.4) ...
+Setting up cmake (3.28.3-1build7) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+Processing triggers for ca-certificates (20260816ubuntu0.24.04.1) ...
+Updating certificates in /etc/ssl/certs...
+0 added, 0 removed; done.
+Running hooks in /etc/ca-certificates/update.d...
+done.
+g++ (Ubuntu 13.3.0-6ubuntu2~24.04.1) 13.3.0
+Copyright (C) 2023 Free Software Foundation, Inc.
+This is free software; see the source for copying conditions.  There is NO
+warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+
+
+$ docker exec twelve-fixes-build-32 chown -R bench:bench /suite/sources/pr32
+
+$ docker exec twelve-fixes-build-32 runuser -u bench -- env PATH=/opt/twelve-rust/cargo/bin:/usr/local/go/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin CMAKE_BUILD_PARALLEL_LEVEL=2 MAKEFLAGS=-j2 bash /suite/sources/pr32/build.sh
+Executing workflow step 1 of 3: configure preset "release"
+
+Preset CMake variables:
+
+  CMAKE_BUILD_TYPE="Release"
+  CMAKE_TOOLCHAIN_FILE:FILEPATH="/suite/sources/pr32/cmake/gcc.cmake"
+
+-- The CXX compiler identification is GNU 13.3.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/bin/g++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- Performing Test EASTL_HAS_FCHAR8T_FLAG
+-- Performing Test EASTL_HAS_FCHAR8T_FLAG - Success
+-- Performing Test EASTL_HAS_ZCCHAR8T_FLAG
+-- Performing Test EASTL_HAS_ZCCHAR8T_FLAG - Failed
+CMake Deprecation Warning at build/release/_deps/eabase-src/CMakeLists.txt:4 (cmake_minimum_required):
+  Compatibility with CMake < 3.5 will be removed from a future version of
+  CMake.
+
+  Update the VERSION argument <min> value or use a ...<max> suffix to tell
+  CMake that the project does not need compatibility with older versions.
+
+
+-- The C compiler identification is GNU 13.3.0
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /usr/bin/gcc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Looking for stdint.h
+-- Looking for stdint.h - found
+-- Looking for stdbool.h
+-- Looking for stdbool.h - found
+-- Found OpenSSL: /usr/lib/aarch64-linux-gnu/libcrypto.so (found version "3.0.13")  
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Found GTest: /usr/lib/aarch64-linux-gnu/cmake/GTest/GTestConfig.cmake (found version "1.14.0")  
+-- Configuring done (6.3s)
+-- Generating done (0.0s)
+-- Build files have been written to: /suite/sources/pr32/build/release
+
+Executing workflow step 2 of 3: build preset "release"
+
+[1/37] Building CXX object _deps/eastl-build/CMakeFiles/EASTL.dir/source/allocator_eastl.cpp.o
+[2/37] Building CXX object _deps/eastl-build/CMakeFiles/EASTL.dir/source/assert.cpp.o
+[3/37] Building CXX object _deps/eastl-build/CMakeFiles/EASTL.dir/source/atomic.cpp.o
+[4/37] Building CXX object _deps/eastl-build/CMakeFiles/EASTL.dir/source/fixed_pool.cpp.o
+[5/37] Building CXX object _deps/eastl-build/CMakeFiles/EASTL.dir/source/hashtable.cpp.o
+[6/37] Building CXX object _deps/eastl-build/CMakeFiles/EASTL.dir/source/intrusive_list.cpp.o
+[7/37] Building CXX object _deps/eastl-build/CMakeFiles/EASTL.dir/source/numeric_limits.cpp.o
+[8/37] Building CXX object _deps/eastl-build/CMakeFiles/EASTL.dir/source/red_black_tree.cpp.o
+[9/37] Building CXX object _deps/eastl-build/CMakeFiles/EASTL.dir/source/string.cpp.o
+[10/37] Building CXX object _deps/eastl-build/CMakeFiles/EASTL.dir/source/thread_support.cpp.o
+[11/37] Linking CXX static library _deps/eastl-build/libEASTL.a
+[12/37] Building C object _deps/yyjson-build/CMakeFiles/yyjson.dir/src/yyjson.c.o
+[13/37] Linking C static library _deps/yyjson-build/libyyjson.a
+[14/37] Building SQLite with profile-guided optimization
+trained on 60000 iterations (checksum 124008095859)
+[15/37] Building CXX object CMakeFiles/core.dir/src/db.cpp.o
+In file included from /suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/string.h:133,
+                 from /suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/fixed_string.h:16,
+                 from /suite/sources/pr32/src/db.hpp:3,
+                 from /suite/sources/pr32/src/db.cpp:1:
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const wchar_t*&, const wchar_t*, wchar_t*&, wchar_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:104:179: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  104 |                         return DecodePart(reinterpret_cast<const char*&>(pSrc), reinterpret_cast<const char*>(pSrcEnd), reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                                                                                   ^~~~~~~~
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const char8_t*&, const char8_t*, char8_t*&, char8_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:165:175: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  165 |                     return DecodePart(reinterpret_cast<const char*&>(pSrc), reinterpret_cast<const char*>(pSrcEnd), reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                                                                               ^~~~~~~~
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const char*&, const char*, char8_t*&, char8_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:185:116: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  185 |                         return DecodePart(pSrc, pSrcEnd, reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                    ^~~~~~~~
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const char16_t*&, const char16_t*, char8_t*&, char8_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:190:116: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  190 |                         return DecodePart(pSrc, pSrcEnd, reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                    ^~~~~~~~
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const char32_t*&, const char32_t*, char8_t*&, char8_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:195:116: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  195 |                         return DecodePart(pSrc, pSrcEnd, reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                    ^~~~~~~~
+[16/37] Building CXX object CMakeFiles/core.dir/src/eastl_hooks.cpp.o
+[17/37] Building CXX object CMakeFiles/core.dir/src/app.cpp.o
+In file included from /suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/string_view.h:20,
+                 from /suite/sources/pr32/src/app.hpp:3,
+                 from /suite/sources/pr32/src/app.cpp:1:
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const wchar_t*&, const wchar_t*, wchar_t*&, wchar_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:104:179: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  104 |                         return DecodePart(reinterpret_cast<const char*&>(pSrc), reinterpret_cast<const char*>(pSrcEnd), reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                                                                                   ^~~~~~~~
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const char8_t*&, const char8_t*, char8_t*&, char8_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:165:175: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  165 |                     return DecodePart(reinterpret_cast<const char*&>(pSrc), reinterpret_cast<const char*>(pSrcEnd), reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                                                                               ^~~~~~~~
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const char*&, const char*, char8_t*&, char8_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:185:116: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  185 |                         return DecodePart(pSrc, pSrcEnd, reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                    ^~~~~~~~
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const char16_t*&, const char16_t*, char8_t*&, char8_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:190:116: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  190 |                         return DecodePart(pSrc, pSrcEnd, reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                    ^~~~~~~~
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const char32_t*&, const char32_t*, char8_t*&, char8_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:195:116: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  195 |                         return DecodePart(pSrc, pSrcEnd, reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                    ^~~~~~~~
+[18/37] Building CXX object CMakeFiles/core.dir/src/json.cpp.o
+In file included from /suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/string_view.h:20,
+                 from /suite/sources/pr32/src/json.hpp:3,
+                 from /suite/sources/pr32/src/json.cpp:1:
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const wchar_t*&, const wchar_t*, wchar_t*&, wchar_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:104:179: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  104 |                         return DecodePart(reinterpret_cast<const char*&>(pSrc), reinterpret_cast<const char*>(pSrcEnd), reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                                                                                   ^~~~~~~~
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const char8_t*&, const char8_t*, char8_t*&, char8_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:165:175: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  165 |                     return DecodePart(reinterpret_cast<const char*&>(pSrc), reinterpret_cast<const char*>(pSrcEnd), reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                                                                               ^~~~~~~~
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const char*&, const char*, char8_t*&, char8_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:185:116: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  185 |                         return DecodePart(pSrc, pSrcEnd, reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                    ^~~~~~~~
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const char16_t*&, const char16_t*, char8_t*&, char8_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:190:116: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  190 |                         return DecodePart(pSrc, pSrcEnd, reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                    ^~~~~~~~
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const char32_t*&, const char32_t*, char8_t*&, char8_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:195:116: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  195 |                         return DecodePart(pSrc, pSrcEnd, reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                    ^~~~~~~~
+[19/37] Building CXX object CMakeFiles/core.dir/src/http.cpp.o
+In file included from /suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/string_view.h:20,
+                 from /suite/sources/pr32/src/http.hpp:3,
+                 from /suite/sources/pr32/src/http.cpp:1:
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const wchar_t*&, const wchar_t*, wchar_t*&, wchar_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:104:179: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  104 |                         return DecodePart(reinterpret_cast<const char*&>(pSrc), reinterpret_cast<const char*>(pSrcEnd), reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                                                                                   ^~~~~~~~
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const char8_t*&, const char8_t*, char8_t*&, char8_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:165:175: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  165 |                     return DecodePart(reinterpret_cast<const char*&>(pSrc), reinterpret_cast<const char*>(pSrcEnd), reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                                                                               ^~~~~~~~
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const char*&, const char*, char8_t*&, char8_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:185:116: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  185 |                         return DecodePart(pSrc, pSrcEnd, reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                    ^~~~~~~~
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const char16_t*&, const char16_t*, char8_t*&, char8_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:190:116: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  190 |                         return DecodePart(pSrc, pSrcEnd, reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                    ^~~~~~~~
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const char32_t*&, const char32_t*, char8_t*&, char8_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:195:116: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  195 |                         return DecodePart(pSrc, pSrcEnd, reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                    ^~~~~~~~
+[20/37] Building CXX object CMakeFiles/core.dir/src/response.cpp.o
+In file included from /suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/string_view.h:20,
+                 from /suite/sources/pr32/src/response.hpp:3,
+                 from /suite/sources/pr32/src/response.cpp:1:
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const wchar_t*&, const wchar_t*, wchar_t*&, wchar_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:104:179: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  104 |                         return DecodePart(reinterpret_cast<const char*&>(pSrc), reinterpret_cast<const char*>(pSrcEnd), reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                                                                                   ^~~~~~~~
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const char8_t*&, const char8_t*, char8_t*&, char8_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:165:175: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  165 |                     return DecodePart(reinterpret_cast<const char*&>(pSrc), reinterpret_cast<const char*>(pSrcEnd), reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                                                                               ^~~~~~~~
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const char*&, const char*, char8_t*&, char8_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:185:116: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  185 |                         return DecodePart(pSrc, pSrcEnd, reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                    ^~~~~~~~
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const char16_t*&, const char16_t*, char8_t*&, char8_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:190:116: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  190 |                         return DecodePart(pSrc, pSrcEnd, reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                    ^~~~~~~~
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const char32_t*&, const char32_t*, char8_t*&, char8_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:195:116: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  195 |                         return DecodePart(pSrc, pSrcEnd, reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                    ^~~~~~~~
+[21/37] Building CXX object CMakeFiles/core.dir/src/jwt.cpp.o
+In file included from /suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/string.h:133,
+                 from /suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/fixed_string.h:16,
+                 from /suite/sources/pr32/src/jwt.hpp:3,
+                 from /suite/sources/pr32/src/jwt.cpp:1:
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const wchar_t*&, const wchar_t*, wchar_t*&, wchar_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:104:179: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  104 |                         return DecodePart(reinterpret_cast<const char*&>(pSrc), reinterpret_cast<const char*>(pSrcEnd), reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                                                                                   ^~~~~~~~
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const char8_t*&, const char8_t*, char8_t*&, char8_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:165:175: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  165 |                     return DecodePart(reinterpret_cast<const char*&>(pSrc), reinterpret_cast<const char*>(pSrcEnd), reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                                                                               ^~~~~~~~
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const char*&, const char*, char8_t*&, char8_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:185:116: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  185 |                         return DecodePart(pSrc, pSrcEnd, reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                    ^~~~~~~~
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const char16_t*&, const char16_t*, char8_t*&, char8_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:190:116: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  190 |                         return DecodePart(pSrc, pSrcEnd, reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                    ^~~~~~~~
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const char32_t*&, const char32_t*, char8_t*&, char8_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:195:116: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  195 |                         return DecodePart(pSrc, pSrcEnd, reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                    ^~~~~~~~
+[22/37] Building CXX object CMakeFiles/core.dir/src/server.cpp.o
+In file included from /suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/string_view.h:20,
+                 from /suite/sources/pr32/src/app.hpp:3,
+                 from /suite/sources/pr32/src/server.hpp:10,
+                 from /suite/sources/pr32/src/server.cpp:1:
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const wchar_t*&, const wchar_t*, wchar_t*&, wchar_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:104:179: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  104 |                         return DecodePart(reinterpret_cast<const char*&>(pSrc), reinterpret_cast<const char*>(pSrcEnd), reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                                                                                   ^~~~~~~~
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const char8_t*&, const char8_t*, char8_t*&, char8_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:165:175: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  165 |                     return DecodePart(reinterpret_cast<const char*&>(pSrc), reinterpret_cast<const char*>(pSrcEnd), reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                                                                               ^~~~~~~~
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const char*&, const char*, char8_t*&, char8_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:185:116: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  185 |                         return DecodePart(pSrc, pSrcEnd, reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                    ^~~~~~~~
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const char16_t*&, const char16_t*, char8_t*&, char8_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:190:116: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  190 |                         return DecodePart(pSrc, pSrcEnd, reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                    ^~~~~~~~
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h: In function 'bool eastl::DecodePart(const char32_t*&, const char32_t*, char8_t*&, char8_t*)':
+/suite/sources/pr32/build/release/_deps/eastl-src/include/EASTL/internal/char_traits.h:195:116: warning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]
+  195 |                         return DecodePart(pSrc, pSrcEnd, reinterpret_cast<char*&>(pDest), reinterpret_cast<char*&>(pDestEnd));
+      |                                                                                                                    ^~~~~~~~
+[23/37] Building CXX object CMakeFiles/server.dir/src/main.cpp.o
+[24/37] Linking CXX static library libcore.a
+[25/37] Linking CXX executable server
+[26/37] Building CXX object CMakeFiles/unit_tests.dir/tests/app_test.cpp.o
+[27/37] Building CXX object CMakeFiles/unit_tests.dir/tests/http_fuzz_test.cpp.o
+[28/37] Building CXX object CMakeFiles/unit_tests.dir/tests/db_test.cpp.o
+[29/37] Building CXX object CMakeFiles/unit_tests.dir/tests/http_test.cpp.o
+[30/37] Building CXX object CMakeFiles/unit_tests.dir/tests/json_fuzz_test.cpp.o
+[31/37] Building CXX object CMakeFiles/unit_tests.dir/tests/server_test.cpp.o
+[32/37] Building CXX object CMakeFiles/unit_tests.dir/tests/json_test.cpp.o
+[33/37] Building CXX object CMakeFiles/unit_tests.dir/tests/jwt_test.cpp.o
+[34/37] Building CXX object CMakeFiles/unit_tests.dir/tests/simd_test.cpp.o
+[35/37] Building CXX object CMakeFiles/unit_tests.dir/tests/sqlite_build_test.cpp.o
+[36/37] Building CXX object CMakeFiles/unit_tests.dir/tests/writer_test.cpp.o
+[37/37] Linking CXX executable unit_tests
+
+Executing workflow step 3 of 3: test preset "release"
+
+Test project /suite/sources/pr32/build/release
+    Start 1: unit_tests
+1/1 Test #1: unit_tests .......................   Passed    3.39 sec
+
+100% tests passed, 0 tests failed out of 1
+
+Total Test time (real) =   3.39 sec
+
+$ docker commit twelve-fixes-build-32 twelve-fixes-pr32:2026-10-22
+sha256:3ed98f9730c10c03e7d7bf45228d1bf4ecb65473c52c14bf545a5e9af9ae0335
+
+$ docker run --rm -i --platform linux/arm64 twelve-fixes-pr32:2026-10-22 python3 - 32 {
+  ".dockerignore": "6769fddbea24e193e4e10ab3f6c31b2a3ac2c6a5d0eb102949ed9f5745d88d24",
+  ".gitignore": "7b52df86fbd8a4662cdaeea4e3a6f1106d49f49be7617253ca1aec5ff285077a",
+  "CMakeLists.txt": "76224411673e376f015a5e20309c5298b9e2c8517093809c1281c9f8a6efc28d",
+  "CMakePresets.json": "50422b53d70219b18ac2ac6499deaad4cb9093653a7811d7e9471dd3067c6b29",
+  "Dockerfile": "a4a53786caecbb9903de2d7a9d9d19c0af5142b5ab0331cfda295b491da09821",
+  "README.md": "2743d32d651b8e4ad5e153f452aa98238f1beae820de8802a2bc8e441f1e1e09",
+  "build.sh": "4e7b5095945895be03e630228e0429c0445bc9517f508e6e44961aac000e2fe9",
+  "cmake/aarch64-cross.cmake": "ef76c4215257b36d21a9c74810aef755dd5ce0704bdc578515dc7638e7ce7dfc",
+  "cmake/gcc.cmake": "502691b635f6ac6a98e1e3a9789de0fc6faf1a4afac05a166727988ce6e8bd30",
+  "cross/Dockerfile": "89a3d31f79d4e0e16ccab651fb5997d78bbe38ca6a8226543b71cf2b8a8cc5db",
+  "cross/build.sh": "e5a4580f7ca38b173e8be7f2e8f2e914efe8d83c0f6588cc47aa0606446fcbfe",
+  "docker-compose.yml": "fb2390009836776bf909938b351f132ed4c2ee5d93bbf4b57f5d87fa457e1e4d",
+  "install.sh": "55b3f9c1d01af29c99ebe5ac921103cfcf035a1ea3f3c2d5e51678123bb511a8",
+  "pgo/build_sqlite.sh": "ebfea553ccc4a4c6f1b19c361112f1117d40cfe6858a27db8c7e0367334bca58",
+  "pgo/train.cpp": "5c52bb73e5582417bc0639c944955c7eacba06ea30245e987972b36879354e16",
+  "src/app.cpp": "0a029f4d3ffdd4b9d3a570404ea526ee2f4b7b4895f1fa7fbb9554ad4d14873f",
+  "src/app.hpp": "37b548ff132d1da264c208390ff82a683bb27e2593a8ea6fb5566069ab470d93",
+  "src/base64.hpp": "750ba91e4329152d234ae7ccea858f28dd5401d0f40af2b9013982ac77c44327",
+  "src/block_pool.hpp": "87dd92d6d6363f2c281a1c77be73d58a25f868384428c7b88a43a5444d04b965",
+  "src/conn.hpp": "67002a996dc65c709561c6c10610311e60442b2adf104e026d800e63d8ae8402",
+  "src/db.cpp": "18a218b28c1a1b760ffb8d708315dc21b5fd5c9c3b45bb76a57c4b0888ec7f1c",
+  "src/db.hpp": "94bbaa98d372e4f1197c5728bd7a22273b57989d6baff1f84c14027d33f86149",
+  "src/eastl_hooks.cpp": "a5fe8a87aaa7f4aaeefd9f7c90cc8116b9516d9f43d0fdafb4c521ffc9bc5130",
+  "src/http.cpp": "fb93c450b956f7e36fd4514c315c21fbf76b504b623166577737adc9416d698e",
+  "src/http.hpp": "ecad8fd9abca20bffaf6e36547bc0ddb30e8544132001ff26e443a61e1f86890",
+  "src/json.cpp": "e671d433c1a62756f1775c5438ef8b086e63a72bbd4d5358ca894565d6568a12",
+  "src/json.hpp": "40d89a7e1f35f7127b0474dfa9e4026742aa037c226031b834b1a1d9bc1c4b1c",
+  "src/jwt.cpp": "a7765342c39ae4746182552e9d2f7ed3ce8022bceeb2ad3db84f2006a17ef1e4",
+  "src/jwt.hpp": "cdaf41128d4ef89d5648a08df5eb9b4d50db4d2d6d08fcdfd731e19e068a4105",
+  "src/main.cpp": "df001353f46d2d2d9be01de40aacdab0da41d6e1c9f10403786d651148a27979",
+  "src/response.cpp": "22a42c2baae08366854a5e18636186ca5b241005fbaebbfe48379daff1e711e3",
+  "src/response.hpp": "a6c7cff5dbf2cdc72672df0375fb29013935d15ea6b985ca8427489c015b54d3",
+  "src/server.cpp": "189e625c2995093a0b08e6dd820d1166789155d2180400dfc431ee4a3c2c3834",
+  "src/server.hpp": "6651f570c086c6b3a8346fc320b5b39f191ddbe96699115d33c90961670f93ec",
+  "src/simd.hpp": "4b21c99c18d58888eb05ad76d75978c3ab8fc1ebbd04852af35d109e37e9e943",
+  "src/writer.hpp": "16990c3a771e5422288a04bdab822238c424285980377fefdc4bd3947f86c517",
+  "start.sh": "307061059b074da076f803ce7e647638c58b258cfae8adc86fe556a6e5f8ecbe",
+  "tests/app_test.cpp": "a06f7af60102ca436f2c4ade6c5e6c08387ac97697cdd03c9d412201204e6941",
+  "tests/db_test.cpp": "a7c66ec45730535d773a109ab37bd82e2e91bfd23b806dad35284503f15143e6",
+  "tests/http_fuzz_test.cpp": "d98aea00d6d190044cf1c10cb8384e9606bb2eb8b309cd805115b07315596409",
+  "tests/http_reference.hpp": "3072ff2f5eb36b568eeb6b5ad39cb42ae5a0a8800076a2a53ce7ee95e5701cc2",
+  "tests/http_test.cpp": "946557a6f0b748f8238381de0d320af6903d765e20daccdf88933c0e4b0da860",
+  "tests/json_fuzz_test.cpp": "40cd1fadcf567e5737e7dc6af1ac615bd381730e48f95dd012bea05b13e1bdd6",
+  "tests/json_test.cpp": "ade5dc588fbaf7e00a273b49c6457117d6ff8ffa3d58addab1f3e3c88bf60e86",
+  "tests/jwt_test.cpp": "f3e06d8ea93cf824666ed66d9e766e48e0ba1ad0914a017f3f682a1fd4bb7645",
+  "tests/server_test.cpp": "c73cc18d54d84bfade56880d111c030ca9e915c39923b24c82c0f7a6ae49eabe",
+  "tests/simd_test.cpp": "980e04fa62c4fdb27a45637d3754d291ae7865c47666b85b18f2d932c6c0a69c",
+  "tests/sqlite_build_test.cpp": "cabd4f027ced847ce495d5828fd1d551c0800a4984ee843cc03050d578e71d9d",
+  "tests/test_util.hpp": "f4f374c74beb3d10276e86f0d87d5e83131c7d051ef7f8b987095c85ebd25af7",
+  "tests/writer_test.cpp": "0a1c75f4b1a4bb5a4fcbe31395219c0e6858783e9afd718233ce8f772d31a4d9"
+}
+
+Verified 50 pinned source files in image

@@ -1,0 +1,554 @@
+[
+  {
+    "pr": 32,
+    "id": "32",
+    "case_id": "32",
+    "title": "Add cpp-eastl-io_uring-pgo-hendy643 submission (C++, EASTL, io_uring, PGO SQLite)",
+    "url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/32",
+    "state": "open",
+    "merged": false,
+    "repo": "hendy643/twelve-dollar-server-challenge",
+    "commit": "a66957652333f827cbac9a02a9c2e6bba39216b0",
+    "eligible": true,
+    "folder": "cpp-eastl-io_uring-pgo-hendy643",
+    "nginx": false,
+    "status": "prepared",
+    "archive": "archives/pr32-a66957652333f827cbac9a02a9c2e6bba39216b0.tar.gz",
+    "archive_sha256": "9a3c9166014eccffa5a82dcddcc37f5406a5604ef6d7765ccf33b46f89cb993f",
+    "archive_endpoint": "repos/arjaythedev/twelve-dollar-server-challenge/tarball/a66957652333f827cbac9a02a9c2e6bba39216b0",
+    "source_url": "https://github.com/hendy643/twelve-dollar-server-challenge/tree/a66957652333f827cbac9a02a9c2e6bba39216b0/submissions/cpp-eastl-io_uring-pgo-hendy643",
+    "source_sha256": "f18969e56099a2ef54108c39c09eb2738261e144a482f51461f9f8c52064c6d0",
+    "source_file_count": 50,
+    "source_hashes": "archives/pr32-sha256.json",
+    "app_loc": 2481,
+    "own_loc": 4287,
+    "loc_method": "Physical lines including blanks/comments; heuristic file classification retained in source-inventories, excluding docs, lockfiles, binary/generated/dependency folders.",
+    "start_sh": true,
+    "build_sh": true,
+    "install_sh": true,
+    "skipped_members": [],
+    "nginx_evidence": [
+      {
+        "file": "README.md",
+        "line": "| **Nginx or direct** | **Direct**: serves `0.0.0.0:80` itself |"
+      },
+      {
+        "file": "README.md",
+        "line": "SQLITE_PATH=... JWT_SECRET=... HOST=0.0.0.0 PORT=80 bash start.sh"
+      },
+      {
+        "file": "README.md",
+        "line": "- **Past capacity, evict a connection that was just served.** The think-time loop visits users in the same order every time, so LRU would evict the one needed next. Connections that haven't been answered yet are never evicted. Without direct file tables (old kernel) it falls back to normal fds with LRU eviction."
+      },
+      {
+        "file": "readme.md",
+        "line": "| **Nginx or direct** | **Direct**: serves `0.0.0.0:80` itself |"
+      },
+      {
+        "file": "readme.md",
+        "line": "SQLITE_PATH=... JWT_SECRET=... HOST=0.0.0.0 PORT=80 bash start.sh"
+      },
+      {
+        "file": "readme.md",
+        "line": "- **Past capacity, evict a connection that was just served.** The think-time loop visits users in the same order every time, so LRU would evict the one needed next. Connections that haven't been answered yet are never evicted. Without direct file tables (old kernel) it falls back to normal fds with LRU eviction."
+      }
+    ]
+  },
+  {
+    "pr": 82,
+    "id": "82",
+    "case_id": "82",
+    "title": "rust io_uring version 2",
+    "url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/82",
+    "state": "open",
+    "merged": false,
+    "repo": "Scooter1337/twelve-dollar-server-challenge",
+    "commit": "95aa405a0003599dbc7fb4dfa47a09e8343239df",
+    "eligible": true,
+    "folder": "rust-epoll-scooter1337",
+    "nginx": false,
+    "status": "prepared",
+    "archive": "archives/pr82-95aa405a0003599dbc7fb4dfa47a09e8343239df.tar.gz",
+    "archive_sha256": "6157f04b6ef9177431f1bad5fe003f52383a8e8523fa8d95e03d972c6e0d1a8d",
+    "archive_endpoint": "repos/arjaythedev/twelve-dollar-server-challenge/tarball/95aa405a0003599dbc7fb4dfa47a09e8343239df",
+    "source_url": "https://github.com/Scooter1337/twelve-dollar-server-challenge/tree/95aa405a0003599dbc7fb4dfa47a09e8343239df/submissions/rust-epoll-scooter1337",
+    "source_sha256": "b91b9491e2a7a8856f8f360bc89f376b6493ae9b9a3907c557836b94f5131438",
+    "source_file_count": 49,
+    "source_hashes": "archives/pr82-sha256.json",
+    "app_loc": 2816,
+    "own_loc": 4508,
+    "loc_method": "Physical lines including blanks/comments; heuristic file classification retained in source-inventories, excluding docs, lockfiles, binary/generated/dependency folders.",
+    "start_sh": true,
+    "build_sh": true,
+    "install_sh": true,
+    "skipped_members": [],
+    "nginx_evidence": [
+      {
+        "file": "README.md",
+        "line": "Direct HTTP/1.1 on $HOST:$PORT. No Nginx, HTTP framework, async executor or ORM. Requires Linux 6.1+ with io_uring enabled. The existing submission directory and executable names are retained."
+      },
+      {
+        "file": "README.md",
+        "line": "  HOST=0.0.0.0 PORT=80 bash start.sh"
+      },
+      {
+        "file": "README.md",
+        "line": "- io_uring issuers use multishot direct accept/receive, fixed socket descriptors, provided buffers and batched completions. Tables adapt to the inherited hard limit: eight rings of 65,535 slots under the spec limit, or one ring of 524,280 slots with a one-million limit. Accepted sockets occupy those tables instead of ordinary process descriptors, lifting the previous connection ceiling under LimitNOFILE=65535. The process raises only its own soft limit within the inherited hard limit."
+      },
+      {
+        "file": "readme.md",
+        "line": "Direct HTTP/1.1 on $HOST:$PORT. No Nginx, HTTP framework, async executor or ORM. Requires Linux 6.1+ with io_uring enabled. The existing submission directory and executable names are retained."
+      },
+      {
+        "file": "readme.md",
+        "line": "  HOST=0.0.0.0 PORT=80 bash start.sh"
+      },
+      {
+        "file": "readme.md",
+        "line": "- io_uring issuers use multishot direct accept/receive, fixed socket descriptors, provided buffers and batched completions. Tables adapt to the inherited hard limit: eight rings of 65,535 slots under the spec limit, or one ring of 524,280 slots with a one-million limit. Accepted sockets occupy those tables instead of ordinary process descriptors, lifting the previous connection ceiling under LimitNOFILE=65535. The process raises only its own soft limit within the inherited hard limit."
+      }
+    ],
+    "role": "control",
+    "control_note": "Unchanged previous throughput leader, measured only as a cross-batch environmental reference."
+  },
+  {
+    "pr": 92,
+    "id": "92",
+    "case_id": "92",
+    "title": "Add java vert.x submission",
+    "url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/92",
+    "state": "open",
+    "merged": false,
+    "repo": "super-horst/twelve-dollar-server-challenge",
+    "commit": "c1bbd84c0bce5dcfb02913bdf20f5069a18ba690",
+    "eligible": true,
+    "folder": "java-vertx-super-horst",
+    "nginx": false,
+    "status": "prepared",
+    "archive": "archives/pr92-c1bbd84c0bce5dcfb02913bdf20f5069a18ba690.tar.gz",
+    "archive_sha256": "f9bd60505bf08a9806b16e06ed5fe3f89864d4061aacde87f2c59332b14740d3",
+    "archive_endpoint": "repos/arjaythedev/twelve-dollar-server-challenge/tarball/c1bbd84c0bce5dcfb02913bdf20f5069a18ba690",
+    "source_url": "https://github.com/super-horst/twelve-dollar-server-challenge/tree/c1bbd84c0bce5dcfb02913bdf20f5069a18ba690/submissions/java-vertx-super-horst",
+    "source_sha256": "b592b6adb297faeef375ef02543a2425a765a7bb8226abf7cf38167e3e91c890",
+    "source_file_count": 14,
+    "source_hashes": "archives/pr92-sha256.json",
+    "app_loc": 868,
+    "own_loc": 1032,
+    "loc_method": "Physical lines including blanks/comments; heuristic file classification retained in source-inventories, excluding docs, lockfiles, binary/generated/dependency folders.",
+    "start_sh": true,
+    "build_sh": true,
+    "install_sh": true,
+    "skipped_members": [],
+    "nginx_evidence": []
+  },
+  {
+    "pr": 103,
+    "id": "103",
+    "case_id": "103",
+    "title": "Add Go gin SQLite submission",
+    "url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/103",
+    "state": "open",
+    "merged": false,
+    "repo": "LincolnG4/twelve-dollar-server-challenge",
+    "commit": "257cde6a7b293d77e261b91087aec4d975bac4bb",
+    "eligible": true,
+    "folder": "go-gin-lincolng4",
+    "nginx": false,
+    "status": "prepared",
+    "archive": "archives/pr103-257cde6a7b293d77e261b91087aec4d975bac4bb.tar.gz",
+    "archive_sha256": "027a0ce595e35be33a3575b803441765a56a65ab46d0ef9f905de64f2e96d380",
+    "archive_endpoint": "repos/arjaythedev/twelve-dollar-server-challenge/tarball/257cde6a7b293d77e261b91087aec4d975bac4bb",
+    "source_url": "https://github.com/LincolnG4/twelve-dollar-server-challenge/tree/257cde6a7b293d77e261b91087aec4d975bac4bb/submissions/go-gin-lincolng4",
+    "source_sha256": "8b3c87f2ccf5b5f865d82e8a154f49f93c0705e88fbdc350c2cc0fe9280e3bec",
+    "source_file_count": 9,
+    "source_hashes": "archives/pr103-sha256.json",
+    "app_loc": 415,
+    "own_loc": 431,
+    "loc_method": "Physical lines including blanks/comments; heuristic file classification retained in source-inventories, excluding docs, lockfiles, binary/generated/dependency folders.",
+    "start_sh": true,
+    "build_sh": true,
+    "install_sh": true,
+    "skipped_members": [],
+    "nginx_evidence": [
+      {
+        "file": "README.md",
+        "line": "| **Nginx or direct** | **Direct**: serves `0.0.0.0:80` itself |"
+      },
+      {
+        "file": "README.md",
+        "line": "SQLITE_PATH=... JWT_SECRET=... HOST=0.0.0.0 PORT=80 bash start.sh"
+      },
+      {
+        "file": "README.md",
+        "line": "- **Direct instead of Nginx.** On one vCPU, Nginx's CPU comes straight out of the Go process's"
+      },
+      {
+        "file": "readme.md",
+        "line": "| **Nginx or direct** | **Direct**: serves `0.0.0.0:80` itself |"
+      },
+      {
+        "file": "readme.md",
+        "line": "SQLITE_PATH=... JWT_SECRET=... HOST=0.0.0.0 PORT=80 bash start.sh"
+      },
+      {
+        "file": "readme.md",
+        "line": "- **Direct instead of Nginx.** On one vCPU, Nginx's CPU comes straight out of the Go process's"
+      }
+    ]
+  },
+  {
+    "pr": 123,
+    "id": "123-arsd-hybridcgi",
+    "case_id": "123-arsd-hybridcgi",
+    "title": "[D] Implementations for Vibe.D and Arsd:CGI frameworks",
+    "url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/123",
+    "state": "open",
+    "merged": false,
+    "repo": "cyrusmsk/twelve-dollar-server-challenge",
+    "commit": "ddadc07d9cbaaaf34a79f301bc7d87fe227271c5",
+    "eligible": true,
+    "folder": "d-arsd-hybridcgi-cyrusmsk",
+    "nginx": false,
+    "status": "prepared",
+    "archive": "archives/pr123-ddadc07d9cbaaaf34a79f301bc7d87fe227271c5.tar.gz",
+    "archive_sha256": "cb58367333c5705249663bbbfbdeba1603a0b05daca691484a25244481da90c4",
+    "archive_endpoint": "repos/arjaythedev/twelve-dollar-server-challenge/tarball/ddadc07d9cbaaaf34a79f301bc7d87fe227271c5",
+    "source_url": "https://github.com/cyrusmsk/twelve-dollar-server-challenge/tree/ddadc07d9cbaaaf34a79f301bc7d87fe227271c5/submissions/d-arsd-hybridcgi-cyrusmsk",
+    "source_sha256": "fbbdeb96213965ab89f74f85fc968c0d5bd3b542e0d13a7ec4ce87838c28a3ff",
+    "source_file_count": 8,
+    "source_hashes": "archives/pr123-arsd-hybridcgi-sha256.json",
+    "app_loc": 680,
+    "own_loc": 734,
+    "loc_method": "Physical lines including blanks/comments; heuristic file classification retained in source-inventories, excluding docs, lockfiles, binary/generated/dependency folders.",
+    "start_sh": true,
+    "build_sh": true,
+    "install_sh": true,
+    "skipped_members": [],
+    "nginx_evidence": [
+      {
+        "file": "README.md",
+        "line": "### Nginx or direct"
+      },
+      {
+        "file": "README.md",
+        "line": "**Direct** \u2014 `bin/server` listens on `0.0.0.0:80` (from `HOST`/`PORT`) and handles the connections"
+      },
+      {
+        "file": "README.md",
+        "line": "itself, saving Nginx's 14\u201320% CPU. The fiber server is what makes direct mode's ~15,000 connections"
+      },
+      {
+        "file": "README.md",
+        "line": "viable. It also works unchanged behind the provided Nginx on `127.0.0.1:3000`, because the address is"
+      },
+      {
+        "file": "readme.md",
+        "line": "### Nginx or direct"
+      },
+      {
+        "file": "readme.md",
+        "line": "**Direct** \u2014 `bin/server` listens on `0.0.0.0:80` (from `HOST`/`PORT`) and handles the connections"
+      },
+      {
+        "file": "readme.md",
+        "line": "itself, saving Nginx's 14\u201320% CPU. The fiber server is what makes direct mode's ~15,000 connections"
+      },
+      {
+        "file": "readme.md",
+        "line": "viable. It also works unchanged behind the provided Nginx on `127.0.0.1:3000`, because the address is"
+      }
+    ]
+  },
+  {
+    "pr": 123,
+    "id": "123-arsd-threadedcgi",
+    "case_id": "123-arsd-threadedcgi",
+    "title": "[D] Implementations for Vibe.D and Arsd:CGI frameworks",
+    "url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/123",
+    "state": "open",
+    "merged": false,
+    "repo": "cyrusmsk/twelve-dollar-server-challenge",
+    "commit": "ddadc07d9cbaaaf34a79f301bc7d87fe227271c5",
+    "eligible": true,
+    "folder": "d-arsd-threadedcgi-cyrusmsk",
+    "nginx": false,
+    "status": "prepared",
+    "archive": "archives/pr123-ddadc07d9cbaaaf34a79f301bc7d87fe227271c5.tar.gz",
+    "archive_sha256": "cb58367333c5705249663bbbfbdeba1603a0b05daca691484a25244481da90c4",
+    "archive_endpoint": "repos/arjaythedev/twelve-dollar-server-challenge/tarball/ddadc07d9cbaaaf34a79f301bc7d87fe227271c5",
+    "source_url": "https://github.com/cyrusmsk/twelve-dollar-server-challenge/tree/ddadc07d9cbaaaf34a79f301bc7d87fe227271c5/submissions/d-arsd-threadedcgi-cyrusmsk",
+    "source_sha256": "6928632c9db31b4efb45f8394c8cfc725a61f73867388bda762ba641c8b6ad8d",
+    "source_file_count": 8,
+    "source_hashes": "archives/pr123-arsd-threadedcgi-sha256.json",
+    "app_loc": 680,
+    "own_loc": 734,
+    "loc_method": "Physical lines including blanks/comments; heuristic file classification retained in source-inventories, excluding docs, lockfiles, binary/generated/dependency folders.",
+    "start_sh": true,
+    "build_sh": true,
+    "install_sh": true,
+    "skipped_members": [],
+    "nginx_evidence": [
+      {
+        "file": "README.md",
+        "line": "### Nginx or direct"
+      },
+      {
+        "file": "README.md",
+        "line": "**Direct** \u2014 `bin/server` listens on `0.0.0.0:80` (from `HOST`/`PORT`) and handles the connections"
+      },
+      {
+        "file": "README.md",
+        "line": "itself, saving Nginx's 14\u201320% CPU. It also works unchanged behind the provided Nginx on"
+      },
+      {
+        "file": "readme.md",
+        "line": "### Nginx or direct"
+      },
+      {
+        "file": "readme.md",
+        "line": "**Direct** \u2014 `bin/server` listens on `0.0.0.0:80` (from `HOST`/`PORT`) and handles the connections"
+      },
+      {
+        "file": "readme.md",
+        "line": "itself, saving Nginx's 14\u201320% CPU. It also works unchanged behind the provided Nginx on"
+      }
+    ]
+  },
+  {
+    "pr": 123,
+    "id": "123-vibed",
+    "case_id": "123-vibed",
+    "title": "[D] Implementations for Vibe.D and Arsd:CGI frameworks",
+    "url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/123",
+    "state": "open",
+    "merged": false,
+    "repo": "cyrusmsk/twelve-dollar-server-challenge",
+    "commit": "ddadc07d9cbaaaf34a79f301bc7d87fe227271c5",
+    "eligible": true,
+    "folder": "d-vibe-http-cyrusmsk",
+    "nginx": false,
+    "status": "prepared",
+    "archive": "archives/pr123-ddadc07d9cbaaaf34a79f301bc7d87fe227271c5.tar.gz",
+    "archive_sha256": "cb58367333c5705249663bbbfbdeba1603a0b05daca691484a25244481da90c4",
+    "archive_endpoint": "repos/arjaythedev/twelve-dollar-server-challenge/tarball/ddadc07d9cbaaaf34a79f301bc7d87fe227271c5",
+    "source_url": "https://github.com/cyrusmsk/twelve-dollar-server-challenge/tree/ddadc07d9cbaaaf34a79f301bc7d87fe227271c5/submissions/d-vibe-http-cyrusmsk",
+    "source_sha256": "fe81232a89008ef507426cd8a738b5239f38f23532533a29cff8682f1c00e499",
+    "source_file_count": 8,
+    "source_hashes": "archives/pr123-vibed-sha256.json",
+    "app_loc": 587,
+    "own_loc": 651,
+    "loc_method": "Physical lines including blanks/comments; heuristic file classification retained in source-inventories, excluding docs, lockfiles, binary/generated/dependency folders.",
+    "start_sh": true,
+    "build_sh": true,
+    "install_sh": true,
+    "skipped_members": [],
+    "nginx_evidence": [
+      {
+        "file": "README.md",
+        "line": "### Nginx or direct"
+      },
+      {
+        "file": "README.md",
+        "line": "**Direct** \u2014 `bin/server` listens on `0.0.0.0:80` (from `HOST`/`PORT`) and handles the connections"
+      },
+      {
+        "file": "README.md",
+        "line": "itself, saving Nginx's 14\u201320% CPU. It also works unchanged behind the provided Nginx on"
+      },
+      {
+        "file": "readme.md",
+        "line": "### Nginx or direct"
+      },
+      {
+        "file": "readme.md",
+        "line": "**Direct** \u2014 `bin/server` listens on `0.0.0.0:80` (from `HOST`/`PORT`) and handles the connections"
+      },
+      {
+        "file": "readme.md",
+        "line": "itself, saving Nginx's 14\u201320% CPU. It also works unchanged behind the provided Nginx on"
+      }
+    ]
+  },
+  {
+    "pr": 127,
+    "id": "127",
+    "case_id": "127",
+    "title": "nodejs httpSever (node api) commit",
+    "url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/127",
+    "state": "open",
+    "merged": false,
+    "repo": "aliskhanoff/twelve-dollar-server-challenge",
+    "commit": "a3700bac14d5ae898af43d3ffe3dafdb80c57622",
+    "eligible": true,
+    "folder": "node-httpserver-aliskhanoff",
+    "nginx": false,
+    "status": "prepared",
+    "archive": "archives/pr127-a3700bac14d5ae898af43d3ffe3dafdb80c57622.tar.gz",
+    "archive_sha256": "1b2b63d7c38f3d100876114bcfd419ec7b269ffa9f0fd4a2bdd3467be07dd703",
+    "archive_endpoint": "repos/arjaythedev/twelve-dollar-server-challenge/tarball/a3700bac14d5ae898af43d3ffe3dafdb80c57622",
+    "source_url": "https://github.com/aliskhanoff/twelve-dollar-server-challenge/tree/a3700bac14d5ae898af43d3ffe3dafdb80c57622/submissions/node-httpserver-aliskhanoff",
+    "source_sha256": "0e10d8ef7dba97dfc1718f0286e5c990baa980eae7bf2b4dbddbb5a0cf923d68",
+    "source_file_count": 24,
+    "source_hashes": "archives/pr127-sha256.json",
+    "app_loc": 970,
+    "own_loc": 1028,
+    "loc_method": "Physical lines including blanks/comments; heuristic file classification retained in source-inventories, excluding docs, lockfiles, binary/generated/dependency folders.",
+    "start_sh": true,
+    "build_sh": true,
+    "install_sh": true,
+    "skipped_members": [],
+    "nginx_evidence": [
+      {
+        "file": "README.md",
+        "line": "- Direct BLOB/JSON response path"
+      },
+      {
+        "file": "readme.md",
+        "line": "- Direct BLOB/JSON response path"
+      }
+    ]
+  },
+  {
+    "pr": 132,
+    "id": "132",
+    "case_id": "132",
+    "title": "Add Nim submission: io_uring HTTP/1.1 + in-process SQLite",
+    "url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/132",
+    "state": "open",
+    "merged": false,
+    "repo": "NioHast/twelve-dollar-server-challenge",
+    "commit": "854e5d9713a70495d4aa6b5f0758b273c7d39ed8",
+    "eligible": true,
+    "folder": "nim-io_uring-NioHast",
+    "nginx": false,
+    "status": "prepared",
+    "archive": "archives/pr132-854e5d9713a70495d4aa6b5f0758b273c7d39ed8.tar.gz",
+    "archive_sha256": "4f778ba2f81e7bca7bcb3aa8a66300586e2b5f3914543ef3c591089d014632bf",
+    "archive_endpoint": "repos/arjaythedev/twelve-dollar-server-challenge/tarball/854e5d9713a70495d4aa6b5f0758b273c7d39ed8",
+    "source_url": "https://github.com/NioHast/twelve-dollar-server-challenge/tree/854e5d9713a70495d4aa6b5f0758b273c7d39ed8/submissions/nim-io_uring-NioHast",
+    "source_sha256": "7f927af1afb560a7157a834fc96523cec4f3c00af5ce508a9c93b9a17f23f1e2",
+    "source_file_count": 41,
+    "source_hashes": "archives/pr132-sha256.json",
+    "app_loc": 6307,
+    "own_loc": 10296,
+    "loc_method": "Physical lines including blanks/comments; heuristic file classification retained in source-inventories, excluding docs, lockfiles, binary/generated/dependency folders.",
+    "start_sh": true,
+    "build_sh": true,
+    "install_sh": true,
+    "skipped_members": [],
+    "nginx_evidence": [
+      {
+        "file": "README.md",
+        "line": "# Nim: direct HTTP/1.1 on SQLite (the $12 Server Challenge)"
+      },
+      {
+        "file": "README.md",
+        "line": "served **directly** on `:80` with a hand-written, single-request-thread **io_uring** event loop, over"
+      },
+      {
+        "file": "README.md",
+        "line": "SQLITE_PATH=/path/feed.db JWT_SECRET=... HOST=0.0.0.0 PORT=80 bash start.sh"
+      },
+      {
+        "file": "README.md",
+        "line": "| Serving | the single binary binds **directly on `:80`**; no reverse proxy |"
+      },
+      {
+        "file": "README.md",
+        "line": "setup flag, a refused multishot/direct accept and an unavailable buf ring degrade in place without a"
+      },
+      {
+        "file": "README.md",
+        "line": "| `IOURING_ACCEPT_DIRECT` | `1` (on) | `0` forces the register-per-accept path instead of direct fixed-slot accept |"
+      },
+      {
+        "file": "README.md",
+        "line": "| `ZEROCOPY_STATS` | `0` (off) | `1` logs the receive-path diagnostic counters (direct requests, copied buffers) once per second |"
+      },
+      {
+        "file": "README.md",
+        "line": "- **No reverse proxy.** Nginx costs CPU on the single core; serving HTTP directly avoids that overhead."
+      },
+      {
+        "file": "README.md",
+        "line": "  each listener, so accepted sockets inherit them with no per-connection `setsockopt` and direct"
+      },
+      {
+        "file": "README.md",
+        "line": "- **Direct feed writer, low-allocation JSON.** `src/jsonbuf.nim` writes escaped string runs in bulk"
+      },
+      {
+        "file": "README.md",
+        "line": "This is a general capacity policy (what Nginx does when it runs out of connections), not benchmark"
+      },
+      {
+        "file": "README.md",
+        "line": "  `test_jsonbuf.nim` (JSON writing and escaping), `test_feed_writer.nim` (direct feed serialization,"
+      },
+      {
+        "file": "README.md",
+        "line": "  `conn_lifetime_soak.sh` (long-lived idle/stalled connection soak), `zerocopy_direct.sh` (direct"
+      },
+      {
+        "file": "README.md",
+        "line": "- **Nginx optional / direct** (rule 9), direct bind."
+      },
+      {
+        "file": "readme.md",
+        "line": "# Nim: direct HTTP/1.1 on SQLite (the $12 Server Challenge)"
+      },
+      {
+        "file": "readme.md",
+        "line": "served **directly** on `:80` with a hand-written, single-request-thread **io_uring** event loop, over"
+      },
+      {
+        "file": "readme.md",
+        "line": "SQLITE_PATH=/path/feed.db JWT_SECRET=... HOST=0.0.0.0 PORT=80 bash start.sh"
+      },
+      {
+        "file": "readme.md",
+        "line": "| Serving | the single binary binds **directly on `:80`**; no reverse proxy |"
+      },
+      {
+        "file": "readme.md",
+        "line": "setup flag, a refused multishot/direct accept and an unavailable buf ring degrade in place without a"
+      },
+      {
+        "file": "readme.md",
+        "line": "| `IOURING_ACCEPT_DIRECT` | `1` (on) | `0` forces the register-per-accept path instead of direct fixed-slot accept |"
+      },
+      {
+        "file": "readme.md",
+        "line": "| `ZEROCOPY_STATS` | `0` (off) | `1` logs the receive-path diagnostic counters (direct requests, copied buffers) once per second |"
+      },
+      {
+        "file": "readme.md",
+        "line": "- **No reverse proxy.** Nginx costs CPU on the single core; serving HTTP directly avoids that overhead."
+      },
+      {
+        "file": "readme.md",
+        "line": "  each listener, so accepted sockets inherit them with no per-connection `setsockopt` and direct"
+      },
+      {
+        "file": "readme.md",
+        "line": "- **Direct feed writer, low-allocation JSON.** `src/jsonbuf.nim` writes escaped string runs in bulk"
+      },
+      {
+        "file": "readme.md",
+        "line": "This is a general capacity policy (what Nginx does when it runs out of connections), not benchmark"
+      },
+      {
+        "file": "readme.md",
+        "line": "  `test_jsonbuf.nim` (JSON writing and escaping), `test_feed_writer.nim` (direct feed serialization,"
+      },
+      {
+        "file": "readme.md",
+        "line": "  `conn_lifetime_soak.sh` (long-lived idle/stalled connection soak), `zerocopy_direct.sh` (direct"
+      },
+      {
+        "file": "readme.md",
+        "line": "- **Nginx optional / direct** (rule 9), direct bind."
+      }
+    ]
+  }
+]

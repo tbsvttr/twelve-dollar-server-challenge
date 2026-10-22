@@ -1,0 +1,65 @@
+Pinned source: a3700bac14d5ae898af43d3ffe3dafdb80c57622
+
+$ docker run -d --name twelve-fixes-build-127 --cpus 1.5 --memory 3g --memory-swap 3g --security-opt seccomp=/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/fixes-2026-10-22/seccomp-io-uring.json --mount type=bind,src=/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/fixes-2026-10-22,dst=/evidence,readonly twelve-unified:2026-10-07 sleep infinity
+f549666c08315188931ddc6ed629218349a8ccaed48e101a9198dc91bbfd7482
+
+$ docker exec -i twelve-fixes-build-127 python3 - 127
+Verified exact clean source snapshot: 24 files
+
+$ docker exec -w /suite/sources/pr127 twelve-fixes-build-127 bash /evidence/runtime-scripts/pr127.sh
+node-v24.21.0-linux-arm64.tar.xz: OK
+
+added 1 package in 1s
+
+1 package is looking for funding
+  run `npm fund` for details
+npm notice
+npm notice New major version of npm available! 11.19.0 -> 12.2.1
+npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.2.1
+npm notice To update run: npm install -g npm@12.2.1
+npm notice
+v24.21.0
+11.19.0
+10.17.1
+
+$ docker exec -w /suite/sources/pr127 twelve-fixes-build-127 bash /suite/sources/pr127/install.sh
+Progress: resolved 1, reused 0, downloaded 0, added 0
+
+   ╭──────────────────────────────────────────╮
+   │                                          │
+   │   Update available! 10.17.1 → 12.14.0.   │
+   │   Changelog: https://pnpm.io/v/12.14.0   │
+   │     To update, run: pnpm add -g pnpm     │
+   │                                          │
+   ╰──────────────────────────────────────────╯
+
+ WARN  1 deprecated subdependencies found: uuid@8.3.2
+Packages: +64
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+Progress: resolved 64, reused 0, downloaded 64, added 64, done
+
+dependencies:
++ better-sqlite3 13.0.3
+
+devDependencies:
++ autocannon 8.0.0
+
+╭ Warning ─────────────────────────────────────────────────────────────────────╮
+│                                                                              │
+│   Ignored build scripts: better-sqlite3.                                     │
+│   Run "pnpm approve-builds" to pick which dependencies should be allowed     │
+│   to run scripts.                                                            │
+│                                                                              │
+╰──────────────────────────────────────────────────────────────────────────────╯
+
+Done in 873ms using pnpm v10.17.1
+
+$ docker exec twelve-fixes-build-127 chown -R bench:bench /suite/sources/pr127
+
+$ docker exec -w /suite/sources/pr127 twelve-fixes-build-127 runuser -u bench -- env PATH=/opt/twelve-rust/cargo/bin:/usr/local/go/bin:/opt/twelve-go-1.27.1/bin:/opt/ruby/bin:/usr/local/bin:/usr/bin:/bin RUSTUP_HOME=/opt/twelve-rust/rustup CARGO_BUILD_JOBS=2 DOTNET_CLI_HOME=/home/bench DOTNET_CLI_TELEMETRY_OPTOUT=1 DOTNET_SKIP_FIRST_TIME_EXPERIENCE=1 NIM_JOBS=2 MAKEFLAGS=-j2 bash /suite/sources/pr127/build.sh
+ ERR_PNPM_ABORTED_REMOVE_MODULES_DIR_NO_TTY  Aborted removal of modules directory due to no TTY
+
+If you are running pnpm in CI, set the CI environment variable to "true".
+
+$ docker exec -i twelve-fixes-build-127 python3 - 127
+Verified all 24 submitted source files unchanged after build

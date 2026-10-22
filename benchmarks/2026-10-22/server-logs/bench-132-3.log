@@ -1,0 +1,41 @@
+RLIMIT_NOFILE soft==hard==65535 (nothing to raise)
+io_uring sizing: hard_nofile=65535 conntrack_max=262144 slots_per_ring=65471 rings=4
+[ring 0] io_uring setup: flags 0x00011100 in effect (SINGLE_ISSUER|COOP_TASKRUN|NO_SQARRAY)
+[ring 0] io_uring ring: sq_entries=4096 cq_entries=16384 (CQSIZE request=16384, kernel default=2x sq=8192)
+[ring 0] io_uring pool: 256 x 8192 B (2 MiB, registered buf_ring)
+[ring 0] fixed-file table registered: fixed_file_slots=65471
+[ring 1] io_uring setup: flags 0x00011100 in effect (SINGLE_ISSUER|COOP_TASKRUN|NO_SQARRAY)
+[ring 1] io_uring ring: sq_entries=4096 cq_entries=16384 (CQSIZE request=16384, kernel default=2x sq=8192)
+[ring 1] io_uring pool: 256 x 8192 B (2 MiB, registered buf_ring)
+[ring 1] fixed-file table registered: fixed_file_slots=65471
+[ring 2] io_uring setup: flags 0x00011100 in effect (SINGLE_ISSUER|COOP_TASKRUN|NO_SQARRAY)
+[ring 2] io_uring ring: sq_entries=4096 cq_entries=16384 (CQSIZE request=16384, kernel default=2x sq=8192)
+[ring 2] io_uring pool: 256 x 8192 B (2 MiB, registered buf_ring)
+[ring 2] fixed-file table registered: fixed_file_slots=65471
+[ring 3] io_uring setup: flags 0x00011100 in effect (SINGLE_ISSUER|COOP_TASKRUN|NO_SQARRAY)
+[ring 3] io_uring ring: sq_entries=4096 cq_entries=16384 (CQSIZE request=16384, kernel default=2x sq=8192)
+[ring 3] io_uring pool: 256 x 8192 B (2 MiB, registered buf_ring)
+[ring 3] fixed-file table registered: fixed_file_slots=65471
+io_uring multi-ring transport: entries=4096 rings=4 slots_per_ring=[65471,65471,65471,65471] total_fixed_file_slots=261884 recv=multishot accept=multishot+direct
+slot array: sizeof(conn)=80 total_slots=261884 bytes=20950720
+db-ckpt: n=1 dur_us=62118 pnLog=12 pnCkpt=12 rc=0 busy_total=0
+db-ckpt: n=2 dur_us=122868 pnLog=18969 pnCkpt=18969 rc=0 busy_total=0
+db-ckpt: n=3 dur_us=82691 pnLog=33617 pnCkpt=33617 rc=0 busy_total=0
+db-ckpt: n=4 dur_us=35240 pnLog=49176 pnCkpt=49176 rc=0 busy_total=0
+db-ckpt: n=5 dur_us=31041 pnLog=65345 pnCkpt=65345 rc=0 busy_total=0
+db-ckpt: n=6 dur_us=33182 pnLog=80082 pnCkpt=80082 rc=0 busy_total=0
+db-ckpt: n=7 dur_us=38552 pnLog=93011 pnCkpt=93011 rc=0 busy_total=0
+db-ckpt: n=8 dur_us=68273 pnLog=108868 pnCkpt=108868 rc=0 busy_total=0
+db-ckpt: n=9 dur_us=57049 pnLog=123930 pnCkpt=123930 rc=0 busy_total=0
+db-ckpt: n=10 dur_us=50760 pnLog=138780 pnCkpt=138780 rc=0 busy_total=0
+io_uring ring 1: accepted=26 live=11 slots=65471
+io_uring ring 2: accepted=31 live=13 slots=65471
+io_uring ring 3: accepted=44 live=24 slots=65471
+io_uring ring 0: accepted=30 live=16 slots=65471
+db-ckpt: n=11 dur_us=74365 pnLog=154012 pnCkpt=154012 rc=0 busy_total=0
+db-ckpt: n=12 dur_us=79837 pnLog=168641 pnCkpt=168641 rc=0 busy_total=0
+db-ckpt: n=13 dur_us=80950 pnLog=184628 pnCkpt=184628 rc=0 busy_total=0
+db-ckpt: n=14 dur_us=97367 pnLog=200493 pnCkpt=200493 rc=0 busy_total=0
+db-ckpt: n=15 dur_us=88636 pnLog=216173 pnCkpt=216173 rc=0 busy_total=0
+db-ckpt: n=16 dur_us=49688 pnLog=231858 pnCkpt=231858 rc=0 busy_total=0
+db-ckpt: n=17 dur_us=55498 pnLog=246523 pnCkpt=246523 rc=0 busy_total=0

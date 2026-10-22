@@ -1,0 +1,7 @@
+# DUB build output
+bin/
+.dub/
+.feed-server
+feed-server
+*.o
+*.lst

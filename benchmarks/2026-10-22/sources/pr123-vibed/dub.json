@@ -1,0 +1,25 @@
+{
+  "name": "feed-server",
+  "targetType": "executable",
+  "targetPath": "bin",
+  "targetName": "server",
+  "description": "The $12 server challenge API with vibe-http and d2sqlite3",
+  "license": "MIT",
+  "dependencies": {
+    "vibe-http": "~>1.5.1",
+    "d2sqlite3": "~>1.0.0",
+    "vibe-stream:tls": "~>1.4",
+    "jwtlited:phobos": "~>1.4",
+    "asdf": "~>0.8.0"
+  },
+  "dflags": ["-mcpu=native", "-flto=full"],
+  "versions": [
+    "VibeManualMemoryManagement",
+    "VibeHighEventPriority",
+    "VibeDisableCommandLineParsing"
+  ],
+  "subConfigurations": {
+    "d2sqlite3": "with-lib",
+    "vibe-stream:tls": "notls"
+  }
+}

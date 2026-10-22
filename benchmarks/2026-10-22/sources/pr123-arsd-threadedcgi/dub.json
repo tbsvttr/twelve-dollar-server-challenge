@@ -1,0 +1,17 @@
+{
+  "name": "feed-server",
+  "targetType": "executable",
+  "targetPath": "bin",
+  "targetName": "server",
+  "description": "The $12 server challenge API with arsd.cgi and arsd.database (SQLite)",
+  "license": "MIT",
+  "dependencies": {
+    "arsd-official:core": "~>12.1",
+    "arsd-official:cgi": "~>12.1",
+    "arsd-official:database_base": "~>12.1",
+    "arsd-official:sqlite": "~>12.1",
+    "jwtlited:phobos": "~>1.4"
+  },
+  "lflags-osx": ["-L/opt/homebrew/opt/openssl@3/lib"],
+  "subConfigurations": { "arsd-official:cgi": "embedded_httpd_threads" }
+}

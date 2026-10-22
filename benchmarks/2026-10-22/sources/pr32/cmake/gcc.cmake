@@ -1,0 +1,17 @@
+set(CMAKE_SYSTEM_NAME Linux)
+
+find_program(GCC_C NAMES gcc REQUIRED)
+find_program(GCC_CXX NAMES g++ REQUIRED)
+find_program(GCC_AR NAMES gcc-ar REQUIRED)
+find_program(GCC_RANLIB NAMES gcc-ranlib REQUIRED)
+set(CMAKE_C_COMPILER "${GCC_C}")
+set(CMAKE_CXX_COMPILER "${GCC_CXX}")
+set(CMAKE_AR "${GCC_AR}")
+set(CMAKE_RANLIB "${GCC_RANLIB}")
+
+set(CMAKE_C_FLAGS_RELEASE_INIT "-O3 -march=native -flto=auto -DNDEBUG")
+set(CMAKE_CXX_FLAGS_RELEASE_INIT "-O3 -march=native -flto=auto -DNDEBUG")
+
+set(CMAKE_EXE_LINKER_FLAGS_RELEASE_INIT "-s")
+
+set(CMAKE_CXX_SCAN_FOR_MODULES OFF)

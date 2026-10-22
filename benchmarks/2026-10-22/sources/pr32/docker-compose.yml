@@ -1,0 +1,22 @@
+services:
+  server:
+    build: .
+    image: cpp-eastl-io_uring-pgo-hendy643
+    cpuset: "${CPUSET:-0}"
+    security_opt:
+      - seccomp=unconfined
+    user: "${UID:-1000}:${GID:-1000}"
+    network_mode: host
+    mem_limit: 2g
+    memswap_limit: 2g
+    ulimits:
+      nofile:
+        soft: 65535
+        hard: 65535
+    environment:
+      SQLITE_PATH: /data/feed.db
+      JWT_SECRET: twelve-dollar-challenge
+      HOST: 0.0.0.0
+      PORT: ${HOST_PORT:-8080}
+    volumes:
+      - ${DB_DIR:?DB_DIR must be a directory holding a copy of seed/feed.db}:/data

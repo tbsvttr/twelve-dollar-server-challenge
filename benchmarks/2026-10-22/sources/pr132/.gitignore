@@ -1,0 +1,23 @@
+bin/
+nimcache/
+# PGO: instrumented/profile-guided object cache and .gcda profile tree,
+# produced by build.sh's two-pass PGO; never committed.
+nimcache-pgo/
+nimcache-arm64/
+pgo-data/
+# vendored SQLite amalgamation: populated by build.sh, never committed
+vendor/
+*.o
+*.a
+*.so
+*.prof
+*.gcda
+*.gcno
+tests/bin/
+# compiled unit-test binaries (sources are *.nim and stay tracked)
+tests/test_db
+tests/test_jwt
+tests/test_iouring
+# PGO training binaries (sources under tools/ stay tracked, binaries do not)
+tools/gen_synth_db
+tools/libpgoflush.so

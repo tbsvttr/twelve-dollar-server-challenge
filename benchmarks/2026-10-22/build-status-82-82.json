@@ -1,0 +1,21 @@
+{
+  "82": {
+    "pr": 82,
+    "commit": "95aa405a0003599dbc7fb4dfa47a09e8343239df",
+    "base": "twelve-unified:2026-10-07",
+    "architecture": "linux/arm64",
+    "image": "twelve-current-pr82:2026-10-20",
+    "source_hashes_verified": true,
+    "runtime_integrity": "official checksums or pinned apt packages; see setup log",
+    "started_at": "2026-10-20T10:55:39Z",
+    "runtime_setup": "runtime-scripts/pr82.sh",
+    "exit_code": 0,
+    "image_id": "sha256:64227e803306084617be2a4ebc1c3623260d265f158dd8c009f647558a280135",
+    "state": "built",
+    "elapsed_s": 93.54,
+    "finished_at": "2026-10-20T10:57:12Z",
+    "build_helper_removed": true,
+    "immutable_image_and_nproc_audit": "build-helper-audit-41-90.json",
+    "control_note": "Existing unchanged image and binary reused; no rebuild."
+  }
+}

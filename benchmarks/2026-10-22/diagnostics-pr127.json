@@ -1,0 +1,30 @@
+{
+  "case_id": "127",
+  "commit": "a3700bac14d5ae898af43d3ffe3dafdb80c57622",
+  "image_id": "sha256:fa23b6ff17f9643ba9d43294eb6905a250260a811baa8ccb279e1a5cfcfe4069",
+  "outcome": "runtime_failed",
+  "observed_error": "SqliteError: unable to open database file (SQLITE_CANTOPEN)",
+  "official_tests_run": false,
+  "explanation": "The submitted start.sh invokes pnpm run start. The package.json start command sets SQLITE_PATH=./feed.db, overriding the provided fresh SQLite database path. src/db/db.js opens it with fileMustExist: true. No submission-local feed.db exists. The server exits before health readiness. No application/start/package changes were made; no throughput result is reported.",
+  "source_evidence": {
+    "start.sh": {
+      "sha256": "cc5951a9be1f8ab1de6d166fe444ec17b47d51a0622241b2703aee288d73b3bc",
+      "content": "\ncd \"$(dirname \"$0\")\"\npnpm run start"
+    },
+    "package.json": {
+      "sha256": "00a77d392b5f2442750a0b5746198373f1bbc3867b815258100f404aa0305581",
+      "content": "{\n  \"name\": \"node-fastify-aliskhanoff\",\n  \"version\": \"1.0.0\",\n  \"description\": \"I hope this solution will be faster than BUN with his 40k requests per second\",\n  \"main\": \"index.js\",\n  \"scripts\": {\n    \"start\": \"SQLITE_PATH=./feed.db  node --max-semi-space-size=64 ./src/index.js\",\n    \"dev\": \"SQLITE_PATH=./feed.db  node --watch ./src/index.js\",\n    \"bench\": \"k6 run ../../bench/load.js\",\n    \"copy-db\": \"rm -rf feed.db* && cp ../../seed/feed.db* ./\",\n    \"profile\": \"node --prof ./src/index.js\",\n    \"profile:gc\": \"node --trace-gc ./src/index.js\",\n    \"autocannon-post\": \"autocannon -c 1000 -d 5 -p 5 http://localhost:3000/post/1\",\n    \"autocannon-feed\": \"autocannon -c 1000 -d 5 -p 5 http://localhost:3000/feed\",\n    \"autocannon-health\": \"autocannon -c 1000 -d 5 -p 5 http://localhost:3000/health\",\n    \"build\": \"./install.sh\"\n  },\n  \"keywords\": [],\n  \"author\": \"aliskhanoff (https://github.com/aliskhanoff)\",\n  \"license\": \"ISC\",\n  \"packageManager\": \"pnpm@10.17.1\",\n  \"devDependencies\": {\n    \"autocannon\": \"^8.0.0\"\n  },\n  \"dependencies\": {\n    \"better-sqlite3\": \"^13.0.3\"\n  }\n}\n"
+    },
+    "src/db/db.js": {
+      "sha256": "ec9609427cd252e27a204410d73aa231664651ff4a5dad857d207b977e543f9e",
+      "content": "import Database from 'better-sqlite3';\nconst SQLITE_PATH = process.env.SQLITE_PATH ?? './feed.db';\n\nif (!SQLITE_PATH) throw new Error('SQLITE_PATH is not defined');\n\nexport const db = new Database(SQLITE_PATH, {\n    fileMustExist: true,\n});\n\ndb.pragma('journal_mode = WAL');\ndb.pragma('synchronous = NORMAL');\ndb.pragma('temp_store = MEMORY');\ndb.pragma('cache_size = -65536');\ndb.pragma('mmap_size = 1073741824');\n\nexport const healthStmt = db.prepare(`\n    SELECT 1\n`);\n\n\nexport default db;\n"
+    }
+  },
+  "evidence": [
+    "verification.json",
+    "logs/verify-127-1.log",
+    "server-logs/verify-127-1.log"
+  ],
+  "limit": "No bypass run was used; further behavior after fixing the start command is untested. The native SQLite binding loaded and raised SQLITE_CANTOPEN; skipped pnpm lifecycle warnings are not the cause established by this run.",
+  "full_error": "Traceback (most recent call last):\n  File \"/evidence/serve.py\", line 193, in <module>\n    main()\n  File \"/evidence/serve.py\", line 145, in main\n    raise RuntimeError('Server exited: ' + log.read()[-8000:])\nRuntimeError: Server exited: \n> node-fastify-aliskhanoff@1.0.0 start /suite/sources/pr127\n> SQLITE_PATH=./feed.db  node --max-semi-space-size=64 ./src/index.js\n\n(node:28) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///suite/sources/pr127/src/index.js is not specified and it doesn't parse as CommonJS.\nReparsing as ES module because module syntax was detected. This incurs a performance overhead.\nTo eliminate this warning, add \"type\": \"module\" to /suite/sources/pr127/package.json.\n(Use `node --trace-warnings ...` to show where the warning was created)\n/suite/sources/pr127/node_modules/.pnpm/better-sqlite3@13.0.3/node_modules/better-sqlite3/lib/database.js:58\n\t\t\t[util.cppdb]: { value: new addon.Database(filename, filenameGiven, anonymous, readonly, fileMustExist, timeout, verbose || null, buffer || null) },\n\t\t\t                       ^\n\nSqliteError: unable to open database file\n    at new Database (/suite/sources/pr127/node_modules/.pnpm/better-sqlite3@13.0.3/node_modules/better-sqlite3/lib/database.js:58:27)\n    at file:///suite/sources/pr127/src/db/db.js:6:19\n    at ModuleJob.run (node:internal/modules/esm/module_job:561:25)\n    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)\n    at async node:internal/modules/esm/loader:647:26\n    at async asyncRunEntryPointWithESMLoader (node:internal/modules/run_main:101:5) {\n  code: 'SQLITE_CANTOPEN'\n}\n\nNode.js v24.21.0\n\u2009ELIFECYCLE\u2009 Command failed with exit code 1.\n\n"
+}

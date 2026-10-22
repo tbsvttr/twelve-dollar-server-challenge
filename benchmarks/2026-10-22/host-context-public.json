@@ -1,0 +1,41 @@
+{
+  "captured_at": "2026-10-22T08:28:24Z",
+  "purpose": "Record premeasurement host context; unrelated user containers left running. This is a local multi-batch comparison.",
+  "host_cpu": "Apple M2 Pro",
+  "architecture": "aarch64",
+  "docker_cpus": 10,
+  "docker_memory_bytes": 16745824256,
+  "background_containers": [
+    {
+      "ordinal": 1,
+      "cpu_percent": "0.00%",
+      "memory_usage": "273.4MiB / 15.6GiB"
+    },
+    {
+      "ordinal": 2,
+      "cpu_percent": "0.76%",
+      "memory_usage": "2.263GiB / 15.6GiB"
+    },
+    {
+      "ordinal": 3,
+      "cpu_percent": "0.80%",
+      "memory_usage": "225.3MiB / 15.6GiB"
+    },
+    {
+      "ordinal": 4,
+      "cpu_percent": "0.18%",
+      "memory_usage": "17.48MiB / 15.6GiB"
+    },
+    {
+      "ordinal": 5,
+      "cpu_percent": "0.02%",
+      "memory_usage": "1.249GiB / 15.6GiB"
+    },
+    {
+      "ordinal": 6,
+      "cpu_percent": "0.03%",
+      "memory_usage": "5.524GiB / 15.6GiB"
+    }
+  ],
+  "caveat": "Unrelated user containers were left running; their names and Docker host configuration are omitted from public artifacts. A contemporaneous unchanged control is reported separately. This is local multi-batch context, not a calibrated dedicated host."
+}

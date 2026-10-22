@@ -1,0 +1,40 @@
+{
+  "103": {
+    "pr": 103,
+    "id": "103",
+    "commit": "257cde6a7b293d77e261b91087aec4d975bac4bb",
+    "architecture": "linux/arm64",
+    "status": "built",
+    "base_image": "twelve-current-pr103:2026-10-20",
+    "container": "twelve-fixes-build-103",
+    "image": "twelve-fixes-pr103:2026-10-22",
+    "log": "logs/build-pr103.log",
+    "substitutions": [
+      "Reuse official native ARM64 Go 1.27.2 toolchain from previous verified image; submitted install.sh still downloads AMD64. Application source and build/start scripts unchanged."
+    ],
+    "started_at": "2026-10-22T08:25:57Z",
+    "exit_code": 0,
+    "image_id": "sha256:bd6de3940b034e8d363514d0ba2be95e10b331d2b0550f303ba7aee6c7f9bf6f",
+    "source_files_verified": 9,
+    "elapsed_s": 70.64,
+    "finished_at": "2026-10-22T08:27:08Z"
+  },
+  "132": {
+    "pr": 132,
+    "id": "132",
+    "commit": "854e5d9713a70495d4aa6b5f0758b273c7d39ed8",
+    "architecture": "linux/arm64",
+    "status": "built",
+    "base_image": "twelve-unified:2026-10-07",
+    "container": "twelve-fixes-build-132",
+    "image": "twelve-fixes-pr132:2026-10-22",
+    "log": "logs/build-pr132.log",
+    "substitutions": [],
+    "started_at": "2026-10-22T08:25:57Z",
+    "exit_code": 0,
+    "image_id": "sha256:6434ba70ccd3636e042006ba8fd6569dab4aa9a96ca14a112dbc7f8b573ac90b",
+    "source_files_verified": 41,
+    "elapsed_s": 88.56,
+    "finished_at": "2026-10-22T08:27:26Z"
+  }
+}

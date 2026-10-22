@@ -1,0 +1,7 @@
+123-vibed: correctness 42/42; failures=0
+103: correctness 42/42; failures=0
+92: correctness 42/42; failures=0
+82: correctness 42/42; failures=0
+123-arsd-hybridcgi: correctness 42/42; failures=0
+123-arsd-threadedcgi: correctness 42/42; failures=0
+/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/fixes-2026-10-22/verification.json

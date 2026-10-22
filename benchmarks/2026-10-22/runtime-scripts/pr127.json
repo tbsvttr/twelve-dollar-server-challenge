@@ -1,0 +1,4 @@
+[
+  "Provision native ARM64 Node.js 24.21.0, matching the prior Node submission toolchain; verify official archive against nodejs.org SHASUMS256.txt. The submitted installer assumes npm is already available.",
+  "Provision pnpm 10.17.1 as declared by package.json packageManager before running the submitted install.sh and build.sh unchanged."
+]

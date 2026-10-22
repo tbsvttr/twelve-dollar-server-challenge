@@ -1,0 +1,61 @@
+$ docker run -d --name twelve-fixes-build-132 --platform linux/arm64 --cpus 1.5 --memory 3g --memory-swap 3g --security-opt seccomp=/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/fixes-2026-10-22/seccomp-io-uring.json --mount type=bind,src=/Users/tvcc/Code/privat/twelve-dollar-server-challenge/results/fixes-2026-10-22,dst=/evidence,readonly twelve-unified:2026-10-07 sleep infinity
+5052a40306e948246e95c4f40b739910a174577ed9c9d059fdf3830662d46445
+$ docker exec -i twelve-fixes-build-132 python3 - 132
+Verified pinned files: 41
+$ docker exec twelve-fixes-build-132 bash /suite/sources/pr132/install.sh
+debconf: delaying package configuration, since apt-utils is not installed
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 16962 files and directories currently installed.)
+Preparing to unpack .../liblzma5_5.6.1+really5.4.5-1ubuntu0.4_arm64.deb ...
+Unpacking liblzma5:arm64 (5.6.1+really5.4.5-1ubuntu0.4) over (5.6.1+really5.4.5-1ubuntu0.3) ...
+Setting up liblzma5:arm64 (5.6.1+really5.4.5-1ubuntu0.4) ...
+(Reading database ... (Reading database ... 5%(Reading database ... 10%(Reading database ... 15%(Reading database ... 20%(Reading database ... 25%(Reading database ... 30%(Reading database ... 35%(Reading database ... 40%(Reading database ... 45%(Reading database ... 50%(Reading database ... 55%(Reading database ... 60%(Reading database ... 65%(Reading database ... 70%(Reading database ... 75%(Reading database ... 80%(Reading database ... 85%(Reading database ... 90%(Reading database ... 95%(Reading database ... 100%(Reading database ... 16962 files and directories currently installed.)
+Preparing to unpack .../ca-certificates_20260816ubuntu0.24.04.1_all.deb ...
+Unpacking ca-certificates (20260816ubuntu0.24.04.1) over (20260601~24.04.1) ...
+Preparing to unpack .../xz-utils_5.6.1+really5.4.5-1ubuntu0.4_arm64.deb ...
+Unpacking xz-utils (5.6.1+really5.4.5-1ubuntu0.4) over (5.6.1+really5.4.5-1ubuntu0.3) ...
+Preparing to unpack .../curl_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking curl (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Preparing to unpack .../libcurl4t64_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking libcurl4t64:arm64 (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Preparing to unpack .../libcurl3t64-gnutls_8.5.0-2ubuntu10.16_arm64.deb ...
+Unpacking libcurl3t64-gnutls:arm64 (8.5.0-2ubuntu10.16) over (8.5.0-2ubuntu10.15) ...
+Setting up libcurl4t64:arm64 (8.5.0-2ubuntu10.16) ...
+Setting up libcurl3t64-gnutls:arm64 (8.5.0-2ubuntu10.16) ...
+Setting up ca-certificates (20260816ubuntu0.24.04.1) ...
+Updating certificates in /etc/ssl/certs...
+rehash: warning: skipping ca-certificates.crt,it does not contain exactly one certificate or CRL
+4 added, 5 removed; done.
+Setting up xz-utils (5.6.1+really5.4.5-1ubuntu0.4) ...
+Setting up curl (8.5.0-2ubuntu10.16) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.9) ...
+Processing triggers for ca-certificates (20260816ubuntu0.24.04.1) ...
+Updating certificates in /etc/ssl/certs...
+0 added, 0 removed; done.
+Running hooks in /etc/ca-certificates/update.d...
+done.
+downloading Nim 2.2.12 (nim-2.2.12-linux_arm64.tar.xz)
+/tmp/tmp.Pdl8kxpA1F/nim-2.2.12-linux_arm64.tar.xz: OK
+installed:
+Nim Compiler Version 2.2.12 [Linux: arm64]
+$ docker exec twelve-fixes-build-132 chown -R bench:bench /suite/sources/pr132
+$ docker exec twelve-fixes-build-132 runuser -u bench -- env NIM_JOBS=2 PATH=/usr/local/go/bin:/usr/local/bin:/usr/bin:/bin bash /suite/sources/pr132/build.sh
+== vendoring SQLite 3540000: https://www.sqlite.org/2026/sqlite-amalgamation-3540000.zip
+/tmp/tmp.I3z4tjzt5x/sqlite.zip: OK
+== vendored vendor/sqlite3.c + sqlite3.h (sha256 verified)
+== vendoring nimcrypto 0.7.3: https://github.com/cheatfate/nimcrypto/archive/refs/tags/v0.7.3.tar.gz
+/tmp/tmp.niiPhYjTFc/nimcrypto.tar.gz: OK
+== vendored vendor/nimcrypto (sha256 verified)
+== BUILD_VARIANT=danger (nim: -d:danger)
+== PGO: compiling training helpers (synthetic DB + gcov flush shim)
+== PGO pass 1/2: instrumented build (no LTO) -> bin/server (profile dir /suite/sources/pr132/pgo-data)
+== PGO training: 60 fixed synthetic iterations on 127.0.0.1:34999
+pgo_train: 60 fixed workload iterations served
+== PGO pass 2/2: profile-guided build -> bin/server
+== PGO build succeeded: bin/server
+$ docker exec -i twelve-fixes-build-132 python3 - 132
+Pinned files verified after build: 41
+binary_sha256 d4325ec46f4c2e547d922399ef1ceb1a1bf77616caa84e4330dc77b47dfa422b
+$ docker commit twelve-fixes-build-132 twelve-fixes-pr132:2026-10-22
+sha256:6434ba70ccd3636e042006ba8fd6569dab4aa9a96ca14a112dbc7f8b573ac90b
+$ docker rm -f twelve-fixes-build-132
+twelve-fixes-build-132

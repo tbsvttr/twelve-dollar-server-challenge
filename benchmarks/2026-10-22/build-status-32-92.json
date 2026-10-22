@@ -1,0 +1,42 @@
+{
+  "92": {
+    "pr": 92,
+    "id": "92",
+    "commit": "c1bbd84c0bce5dcfb02913bdf20f5069a18ba690",
+    "base_image": "twelve-unified:2026-10-07",
+    "architecture": "linux/arm64",
+    "image": "twelve-fixes-pr92:2026-10-22",
+    "image_id": "sha256:ec460fb3bcc631847a5b5cf64a9ba4707ee965a142be152af93e9a54058e86fb",
+    "status": "built",
+    "exit_code": 0,
+    "substitutions": [],
+    "log": "logs/build-pr92.log",
+    "container": "twelve-fixes-build-92",
+    "started_at": "2026-10-22T08:26:03Z",
+    "staged_source_hashes_verified": true,
+    "image_architecture": "arm64",
+    "source_hashes_verified": true,
+    "elapsed_s": 73.06,
+    "finished_at": "2026-10-22T08:27:16Z"
+  },
+  "32": {
+    "pr": 32,
+    "id": "32",
+    "commit": "a66957652333f827cbac9a02a9c2e6bba39216b0",
+    "base_image": "twelve-unified:2026-10-07",
+    "architecture": "linux/arm64",
+    "image": "twelve-fixes-pr32:2026-10-22",
+    "image_id": "sha256:3ed98f9730c10c03e7d7bf45228d1bf4ecb65473c52c14bf545a5e9af9ae0335",
+    "status": "built",
+    "exit_code": 0,
+    "substitutions": [],
+    "log": "logs/build-pr32.log",
+    "container": "twelve-fixes-build-32",
+    "started_at": "2026-10-22T08:26:03Z",
+    "staged_source_hashes_verified": true,
+    "image_architecture": "arm64",
+    "source_hashes_verified": true,
+    "elapsed_s": 99.82,
+    "finished_at": "2026-10-22T08:27:43Z"
+  }
+}

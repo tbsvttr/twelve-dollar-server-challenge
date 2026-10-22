@@ -1,0 +1,134 @@
+[
+  {
+    "url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/issues/7#issuecomment-6298620934",
+    "body": "#32 now builds on arm64 (new head commit). Could it be included in the next benchmark run?",
+    "user": {
+      "login": "hendy643",
+      "name": "hendy643",
+      "email": null,
+      "avatar_url": "https://avatars.githubusercontent.com/u/62912828?v=4",
+      "id": 62912828
+    },
+    "id": 6298620934,
+    "pull_request_review_id": null,
+    "in_reply_to_id": null,
+    "created_at": null,
+    "updated_at": null,
+    "review": null,
+    "side": null,
+    "line": null,
+    "start_line": null,
+    "path": null,
+    "body_html": "<p dir=\"auto\"><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5790151287\" data-permission-text=\"Title is private\" data-url=\"https://github.com/arjaythedev/twelve-dollar-server-challenge/issues/32\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/arjaythedev/twelve-dollar-server-challenge/pull/32/hovercard\" href=\"https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/32\">#32</a> now builds on arm64 (new head commit). Could it be included in the next benchmark run?</p>"
+  },
+  {
+    "url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/issues/7#issuecomment-6299366468",
+    "body": "#92 fixed build to work on ubuntu 24",
+    "user": {
+      "login": "super-horst",
+      "name": "super-horst",
+      "email": null,
+      "avatar_url": "https://avatars.githubusercontent.com/u/19838627?v=4",
+      "id": 19838627
+    },
+    "id": 6299366468,
+    "pull_request_review_id": null,
+    "in_reply_to_id": null,
+    "created_at": null,
+    "updated_at": null,
+    "review": null,
+    "side": null,
+    "line": null,
+    "start_line": null,
+    "path": null,
+    "body_html": "<p dir=\"auto\"><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5853428804\" data-permission-text=\"Title is private\" data-url=\"https://github.com/arjaythedev/twelve-dollar-server-challenge/issues/92\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/arjaythedev/twelve-dollar-server-challenge/pull/92/hovercard\" href=\"https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/92\">#92</a> fixed build to work on ubuntu 24</p>"
+  },
+  {
+    "url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/issues/7#issuecomment-6300063094",
+    "body": "#123 should be fixed now",
+    "user": {
+      "login": "cyrusmsk",
+      "name": "cyrusmsk",
+      "email": null,
+      "avatar_url": "https://avatars.githubusercontent.com/u/1385803?v=4",
+      "id": 1385803
+    },
+    "id": 6300063094,
+    "pull_request_review_id": null,
+    "in_reply_to_id": null,
+    "created_at": null,
+    "updated_at": null,
+    "review": null,
+    "side": null,
+    "line": null,
+    "start_line": null,
+    "path": null,
+    "body_html": "<p dir=\"auto\"><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5903613513\" data-permission-text=\"Title is private\" data-url=\"https://github.com/arjaythedev/twelve-dollar-server-challenge/issues/123\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/arjaythedev/twelve-dollar-server-challenge/pull/123/hovercard\" href=\"https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/123\">#123</a> should be fixed now</p>"
+  },
+  {
+    "url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/issues/7#issuecomment-6300684555",
+    "body": "#127 nodejs httpServer solution fixed now please test it @arjaythedev ",
+    "user": {
+      "login": "aliskhanoff",
+      "name": "aliskhanoff",
+      "email": null,
+      "avatar_url": "https://avatars.githubusercontent.com/u/41637477?v=4",
+      "id": 41637477
+    },
+    "id": 6300684555,
+    "pull_request_review_id": null,
+    "in_reply_to_id": null,
+    "created_at": null,
+    "updated_at": null,
+    "review": null,
+    "side": null,
+    "line": null,
+    "start_line": null,
+    "path": null,
+    "body_html": "<p dir=\"auto\"><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5908681574\" data-permission-text=\"Title is private\" data-url=\"https://github.com/arjaythedev/twelve-dollar-server-challenge/issues/127\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/arjaythedev/twelve-dollar-server-challenge/pull/127/hovercard\" href=\"https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/127\">#127</a> nodejs httpServer solution fixed now please test it <a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/arjaythedev/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/arjaythedev\">@arjaythedev</a></p>"
+  },
+  {
+    "url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/issues/7#issuecomment-6301300258",
+    "body": "#103 fixed now",
+    "user": {
+      "login": "LincolnG4",
+      "name": "LincolnG4",
+      "email": null,
+      "avatar_url": "https://avatars.githubusercontent.com/u/59087790?v=4",
+      "id": 59087790
+    },
+    "id": 6301300258,
+    "pull_request_review_id": null,
+    "in_reply_to_id": null,
+    "created_at": null,
+    "updated_at": null,
+    "review": null,
+    "side": null,
+    "line": null,
+    "start_line": null,
+    "path": null,
+    "body_html": "<p dir=\"auto\"><a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5868451770\" data-permission-text=\"Title is private\" data-url=\"https://github.com/arjaythedev/twelve-dollar-server-challenge/issues/103\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/arjaythedev/twelve-dollar-server-challenge/pull/103/hovercard\" href=\"https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/103\">#103</a> fixed now</p>"
+  },
+  {
+    "url": "https://github.com/arjaythedev/twelve-dollar-server-challenge/issues/7#issuecomment-6306791358",
+    "body": "@tbsvttr The Nim submission now supports both x86_64 and ARM64 automatically through the install/build scripts; #120 is closed, and the current PR is #132 at `854e5d9`. Could #132 be included in the benchmark?",
+    "user": {
+      "login": "NioHast",
+      "name": "NioHast",
+      "email": null,
+      "avatar_url": "https://avatars.githubusercontent.com/u/129503130?v=4",
+      "id": 129503130
+    },
+    "id": 6306791358,
+    "pull_request_review_id": null,
+    "in_reply_to_id": null,
+    "created_at": null,
+    "updated_at": null,
+    "review": null,
+    "side": null,
+    "line": null,
+    "start_line": null,
+    "path": null,
+    "body_html": "<p dir=\"auto\"><a class=\"user-mention notranslate\" data-hovercard-type=\"user\" data-hovercard-url=\"/users/tbsvttr/hovercard\" data-octo-click=\"hovercard-link-click\" data-octo-dimensions=\"link_type:self\" href=\"https://github.com/tbsvttr\">@tbsvttr</a> The Nim submission now supports both x86_64 and ARM64 automatically through the install/build scripts; <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5895238424\" data-permission-text=\"Title is private\" data-url=\"https://github.com/arjaythedev/twelve-dollar-server-challenge/issues/120\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/arjaythedev/twelve-dollar-server-challenge/pull/120/hovercard\" href=\"https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/120\">#120</a> is closed, and the current PR is <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5941676706\" data-permission-text=\"Title is private\" data-url=\"https://github.com/arjaythedev/twelve-dollar-server-challenge/issues/132\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/arjaythedev/twelve-dollar-server-challenge/pull/132/hovercard\" href=\"https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/132\">#132</a> at <code class=\"notranslate\">854e5d9</code>. Could <a class=\"issue-link js-issue-link\" data-error-text=\"Failed to load title\" data-id=\"5941676706\" data-permission-text=\"Title is private\" data-url=\"https://github.com/arjaythedev/twelve-dollar-server-challenge/issues/132\" data-hovercard-type=\"pull_request\" data-hovercard-url=\"/arjaythedev/twelve-dollar-server-challenge/pull/132/hovercard\" href=\"https://github.com/arjaythedev/twelve-dollar-server-challenge/pull/132\">#132</a> be included in the benchmark?</p>"
+  }
+]
