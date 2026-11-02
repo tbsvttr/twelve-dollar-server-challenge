@@ -253,7 +253,10 @@ without `exp`; held, not merged: it didn't beat the merged row) scored **83,000*
 ʳ **rust-native-M3M0KA** stays on its merged #265 row. Its follow-up **#266** (`6257d92`, off-loop WAL checkpointer;
 held, not merged: it didn't beat the merged row) scored **155,000** (15,143 req/s, p95 389 / p99 820 ms, 0 err, 96 % CPU,
 59 µs/req, 1,326 MB, 2026-11-02). CPU-bound: 200,000 passed the 2-minute probe but the 5-minute holds from 200,000 down to
-163,000 all failed on p95/p99 at 96 % CPU.
+163,000 all failed on p95/p99 at 96 % CPU. Its follow-up **#275** (`c520aa0`, one `SO_REUSEPORT` listener per worker,
+rebase of #274; held, not merged: it didn't beat the merged row) scored **209,000** (20,445 req/s, p95 110 / p99 256 ms,
+0 err, 89 % CPU, 40 µs/req, 1,176 MB, 2026-11-02). CPU-bound: 220,000 passed the 2-minute probe but failed the 5-minute
+hold (p95 470 / p99 1,094 ms at 91 % CPU).
 
 **Connection collapses in scored entries' failing probes.** v-epoll-i098 #191: 270,000 passed the 2-minute probe but
 failed the 5-minute hold with 60 % errors, nearly all `connection refused` from mid-hold on (an earlier attempt at
