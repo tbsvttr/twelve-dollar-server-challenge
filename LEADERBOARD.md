@@ -245,7 +245,10 @@ the merged #204 row (epoll, 76,000, 2026-10-30). CPU-bound: 150,000 failed the 2
 `c935dfe` 64,000 (timeouts at ~70 % CPU) and `96aa4f5` 110,000 (2026-10-30). Its later follow-up **#268**
 (`56b5187`, CQE batching + epoll overflow + C record decoding; held, not merged: it didn't beat the merged row) scored
 **100,000** (9,755 req/s, p95 421 / p99 943 ms, 0 err, 80 % CPU, 76 µs/req, 346 MB, 2026-11-02). 105,000–120,000 failed
-the 2-minute probe on p95/p99 (83–94 % CPU, 0 errors).
+the 2-minute probe on p95/p99 (83–94 % CPU, 0 errors). #268's next head `28db5bb` (generic io_uring runtime: direct
+descriptors, multishot accept/recv, 5 rings) scored **157,000** (15,401 req/s, p95 198 / p99 352 ms, 0 err, 65 % CPU,
+39 µs/req, 711 MB, 42/42, 2026-11-02; 165,000 failed the 5-minute hold on p99 1.23 s), but #268 was closed unmerged
+during the run, so the row stays on #235's merged code. Its replacement **#280** (`29c0a0f`) is queued.
 
 ʸ **scala-netty-jacksonhoran** stays on its merged #107 row. Its follow-up **#149** (`4430836`, rejects tokens
 without `exp`; held, not merged: it didn't beat the merged row) scored **83,000** (8,128 req/s, p95 325 / p99 627 ms,
