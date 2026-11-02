@@ -237,7 +237,10 @@ conflicts with the merged #82 folder) scored **230,000** on the standard 4-sourc
 ᵘ **HolyPHP** is scored at its follow-up **#235** (`1569472`, io_uring backend, merged 2026-11-01), which replaces
 the merged #204 row (epoll, 76,000, 2026-10-30). CPU-bound: 150,000 failed the 2-minute probe on p95 (567 ms, 93 % CPU,
 0 errors). Earlier follow-up heads (#213 / #227): `7a3f61e` scored 135,000 and `8ee9c5a` 130,000 (2026-10-31),
-`c935dfe` 64,000 (timeouts at ~70 % CPU) and `96aa4f5` 110,000 (2026-10-30).
+`c935dfe` 64,000 (timeouts at ~70 % CPU) and `96aa4f5` 110,000 (2026-10-30). Its later follow-up **#268**
+(`56b5187`, CQE batching + epoll overflow + C record decoding; held, not merged: it didn't beat the merged row) scored
+**100,000** (9,755 req/s, p95 421 / p99 943 ms, 0 err, 80 % CPU, 76 µs/req, 346 MB, 2026-11-02). 105,000–120,000 failed
+the 2-minute probe on p95/p99 (83–94 % CPU, 0 errors).
 
 ʸ **scala-netty-jacksonhoran** stays on its merged #107 row. Its follow-up **#149** (`4430836`, rejects tokens
 without `exp`; held, not merged: it didn't beat the merged row) scored **83,000** (8,128 req/s, p95 325 / p99 627 ms,
