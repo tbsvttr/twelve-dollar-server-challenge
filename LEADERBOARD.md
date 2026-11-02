@@ -257,7 +257,9 @@ held, not merged: it didn't beat the merged row) scored **155,000** (15,143 req/
 163,000 all failed on p95/p99 at 96 % CPU. Its follow-up **#275** (`c520aa0`, one `SO_REUSEPORT` listener per worker,
 rebase of #274; held, not merged: it didn't beat the merged row) scored **209,000** (20,445 req/s, p95 110 / p99 256 ms,
 0 err, 89 % CPU, 40 µs/req, 1,176 MB, 2026-11-02). CPU-bound: 220,000 passed the 2-minute probe but failed the 5-minute
-hold (p95 470 / p99 1,094 ms at 91 % CPU).
+hold (p95 470 / p99 1,094 ms at 91 % CPU). Its follow-up **#276** (`5dc0b21`, POSTs on a dedicated SQLite writer thread;
+held, not merged: it didn't beat the merged row) scored **220,000** (21,374 req/s, p95 208 / p99 665 ms, 0 err, 91 % CPU,
+39 µs/req, 1,351 MB, 2026-11-02). CPU-bound: 230,000 failed the 2-minute probe on p95/p99 (509 ms / 1.43 s at 93 % CPU).
 
 **Connection collapses in scored entries' failing probes.** v-epoll-i098 #191: 270,000 passed the 2-minute probe but
 failed the 5-minute hold with 60 % errors, nearly all `connection refused` from mid-hold on (an earlier attempt at
