@@ -1,0 +1,1093 @@
+-- The server: one thread, one io_uring event loop, every connection and every request.
+--
+-- Connections are io_uring direct descriptors, held in a ring's table of slots instead of the process's
+-- descriptor table, so LimitNOFILE caps one ring, not the server: rings are added as connections need them. An
+-- idle connection waits on a multishot poll and holds no buffer; when it turns readable it is read once into the
+-- batch's input arena.
+--
+-- Each wake-up of the loop is a batch: its completions are handled, the connections that turned readable are read,
+-- and the requests that came in are answered in one SQLite transaction (group commit). Responses are written
+-- into an arena and leave after the COMMIT, so no 201 claims a write that didn't land.
+require 'c'
+require 'out'
+require 'http'
+require 'json'
+require 'jwt'
+require 'db'
+
+local MAX_RINGS <comptime> = 8
+local SQ_ENTRIES <comptime> = 4096
+local CQ_ENTRIES <comptime> = 65536
+local NLISTEN <comptime> = 8          -- listening sockets sharing the port (SO_REUSEPORT): 8 accept queues
+local READ_SLOT <comptime> = 1024     -- what one read takes (a larger request takes several)
+local MAX_READS <comptime> = 8192     -- reads in one batch (the input arena's slots); more wait for the next
+local JOBMEM <comptime> = 1048576     -- the batch's copies of requests that waited in an inbuf
+local MAX_REQS <comptime> = 2048      -- requests one batch answers; the rest wait for the next
+local ARENA_SIZE <comptime> = 4194304
+local NARENA <comptime> = 32
+local NARENA_START <comptime> = 4     -- arenas made (and faulted in) at startup
+local RESP_ROOM <comptime> = 65536    -- what a response may take
+local HDR_ROOM <comptime> = 128       -- kept in front of a body for its status line and headers
+local RING_GROW <comptime> = 16384    -- open the next ring this many slots before a ring is full
+local RING_STOP <comptime> = 4096     -- and stop accepting on it this many slots before
+
+-- What a completion is for: user data = kind (8 bits) | ring (8) | slot (16) | aux (32: the connection's
+-- generation, or a send's record)
+local K_ACCEPT <comptime> = 1
+local K_POLL <comptime> = 2
+local K_RECV <comptime> = 3
+local K_SEND <comptime> = 4
+local K_CLOSE <comptime> = 5
+local K_SKIP <comptime> = 6
+local K_EVENT <comptime> = 7
+
+local function mkud(kind: uint64, ring: uint64, slot: uint64, aux: uint64): uint64 <inline>
+  return (kind << 56) | (ring << 48) | (slot << 32) | aux
+end
+
+local S_FREE <comptime> = 0
+local S_OPEN <comptime> = 1
+local S_CLOSING <comptime> = 2
+local S_LINGER <comptime> = 3   -- answered with Connection: close; waits for the peer to close first, so the
+                                 -- TIME_WAIT is the client's (or LINGER_NS passes)
+local LINGER_NS <comptime> = 2000000000
+
+-- A connection: 24 bytes, the server's whole cost of an idle one.
+local Conn = @record{
+  gen: uint32,          -- bumped each time the slot takes a new connection
+  state: uint8,
+  polling: boolean,     -- its multishot poll is armed
+  queued: boolean,      -- on the read list
+  busy: boolean,        -- one of its requests is being answered (until the send completes)
+  close_after: boolean, -- linger once the response is out
+  waiting: boolean,     -- a complete request waits in inbuf
+  rd: uint16,           -- its read's slot in the input arena
+  inlen: uint16,
+  incap: uint16,
+  inbuf: Bytes,         -- bytes of a request that spans reads, or that waits: allocated to size, when needed
+}
+
+local Ring = @record{
+  r: *td_ring,
+  conns: *[0]Conn,
+  open: uint32,
+  accepting: boolean,
+}
+
+-- A send in flight: what is left of the response, the arena it is in, and whose it is.
+local Send = @record{p: Bytes, n: uint32, gen: uint32, arena: uint32, next: uint32}
+
+-- Responses are written into arenas. An arena's refs counts its responses from when they are written until their
+-- sends complete, so one is only reused once nothing in it is waiting or in flight.
+local Arena = @record{p: Bytes, used: uint32, refs: uint32}
+
+-- A request to answer this batch, and its response.
+local Job = @record{
+  ring: uint32, slot: uint32, gen: uint32,
+  p: Bytes, n: uint32,        -- the request's bytes: in the input arena, or a copy in jobmem
+  req: Req,                   -- parsed, pointing into them
+  bad: boolean,               -- malformed or too large: 400, and the connection closes
+  resp: Bytes, resp_n: uint32, arena: uint32,
+  close: boolean, db: boolean,
+}
+
+local rings: [MAX_RINGS]Ring
+local nrings: int32 = 0
+local nslots: uint32 = 0
+local listeners: [NLISTEN]cint
+
+local inarena: Bytes
+local inuse: uint32 = 0             -- input arena slots this batch has used
+local reads: *[0]uint64             -- connections to read: generation << 32 | ring << 16 | slot
+local nreads: uint32 = 0
+local reads_cap: uint32 = 0
+
+local jobs: [MAX_REQS]Job
+local njobs: uint32 = 0
+local jobmem: Bytes
+local jobmem_used: uint32 = 0
+local waiting: *[0]uint32           -- connections whose inbuf holds a request to answer (ring << 16 | slot)
+local nwaiting: uint32 = 0
+local waiting_cap: uint32 = 0
+
+local sends: *[0]Send
+local sends_cap: uint32 = 0
+local sends_free: uint32 = 0xffffffff
+
+local arenas: [NARENA]Arena
+local narenas: uint32 = 0
+local cur: uint32 = 0
+
+local lingering: *[0]uint64         -- connections in S_LINGER, oldest first: generation << 32 | ring << 16 | slot
+local linger_at: *[0]uint64         -- and when each may be closed
+local linger_head: uint32 = 0
+local linger_tail: uint32 = 0
+local linger_cap: uint32 = 0
+
+-- The memory valve: below VALVE_HIGH of memory the kernel could still hand out (or what it will be in 2 s, while it
+-- falls), a growing share of responses carries Connection: close (VALVE_MAX of them at VALVE_LOW), so clients reconnect
+-- for their next request instead of holding a socket through their think time. It looks at memory only, never at
+-- the client or the request.
+local valve_on: boolean = true
+-- On the box, MemAvailable fell under 160 MB at about 320,000 connections (mojo-iouring-oh-meh's guard, #257);
+-- the valve starts a little before that
+local valve_high: int64 = 250 << 20
+local valve_low: int64 = 120 << 20
+local valve_max: float64 = 0.3      -- at most this share: every close is a reconnect, and reconnects cost CPU; more
+                                     -- would turn a memory wall into a CPU one, which queues requests in the
+                                     -- kernel's buffers, which takes memory again
+local valve_fixed: float64 = -1     -- VALVE_SHARE: a fixed share, for measurements
+local valve_share: float64 = 0
+local valve_acc: float64 = 0
+local valve_hist: [10]int64          -- the last second of readings (every 100 ms)
+local valve_n: uint32 = 0
+local st_valve: uint64 = 0
+
+local db: Db
+local key: HmacKey
+local now_s: int64 = 0
+local start_s: int64 = 0
+
+-- stats, logged every 10 s
+local st_req: uint64 = 0
+local st_batches: uint64 = 0
+local st_max_batch: uint32 = 0
+local st_accepts: uint64 = 0
+local st_closes: uint64 = 0
+local st_held: uint64 = 0
+local st_errors: uint64 = 0
+
+-- ---- small helpers ----
+
+local function die(what: cstring, err: cint): void
+  C.fprintf(C.stderr, 'conduit: %s: %s\n', what, C.strerror(err))
+  C.exit(1)
+end
+
+-- Memory straight from the kernel, touched at once and never given back. Near the memory wall a page fault of
+-- this process is what the OOM killer answers (the kernel's own socket memory is throttled instead), so
+-- everything the loop needs is faulted in while there is plenty.
+local function map(size: usize): Bytes
+  local p = td_pages(size)
+  if p == nilptr then die('out of memory', 12) end
+  C.memset(p, 0, size)
+  return (@Bytes)(p)
+end
+
+-- An array for the bookkeeping lists (from malloc, as they may grow), faulted in.
+local function list(n: uint32, size: usize): pointer
+  local p = C.malloc(n * size)
+  if p == nilptr then die('out of memory', 12) end
+  C.memset(p, 0, n * size)
+  return p
+end
+
+local function push_waiting(ref: uint32): void
+  if nwaiting == waiting_cap then
+    waiting_cap = waiting_cap * 2 + 1024
+    waiting = (@*[0]uint32)(C.realloc(waiting, waiting_cap * 4))
+    if waiting == nilptr then die('out of memory', 12) end
+  end
+  waiting[nwaiting] = ref
+  nwaiting = nwaiting + 1
+end
+
+-- Puts a connection on the read list.
+local function want_read(k: uint32, slot: uint32, c: *Conn): void
+  if c.queued then return end
+  if nreads == reads_cap then
+    reads_cap = reads_cap * 2 + 4096
+    reads = (@*[0]uint64)(C.realloc(reads, reads_cap * 8))
+    if reads == nilptr then die('out of memory', 12) end
+  end
+  c.queued = true
+  reads[nreads] = ((@uint64)(c.gen) << 32) | (k << 16) | slot
+  nreads = nreads + 1
+end
+
+local function send_alloc(): uint32
+  if sends_free == 0xffffffff then
+    local old = sends_cap
+    sends_cap = sends_cap * 2 + 4096
+    sends = (@*[0]Send)(C.realloc(sends, sends_cap * #Send))
+    if sends == nilptr then die('out of memory', 12) end
+    for i = old, < sends_cap do
+      sends[i].next = sends_free
+      sends_free = i
+    end
+  end
+  local i = sends_free
+  sends_free = sends[i].next
+  return i
+end
+
+local function send_free(i: uint32): void
+  sends[i].next = sends_free
+  sends_free = i
+end
+
+-- ---- connections ----
+
+local function conn_close(k: uint32, slot: uint32): void
+  local c = &rings[k].conns[slot]
+  if c.state ~= S_OPEN and c.state ~= S_LINGER then return end
+  c.state = S_CLOSING
+  local has_poll: cint = 0
+  if c.polling then has_poll = 1 end
+  td_close(rings[k].r, slot, mkud(K_POLL, k, slot, c.gen), has_poll, mkud(K_SKIP, k, slot, c.gen),
+           mkud(K_CLOSE, k, slot, c.gen))
+  c.polling = false
+  if c.inbuf ~= nilptr then
+    C.free(c.inbuf)
+    c.inbuf = nilptr
+  end
+  c.inlen = 0
+  c.incap = 0
+  c.waiting = false
+  st_closes = st_closes + 1
+end
+
+-- After a Connection: close response: wait for the peer's FIN, at most LINGER_NS.
+local function conn_linger(k: uint32, slot: uint32, c: *Conn): void
+  c.state = S_LINGER
+  if linger_tail == linger_cap then
+    -- at the end: move the live entries to the front, or grow
+    local n = linger_tail - linger_head
+    if linger_head > 0 then
+      C.memmove(&lingering[0], &lingering[linger_head], n * 8)
+      C.memmove(&linger_at[0], &linger_at[linger_head], n * 8)
+      linger_head = 0
+      linger_tail = n
+    end
+    if linger_tail == linger_cap then
+      linger_cap = linger_cap * 2 + 4096
+      lingering = (@*[0]uint64)(C.realloc(lingering, linger_cap * 8))
+      linger_at = (@*[0]uint64)(C.realloc(linger_at, linger_cap * 8))
+      if lingering == nilptr or linger_at == nilptr then die('out of memory', 12) end
+    end
+  end
+  lingering[linger_tail] = ((@uint64)(c.gen) << 32) | (k << 16) | slot
+  linger_at[linger_tail] = td_now_ns() + LINGER_NS
+  linger_tail = linger_tail + 1
+end
+
+-- Closes the lingering connections whose time is up.
+local function linger_sweep(now: uint64): void
+  while linger_head < linger_tail and linger_at[linger_head] <= now do
+    local ref = lingering[linger_head]
+    linger_head = linger_head + 1
+    local k = (@uint32)((ref >> 16) & 0xffff)
+    local slot = (@uint32)(ref & 0xffff)
+    local c = &rings[k].conns[slot]
+    if c.state == S_LINGER and c.gen == (@uint32)(ref >> 32) then conn_close(k, slot) end
+  end
+  if linger_head == linger_tail then
+    linger_head = 0
+    linger_tail = 0
+  end
+end
+
+-- Recomputes the valve's share from the memory left.
+local function valve_update(): void
+  if not valve_on then return end
+  if valve_fixed >= 0 then
+    valve_share = valve_fixed
+    return
+  end
+  local now_avail = td_mem_avail()
+  if now_avail < 0 then
+    valve_share = 0
+    return
+  end
+  -- while memory falls, look 2 s ahead: connections arrive faster than closing them takes effect
+  local avail = now_avail
+  if valve_n >= 10 then
+    local fall = valve_hist[valve_n % 10] - now_avail   -- over the last second
+    if fall > 0 then avail = now_avail - 2 * fall end
+  end
+  valve_hist[valve_n % 10] = now_avail
+  valve_n = valve_n + 1
+  if avail >= valve_high then
+    valve_share = 0
+  elseif avail <= valve_low then
+    valve_share = valve_max
+  else
+    valve_share = valve_max * (@float64)(valve_high - avail) / (@float64)(valve_high - valve_low)
+  end
+end
+
+local CONTINUE: string = 'HTTP/1.1 100 Continue\r\n\r\n'
+
+-- Keeps n bytes at p (the rest of a request, or a whole one that must wait) in the connection's inbuf, after what
+-- is there already; the buffer grows to what it holds. false if that would be more than REQ_MAX.
+local function conn_keep(c: *Conn, p: Bytes, n: uint32): boolean
+  if n == 0 then return true end
+  local need = c.inlen + n
+  if need > REQ_MAX then return false end
+  if need > c.incap then
+    local cap = (@uint32)(c.incap) * 2
+    if cap < need then cap = need end
+    if cap < 256 then cap = 256 end
+    if cap > REQ_MAX then cap = REQ_MAX end
+    local q = C.realloc(c.inbuf, cap)
+    if q == nilptr then return false end
+    c.inbuf = (@Bytes)(q)
+    c.incap = (@uint16)(cap)
+  end
+  C.memmove(&c.inbuf[c.inlen], p, n)
+  c.inlen = (@uint16)(need)
+  return true
+end
+
+-- Drops the first n bytes of the connection's inbuf (a request taken out of it).
+local function conn_consume(c: *Conn, n: uint32): void
+  local rest = c.inlen - n
+  if rest == 0 then
+    C.free(c.inbuf)
+    c.inbuf = nilptr
+    c.inlen = 0
+    c.incap = 0
+  else
+    C.memmove(&c.inbuf[0], &c.inbuf[n], rest)
+    c.inlen = (@uint16)(rest)
+  end
+end
+
+-- The connection has a complete request in inbuf that waits: for its send to complete, or for a batch with room.
+local function set_waiting(k: uint32, slot: uint32, c: *Conn): void
+  if c.waiting then return end
+  c.waiting = true
+  if not c.busy then push_waiting((k << 16) | slot) end
+end
+
+-- Looks at what a connection has: a complete request becomes a job (if the batch has room and the connection
+-- isn't answering one already), a partial one waits for more bytes. p is the input arena (bytes that are only
+-- kept if they must wait) or, with from_inbuf, the connection's inbuf.
+local function conn_take(k: uint32, slot: uint32, p: Bytes, n: uint32, from_inbuf: boolean): void
+  local c = &rings[k].conns[slot]
+  local r: Req
+  local len = http_parse(p, n, &r)
+  if len == 0 then
+    if not from_inbuf and not conn_keep(c, p, n) then conn_close(k, slot) end
+    if r.expect and not from_inbuf then   -- Expect: 100-continue, before the body comes
+      td_send(rings[k].r, slot, CONTINUE.data, (@cuint)(CONTINUE.size), mkud(K_SKIP, k, slot, c.gen))
+    end
+    return
+  end
+  local used = (@uint32)(len)
+  if len < 0 then used = n end   -- malformed or too large: answered with 400, then closed
+  if c.busy or njobs >= MAX_REQS or (from_inbuf and jobmem_used + used > JOBMEM) then
+    if not from_inbuf and not conn_keep(c, p, n) then
+      conn_close(k, slot)
+      return
+    end
+    set_waiting(k, slot, c)
+    return
+  end
+  local j = &jobs[njobs]
+  njobs = njobs + 1
+  j.ring = k
+  j.slot = slot
+  j.gen = c.gen
+  j.bad = len < 0
+  j.n = used
+  c.busy = true
+  if from_inbuf then
+    -- a copy for the batch, so the inbuf can take what comes next
+    local q = (@Bytes)(&jobmem[jobmem_used])
+    C.memcpy(q, p, used)
+    jobmem_used = jobmem_used + ((used + 15) & ~15_u32)
+    j.p = q
+    if not j.bad then http_parse(q, used, &j.req) end
+    conn_consume(c, used)
+    c.waiting = c.inlen > 0
+  else
+    j.p = p
+    j.req = r
+    -- bytes after the request (pipelining) wait in inbuf until its response is out
+    if used < n then
+      if conn_keep(c, &p[used], n - used) then c.waiting = true else conn_close(k, slot) end
+    end
+  end
+end
+
+-- ---- rings and accepting ----
+
+local ring_fail_logged = false
+
+local function ring_add(): void
+  if nrings >= MAX_RINGS then return end
+  local k = (@uint32)(nrings)
+  local primary: cint = 0
+  if k == 0 then primary = 1 end
+  rings[k].r = td_ring_new()
+  if rings[k].r == nilptr then die('out of memory', 12) end
+  local rc = td_ring_init(rings[k].r, SQ_ENTRIES, CQ_ENTRIES, nslots, primary)
+  if rc < 0 then
+    if k == 0 then die('io_uring_setup', -rc) end
+    if not ring_fail_logged then
+      C.fprintf(C.stderr, 'conduit: ring %u: io_uring_setup: %s (retrying every second)\n', k, C.strerror(-rc))
+      ring_fail_logged = true
+    end
+    return
+  end
+  rings[k].conns = (@*[0]Conn)(map(nslots * #Conn))
+  if rings[k].conns == nilptr then die('out of memory', 12) end
+  if k > 0 then
+    local efd = td_ring_eventfd(rings[k].r)
+    if efd < 0 then
+      C.fprintf(C.stderr, 'conduit: ring %u: eventfd: %s\n', k, C.strerror(-efd))
+      return
+    end
+    td_poll_fd(rings[0].r, efd, mkud(K_EVENT, k, 0, 0))
+  end
+  for i = 0, < NLISTEN do td_accept(rings[k].r, listeners[i], mkud(K_ACCEPT, k, (@uint64)(i), 0)) end
+  rings[k].accepting = true
+  nrings = nrings + 1
+  C.fprintf(C.stderr, 'ring %u: %u slots\n', k, nslots)
+end
+
+-- New connections go to one ring at a time, the active one. Before it is full, the ring with the most free slots
+-- (connections close too) starts accepting as well, or a new ring is made if none has room; when the active ring is
+-- nearly full it stops accepting, and the other takes over.
+local active: uint32 = 0
+
+local function ring_accept(k: uint32): void
+  if rings[k].accepting then return end
+  for l = 0, < NLISTEN do td_accept(rings[k].r, listeners[l], mkud(K_ACCEPT, k, (@uint64)(l), 0)) end
+  rings[k].accepting = true
+end
+
+local ring_retry_at: uint64 = 0      -- when to try making a ring again after one failed (near the memory wall)
+
+local function rings_check(): void
+  local g = &rings[active]
+  local free = nslots - g.open
+  if free >= RING_GROW then return end
+  local best: int32 = -1
+  local best_free: uint32 = 0
+  for i = 0, < nrings do
+    local f = nslots - rings[i].open
+    if (@uint32)(i) ~= active and f > best_free then
+      best = i
+      best_free = f
+    end
+  end
+  if (best < 0 or best_free < 2 * RING_GROW) and nrings < MAX_RINGS and td_now_ns() >= ring_retry_at then
+    local before = nrings
+    ring_add()
+    if nrings > before then
+      best = nrings - 1
+      best_free = nslots
+    else
+      ring_retry_at = td_now_ns() + 1000000000
+    end
+  end
+  -- no other ring with room: the active one keeps accepting
+  if best < 0 or best_free <= RING_STOP then return end
+  local next = (@uint32)(best)
+  ring_accept(next)
+  if free < RING_STOP and g.accepting then
+    for l = 0, < NLISTEN do td_cancel(g.r, mkud(K_ACCEPT, active, (@uint64)(l), 0), mkud(K_SKIP, active, 0, 0)) end
+    g.accepting = false
+    active = next
+  end
+end
+
+-- ---- responses ----
+
+-- Room for one response: RESP_ROOM bytes in the current arena, moving to a free one when it runs out.
+local function arena_room(): Bytes
+  local a = &arenas[cur]
+  if a.used + RESP_ROOM > ARENA_SIZE then
+    local found = false
+    for i = 0, < narenas do
+      if arenas[i].refs == 0 then
+        cur = i
+        arenas[i].used = 0
+        found = true
+        break
+      end
+    end
+    if not found then
+      if narenas == NARENA then die('response arenas exhausted', 12) end
+      arenas[narenas].p = map(ARENA_SIZE)
+      arenas[narenas].used = 0
+      arenas[narenas].refs = 0
+      cur = narenas
+      narenas = narenas + 1
+    end
+    a = &arenas[cur]
+  end
+  return &a.p[a.used]
+end
+
+-- Puts the status line and headers in front of the body written at room + HDR_ROOM, and takes the arena space.
+local function frame(j: *Job, room: Bytes, status: string, body_n: uint32): void
+  local h: [HDR_ROOM]byte
+  local o = Out.at((@Bytes)(&h[0]), HDR_ROOM)
+  o:lit('HTTP/1.1 ')
+  o:lit(status)
+  o:lit('\r\nContent-Type: application/json\r\nContent-Length: ')
+  o:u64(body_n)
+  if j.close then o:lit('\r\nConnection: close') end
+  o:lit('\r\n\r\n')
+  j.resp = &room[HDR_ROOM - o.n]
+  C.memcpy(j.resp, &h[0], o.n)
+  j.resp_n = o.n + body_n
+  j.arena = cur
+  local a = &arenas[cur]
+  a.used = a.used + ((HDR_ROOM + body_n + 15) & ~15_u32)
+  a.refs = a.refs + 1
+end
+
+local function error_resp(j: *Job, status: string, body: string): void
+  local room = arena_room()
+  C.memcpy(&room[HDR_ROOM], body.data, body.size)
+  frame(j, room, status, (@uint32)(body.size))
+end
+
+local function path_is(r: *Req, s: string): boolean <inline>
+  return r.path_len == s.size and C.memcmp(r.path, s.data, s.size) == 0
+end
+
+-- A post id: digits only, 1 up to 2^53. -1 otherwise.
+local function parse_id(p: Bytes, n: uint32): int64
+  if n == 0 or n > 16 then return -1 end
+  local v: int64 = 0
+  for i: uint32 = 0, < n do
+    local c = p[i]
+    if c < '0'_b or c > '9'_b then return -1 end
+    v = v * 10 + (c - '0'_b)
+  end
+  if v < 1 or v > 9007199254740992 then return -1 end
+  return v
+end
+
+local function is_ws(c: byte): boolean <inline>
+  return c == ' '_b or c == '\t'_b or c == '\n'_b or c == '\r'_b or c == 12 or c == 11
+end
+
+local create_text: [REQ_MAX]byte
+
+-- Answers one job. false if it is a write and writes are held back (the WAL is being restarted): it waits.
+local function handle(j: *Job, writes_ok: boolean): boolean
+  local r = &j.req
+  j.db = false
+  if j.bad then
+    j.close = true
+    error_resp(j, '400 Bad Request', '{"error":"bad request"}')
+    return true
+  end
+  j.close = not r.keep_alive
+  if not j.close and valve_share > 0 then
+    valve_acc = valve_acc + valve_share
+    if valve_acc >= 1 then
+      valve_acc = valve_acc - 1
+      j.close = true
+      st_valve = st_valve + 1
+    end
+  end
+  st_req = st_req + 1
+  if r.method == M_GET then
+    if path_is(r, '/feed') then
+      j.db = true
+      local room = arena_room()
+      local o = Out.at(&room[HDR_ROOM], RESP_ROOM - HDR_ROOM)
+      if db:feed(&o) < 0 or o.err then goto err500 end
+      frame(j, room, '200 OK', o.n)
+      return true
+    end
+    if r.path_len > 7 and C.memcmp(r.path, (@cstring)('/posts/'), 7) == 0 then
+      local id = parse_id(&r.path[7], r.path_len - 7)
+      if id < 0 then
+        error_resp(j, '400 Bad Request', '{"error":"invalid post id"}')
+        return true
+      end
+      j.db = true
+      local room = arena_room()
+      local o = Out.at(&room[HDR_ROOM], RESP_ROOM - HDR_ROOM)
+      local rc = db:post(&o, id)
+      if rc < 0 or o.err then goto err500 end
+      if rc == 0 then
+        error_resp(j, '404 Not Found', '{"error":"post not found"}')
+        return true
+      end
+      frame(j, room, '200 OK', o.n)
+      return true
+    end
+    if path_is(r, '/health') then
+      local room = arena_room()
+      local o = Out.at(&room[HDR_ROOM], RESP_ROOM - HDR_ROOM)
+      if not db:health() then
+        error_resp(j, '503 Service Unavailable', '{"status":"degraded","db":"unreachable","error":"SELECT 1 failed"}')
+        return true
+      end
+      o:lit('{"status":"ok","db":"ok","uptime_s":')
+      o:u64((@uint64)(now_s - start_s))
+      o:byte('}'_b)
+      frame(j, room, '200 OK', o.n)
+      return true
+    end
+    error_resp(j, '404 Not Found', '{"error":"not found"}')
+    return true
+  end
+  if r.method == M_POST then
+    local is_create = path_is(r, '/posts')
+    local is_like = r.path_len > 12 and C.memcmp(r.path, (@cstring)('/posts/'), 7) == 0 and
+                    C.memcmp(&r.path[r.path_len - 5], (@cstring)('/like'), 5) == 0
+    if not is_create and not is_like then
+      error_resp(j, '404 Not Found', '{"error":"not found"}')
+      return true
+    end
+    if not writes_ok then
+      st_req = st_req - 1
+      return false
+    end
+    -- auth first, then the id
+    if r.auth == nilptr or r.auth_len < 7 or C.memcmp(r.auth, (@cstring)('Bearer '), 7) ~= 0 then
+      error_resp(j, '401 Unauthorized', '{"error":"missing bearer token"}')
+      return true
+    end
+    local claims: Claims
+    local vr = jwt_verify(&key, &r.auth[7], r.auth_len - 7, now_s, &claims)
+    if vr == JWT_INVALID then
+      error_resp(j, '401 Unauthorized', '{"error":"invalid or expired token"}')
+      return true
+    elseif vr ~= JWT_OK then
+      error_resp(j, '401 Unauthorized', '{"error":"invalid token payload"}')
+      return true
+    end
+    if is_like then
+      local id = parse_id(&r.path[7], r.path_len - 12)
+      if id < 0 then
+        error_resp(j, '400 Bad Request', '{"error":"invalid post id"}')
+        return true
+      end
+      j.db = true
+      local rc = db:like(claims.sub, id)
+      if rc < 0 then goto err500 end
+      if rc == 0 then
+        error_resp(j, '404 Not Found', '{"error":"post not found"}')
+        return true
+      end
+      local room = arena_room()
+      local o = Out.at(&room[HDR_ROOM], RESP_ROOM - HDR_ROOM)
+      o:lit('{"liked":true,"already_liked":')
+      if rc == 2 then o:lit('true') else o:lit('false') end
+      o:lit(',"post_id":')
+      o:u64((@uint64)(id))
+      o:byte('}'_b)
+      if rc == 1 then frame(j, room, '201 Created', o.n) else frame(j, room, '200 OK', o.n) end
+      return true
+    end
+    -- create
+    local f: [1]JsonField = {{key = 'body'}}
+    local kind = json_scan(r.body, r.body_len, (@*[0]JsonField)(&f[0]), 1)
+    if kind < 0 then
+      error_resp(j, '400 Bad Request', '{"error":"malformed JSON body"}')
+      return true
+    end
+    if kind ~= 1 or f[0].kind ~= JSON_STRING then
+      error_resp(j, '400 Bad Request', '{"error":"body is required"}')
+      return true
+    end
+    local tn = json_unescape(f[0].p, f[0].n, (@Bytes)(&create_text[0]), REQ_MAX)
+    if tn < 0 then
+      error_resp(j, '400 Bad Request', '{"error":"body must be at most 500 characters"}')
+      return true
+    end
+    local t: uint32 = 0
+    local te = (@uint32)(tn)
+    while t < te and is_ws(create_text[t]) do t = t + 1 end
+    while te > t and is_ws(create_text[te - 1]) do te = te - 1 end
+    if te == t then
+      error_resp(j, '400 Bad Request', '{"error":"body is required"}')
+      return true
+    end
+    local chars: uint32 = 0
+    for q = t, < te do
+      if (create_text[q] & 0xC0) ~= 0x80 then chars = chars + 1 end
+    end
+    if chars > 500 then
+      error_resp(j, '400 Bad Request', '{"error":"body must be at most 500 characters"}')
+      return true
+    end
+    j.db = true
+    local room = arena_room()
+    local o = Out.at(&room[HDR_ROOM], RESP_ROOM - HDR_ROOM)
+    if db:create(&o, claims.sub, (@Bytes)(&create_text[t]), te - t, (@Bytes)(&claims.name[0]), claims.name_len) < 0 or
+       o.err then
+      goto err500
+    end
+    frame(j, room, '201 Created', o.n)
+    return true
+  end
+  error_resp(j, '404 Not Found', '{"error":"not found"}')
+  do return true end
+::err500::
+  st_errors = st_errors + 1
+  error_resp(j, '500 Internal Server Error', '{"error":"internal server error"}')
+  return true
+end
+
+-- Sends a response (or what is left of one).
+local function send(k: uint32, slot: uint32, gen: uint32, p: Bytes, n: uint32, arena: uint32): void
+  local i = send_alloc()
+  sends[i].p = p
+  sends[i].n = n
+  sends[i].gen = gen
+  sends[i].arena = arena
+  td_send(rings[k].r, slot, p, n, mkud(K_SEND, k, slot, i))
+end
+
+-- Answers the batch's jobs in one transaction, then sends the responses.
+local function run_batch(): void
+  -- connections whose inbuf holds a request, first
+  local nw = nwaiting
+  nwaiting = 0
+  for i = 0, < nw do
+    local ref = waiting[i]
+    local k = ref >> 16
+    local slot = ref & 0xffff
+    local c = &rings[k].conns[slot]
+    if c.state == S_OPEN and c.waiting and not c.busy then
+      c.waiting = false
+      conn_take(k, slot, c.inbuf, c.inlen, true)
+    end
+  end
+  if njobs == 0 then return end
+  local writes_ok = td_writes_allowed(db.c) ~= 0
+  if arenas[cur].refs == 0 then arenas[cur].used = 0 end
+  for i = 0, < njobs do
+    local j = &jobs[i]
+    if not handle(j, writes_ok) then
+      -- held: the request goes back to the front of the inbuf, for a batch that may write
+      local c = &rings[j.ring].conns[j.slot]
+      j.resp = nilptr
+      c.busy = false
+      if c.state ~= S_OPEN then continue end
+      local rest = (@uint32)(c.inlen)
+      if rest + j.n > REQ_MAX then
+        conn_close(j.ring, j.slot)
+        continue
+      end
+      local q = (@Bytes)(C.malloc(rest + j.n))
+      if q == nilptr then
+        conn_close(j.ring, j.slot)
+        continue
+      end
+      C.memcpy(q, j.p, j.n)
+      if rest > 0 then C.memcpy(&q[j.n], c.inbuf, rest) end
+      C.free(c.inbuf)
+      c.inbuf = q
+      c.inlen = (@uint16)(rest + j.n)
+      c.incap = c.inlen
+      c.waiting = false
+      set_waiting(j.ring, j.slot, c)
+      st_held = st_held + 1
+    end
+  end
+  local ok = db:commit()
+  for i = 0, < njobs do
+    local j = &jobs[i]
+    if j.resp == nilptr then continue end
+    local c = &rings[j.ring].conns[j.slot]
+    if c.state ~= S_OPEN or c.gen ~= j.gen then
+      arenas[j.arena].refs = arenas[j.arena].refs - 1
+      continue
+    end
+    if not ok and j.db then
+      arenas[j.arena].refs = arenas[j.arena].refs - 1
+      error_resp(j, '500 Internal Server Error', '{"error":"internal server error"}')
+    end
+    if j.close then c.close_after = true end
+    send(j.ring, j.slot, j.gen, j.resp, j.resp_n, j.arena)
+  end
+  st_batches = st_batches + 1
+  if njobs > st_max_batch then st_max_batch = njobs end
+  njobs = 0
+  jobmem_used = 0
+end
+
+-- ---- completions ----
+
+local function on_cqe(k: uint32, cqe: pointer): void
+  local ud = td_cqe_ud(cqe)
+  local res = td_cqe_res(cqe)
+  local kind = ud >> 56
+  local slot = (@uint32)((ud >> 32) & 0xffff)
+  local aux = (@uint32)(ud & 0xffffffff)
+  local g = &rings[k]
+  if kind == K_POLL then
+    local c = &g.conns[slot]
+    if c.gen ~= aux or (c.state ~= S_OPEN and c.state ~= S_LINGER) then return end
+    if td_cqe_more(cqe) == 0 then   -- the poll ended: arm it again
+      c.polling = false
+      if res >= 0 or res == -ECANCELED then
+        td_poll(g.r, slot, mkud(K_POLL, k, slot, c.gen))
+        c.polling = true
+      else
+        conn_close(k, slot)
+        return
+      end
+    end
+    if res > 0 then want_read(k, slot, c) end
+  elseif kind == K_RECV then
+    local c = &g.conns[slot]
+    if c.gen ~= aux or (c.state ~= S_OPEN and c.state ~= S_LINGER) then return end
+    c.queued = false
+    if not c.polling and res ~= 0 then   -- a new connection's first read: from now on its poll says when to read
+      td_poll(g.r, slot, mkud(K_POLL, k, slot, c.gen))
+      c.polling = true
+    end
+    if c.state == S_LINGER then   -- only the peer's FIN matters now
+      if res > 0 then
+        if (@uint32)(res) == READ_SLOT then want_read(k, slot, c) end
+      elseif res ~= -EAGAIN then
+        conn_close(k, slot)
+      end
+      return
+    end
+    if res > 0 then
+      local p = &inarena[(@uint32)(c.rd) * READ_SLOT]
+      local n = (@uint32)(res)
+      if c.inlen > 0 or c.busy then   -- joins what waits in inbuf
+        if not conn_keep(c, p, n) then
+          conn_close(k, slot)
+          return
+        end
+        if c.busy then set_waiting(k, slot, c) else conn_take(k, slot, c.inbuf, c.inlen, true) end
+      else
+        conn_take(k, slot, p, n, false)
+      end
+      -- a full read may have left more in the socket, and the poll only fires on new data
+      if n == READ_SLOT and c.state == S_OPEN then want_read(k, slot, c) end
+    elseif res == 0 or res ~= -EAGAIN then   -- the peer closed, or the socket failed
+      if c.busy then c.close_after = true else conn_close(k, slot) end
+    end
+  elseif kind == K_SEND then
+    local s = &sends[aux]
+    local c = &g.conns[slot]
+    if res > 0 and (@uint32)(res) < s.n and c.gen == s.gen and c.state == S_OPEN then
+      s.p = &s.p[res]                 -- partial: the rest
+      s.n = s.n - (@uint32)(res)
+      td_send(g.r, slot, s.p, s.n, mkud(K_SEND, k, slot, aux))
+      return
+    end
+    arenas[s.arena].refs = arenas[s.arena].refs - 1
+    local gen = s.gen
+    send_free(aux)
+    if c.gen ~= gen or c.state ~= S_OPEN then return end
+    c.busy = false
+    if res < 0 then
+      conn_close(k, slot)
+    elseif c.close_after then
+      if c.inbuf ~= nilptr then
+        C.free(c.inbuf)
+        c.inbuf = nilptr
+        c.inlen = 0
+        c.incap = 0
+      end
+      c.waiting = false
+      conn_linger(k, slot, c)
+    elseif c.waiting then
+      push_waiting((k << 16) | slot)
+    end
+  elseif kind == K_ACCEPT then
+    if res >= 0 then
+      local s = (@uint32)(res)
+      local c = &g.conns[s]
+      c.gen = c.gen + 1
+      c.state = S_OPEN
+      c.queued = false
+      c.busy = false
+      c.close_after = false
+      c.waiting = false
+      c.inlen = 0
+      -- the listener defers accepting until the request is there (TCP_DEFER_ACCEPT): read it at once, and arm
+      -- the poll after that read
+      c.polling = false
+      want_read(k, s, c)
+      g.open = g.open + 1
+      st_accepts = st_accepts + 1
+    elseif res ~= -ECANCELED then
+      C.fprintf(C.stderr, 'ring %u: accept: %s\n', k, C.strerror(-res))
+    end
+    if td_cqe_more(cqe) == 0 and g.accepting then   -- the multishot accept ended: arm it again
+      td_accept(g.r, listeners[slot], mkud(K_ACCEPT, k, slot, 0))
+    end
+  elseif kind == K_CLOSE then
+    local c = &g.conns[slot]
+    if c.state == S_CLOSING and c.gen == aux then
+      c.state = S_FREE
+      g.open = g.open - 1
+    end
+  elseif kind == K_EVENT then   -- another ring has completions; if its poll ended, arm it again
+    if td_cqe_more(cqe) == 0 then
+      local other = (@uint32)((ud >> 48) & 0xff)
+      td_poll_fd(rings[0].r, rings[other].r.efd, mkud(K_EVENT, other, 0, 0))
+    end
+  end
+end
+
+-- Handles every completion that is ready, on every ring. The number handled.
+local function drain(): uint32
+  local total: uint32 = 0
+  for k = 0, < nrings do
+    local r = rings[k].r
+    while true do
+      local n = td_cq_ready(r)
+      if n == 0 then break end
+      for i: cuint = 0, < n do on_cqe((@uint32)(k), td_cqe(r, i)) end
+      td_cq_advance(r, n)
+      total = total + n
+    end
+  end
+  return total
+end
+
+-- Reads the connections on the read list, once each, into the input arena. The reads complete during the
+-- submit (MSG_DONTWAIT), and their completions are handled at once. The arena's slots hold this batch's
+-- requests until it is answered, so the batch reads at most MAX_READS times; the rest wait for the next.
+local function read_round(): void
+  for round = 0, < 4 do
+    if nreads == 0 or inuse >= MAX_READS then return end
+    local n = nreads
+    if n > MAX_READS - inuse then n = MAX_READS - inuse end
+    local used: uint32 = 0
+    for i = 0, < n do
+      local ref = reads[i]
+      local k = (@uint32)((ref >> 16) & 0xffff)
+      local slot = (@uint32)(ref & 0xffff)
+      local c = &rings[k].conns[slot]
+      if c.gen == (@uint32)(ref >> 32) and (c.state == S_OPEN or c.state == S_LINGER) and c.queued then
+        c.rd = (@uint16)(inuse + used)
+        td_recv(rings[k].r, slot, &inarena[(inuse + used) * READ_SLOT], READ_SLOT, mkud(K_RECV, k, slot, c.gen))
+        used = used + 1
+      end
+    end
+    inuse = inuse + used
+    nreads = nreads - n
+    if nreads > 0 then C.memmove(&reads[0], &reads[n], nreads * 8) end
+    for k = 0, < nrings do
+      if td_pending(rings[k].r) > 0 then td_enter(rings[k].r, 1, 0, 0) end
+    end
+    drain()
+  end
+end
+
+local function log_stats(): void
+  local open: uint32 = 0
+  for k = 0, < nrings do open = open + rings[k].open end
+  C.fprintf(C.stderr, 'open=%u rings=%d req/s=%llu batches/s=%llu max_batch=%u accepts=%llu closes=%llu held=%llu errors=%llu fallback=%llu valve=%.2f valve_closes=%llu avail=%lldMB\n',
+    open, nrings, st_req // 10, st_batches // 10, st_max_batch, st_accepts, st_closes, st_held, st_errors, db.n_fallback,
+    valve_share, st_valve, td_mem_avail() >> 20)
+  st_req = 0
+  st_batches = 0
+  st_max_batch = 0
+end
+
+-- ---- the loop ----
+
+local function open_listener(host: cstring, port: cstring): cint
+  local hints: addrinfo
+  C.memset(&hints, 0, #addrinfo)
+  hints.ai_family = AF_UNSPEC
+  hints.ai_socktype = SOCK_STREAM
+  hints.ai_flags = AI_PASSIVE
+  local res: *addrinfo
+  local rc = getaddrinfo(host, port, &hints, &res)
+  if rc ~= 0 then
+    C.fprintf(C.stderr, 'conduit: getaddrinfo %s:%s: %s\n', host, port, gai_strerror(rc))
+    C.exit(1)
+  end
+  local fd = socket(res.ai_family, SOCK_STREAM | SOCK_CLOEXEC, 0)
+  if fd < 0 then die('socket', C.errno) end
+  local one: cint = 1
+  setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &one, 4)
+  setsockopt(fd, SOL_SOCKET, SO_REUSEPORT, &one, 4)
+  setsockopt(fd, IPPROTO_TCP, TCP_NODELAY, &one, 4)   -- accepted sockets inherit it
+  -- a connection is handed over once its first request has arrived (or after a few seconds anyway)
+  local defer_s: cint = 3
+  setsockopt(fd, IPPROTO_TCP, TCP_DEFER_ACCEPT, &defer_s, 4)
+  if bind(fd, res.ai_addr, res.ai_addrlen) ~= 0 then die('bind', C.errno) end
+  if listen(fd, 65535) ~= 0 then die('listen', C.errno) end
+  freeaddrinfo(res)
+  return fd
+end
+
+global function serve(path: cstring, secret: cstring, host: cstring, port: cstring): void
+  signal(SIGPIPE, SIG_IGN)
+  local rl: rlimit
+  getrlimit(RLIMIT_NOFILE, &rl)
+  rl.rlim_cur = rl.rlim_max
+  setrlimit(RLIMIT_NOFILE, &rl)
+  getrlimit(RLIMIT_NOFILE, &rl)
+  -- a ring's table can't be larger than the descriptor limit; keep a few for the listeners and the database
+  nslots = (@uint32)(rl.rlim_cur) - 64
+  if nslots > 65536 then nslots = 65536 end
+  key = HmacKey.init((@Bytes)(secret), (@uint32)(C.strlen(secret)))
+  local v = C.getenv('VALVE')
+  if v ~= nilptr and C.strcmp(v, '0') == 0 then valve_on = false end
+  v = C.getenv('VALVE_SHARE')
+  if v ~= nilptr then valve_fixed = C.atof(v) end
+  v = C.getenv('VALVE_MAX')
+  if v ~= nilptr then valve_max = C.atof(v) end
+  v = C.getenv('VALVE_HIGH_MB')
+  if v ~= nilptr then valve_high = (@int64)(C.atoi(v)) << 20 end
+  v = C.getenv('VALVE_LOW_MB')
+  if v ~= nilptr then valve_low = (@int64)(C.atoi(v)) << 20 end
+  start_s = time(nilptr)
+  now_s = start_s
+  if not db:open(path, 8192) then
+    C.fprintf(C.stderr, 'conduit: could not open %s\n', path)
+    C.exit(1)
+  end
+  if td_lock_code() ~= 0 then C.fprintf(C.stderr, 'conduit: could not lock the code in RAM\n') end
+  inarena = map(MAX_READS * READ_SLOT)
+  jobmem = map(JOBMEM)
+  for i = 0, < NARENA_START do arenas[i].p = map(ARENA_SIZE) end
+  narenas = NARENA_START
+  -- the lists, sized for a ring of connections; they still grow if a burst needs more
+  reads_cap = 65536
+  reads = (@*[0]uint64)(list(reads_cap, 8))
+  waiting_cap = 65536
+  waiting = (@*[0]uint32)(list(waiting_cap, 4))
+  linger_cap = 65536
+  lingering = (@*[0]uint64)(list(linger_cap, 8))
+  linger_at = (@*[0]uint64)(list(linger_cap, 8))
+  send_free(send_alloc())   -- the first block of send records
+  for i = 0, < NLISTEN do listeners[i] = open_listener(host, port) end
+  ring_add()
+  C.fprintf(C.stderr, 'conduit: listening on %s:%s, %u slots per ring\n', host, port, nslots)
+  local busy = false
+  local next_log = td_now_ns() + 10000000000
+  local next_valve: uint64 = 0
+  while true do
+    for k = 1, < nrings do
+      if td_pending(rings[k].r) > 0 then td_enter(rings[k].r, 0, 0, 0) end
+    end
+    if busy then td_enter(rings[0].r, 1, 64, 2000) else td_enter(rings[0].r, 1, 1, 250000) end
+    -- the other rings' task work: their completions (and the next steps of linked requests) are posted now, in
+    -- one go each. Every ring, every pass: what a deferred ring has waiting isn't always flagged.
+    for k = 1, < nrings do td_enter(rings[k].r, 1, 0, 0) end
+    now_s = time(nilptr)
+    local n = drain()
+    read_round()
+    run_batch()
+    inuse = 0
+    rings_check()
+    busy = n >= 16
+    local t = td_now_ns()
+    linger_sweep(t)
+    if t >= next_valve then
+      valve_update()
+      next_valve = t + 100000000
+    end
+    if t >= next_log then
+      log_stats()
+      next_log = t + 10000000000
+    end
+  end
+end

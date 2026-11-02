@@ -1,0 +1,21 @@
+--[[
+The $12 server challenge's feed API (SPEC.md) in Nelua: Lua's syntax, compiled to C. One thread serves every
+connection and request on io_uring; SQLite (compiled in) holds the data, with a second thread that only
+checkpoints its WAL. See server.nelua.
+]]
+## pragmas.nogc = true
+require 'server'
+
+local function env(name: cstring, default: cstring): cstring
+  local v = C.getenv(name)
+  if v == nilptr or (@Bytes)(v)[0] == 0 then return default end
+  return v
+end
+
+local path = C.getenv('SQLITE_PATH')
+local secret = C.getenv('JWT_SECRET')
+if path == nilptr or secret == nilptr then
+  C.fprintf(C.stderr, 'SQLITE_PATH and JWT_SECRET are required\n')
+  C.exit(1)
+end
+serve(path, secret, env('HOST', '0.0.0.0'), env('PORT', '3000'))

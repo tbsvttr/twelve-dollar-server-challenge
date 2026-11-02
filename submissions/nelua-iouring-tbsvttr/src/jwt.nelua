@@ -1,0 +1,204 @@
+-- HS256 tokens: SHA-256 (FIPS 180-4), HMAC with the key's inner and outer states computed once from JWT_SECRET
+-- (the key schedule, not a verification), and the checks every request's token goes through.
+require 'c'
+require 'json'
+
+local K: [64]uint32 = {
+  0x428a2f98, 0x71374491, 0xb5c0fbcf, 0xe9b5dba5, 0x3956c25b, 0x59f111f1, 0x923f82a4, 0xab1c5ed5,
+  0xd807aa98, 0x12835b01, 0x243185be, 0x550c7dc3, 0x72be5d74, 0x80deb1fe, 0x9bdc06a7, 0xc19bf174,
+  0xe49b69c1, 0xefbe4786, 0x0fc19dc6, 0x240ca1cc, 0x2de92c6f, 0x4a7484aa, 0x5cb0a9dc, 0x76f988da,
+  0x983e5152, 0xa831c66d, 0xb00327c8, 0xbf597fc7, 0xc6e00bf3, 0xd5a79147, 0x06ca6351, 0x14292967,
+  0x27b70a85, 0x2e1b2138, 0x4d2c6dfc, 0x53380d13, 0x650a7354, 0x766a0abb, 0x81c2c92e, 0x92722c85,
+  0xa2bfe8a1, 0xa81a664b, 0xc24b8b70, 0xc76c51a3, 0xd192e819, 0xd6990624, 0xf40e3585, 0x106aa070,
+  0x19a4c116, 0x1e376c08, 0x2748774c, 0x34b0bcb5, 0x391c0cb3, 0x4ed8aa4a, 0x5b9cca4f, 0x682e6ff3,
+  0x748f82ee, 0x78a5636f, 0x84c87814, 0x8cc70208, 0x90befffa, 0xa4506ceb, 0xbef9a3f7, 0xc67178f2
+}
+local H0: [8]uint32 = {0x6a09e667, 0xbb67ae85, 0x3c6ef372, 0xa54ff53a, 0x510e527f, 0x9b05688c, 0x1f83d9ab, 0x5be0cd19}
+
+local function rotr(x: uint32, n: uint32): uint32 <inline>
+  return (x >> n) | (x << (32 - n))
+end
+
+local function compress(h: *[8]uint32, p: Bytes): void
+  local w: [64]uint32
+  for i = 0, < 16 do
+    local q = i * 4
+    w[i] = ((@uint32)(p[q]) << 24) | ((@uint32)(p[q + 1]) << 16) | ((@uint32)(p[q + 2]) << 8) | (@uint32)(p[q + 3])
+  end
+  for i = 16, < 64 do
+    local s0 = rotr(w[i - 15], 7) ~ rotr(w[i - 15], 18) ~ (w[i - 15] >> 3)
+    local s1 = rotr(w[i - 2], 17) ~ rotr(w[i - 2], 19) ~ (w[i - 2] >> 10)
+    w[i] = w[i - 16] + s0 + w[i - 7] + s1
+  end
+  local a, b, c, d = h[0], h[1], h[2], h[3]
+  local e, f, g, hh = h[4], h[5], h[6], h[7]
+  for i = 0, < 64 do
+    local t1 = hh + (rotr(e, 6) ~ rotr(e, 11) ~ rotr(e, 25)) + ((e & f) ~ (~e & g)) + K[i] + w[i]
+    local t2 = (rotr(a, 2) ~ rotr(a, 13) ~ rotr(a, 22)) + ((a & b) ~ (a & c) ~ (b & c))
+    hh = g
+    g = f
+    f = e
+    e = d + t1
+    d = c
+    c = b
+    b = a
+    a = t1 + t2
+  end
+  h[0] = h[0] + a
+  h[1] = h[1] + b
+  h[2] = h[2] + c
+  h[3] = h[3] + d
+  h[4] = h[4] + e
+  h[5] = h[5] + f
+  h[6] = h[6] + g
+  h[7] = h[7] + hh
+end
+
+-- The digest of p[0, n), continuing from state h after `before` bytes (whole blocks) were hashed.
+local function finish(h: [8]uint32, before: uint64, p: Bytes, n: uint32, out: *[32]byte): void
+  local i: uint32 = 0
+  while n - i >= 64 do
+    compress(&h, (@Bytes)(&p[i]))
+    i = i + 64
+  end
+  local block: [128]byte
+  local rest = n - i
+  C.memcpy(&block[0], &p[i], rest)
+  block[rest] = 0x80
+  local len = 64
+  if rest >= 56 then len = 128 end
+  C.memset(&block[rest + 1], 0, len - rest - 1)
+  local bits = (before + n) * 8
+  for k = 0, < 8 do block[len - 1 - k] = (@byte)(bits >> (k * 8)) end
+  compress(&h, (@Bytes)(&block[0]))
+  if len == 128 then compress(&h, (@Bytes)(&block[64])) end
+  for k = 0, < 8 do
+    out[k * 4] = (@byte)(h[k] >> 24)
+    out[k * 4 + 1] = (@byte)(h[k] >> 16)
+    out[k * 4 + 2] = (@byte)(h[k] >> 8)
+    out[k * 4 + 3] = (@byte)(h[k])
+  end
+end
+
+global HmacKey = @record{inner: [8]uint32, outer: [8]uint32}
+
+function HmacKey.init(key: Bytes, n: uint32): HmacKey
+  local k: [64]byte
+  C.memset(&k[0], 0, 64)
+  if n > 64 then
+    local d: [32]byte
+    finish(H0, 0, key, n, &d)
+    C.memcpy(&k[0], &d[0], 32)
+  else
+    C.memcpy(&k[0], key, n)
+  end
+  local self: HmacKey
+  local pad: [64]byte
+  for i = 0, < 64 do pad[i] = k[i] ~ 0x36 end
+  self.inner = H0
+  compress(&self.inner, (@Bytes)(&pad[0]))
+  for i = 0, < 64 do pad[i] = k[i] ~ 0x5c end
+  self.outer = H0
+  compress(&self.outer, (@Bytes)(&pad[0]))
+  return self
+end
+
+function HmacKey:mac(p: Bytes, n: uint32, out: *[32]byte): void
+  local inner: [32]byte
+  finish(self.inner, 64, p, n, &inner)
+  finish(self.outer, 64, (@Bytes)(&inner[0]), 32, out)
+end
+
+local B64: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_'
+local B64V: [256]int16
+for i = 0, < 256 do B64V[i] = -1 end
+for i = 0, < 64 do B64V[B64.data[i]] = (@int16)(i) end
+
+-- base64url without padding into out[0, cap): the decoded length, or -1.
+local function b64_decode(p: Bytes, n: uint32, out: Bytes, cap: uint32): int32
+  local acc: uint32 = 0
+  local bits: uint32 = 0
+  local o: uint32 = 0
+  for i: uint32 = 0, < n do
+    local v = B64V[p[i]]
+    if v < 0 then return -1 end
+    acc = (acc << 6) | (@uint32)(v)
+    bits = bits + 6
+    if bits >= 8 then
+      bits = bits - 8
+      if o >= cap then return -1 end
+      out[o] = (@byte)(acc >> bits)
+      o = o + 1
+    end
+  end
+  if bits >= 6 then return -1 end   -- one leftover character can't encode a byte
+  return (@int32)(o)
+end
+
+global JWT_OK <comptime> = 0
+global JWT_INVALID <comptime> = 1   -- 401 invalid or expired token
+global JWT_PAYLOAD <comptime> = 2   -- 401 invalid token payload
+
+-- What a verified token says: the user id and the username (decoded, at most 255 bytes).
+global Claims = @record{sub: int64, name: [256]byte, name_len: uint32}
+
+-- A JSON number that is an integer we can compare with a clock: exp. false if it has a fraction or exponent we
+-- don't handle exactly, or is out of range.
+local function json_int(p: Bytes, n: uint32, v: *int64): boolean
+  local tmp: [40]byte
+  if n == 0 or n >= 40 then return false end
+  C.memcpy(&tmp[0], p, n)
+  tmp[n] = 0
+  local d = C.strtod((@cstring)(&tmp[0]), nilptr)
+  if not (d > -9.2e18 and d < 9.2e18) then return false end
+  $v = (@int64)(d)
+  if (@float64)($v) < d then $v = $v + 1 end   -- exp 1.5 still counts as later than 1
+  return true
+end
+
+-- Verifies `Bearer`'s token t[0, n) at time now (seconds): signature (HS256 only, compared in constant time),
+-- exp required and in the future; then sub must be a positive integer string and username a string.
+global function jwt_verify(key: *HmacKey, t: Bytes, n: uint32, now: int64, c: *Claims): int32
+  local d1: int32, d2: int32 = -1, -1
+  for i: uint32 = 0, < n do
+    if t[i] == '.'_b then
+      if d1 < 0 then d1 = (@int32)(i) elseif d2 < 0 then d2 = (@int32)(i) else return JWT_INVALID end
+    end
+  end
+  if d2 < 0 or n - (@uint32)(d2) - 1 ~= 43 then return JWT_INVALID end
+  -- the signature
+  local mac: [32]byte
+  key:mac(t, (@uint32)(d2), &mac)
+  local sig: [33]byte
+  if b64_decode(&t[d2 + 1], 43, (@Bytes)(&sig[0]), 33) ~= 32 then return JWT_INVALID end
+  local diff: byte = 0
+  for i = 0, < 32 do diff = diff | (mac[i] ~ sig[i]) end
+  if diff ~= 0 then return JWT_INVALID end
+  -- the header: alg must be HS256
+  local buf: [1024]byte
+  local hn = b64_decode(t, (@uint32)(d1), (@Bytes)(&buf[0]), 1024)
+  if hn < 0 then return JWT_INVALID end
+  local hf: [1]JsonField = {{key = 'alg'}}
+  if json_scan((@Bytes)(&buf[0]), (@uint32)(hn), (@*[0]JsonField)(&hf[0]), 1) ~= 1 then return JWT_INVALID end
+  if hf[0].kind ~= JSON_STRING or hf[0].n ~= 5 or C.memcmp(hf[0].p, (@cstring)('HS256'), 5) ~= 0 then return JWT_INVALID end
+  -- the payload
+  local pn = b64_decode(&t[d1 + 1], (@uint32)(d2 - d1 - 1), (@Bytes)(&buf[0]), 1024)
+  if pn < 0 then return JWT_INVALID end
+  local pf: [3]JsonField = {{key = 'exp'}, {key = 'sub'}, {key = 'username'}}
+  if json_scan((@Bytes)(&buf[0]), (@uint32)(pn), (@*[0]JsonField)(&pf[0]), 3) ~= 1 then return JWT_INVALID end
+  local exp: int64
+  if pf[0].kind ~= JSON_NUMBER or not json_int(pf[0].p, pf[0].n, &exp) or exp <= now then return JWT_INVALID end
+  if pf[1].kind ~= JSON_STRING or pf[1].n == 0 or pf[1].n > 16 or pf[2].kind ~= JSON_STRING then return JWT_PAYLOAD end
+  local sub: int64 = 0
+  for i: uint32 = 0, < pf[1].n do
+    local ch = pf[1].p[i]
+    if ch < '0'_b or ch > '9'_b then return JWT_PAYLOAD end
+    sub = sub * 10 + (ch - '0'_b)
+  end
+  if sub < 1 or sub > 9007199254740991 then return JWT_PAYLOAD end
+  local m = json_unescape(pf[2].p, pf[2].n, (@Bytes)(&c.name[0]), 256)
+  if m < 0 then return JWT_PAYLOAD end
+  c.sub = sub
+  c.name_len = (@uint32)(m)
+  return JWT_OK
+end

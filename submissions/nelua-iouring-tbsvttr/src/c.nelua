@@ -1,0 +1,133 @@
+-- The C the server calls into: libc, the io_uring ABI (uring.h) and SQLite with its B-tree layer (sql.h). Opaque C
+-- types (sqlite3, sqlite3_stmt, BtCursor, ...) are plain pointers here.
+require 'C.stdlib'
+require 'C.string'
+require 'C.stdio'
+require 'C.errno'
+
+## cinclude '"sql.h"'
+## cinclude '"uring.h"'
+## cinclude '<netinet/in.h>'
+## cinclude '<netinet/tcp.h>'
+## cinclude '<sys/socket.h>'
+## cinclude '<netdb.h>'
+## cinclude '<sys/resource.h>'
+## cinclude '<signal.h>'
+## linklib 'pthread'
+## linklib 'm'
+
+-- Bytes: raw memory indexed like a C array.
+global Bytes: type = @*[0]byte
+
+-- libc
+
+global EAGAIN: cint <cimport, nodecl>
+global EINTR: cint <cimport, nodecl>
+global ETIME: cint <cimport, nodecl>
+global ENFILE: cint <cimport, nodecl>
+global ENOBUFS: cint <cimport, nodecl>
+global ECANCELED: cint <cimport, nodecl>
+
+global sockaddr: type <cimport, nodecl, ctypedef> = @record{sa_family: cushort}
+global addrinfo: type <cimport, nodecl, ctypedef> = @record{
+  ai_flags: cint, ai_family: cint, ai_socktype: cint, ai_protocol: cint,
+  ai_addrlen: cuint, ai_addr: *sockaddr, ai_canonname: cstring, ai_next: pointer
+}
+global AF_UNSPEC: cint <cimport, nodecl>
+global SOCK_STREAM: cint <cimport, nodecl>
+global SOCK_CLOEXEC: cint <cimport, nodecl>
+global AI_PASSIVE: cint <cimport, nodecl>
+global SOL_SOCKET: cint <cimport, nodecl>
+global SO_REUSEADDR: cint <cimport, nodecl>
+global SO_REUSEPORT: cint <cimport, nodecl>
+global IPPROTO_TCP: cint <cimport, nodecl>
+global TCP_NODELAY: cint <cimport, nodecl>
+global TCP_DEFER_ACCEPT: cint <cimport, nodecl>
+global SOMAXCONN: cint <cimport, nodecl>
+global POLLIN: cuint <cimport, nodecl>
+global POLLRDHUP: cuint <cimport, nodecl>
+global POLLERR: cuint <cimport, nodecl>
+global POLLHUP: cuint <cimport, nodecl>
+global function getaddrinfo(node: cstring, service: cstring, hints: *addrinfo, res: **addrinfo): cint <cimport, nodecl> end
+global function freeaddrinfo(res: *addrinfo): void <cimport, nodecl> end
+global function gai_strerror(code: cint): cstring <cimport, nodecl> end
+global function socket(domain: cint, kind: cint, protocol: cint): cint <cimport, nodecl> end
+global function setsockopt(fd: cint, level: cint, name: cint, value: pointer, len: cuint): cint <cimport, nodecl> end
+global function bind(fd: cint, addr: *sockaddr, len: cuint): cint <cimport, nodecl> end
+global function listen(fd: cint, backlog: cint): cint <cimport, nodecl> end
+global function close(fd: cint): cint <cimport, nodecl> end
+global function memmem(hay: pointer, haylen: csize, needle: pointer, needlelen: csize): pointer <cimport, nodecl> end
+global function time(t: pointer): int64 <cimport, nodecl> end
+
+global rlimit: type <cimport, nodecl, ctypedef> = @record{rlim_cur: culong, rlim_max: culong}
+global RLIMIT_NOFILE: cint <cimport, nodecl>
+global function getrlimit(resource: cint, rl: *rlimit): cint <cimport, nodecl> end
+global function setrlimit(resource: cint, rl: *rlimit): cint <cimport, nodecl> end
+global SIGPIPE: cint <cimport, nodecl>
+global SIG_IGN: pointer <cimport, nodecl>
+global function signal(sig: cint, handler: pointer): pointer <cimport, nodecl> end
+
+-- io_uring (uring.h)
+
+global td_ring: type <cimport, nodecl, cincomplete, ctypedef> = @record{fd: cint, efd: cint}
+global function td_ring_new(): *td_ring <cimport, nodecl> end
+global function td_pages(n: usize): pointer <cimport, nodecl> end
+global function td_mem_avail(): int64 <cimport, nodecl> end
+global function td_unpages(p: pointer, n: usize): void <cimport, nodecl> end
+global function td_ring_init(r: *td_ring, sq: cuint, cq: cuint, nslots: cuint, primary: cint): cint <cimport, nodecl> end
+global function td_ring_eventfd(r: *td_ring): cint <cimport, nodecl> end
+global function td_enter(r: *td_ring, wait: cint, min: cuint, timeout_us: clonglong): clong <cimport, nodecl> end
+global function td_pending(r: *td_ring): cuint <cimport, nodecl> end
+global function td_has_work(r: *td_ring): cint <cimport, nodecl> end
+global function td_cq_ready(r: *td_ring): cuint <cimport, nodecl> end
+global function td_cqe(r: *td_ring, i: cuint): pointer <cimport, nodecl> end
+global function td_cq_advance(r: *td_ring, n: cuint): void <cimport, nodecl> end
+global function td_cqe_ud(c: pointer): uint64 <cimport, nodecl> end
+global function td_cqe_res(c: pointer): int32 <cimport, nodecl> end
+global function td_cqe_more(c: pointer): cint <cimport, nodecl> end
+global function td_accept(r: *td_ring, listen_fd: cint, ud: uint64): void <cimport, nodecl> end
+global function td_poll(r: *td_ring, slot: cuint, ud: uint64): void <cimport, nodecl> end
+global function td_poll_fd(r: *td_ring, fd: cint, ud: uint64): void <cimport, nodecl> end
+global function td_recv(r: *td_ring, slot: cuint, buf: pointer, len: cuint, ud: uint64): void <cimport, nodecl> end
+global function td_send(r: *td_ring, slot: cuint, buf: pointer, len: cuint, ud: uint64): void <cimport, nodecl> end
+global function td_close(r: *td_ring, slot: cuint, poll_ud: uint64, has_poll: cint, skip_ud: uint64, ud: uint64): void <cimport, nodecl> end
+global function td_cancel(r: *td_ring, target: uint64, ud: uint64): void <cimport, nodecl> end
+
+-- SQLite (sql.h): the C API, the B-tree layer and the checkpoint thread
+
+global SQLITE_OK: cint <cimport, nodecl>
+global SQLITE_ROW: cint <cimport, nodecl>
+global SQLITE_DONE: cint <cimport, nodecl>
+global SQLITE_STATIC: pointer <cimport, nodecl>
+global function sqlite3_initialize(): cint <cimport, nodecl> end
+global function sqlite3_close(db: pointer): cint <cimport, nodecl> end
+global function sqlite3_errmsg(db: pointer): cstring <cimport, nodecl> end
+global function sqlite3_step(st: pointer): cint <cimport, nodecl> end
+global function sqlite3_reset(st: pointer): cint <cimport, nodecl> end
+global function sqlite3_bind_int64(st: pointer, i: cint, v: int64): cint <cimport, nodecl> end
+global function sqlite3_bind_text(st: pointer, i: cint, p: pointer, n: cint, destructor: pointer): cint <cimport, nodecl> end
+global function sqlite3_column_int64(st: pointer, i: cint): int64 <cimport, nodecl> end
+global function sqlite3_column_text(st: pointer, i: cint): Bytes <cimport, nodecl> end
+global function sqlite3_column_bytes(st: pointer, i: cint): cint <cimport, nodecl> end
+global function sqlite3_changes(db: pointer): cint <cimport, nodecl> end
+global function sqlite3_last_insert_rowid(db: pointer): int64 <cimport, nodecl> end
+global function td_open(path: cstring, vfs: cstring, rc: *cint): pointer <cimport, nodecl> end
+global function td_prepare(db: pointer, sql: cstring): pointer <cimport, nodecl> end
+global function td_exec(db: pointer, sql: cstring): cint <cimport, nodecl> end
+global function td_lock_code(): cint <cimport, nodecl> end
+global function td_btree(db: pointer): pointer <cimport, nodecl> end
+global function td_keyinfo(db: pointer, nkey: cint, nextra: cint, desc: cint): pointer <cimport, nodecl> end
+global function td_cursor_alloc(): pointer <cimport, nodecl> end
+global function td_read_begin(bt: pointer): cint <cimport, nodecl> end
+global function td_cursor_open(bt: pointer, root: cint, ki: pointer, c: pointer): cint <cimport, nodecl> end
+global function td_cursor_close(c: pointer): void <cimport, nodecl> end
+global function td_first(c: pointer): cint <cimport, nodecl> end
+global function td_next(c: pointer): cint <cimport, nodecl> end
+global function td_seek(c: pointer, rowid: int64): cint <cimport, nodecl> end
+global function td_seek_ge(c: pointer, rowid: int64): cint <cimport, nodecl> end
+global function td_index_ge(c: pointer, ki: pointer, k: int64): cint <cimport, nodecl> end
+global function td_rowid(c: pointer): int64 <cimport, nodecl> end
+global function td_record(c: pointer, n: *uint32, spill: *Bytes, cap: *uint32): Bytes <cimport, nodecl> end
+global function td_ckpt_start(main: pointer, c2: pointer): cint <cimport, nodecl> end
+global function td_writes_allowed(main: pointer): cint <cimport, nodecl> end
+global function td_now_ns(): uint64 <cimport, nodecl> end

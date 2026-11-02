@@ -1,0 +1,291 @@
+-- JSON input: a validating scanner for request bodies and token parts, which also hands back the raw values of
+-- the top-level fields asked for, and the decoder for string values.
+require 'c'
+
+global JSON_STRING <comptime> = 1
+global JSON_NUMBER <comptime> = 2
+global JSON_OTHER <comptime> = 3
+
+-- A top-level field asked for: its value's type and raw span (a string's without its quotes, still escaped).
+global JsonField = @record{key: string, kind: int32, p: Bytes, n: uint32}
+
+local Scan = @record{p: Bytes, n: uint32, i: uint32}
+
+local function skip_ws(s: *Scan): void <inline>
+  while s.i < s.n do
+    local c = s.p[s.i]
+    if c ~= ' '_b and c ~= '\t'_b and c ~= '\n'_b and c ~= '\r'_b then break end
+    s.i = s.i + 1
+  end
+end
+
+local function is_hex(c: byte): boolean <inline>
+  return (c >= '0'_b and c <= '9'_b) or (c >= 'a'_b and c <= 'f'_b) or (c >= 'A'_b and c <= 'F'_b)
+end
+
+-- At a quote: a string, escapes checked. Leaves i after the closing quote.
+local function scan_string(s: *Scan): boolean
+  s.i = s.i + 1
+  while s.i < s.n do
+    local c = s.p[s.i]
+    if c == '"'_b then
+      s.i = s.i + 1
+      return true
+    elseif c == '\\'_b then
+      if s.i + 1 >= s.n then return false end
+      local e = s.p[s.i + 1]
+      if e == 'u'_b then
+        if s.i + 5 >= s.n then return false end
+        for k: uint32 = 2, 5 do
+          if not is_hex(s.p[s.i + k]) then return false end
+        end
+        s.i = s.i + 6
+      elseif e == '"'_b or e == '\\'_b or e == '/'_b or e == 'b'_b or e == 'f'_b or e == 'n'_b or e == 'r'_b or e == 't'_b then
+        s.i = s.i + 2
+      else
+        return false
+      end
+    elseif c < 0x20 then
+      return false
+    else
+      s.i = s.i + 1
+    end
+  end
+  return false
+end
+
+local function digits(s: *Scan): uint32 <inline>
+  local start = s.i
+  while s.i < s.n and s.p[s.i] >= '0'_b and s.p[s.i] <= '9'_b do s.i = s.i + 1 end
+  return s.i - start
+end
+
+-- -?(0|[1-9][0-9]*)(.[0-9]+)?([eE][+-]?[0-9]+)?
+local function scan_number(s: *Scan): boolean
+  if s.p[s.i] == '-'_b then s.i = s.i + 1 end
+  if s.i >= s.n then return false end
+  if s.p[s.i] == '0'_b then
+    s.i = s.i + 1
+  elseif digits(s) == 0 then
+    return false
+  end
+  if s.i < s.n and s.p[s.i] == '.'_b then
+    s.i = s.i + 1
+    if digits(s) == 0 then return false end
+  end
+  if s.i < s.n and (s.p[s.i] == 'e'_b or s.p[s.i] == 'E'_b) then
+    s.i = s.i + 1
+    if s.i < s.n and (s.p[s.i] == '+'_b or s.p[s.i] == '-'_b) then s.i = s.i + 1 end
+    if digits(s) == 0 then return false end
+  end
+  return true
+end
+
+local function scan_word(s: *Scan, w: string): boolean
+  if s.n - s.i < w.size or C.memcmp(&s.p[s.i], w.data, w.size) ~= 0 then return false end
+  s.i = s.i + (@uint32)(w.size)
+  return true
+end
+
+-- One value at i (whitespace skipped before it). Its kind, or -1 if malformed. Nested values are only checked.
+local function scan_value(s: *Scan, depth: int32): int32
+  skip_ws(s)
+  if s.i >= s.n or depth > 64 then return -1 end
+  local c = s.p[s.i]
+  if c == '"'_b then
+    if scan_string(s) then return JSON_STRING end
+    return -1
+  elseif c == '{'_b or c == '['_b then
+    local close: byte = ']'_b
+    if c == '{'_b then close = '}'_b end
+    s.i = s.i + 1
+    skip_ws(s)
+    if s.i < s.n and s.p[s.i] == close then
+      s.i = s.i + 1
+      return JSON_OTHER
+    end
+    while true do
+      if c == '{'_b then
+        skip_ws(s)
+        if s.i >= s.n or s.p[s.i] ~= '"'_b or not scan_string(s) then return -1 end
+        skip_ws(s)
+        if s.i >= s.n or s.p[s.i] ~= ':'_b then return -1 end
+        s.i = s.i + 1
+      end
+      if scan_value(s, depth + 1) < 0 then return -1 end
+      skip_ws(s)
+      if s.i >= s.n then return -1 end
+      if s.p[s.i] == close then
+        s.i = s.i + 1
+        return JSON_OTHER
+      end
+      if s.p[s.i] ~= ','_b then return -1 end
+      s.i = s.i + 1
+    end
+  elseif c == '-'_b or (c >= '0'_b and c <= '9'_b) then
+    if scan_number(s) then return JSON_NUMBER end
+    return -1
+  elseif scan_word(s, 'true') or scan_word(s, 'false') or scan_word(s, 'null') then
+    return JSON_OTHER
+  end
+  return -1
+end
+
+local function hex4(p: Bytes): uint32 <inline>
+  local v: uint32 = 0
+  for k = 0, < 4 do
+    local c = p[k]
+    local d: uint32
+    if c <= '9'_b then d = c - '0'_b elseif c <= 'F'_b then d = c - 'A'_b + 10 else d = c - 'a'_b + 10 end
+    v = (v << 4) | d
+  end
+  return v
+end
+
+-- The code point cp in UTF-8 at out[o]; the new offset, or -1 if it doesn't fit.
+local function put_utf8(out: Bytes, o: uint32, cap: uint32, cp: uint32): int32
+  if cp < 0x80 then
+    if o + 1 > cap then return -1 end
+    out[o] = (@byte)(cp)
+    return o + 1
+  elseif cp < 0x800 then
+    if o + 2 > cap then return -1 end
+    out[o] = (@byte)(0xC0 | (cp >> 6))
+    out[o + 1] = (@byte)(0x80 | (cp & 0x3F))
+    return o + 2
+  elseif cp < 0x10000 then
+    if o + 3 > cap then return -1 end
+    out[o] = (@byte)(0xE0 | (cp >> 12))
+    out[o + 1] = (@byte)(0x80 | ((cp >> 6) & 0x3F))
+    out[o + 2] = (@byte)(0x80 | (cp & 0x3F))
+    return o + 3
+  end
+  if o + 4 > cap then return -1 end
+  out[o] = (@byte)(0xF0 | (cp >> 18))
+  out[o + 1] = (@byte)(0x80 | ((cp >> 12) & 0x3F))
+  out[o + 2] = (@byte)(0x80 | ((cp >> 6) & 0x3F))
+  out[o + 3] = (@byte)(0x80 | (cp & 0x3F))
+  return o + 4
+end
+
+-- Decodes a string value's raw span (already validated by json_scan) into out[0, cap). Its length, or -1 if it
+-- doesn't fit. A lone surrogate becomes U+FFFD, as it can't be UTF-8.
+global function json_unescape(p: Bytes, n: uint32, out: Bytes, cap: uint32): int32
+  local o: uint32 = 0
+  local i: uint32 = 0
+  while i < n do
+    local c = p[i]
+    if c ~= '\\'_b then
+      if o >= cap then return -1 end
+      out[o] = c
+      o = o + 1
+      i = i + 1
+    else
+      local e = p[i + 1]
+      local r: byte = 0
+      if e == 'u'_b then
+        local cp = hex4(&p[i + 2])
+        i = i + 6
+        if cp >= 0xD800 and cp <= 0xDBFF then
+          if i + 5 < n and p[i] == '\\'_b and p[i + 1] == 'u'_b then
+            local lo = hex4(&p[i + 2])
+            if lo >= 0xDC00 and lo <= 0xDFFF then
+              cp = 0x10000 + ((cp - 0xD800) << 10) + (lo - 0xDC00)
+              i = i + 6
+            else
+              cp = 0xFFFD
+            end
+          else
+            cp = 0xFFFD
+          end
+        elseif cp >= 0xDC00 and cp <= 0xDFFF then
+          cp = 0xFFFD
+        end
+        local no = put_utf8(out, o, cap, cp)
+        if no < 0 then return -1 end
+        o = (@uint32)(no)
+      else
+        if e == 'n'_b then r = '\n'_b
+        elseif e == 't'_b then r = '\t'_b
+        elseif e == 'r'_b then r = '\r'_b
+        elseif e == 'b'_b then r = 8
+        elseif e == 'f'_b then r = 12
+        else r = e end
+        if o >= cap then return -1 end
+        out[o] = r
+        o = o + 1
+        i = i + 2
+      end
+    end
+  end
+  return (@int32)(o)
+end
+
+-- Does the raw (escaped) key k[0, n) spell `want`? Keys with escapes are decoded first.
+local function key_is(k: Bytes, n: uint32, want: string): boolean
+  if C.memchr(k, '\\'_b, n) == nilptr then
+    return n == want.size and C.memcmp(k, want.data, n) == 0
+  end
+  local tmp: [64]byte
+  local m = json_unescape(k, n, (@Bytes)(&tmp[0]), 64)
+  return m == (@int32)(want.size) and C.memcmp(&tmp[0], want.data, want.size) == 0
+end
+
+-- Validates the document p[0, n). -1 if it isn't JSON; 1 if it is an object, and then the fields asked for get
+-- their values (the last of duplicate keys, as JSON.parse keeps); 0 for any other JSON value.
+global function json_scan(p: Bytes, n: uint32, want: *[0]JsonField, nwant: int32): int32
+  for k = 0, < nwant do want[k].kind = 0 end
+  local s: Scan = {p = p, n = n, i = 0}
+  skip_ws(&s)
+  if s.i >= s.n then return -1 end
+  if s.p[s.i] ~= '{'_b then
+    if scan_value(&s, 0) < 0 then return -1 end
+    skip_ws(&s)
+    if s.i == s.n then return 0 end
+    return -1
+  end
+  s.i = s.i + 1
+  skip_ws(&s)
+  if s.i < s.n and s.p[s.i] == '}'_b then
+    s.i = s.i + 1
+  else
+    while true do
+      skip_ws(&s)
+      if s.i >= s.n or s.p[s.i] ~= '"'_b then return -1 end
+      local k0 = s.i + 1
+      if not scan_string(&s) then return -1 end
+      local kn = s.i - 1 - k0
+      skip_ws(&s)
+      if s.i >= s.n or s.p[s.i] ~= ':'_b then return -1 end
+      s.i = s.i + 1
+      skip_ws(&s)
+      local v0 = s.i
+      local kind = scan_value(&s, 1)
+      if kind < 0 then return -1 end
+      for k = 0, < nwant do
+        if key_is(&p[k0], kn, want[k].key) then
+          want[k].kind = kind
+          if kind == JSON_STRING then
+            want[k].p = &p[v0 + 1]
+            want[k].n = s.i - v0 - 2
+          else
+            want[k].p = &p[v0]
+            want[k].n = s.i - v0
+          end
+        end
+      end
+      skip_ws(&s)
+      if s.i >= s.n then return -1 end
+      if s.p[s.i] == '}'_b then
+        s.i = s.i + 1
+        break
+      end
+      if s.p[s.i] ~= ','_b then return -1 end
+      s.i = s.i + 1
+    end
+  end
+  skip_ws(&s)
+  if s.i == s.n then return 1 end
+  return -1
+end
+
