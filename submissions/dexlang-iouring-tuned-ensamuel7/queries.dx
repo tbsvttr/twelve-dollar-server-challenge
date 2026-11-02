@@ -1,0 +1,81 @@
+import "github.com/ensamuel7/dex-modules/dexqu" as "q"
+
+fn posts(): q.Select {
+    let likes: q.Select = q.from("likes l")
+        .select([q.countAll()])
+        .where(q.col("l.post_id").eq(q.col("p.id")))
+
+    return q.from("posts p")
+        .select([q.col("p.id"), q.col("p.body"), q.col("p.created_at"), q.col("u.username"), q.sub(likes)])
+        .join("users u", q.col("u.id").eq(q.col("p.user_id")))
+}
+
+fn feed(): string throws q.QueryError {
+    return posts()
+        .orderBy("p.created_at DESC")
+        .orderBy("p.id DESC")
+        .limitExpr(q.raw("20"))
+        .build(q.Dialect.SQLite).sql
+}
+
+fn onePost(): string throws q.QueryError {
+    return posts().where(q.col("p.id").eq(q.param("id"))).build(q.Dialect.SQLite).sql
+}
+
+fn insertPost(): string throws q.QueryError {
+    return q.insertInto("posts")
+        .columns(["user_id", "body"])
+        .values([q.param("user_id"), q.param("body")])
+        .returning(["id", "created_at"])
+        .build(q.Dialect.SQLite).sql
+}
+
+fn postExists(): string throws q.QueryError {
+    return q.select([q.raw("1")])
+        .from("posts")
+        .where(q.col("id").eq(q.param("id")))
+        .build(q.Dialect.SQLite).sql
+}
+
+fn like(): string throws q.QueryError {
+    return q.insertInto("likes")
+        .columns(["user_id", "post_id"])
+        .values([q.param("user_id"), q.param("post_id")])
+        .onConflict(["user_id", "post_id"])
+        .doNothing()
+        .returning(["post_id"])
+        .build(q.Dialect.SQLite).sql
+}
+
+fn ping(): string throws q.QueryError {
+    return q.select([q.raw("1")]).build(q.Dialect.SQLite).sql
+}
+
+// The feed in three steps instead of a correlated count and a join per post:
+// the 20 newest ids, then one range scan of each table over the span they
+// cover. New posts get consecutive ids, so the span is normally 20.
+fn newestIds(): string throws q.QueryError {
+    return q.from("posts")
+        .select([q.col("id")])
+        .orderBy("created_at DESC")
+        .orderBy("id DESC")
+        .limitExpr(q.raw("20"))
+        .build(q.Dialect.SQLite).sql
+}
+
+fn likeCounts(): string throws q.QueryError {
+    return q.from("likes")
+        .select([q.col("post_id"), q.countAll()])
+        .where(q.col("post_id").between(q.param("lo"), q.param("hi")))
+        .groupBy(["post_id"])
+        .build(q.Dialect.SQLite).sql
+}
+
+// The post object's columns, like_count filled in from likeCounts.
+fn postRange(): string throws q.QueryError {
+    return q.from("posts p")
+        .select([q.col("p.id"), q.col("p.body"), q.col("p.created_at"), q.col("u.username"), q.raw("0")])
+        .join("users u", q.col("u.id").eq(q.col("p.user_id")))
+        .where(q.col("p.id").between(q.param("lo"), q.param("hi")))
+        .build(q.Dialect.SQLite).sql
+}
