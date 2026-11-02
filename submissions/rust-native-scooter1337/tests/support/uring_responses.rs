@@ -131,3 +131,138 @@ fn failed_commit_preserves_continue_order_and_rolls_back_writes() {
     drop(reopened);
     std::fs::remove_file(fixture).unwrap();
 }
+
+#[test]
+#[ignore = "requires a seeded SQLITE_PATH and Linux io_uring"]
+fn held_write_survives_eof_and_resumes_once() {
+    let _fixture = crate::SEEDED_TEST.lock().unwrap();
+    let fixture = std::env::temp_dir().join(format!("held-eof-{}.db", std::process::id()));
+    std::fs::copy(std::env::var("SQLITE_PATH").unwrap(), &fixture).unwrap();
+    {
+        let mut app = App {
+            db: crate::db::Db::open(fixture.to_str().unwrap(), true),
+            auth: crate::Auth::new("twelve-dollar-challenge"),
+            start: Instant::now(),
+        };
+        let listener = TcpListener::bind("127.0.0.1:0").unwrap();
+        let mut w = Worker::new(listener.as_raw_fd(), 4096).unwrap();
+        w.clients.push(Client { state: LIVE, ..Default::default() });
+        let body = r#"{"body":"held"}"#;
+        let request = format!("POST /posts HTTP/1.1\r\nHost: test\r\nAuthorization: Bearer {}\r\nContent-Length: {}\r\n\r\n{}",
+            std::env::var("CHECK_TOKEN").unwrap(), body.len(), body);
+        app.db.hold_writes_for_test(true);
+        w.process(0, request.as_bytes(), &mut app);
+        w.on_recv(0, 0, 0, 0, &mut app);
+        assert_eq!(w.held.len(), 1);
+        for _ in 0..3 { w.tick(&mut app); }
+        assert!(w.ready.is_empty());
+        assert!(!app.db.transaction);
+        assert_eq!(w.clients[0].input.bytes(), request.as_bytes());
+        assert_ne!(w.clients[0].state & EOF, 0);
+        app.db.hold_writes_for_test(false);
+        w.tick(&mut app);
+        assert!(app.db.commit());
+        assert!(w.held.is_empty());
+        assert!(w.clients[0].input.bytes().is_empty());
+        assert_ne!(w.clients[0].state & CLOSING, 0);
+        let output = w.clients[0].output.bytes();
+        assert!(output.starts_with(b"HTTP/1.1 201 Created\r\n"));
+        assert_eq!(w.pending[0].count, 1);
+        let at = output.windows(4).position(|s| s == b"\r\n\r\n").unwrap() + 4;
+        let post: serde_json::Value = serde_json::from_slice(&output[at..]).unwrap();
+        let mut out = Vec::new();
+        assert_eq!(app.db.read(post["post"]["id"].as_i64(), &mut out), 200);
+        assert_eq!(serde_json::from_slice::<serde_json::Value>(&out).unwrap()["post"]["body"], "held");
+    }
+    std::fs::remove_file(fixture).unwrap();
+}
+
+#[test]
+#[ignore = "requires Linux io_uring"]
+fn writer_replies_preserve_eof_and_reject_reused_slots() {
+    let listener = TcpListener::bind("127.0.0.1:0").unwrap();
+    let mut worker = Worker::new(listener.as_raw_fd(), 4096).unwrap();
+    worker.clients.push(Client { generation: 2, state: LIVE | WRITING | EOF, ..Default::default() });
+    worker.written(WriteJob { fd: 0, generation: 1, status: 201, body: b"stale".to_vec(), ..Default::default() });
+    assert!(worker.clients[0].output.bytes().is_empty());
+    assert_ne!(worker.clients[0].state & WRITING, 0);
+    worker.written(WriteJob { fd: 0, generation: 2, status: 201, body: b"committed".to_vec(), ..Default::default() });
+    assert_eq!(worker.clients[0].state & WRITING, 0);
+    assert_ne!(worker.clients[0].state & CLOSING, 0);
+    assert!(worker.clients[0].output.bytes().ends_with(b"committed"));
+    assert_eq!(worker.pending[0].count, 1);
+
+    worker.clients[0] = Client { generation: 3, state: LIVE | WRITING, ..Default::default() };
+    worker.clients[0].input.extend(b"GET /feed HTTP/1.1\r\nHost: test\r\n\r\n");
+    worker.pending.clear();
+    worker.written(WriteJob { fd: 0, generation: 3, status: 201, ..Default::default() });
+    assert_eq!(worker.ready.pop_front(), Some((0, 3)));
+    assert_eq!(worker.clients[0].state & (WRITING | CLOSING), 0);
+}
+
+#[test]
+#[ignore = "requires a seeded SQLITE_PATH, CHECK_TOKEN and Linux io_uring"]
+fn queued_write_survives_receive_eof() {
+    let _fixture = crate::SEEDED_TEST.lock().unwrap();
+    let path = std::env::temp_dir().join(format!("writer-eof-{}.db", std::process::id()));
+    std::fs::copy(std::env::var("SQLITE_PATH").unwrap(), &path).unwrap();
+    {
+        let mut app = App {
+            db: crate::db::Db::open(path.to_str().unwrap(), true),
+            auth: crate::Auth::new("twelve-dollar-challenge"),
+            start: Instant::now(),
+        };
+        let writer = Writer::new(path.to_str().unwrap().to_owned(),
+            "twelve-dollar-challenge".to_owned(), app.start, true).unwrap();
+        let listener = TcpListener::bind("127.0.0.1:0").unwrap();
+        let mut w = Worker::new(listener.as_raw_fd(), 4096).unwrap();
+        w.writer = Some(writer.sender.clone());
+        w.clients.push(Client { state: LIVE | RECEIVING, ..Default::default() });
+        let body = r#"{"body":"async EOF"}"#;
+        let raw = format!("POST /posts HTTP/1.1\r\nHost: test\r\nAuthorization: Bearer {}\r\nContent-Length: {}\r\n\r\n{}",
+            std::env::var("CHECK_TOKEN").unwrap(), body.len(), body);
+        w.process(0, raw.as_bytes(), &mut app);
+        assert_ne!(w.clients[0].state & WRITING, 0);
+        assert!(w.clients[0].input.bytes().is_empty());
+        w.on_recv(0, 0, 0, 0, &mut app);
+        assert_ne!(w.clients[0].state & EOF, 0);
+        assert_eq!(w.clients[0].state & CLOSING, 0);
+        assert!(w.clients[0].output.bytes().is_empty());
+        let job = writer.replies.as_ref().unwrap().recv_timeout(Duration::from_secs(30)).unwrap();
+        assert_eq!(job.status, 201);
+        let value: serde_json::Value = serde_json::from_slice(&job.body).unwrap();
+        let id = value["post"]["id"].as_i64().unwrap();
+        w.written(job);
+        assert_ne!(w.clients[0].state & CLOSING, 0);
+        assert_eq!(w.clients[0].state & WRITING, 0);
+        assert_eq!(w.pending[0].count, 1);
+        assert!(w.clients[0].output.bytes().starts_with(b"HTTP/1.1 201 Created\r\n"));
+        assert_eq!(app.db.read(Some(id), &mut Vec::new()), 200);
+    }
+    std::fs::remove_file(path).unwrap();
+}
+
+#[test]
+#[ignore = "requires a seeded SQLITE_PATH and Linux io_uring"]
+fn closing_eof_releases_pipelined_input_without_idle_sweep() {
+    let _fixture = crate::SEEDED_TEST.lock().unwrap();
+    let mut app = App {
+        db: crate::db::Db::open(&std::env::var("SQLITE_PATH").unwrap(), true),
+        auth: crate::Auth::new("twelve-dollar-challenge"),
+        start: Instant::now(),
+    };
+    let listener = TcpListener::bind("127.0.0.1:0").unwrap();
+    let mut worker = Worker::new(listener.as_raw_fd(), 4096).unwrap();
+    let mut client = Client {
+        generation: 7, state: LIVE | CLOSING | RECEIVING | SHUT, ..Default::default()
+    };
+    client.input.extend(b"GET /feed HTTP/1.1\r\nHost: test\r\n\r\n");
+    worker.clients.push(client);
+    worker.open = 1;
+    worker.on_recv(0, 7, 0, 0, &mut app);
+    assert_eq!(worker.open, 0);
+    assert_eq!(worker.clients[0].state, 0);
+    assert_eq!(worker.clients[0].generation, 8);
+    assert_eq!(worker.clients[0].input.cap, 0);
+    assert!(worker.ready.is_empty());
+}

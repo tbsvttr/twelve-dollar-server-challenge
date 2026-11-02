@@ -1,6 +1,6 @@
 //! Completion-based Linux I/O. Fixed descriptors belong to each ring, rather than
 //! the process file table. One issuer owns all rings and the request connection.
-use crate::{App, Parsed, error, frame};
+use crate::{App, Parsed, error, frame, writer::{WriteJob, WriteSender, Writer}};
 use io_uring::{IoUring, cqueue, opcode, squeue, types};
 use std::{
     alloc::{Layout, alloc, dealloc, handle_alloc_error, realloc},
@@ -9,13 +9,14 @@ use std::{
     net::TcpListener,
     os::fd::{AsRawFd, FromRawFd, OwnedFd},
     ptr::{self, NonNull},
-    sync::atomic::{AtomicU16, Ordering},
+    sync::{atomic::{AtomicU16, Ordering}, mpsc::{self, TrySendError}},
     time::{Duration, Instant},
 };
 
 const MAX_WORKERS: usize = 8;
+const CQ_BATCH: usize = 2048;
 const TARGET_SLOTS: usize = MAX_WORKERS * 65535;
-const NBUFS: usize = 1024;
+const NBUFS: usize = 4096;
 const BUFSIZE: usize = 2048;
 const INPUT_LIMIT: usize = 1_114_112;
 const OUTPUT_HIGH: usize = 65536;
@@ -33,8 +34,11 @@ const PAUSED: u32 = 32;
 const DIRTY: u32 = 64;
 const CONTINUED: u32 = 128;
 const READY: u32 = 256;
+const HELD: u32 = 512;
 const REARM: u32 = 1024;
-const INDEX_SHIFT: u32 = 11;
+const EOF: u32 = 2048;
+const WRITING: u32 = 4096;
+const INDEX_SHIFT: u32 = 13;
 const FLAG_MASK: u32 = (1 << INDEX_SHIFT) - 1;
 
 #[derive(Clone, Copy)]
@@ -181,6 +185,7 @@ struct Pending {
     count: u32,
     interim: bool,
 }
+
 impl Pending {
     #[cold]
     fn rollback(&self, output: &mut Buffer, close: bool, body: &[u8]) {
@@ -250,7 +255,13 @@ struct Worker {
     accept_generation: u32,
     open: usize,
     ready: VecDeque<(usize, u32)>,
+    held: VecDeque<(usize, u32)>,
+    writer: Option<WriteSender>,
+    writer_full: bool,
+    write_pool: Vec<WriteJob>,
+    index: usize,
     completions: Vec<(u64, i32, u32)>,
+    backlog: VecDeque<(u64, i32, u32)>,
     pending: Vec<Pending>,
     pool: Vec<Buffer>,
     body: Vec<u8>,
@@ -298,7 +309,13 @@ impl Worker {
             accept_generation: 0,
             open: 0,
             ready: VecDeque::new(),
-            completions: Vec::with_capacity(16384),
+            held: VecDeque::new(),
+            writer: None,
+            writer_full: false,
+            write_pool: Vec::new(),
+            index: 0,
+            completions: Vec::with_capacity(CQ_BATCH),
+            backlog: VecDeque::new(),
             pending: Vec::with_capacity(1024),
             pool: Vec::with_capacity(256),
             body: Vec::with_capacity(16384),
@@ -312,6 +329,13 @@ impl Worker {
         w.publish_buffers();
         Ok(w)
     }
+    fn submit(&mut self) -> io::Result<bool> {
+        match self.ring.submit() {
+            Ok(_) => Ok(true),
+            Err(e) if matches!(e.raw_os_error(), Some(libc::EINTR | libc::EAGAIN | libc::EBUSY)) => Ok(false),
+            Err(e) => Err(e),
+        }
+    }
     fn queue(&mut self, entry: squeue::Entry) {
         loop {
             // Every pointer in an SQE refers to a mapping or a flight Buffer
@@ -321,7 +345,16 @@ impl Worker {
             }
             // Return completed buffers before submitting any rearmed receives.
             self.publish_buffers();
-            self.ring.submit().expect("submit full I/O queue");
+            match self.submit() {
+                Ok(true) => {}
+                Ok(false) => {
+                    // CQ pressure can prevent SQ progress. Retain every CQE
+                    // for the next bounded pass before retrying this SQE.
+                    self.backlog.extend(self.ring.completion()
+                        .map(|c| (c.user_data(), c.result(), c.flags())));
+                }
+                Err(e) => panic!("submit full I/O queue: {e}"),
+            }
         }
     }
     fn accept(&mut self) {
@@ -418,9 +451,16 @@ impl Worker {
     }
     fn schedule(&mut self, fd: usize) {
         let c = &mut self.clients[fd];
-        if c.state & READY == 0 {
+        if c.state & (READY | HELD | WRITING) == 0 {
             c.state |= READY;
             self.ready.push_back((fd, c.generation));
+        }
+    }
+    fn hold(&mut self, fd: usize) {
+        let c = &mut self.clients[fd];
+        if c.state & HELD == 0 {
+            c.state |= HELD;
+            self.held.push_back((fd, c.generation));
         }
     }
     fn pause(&mut self, fd: usize) {
@@ -470,7 +510,7 @@ impl Worker {
     }
     fn process(&mut self, fd: usize, bytes: &[u8], app: &mut App) {
         let mut saved = std::mem::take(&mut self.clients[fd].input);
-        if self.clients[fd].state & PAUSED != 0 {
+        if self.clients[fd].state & (PAUSED | WRITING) != 0 {
             if saved.len as usize + bytes.len() <= INPUT_LIMIT {
                 saved.extend(bytes);
             } else {
@@ -496,13 +536,46 @@ impl Worker {
         let initial = self.clients[fd].output.len;
         let mut closing = false;
         let mut deferred = false;
+        let mut held = false;
         while offset < input.len() {
             match frame(&input[offset..]) {
                 Ok(Parsed::Complete(req)) => {
+                    if req.method == "POST" && self.writer.is_some() {
+                        if self.writer_full || !self.writer.as_ref().unwrap().available(req.consumed) {
+                            self.writer_full = true;
+                            held = true;
+                            deferred = true;
+                            break;
+                        }
+                        let mut job = self.write_pool.pop().unwrap_or_default();
+                        job.ring = self.index;
+                        job.fd = fd;
+                        job.generation = self.clients[fd].generation;
+                        job.status = 0;
+                        job.request.clear();
+                        job.request.extend_from_slice(&input[offset..offset + req.consumed]);
+                        let writer = self.writer.as_ref().unwrap();
+                        match writer.try_send(job) {
+                            Ok(()) => {
+                                self.clients[fd].state = (self.clients[fd].state | WRITING) & !CONTINUED;
+                                offset += req.consumed;
+                                deferred = true;
+                            }
+                            Err(TrySendError::Full(job)) => {
+                                self.write_pool.push(job);
+                                self.writer_full = true;
+                                held = true;
+                                deferred = true;
+                            }
+                            Err(TrySendError::Disconnected(_)) => panic!("SQLite writer stopped"),
+                        }
+                        break;
+                    }
                     // Keep reads and I/O progressing while the checkpoint
                     // finishes. Preserve the complete write in input and retry
                     // after the bounded drain; no response is acknowledged yet.
                     if req.method == "POST" && app.db.draining() {
+                        held = true;
                         deferred = true;
                         break;
                     }
@@ -525,6 +598,16 @@ impl Worker {
                     }
                 }
                 Ok(Parsed::Incomplete { expect_continue }) => {
+                    if self.clients[fd].state & EOF != 0 {
+                        self.body.clear();
+                        error(&mut self.body, 400, "malformed request");
+                        let index = self.dirty(fd);
+                        self.output(fd);
+                        response(400, &self.body, true, &mut self.clients[fd].output);
+                        self.pending[index].count += 1;
+                        closing = true;
+                        break;
+                    }
                     if expect_continue && self.clients[fd].state & CONTINUED == 0 {
                         let index = self.dirty(fd);
                         self.output(fd);
@@ -558,13 +641,16 @@ impl Worker {
         } else if saved.cap != 0 {
             self.retire(saved);
         }
-        if closing {
+        if closing || (!deferred && self.clients[fd].state & EOF != 0) {
             self.clients[fd].state |= CLOSING;
+            self.dirty(fd);
         }
         if self.clients[fd].output.len as usize >= OUTPUT_HIGH {
             self.pause(fd);
         }
-        if deferred {
+        if held {
+            self.hold(fd);
+        } else if deferred {
             self.schedule(fd);
         }
     }
@@ -621,6 +707,10 @@ impl Worker {
                     };
                     self.process(fd, bytes, app);
                 }
+            } else if result == 0 && self.clients[fd].state & CLOSING == 0
+                && (self.clients[fd].input.len != 0 || self.clients[fd].state & WRITING != 0) {
+                self.clients[fd].state |= EOF;
+                self.schedule(fd);
             } else if (result != -libc::ENOBUFS && result != -libc::ECANCELED)
                 || self.clients[fd].state & CLOSING != 0
             {
@@ -628,7 +718,7 @@ impl Worker {
                 self.close(fd);
             }
             let c = &self.clients[fd];
-            if c.state & (RECEIVING | CLOSING | PAUSED | REARM) == 0 && c.state & LIVE != 0 {
+            if c.state & (RECEIVING | CLOSING | PAUSED | REARM | EOF) == 0 && c.state & LIVE != 0 {
                 if result == -libc::ENOBUFS {
                     // A depleted receive joins a bounded retry pass after buffers
                     // and responses have been returned. Retrying every failure
@@ -681,7 +771,7 @@ impl Worker {
             if self.clients[fd].input.len != 0 {
                 self.schedule(fd);
             }
-            if self.clients[fd].state & (RECEIVING | CLOSING) == 0 {
+            if self.clients[fd].state & (RECEIVING | CLOSING | EOF) == 0 {
                 self.recv(fd);
             }
         }
@@ -721,12 +811,25 @@ impl Worker {
     fn tick(&mut self, app: &mut App) -> usize {
         self.now = self.start.elapsed().as_secs() as u32;
         self.completions.clear();
+        self.completions.extend(self.backlog.drain(..self.backlog.len().min(CQ_BATCH)));
+        let budget = CQ_BATCH - self.completions.len();
         self.completions.extend(
             self.ring
                 .completion()
+                .take(budget)
                 .map(|c| (c.user_data(), c.result(), c.flags())),
         );
         let count = self.completions.len();
+        if !app.db.draining() && !self.writer_full {
+            for _ in 0..self.held.len().min(128) {
+                let (fd, generation) = self.held.pop_front().unwrap();
+                let c = &mut self.clients[fd];
+                if c.generation == generation && c.state & HELD != 0 {
+                    c.state &= !HELD;
+                    self.schedule(fd);
+                }
+            }
+        }
         let ready = self.ready.len().min(128);
         for _ in 0..ready {
             let (fd, generation) = self.ready.pop_front().unwrap();
@@ -734,7 +837,7 @@ impl Worker {
                 continue;
             }
             self.clients[fd].state &= !READY;
-            if self.clients[fd].state & (LIVE | CLOSING | PAUSED) == LIVE {
+            if self.clients[fd].state & (LIVE | CLOSING | PAUSED | WRITING) == LIVE {
                 self.process(fd, &[], app);
             }
         }
@@ -768,7 +871,7 @@ impl Worker {
                     continue;
                 }
                 c.state &= !REARM;
-                if c.state & (LIVE | RECEIVING | CLOSING | PAUSED) == LIVE {
+                if c.state & (LIVE | RECEIVING | CLOSING | PAUSED | EOF) == LIVE {
                     self.recv(fd);
                 }
             }
@@ -802,6 +905,33 @@ impl Worker {
             }
         }
         count
+    }
+
+    fn written(&mut self, mut job: WriteJob) {
+        if let Some(writer) = &self.writer {
+            writer.completed(&job);
+        }
+        self.writer_full = false;
+        let fd = job.fd;
+        if fd < self.clients.len() && self.clients[fd].generation == job.generation
+            && self.clients[fd].state & (LIVE | WRITING) == LIVE | WRITING {
+            self.clients[fd].state &= !WRITING;
+            let index = self.dirty(fd);
+            self.output(fd);
+            response(job.status, &job.body, job.close, &mut self.clients[fd].output);
+            self.pending[index].count += 1;
+            if job.close || (self.clients[fd].state & EOF != 0 && self.clients[fd].input.len == 0) {
+                self.clients[fd].state |= CLOSING;
+            } else if self.clients[fd].input.len != 0 {
+                self.schedule(fd);
+            }
+            if self.clients[fd].output.len as usize >= OUTPUT_HIGH { self.pause(fd); }
+        }
+        job.request.clear();
+        job.body.clear();
+        if self.write_pool.len() < 256 && job.request.capacity() <= 16384 && job.body.capacity() <= 16384 {
+            self.write_pool.push(job);
+        }
     }
 }
 fn response(status: u16, body: &[u8], close: bool, out: &mut Buffer) {
@@ -879,11 +1009,15 @@ pub fn run(address: &str, app: App, tuning: Tuning) -> io::Result<()> {
     // Eventfds wake poll when a quiet ring receives work. No per-ring threads,
     // locks, shared App or scheduler handoffs are needed on a one-CPU server.
     let mut app = app;
+    let writer = Writer::new(std::env::var("SQLITE_PATH").expect("SQLITE_PATH"),
+        std::env::var("JWT_SECRET").expect("JWT_SECRET"), app.start, app.db.group)?;
     let mut rings = Vec::with_capacity(workers);
     let mut signals = Vec::with_capacity(workers);
     let mut events = Vec::with_capacity(workers);
-    for _ in 0..workers {
+    for index in 0..workers {
         let mut w = Worker::new(fd, slots)?;
+        w.index = index;
+        w.writer = Some(writer.sender.clone());
         let efd = unsafe { libc::eventfd(0, libc::EFD_NONBLOCK | libc::EFD_CLOEXEC) };
         if efd < 0 {
             return Err(io::Error::last_os_error());
@@ -899,36 +1033,40 @@ pub fn run(address: &str, app: App, tuning: Tuning) -> io::Result<()> {
         w.accept();
         rings.push(w);
     }
+    events.push(libc::pollfd { fd: writer.signal.as_raw_fd(), events: libc::POLLIN, revents: 0 });
     eprintln!(
         "listening {address}; one issuer, {workers} rings x {slots} direct descriptors; SQLite WAL/NORMAL"
     );
     loop {
         let mut count = 0;
         let mut ready = false;
+        for _ in 0..8192 {
+            match writer.replies.as_ref().unwrap().try_recv() {
+                Ok(job) => { let index = job.ring; rings[index].written(job); count += 1; }
+                Err(mpsc::TryRecvError::Empty) => break,
+                Err(mpsc::TryRecvError::Disconnected) => panic!("SQLite writer stopped"),
+            }
+        }
+        // A committed writer batch guarantees queue space. Until then, a full
+        // queue parks held connections instead of repeatedly parsing them.
+        if count != 0 { for w in &mut rings { w.writer_full = false; } }
         for w in &mut rings {
             let pending = {
                 let sq = w.ring.submission();
                 !sq.is_empty() || sq.taskrun() || sq.cq_overflow()
             };
             if pending || !w.ring.completion().is_empty() {
-                match w.ring.submit() {
-                    Ok(_) => {}
-                    Err(e)
-                        if matches!(
-                            e.raw_os_error(),
-                            Some(libc::EINTR | libc::EAGAIN | libc::EBUSY)
-                        ) => {}
-                    Err(e) => return Err(e),
-                }
+                ready |= !w.submit()?;
             }
             count += w.tick(&mut app);
-            ready |= !w.ready.is_empty() || !w.rearm.is_empty();
+            ready |= !w.ready.is_empty() || !w.rearm.is_empty() || !w.backlog.is_empty();
         }
         let committed = app.db.commit();
         for w in &mut rings {
             w.flush(committed);
         }
         app.db.checkpoint_async();
+        ready |= !app.db.draining() && rings.iter().any(|w| !w.writer_full && !w.held.is_empty());
         if count != 0 || ready {
             if count < tuning.batch && tuning.wait_us != 0 {
                 std::thread::sleep(Duration::from_micros(u64::from(tuning.wait_us)));
@@ -939,8 +1077,11 @@ pub fn run(address: &str, app: App, tuning: Tuning) -> io::Result<()> {
         // those before sleeping so their completions can actually wake us.
         for w in &mut rings {
             if !w.ring.submission().is_empty() {
-                w.ring.submit()?;
+                ready |= !w.submit()?;
             }
+        }
+        if ready {
+            continue;
         }
         let timeout = if app.db.draining() { 1 } else { 1000 };
         let n = unsafe { libc::poll(events.as_mut_ptr(), events.len() as _, timeout) };

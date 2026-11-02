@@ -461,6 +461,10 @@ impl Db {
     pub fn draining(&self) -> bool {
         self.checkpointer.drain.is_some()
     }
+    #[cfg(test)]
+    pub(crate) fn hold_writes_for_test(&mut self, hold: bool) {
+        self.checkpointer.drain = hold.then(|| (u64::MAX, Instant::now() + Duration::from_secs(60)));
+    }
     fn finish(&mut self, status: u16, out: &mut Vec<u8>) -> u16 {
         if !self.group && !self.commit() {
             crate::error(out, 500, "internal server error")
