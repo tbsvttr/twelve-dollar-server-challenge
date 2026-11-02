@@ -107,5 +107,5 @@ else
     .build/app.c net.c db.c json_fast.c "$object" -lcrypto -lm -pthread -o bin/server
 fi
 "$goose_bin" version
-"$cc" --version | head -1
+"$cc" --version | sed -n 1p   # sed reads it all; with head, the compiler could die of SIGPIPE
 sha256sum bin/server

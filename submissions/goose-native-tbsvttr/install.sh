@@ -14,8 +14,15 @@ if [[ ! -x $prefix/build/goose ]]; then
   printf '%s  %s\n' "$goose_sha" "$source_archive" | sha256sum -c -
   mkdir -p "$prefix"
   tar -xzf "$source_archive" --strip-components=1 -C "$prefix"
-  cmake -S "$prefix" -B "$prefix/build" -G Ninja -DCMAKE_BUILD_TYPE=Release -DGOOSE_BUILTIN_LIBS=
-  cmake --build "$prefix/build" --parallel "${BUILD_JOBS:-2}"
+  # The compiler is one large C++20 translation unit: at gcc's defaults (-O3, default collector) compiling it took
+  # more than 1.5 GB and froze the 2 GB box. One job, -O2 and a tighter collector (garbage is collected more
+  # often) keep it near 1.2 GB. The compiler's own optimization doesn't change the C it generates; build.sh
+  # compiles that at -O3.
+  rm -rf "$prefix/build"
+  cmake -S "$prefix" -B "$prefix/build" -G Ninja -DCMAKE_BUILD_TYPE=Release -DGOOSE_BUILTIN_LIBS= \
+    "-DCMAKE_CXX_FLAGS_RELEASE=-O2 -DNDEBUG --param ggc-min-expand=5 --param ggc-min-heapsize=16384" \
+    "-DCMAKE_C_FLAGS_RELEASE=-O2 -DNDEBUG"
+  cmake --build "$prefix/build" --parallel "${BUILD_JOBS:-1}"
   printf '%s\n' "$goose_commit" > "$prefix/COMMIT"
 fi
 ln -sf "$prefix/build/goose" /usr/local/bin/goose
