@@ -229,6 +229,7 @@ CPU % and µs/request are the app's own cgroup over the scored hold (µs = app C
 | — | v-epoll-quaesitor-scientiam | #166 | V (io_uring) | **failed** (install timeout) | | | | | | | | 2026-10-30 |
 | — | rust-hyper-dannie203 | #178 | Rust (hyper) | **failed** (build: no cargo) | | | | | | | | 2026-10-29 |
 | — | d-arsd-threadedcgi-cyrusmsk | #161 | D (arsd threaded cgi) | **failed** (0: timeouts at 500 users) | | | | | | | | 2026-10-31 |
+| — | go-nethttp-rkkautsar | #277 | Go (net/http, cgo SQLite) | **failed** (0: POSTs EOF at 500 users) | | | | | | | | 2026-11-02 |
 
 ˣ **Rust #82 ran out of load generators first.** One target IP × 4 load generators caps at ~240,000 connections (source
 ports). It passed 240,000 at 79 % CPU, so it was re-searched with 3 extra IPv4s on the box and a 5th load generator
@@ -410,6 +411,10 @@ committed in this repo.
   probe passed. From 20,000 down to the 500-user floor the app sat at 1–2 % CPU while 75–99 % of requests timed out
   (500 users: 5 req/s, p50 60 s, 11 MB RAM): its fixed worker-thread pool is held by idle keep-alive connections, as
   its README warns. Its sibling #160 (hybrid cgi) is the one scored above.
+- **Go #277 — scored 0** (`26d1785`, net/http, direct): installed, built and passed 42/42, but no probe passed. From
+  20,000 down to the 500-user floor ~7 % of requests failed with `EOF` (connection closed with no response) at 4–45 %
+  CPU: every `POST /posts/:id/like` and ~75–86 % of `POST /posts`, 0 reads. It closes keep-alive sockets idle for 1 s
+  (`IDLE_TIMEOUT_MS=1000`), and the POSTs land on sockets it just closed (reads are retried by the client, POSTs aren't).
 - **C #246 — tests hung at `65dda48`, now scored 200,000 at `f9cf266`**: the first run installed and built, then hung
   on its io_uring path and never answered the suite's first read (exit 124). `f9cf266` added a 1 ms io_uring_enter
   timeout and passed 42/42 (row above).
@@ -454,7 +459,9 @@ public plugin APIs (a custom page cache through `SQLITE_CONFIG_PCACHE2`, a custo
 - **go-iouring-rkkautsar #260 coalesces reads**: `GET /feed` and `GET /posts/:id` requests parked while a shard's
   previous read runs are answered together by one SQLite query (one feed query, or one `IN (...)` for the post ids),
   and nothing outlives the batch (rule 5 question, like #243). `READ_COALESCE=0` turns it off. Scored as submitted
-  (136k at `0062092`; was 71k at `dfad91d`, fd limit); held open for Arjay.
+  (136k at `0062092`; was 71k at `dfad91d`, fd limit); held open for Arjay. The same author's go-nethttp #277 also
+  coalesces `/feed` reads by default (`readGroup`, one read per write generation, 500 µs window; `READ_COALESCE=0`
+  turns it off); it scored 0 (see failures), held open.
 - **lean-verified-soonhokong #271 reuses c-iouring-pavlyhalim #245's B-tree helpers**: `runtime/db.c`'s record
   decoder, payload fetch, index seek and multi-key descent closely follow #245's `src/btree.h`; the Lean handlers,
   HTTP/JWT/JSON code and the io_uring transport are new. Open question for Arjay: building on another entry vs. the
