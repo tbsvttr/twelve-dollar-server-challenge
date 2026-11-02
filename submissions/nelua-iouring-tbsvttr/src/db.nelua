@@ -1,0 +1,503 @@
+-- The database: one SQLite connection for the loop (one transaction per batch: its reads see its earlier writes,
+-- and one COMMIT makes its writes durable before any response leaves), and the checkpoint thread's own.
+-- GET /feed and GET /posts/:id run on SQLite's B-tree cursors (the plans below); writes are prepared SQL. The
+-- stored layout is checked at startup against the schema the plans were written for, and a plan that meets
+-- anything unexpected gives way to the reference SQL.
+require 'c'
+require 'out'
+
+local FEED_N <comptime> = 20
+local FEED_SPAN <comptime> = 256   -- the plan wants the 20 newest ids within this many ids of each other
+
+global Db = @record{
+  c: pointer, c2: pointer, bt: pointer,
+  root_posts: cint, root_users: cint, root_likes_idx: cint, root_posts_idx: cint,
+  ki_likes: pointer, ki_posts: pointer,
+  cur_posts: pointer, cur_users: pointer, cur_likes: pointer, cur_pidx: pointer,
+  plans: boolean,      -- the layout matched: reads use the plans
+  in_txn: boolean,     -- BEGIN ran in this batch
+  cursors: boolean,    -- the plans' cursors are open in this transaction
+  spill: Bytes, spill_cap: uint32,
+  st_begin: pointer, st_commit: pointer, st_rollback: pointer, st_health: pointer,
+  st_ins_post: pointer, st_created: pointer, st_ins_like: pointer, st_exists: pointer,
+  st_feed: pointer, st_post: pointer,
+  n_fallback: uint64,
+}
+
+-- ---- records (https://sqlite.org/fileformat2.html#record_format) ----
+
+local Col = @record{t: uint64, p: Bytes}
+
+local function varint(p: Bytes, i: *uint32, n: uint32, v: *uint64): boolean <inline>
+  local x: uint64 = 0
+  for k = 0, < 8 do
+    if $i >= n then return false end
+    local b = p[$i]
+    $i = $i + 1
+    x = (x << 7) | (b & 0x7f)
+    if b < 0x80 then
+      $v = x
+      return true
+    end
+  end
+  if $i >= n then return false end
+  $v = (x << 8) | p[$i]
+  $i = $i + 1
+  return true
+end
+
+local SERIAL_LEN: [12]uint32 = {0, 1, 2, 3, 4, 6, 8, 8, 0, 0, 0, 0}
+
+local function serial_len(t: uint64): uint32 <inline>
+  if t < 12 then return SERIAL_LEN[t] end
+  return (@uint32)((t - 12) // 2)
+end
+
+-- The first ncol columns of record p[0, n).
+local function rec_cols(p: Bytes, n: uint32, ncol: int32, c: *[0]Col): boolean
+  local h: uint32 = 0
+  local hsz: uint64
+  if not varint(p, &h, n, &hsz) or hsz > n then return false end
+  local hend = (@uint32)(hsz)
+  local body = hend
+  for k = 0, < ncol do
+    if h >= hend or not varint(p, &h, hend, &c[k].t) then return false end
+    c[k].p = &p[body]
+    body = body + serial_len(c[k].t)
+  end
+  return body <= n
+end
+
+local function col_is_int(c: *Col): boolean <inline> return (c.t >= 1 and c.t <= 6) or c.t == 8 or c.t == 9 end
+local function col_is_text(c: *Col): boolean <inline> return c.t >= 13 and (c.t & 1) == 1 end
+local function col_len(c: *Col): uint32 <inline> return serial_len(c.t) end
+
+local function col_int(c: *Col): int64
+  local p = c.p
+  local t = c.t
+  if t == 8 then return 0 end
+  if t == 9 then return 1 end
+  local n = SERIAL_LEN[t]
+  local v: uint64 = 0
+  for k: uint32 = 0, < n do v = (v << 8) | p[k] end
+  local shift = 64 - n * 8   -- sign-extend from n bytes
+  return (@int64)(v << shift) >>> shift
+end
+
+-- ---- opening ----
+
+local function rootpage(c: pointer, name: cstring): cint
+  local st = td_prepare(c, 'SELECT rootpage FROM sqlite_schema WHERE name = ?1')
+  if st == nilptr then return 0 end
+  sqlite3_bind_text(st, 1, name, -1, SQLITE_STATIC)
+  local r: cint = 0
+  if sqlite3_step(st) == SQLITE_ROW then r = (@cint)(sqlite3_column_int64(st, 0)) end
+  sqlite3_reset(st)
+  return r
+end
+
+-- The stored layout, as the plans need it: one "table:column:type:pk" or "index:column:desc" per key column.
+local layout_buf: [2048]byte
+local layout_len: uint32 = 0
+
+local function layout(c: pointer, sql: cstring): void
+  local st = td_prepare(c, sql)
+  if st == nilptr then return end
+  while sqlite3_step(st) == SQLITE_ROW do
+    local t = sqlite3_column_text(st, 0)
+    local n = (@uint32)(sqlite3_column_bytes(st, 0))
+    if layout_len + n + 2 < 2048 then
+      C.memcpy(&layout_buf[layout_len], t, n)
+      layout_len = layout_len + n
+      layout_buf[layout_len] = ';'_b
+      layout_len = layout_len + 1
+    end
+  end
+  layout_buf[layout_len] = 0
+  sqlite3_reset(st)
+end
+
+local EXPECTED_LAYOUT: cstring = 'users:id:INTEGER:1;users:username:TEXT:0;users:created_at:TEXT:0;posts:id:INTEGER:1;posts:user_id:INTEGER:0;posts:body:TEXT:0;posts:created_at:TEXT:0;likes:user_id:INTEGER:1;likes:post_id:INTEGER:2;likes:created_at:TEXT:0;likes_post_id_idx:post_id:0;posts_created_at_id_idx:created_at:1;posts_created_at_id_idx:id:1;'
+
+local function open_conn(path: cstring, cache_kib: int32): pointer
+  local rc: cint
+  local c = td_open(path, 'unix-excl', &rc)
+  if rc ~= SQLITE_OK then
+    C.fprintf(C.stderr, 'sqlite open %s: %s\n', path, sqlite3_errmsg(c))
+    return nilptr
+  end
+  td_exec(c, 'PRAGMA journal_mode=WAL')
+  td_exec(c, 'PRAGMA synchronous=NORMAL')
+  td_exec(c, 'PRAGMA wal_autocheckpoint=0')
+  td_exec(c, 'PRAGMA mmap_size=0')
+  td_exec(c, 'PRAGMA temp_store=MEMORY')
+  local pragma: [64]cchar
+  C.snprintf(&pragma[0], 64, 'PRAGMA cache_size=-%d', cache_kib)
+  td_exec(c, &pragma[0])
+  return c
+end
+
+function Db:open(path: cstring, cache_kib: int32): boolean
+  if sqlite3_initialize() ~= SQLITE_OK then return false end
+  self.c = open_conn(path, cache_kib)
+  if self.c == nilptr then return false end
+  local c = self.c
+  self.st_begin = td_prepare(c, 'BEGIN')
+  self.st_commit = td_prepare(c, 'COMMIT')
+  self.st_rollback = td_prepare(c, 'ROLLBACK')
+  self.st_health = td_prepare(c, 'SELECT 1')
+  self.st_ins_post = td_prepare(c, 'INSERT INTO posts (user_id, body) VALUES (?1, ?2)')
+  self.st_created = td_prepare(c, 'SELECT created_at FROM posts WHERE id = ?1')
+  self.st_ins_like = td_prepare(c, 'INSERT INTO likes (user_id, post_id) SELECT ?1, ?2 WHERE EXISTS ' ..
+    '(SELECT 1 FROM posts WHERE id = ?2) ON CONFLICT (user_id, post_id) DO NOTHING')
+  self.st_exists = td_prepare(c, 'SELECT 1 FROM posts WHERE id = ?1')
+  self.st_feed = td_prepare(c, 'SELECT p.id, p.body, p.created_at, u.username, ' ..
+    '(SELECT count(*) FROM likes l WHERE l.post_id = p.id) FROM posts p JOIN users u ON u.id = p.user_id ' ..
+    'ORDER BY p.created_at DESC, p.id DESC LIMIT 20')
+  self.st_post = td_prepare(c, 'SELECT p.id, p.body, p.created_at, u.username, ' ..
+    '(SELECT count(*) FROM likes l WHERE l.post_id = p.id) FROM posts p JOIN users u ON u.id = p.user_id ' ..
+    'WHERE p.id = ?1')
+  if self.st_begin == nilptr or self.st_commit == nilptr or self.st_rollback == nilptr or self.st_health == nilptr or
+     self.st_ins_post == nilptr or self.st_created == nilptr or self.st_ins_like == nilptr or
+     self.st_exists == nilptr or self.st_feed == nilptr or self.st_post == nilptr then
+    return false
+  end
+  -- warm the pages the feed touches
+  while sqlite3_step(self.st_feed) == SQLITE_ROW do end
+  sqlite3_reset(self.st_feed)
+  -- the plans, if the stored layout is the one they were written for
+  layout(c, "SELECT m.name || ':' || t.name || ':' || t.type || ':' || t.pk FROM sqlite_schema m, " ..
+    "pragma_table_info(m.name) t WHERE m.type = 'table' AND m.name IN ('users', 'posts', 'likes') " ..
+    "ORDER BY CASE m.name WHEN 'users' THEN 0 WHEN 'posts' THEN 1 ELSE 2 END, t.cid")
+  layout(c, "SELECT m.name || ':' || x.name || ':' || x.desc FROM sqlite_schema m, pragma_index_xinfo(m.name) x " ..
+    "WHERE m.name IN ('likes_post_id_idx', 'posts_created_at_id_idx') AND x.key ORDER BY m.name, x.seqno")
+  self.root_posts = rootpage(c, 'posts')
+  self.root_users = rootpage(c, 'users')
+  self.root_likes_idx = rootpage(c, 'likes_post_id_idx')
+  self.root_posts_idx = rootpage(c, 'posts_created_at_id_idx')
+  if C.strcmp((@cstring)(&layout_buf[0]), EXPECTED_LAYOUT) == 0 and self.root_posts > 0 and self.root_users > 0 and self.root_likes_idx > 0 and
+     self.root_posts_idx > 0 then
+    self.bt = td_btree(c)
+    self.ki_likes = td_keyinfo(c, 1, 1, 0)
+    self.ki_posts = td_keyinfo(c, 2, 1, 1)
+    self.cur_posts = td_cursor_alloc()
+    self.cur_users = td_cursor_alloc()
+    self.cur_likes = td_cursor_alloc()
+    self.cur_pidx = td_cursor_alloc()
+    self.plans = self.ki_likes ~= nilptr and self.ki_posts ~= nilptr and self.cur_posts ~= nilptr and
+      self.cur_users ~= nilptr and self.cur_likes ~= nilptr and self.cur_pidx ~= nilptr
+  else
+    C.fprintf(C.stderr, 'db: the layout differs (%s); reads use SQL\n', &layout_buf[0])
+  end
+  -- the checkpoint thread, on its own connection
+  self.c2 = open_conn(path, 2048)
+  if self.c2 == nilptr or td_ckpt_start(c, self.c2) ~= 0 then return false end
+  return true
+end
+
+-- ---- transactions ----
+
+-- The batch's transaction, begun by its first request that reads or writes.
+function Db:begin(): boolean
+  if self.in_txn then return true end
+  local rc = sqlite3_step(self.st_begin)
+  sqlite3_reset(self.st_begin)
+  if rc ~= SQLITE_DONE then return false end
+  self.in_txn = true
+  if self.plans then
+    if td_read_begin(self.bt) ~= SQLITE_OK or
+       td_cursor_open(self.bt, self.root_posts, nilptr, self.cur_posts) ~= SQLITE_OK or
+       td_cursor_open(self.bt, self.root_users, nilptr, self.cur_users) ~= SQLITE_OK or
+       td_cursor_open(self.bt, self.root_likes_idx, self.ki_likes, self.cur_likes) ~= SQLITE_OK or
+       td_cursor_open(self.bt, self.root_posts_idx, self.ki_posts, self.cur_pidx) ~= SQLITE_OK then
+      C.fprintf(C.stderr, 'db: could not open the cursors; reads use SQL\n')
+      self.plans = false
+    else
+      self.cursors = true
+    end
+  end
+  return true
+end
+
+-- Ends the batch's transaction: true when every write in it is committed.
+function Db:commit(): boolean
+  if not self.in_txn then return true end
+  self.in_txn = false
+  if self.cursors then
+    td_cursor_close(self.cur_posts)
+    td_cursor_close(self.cur_users)
+    td_cursor_close(self.cur_likes)
+    td_cursor_close(self.cur_pidx)
+    self.cursors = false
+  end
+  local rc = sqlite3_step(self.st_commit)
+  sqlite3_reset(self.st_commit)
+  if rc == SQLITE_DONE then return true end
+  C.fprintf(C.stderr, 'sqlite commit: %s\n', sqlite3_errmsg(self.c))
+  sqlite3_step(self.st_rollback)
+  sqlite3_reset(self.st_rollback)
+  return false
+end
+
+function Db:health(): boolean
+  local rc = sqlite3_step(self.st_health)
+  sqlite3_reset(self.st_health)
+  return rc == SQLITE_ROW
+end
+
+-- ---- the post object ----
+
+local function post_obj(o: *Out, id: int64, body: Bytes, bn: uint32, created: Bytes, cn: uint32, name: Bytes,
+                        nn: uint32, likes: int64): void
+  o:lit('{"id":')
+  o:u64((@uint64)(id))
+  o:lit(',"body":')
+  o:json_str(body, bn)
+  o:lit(',"created_at":"')
+  o:bytes(created, cn)
+  o:lit('","author":')
+  o:json_str(name, nn)
+  o:lit(',"like_count":')
+  o:u64((@uint64)(likes))
+  o:byte('}'_b)
+end
+
+local function post_row(o: *Out, st: pointer, likes: int64): void
+  post_obj(o, sqlite3_column_int64(st, 0), sqlite3_column_text(st, 1), (@uint32)(sqlite3_column_bytes(st, 1)),
+           sqlite3_column_text(st, 2), (@uint32)(sqlite3_column_bytes(st, 2)), sqlite3_column_text(st, 3),
+           (@uint32)(sqlite3_column_bytes(st, 3)), likes)
+end
+
+-- ---- the plans ----
+
+-- The record under a cursor.
+function Db:record(cur: pointer, n: *uint32): Bytes <inline>
+  return td_record(cur, n, &self.spill, &self.spill_cap)
+end
+
+-- Like counts of posts lo..hi, from one range scan of likes_post_id_idx.
+function Db:like_counts(lo: int64, hi: int64, counts: *[0]int64): boolean
+  C.memset(counts, 0, (hi - lo + 1) * 8)
+  local rc = td_index_ge(self.cur_likes, self.ki_likes, lo)
+  while rc == 0 do
+    local n: uint32
+    local p = self:record(self.cur_likes, &n)
+    local c: [1]Col
+    if p == nilptr or not rec_cols(p, n, 1, (@*[0]Col)(&c[0])) or not col_is_int(&c[0]) then return false end
+    local pid = col_int(&c[0])
+    if pid > hi then return true end
+    counts[pid - lo] = counts[pid - lo] + 1
+    rc = td_next(self.cur_likes)
+  end
+  return rc > 0
+end
+
+-- A username by user id: 0 found, 1 absent, -1 error. The name points into a page: use it before the cursor moves.
+function Db:user_name(uid: int64, name: *Bytes, nn: *uint32): int32
+  local rc = td_seek(self.cur_users, uid)
+  if rc ~= 0 then return rc end
+  local n: uint32
+  local p = self:record(self.cur_users, &n)
+  local c: [2]Col
+  if p == nilptr or not rec_cols(p, n, 2, (@*[0]Col)(&c[0])) or not col_is_text(&c[1]) then return -1 end
+  $name = c[1].p
+  $nn = col_len(&c[1])
+  return 0
+end
+
+local feed_body: [FEED_N][2048]byte
+local feed_created: [FEED_N][64]byte
+
+-- GET /feed: the 20 newest ids off posts_created_at_id_idx (DESC, DESC: the tree's first entries); when they lie
+-- within FEED_SPAN ids of each other (ids and timestamps both grow), the way the bytecode engine runs `WHERE id
+-- BETWEEN lo AND hi`: one range scan of likes_post_id_idx for the counts and one of posts for the rows, then each
+-- author by rowid. 0 written, -1 if the SQL must decide.
+function Db:plan_feed(o: *Out): int32
+  local ids: [FEED_N]int64
+  local nid = 0
+  local rc = td_first(self.cur_pidx)
+  while rc == 0 and nid < FEED_N do
+    local n: uint32
+    local p = self:record(self.cur_pidx, &n)
+    local c: [2]Col
+    if p == nilptr or not rec_cols(p, n, 2, (@*[0]Col)(&c[0])) or not col_is_text(&c[0]) or not col_is_int(&c[1]) then
+      return -1
+    end
+    ids[nid] = col_int(&c[1])
+    nid = nid + 1
+    rc = td_next(self.cur_pidx)
+  end
+  if rc < 0 or nid == 0 then return -1 end
+  local lo, hi = ids[0], ids[0]
+  for i = 1, < nid do
+    if ids[i] < lo then lo = ids[i] end
+    if ids[i] > hi then hi = ids[i] end
+  end
+  if hi - lo >= FEED_SPAN then return -1 end
+  local counts: [FEED_SPAN]int64
+  if not self:like_counts(lo, hi, (@*[0]int64)(&counts[0])) then return -1 end
+  local slot: [FEED_SPAN]int8
+  C.memset(&slot[0], -1, FEED_SPAN)
+  for i = 0, < nid do slot[ids[i] - lo] = (@int8)(i) end
+  local body_len: [FEED_N]uint32
+  local created_len: [FEED_N]uint32
+  local uids: [FEED_N]int64
+  local found = 0
+  rc = td_seek_ge(self.cur_posts, lo)
+  while rc == 0 do
+    local id = td_rowid(self.cur_posts)
+    if id > hi then break end
+    local i = slot[id - lo]
+    if i >= 0 then
+      local n: uint32
+      local p = self:record(self.cur_posts, &n)
+      local c: [4]Col
+      if p == nilptr or not rec_cols(p, n, 4, (@*[0]Col)(&c[0])) or not col_is_int(&c[1]) or
+         not col_is_text(&c[2]) or not col_is_text(&c[3]) then
+        return -1
+      end
+      body_len[i] = col_len(&c[2])
+      created_len[i] = col_len(&c[3])
+      if body_len[i] > 2048 or created_len[i] > 64 then return -1 end
+      C.memcpy(&feed_body[i][0], c[2].p, body_len[i])
+      C.memcpy(&feed_created[i][0], c[3].p, created_len[i])
+      uids[i] = col_int(&c[1])
+      found = found + 1
+      if found == nid then break end
+    end
+    rc = td_next(self.cur_posts)
+  end
+  if rc < 0 or found ~= nid then return -1 end
+  o:lit('{"posts":[')
+  for i = 0, < nid do
+    local name: Bytes
+    local nn: uint32
+    if self:user_name(uids[i], &name, &nn) ~= 0 then return -1 end
+    if i > 0 then o:byte(','_b) end
+    post_obj(o, ids[i], (@Bytes)(&feed_body[i][0]), body_len[i], (@Bytes)(&feed_created[i][0]), created_len[i],
+             name, nn, counts[ids[i] - lo])
+  end
+  o:lit(']}')
+  return 0
+end
+
+-- GET /posts/:id on the cursors: 1 written, 0 absent, -1 if the SQL must decide.
+function Db:plan_post(o: *Out, id: int64): int32
+  local likes: [1]int64
+  if not self:like_counts(id, id, (@*[0]int64)(&likes[0])) then return -1 end
+  local rc = td_seek(self.cur_posts, id)
+  if rc < 0 then return -1 end
+  if rc > 0 then return 0 end
+  local n: uint32
+  local p = self:record(self.cur_posts, &n)
+  local c: [4]Col
+  if p == nilptr or not rec_cols(p, n, 4, (@*[0]Col)(&c[0])) or not col_is_int(&c[1]) or not col_is_text(&c[2]) or
+     not col_is_text(&c[3]) then
+    return -1
+  end
+  -- the record points into a page, and the users cursor may move pages: copy it out first
+  local bl, cl = col_len(&c[2]), col_len(&c[3])
+  if bl > 2048 or cl > 64 then return -1 end
+  C.memcpy(&feed_body[0][0], c[2].p, bl)
+  C.memcpy(&feed_created[0][0], c[3].p, cl)
+  local name: Bytes
+  local nn: uint32
+  if self:user_name(col_int(&c[1]), &name, &nn) ~= 0 then return -1 end
+  o:lit('{"post":')
+  post_obj(o, id, (@Bytes)(&feed_body[0][0]), bl, (@Bytes)(&feed_created[0][0]), cl, name, nn, likes[0])
+  o:byte('}'_b)
+  return 1
+end
+
+-- ---- the requests ----
+
+-- GET /feed: 0 written, -1 on an error.
+function Db:feed(o: *Out): int32
+  if not self:begin() then return -1 end
+  if self.cursors then
+    local mark = o.n
+    if self:plan_feed(o) == 0 and not o.err then return 0 end
+    o.n = mark
+    o.err = false
+    self.n_fallback = self.n_fallback + 1
+  end
+  o:lit('{"posts":[')
+  local n = 0
+  local rc = sqlite3_step(self.st_feed)
+  while rc == SQLITE_ROW do
+    if n > 0 then o:byte(','_b) end
+    post_row(o, self.st_feed, sqlite3_column_int64(self.st_feed, 4))
+    n = n + 1
+    rc = sqlite3_step(self.st_feed)
+  end
+  sqlite3_reset(self.st_feed)
+  if rc ~= SQLITE_DONE then return -1 end
+  o:lit(']}')
+  return 0
+end
+
+-- GET /posts/:id: 1 written, 0 absent, -1 on an error.
+function Db:post(o: *Out, id: int64): int32
+  if not self:begin() then return -1 end
+  if self.cursors then
+    local mark = o.n
+    local rc = self:plan_post(o, id)
+    if rc >= 0 and not o.err then return rc end
+    o.n = mark
+    o.err = false
+    self.n_fallback = self.n_fallback + 1
+  end
+  sqlite3_bind_int64(self.st_post, 1, id)
+  local rc = sqlite3_step(self.st_post)
+  if rc == SQLITE_ROW then
+    o:lit('{"post":')
+    post_row(o, self.st_post, sqlite3_column_int64(self.st_post, 4))
+    o:byte('}'_b)
+  end
+  sqlite3_reset(self.st_post)
+  if rc == SQLITE_ROW then return 1 end
+  if rc == SQLITE_DONE then return 0 end
+  return -1
+end
+
+-- POST /posts: writes {"post":...}; 0, or -1 on an error.
+function Db:create(o: *Out, uid: int64, body: Bytes, bn: uint32, name: Bytes, nn: uint32): int32
+  if not self:begin() then return -1 end
+  local st = self.st_ins_post
+  sqlite3_bind_int64(st, 1, uid)
+  sqlite3_bind_text(st, 2, body, (@cint)(bn), SQLITE_STATIC)
+  local rc = sqlite3_step(st)
+  sqlite3_reset(st)
+  if rc ~= SQLITE_DONE then return -1 end
+  local id = sqlite3_last_insert_rowid(self.c)
+  st = self.st_created
+  sqlite3_bind_int64(st, 1, id)
+  rc = sqlite3_step(st)
+  if rc == SQLITE_ROW then
+    o:lit('{"post":')
+    post_obj(o, id, body, bn, sqlite3_column_text(st, 0), (@uint32)(sqlite3_column_bytes(st, 0)), name, nn, 0)
+    o:byte('}'_b)
+  end
+  sqlite3_reset(st)
+  if rc ~= SQLITE_ROW then return -1 end
+  return 0
+end
+
+-- POST /posts/:id/like: 1 liked now, 2 liked before, 0 no such post, -1 on an error.
+function Db:like(uid: int64, pid: int64): int32
+  if not self:begin() then return -1 end
+  local st = self.st_ins_like
+  sqlite3_bind_int64(st, 1, uid)
+  sqlite3_bind_int64(st, 2, pid)
+  local rc = sqlite3_step(st)
+  sqlite3_reset(st)
+  if rc ~= SQLITE_DONE then return -1 end
+  if sqlite3_changes(self.c) > 0 then return 1 end
+  st = self.st_exists
+  sqlite3_bind_int64(st, 1, pid)
+  rc = sqlite3_step(st)
+  sqlite3_reset(st)
+  if rc == SQLITE_ROW then return 2 end
+  if rc == SQLITE_DONE then return 0 end
+  return -1
+end

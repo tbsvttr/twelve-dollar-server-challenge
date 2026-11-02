@@ -1,0 +1,134 @@
+-- Out: bytes written into memory the caller owns (a slice of a response arena). It never grows: a write that
+-- doesn't fit sets err, and the caller answers 500.
+require 'c'
+
+global Out = @record{p: Bytes, n: uint32, cap: uint32, err: boolean}
+
+function Out.at(p: Bytes, cap: uint32): Out <inline>
+  return Out{p = p, n = 0, cap = cap, err = false}
+end
+
+function Out:byte(b: byte): void <inline>
+  if self.n < self.cap then
+    self.p[self.n] = b
+    self.n = self.n + 1
+  else
+    self.err = true
+  end
+end
+
+function Out:bytes(src: pointer, n: uint32): void <inline>
+  if self.cap - self.n >= n then
+    C.memcpy(&self.p[self.n], src, n)
+    self.n = self.n + n
+  else
+    self.err = true
+  end
+end
+
+function Out:lit(s: string): void <inline>
+  self:bytes(s.data, (@uint32)(s.size))
+end
+
+local DIGITS2: string = '00010203040506070809101112131415161718192021222324252627282930313233343536373839404142434445464748495051525354555657585960616263646566676869707172737475767778798081828384858687888990919293949596979899'
+
+-- v in decimal, two digits at a time
+function Out:u64(v: uint64): void
+  local tmp: [24]byte
+  local i: int32 = 24
+  while v >= 100 do
+    local d = (v % 100) * 2
+    v = v // 100
+    i = i - 2
+    tmp[i] = DIGITS2.data[d]
+    tmp[i + 1] = DIGITS2.data[d + 1]
+  end
+  if v >= 10 then
+    i = i - 2
+    tmp[i] = DIGITS2.data[v * 2]
+    tmp[i + 1] = DIGITS2.data[v * 2 + 1]
+  else
+    i = i - 1
+    tmp[i] = (@byte)(v) + '0'_b
+  end
+  self:bytes(&tmp[i], (@uint32)(24 - i))
+end
+
+-- Which bytes JSON strings must escape: the quote, the backslash and control characters.
+local ESC: [256]byte
+for i = 0, < 32 do ESC[i] = 1 end
+ESC['"'_b] = 1
+ESC['\\'_b] = 1
+
+local HEX: string = '0123456789abcdef'
+
+-- A JSON string (quotes included). Escapes only what JSON requires; UTF-8 passes through.
+function Out:json_str(p: Bytes, n: uint32): void
+  if self.cap - self.n < n + 2 then
+    self.err = true
+    return
+  end
+  local d = self.p
+  local o = self.n
+  d[o] = '"'_b
+  o = o + 1
+  local start: uint32 = 0
+  local i: uint32 = 0
+  -- eight bytes at a time while none of them needs escaping (most text): a byte below 0x20, '"' or '\\'
+  while i + 8 <= n do
+    local w: uint64
+    C.memcpy(&w, &p[i], 8)
+    local lo = (w - 0x2020202020202020_u64) & ~w
+    local q = w ~ 0x2222222222222222_u64
+    local bs = w ~ 0x5c5c5c5c5c5c5c5c_u64
+    local hit = (lo | ((q - 0x0101010101010101_u64) & ~q) | ((bs - 0x0101010101010101_u64) & ~bs)) &
+                0x8080808080808080_u64
+    if hit ~= 0 then break end
+    i = i + 8
+  end
+  while i < n do
+    local c = p[i]
+    if ESC[c] ~= 0 then
+      local run = i - start
+      local room = self.cap - o
+      if room < run + 8 then
+        self.err = true
+        return
+      end
+      C.memcpy(&d[o], &p[start], run)
+      o = o + run
+      d[o] = '\\'_b
+      if c == '"'_b or c == '\\'_b then
+        d[o + 1] = c
+        o = o + 2
+      elseif c == '\n'_b then
+        d[o + 1] = 'n'_b
+        o = o + 2
+      elseif c == '\r'_b then
+        d[o + 1] = 'r'_b
+        o = o + 2
+      elseif c == '\t'_b then
+        d[o + 1] = 't'_b
+        o = o + 2
+      else
+        d[o + 1] = 'u'_b
+        d[o + 2] = '0'_b
+        d[o + 3] = '0'_b
+        d[o + 4] = HEX.data[c >> 4]
+        d[o + 5] = HEX.data[c & 15]
+        o = o + 6
+      end
+      start = i + 1
+    end
+    i = i + 1
+  end
+  local run = n - start
+  if self.cap - o < run + 1 then
+    self.err = true
+    return
+  end
+  C.memcpy(&d[o], &p[start], run)
+  o = o + run
+  d[o] = '"'_b
+  self.n = o + 1
+end

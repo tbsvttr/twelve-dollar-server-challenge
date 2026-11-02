@@ -1,0 +1,119 @@
+-- HTTP/1.1 requests, parsed in place. Only what the API uses is looked at: the request line, Authorization,
+-- Content-Length, Connection, Transfer-Encoding and Expect.
+require 'c'
+
+global M_OTHER <comptime> = 0
+global M_GET <comptime> = 1
+global M_POST <comptime> = 2
+
+global REQ_MAX <comptime> = 20480   -- a request (headers and body) larger than this is refused (bodies over 16 KB are out of scope)
+
+global Req = @record{
+  method: uint8,
+  keep_alive: boolean,
+  expect: boolean,        -- Expect: 100-continue
+  path: Bytes, path_len: uint32,
+  auth: Bytes, auth_len: uint32,
+  body: Bytes, body_len: uint32,
+  head_len: uint32,       -- request line and headers, with the blank line
+}
+
+-- Does header name p[0, n) equal lowercase `name`, ignoring case?
+local function name_is(p: Bytes, n: uint32, name: string): boolean <inline>
+  if n ~= name.size then return false end
+  for i: uint32 = 0, < n do
+    if (p[i] | 0x20) ~= name.data[i] then return false end
+  end
+  return true
+end
+
+-- Does p[0, n) contain lowercase `word`, ignoring case?
+local function has_word(p: Bytes, n: uint32, word: string): boolean
+  local w = (@uint32)(word.size)
+  if n < w then return false end
+  for i: uint32 = 0, n - w do
+    local j: uint32 = 0
+    while j < w and (p[i + j] | 0x20) == word.data[j] do j = j + 1 end
+    if j == w then return true end
+  end
+  return false
+end
+
+-- One request at p[0, n). Its full length (headers and body) when it is complete; 0 if more bytes are needed;
+-- -1 if it is malformed; -2 if it is too large.
+global function http_parse(p: Bytes, n: uint32, r: *Req): int32
+  local e = (@Bytes)(memmem(p, n, (@cstring)('\r\n\r\n'), 4))
+  if e == nilptr then
+    if n >= REQ_MAX then return -2 end
+    return 0
+  end
+  local head = (@uint32)((@usize)(e) - (@usize)(p)) + 4
+  -- request line
+  local i: uint32 = 0
+  while i < head and p[i] ~= ' '_b do i = i + 1 end
+  if i == 3 and C.memcmp(p, (@cstring)('GET'), 3) == 0 then
+    r.method = M_GET
+  elseif i == 4 and C.memcmp(p, (@cstring)('POST'), 4) == 0 then
+    r.method = M_POST
+  else
+    r.method = M_OTHER
+  end
+  i = i + 1
+  local ps = i
+  while i < head and p[i] ~= ' '_b and p[i] ~= '?'_b and p[i] ~= '\r'_b do i = i + 1 end
+  r.path = &p[ps]
+  r.path_len = i - ps
+  while i < head and p[i] ~= ' '_b and p[i] ~= '\r'_b do i = i + 1 end
+  if i >= head or p[i] ~= ' '_b or head - i < 11 or C.memcmp(&p[i + 1], (@cstring)('HTTP/1.'), 7) ~= 0 then return -1 end
+  r.keep_alive = p[i + 8] ~= '0'_b
+  while p[i] ~= '\n'_b do i = i + 1 end
+  i = i + 1
+  r.auth = nilptr
+  r.auth_len = 0
+  r.expect = false
+  local clen: uint32 = 0
+  -- headers
+  while i < head - 2 do
+    local ns = i
+    while i < head and p[i] ~= ':'_b and p[i] ~= '\n'_b do i = i + 1 end
+    if p[i] ~= ':'_b then return -1 end
+    local nn = i - ns
+    i = i + 1
+    while p[i] == ' '_b or p[i] == '\t'_b do i = i + 1 end
+    local vs = i
+    while p[i] ~= '\r'_b and p[i] ~= '\n'_b do i = i + 1 end
+    local ve = i
+    while ve > vs and (p[ve - 1] == ' '_b or p[ve - 1] == '\t'_b) do ve = ve - 1 end
+    while p[i] ~= '\n'_b do i = i + 1 end
+    i = i + 1
+    local name = &p[ns]
+    local c0 = p[ns] | 0x20
+    if c0 == 'a'_b and name_is(name, nn, 'authorization') then
+      r.auth = &p[vs]
+      r.auth_len = ve - vs
+    elseif c0 == 'c'_b and name_is(name, nn, 'content-length') then
+      if ve == vs or ve - vs > 9 then return -2 end
+      clen = 0
+      for k = vs, < ve do
+        if p[k] < '0'_b or p[k] > '9'_b then return -1 end
+        clen = clen * 10 + (p[k] - '0'_b)
+      end
+    elseif c0 == 'c'_b and name_is(name, nn, 'connection') then
+      if has_word(&p[vs], ve - vs, 'close') then
+        r.keep_alive = false
+      elseif has_word(&p[vs], ve - vs, 'keep-alive') then
+        r.keep_alive = true
+      end
+    elseif c0 == 't'_b and name_is(name, nn, 'transfer-encoding') then
+      return -1   -- chunked bodies aren't supported
+    elseif c0 == 'e'_b and name_is(name, nn, 'expect') then
+      r.expect = has_word(&p[vs], ve - vs, '100-continue')
+    end
+  end
+  if clen > REQ_MAX or head + clen > REQ_MAX then return -2 end
+  r.head_len = head
+  r.body = &p[head]
+  r.body_len = clen
+  if n < head + clen then return 0 end
+  return (@int32)(head + clen)
+end
