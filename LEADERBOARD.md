@@ -30,7 +30,9 @@ its #229 run (`f0fb733`) held 232,000, its #216 run (`ee683db`) and #211 run (`7
 (`c53ff1f`); its #236 run (`9ed9f2e`) held 157,000, its #226 run (`a343a03`) held 140,000 and its earlier #205 run (`6271ee8`) held 133,000. c-iouring-shivanshthapliyal is scored at its follow-up PR
 #250 (`051f03c`); its #230 run (`b32c4ee`) held 270,000 and its earlier #214 run (`9844f31`) held 238,000. sql-sqlite3cli-public is scored at its follow-up PR
 #232 (`1319a07`); its earlier #219 run (`3f7cab9`) held 6,000. c-iouring-pavlyhalim is scored at its follow-up PR #245
-(`7387a31`); its earlier #233 run (`3f5c305`) held 270,000. rust-iouring-kensac is scored at its follow-up PR #264
+(`7387a31`); its earlier #233 run (`3f5c305`) held 270,000. Its later follow-up #278 (`088cc44`, `db.h` tuning; held,
+not merged: it didn't beat the merged row) scored 290,000 (27,513 req/s, p95 78 / p99 345 ms, 0 err, 87 % CPU, 28 µs/req,
+654 MB, 2026-11-02; 300,000 failed the 2-minute probe on p99 4.0 s). rust-iouring-kensac is scored at its follow-up PR #264
 (`4298101`, not merged yet); its merged #248 code (`3bd2352`, merged as rebased `551ff3a`) held 270,000 and its earlier
 #247 run (`d42783b`) 257,000. php-symfony-gnugat is scored at its follow-up PR #256 (`4a11a5d`); its
 earlier #136 run (`48e3783`) held 15,500. mojo-iouring-oh-meh is scored at its follow-up PR #257 (`a9df151`); its merged
