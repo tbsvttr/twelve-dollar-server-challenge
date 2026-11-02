@@ -50,6 +50,16 @@ void *hp_alloc(size_t n) {
     return p;
 }
 
+/* Free a block from hp_alloc. The allocator is a plain calloc, so this is
+ * free() plus the diagnostic counter -- callers that free a heap string or
+ * builder must use hp_str_free/hp_free so hp_live_allocs stays a true leak
+ * indicator. */
+void hp_free(void *p) {
+    if (!p) return;
+    free(p);
+    g_live_allocs--;
+}
+
 void hp_rc_inc(void *p) { (void)p; }
 void hp_rc_dec(void *p) { (void)p; }
 
@@ -133,6 +143,7 @@ void hp_scope_begin(void) { g_scope_depth++; }
 void hp_scope_end(void) {
     if (g_scope_depth == 0) return;
     if (--g_scope_depth > 0) return;
+    hp_st[HP_ST_SCOPE_END]++;
     hp_arena_reset();
 }
 
@@ -187,7 +198,7 @@ static hstr *hp_str_heap_new(const char *bytes, size_t len) {
  * cp_len(), parse_id() and the JSON scanner index a string hundreds of times
  * per request and must not allocate a fresh one-character string each time. */
 static _Thread_local hstr *g_chars[256];
-static hstr *hp_char_str(unsigned char c) {
+hstr *hp_char_str(unsigned char c) {
     if (!g_chars[c]) {
         g_chars[c] = hp_str_heap_new((const char *)&c, 1);
         g_chars[c]->flags = HP_F_STATIC;
@@ -217,6 +228,7 @@ static hstr *hp_str_alloc(size_t len, size_t cap) {
 
 hstr *hp_str_new(const char *bytes, size_t len) {
     hstr *s = hp_str_alloc(len, len + 1);
+    hp_st[HP_ST_STR_NEW]++;
     if (bytes && len) memcpy(s->data, bytes, len);
     s->data[len] = 0;
     return s;
@@ -795,9 +807,16 @@ hval hp_arr_push_vv(hval container, hval v) {
     return hp_of_arr(a);
 }
 
+/* hash-index maintenance (defined below; needed by pop/shift/unset) */
+static void hp_arr_index_del(harr *a, size_t valslot);
+static void hp_arr_index_rebuild(harr *a, uint32_t icap);
+
 hval hp_arr_pop(harr *a) {
     if (!a || a->len == 0) return hp_null;
     a = hp_arr_cow(a);
+    /* keep the hash index honest: the popped slot must leave the index, or a
+     * later lookup can hand out a slot that is no longer inside the array */
+    if (a->is_map && a->index) hp_arr_index_del(a, a->len - 1);
     hval v = a->vals[--a->len];
     return v;
 }
@@ -807,7 +826,15 @@ hval hp_arr_shift(harr *a) {
     a = hp_arr_cow(a);
     hval v = a->vals[0];
     memmove(a->vals, a->vals + 1, (a->len - 1) * sizeof(hval));
-    if (a->is_map) memmove(a->keys, a->keys + 1, (a->len - 1) * sizeof(hval));
+    if (a->is_map) {
+        memmove(a->keys, a->keys + 1, (a->len - 1) * sizeof(hval));
+        /* every index entry now points one slot too far: drop the table and
+         * let it rebuild lazily (lookups fall back to a linear scan) */
+        free(a->index);
+        a->index = NULL;
+        a->icap = 0;
+        a->ibudget = 0;
+    }
     a->len--;
     return v;
 }
@@ -841,23 +868,26 @@ static int64_t hp_key_index(harr *a, hval key) {
             uint32_t mask = a->icap - 1;
             uint32_t h = ((uint64_t)key.u.i * 0x9E3779B97F4A7C15ULL) >> 32;
             uint32_t slot = h & mask;
-            for (;;) {
+            for (uint32_t n = 0; n <= mask; n++) {
                 uint32_t e = a->index[slot];
-                if (e == 0) return -1;
+                if (e == 0) break;            /* key not present */
                 if (e != 0xFFFFFFFFu) {
                     hval k = a->keys[e - 1];
                     if (k.tag == HV_INT && k.u.i == key.u.i) return (int64_t)(e - 1);
                 }
                 slot = (slot + 1) & mask;
             }
+            /* No empty slot (the table filled with tombstones): fall through
+             * to the linear scan. Without the bound this loop spins forever
+             * once churn leaves the index without a single 0 entry. */
         }
         if (a->index && key.tag == HV_STR && key.u.s) {
             uint32_t mask = a->icap - 1;
             uint32_t h = hp_str_hash(key.u.s);
             uint32_t slot = h & mask;
-            for (;;) {
+            for (uint32_t n = 0; n <= mask; n++) {
                 uint32_t e = a->index[slot];
-                if (e == 0) return -1;
+                if (e == 0) break;
                 if (e != 0xFFFFFFFFu) {
                     hval k = a->keys[e - 1];
                     if (k.tag == HV_STR && k.u.s && hp_str_eq(k.u.s, key.u.s))
@@ -880,9 +910,6 @@ static int64_t hp_key_index(harr *a, hval key) {
  * rebuild_flag(): decide whether to (re)build; called after inserts.
  * Cost amortized O(1) per insert, like PHP's ordered hash tables. */
 static void hp_arr_index_add(harr *a, size_t valslot);
-static void hp_arr_index_del(harr *a, size_t valslot);
-static void hp_arr_index_rebuild(harr *a, uint32_t icap);
-
 static uint32_t hp_hash_int(int64_t k) {
     uint64_t x = (uint64_t)k * 0x9E3779B97F4A7C15ULL;
     return (uint32_t)(x >> 32);
@@ -916,20 +943,34 @@ static void hp_arr_index_add(harr *a, size_t valslot) {
         return;
     if (!a->index) {
         if (a->len < 12) return;          /* too small to be worth it */
+        /* The rebuild walks keys[0..len-1], which already includes valslot:
+         * inserting it again here would leave a duplicate entry, and a later
+         * delete only tombstones one of the two -> a stale slot survives and
+         * a lookup can return an index past len (heap corruption on unset). */
         hp_arr_index_rebuild(a, 32);
+        return;
     }
     if (a->ibudget == 0) {
         /* grow to keep load factor low, or just rebuild to clear tombstones */
         uint32_t want = (a->len * 2 >= a->icap) ? a->icap * 2 : a->icap;
-        hp_arr_index_rebuild(a, want);
+        hp_arr_index_rebuild(a, want);    /* same: rebuild re-adds this key */
+        return;
     }
+    uint32_t mask = a->icap - 1;
     uint32_t slot = (a->keys[valslot].tag == HV_INT
                          ? hp_hash_int(a->keys[valslot].u.i)
-                         : hp_hash_str(a->keys[valslot].u.s)) & (a->icap - 1);
-    while (a->index[slot] != 0 && a->index[slot] != 0xFFFFFFFFu)
-        slot = (slot + 1) & (a->icap - 1);
-    a->index[slot] = (uint32_t)valslot + 1;
-    a->ibudget--;
+                         : hp_hash_str(a->keys[valslot].u.s)) & mask;
+    for (uint32_t n = 0; n <= mask; n++) {
+        if (a->index[slot] == 0 || a->index[slot] == 0xFFFFFFFFu) {
+            a->index[slot] = (uint32_t)valslot + 1;
+            a->ibudget--;
+            return;
+        }
+        slot = (slot + 1) & mask;
+    }
+    /* no free slot: rebuild (clears tombstones and re-indexes every key,
+     * including valslot) instead of growing forever */
+    hp_arr_index_rebuild(a, a->icap * 2);
 }
 
 static void hp_arr_index_del(harr *a, size_t valslot) {
@@ -940,15 +981,20 @@ static void hp_arr_index_del(harr *a, size_t valslot) {
     uint32_t slot = (a->keys[valslot].tag == HV_INT
                          ? hp_hash_int(a->keys[valslot].u.i)
                          : hp_hash_str(a->keys[valslot].u.s)) & mask;
-    for (;;) {
+    for (uint32_t n = 0; n <= mask; n++) {
         uint32_t e = a->index[slot];
         if (e == 0) return;
         if (e == (uint32_t)valslot + 1) {
             a->index[slot] = 0xFFFFFFFFu;   /* tombstone */
+            /* a tombstone still occupies a slot: count it against the
+             * rebuild budget so deletes alone cannot fill the table */
+            if (a->ibudget) a->ibudget--;
             return;
         }
         slot = (slot + 1) & mask;
     }
+    /* table is all tombstones: rebuild so lookups keep an empty slot */
+    hp_arr_index_rebuild(a, a->icap);
 }
 
 /* shiftless deletion: swap-with-last keeps O(1) unset and preserves the
@@ -958,6 +1004,7 @@ void hp_arr_unset(harr *a, hval key) {
     a = hp_arr_cow(a);
     int64_t i = hp_key_index(a, key);
     if (i < 0) return;
+    if ((size_t)i >= a->len) return;   /* stale index entry: nothing to delete */
     size_t last = a->len - 1;
     if ((size_t)i != last) {
         if (a->is_map && a->keys) {

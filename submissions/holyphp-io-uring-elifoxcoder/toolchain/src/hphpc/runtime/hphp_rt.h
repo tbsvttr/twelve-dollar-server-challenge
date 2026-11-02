@@ -65,6 +65,32 @@ typedef struct hobj hobj;
 typedef struct hclosure hclosure;
 typedef struct hval hval;
 
+/* ---------- runtime counters (generic introspection) ----------
+ * Plain adds: the VM is single-threaded. Exposed as a JSON object by the
+ * runtime_stats() builtin; the indices are the key order. */
+enum {
+    HP_ST_REQ = 0,     /* request reads handed to the program */
+    HP_ST_ENTER,       /* io_uring enter syscalls issued */
+    HP_ST_SQE_SUB,     /* SQEs driven into the kernel in one enter */
+    HP_ST_SQE_PUSH,    /* SQEs accepted by the ring */
+    HP_ST_SQE_PARK,    /* pushes rejected because the ring was full */
+    HP_ST_CQE,         /* CQEs drained (incl. stale + cancels) */
+    HP_ST_CQE_RECV,
+    HP_ST_CQE_SEND,
+    HP_ST_CQE_POLL,
+    HP_ST_ARM_RECV,
+    HP_ST_ARM_SEND,
+    HP_ST_ARM_POLL,
+    HP_ST_ARM_FAIL,    /* an arm could not be queued (ring full / state) */
+    HP_ST_CLOSE,       /* stream_close calls (connection ends) */
+    HP_ST_ACCEPT,      /* accepted connections */
+    HP_ST_SEND_CHUNK,  /* send-payload copies queued (malloc per chunk) */
+    HP_ST_STR_NEW,     /* hstr allocations */
+    HP_ST_SCOPE_END,   /* poll cycles / memory scopes closed */
+    HP_ST_N
+};
+extern uint64_t hp_st[HP_ST_N];
+
 /* ---------- strings: length-prefixed, refcounted ---------- */
 /* hstr flags */
 #define HP_F_STATIC 1u  /* interned literal: lives in the literal table forever */
@@ -80,6 +106,7 @@ struct hstr {
 };
 
 hstr *hp_str_lit(const char *cstr);
+hstr *hp_char_str(unsigned char c);   /* shared 1-byte string (never freed) */
 hstr *hp_str_intern(const char *cstr);   /* cached literal, rc == 0 */
 /* Request scope: strings allocated between begin/end are released in one
  * shot by hp_scope_end(). Values that must outlive the scope are copied out
@@ -358,6 +385,7 @@ struct hobj {
 };
 
 void *hp_alloc(size_t n);
+void hp_free(void *p);           /* counterpart of hp_alloc: keeps the live counter honest */
 int64_t hp_live_allocs(void);   /* diagnostic: live hp_alloc blocks */
 int64_t hp_live_bytes(void);    /* diagnostic: glibc in-use heap bytes */
 void hp_echo(hval v);              /* PHP echo: print value */
@@ -382,6 +410,10 @@ hval hpbi_substr(hval s, hval start, hval len);
 hval hpbi_strstr(hval h, hval n);
 hval hpbi_strchr(hval h, hval n);
 hval hpbi_strpos(hval h, hval n, hval off);
+hval hpbi_str_pos_ci(hval h, hval n, hval off);
+hval hpbi_str_prefix_ci(hval s, hval p);
+hval hpbi_str_int_range(hval s, hval a, hval b);
+hval hpbi_str_trim_range(hval s, hval a, hval b);
 hval hpbi_str_at_eq(hval s, hval start, hval len, hval lit);
 hval hpbi_str_to_int(hval s);
 hval hpbi_str_contains(hval h, hval n);
@@ -413,6 +445,12 @@ hval hpbi_preg_grep(hval pat, hval arr);
 /* ---- crypto ---- */
 hval hpbi_sha256(hval s);
 hval hpbi_hash_hmac(hval algo, hval data, hval key, hval raw_output);
+hval hpbi_jwt_verify(hval tok, hval secret, hval now);
+hstr *hp_jwt_verify_t(hstr *tok, hstr *secret, int64_t now);
+hval hpbi_json_str_field(hval j, hval k);
+hval hpbi_json_num_field(hval j, hval k);
+hstr *hp_json_str_field_t(hstr *j, hstr *key);
+int64_t hp_json_num_field_t(hstr *j, hstr *key);
 hval hpbi_password_hash(hval pw);
 hval hpbi_password_verify(hval pw, hval hash);
 hval hpbi_random_bytes(hval n);
@@ -450,7 +488,11 @@ hval hpbi_stream_send(hval s, hval data);
 hval hpbi_stream_send2(hval s, hval a, hval b);
 hval hpbi_stream_send_nb(hval s, hval data);
 hval hpbi_stream_send2_nb(hval s, hval a, hval b);
+hval hpbi_stream_send_sb(hval s, hval sb);
+hval hpbi_int_digits(hval n);
 hval hpbi_nofile_limit(void);
+hval hpbi_runtime_stats(void);
+hstr *hp_runtime_stats_t(void);
 hval hpbi_stream_ready(hval handles, hval timeout_ms);
 hval hpbi_stream_ready_into(hval out, hval handles, hval timeout_ms);
 hval hpbi_epoll_add(hval s);
@@ -1067,10 +1109,14 @@ hval hpbi_sqlite_busy_timeout(hval db, hval ms);
 int64_t hp_sb_new_t(void);
 bool hp_sb_reserve_t(int64_t h, int64_t n);
 bool hp_sb_put_t(int64_t h, hstr *s);
+int64_t hp_sb_len_t(int64_t h);
+bool hp_sb_prepend_t(int64_t h, hstr *s);
 bool hp_sb_int_t(int64_t h, int64_t n);
 bool hp_sb_json_t(int64_t h, int64_t ptr, int64_t len);
 bool hp_sb_json_str_t(int64_t h, hstr *s);
 hstr *hp_sb_take_t(int64_t h);
+int64_t hp_stream_send_sb_t(int64_t fd, int64_t sb);
+int64_t hp_int_digits_t(int64_t n);
 int64_t hp_iarr_new_t(int64_t n);
 int64_t hp_iarr_get_t(int64_t h, int64_t k);
 bool hp_iarr_set_t(int64_t h, int64_t k, int64_t v);
@@ -1081,12 +1127,18 @@ int64_t hp_bt_next_t(int64_t h);
 int64_t hp_bt_seek_t(int64_t h, int64_t rowid);
 int64_t hp_bt_rowid_t(int64_t h);
 int64_t hp_bt_payload_ptr_t(int64_t h);
+int64_t hp_bt_cols_t(int64_t h);
+int64_t hp_bt_col_off_t(int64_t i);
+int64_t hp_bt_col_len_t(int64_t i);
+int64_t hp_bt_col_int_t(int64_t i);
 int64_t hp_bt_payload_size_t(int64_t h);
 int64_t hp_stream_send_nb_t(int64_t fd, hstr *s);
 int64_t hp_stream_send2_nb_t(int64_t fd, hstr *a, hstr *b);
 bool hp_epoll_mod_t(int64_t fd, int64_t mask);
 int64_t hp_nofile_limit_t(void);
 bool hp_uring_active_t(void);
+bool hp_uring_direct_t(void);
+int64_t hp_uring_direct_slots_t(void);
 int64_t hp_strlen_t(hstr *s);
 int64_t hp_str_to_int_t(hstr *s);
 bool hp_str_at_eq_t(hstr *s, int64_t start, int64_t len, hstr *lit);

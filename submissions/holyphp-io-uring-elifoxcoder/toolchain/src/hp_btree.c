@@ -8,7 +8,63 @@ typedef struct HpBt {
     Btree *pBt;
     BtCursor cur;
     KeyInfo *pKey;      /* owned by this cursor when it is an index cursor */
+    Pgno root;
+    int isIndex;
+    int isOpen;         /* cur is linked into the btree and safe to use */
 } HpBt;
+
+/* A cursor may only exist inside a b-tree transaction. Without one the pager
+ * is free to drop the entire page cache at the next write commit
+ * (pager_reset -> sqlite3PcacheClear), which frees the MemPage objects the
+ * cursor holds pointers to; the next cursor move then reads freed memory.
+ *
+ * All cursors of one connection share one read transaction: the first cursor
+ * that opens starts it, the last one that closes ends it (unless the caller
+ * owns a write transaction, which is never committed here). */
+typedef struct HpBtTxn {
+    Btree *pBt;
+    int depth;          /* open cursors on this b-tree */
+    int owned;          /* this layer started the transaction */
+    int used;
+} HpBtTxn;
+
+#define HP_BT_TXN_MAX 8
+static HpBtTxn hp_bt_txns[HP_BT_TXN_MAX];
+
+static HpBtTxn *hp_bt_txn_find(Btree *pBt) {
+    int i;
+    for (i = 0; i < HP_BT_TXN_MAX; i++)
+        if (hp_bt_txns[i].used && hp_bt_txns[i].pBt == pBt) return &hp_bt_txns[i];
+    return 0;
+}
+
+static HpBtTxn *hp_bt_txn_get(Btree *pBt) {
+    HpBtTxn *t = hp_bt_txn_find(pBt);
+    int i;
+    if (t) return t;
+    for (i = 0; i < HP_BT_TXN_MAX; i++) {
+        if (!hp_bt_txns[i].used) {
+            memset(&hp_bt_txns[i], 0, sizeof hp_bt_txns[i]);
+            hp_bt_txns[i].used = 1;
+            hp_bt_txns[i].pBt = pBt;
+            return &hp_bt_txns[i];
+        }
+    }
+    return 0;
+}
+
+/* Release the read transaction started for our low-level cursors. A cursor
+ * may have been used while the caller promoted that transaction to a write
+ * transaction; in that case the caller owns the write commit. */
+static void hp_bt_txn_drop_if_empty(HpBtTxn *t) {
+    if (!t || t->depth != 0) return;
+    if (t->owned && t->pBt && t->pBt->inTrans == TRANS_READ) {
+        int rc = sqlite3BtreeCommit(t->pBt);
+        if (rc != SQLITE_OK && t->pBt->inTrans == TRANS_READ)
+            sqlite3BtreeRollback(t->pBt, SQLITE_OK, 0);
+    }
+    memset(t, 0, sizeof *t);
+}
 
 unsigned int hp_bt_root_impl(sqlite3 *db, const char *zName, int isIndex) {
     char *zErr = 0;
@@ -46,16 +102,21 @@ static Index *hp_find_index(sqlite3 *db, const char *zName) {
  * keys and sqlite3BtreeLast() fails. */
 void *hp_bt_open_impl(sqlite3 *db, const char *zName, int isIndex) {
     HpBt *h;
-    Pgno root;
+    Pgno root, lockRoot;
     KeyInfo *pKey = 0;
+    Table *pTab = 0;
+    Index *pIdx = 0;
+    HpBtTxn *txn;
+    int rc;
     char *zErr = 0;
     if (!db || !zName) return 0;
     if (sqlite3Init(db, &zErr) != SQLITE_OK) { sqlite3_free(zErr); return 0; }
     if (isIndex) {
-        Index *pIdx = hp_find_index(db, zName);
+        pIdx = hp_find_index(db, zName);
         Parse sParse;
         if (!pIdx) return 0;
         root = pIdx->tnum;
+        lockRoot = pIdx->pTable->tnum;
         /* The index cursor needs the index's KeyInfo; without it the btree
          * cannot compare keys and sqlite3BtreeLast() fails. sqlite3KeyInfoOfIndex
          * wants a Parse, but only reads db/nErr from it. */
@@ -64,9 +125,10 @@ void *hp_bt_open_impl(sqlite3 *db, const char *zName, int isIndex) {
         pKey = sqlite3KeyInfoOfIndex(&sParse, pIdx);
         if (!pKey) return 0;
     } else {
-        Table *pTab = sqlite3FindTable(db, zName, "main");
+        pTab = sqlite3FindTable(db, zName, "main");
         if (!pTab) return 0;
         root = pTab->tnum;
+        lockRoot = root;
     }
     h = (HpBt *)sqlite3_malloc(sizeof *h);
     if (!h) return 0;
@@ -74,18 +136,46 @@ void *hp_bt_open_impl(sqlite3 *db, const char *zName, int isIndex) {
     h->db = db;
     h->pBt = db->aDb[0].pBt;
     h->pKey = pKey;
-    if (sqlite3BtreeCursor(h->pBt, root, 0, pKey, &h->cur) != SQLITE_OK) {
-        if (pKey) sqlite3KeyInfoUnref(pKey);
-        sqlite3_free(h);
-        return 0;
+    h->root = root;
+    h->isIndex = isIndex;
+
+    txn = hp_bt_txn_get(h->pBt);
+    if (!txn) goto open_fail;
+    if (txn->depth == 0) {
+        txn->owned = h->pBt->inTrans == TRANS_NONE;
+        if (txn->owned) {
+            rc = sqlite3BtreeBeginTrans(h->pBt, 0, 0);
+            if (rc != SQLITE_OK) goto open_fail;
+        }
     }
+    rc = sqlite3BtreeLockTable(h->pBt, lockRoot, 0);
+    if (rc != SQLITE_OK) goto open_fail;
+    rc = sqlite3BtreeCursor(h->pBt, root, 0, pKey, &h->cur);
+    if (rc != SQLITE_OK) goto open_fail;
+    txn->depth++;
+    h->isOpen = 1;
     return h;
+
+open_fail:
+    if (txn && txn->depth == 0) hp_bt_txn_drop_if_empty(txn);
+    if (pKey) sqlite3KeyInfoUnref(pKey);
+    sqlite3_free(h);
+    return 0;
 }
 
 void hp_bt_close_impl(void *v) {
     HpBt *h = (HpBt *)v;
+    HpBtTxn *txn;
     if (!h) return;
-    sqlite3BtreeCloseCursor(&h->cur);
+    if (h->isOpen) {
+        sqlite3BtreeCloseCursor(&h->cur);
+        h->isOpen = 0;
+        txn = hp_bt_txn_find(h->pBt);
+        if (txn && txn->depth > 0) {
+            txn->depth--;
+            hp_bt_txn_drop_if_empty(txn);
+        }
+    }
     if (h->pKey) sqlite3KeyInfoUnref(h->pKey);
     sqlite3_free(h);
 }

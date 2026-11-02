@@ -320,8 +320,33 @@ class Server {
     pub int $insPost = 0;
     pub int $insLike = 0;
     pub int $hasPost = 0;
+    /* prepared transaction control: sqlite3_exec re-parses the SQL text on
+     * every group commit, which showed up in the write profile */
+    pub int $beginTx = 0;
+    pub int $commitTx = 0;
+    pub int $rollbackTx = 0;
+
+    /* Operator introspection: leapfrogged only when HPHP_STATS=1 (the run
+     * scripts never set it, so bench requests pay exactly zero for this). */
+    pub bool $statsmode = false;
+    pub bool $ring = false;
+    pub bool $feedjson = false;
+    pub int $reqs = 0;
+    pub int $reqsBase = 0;
 
     /* ------------------------------------------------------- setup */
+
+    public function open_bt_cursors(): void {
+        if ($this->btPosts == 0) { $this->btPosts = bt_open($this->db, "posts", 0); }
+        if ($this->btLikes == 0) { $this->btLikes = bt_open($this->db, "likes_post_id_idx", 1); }
+        if ($this->btUsers == 0) { $this->btUsers = bt_open($this->db, "users", 0); }
+    }
+
+    public function close_bt_cursors(): void {
+        if ($this->btPosts != 0) { bt_close($this->btPosts); $this->btPosts = 0; }
+        if ($this->btLikes != 0) { bt_close($this->btLikes); $this->btLikes = 0; }
+        if ($this->btUsers != 0) { bt_close($this->btUsers); $this->btUsers = 0; }
+    }
 
     public function open(string $host, int $port): bool {
         $path = getenv("SQLITE_PATH");
@@ -329,6 +354,7 @@ class Server {
         $sec = getenv("JWT_SECRET");
         if ($sec === false || $sec == "") { $sec = "twelve-dollar-challenge"; }
         $this->secret = $sec;
+        if (getenv("HPHP_STATS") == "1") { $this->statsmode = true; }
 
         $db = sqlite_open($path);
         if ($db == 0) {
@@ -339,6 +365,10 @@ class Server {
         sqlite_busy_timeout($db, 5000);
         sqlite_exec($db, "PRAGMA journal_mode=WAL");
         sqlite_exec($db, "PRAGMA synchronous=NORMAL");
+        /* WAL in exclusive mode: one process owns the database, so SQLite
+         * keeps the WAL index in memory instead of taking the -shm file
+         * locks on every read and commit (they showed up in the profile). */
+        sqlite_exec($db, "PRAGMA locking_mode=EXCLUSIVE");
         sqlite_exec($db, "PRAGMA temp_store=MEMORY");
         sqlite_exec($db, "PRAGMA cache_size=-65536");
         sqlite_exec($db, "PRAGMA mmap_size=268435456");
@@ -388,6 +418,11 @@ class Server {
             echo "fatal: health query: " . sqlite_errmsg($db) . "\n";
             return false;
         }
+        /* transaction control prepared once: sqlite3_exec re-parses the text
+         * on every group commit (it showed up in the write profile) */
+        $this->beginTx = sqlite_prepare($db, "BEGIN IMMEDIATE");
+        $this->commitTx = sqlite_prepare($db, "COMMIT");
+        $this->rollbackTx = sqlite_prepare($db, "ROLLBACK");
 
         /* one post's like count for the B-tree post path (index range scan) */
         $this->likecnt = sqlite_prepare($db, "SELECT count(*) FROM likes WHERE post_id = ?1");
@@ -432,11 +467,9 @@ class Server {
                 return false;
             }
         }
-        /* generic B-tree cursors: posts by rowid, the likes index by key,
-         * users by rowid. They are only used when all three open. */
-        $this->btPosts = bt_open($db, "posts", 0);
-        $this->btLikes = bt_open($db, "likes_post_id_idx", 1);
-        $this->btUsers = bt_open($db, "users", 0);
+        /* Generic B-tree cursors are reopened around write batches so SQLite
+         * never has to save a low-level cursor position across an INSERT. */
+        $this->open_bt_cursors();
 
         $this->srv = intval($srv);
         /* TCP_NODELAY is inherited by accepted sockets on Linux, so set it
@@ -444,28 +477,50 @@ class Server {
          * connection (tens of thousands per second in the shed regime). */
         stream_set_nodelay($srv);
         epoll_add($this->srv);
-        $this->socks = iarr_new(65536);
-        $this->lasts = iarr_new(65536);
+        /* Handles are either real fds (< 65536) or direct-descriptor handles
+         * (65536 + ring * 65536 + slot). Up to 5 rings x 65535 slots fit in
+         * 524288 int slots (real fds and direct handles share the space). */
+        $this->socks = iarr_new(524288);
+        $this->lasts = iarr_new(524288);
 
         /* Shed only when the process is really near its descriptor limit.
          * The box sets LimitNOFILE; a hard 58,000 would close every response
          * once more than 58,000 users are connected. */
         $lim = nofile_limit();
-        if ($lim > 0) {
+        if (uring_direct()) {
+            /* Ring-owned descriptors are not limited by RLIMIT_NOFILE and
+             * one multishot recv per connection stays in flight, so neither
+             * the fd limit nor the 28k armed-SQE ceiling applies. Shed just
+             * below the registered table (which the kernel caps at NOFILE). */
+            $this->shedAt = intval(uring_direct_slots()) - 1024;
+            if ($this->shedAt < 1024) { $this->shedAt = 1024; }
+        } elseif ($lim > 0) {
             $this->shedAt = $lim - 4096;
             if ($this->shedAt < 32000) { $this->shedAt = 32000; }
             if ($this->shedAt > $lim) { $this->shedAt = $lim; }
-            /* The ring backend parks one armed recv per connection and the
-             * kernel caps the SQ ring at 32768 entries. Above ~28k live
-             * connections the surplus would wait for a slot before their
-             * requests are even read, so shed earlier: the extra users
-             * reconnect per request instead and stay fast. */
+            /* Keep-alive holding is capped by the ring's armed-recv capacity
+             * (the kernel caps the SQ ring at 32768, the default track limit
+             * is 28000). Anything beyond that pays accept/close per request
+             * -- the park-and-retry regime the 145k box run measured at
+             * 60 us/req; the epoll-hold alternative measured at 76 us/req. */
             if (uring_active() && $this->shedAt > 28000) { $this->shedAt = 28000; }
+        }
+        /* Operator override (tests, capacity experiments): the shed regime is
+         * the churn regime, so being able to force it locally is how the
+         * accept/close path gets measured without 28k live sockets. */
+        $shedEnv = getenv("HPHP_SHED_AT");
+        if ($shedEnv != "") {
+            $sv = intval($shedEnv);
+            if ($sv > 0) { $this->shedAt = $sv; }
         }
 
         $codes = [200, 201, 400, 401, 404, 500, 503];
         $texts = ["OK", "Created", "Bad Request", "Unauthorized",
                   "Not Found", "Internal Server Error", "Service Unavailable"];
+        $this->ring = uring_active();
+        /* A/B knob: HPHP_FEED=json forces the native JSON1 feed query instead
+         * of the VM B-tree walk (operator measurement, unset in the bench). */
+        $this->feedjson = (getenv("HPHP_FEED") == "json");
         for ($i = 0; $i < 7; $i++) {
             $this->hdr[$codes[$i]] = "HTTP/1.1 " . $codes[$i] . " " . $texts[$i]
                 . "\r\nContent-Type: application/json\r\nContent-Encoding: identity"
@@ -589,7 +644,7 @@ class Server {
             if ($n > $this->nconn * 2 + 1024) {
                 $this->sockList = [];
                 $k = 0;
-                while ($k < 65536) {
+                while ($k < 524288) {
                     if (iarr_get($this->socks, $k) != 0) { $this->sockList[] = $k; }
                     $k = $k + 1;
                 }
@@ -638,6 +693,7 @@ class Server {
     }
 
     public function parse(int $fd, string $in): void {
+        if ($this->statsmode) { $this->reqs++; }
         $buf = $in;
         while (true) {
             $he = strpos($buf, "\r\n\r\n");
@@ -667,40 +723,45 @@ class Server {
                     $this->on_feed($fd);
                 } else if ($pl == 7 && str_at_eq($buf, $ps, 7, "/health")) {
                     $this->on_health($fd);
+                } else if ($this->statsmode && $pl == 6 && str_at_eq($buf, $ps, 6, "/stats")) {
+                    $this->on_stats($fd);
                 } else if ($pl > 7 && str_at_eq($buf, $ps, 6, "/posts") && $buf[$ps + 6] == "/") {
                     $this->on_post($fd, substr($buf, $ps + 7, $pl - 7));
                 } else {
                     $this->send_json($fd, 404, '{"error":"not found"}');
                 }
                 if (!(iarr_get($this->socks, $fd) != 0)) { return; }
-                $buf = substr($buf, $he + 4);
+                $np = $he + 4;                          /* EXPERIMENT R */
+                if ($np == strlen($buf)) { return; }    /* no substr for the
+                                                           last request in
+                                                           the packet */
+                $buf = substr($buf, $np);
                 if ($buf == "") { return; }
                 continue;
             }
 
-            $head = substr($buf, 0, $he);
             $method = substr($buf, 0, $sp1);
             $path = substr($buf, $ps, $pl);
 
             $cl = 0;
             $auth = "";
             if (true) {
-                $lc = strtolower($head);
-                $k = strpos($lc, "\r\ncontent-length:");
-                if ($k !== false) {
-                    $e = strpos($lc, "\r\n", $k + 2);
-                    if ($e === false) { $e = strlen($head); }
-                    $cl = intval(substr($head, $k + 17, $e - ($k + 17)));
+                /* scan the request buffer itself, bounded by the end of the
+                 * header: no substr($buf, 0, $he) copy per request */
+                $k = str_pos_ci($buf, "\r\ncontent-length:", 0);
+                if ($k !== false && intval($k) < $he) {
+                    $e = strpos($buf, "\r\n", intval($k) + 2);
+                    if ($e === false || intval($e) > $he) { $e = $he; }
+                    $cl = str_int_range($buf, intval($k) + 17, intval($e));
                 }
-                $ak = strpos($lc, "\r\nauthorization:");
-                if ($ak !== false) {
-                    $ae = strpos($lc, "\r\n", $ak + 2);
-                    if ($ae === false) { $ae = strlen($head); }
-                    $auth = trim(substr($head, $ak + 16, $ae - ($ak + 16)));
+                $ak = str_pos_ci($buf, "\r\nauthorization:", 0);
+                if ($ak !== false && intval($ak) < $he) {
+                    $ae = strpos($buf, "\r\n", intval($ak) + 2);
+                    if ($ae === false || intval($ae) > $he) { $ae = $he; }
+                    $auth = str_trim_range($buf, intval($ak) + 16, intval($ae));
                 }
             }
-            if ($cl < 0 || $cl > 1048576) {
-                $this->close_fd($fd);
+            if ($cl < 0 || $cl > 1048576) {                $this->close_fd($fd);
                 return;
             }
 
@@ -744,7 +805,7 @@ class Server {
     }
 
     public function on_feed(int $fd): void {
-        if ($this->btPosts != 0 && $this->btLikes != 0 && $this->btUsers != 0) {
+        if (!$this->feedjson && $this->btPosts != 0 && $this->btLikes != 0 && $this->btUsers != 0) {
             $this->on_feed_bt($fd);
             return;
         }
@@ -775,56 +836,19 @@ class Server {
         while ($r == 1 && $i < 20) {
             $id = bt_rowid($this->btPosts);
             $p = bt_payload_ptr($this->btPosts);
-            $uid = 0;
-            $bo = 0;
-            $bl = 0;
-            $co = 0;
-            $cl = 0;
-            unsafe {
-                $q = $p as *u8;
-                $hdr = *$q & 255;
-                /* byte 1 is the rowid alias serial type (always 0/NULL) */
-                $k = 2;
-                $st1 = *($q + $k) & 255;
-                $k = $k + 1;
-                $st2 = *($q + $k) & 255;
-                $k = $k + 1;
-                if ($st2 >= 128) { $st2 = (($st2 & 127) << 7) | (*($q + $k) & 255); $k = $k + 1; }
-                $st3 = *($q + $k) & 255;
-                /* serial types 8 and 9 are the constants 0 and 1 with no
-                 * payload; 1..4 store 1..4 bytes, 5 stores 6, 6 stores 8 */
-                $l1 = 0;
-                if ($st1 >= 1 && $st1 <= 4) { $l1 = $st1; }
-                else if ($st1 == 5) { $l1 = 6; }
-                else if ($st1 == 6 || $st1 == 7) { $l1 = 8; }
-                else if ($st1 == 9) { $uid = 1; }
-                $o1 = $hdr;
-                $bl = ($st2 - 13) >> 1;
-                $bo = $o1 + $l1;
-                $cl = ($st3 - 13) >> 1;
-                $co = $bo + $bl;
-                $j = 0;
-                while ($j < $l1) { $uid = ($uid << 8) | (*($q + $o1 + $j) & 255); $j = $j + 1; }
-            }
+            if (bt_cols($this->btPosts) < 4) { break; }
+            $uid = bt_col_int(1);
+            $bo = bt_col_off(2);
+            $bl = bt_col_len(2);
+            $co = bt_col_off(3);
+            $cl = bt_col_len(3);
 
             /* every like whose post id equals this one: they are contiguous */
             $cnt = 0;
             while ($lr == 1) {
                 if ($lpid < 0) {
-                    $lp = bt_payload_ptr($this->btLikes);
-                    $lpid = 0;
-                    unsafe {
-                        $q = $lp as *u8;
-                        $hdr = *$q & 255;
-                        $st0 = *($q + 1) & 255;
-                        $l0 = 0;
-                        if ($st0 >= 1 && $st0 <= 4) { $l0 = $st0; }
-                        else if ($st0 == 5) { $l0 = 6; }
-                        else if ($st0 == 6 || $st0 == 7) { $l0 = 8; }
-                        else if ($st0 == 9) { $lpid = 1; }
-                        $j = 0;
-                        while ($j < $l0) { $lpid = ($lpid << 8) | (*($q + $hdr + $j) & 255); $j = $j + 1; }
-                    }
+                    if (bt_cols($this->btLikes) < 1) { break; }
+                    $lpid = bt_col_int(0);
                 }
                 if ($lpid != $id) { break; }
                 $cnt = $cnt + 1;
@@ -836,14 +860,9 @@ class Server {
             $al = 0;
             if (bt_seek($this->btUsers, $uid) == 1) {
                 $up = bt_payload_ptr($this->btUsers);
-                unsafe {
-                    $q = $up as *u8;
-                    $hdr = *$q & 255;
-                    /* byte 1 is the rowid alias serial type */
-                    $st1 = *($q + 2) & 255;
-                    if ($st1 >= 128) { $st1 = (($st1 & 127) << 7) | (*($q + 3) & 255); }
-                    $al = ($st1 - 13) >> 1;
-                    $a = $up + $hdr;
+                if (bt_cols($this->btUsers) >= 2) {
+                    $al = bt_col_len(1);
+                    $a = $up + bt_col_off(1);
                 }
             }
 
@@ -863,8 +882,18 @@ class Server {
             $r = bt_prev($this->btPosts);
         }
         sb_put($sb, "]}");
-        $body = sb_take($sb);
-        $this->send_json($fd, 200, $body);
+        /* the response header is prepended into the same buffer and the
+         * buffer becomes the send chunk: no body copy, no extra hstr */
+        $blen = sb_len($sb);
+        $shed = $this->nconn >= $this->shedAt;
+        if ($shed) {
+            sb_prepend($sb, $this->hdr[200] . $blen . "\r\nConnection: close\r\n\r\n");
+        } else {
+            sb_prepend($sb, $this->hdr[200] . $blen . "\r\nConnection: keep-alive\r\n\r\n");
+        }
+        $sent = stream_send_sb($fd, $sb);
+        if ($sent == -2) { $this->close_fd($fd); return; }
+        if ($shed) { $this->close_fd($fd); }
     }
 
     /* One post through the same cursors the feed uses: a rowid seek in posts,
@@ -982,6 +1011,7 @@ class Server {
         $rc = sqlite_step($this->health);
         if ($rc == 100) {
             sqlite_reset($this->health);
+            if ($this->ring) { $this->on_health_fast($fd); return; }
             $b = '{"status":"ok","db":"ok","uptime_s":' . (time() - $this->start) . '}';
             $this->send_json($fd, 200, $b);
         } else {
@@ -990,6 +1020,46 @@ class Server {
             $b = '{"status":"degraded","db":"unreachable","error":' . json_encode($e) . '}';
             $this->send_json($fd, 503, $b);
         }
+    }
+
+    /* The hot /health response built straight into the send buffer: header
+     * and body leave in one buffer, `int_digits` sizes the Content-Length
+     * without a throwaway string, and stream_send_sb hands the buffer to
+     * the ring send chunk -- no hstr for the payload, no memcpy into the
+     * send chain (write_response's classic path builds the same bytes with
+     * concatenations, a send-payload copy, and a throwaway hstr). The shed
+     * contract matches write_response exactly: at shedAt the tail says
+     * Connection: close and the fd is queued for close after the drain
+     * (closed connections still answer health checks correctly, once). */
+    public function on_health_fast(int $fd): void {
+        $up = time() - $this->start;
+        $shed = $this->nconn >= $this->shedAt;
+        $sb = sb_new();
+        sb_reserve($sb, 208);
+        sb_put($sb, "HTTP/1.1 200 OK\r\nContent-Type: application/json\r\nContent-Encoding: identity\r\nContent-Length: ");
+        sb_int($sb, 37 + int_digits($up));
+        if ($shed) {
+            sb_put($sb, "\r\nConnection: close\r\n\r\n{\"status\":\"ok\",\"db\":\"ok\",\"uptime_s\":");
+        } else {
+            sb_put($sb, "\r\nConnection: keep-alive\r\n\r\n{\"status\":\"ok\",\"db\":\"ok\",\"uptime_s\":");
+        }
+        sb_int($sb, $up);
+        sb_put($sb, "}");
+        $sent = stream_send_sb($fd, $sb);
+        if ($sent == -2) { $this->close_fd($fd); return; }
+        if ($shed) { $this->close_fd($fd); }
+    }
+
+    /* Operator introspection (HPHP_STATS=1 only): the runtime counters are
+     * cumulative, so the response carries the delta since the previous call
+     * of this endpoint and the raw snapshot. A polling client chooses the
+     * interval and divides. */
+    public function on_stats(int $fd): void {
+        $rt = runtime_stats();
+        $body = '{"interval":{"reqs":' . ($this->reqs - $this->reqsBase)
+              . '},"runtime":' . $rt . '}';
+        $this->reqsBase = $this->reqs;
+        $this->send_json($fd, 200, $body);
     }
 
     public function on_create(int $fd, string $auth, string $body): void {
@@ -1064,41 +1134,22 @@ class Server {
     /* returns [0, uid, username] | [1] missing | [2] bad token | [3] bad payload */
     public function authenticate(string $hdr) {
         if ($hdr == "" || strlen($hdr) < 7) { return [1]; }
-        if (strtolower(substr($hdr, 0, 7)) != "bearer ") { return [1]; }
+        if (!str_prefix_ci($hdr, "bearer ")) { return [1]; }
         $tok = trim(substr($hdr, 7));
         if ($tok == "") { return [1]; }
 
-        /* split into header.payload.signature without building an array */
-        $p1 = strpos($tok, ".");
-        if ($p1 === false) { return [2]; }
-        $p2 = strpos($tok, ".", $p1 + 1);
-        if ($p2 === false) { return [2]; }
-        if (strpos($tok, ".", $p2 + 1) !== false) { return [2]; }
+        /* native HS256 check: the split, the alg field, the constant-time
+         * signature compare and exp are all verified in the runtime without
+         * building intermediate strings (the PHP version allocated ~20). */
+        $pj = jwt_verify($tok, $this->secret, time());
+        if ($pj == "") { return [2]; }
 
-        $h64 = substr($tok, 0, $p1);
-        $p64 = substr($tok, $p1 + 1, $p2 - $p1 - 1);
-        $s64 = substr($tok, $p2 + 1);
-
-        /* the header is a flat object: read "alg" directly instead of
-         * decoding it into an array */
-        if ($this->json_str($this->b64url($h64), "alg") != "HS256") { return [2]; }
-
-        $sig = $this->b64url($s64);
-        $mac = hash_hmac("sha256", $h64 . "." . $p64, $this->secret, true);
-        if (!hash_equals($mac, $sig)) { return [2]; }
-
-        /* same for the payload */
-        $pj = $this->b64url($p64);
-        $exp = $this->json_num($pj, "exp");
-        if ($exp < 0) { return [2]; }
-        if ($exp < time()) { return [2]; }
-
-        $sub = $this->json_str($pj, "sub");
+        $sub = json_str_field($pj, "sub");
         if ($sub == "") { return [3]; }
         $uid = $this->parse_id($sub);
         if ($uid <= 0) { return [3]; }
 
-        $name = $this->json_str($pj, "username");
+        $name = json_str_field($pj, "username");
         if ($name == "") { return [3]; }
         return [0, $uid, $name];
     }
@@ -1117,7 +1168,7 @@ class Server {
         $e = strpos($j, "\"", intval($q) + 1);
         if ($e === false) { return ""; }
         $v = substr($j, intval($q) + 1, intval($e) - intval($q) - 1);
-        if (strpos($v, chr(92)) === false) { return $v; }
+        if (strpos($v, "\\") === false) { return $v; }
         /* escaped value: unescape into a new string */
         $out = "";
         $i = 0;
@@ -1192,12 +1243,25 @@ class Server {
 
     /* -------------------------------------------------- write + commit */
 
+    /* prepared transaction control: one step+reset instead of sqlite3_exec
+     * re-parsing the statement text on every group commit */
+    public function txn(int $stmt): bool {
+        if ($stmt == 0) { return false; }
+        $rc = sqlite_step($stmt);
+        sqlite_reset($stmt);
+        return $rc == 101;
+    }
+
     public function execute_writes(): void {
         $n = count($this->pending);
         if ($n == 0) { return; }
 
-        if (!sqlite_exec($this->db, "BEGIN IMMEDIATE")) {
+        /* Close low-level cursors before SQLite writes; reopen after commit or
+         * rollback so no cursor position is retained across mutations. */
+        $this->close_bt_cursors();
+        if (!$this->txn($this->beginTx)) {
             $this->fail_writes();
+            $this->open_bt_cursors();
             $this->flush();
             return;
         }
@@ -1264,11 +1328,12 @@ class Server {
             $i = $i + 1;
         }
 
-        if ($ok && !sqlite_exec($this->db, "COMMIT")) { $ok = false; }
+        if ($ok && !$this->txn($this->commitTx)) { $ok = false; }
         if (!$ok) {
-            sqlite_exec($this->db, "ROLLBACK");
+            $this->txn($this->rollbackTx);
             $this->fail_writes();
         }
+        $this->open_bt_cursors();
         $this->flush();
     }
 

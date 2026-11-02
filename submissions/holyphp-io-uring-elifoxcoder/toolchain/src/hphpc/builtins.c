@@ -85,6 +85,13 @@ void builtins_init(void) {
     /* crypto */
     add("sha256",           B_STR1, ty_string, false, false);
     add("hash_hmac",        B_MISC, ty_mixed,  false, false);  /* (algo, data, key[, raw]) */
+    add("jwt_verify",       B_MISC, ty_string, false, false);  /* (token, secret, now) -> payload|"" */
+    add("json_str_field",   B_MISC, ty_string, false, false);  /* (json, key) -> value|"" */
+    add("json_num_field",   B_MISC, ty_int,    false, false);  /* (json, key) -> int|-1 */
+    add("str_pos_ci",       B_MISC, ty_mixed,  false, false);  /* (hay, needle[, off]) -> int|false */
+    add("str_prefix_ci",    B_MISC, ty_bool,   false, false);  /* (s, prefix) -> bool */
+    add("str_int_range",    B_MISC, ty_int,    false, false);  /* (s, start, end) -> int */
+    add("str_trim_range",   B_MISC, ty_string, false, false);  /* (s, start, end) -> trimmed slice */
     add("password_hash",    B_STR1, ty_string, false, false);
     add("password_verify",  B_STR2, ty_bool,   false, false);
     add("random_bytes",     B_INT_INT, ty_string, false, false);
@@ -296,7 +303,10 @@ void builtins_init(void) {
     add("stream_send_nb",       B_MISC, ty_int,    false, false);
     add("stream_send2_nb",      B_MISC, ty_int,    false, false);
     add("nofile_limit",         B_ZERO, ty_int,    false, false);
+    add("runtime_stats",        B_ZERO, ty_string, false, false);
     add("uring_active",         B_ZERO, ty_bool,   false, false);
+    add("uring_direct",         B_ZERO, ty_bool,   false, false);
+    add("uring_direct_slots",   B_ZERO, ty_int,    false, false);
     add("stream_eof",           B_MISC, ty_bool,   false, false);
     add("stream_peer",          B_MISC, ty_string, false, false);
     add("stream_close",         B_MISC, ty_bool,   false, false);
@@ -874,6 +884,10 @@ void builtins_init(void) {
     add("bt_rowid",             B_MISC, ty_int,    false, false);
     add("bt_payload_ptr",       B_MISC, ty_int,    false, false);
     add("bt_payload_size",      B_MISC, ty_int,    false, false);
+    add("bt_cols",              B_MISC, ty_int,    false, false);
+    add("bt_col_off",           B_MISC, ty_int,    false, false);
+    add("bt_col_len",           B_MISC, ty_int,    false, false);
+    add("bt_col_int",           B_MISC, ty_int,    false, false);
     add("bt_count_key",        B_MISC, ty_int,    false, false);
     add("iarr_new",            B_MISC, ty_int,    false, false);
     add("iarr_get",            B_MISC, ty_int,    false, false);
@@ -886,7 +900,11 @@ void builtins_init(void) {
     add("sb_json_str",          B_MISC, ty_bool,   false, false);
     add("str_from_bytes",       B_MISC, ty_string, false, false);
     add("sb_reserve",           B_MISC, ty_bool,   false, false);
+    add("sb_len",               B_MISC, ty_int,    false, false);
+    add("sb_prepend",           B_MISC, ty_bool,   false, false);
     add("sb_take",              B_MISC, ty_string, false, false);
+    add("stream_send_sb",       B_MISC, ty_int,    false, false);
+    add("int_digits",           B_MISC, ty_int,    false, false);
     add("sqlite_open",          B_MISC, ty_int,    false, false);  /* (path) -> handle|0 */
     add("sqlite_close",         B_MISC, ty_bool,   false, false);
     add("sqlite_exec",          B_MISC, ty_bool,   false, false);  /* (db, sql) */
