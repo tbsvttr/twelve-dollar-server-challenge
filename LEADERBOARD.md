@@ -84,17 +84,17 @@ CPU % and µs/request are the app's own cgroup over the scored hold (µs = app C
 | 29 | cider-iouring-pomilon-v3 | #234 | Cider (native x86-64, io_uring, SQLite B-tree reads) | **228,000** | 21,945 | 370 | 853 | 0.00 | 86 | 36 | 668 | 2026-10-31 |
 | 30 | dexlang-iouring-tuned-ensamuel7 | #279 | DexLang (generated C, io_uring, SQLite B-tree reads) | **226,000** | 21,876 | 297 | 633 | 0.00 | 84 | 35 | 873 | 2026-11-02 |
 | 31 | swift-iouring-Tabonx | #173 | Swift (io_uring, SQLite) | **219,000** | 21,284 | 135 | 352 | 0.00 | 80 | 35 | 1,128 | 2026-10-29 |
-| 31 | go-iouring-rkkautsar | #260 | Go (io_uring, cgo SQLite B-tree reads) | **219,000** | 21,292 | 223 | 591 | 0.00 | 96 | 42 | 798 | 2026-11-03 |
-| 33 | cpp-eastl-io_uring-pgo-hendy643 | #32 | C++ (io_uring, EASTL) | **210,000** | 20,436 | 322 | 672 | 0.00 | 73 | 33 | 633 | 2026-10-26 |
-| 33 | csharp-epoll-gichamba | #174 | C# (Native AOT, io_uring) | **210,000** | 20,411 | 277 | 853 | 0.00 | 76 | 35 | 632 | 2026-10-29 |
-| 33 | c-epoll-unorig-username | #183 | C (epoll) | **210,000** | 20,425 | 300 | 713 | 0.00 | 95 | 43 | 808 | 2026-10-29 |
-| 33 | cider-iouring-pomilon-v2 | #225 | Cider (native x86-64, io_uring) | **210,000** | 20,404 | 348 | 504 | 0.00 | 86 | 39 | 611 | 2026-10-31 |
-| 37 | csharp-iouring-jit-gichamba | #175 | C# (JIT, io_uring) | **209,000** | 20,265 | 366 | 735 | 0.00 | 84 | 38 | 633 | 2026-10-31 |
-| 38 | zig-epoll-unorig-username | #189 | Zig (epoll) | **200,000** | 19,661 | 54 | 154 | 0.00 | 94 | 44 | 1,155 | 2026-10-29 |
-| 38 | crystal-rayo-faustinoaq | #218 | Crystal (Rayo, io_uring, SQLite B-tree reads) | **200,000** | 19,615 | 236 | 596 | 0.00 | 82 | 39 | 1,198 | 2026-10-31 |
-| 38 | c-epoll-patrickryankenneth | #246 | C (io_uring, epoll fallback) | **200,000** | 19,464 | 447 | 692 | 0.00 | 81 | 39 | 762 | 2026-11-02 |
-| 38 | wat-wasmedge-delneg | #272 | WebAssembly (hand-written WAT, WasmEdge AOT, io_uring, SQLite B-tree reads) | **200,000** ᵒ | 19,678 | 13.1 | 189.9 | 0.00 | 63 | 30 | 1,072 | 2026-11-03 |
-| 42 | dexlang-iouring-ensamuel7 | #251 | DexLang (generated C, io_uring) | **199,000** | 19,425 | 316 | 579 | 0.00 | 89 | 43 | 713 | 2026-11-01 |
+| 32 | cpp-eastl-io_uring-pgo-hendy643 | #32 | C++ (io_uring, EASTL) | **210,000** | 20,436 | 322 | 672 | 0.00 | 73 | 33 | 633 | 2026-10-26 |
+| 32 | csharp-epoll-gichamba | #174 | C# (Native AOT, io_uring) | **210,000** | 20,411 | 277 | 853 | 0.00 | 76 | 35 | 632 | 2026-10-29 |
+| 32 | c-epoll-unorig-username | #183 | C (epoll) | **210,000** | 20,425 | 300 | 713 | 0.00 | 95 | 43 | 808 | 2026-10-29 |
+| 32 | cider-iouring-pomilon-v2 | #225 | Cider (native x86-64, io_uring) | **210,000** | 20,404 | 348 | 504 | 0.00 | 86 | 39 | 611 | 2026-10-31 |
+| 36 | csharp-iouring-jit-gichamba | #175 | C# (JIT, io_uring) | **209,000** | 20,265 | 366 | 735 | 0.00 | 84 | 38 | 633 | 2026-10-31 |
+| 37 | zig-epoll-unorig-username | #189 | Zig (epoll) | **200,000** | 19,661 | 54 | 154 | 0.00 | 94 | 44 | 1,155 | 2026-10-29 |
+| 37 | crystal-rayo-faustinoaq | #218 | Crystal (Rayo, io_uring, SQLite B-tree reads) | **200,000** | 19,615 | 236 | 596 | 0.00 | 82 | 39 | 1,198 | 2026-10-31 |
+| 37 | c-epoll-patrickryankenneth | #246 | C (io_uring, epoll fallback) | **200,000** | 19,464 | 447 | 692 | 0.00 | 81 | 39 | 762 | 2026-11-02 |
+| 37 | wat-wasmedge-delneg | #272 | WebAssembly (hand-written WAT, WasmEdge AOT, io_uring, SQLite B-tree reads) | **200,000** ᵒ | 19,678 | 13.1 | 189.9 | 0.00 | 63 | 30 | 1,072 | 2026-11-03 |
+| 41 | dexlang-iouring-ensamuel7 | #251 | DexLang (generated C, io_uring) | **199,000** | 19,425 | 316 | 579 | 0.00 | 89 | 43 | 713 | 2026-11-01 |
+| 42 | go-iouring-rkkautsar | #260 | Go (io_uring, cgo SQLite B-tree reads) | **195,000** | 19,168 | 88.3 | 192 | 0.00 | 95 | 46 | 751 | 2026-11-03 |
 | 43 | sql-oneselect-grMLEqomlkkU5Eeinz4brIrOVCUCkJuN | #243 | SQL (one SELECT over a virtual table, C io_uring) | **190,000** | 18,653 | 129 | 573 | 0.00 | 94 | 47 | 1,205 | 2026-11-02 |
 | 44 | csharp-iouring-oswaldosierra | #157 | C# (Native AOT, io_uring) | **189,000** | 18,592 | 20 | 51 | 0.00 | 88 | 44 | 1,176 | 2026-10-28 |
 | 44 | csharp-iouring-AlexandruLT | #196 | C# (Native AOT, io_uring) | **189,000** | 18,599 | 19.5 | 212 | 0.00 | 84 | 42 | 693 | 2026-10-29 |
@@ -478,7 +478,7 @@ public plugin APIs (a custom page cache through `SQLITE_CONFIG_PCACHE2`, a custo
 - **go-iouring-rkkautsar #260 coalesces reads**: `GET /feed` and `GET /posts/:id` requests parked while a shard's
   previous read runs are answered together by one SQLite query (one feed query, or one `IN (...)` for the post ids),
   and nothing outlives the batch (rule 5 question, like #243). `READ_COALESCE=0` turns it off. Scored as submitted
-  (219k at `f404b06`; 210k at `26d0ab1`, 136k at `0062092`, 71k at `dfad91d`); held open for Arjay. The same author's go-nethttp #277 also
+  (195k at `81313ff`; 219k at `f404b06`, 210k at `26d0ab1`, 136k at `0062092`, 71k at `dfad91d`); held open for Arjay. The same author's go-nethttp #277 also
   coalesces `/feed` reads by default (`readGroup`, one read per write generation, 500 µs window; `READ_COALESCE=0`
   turns it off), and since `d9d93f3` also batches concurrent `/posts/:id` reads into one `IN` query by default
   (`POST_BATCH`); scored as submitted (60k at `70145d4`; 45k at `d9d93f3`, 0 at `26d1785`, see failures), held open.
