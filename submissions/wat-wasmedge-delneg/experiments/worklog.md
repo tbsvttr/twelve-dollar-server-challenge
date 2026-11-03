@@ -395,3 +395,310 @@ costs ~20 us per request and saturates the core. ObjC keeps all 250k connections
 tables (8 rings x 65,535 slots, which don't count against RLIMIT_NOFILE). The 6000-user tests above
 never saw this. On loopback the client's CPU takes part of the server's TCP work, so on the grader the
 churn costs the server more, not less.
+More WAT points (Synteq, sc.sh): 150k users: 15.5k rps, p50 16 ms, p95 1.08 s, p99 1.32 s, 2.40M dials,
+73% CPU, 47.4 us/req; 180k: 18.3k rps, p95 1.54 s, 2.93M dials, 89%, 48.5 us/req. 200k: 19.1k rps, p95 3.18 s, p99 5.09 s,
+3.14M dials, 94.3%, 49.3 us/req. So the entry fails
+p95 at 150k already, with the core 27% idle: during a checkpoint stall (150-450 ms) ~16k dials/s
+overrun the 4096-entry accept queue (somaxconn), and a dropped SYN is retried after 1 s
+(TcpExtListenOverflows/ListenDrops climb; SyncookiesSent too). Keeping connections removes both the
+per-request TCP setup and the accept queue from the picture.
+Consult (DeepSeek, 2 rounds) on the fix: fork + SO_REUSEPORT is out (one DB owner: EXCLUSIVE locking,
+WAL index in the wasm heap); parking idle sockets in io_uring slots and installing them back
+(FIXED_FD_INSTALL) rejected: same churn count, two state machines, spin risk at EMFILE. Plan E22:
+connections live only in io_uring fixed-file slots (accept4, register into a chosen slot, close the
+fd), recv/send/close as ring ops, ~5 rings x 65535 slots, generation in user_data, one send in flight
+per connection.
+
+## E22: connections in io_uring fixed-file slots (1 Nov) — fixed in E23
+The epoll loop and its ten host calls are replaced by io_uring, driven from the WAT. host.c sets up
+rings (`ring_new`: ring fd, mmaps, a sparse fixed-file table of min(RLIMIT_NOFILE, 65535) slots),
+registers a provided-buffer ring that lives in wasm memory (`ring_pbuf`), and has one submit/reap call
+(`ring_go`: copy the SQEs the WAT wrote, enter, copy the CQEs back). The WAT writes every SQE:
+- multishot ACCEPT straight into a free slot (IORING_FILE_INDEX_ALLOC), on one ring at a time; at a
+  high-water mark (n - min(n/4, 4096)) it is cancelled and moved to the next ring (up to 8 rings,
+  cid = ring << 16 | slot); slots do not count against RLIMIT_NOFILE, so no idle sweep any more
+- multishot RECV with buffer select (2048 x 2 KiB buffers per ring, recycled by the WAT)
+- the batch's responses as SENDs straight from OUTB with MSG_DONTWAIT (they complete in the submit;
+  a remainder is copied out and sent by an ordinary SEND); one send in flight per connection
+- close: SHUTDOWN linked to CLOSE of the slot; a generation per cid in user_data
+- ring 0 (DEFER_TASKRUN) is the one waited on; it holds a multishot POLL on each other ring's fd
+- Ubuntu's 6.8.0-147 rejects the buffer-ring registration unless resv[0]=1 (same workaround as ObjC)
+42/42 on opt-box and Synteq. Synteq sc.sh 250k: 19.0k rps, p95 230 ms, 29.2 us/req, 56% CPU,
+250,000 dials: the connections are kept, but rps was 28% short of the offered load. ul had no request
+timeout, so a request that never got an answer was never counted; ul now reports in-flight requests
+at the end (`stuck>2s`). Rerun: 89,770 users stuck (opt-box 50k x 0.35: 13,655).
+Bug, found with a debug build that logs connection states every 5 s: when a batch has over 1024
+responses (after a checkpoint stall), `$sqe` submits mid-staging and reaps the first sends'
+completions before `$from` was taken, so `$scan_sends` never saw them and `$on_cqe` ignores that kind.
+Those connections kept "send in flight" forever (later responses queued behind it), and `$nsendb`
+never got back to 0, so every later flush spent ~100 ms in the fallback wait loop.
+
+## E23: E22 with the send scan fixed (1 Nov) — kept
+`$from` is taken before staging. The fallback for a send that did not complete in the submit (EAGAIN:
+the kernel retries it later, reading OUTB) waits up to ~20 ms, then ASYNC_CANCELs what is still out
+(those connections are dropped), so OUTB is never reused under a send. 42/42 on opt-box and Synteq.
+- opt-box 50k x 0.35 (debug build): 15.1k rps (all of the offered load), p50 1.3 ms, 0 stuck, nlate 0
+- opt-box 70k x 0.35 (two rings): 21.1k rps (all of it), p50 1.5 ms, p95 85 ms, 0 stuck
+- opt-box CPUQuota=40%, 4000 x 0.007, interleaved: E21 34.8k, 35.6k, 35.5k (11.11, 10.81, 10.80
+  us/req); E23 35.8k, 35.3k, 34.4k (10.90, 10.93, 11.05). Same CPU per request when no connection churns.
+- Synteq sc.sh 250k (ul spread over 32 source addresses from here on): 26.3k rps, p50 2.05 ms,
+  p95 335 ms, p99 645 ms, max 1.42 s, 0 errors, 0 stuck, 250,000 dials, cgroup 76.8%, 29.2 us/req,
+  614 MB. E21: 21.1k rps, p95 >5.3 s. ObjC in the same session (8 addresses): 26.4k rps, p95 8.6 ms.
+The remaining tail is the checkpoint stall (fsyncs on the event loop): that is now what limits the
+score, not connections.
+
+## S6: 280k, E23 vs ObjC (1 Nov, Synteq) — measurement
+sc.sh, 2 min, 280,000 users, 32 source addresses. E23: 29.5k rps, p95 315 ms, p99 550 ms, cgroup 82.5%,
+28.0 us/req, 656 MB. ObjC: 29.6k rps, p50 3.4 ms, p95 11.2 ms, p99 23.4 ms, 75.5%, 25.5 us/req, 585 MB.
+With 8 source addresses `ul` itself got stuck in connect() near 280k; 32 fixed it.
+
+## E24: WAL flusher thread in host.c (1-2 Nov) — kept
+A host pthread fdatasyncs `$SQLITE_PATH-wal` (own fd) every WALSYNC_MS (default 100; 0 = off), so the
+WAL sync a checkpoint starts with is short.
+- Synteq sc.sh 280k, interleaved, 3 reps: E23 p95 325, 385, 425 / p99 620, 735, 800 ms, 27.67, 27.92,
+  27.70 us/req; E24 p95 196, 138, 184 / p99 465, 285, 390 ms, 28.87, 28.87, 28.66 us/req (+~1 us/req,
+  likely smaller batches while the loop no longer stalls as long).
+- opt-box q40, 4000 x 0.007: E23 36.1k, 33.2k, 35.1k rps, p99 230-290 ms; E24 36.2k, 36.7k, 36.1k,
+  p99 89-103 ms. opt-box 50k x 0.35: E23 p99 225, 183, 185 ms; E24 35, 40, 33 ms.
+- bpftrace on Synteq 280k (sc26, `ck.bt`): the db-file sync after the copy takes 93-136 ms every ~3 s
+  (fd 4); the loop's own WAL sync is now under 20 ms except once (421 ms, while the flusher's own sync
+  took 394 ms). That db sync is the remaining stall.
+
+## E25: wal_autocheckpoint 4000 / 8000 / 16000 with the flusher (2 Nov, opt-box) — 16000 kept
+50k x 0.35, 3 interleaved reps, p99: 16000 31.8, 33.2, 32.8 ms; 8000 49.8, 44.3, 43.3; 4000 44.8, 43.7,
+44.8. q40 rps: 16000 35.8k, 36.6k, 35.8k; 8000 36.0k, 36.7k, 37.5k; 4000 36.3k, 37.5k, 37.0k (noise).
+
+## S7: 5-minute hold, E24 (2 Nov, Synteq) — measurement
+hold.sh (sc.sh with a 300 s window), 280,000 users: 29.4k rps, p50 2.8 ms, p95 355 ms, p99 670 ms, max
+1.52 s, 0 errors, 0 stuck, cgroup 83.8%, 28.5 us/req, 719 MB. Passes the score's limits; the 2-minute
+probes read lower (p95 138-196 ms), so the 5-minute window catches more checkpoint stalls.
+Clean build (opt-box `ci2.sh`): a fresh ubuntu:24.04 container runs install.sh as root and build.sh as a
+user; the built folder is then tested outside the container (docker's default seccomp profile refuses
+io_uring): passed=42 failed=0. Also 42/42 on opt-box and Synteq from their own builds.
+
+## S8: 2-minute probes above 280k, E24 (2 Nov, Synteq) — measurement
+sc.sh: 300,000 users: 31.5k rps, p95 255 ms, p99 525 ms, max 985 ms, 0 errors, cgroup 89.2%, 28.3 us/req,
+686 MB. 320,000 users: 33.6k rps, p50 13.3 ms, p95 315 ms, p99 640 ms, max 1.49 s, 0 errors, 91.4%,
+27.2 us/req, 727 MB. CPU is close to the 1-vCPU limit at 320k.
+
+## E26: the checkpoint's database-file sync through io_uring (2 Nov)
+wal_autocheckpoint=0; the WAT checkpoints itself at the end of $flush (responses sent, no transaction open)
+once CKPT_FRAMES (16000) frames are not backfilled. sqlite_glue.c swaps the main db file's io_methods for a
+copy whose xSync returns at once while db_ckpt(db, 1) runs; the WAL sync before the copy is unchanged.
+After the copy the WAT puts nBackfill back (wal_backfill), so SQLite cannot restart the WAL over frames
+whose pages are not yet durable in the db file, and submits IORING_OP_FSYNC (DATASYNC) on a read-only fd
+of the db file (new host import file_fd). On its CQE nBackfill moves up; frames written meanwhile get
+another round, or an ordinary inline checkpoint once at most CKPT_TAIL (2000) remain, after which the WAL
+restarts. CKPT_DEFER=0: plain inline checkpoints at the same point.
+- opt-box: 42/42. e26chk.sh (5000 users, CKPT_FRAMES=2000 CKPT_TAIL=200, kill -9 after 24 s):
+  integrity_check ok in both modes; WAL file stays at ~8.3-9.4 MB (restarts). strace: inline mode, the
+  loop's fsync of the db took 368 ms; deferred, two rounds went to io_uring and the inline tail's
+  fsync took ~11 ms.
+- Synteq: 42/42 from the AOT build there.
+- Synteq sc.sh 300k, interleaved, 3 reps: E24b p95 280, 230, 265 / p99 560, 440, 520 ms / max 1226, 828,
+  966 ms, 27.93, 27.27, 28.03 us/req; E26 p95 134, 127, 109 / p99 345, 310, 250 / max 1232, 916, 552,
+  28.75, 28.46, 29.03 us/req. Kept: p99 down ~40%; ~+0.8 us/req (as with E24, shorter stalls mean
+  smaller batches).
+- Clean container build (opt-box ci2.sh): 42/42.
+
+## S9: 5-minute hold at 320k, E26 (2 Nov, Synteq) — measurement
+hold.sh: 33.7k rps, p50 8.85 ms, p95 198 ms, p99 455 ms, max 1.82 s, 0 errors, 0 stuck, cgroup 93.6%,
+27.78 us/req, 880 MB. Passes.
+
+## S10: where the time goes at 300k, E26 (2 Nov, Synteq) — measurement
+perf record -C 0 (20 s): kernel 64%, app.so 33% (WAT + SQLite), libc 1%, libwasmedge 1%. Top: SQLite
+sqlite3BtreeTableMoveto 5.4%, __inet_lookup_established 4.5% (the box's ehash has 131,072 buckets for
+~600k sockets, both ends local), then WAT record/putjson/put/after_recv and pcache1Fetch at 1.3-2.2% each.
+(Symbols: wasm-opt --symbolmap on a merge of sq.wasm and a --debug-names app.wasm gives the same binary.)
+Loop gaps > 40 ms (gap.bt, 100 s): 33 of 41 have 3 syncs = the inline tail checkpoint (90-157 ms); 5 are
+a deferred round's copy (~41 ms incl. a 13 ms WAL sync). sy.bt: per cycle, WAL sync 15 ms, io_uring
+fdatasync of the db 110-157 ms (off the loop), tail: WAL sync 15 ms + db fsync 49 ms + restart header
+sync 4 ms.
+
+## E26b: CKPT_TAIL=300 (2 Nov, Synteq) — rejected
+1 rep at 300k: p50 18.8 ms, p95 230, p99 670 ms, 1136 MB: under load a round never ends with <= 300 frames
+left, so the WAL keeps growing (145 MB) instead of restarting. (Its first paired TAIL=2000 run lost the
+server at start: the previous run's server, closing 300k sockets, still held the port; ubs.sh now waits
+for the port to be free.) Stopped after rep 1.
+
+## E27: SQLite syncs with fdatasync (2 Nov)
+strace showed every SQLite sync as fsync(): the amalgamation defines fdatasync as fsync unless
+HAVE_FDATASYNC, and the WASI build has no configure step. Stock Linux builds use fdatasync. Build flag
+-DHAVE_FDATASYNC=1 (wasi-libc has fdatasync -> fd_datasync). opt-box: 42/42, kill -9 check ok, strace
+now shows fdatasync on the db and WAL. Synteq: 42/42.
+A/B at 300k (Synteq, interleaved, 3 reps): E26 p95 86, 89, 108 / p99 188, 192, 265 / 28.01, 28.13,
+28.46 us/req; E27 p95 162, 80, 95 / p99 400, 182, 240 / 29.10, 28.08, 28.26 us/req. No difference beyond
+noise (this session's E26 runs were also faster than S8's). sy.bt on E27: the io_uring db sync still
+takes 120-184 ms and the tail's db sync 40-57 ms, so data, not metadata, dominates. Not kept for speed;
+the flag stays in the E28 build only to match stock Linux builds (to decide with E28).
+
+## E28: DB_CHUNK (SQLITE_FCNTL_CHUNK_SIZE) — crashes under WASI, dropped
+With DB_CHUNK=64 MB the server died at the first checkpoint: "integer divide by zero" in _start. The
+checkpoint's SQLITE_FCNTL_SIZE_HINT goes to fcntlSizeHint, whose non-fallocate path divides by
+st_blksize, and WASI's filestat has no block size (0). Integrity ok after the crash. Removed.
+
+## E28: CKPT_WAL — let the WAL grow before a restart (2 Nov)
+The inline tail (90-157 ms loop stall) runs once per restart cycle, about every 3 s at 300k. With
+CKPT_WAL=N, the async rounds go on (every CKPT_FRAMES frames) until the WAL has N frames, and only then
+does a round end in the tail + restart, so the stall comes ~N/16000 times less often for N/4 KB of WAL
+file. opt-box: 42/42 (defaults, and FRAMES=500 TAIL=200 WAL=6000); kill -9 check with FRAMES=400
+WAL=2000: the WAL file stays at ~2025 frames (restarts), integrity ok, counts match.
+A/B at 300k (Synteq, interleaved, 3 reps; e28 built with -DHAVE_FDATASYNC=1):
+- E26: p95 65.6, 88.3, 100.6 / p99 141, 197, 225 / max 363, 574, 640 / 27.44, 28.40, 27.43 us/req, 675 MB
+- FRAMES=4000 WAL=64000: p95 42.2, 82.7, 79.8 / p99 114, 315, 350 / max 726, 1100, 1366 / 28.50, 28.90, 28.65, 870 MB
+- FRAMES=16000 WAL=64000: p95 41.9, 166.8, 78.6 / p99 129, 740, 285 / max 537, 2236, 1351 / 27.65, 29.25, 28.48, 880 MB
+Not better on p99/max as measured; the box's run-to-run noise is as large as the effect.
+gap.bt over 100 s (Synteq, 300k), WAL=64000: 10 loop gaps > 40 ms (9 tails, 44-122 ms, every ~10.5 s; total
+~1.0 s) vs E26's 41 (3.6 s total, S10). New: one 279 ms gap holding a single 237 ms sync (a round's WAL
+sync, it seems), which E26's trace never showed. Next: interleaved 5-minute holds at 340k, E26 vs WAL=64000.
+5-minute holds (Synteq): 340k fails CPU-bound for both (E26 34.7k rps, p95 1.42 s, p99 4.9 s, 97.8%; WAL=64000
+33.5k rps, p95 2.5 s, 96.9%). 330k, interleaved: WAL=64000 p95 360, 1060 / p99 1475, 3845 ms; E26 p95
+830, 580 / p99 2350, 1610 ms; all four fail, at 96-97.5% cgroup CPU. Synteq's ceiling is ~320k and it is
+CPU. E28 dropped (code reverted); its log stays.
+
+## E29: keep pcache1's iMaxKey off the lock-byte page (2 Nov)
+perf had pcache1Truncate at 1.2% of CPU 0. uprobes (Synteq, 300k, 10 s): ~500 calls/s on the main cache,
+most 1-8 us, but ~50/s take 128-512 us (~250 us each). Reading PCache1 out of wasm memory at those calls:
+iMaxKey = 262,145, nHash 8,192, nPage ~8,100, iLimit = dbSize + 1 (~64,700). A ustack on pcache1Fetch(key
+262,145) points at sqlite3PcacheMove: balance_nonroot swaps two new pages through a temporary key,
+PENDING_BYTE / pageSize + 1, and pcache1Rekey raises iMaxKey to it. The commit's pcache1Truncate(dbSize+1)
+then sees iMaxKey - iLimit >= nHash and walks the whole hash table for pages that are not there. Fix in
+sqlite_glue.c (SQLite itself unchanged): db_open wraps sqlite3GlobalConfig.pcache2.xRekey; on a rekey to
+that number it puts iMaxKey back (the page moves on to a real number before balance_nonroot returns, and
+no truncate runs in between). opt-box: 42/42, kill -9 check ok. Synteq: 42/42.
+(The two small caches truncated to 1-2 are the RETURNING statements' ephemeral tables, ~0.2% each.)
+A/B at 300k (Synteq, interleaved, 3 reps): E29 p95 85.9, 59.3, 78.3 / p99 215, 132, 176 / 27.77, 27.06,
+27.60 us/req; E26 p95 76.1, 67.0, 147 / p99 210, 155, 420 / 27.32, 27.74, 27.71 us/req. perf -C 0 (20 s,
+E29): pcache1Truncate (f1131) 0.00%, was 1.2%. The us/req difference is within the box's noise.
+Clean container (opt-box ci2.sh): 42/42. 5-minute holds at 320k, Synteq (afternoon, paired): E29 alone
+p95 275 / p99 800; then E26 295/835, E29 265/785, E26 280/765, E29 365/1165 (fails p99). All 0 errors,
+93-95% CPU. The morning's E26 hold (S9) gave 198/455: 320k is this box's edge, and the spread between
+holds of one build is larger than any difference between these two. Kept: it only removes work.
+
+## M1: why the scorer's box refused connections at 280k (Synteq, E26 = f220565)
+Scorer (1 vCPU / 2 GB, 31 us/req): 270k held; 280k and 320k collapsed in the 2-min probe with 71 % / 76 %
+errors, nearly all "connection refused", which suggests no listener (server gone). Tried to reproduce:
+- s44, 280k, memory breakdown at t=150 s: cgroup current 650 MB = anon 101 + file 95 + kernel 453
+  (slab reclaimable 294, unreclaimable 154), sock 12 KB; VmRSS 145 MB; 560,168 sockets (both ends local).
+- s45, 340k (overload), sampled every 10 s: anon 63 -> 116 MB, file 69 -> 640 MB because the WAL grew
+  64 -> 605 MB (checkpoints fall behind), slab plateau ~355 + 178 MB, sock peak 76 MB, current peak 1,330 MB.
+  Server survived: 34,974 rps, p95 900, p99 3,760 ms, 97.0 % CPU, 27.73 us/req.
+- s46, 280k with the server's scope capped at CPUQuota=89 % (to mimic a slower CPU): passed, 29,610 rps,
+  p95 70.8, p99 150.9 ms, 0 errors, 83.1 % CPU, 28.08 us/req, 638 MB; WAL stayed 63-68 MB; listener up
+  for the whole run.
+Not reproduced on Synteq. Open: what kills the server on a 2 GB droplet (OOM with OS + slab + WAL cache
+under overload is the leading guess, unchecked; a $fatal path is the other).
+- s47, 340k with the server's scope capped at MemoryMax=1200M: no OOM (memory.events high/max/oom all 0),
+  current peak 955 MB (anon 116, file 278, dirty 0-3 MB, WAL 67 -> 242 MB), listener up for the whole run.
+  35,485 rps, p95 550, p99 1,185 ms, 0 errors, 96.2 % CPU, 27.11 us/req. Memory pressure alone does not
+  kill the server here.
+- Synteq is not the scorer's box: ours has 8 cores / 16 GB and sysctl tuning (90-million.conf: tcp_mem,
+  somaxconn 65535, file-max ...); the scorer's is a stock Synteq 1 vCPU / 1,967 MB (LEADERBOARD.md).
+- Code path that exits under load: $arm_acc called $ring_create for a new ring at runtime (the 5th ring
+  starts at ~245k connections), and any failure there went to $fatal -> exit 1 -> "connection refused" for
+  everyone. In Linux 6.8 io_uring/io_uring.c, io_mem_alloc() is __get_free_pages(GFP_KERNEL_ACCOUNT |
+  __GFP_ZERO | __GFP_NOWARN | __GFP_COMP, get_order(size)): our CQ ring (16,384 CQEs + SQ array) is one
+  512 KiB block (order 7) and the SQEs one 256 KiB block (order 6), and a failure leaves nothing in the
+  kernel log. On a 2 GB box holding ~450 MB of socket slab, an order-7 allocation can fail. Unchecked on
+  the scorer's box: the server log there would show "fatal: io_uring setup failed".
+
+## E30: set up all 8 rings at start (opt-box build; Synteq tests)
+$ring_create split into $ring_setup (kernel ring, fixed-file table, buffer ring and receive buffers; returns
+1 on failure instead of exiting) and $ring_on (counts the ring in, arms ring 0's poll on it). _start sets up
+rings 0-7 before the first accept; a ring that fails there caps the count ($nmax) instead of exiting. Rings
+still come into use one at a time as before. Startup (Synteq): 8 io_uring fds instead of 1, VmRSS 74.8 MB
+vs 70.6 MB. opt-box: 42/42, kill -9 check ok. Synteq: 42/42.
+A/B at 300k (Synteq, interleaved, 3 reps, 0 errors everywhere): E30 p95 89.5, 78.9, 92.2 / p99 210, 177,
+205 / 27.91, 27.45, 27.78 us/req, 703, 681, 682 MB; E29 p95 67.6, 126.8, 130.9 / p99 145, 370, 315 /
+27.62, 27.84, 28.09 us/req, 676, 696, 697 MB. Same speed within the box's noise. Kept as a robustness fix;
+it can't be shown on Synteq (16 GB never runs short of contiguous pages). Committed, not pushed (the PR
+head waits for the scorer's ruling on nBackfill).
+
+## F1: fallback if nBackfill writes are ruled out: E30 with CKPT_DEFER=0 (2 Nov, Synteq) — measurement
+Same build, all checkpoints inline at the end of $flush (database sync on the loop, no wal_backfill calls).
+locking_mode=EXCLUSIVE with one connection means no public-API way (a reader's read mark, a VFS) keeps the
+WAL from restarting before an async database sync completes, so inline is the honest fallback.
+sc.sh 300k, interleaved, 3 reps, 0 errors: deferred (E30) p95 74.3, 82.5, 104.5 / p99 163, 189, 260 /
+max 455, 559, 723 ms, 27.76, 27.90, 28.19 us/req; inline p95 265, 245, 220 / p99 565, 475, 405 / max
+1517, 841, 736 ms, 27.91, 27.62, 27.34 us/req. Inline keeps CPU the same but p99 is ~2.5x higher (like
+E24b: 440-560 ms); the scorer's 5-minute hold at 270k with the deferred sync was already p99 845 ms, so
+inline would likely score lower there (unchecked).
+
+## S12: syscall and io_uring census at 300k, E30 (2 Nov, Synteq) — measurement
+bpftrace (cen.bt), 20 s in the middle of a 300k sc.sh run (31.6k rps, p95 154, p99 460 ms, 28.6 us/req):
+SEND 635,432 (one per request), POLL_ADD 39,802 (ring 0's poll on the other rings, re-armed ~2k/s), RECV
+2,186 (multishot re-arms), FSYNC 6; 1,314,533 CQEs (~2.1 per request). Syscalls: pwritev 251,717 (WAL
+frames, header + page each, ~12.6k/s), io_uring_enter 79,704, preadv 28,361, everything else < 200.
+In the E29 profile (perf41) the pwritev path is < 0.5 % self time, so buffering WAL writes is not worth it.
+Top app functions (symbol map): sqlite3BtreeTableMoveto 6.2 % (mostly the 20 author seeks per feed:
+random user ids; the posts already step back with cur_prev and the like counts are one range scan),
+record 2.3, pcache1Fetch 2.3, putjson 1.7, put 1.6, IndexMoveto 1.5, after_recv 1.5. Kernel time is the
+network path (both ends local here). No large CPU lever left inside the app.
+
+## S13: 5-minute hold at 320k, E30 (2 Nov, Synteq) — measurement
+hold.sh: 33.5k rps, p50 39.4 ms, p95 505 ms, p99 1,160 ms, max 2.10 s, 0 errors, cgroup 94.4 %,
+28.23 us/req, 1,122 MB. Fails (p95 and p99), like the last E29 hold in S11 (365 / 1,165); single run, not
+paired, so no comparison with E29 is drawn. 320k stays this box's edge.
+
+## E31: SQLite's own checkpointing, public API only (2 Nov, opt-box build, Synteq runs) — kept (required)
+Arjay held the merge over the glue writing SQLite's internal nBackfill; Denis: switch back to SQLite's own
+checkpointing. The glue now uses only public API: a WAL hook (sqlite3_wal_hook) records the WAL size; at
+CKPT_FRAMES (16,000) the WAT calls sqlite3_wal_checkpoint_v2(PASSIVE) at the end of $flush, after the
+responses are sent; CKPT_AUTO=1 uses sqlite3_wal_autocheckpoint(CKPT_FRAMES) instead. Gone: wal_backfill,
+wal_mx, db_ckpt/db_fsync, the io_methods swap, file_fd and the CQE fsync branch. E29's cache fix is redone
+through SQLITE_CONFIG_GETPCACHE2/PCACHE2: a wrapper tracks its own max key (ignoring the rekey temp key
+PENDING_BYTE/szPage+1) and skips xTruncate past it. 42/42 on opt-box (both modes) and Synteq; kill -9
+during load then integrity_check ok in both modes on opt-box.
+sc.sh 300k, interleaved, 3 reps, 0 errors (Synteq):
+E30 (deferred db sync): p95 135, 81, 102 / p99 315, 177, 245 / max 1107, 627, 646 ms, 28.52, 28.26, 27.46 us/req
+E31 (checkpoint after flush): p95 225, 255, 265 / p99 430, 505, 510 / max 777, 892, 1099 ms, 27.75, 28.24, 27.97
+E31 CKPT_AUTO=1: p95 250, 255, 275 / p99 515, 495, 575 / max 1705, 1164, 1389 ms, 27.45, 27.51, 28.13
+As F1 predicted: same CPU, p99 about 2x E30's. The flush checkpoint is a little better than autocheckpoint
+(it runs after the responses go out) and is the default.
+
+## E32: host thread starts writeback of the database file every 5 ms (2 Nov, opt-box build, Synteq runs) — dropped
+The WAL flusher thread also called sync_file_range(dbfd, 0, 0, SYNC_FILE_RANGE_WRITE) every DBWB_MS (5), so
+pages a checkpoint copies are already being written when SQLite's own fsync of the database comes. 42/42
+(opt-box, Synteq); integrity ok after kill -9. Also CKPT_FRAMES=4000 on the same build.
+sc.sh 300k, interleaved, 3 reps, 0 errors (Synteq):
+E31: p95 390, 250, 240 / p99 815, 475, 425 / max 1435, 931, 756 ms, 28.33, 27.33, 27.43 us/req
+E32: p95 245, 270, 335 / p99 475, 715, 695 / max 940, 1818, 1952 ms, 27.51, 28.10, 28.59
+E32 CKPT_FRAMES=4000: p95 795, 540, 555 / p99 1870, 1020, 1170 / max 3190, 1493, 2419 ms, 27.46, 26.95, 27.24
+No gain from the writeback (noise is as large as any difference); reverted. Checkpoints every 4,000 frames
+are much worse: each checkpoint seems to have a large fixed cost, so fewer, larger ones next (s54).
+
+## E33: SQLite built with HAVE_FDATASYNC=1 (2 Nov, opt-box build, Synteq runs) — dropped
+Without it SQLite's unix VFS #defines fdatasync to fsync. strace (opt-box, 24 s write load): the loop
+thread's syncs are fdatasync with the flag, fsync without. 42/42 on opt-box and Synteq. Measured in s55
+below (CKPT_FRAMES=64000): p95 135, 59, 88 / p99 515, 285, 345 ms vs E31's 66, 52, 48 / 230, 210, 193.
+No gain; dropped.
+
+## E34: CKPT_FRAMES 16k / 32k / 64k with SQLite's own checkpoint (2 Nov, Synteq) — measurement
+Build E32 (writeback on; it made no difference in E32), env only. sc.sh 300k, interleaved, 3 reps, 0 errors:
+16,000: p95 220, 225, 245 / p99 415, 410, 480 / max 849, 808, 970 ms, 27.48, 27.51, 28.21 us/req, 690 MB
+32,000: p95 170, 163, 168 / p99 430, 445, 405 / max 943, 1204, 1037 ms, 28.80, 28.14, 28.81, 750 MB
+64,000: p95 37, 119, 73 / p99 168, 425, 315 / max 587, 1194, 1650 ms, 28.10, 28.51, 27.80, 880 MB
+Fewer, larger checkpoints win (with 4,000 the worst, E32): each checkpoint has a large fixed cost. 64,000
+frames is a 250 MiB WAL; memory (cgroup, page cache included) goes up ~190 MB.
+
+## M2: loop-thread syncs at CKPT_FRAMES 16k vs 64k, E31 (2 Nov, Synteq) — measurement
+bpftrace (ck.bt) on fsync/fdatasync for 100 s of a 300k sc.sh run (my per-key printing came out split, so
+counts only): the loop thread made ~105 fsyncs at 16,000 frames and ~33 at 64,000 (about 3 per
+checkpoint: every ~3 s vs every ~12 s). Runs under tracing: 16k p95 240 / p99 450 ms; 64k p95 70 / p99 235.
+
+## E35: CKPT_FRAMES 64k vs 128k, and E33, on E31 (2 Nov, Synteq) — 64k/128k both good
+sc.sh 300k, interleaved, 3 reps, 0 errors:
+E31 64,000: p95 66, 52, 48 / p99 230, 210, 193 / max 715, 927, 691 ms, 28.05, 28.66, 28.25 us/req, 876 MB
+E33 64,000: p95 135, 59, 88 / p99 515, 285, 345 / max 2038, 1373, 909 ms, 28.02, 27.52, 28.81, 875-902 MB
+E31 128,000: p95 24, 51, 28 / p99 181, 270, 143 / max 1085, 1266, 567 ms, 28.32, 28.32, 29.04, 1,135 MB
+SQLite's own checkpoint every 64,000 frames is as good as E30's deferred sync was (s52: p99 177-315).
+
+## E36: default CKPT_FRAMES 128,000 (2 Nov, opt-box build, Synteq runs) — kept
+5-minute holds (hold.sh, MemoryMax=2G), E31 build with env, interleaved, 0 errors:
+64,000: p95 141, 152 / p99 425, 460 / max 1534, 1197 ms, 28.27, 28.00 us/req, 951-952 MB
+128,000: p95 63, 46 / p99 325, 305 / max 1074, 1057 ms, 28.36, 27.88 us/req, 1,206-1,207 MB
+MemoryMax=1200M (scm.sh, 2 min, 300k, 128,000): p95 33, p99 270 ms, 0 errors, peak 1,145 MB.
+Default set to 128,000 in app.wat (E36). 42/42 on opt-box, Synteq and the clean ubuntu:24.04 container
+build (ci2.sh); kill -9 under load then integrity_check ok (opt-box). Holds of E36 itself: 300k p95 82,
+p99 330, max 1097 ms, 31.7k rps, 91.2 %, 28.78 us/req, 1,210 MB; 320k p95 315, p99 1,005 (fails p99
+by 5 ms), max 2647, 33.6k rps, 95.2 %, 28.33 us/req, 1,259 MB. Same edge as E26-E30.
