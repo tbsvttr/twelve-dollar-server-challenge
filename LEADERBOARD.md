@@ -68,9 +68,9 @@ CPU % and µs/request are the app's own cgroup over the scored hold (µs = app C
 | 10 | c-iouring-public | #158 | C (io_uring, SQLite B-tree reads) | **275,000** | 26,227 | 128 | 672 | 0.00 | 80 | 28 | 625 | 2026-10-31 |
 | 11 | crystal-epoll-faustinoaq | #193 | Crystal (io_uring) | **270,000** | 25,693 | 348 | 879 | 0.00 | 92 | 32 | 1,160 | 2026-10-29 |
 | 11 | lexlean-iouring-humuhumu33 | #287 | C (LexLean/Lean 4-generated core, io_uring, SQLite B-tree reads) | **270,000** | 25,873 | 40.2 | 206 | 0.00 | 78 | 27 | 1,067 | 2026-11-03 |
-| 13 | rust-epoll-scooter1337 | #82 | Rust (io_uring) | **264,000** ˣ | 25,147 | 259 | 499 | 0.00 | 84 | 30 | 630 | 2026-10-21 |
-| 14 | c-rawsqlite-larvance | #210 | C (io_uring, SQLite B-tree reads) | **260,000** | 24,914 | 241 | 962 | 0.00 | 88 | 32 | 744 | 2026-11-03 |
-| 14 | goose-iouring-ahmadsh2007 | #291 | Goose (compiles to C, io_uring, SQLite B-tree reads) | **260,000** | 25,012 | 44.9 | 196 | 0.00 | 73 | 27 | 613 | 2026-11-03 |
+| 11 | goose-iouring-ahmadsh2007 | #291 | Goose (compiles to C, io_uring, SQLite B-tree reads) | **270,000** | 25,854 | 84.8 | 349 | 0.00 | 78 | 27 | 1,190 | 2026-11-03 |
+| 14 | rust-epoll-scooter1337 | #82 | Rust (io_uring) | **264,000** ˣ | 25,147 | 259 | 499 | 0.00 | 84 | 30 | 630 | 2026-10-21 |
+| 15 | c-rawsqlite-larvance | #210 | C (io_uring, SQLite B-tree reads) | **260,000** | 24,914 | 241 | 962 | 0.00 | 88 | 32 | 744 | 2026-11-03 |
 | 16 | v-epoll-i098 | #191 | V (io_uring, SQLite B-tree reads) | **257,000** | 24,766 | 13.5 | 29 | 0.00 | 74 | 27 | 732 | 2026-10-30 |
 | 17 | asm-iouring-unorig-username | #206 | x86-64 asm (io_uring) | **250,000** | 24,053 | 141 | 397 | 0.00 | 91 | 34 | 1,486 | 2026-10-30 |
 | 17 | ada-native-visseranalytics | #237 | Ada (GNAT, io_uring) | **250,000** | 24,119 | 84 | 286 | 0.00 | 77 | 29 | 1,169 | 2026-11-01 |
@@ -508,11 +508,12 @@ public plugin APIs (a custom page cache through `SQLITE_CONFIG_PCACHE2`, a custo
   `src/btree.h` with renamed identifiers; the io_uring transport, HTTP, JSON and JWT code are the author's own (from
   before #245). Same open question as #271: building on another entry vs. the copies rule. Scored as submitted (260k
   at `d76e386`); held open for Arjay.
-- **goose-iouring-ahmadsh2007 #291 reuses rust-iouring-kensac #264's plumbing**: `net.c` is a C port of #264's io_uring
-  transport, and `db.c`'s B-tree helpers, checkpoint thread and write-hold logic are adapted from #264 (credited in its
-  README); the request path (`app.goose`: HTTP, JSON, HS256, record decoding, routing) is new Goose code. Same open
-  question as #271/#210: building on another entry vs. the copies rule. Scored as submitted (260k at `204b6b0`); held
-  open for Arjay.
+- **goose-iouring-ahmadsh2007 #291 builds on rust-iouring-kensac #264's design**: at `204b6b0` its `net.c` was a C port
+  of #264's io_uring transport and `db.c` adapted #264's B-tree helpers and checkpoint logic (credited). Since `67ef830`
+  those files are gone: new `uring.c` (kernel plumbing only) and `sqlite.c`, with the event loop, connection table and
+  checkpoint policy in `app.goose` (the request path was already new Goose code). Same open question as #271/#210:
+  building on another entry vs. the copies rule. Scored as submitted (260k at `204b6b0`, 270k at `67ef830`); held open
+  for Arjay.
 - **Reads can see uncommitted writes** in the same batch: Deno #119 (also serves a snapshot up to 20 ms stale), Zig #125.
 - **start.sh restart loops** (the app restarts itself instead of letting systemd see a crash): Deno #119, c-epoll #64,
   c-iouring-raoz #26 (restarts after a signal exit), go-epoll-Antheurus #65 (worker 0 re-spawns dead workers).
