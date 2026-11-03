@@ -387,7 +387,10 @@ per connection.
 the earlier writes to SQLite internals (`nBackfill`, `PCache1.iMaxKey`) for a `SQLITE_CONFIG_PCACHE2` wrapper and plain
 `sqlite3_wal_checkpoint_v2` checkpoints. At `7792fa9` 200,000 held at 63 % CPU; from 210,000 up every probe failed on
 `connection refused` (35 % errors at 210k–220k, 74–87 % at 240k–320k) while CPU stayed at 53–56 %. The earlier
-`c193a82` run held 247,000 (79 % CPU) and `f220565` 270,000 (88 % CPU), both with the internals writes. Its **#259** code (`48942ac`,
+`c193a82` run held 247,000 (79 % CPU) and `f220565` 270,000 (88 % CPU), both with the internals writes. Its follow-up
+**#288** (`df9da40`, smaller checkpoint batches, code pages `mlock`ed; held, not merged: it tied the merged row, didn't
+beat it) also scored **200,000** (19,619 req/s, p95 229 / p99 356 ms, 0 err, 68 % CPU, 32 µs/req, 712 MB, 2026-11-03):
+210,000 and 220,000 failed on p99 (1.5 s / 4.5 s, 0 err, 69–75 % CPU), 240,000 and 320,000 on `connection refused`. Its **#259** code (`48942ac`,
 epoll) held **60,000** (5,905 req/s, p95 3.1 / p99 204 ms, 0 err, 23 % CPU, 2026-11-01) and was not CPU-bound: from
 63,000 up its probes failed on EOFs (1.5 % at 63k to 2.7 % at 80k) at 43–55 % CPU, because it closes sockets idle for
 1.5 s or more once it holds over 60,000 (README) and requests landed on those closed keep-alive sockets.
