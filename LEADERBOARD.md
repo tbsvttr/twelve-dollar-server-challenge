@@ -95,7 +95,7 @@ CPU % and µs/request are the app's own cgroup over the scored hold (µs = app C
 | 38 | csharp-iouring-jit-gichamba | #175 | C# (JIT, io_uring) | **209,000** | 20,265 | 366 | 735 | 0.00 | 84 | 38 | 633 | 2026-10-31 |
 | 39 | zig-epoll-unorig-username | #189 | Zig (epoll) | **200,000** | 19,661 | 54 | 154 | 0.00 | 94 | 44 | 1,155 | 2026-10-29 |
 | 39 | crystal-rayo-faustinoaq | #218 | Crystal (Rayo, io_uring, SQLite B-tree reads) | **200,000** | 19,615 | 236 | 596 | 0.00 | 82 | 39 | 1,198 | 2026-10-31 |
-| 39 | c-epoll-patrickryankenneth | #246 | C (io_uring, epoll fallback) | **200,000** | 19,464 | 447 | 692 | 0.00 | 81 | 39 | 762 | 2026-11-02 |
+| 39 | c-epoll-patrickryankenneth | #246 | C (io_uring, epoll fallback) | **200,000** ᵉ | 19,464 | 447 | 692 | 0.00 | 81 | 39 | 762 | 2026-11-02 |
 | 39 | wat-wasmedge-delneg | #272 | WebAssembly (hand-written WAT, WasmEdge AOT, io_uring, SQLite B-tree reads) | **200,000** ᵒ | 19,678 | 13.1 | 189.9 | 0.00 | 63 | 30 | 1,072 | 2026-11-03 |
 | 43 | dexlang-iouring-ensamuel7 | #251 | DexLang (generated C, io_uring) | **199,000** | 19,425 | 316 | 579 | 0.00 | 89 | 43 | 713 | 2026-11-01 |
 | 44 | sql-oneselect-grMLEqomlkkU5Eeinz4brIrOVCUCkJuN | #243 | SQL (one SELECT over a virtual table, C io_uring) | **190,000** | 18,653 | 129 | 573 | 0.00 | 94 | 47 | 1,205 | 2026-11-02 |
@@ -394,6 +394,11 @@ beat it) also scored **200,000** (19,619 req/s, p95 229 / p99 356 ms, 0 err, 68 
 epoll) held **60,000** (5,905 req/s, p95 3.1 / p99 204 ms, 0 err, 23 % CPU, 2026-11-01) and was not CPU-bound: from
 63,000 up its probes failed on EOFs (1.5 % at 63k to 2.7 % at 80k) at 43–55 % CPU, because it closes sockets idle for
 1.5 s or more once it holds over 60,000 (README) and requests landed on those closed keep-alive sockets.
+
+ᵉ **c-epoll-patrickryankenneth** is scored at its merged #246 code (`f9cf266`). Its follow-up **#289** (`faf709c`,
+batched ring-0 wait, smaller WAL checkpoints; held, not merged: it scored below the merged row) held **175,000** (17,146
+req/s, p95 208 / p99 456 ms, 0 err, 72 % CPU, 39 µs/req, 379 MB, 2026-11-03): 180,000 and 200,000 failed on p99 (742 ms
+/ 2.5 s, 0 err, 78–80 % CPU), 240,000 on p99 (9.1 s) and 320,000 on `connection refused`.
 
 ## Patches (ᵖ) and failures
 
