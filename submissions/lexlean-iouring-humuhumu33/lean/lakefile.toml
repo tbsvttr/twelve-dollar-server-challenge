@@ -1,0 +1,13 @@
+name = "lexlean_iouring"
+defaultTargets = ["UorEmit", "Claims"]
+
+[[lean_lib]]
+name = "LexLeanRuntime"
+roots = ["LexLeanRuntime.Portable"]
+
+[[lean_lib]]
+name = "UorEmit"
+roots = ["UorEmit.Emit"]
+
+[[lean_lib]]
+name = "Claims"
