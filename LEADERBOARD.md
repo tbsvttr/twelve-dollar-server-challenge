@@ -275,6 +275,10 @@ held, not merged: it didn't beat the merged row) scored **220,000** (21,374 req/
 Its follow-up **#282** (`54ef366`, bounded writer queue on a second SQLite connection; held, not merged: it didn't beat
 the merged row) scored **64,000** (6,096 req/s, p95 0.5 / p99 2.9 ms, 0.47 % err, 31 % CPU, 47 µs/req, 609 MB,
 2026-11-03). Connection-capped, not CPU-bound: from 67,000 up the probes failed on TCP connect timeouts at ~31 % CPU.
+Its follow-up **#285** (`f3d9412`, io_uring transport fixes on top of #282; held, not merged: it didn't beat the merged
+row) scored **143,000** (14,074 req/s, p95 5.0 / p99 41 ms, 0 err, 69 % CPU, 46 µs/req, 1,359 MB, 2026-11-03).
+Connection-capped, not CPU-bound: 150,000 passed the 2-minute probe but failed the 5-minute hold, and 155,000/160,000
+failed the 2-minute probe, on refused connections at ~70 % CPU.
 
 **Connection collapses in scored entries' failing probes.** v-epoll-i098 #191: 270,000 passed the 2-minute probe but
 failed the 5-minute hold with 60 % errors, nearly all `connection refused` from mid-hold on (an earlier attempt at
