@@ -1,0 +1,342 @@
+headers = sqlite3.h
+headerFilter = sqlite3.h
+package = feedc
+compilerOpts = -D_GNU_SOURCE -O2
+staticLibraries = libsqlite3.a liburing.a
+linkerOpts = -lm
+
+---
+
+/*
+ * The uring side of the KN server: rings, direct descriptors, provided buffers and the response arena live here, so
+ * one call moves a wake's completions (and their received bytes) into Kotlin arrays and one call issues each SQE.
+ * user_data: op << 60 | ring << 56 | slot << 32 | aux (the slot's generation, chosen by Kotlin).
+ */
+#include <liburing.h>
+#include <arpa/inet.h>
+#include <errno.h>
+#include <netinet/in.h>
+#include <netinet/tcp.h>
+#include <poll.h>
+#include <stdlib.h>
+#include <string.h>
+#include <sys/eventfd.h>
+#include <sys/mman.h>
+#include <sys/resource.h>
+#include <sys/socket.h>
+#include <time.h>
+#include <unistd.h>
+
+#define FEED_RINGS 8
+#define FEED_BUFS 1024u
+#define FEED_BUF 2048u
+#define FEED_SQ 4096u
+#define FEED_CQ 32768u
+#define FEED_ARENA (4u << 20)
+#define FEED_ARENA_MARGIN (256u << 10)
+#define FEED_ARENAS 64
+#define FEED_STOP 4096u
+#define FEED_NEXT 8192u
+
+enum { FEED_ACCEPT = 1, FEED_RECV, FEED_SEND, FEED_SHUT, FEED_CLOSE, FEED_EFD, FEED_CANCEL };
+
+typedef struct {
+  struct io_uring r;
+  struct io_uring_buf_ring *br;
+  char *bufs;
+  int efd, efd_on, accept_on;
+  unsigned nopen, ret;
+  short *send_arena;  /* per slot: arena index of its SEND in flight, -1 none, -2 malloc'd */
+  char **send_big;
+} feed_ring;
+
+typedef struct { char *b; unsigned used, refs; } feed_arena;
+
+static feed_ring FR[FEED_RINGS];
+static feed_arena FA[FEED_ARENAS];
+static int fa_n, fa_cur = -1, feed_lfd = -1;
+static unsigned feed_nslots;
+
+static inline unsigned long long feed_ud(unsigned op, unsigned ring, unsigned slot, unsigned aux) {
+  return (unsigned long long)op << 60 | (unsigned long long)ring << 56 | (unsigned long long)slot << 32 | aux;
+}
+
+static struct io_uring_sqe *feed_sqe(feed_ring *g) {
+  struct io_uring_sqe *s = io_uring_get_sqe(&g->r);
+  if (!s) { io_uring_submit(&g->r); s = io_uring_get_sqe(&g->r); }
+  return s;
+}
+
+static long long feed_mono_ns(void) {
+  struct timespec t; clock_gettime(CLOCK_MONOTONIC, &t);
+  return (long long)t.tv_sec * 1000000000LL + t.tv_nsec;
+}
+static long long feed_epoch_s(void) { return (long long)time(NULL); }
+
+/* The listening socket: the fd, or -errno. */
+static int feed_listen(const char *host, int port) {
+  int fd = socket(AF_INET, SOCK_STREAM | SOCK_CLOEXEC, 0), one = 1;
+  if (fd < 0) return -errno;
+  setsockopt(fd, SOL_SOCKET, SO_REUSEADDR, &one, sizeof one);
+  setsockopt(fd, IPPROTO_TCP, TCP_NODELAY, &one, sizeof one);
+  struct sockaddr_in a;
+  memset(&a, 0, sizeof a);
+  a.sin_family = AF_INET;
+  a.sin_port = htons((unsigned short)port);
+  if (inet_pton(AF_INET, host, &a.sin_addr) != 1) a.sin_addr.s_addr = htonl(INADDR_ANY);
+  if (bind(fd, (struct sockaddr *)&a, sizeof a) < 0 || listen(fd, 4096) < 0) { int e = errno; close(fd); return -e; }
+  return fd;
+}
+
+static void feed_arm_efd(unsigned i) {
+  struct io_uring_sqe *s = feed_sqe(&FR[0]);
+  io_uring_prep_poll_multishot(s, FR[i].efd, POLLIN);
+  io_uring_sqe_set_data64(s, feed_ud(FEED_EFD, 0, i, 0));
+  FR[i].efd_on = 1;
+}
+
+/*
+ * FEED_RINGS rings over listener lfd, each with a sparse direct-descriptor table as large as RLIMIT_NOFILE allows (at
+ * most 65,535). Ring 0 is the one waited on (DEFER_TASKRUN); the others signal an eventfd ring 0 polls. Returns the
+ * slots per ring, or -errno.
+ */
+static int feed_setup(int lfd) {
+  struct rlimit rl;
+  if (!getrlimit(RLIMIT_NOFILE, &rl) && rl.rlim_cur < rl.rlim_max) { rl.rlim_cur = rl.rlim_max; setrlimit(RLIMIT_NOFILE, &rl); }
+  getrlimit(RLIMIT_NOFILE, &rl);
+  feed_nslots = rl.rlim_cur > 65535 ? 65535u : (unsigned)rl.rlim_cur;
+  feed_lfd = lfd;
+  for (unsigned i = 0; i < FEED_RINGS; i++) {
+    feed_ring *g = &FR[i];
+    struct io_uring_params p;
+    memset(&p, 0, sizeof p);
+    p.flags = IORING_SETUP_SINGLE_ISSUER | IORING_SETUP_COOP_TASKRUN | IORING_SETUP_CQSIZE | IORING_SETUP_SUBMIT_ALL;
+    if (i == 0) p.flags |= IORING_SETUP_DEFER_TASKRUN;
+    p.cq_entries = FEED_CQ;
+    int rc = io_uring_queue_init_params(FEED_SQ, &g->r, &p);
+    if (rc < 0) return rc;
+    rc = io_uring_register_files_sparse(&g->r, feed_nslots);
+    if (rc < 0) return rc;
+    g->send_arena = malloc(sizeof(short) * feed_nslots);
+    g->send_big = calloc(feed_nslots, sizeof(char *));
+    g->bufs = aligned_alloc(4096, (size_t)FEED_BUFS * FEED_BUF);
+    if (!g->send_arena || !g->send_big || !g->bufs) return -ENOMEM;
+    for (unsigned s = 0; s < feed_nslots; s++) g->send_arena[s] = -1;
+    /* Ubuntu 6.8.0-136..147 (Launchpad #2162843) inverted the reserved-field check of this registration: a refusal is
+     * retried once with resv[0] = 1, which those kernels accept and a correct kernel never sees. */
+    g->br = mmap(NULL, (size_t)FEED_BUFS * sizeof(struct io_uring_buf), PROT_READ | PROT_WRITE, MAP_ANONYMOUS | MAP_PRIVATE, -1, 0);
+    if (g->br == MAP_FAILED) return -errno;
+    struct io_uring_buf_reg reg;
+    memset(&reg, 0, sizeof reg);
+    reg.ring_addr = (unsigned long)g->br;
+    reg.ring_entries = FEED_BUFS;
+    reg.bgid = (unsigned short)i;
+    rc = io_uring_register_buf_ring(&g->r, &reg, 0);
+    if (rc == -EINVAL) { reg.resv[0] = 1; rc = io_uring_register_buf_ring(&g->r, &reg, 0); }
+    if (rc < 0) return rc;
+    io_uring_buf_ring_init(g->br);
+    for (unsigned b = 0; b < FEED_BUFS; b++)
+      io_uring_buf_ring_add(g->br, g->bufs + (size_t)b * FEED_BUF, FEED_BUF, (unsigned short)b, io_uring_buf_ring_mask(FEED_BUFS), (int)b);
+    io_uring_buf_ring_advance(g->br, FEED_BUFS);
+    g->efd = -1;
+    if (i > 0) {
+      g->efd = eventfd(0, EFD_CLOEXEC | EFD_NONBLOCK);
+      if (g->efd < 0) return -errno;
+      rc = io_uring_register_eventfd(&g->r, g->efd);
+      if (rc < 0) return rc;
+    }
+  }
+  for (unsigned i = 1; i < FEED_RINGS; i++) feed_arm_efd(i);
+  return (int)feed_nslots;
+}
+
+/* Rings fill in order; an accept that finds a full table resets its client, so a ring stops FEED_STOP slots early. */
+static void feed_policy(void) {
+  int f = -1;
+  for (unsigned i = 0; i < FEED_RINGS; i++)
+    if (FR[i].nopen + FEED_STOP < feed_nslots) { f = (int)i; break; }
+  for (unsigned i = 0; i < FEED_RINGS; i++) {
+    feed_ring *g = &FR[i];
+    int want = (int)i == f ||
+               (f >= 0 && (int)i == f + 1 && FR[f].nopen + FEED_NEXT >= feed_nslots && g->nopen + FEED_STOP < feed_nslots);
+    if (want && !g->accept_on) {
+      struct io_uring_sqe *s = feed_sqe(g);
+      io_uring_prep_multishot_accept_direct(s, feed_lfd, NULL, NULL, 0);
+      io_uring_sqe_set_data64(s, feed_ud(FEED_ACCEPT, i, 0, 0));
+      g->accept_on = 1;
+    } else if (!want && g->accept_on) {
+      struct io_uring_sqe *s = feed_sqe(g);
+      io_uring_prep_cancel64(s, feed_ud(FEED_ACCEPT, i, 0, 0), 0);
+      io_uring_sqe_set_data64(s, feed_ud(FEED_CANCEL, i, 0, 0));
+      g->accept_on = 0;
+    }
+  }
+}
+
+/* A multishot receive on slot into ring r's provided buffers. */
+static void feed_recv(int r, int slot, int aux) {
+  feed_ring *g = &FR[r];
+  struct io_uring_sqe *s = feed_sqe(g);
+  io_uring_prep_recv_multishot(s, slot, NULL, 0, 0);
+  s->flags |= IOSQE_FIXED_FILE | IOSQE_BUFFER_SELECT;
+  s->buf_group = (unsigned short)r;
+  io_uring_sqe_set_data64(s, feed_ud(FEED_RECV, (unsigned)r, (unsigned)slot, (unsigned)aux));
+}
+
+static void feed_arena_pick(void) {
+  if (fa_cur >= 0 && FA[fa_cur].used + FEED_ARENA_MARGIN <= FEED_ARENA) return;
+  for (int i = 0; i < fa_n; i++)
+    if (i != fa_cur && FA[i].refs == 0) { FA[i].used = 0; fa_cur = i; return; }
+  if (fa_n < FEED_ARENAS && (FA[fa_n].b = malloc(FEED_ARENA)) != NULL) { FA[fa_n].used = 0; FA[fa_n].refs = 0; fa_cur = fa_n++; return; }
+  fa_cur = -1;
+}
+
+/* One SEND of n bytes copied out of p; the slot has no other SEND in flight. 0, or -ENOMEM. */
+static int feed_send(int r, int slot, const void *p, int n, int aux) {
+  feed_ring *g = &FR[r];
+  char *dst;
+  if ((unsigned)n > FEED_ARENA_MARGIN) {
+    dst = malloc((size_t)n);
+    if (!dst) return -ENOMEM;
+    g->send_arena[slot] = -2;
+    g->send_big[slot] = dst;
+  } else {
+    feed_arena_pick();
+    if (fa_cur < 0) return -ENOMEM;
+    dst = FA[fa_cur].b + FA[fa_cur].used;
+    FA[fa_cur].used += ((unsigned)n + 63u) & ~63u;
+    FA[fa_cur].refs++;
+    g->send_arena[slot] = (short)fa_cur;
+  }
+  memcpy(dst, p, (size_t)n);
+  struct io_uring_sqe *s = feed_sqe(g);
+  io_uring_prep_send(s, slot, dst, (size_t)n, MSG_WAITALL | MSG_NOSIGNAL);
+  s->flags |= IOSQE_FIXED_FILE;
+  io_uring_sqe_set_data64(s, feed_ud(FEED_SEND, (unsigned)r, (unsigned)slot, (unsigned)aux));
+  return 0;
+}
+
+/* SHUTDOWN hard-linked to CLOSE of the slot: the shutdown ends its multishot receive, which holds the socket. */
+static void feed_close(int r, int slot, int aux) {
+  feed_ring *g = &FR[r];
+  if (io_uring_sq_space_left(&g->r) < 2) io_uring_submit(&g->r);
+  struct io_uring_sqe *sh = feed_sqe(g);
+  io_uring_prep_shutdown(sh, slot, SHUT_RDWR);
+  sh->flags |= IOSQE_FIXED_FILE | IOSQE_IO_HARDLINK;
+  io_uring_sqe_set_data64(sh, feed_ud(FEED_SHUT, (unsigned)r, (unsigned)slot, 0));
+  struct io_uring_sqe *cl = feed_sqe(g);
+  io_uring_prep_close_direct(cl, (unsigned)slot);
+  io_uring_sqe_set_data64(cl, feed_ud(FEED_CLOSE, (unsigned)r, (unsigned)slot, (unsigned)aux));
+}
+
+/* Submits every ring, then waits on ring 0 up to timeout_ms (0: only flushes ring 0's deferred completions). */
+static void feed_enter(int timeout_ms) {
+  for (unsigned i = 1; i < FEED_RINGS; i++)
+    if (io_uring_sq_ready(&FR[i].r) || !FR[i].efd_on) { if (!FR[i].efd_on) feed_arm_efd(i); io_uring_submit(&FR[i].r); }
+  if (timeout_ms <= 0) { io_uring_submit_and_get_events(&FR[0].r); return; }
+  struct __kernel_timespec ts = { timeout_ms / 1000, (long long)(timeout_ms % 1000) * 1000000LL };
+  struct io_uring_cqe *cq;
+  io_uring_submit_and_wait_timeout(&FR[0].r, &cq, 1, &ts, NULL);
+}
+
+/*
+ * Moves ring r's completions into the arrays, at most max, and every received byte into data (cap bytes, from *at):
+ * off[i] is where completion i's bytes begin. Provided buffers go back to the ring at once; sends release their arena.
+ * Internal completions (eventfd polls, shutdowns, cancels) are consumed here. Returns the count moved.
+ */
+static int feed_reap(int r, long long *ud, int *res, int *flags, int *off, int max, char *data, int cap, int *at) {
+  feed_ring *g = &FR[r];
+  unsigned head, seen = 0;
+  int n = 0;
+  struct io_uring_cqe *c;
+  io_uring_for_each_cqe(&g->r, head, c) {
+    unsigned long long u = c->user_data;
+    unsigned op = (unsigned)(u >> 60), slot = (unsigned)(u >> 32) & 0xffffffu;
+    int rs = c->res; unsigned fl = c->flags;
+    if (n == max) break;
+    if (op == FEED_RECV && rs > 0 && *at + rs > cap) break;
+    seen++;
+    switch (op) {
+      case FEED_ACCEPT:
+        if (rs >= 0) g->nopen++;
+        if (!(fl & IORING_CQE_F_MORE)) g->accept_on = 0;
+        break;
+      case FEED_RECV:
+        off[n] = *at;
+        if (fl & IORING_CQE_F_BUFFER) {
+          unsigned bid = fl >> IORING_CQE_BUFFER_SHIFT;
+          if (rs > 0) { memcpy(data + *at, g->bufs + (size_t)bid * FEED_BUF, (size_t)rs); *at += rs; }
+          io_uring_buf_ring_add(g->br, g->bufs + (size_t)bid * FEED_BUF, FEED_BUF, (unsigned short)bid,
+                                io_uring_buf_ring_mask(FEED_BUFS), (int)g->ret++);
+        }
+        break;
+      case FEED_SEND:
+        if (slot < feed_nslots) {
+          short a = g->send_arena[slot];
+          if (a >= 0 && FA[a].refs) FA[a].refs--;
+          else if (a == -2) { free(g->send_big[slot]); g->send_big[slot] = NULL; }
+          g->send_arena[slot] = -1;
+        }
+        break;
+      case FEED_CLOSE:
+        if (g->nopen) g->nopen--;
+        break;
+      case FEED_EFD:
+        if (!(fl & IORING_CQE_F_MORE)) FR[slot].efd_on = 0;
+        continue;
+      default:
+        continue;
+    }
+    ud[n] = (long long)u; res[n] = rs; flags[n] = (int)fl; n++;
+  }
+  io_uring_cq_advance(&g->r, seen);
+  if (g->ret) { io_uring_buf_ring_advance(g->br, (int)g->ret); g->ret = 0; }
+  return n;
+}
+
+static int feed_bind_text(sqlite3_stmt *s, int i, const char *p, int n) { return sqlite3_bind_text(s, i, p, n, SQLITE_TRANSIENT); }
+
+/* The B-tree read plans (feedbt.c, compiled with the amalgamation into libsqlite3.a; contract in feedbt.h). */
+int feedbt_init(sqlite3 *db);
+int feedbt_feed(char *dst, int cap);
+int feedbt_post(long long id, char *dst, int cap);
+void feedbt_release(void);
+
+/* The JSON text writer and the digit writer live in feedbt.c (built into libsqlite3.a with the amalgamation): the
+ * cinterop stub does not export its own functions to the archive, so they are defined there and declared here. */
+int feed_json_text(const unsigned char *src, int n, char *dst);
+int feed_i64(char *dst, long long v);
+
+/* BEGIN feed_row_json */
+
+/*
+ * One row of POST_SELECT (id, body, created_at, username, like_count) as the feed's JSON object, written at dst:
+ *   {"id":N,"body":"..","created_at":"..","author":"..","like_count":N}
+ * Returns the bytes written, or minus the room the row can need when cap is below it (nothing is written then; call again
+ * with that much). One crossing from Kotlin per row instead of about twelve. feedjson_test.c holds this function to SQLite
+ * and a byte-wise reference.
+ */
+static int feed_row_json(sqlite3_stmt *s, char *dst, int cap) {
+  long long id = sqlite3_column_int64(s, 0), likes = sqlite3_column_int64(s, 4);
+  const unsigned char *b = sqlite3_column_text(s, 1); int bn = sqlite3_column_bytes(s, 1);
+  const unsigned char *c = sqlite3_column_text(s, 2); int cn = sqlite3_column_bytes(s, 2);
+  const unsigned char *a = sqlite3_column_text(s, 3); int an = sqlite3_column_bytes(s, 3);
+  long long need = 100 + 6LL * ((long long)bn + cn + an);   /* the fixed parts, 20 digits twice, six bytes per escaped byte */
+  if (need > cap) return need > 0x7fffffff ? -0x7fffffff : (int)-need;
+  int w = 0;
+#define FEED_PUT(lit) do { memcpy(dst + w, lit, sizeof(lit) - 1); w += (int)sizeof(lit) - 1; } while (0)
+  FEED_PUT("{\"id\":");
+  w += feed_i64(dst + w, id);
+  FEED_PUT(",\"body\":\"");
+  w += feed_json_text(b, bn, dst + w);
+  FEED_PUT("\",\"created_at\":\"");
+  w += feed_json_text(c, cn, dst + w);
+  FEED_PUT("\",\"author\":\"");
+  w += feed_json_text(a, an, dst + w);
+  FEED_PUT("\",\"like_count\":");
+  w += feed_i64(dst + w, likes);
+  dst[w++] = '}';
+#undef FEED_PUT
+  return w;
+}
+/* END feed_row_json */

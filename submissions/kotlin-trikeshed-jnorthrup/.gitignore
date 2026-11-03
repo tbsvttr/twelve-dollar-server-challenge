@@ -1,0 +1,11 @@
+build/
+.gradle/
+.kotlin/
+
+# Local runtime configuration; examples may remain versioned
+.env
+.env.local
+.env.*.local
+
+# TrikeShed checkout fetched by build.sh
+trikeshed/TrikeShed/

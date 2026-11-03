@@ -1,0 +1,3 @@
+# TrikeShed files the component bench compiles on every target (paths in the TrikeShed repository).
+src/commonMain/kotlin/borg/trikeshed/collections/LongTable.kt
+src/commonMain/kotlin/borg/trikeshed/parse/confix/KnownSchema.kt
