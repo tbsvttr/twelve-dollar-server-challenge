@@ -184,7 +184,7 @@ CPU % and µs/request are the app's own cgroup over the scored hold (µs = app C
 | 129 | csharp-aspnetcore-maks-march | #27 | C# (ASP.NET Core) | **63,000** | 6,136 | 417 | 757 | 0.00 | 87 | 131 | 925 | 2026-10-27 |
 | 129 | csharp-aspnetcore-devv-guru | #195 | C# (ASP.NET Core, Native AOT) | **63,000** | 6,156 | 202 | 679 | 0.00 | 79 | 119 | 1,081 | 2026-10-29 |
 | 131 | pypy-twisted-perkinslr | #79 | PyPy (Twisted) | **62,000** | 6,017 | 474 | 757 | 0.00 | 73 | 113 | 563 | 2026-10-27 |
-| 132 | go-nethttp-rkkautsar | #277 | Go (net/http, cgo SQLite) | **60,000** | 5,867 | 438 | 820 | 0.00 | 91 | 144 | 1,159 | 2026-11-03 |
+| 131 | go-nethttp-rkkautsar | #277 | Go (net/http, cgo SQLite) | **62,000** | 6,059 | 465 | 742 | 0.00 | 93 | 143 | 1,152 | 2026-11-03 |
 | 133 | java-netty-itsnaveenk | #57 | Java (Netty) | **58,000** | 5,665 | 349 | 519 | 0.00 | 83 | 136 | 879 | 2026-10-27 |
 | 134 | typescript-bun-tbsvttr | #4 | Bun | **57,000** | 5,593 | 103 | 291 | 0.00 | 86 | 143 | 301 | 2026-10-25 |
 | 134 | java-quarkus-panama-raisinsfried | #73 | Java (Quarkus, FFM SQLite) | **57,000** | 5,607 | 9.6 | 359 | 0.00 | 60 | 100 | 725 | 2026-10-27 |
@@ -426,13 +426,14 @@ committed in this repo.
   probe passed. From 20,000 down to the 500-user floor the app sat at 1–2 % CPU while 75–99 % of requests timed out
   (500 users: 5 req/s, p50 60 s, 11 MB RAM): its fixed worker-thread pool is held by idle keep-alive connections, as
   its README warns. Its sibling #160 (hybrid cgi) is the one scored above.
-- **Go #277 — scored 0 at `26d1785`, then 45,000 at `d9d93f3`, now 60,000 at `70145d4`** (net/http, direct): the first run passed 42/42,
+- **Go #277 — scored 0 at `26d1785`, then 45,000 at `d9d93f3`, 60,000 at `70145d4`, now 62,000 at `a1d2732`** (net/http, direct): the first run passed 42/42,
   but no probe passed. From 20,000 down to the 500-user floor ~7 % of requests failed with `EOF` (connection closed with
   no response) at 4–45 % CPU: every `POST /posts/:id/like` and ~75–86 % of `POST /posts`, 0 reads. It closed keep-alive
   sockets idle for 1 s (`IDLE_TIMEOUT_MS=1000`), and the POSTs landed on sockets it had just closed (reads are retried by
   the client, POSTs aren't). `d9d93f3` raised the timeout to 65 s and held 45,000; at 47,000+ connections were refused
   (47k passed 2 min but failed the 5-minute hold with 21.7 % refused, at 61 % CPU). `70145d4` (connection caps, Go memory
-  limit, mmap off) held 60,000 (row above); 63k–80k failed on p95 at 95–99 % CPU, 0 errors.
+  limit, mmap off) held 60,000; 63k–80k failed on p95 at 95–99 % CPU, 0 errors. `a1d2732` (prepared single-row INSERT
+  for small create batches) held 62,000 (row above); 65k passed 2 min but failed the 5-minute hold on p95 573 ms (96 % CPU).
 - **C #246 — tests hung at `65dda48`, now scored 200,000 at `f9cf266`**: the first run installed and built, then hung
   on its io_uring path and never answered the suite's first read (exit 124). `f9cf266` added a 1 ms io_uring_enter
   timeout and passed 42/42 (row above).
@@ -481,7 +482,7 @@ public plugin APIs (a custom page cache through `SQLITE_CONFIG_PCACHE2`, a custo
   (220k at `a2bd826`; 195k at `81313ff`, 219k at `f404b06`, 210k at `26d0ab1`, 136k at `0062092`, 71k at `dfad91d`); held open for Arjay. The same author's go-nethttp #277 also
   coalesces `/feed` reads by default (`readGroup`, one read per write generation, 500 µs window; `READ_COALESCE=0`
   turns it off), and since `d9d93f3` also batches concurrent `/posts/:id` reads into one `IN` query by default
-  (`POST_BATCH`); scored as submitted (60k at `70145d4`; 45k at `d9d93f3`, 0 at `26d1785`, see failures), held open.
+  (`POST_BATCH`); scored as submitted (62k at `a1d2732`; 60k at `70145d4`, 45k at `d9d93f3`, 0 at `26d1785`, see failures), held open.
 - **lean-verified-soonhokong #271 reuses c-iouring-pavlyhalim #245's B-tree helpers**: `runtime/db.c`'s record
   decoder, payload fetch, index seek and multi-key descent closely follow #245's `src/btree.h`; the Lean handlers,
   HTTP/JWT/JSON code and the io_uring transport are new. Open question for Arjay: building on another entry vs. the
