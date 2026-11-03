@@ -40,9 +40,8 @@ earlier #136 run (`48e3783`) held 15,500. mojo-iouring-oh-meh is scored at its f
 java-jdkhttpserver-razorree is scored at its follow-up PR #262 (`d1268e6`); its merged #209 code (`89e75e0`) held 38,000
 (0.89 % dropped writes below full CPU) and its earlier #209 run (`d2286fa`) 9,500. rust-native-M3M0KA is scored at
 #265 (`412c71a`), which replaces its closed #222; the #222 run (`13151f2`) held 135,000. rust-native-scooter1337 is scored at its follow-up PR #267 (`908ea75`); its
-earlier #238 run (`9cbd120`) held 210,000. wat-wasmedge-delneg is scored at its follow-up PR #272 (`c193a82`, not
-merged yet; its newer head `7792fa9` is queued); its earlier #272 run (`f220565`) held 270,000 and its merged #259 code
-(`48942ac`) 60,000.
+earlier #238 run (`9cbd120`) held 210,000. wat-wasmedge-delneg is scored at its merged follow-up PR #272 (`7792fa9`);
+its earlier #272 runs held 247,000 (`c193a82`) and 270,000 (`f220565`), and its #259 code (`48942ac`) 60,000.
 
 **Re-runs.** The first submissions (#2–#29) were scored on a DigitalOcean $12 droplet, which is about 2× slower for
 CPU-bound servers, so those numbers aren't comparable. All of them have now been re-run on this box (finished
@@ -72,28 +71,28 @@ CPU % and µs/request are the app's own cgroup over the scored hold (µs = app C
 | 14 | ada-native-visseranalytics | #237 | Ada (GNAT, io_uring) | **250,000** | 24,119 | 84 | 286 | 0.00 | 77 | 29 | 1,169 | 2026-11-01 |
 | 14 | c-rawuring-thehimalayanleo | #269 | C (io_uring, SQLite B-tree reads) | **250,000** | 24,014 | 220 | 359 | 0.00 | 79 | 30 | 970 | 2026-11-02 |
 | 18 | fsharp-kestrel-delneg | #201 | F# (Kestrel, io_uring) | **247,000** | 23,884 | 14 | 72 | 0.00 | 71 | 27 | 750 | 2026-10-30 |
-| 18 | wat-wasmedge-delneg | #272 | WebAssembly (hand-written WAT, WasmEdge AOT, io_uring, SQLite B-tree reads) | **247,000** ᵒ | 23,861 | 74.5 | 220.5 | 0.00 | 79 | 30 | 727 | 2026-11-02 |
-| 20 | asm-epoll-umitaltintas | #152 | x86-64 asm (io_uring) | **240,000** | 22,985 | 366 | 633 | 0.00 | 83 | 33 | 545 | 2026-10-28 |
-| 20 | cider-iouring-pomilon-v5 | #273 | Cider (native x86-64, io_uring, SQLite B-tree reads) | **240,000** | 23,198 | 145 | 236 | 0.02 | 92 | 36 | 706 | 2026-11-02 |
-| 22 | c-iouring-meros | #199 | C (io_uring) | **238,000** | 22,796 | 417 | 750 | 0.00 | 78 | 31 | 1,567 | 2026-10-30 |
-| 23 | zig-iouring-unorig-username | #190 | Zig (io_uring) | **235,000** | 22,785 | 34 | 160 | 0.00 | 80 | 32 | 1,019 | 2026-10-29 |
-| 23 | cider-iouring-pomilon-v4 | #249 | Cider (native x86-64, io_uring, SQLite B-tree reads) | **235,000** | 22,817 | 10.5 | 29 | 0.00 | 88 | 35 | 908 | 2026-11-01 |
-| 25 | c-uring-curvynes | #217 | C (io_uring, SQLite B-tree reads) | **230,000** | 22,287 | 259 | 374 | 0.00 | 82 | 34 | 773 | 2026-10-30 |
-| 25 | c-iouring-moneebullah25 | #244 | C (io_uring, SQLite B-tree reads) | **230,000** | 22,289 | 51 | 470 | 0.00 | 67 | 28 | 828 | 2026-11-01 |
-| 25 | rust-native-M3M0KA | #265 | Rust (no crates, epoll/io_uring, 5 worker processes, SQLite B-tree reads) | **230,000** ʳ | 22,304 | 150 | 352 | 0.00 | 90 | 37 | 1,350 | 2026-11-02 |
-| 25 | nelua-iouring-tbsvttr | #281 | Nelua (io_uring, SQLite B-tree reads) | **230,000** | 22,379 | 11.8 | 49.6 | 0.00 | 69 | 28 | 938 | 2026-11-02 |
-| 29 | cider-iouring-pomilon-v3 | #234 | Cider (native x86-64, io_uring, SQLite B-tree reads) | **228,000** | 21,945 | 370 | 853 | 0.00 | 86 | 36 | 668 | 2026-10-31 |
-| 30 | dexlang-iouring-tuned-ensamuel7 | #279 | DexLang (generated C, io_uring, SQLite B-tree reads) | **226,000** | 21,876 | 297 | 633 | 0.00 | 84 | 35 | 873 | 2026-11-02 |
-| 31 | swift-iouring-Tabonx | #173 | Swift (io_uring, SQLite) | **219,000** | 21,284 | 135 | 352 | 0.00 | 80 | 35 | 1,128 | 2026-10-29 |
-| 32 | cpp-eastl-io_uring-pgo-hendy643 | #32 | C++ (io_uring, EASTL) | **210,000** | 20,436 | 322 | 672 | 0.00 | 73 | 33 | 633 | 2026-10-26 |
-| 32 | csharp-epoll-gichamba | #174 | C# (Native AOT, io_uring) | **210,000** | 20,411 | 277 | 853 | 0.00 | 76 | 35 | 632 | 2026-10-29 |
-| 32 | c-epoll-unorig-username | #183 | C (epoll) | **210,000** | 20,425 | 300 | 713 | 0.00 | 95 | 43 | 808 | 2026-10-29 |
-| 32 | cider-iouring-pomilon-v2 | #225 | Cider (native x86-64, io_uring) | **210,000** | 20,404 | 348 | 504 | 0.00 | 86 | 39 | 611 | 2026-10-31 |
-| 32 | go-iouring-rkkautsar | #260 | Go (io_uring, cgo SQLite B-tree reads) | **210,000** | 20,529 | 139.5 | 484 | 0.00 | 96 | 43 | 880 | 2026-11-02 |
-| 37 | csharp-iouring-jit-gichamba | #175 | C# (JIT, io_uring) | **209,000** | 20,265 | 366 | 735 | 0.00 | 84 | 38 | 633 | 2026-10-31 |
-| 38 | zig-epoll-unorig-username | #189 | Zig (epoll) | **200,000** | 19,661 | 54 | 154 | 0.00 | 94 | 44 | 1,155 | 2026-10-29 |
-| 38 | crystal-rayo-faustinoaq | #218 | Crystal (Rayo, io_uring, SQLite B-tree reads) | **200,000** | 19,615 | 236 | 596 | 0.00 | 82 | 39 | 1,198 | 2026-10-31 |
-| 38 | c-epoll-patrickryankenneth | #246 | C (io_uring, epoll fallback) | **200,000** | 19,464 | 447 | 692 | 0.00 | 81 | 39 | 762 | 2026-11-02 |
+| 19 | asm-epoll-umitaltintas | #152 | x86-64 asm (io_uring) | **240,000** | 22,985 | 366 | 633 | 0.00 | 83 | 33 | 545 | 2026-10-28 |
+| 19 | cider-iouring-pomilon-v5 | #273 | Cider (native x86-64, io_uring, SQLite B-tree reads) | **240,000** | 23,198 | 145 | 236 | 0.02 | 92 | 36 | 706 | 2026-11-02 |
+| 21 | c-iouring-meros | #199 | C (io_uring) | **238,000** | 22,796 | 417 | 750 | 0.00 | 78 | 31 | 1,567 | 2026-10-30 |
+| 22 | zig-iouring-unorig-username | #190 | Zig (io_uring) | **235,000** | 22,785 | 34 | 160 | 0.00 | 80 | 32 | 1,019 | 2026-10-29 |
+| 22 | cider-iouring-pomilon-v4 | #249 | Cider (native x86-64, io_uring, SQLite B-tree reads) | **235,000** | 22,817 | 10.5 | 29 | 0.00 | 88 | 35 | 908 | 2026-11-01 |
+| 24 | c-uring-curvynes | #217 | C (io_uring, SQLite B-tree reads) | **230,000** | 22,287 | 259 | 374 | 0.00 | 82 | 34 | 773 | 2026-10-30 |
+| 24 | c-iouring-moneebullah25 | #244 | C (io_uring, SQLite B-tree reads) | **230,000** | 22,289 | 51 | 470 | 0.00 | 67 | 28 | 828 | 2026-11-01 |
+| 24 | rust-native-M3M0KA | #265 | Rust (no crates, epoll/io_uring, 5 worker processes, SQLite B-tree reads) | **230,000** ʳ | 22,304 | 150 | 352 | 0.00 | 90 | 37 | 1,350 | 2026-11-02 |
+| 24 | nelua-iouring-tbsvttr | #281 | Nelua (io_uring, SQLite B-tree reads) | **230,000** | 22,379 | 11.8 | 49.6 | 0.00 | 69 | 28 | 938 | 2026-11-02 |
+| 28 | cider-iouring-pomilon-v3 | #234 | Cider (native x86-64, io_uring, SQLite B-tree reads) | **228,000** | 21,945 | 370 | 853 | 0.00 | 86 | 36 | 668 | 2026-10-31 |
+| 29 | dexlang-iouring-tuned-ensamuel7 | #279 | DexLang (generated C, io_uring, SQLite B-tree reads) | **226,000** | 21,876 | 297 | 633 | 0.00 | 84 | 35 | 873 | 2026-11-02 |
+| 30 | swift-iouring-Tabonx | #173 | Swift (io_uring, SQLite) | **219,000** | 21,284 | 135 | 352 | 0.00 | 80 | 35 | 1,128 | 2026-10-29 |
+| 31 | cpp-eastl-io_uring-pgo-hendy643 | #32 | C++ (io_uring, EASTL) | **210,000** | 20,436 | 322 | 672 | 0.00 | 73 | 33 | 633 | 2026-10-26 |
+| 31 | csharp-epoll-gichamba | #174 | C# (Native AOT, io_uring) | **210,000** | 20,411 | 277 | 853 | 0.00 | 76 | 35 | 632 | 2026-10-29 |
+| 31 | c-epoll-unorig-username | #183 | C (epoll) | **210,000** | 20,425 | 300 | 713 | 0.00 | 95 | 43 | 808 | 2026-10-29 |
+| 31 | cider-iouring-pomilon-v2 | #225 | Cider (native x86-64, io_uring) | **210,000** | 20,404 | 348 | 504 | 0.00 | 86 | 39 | 611 | 2026-10-31 |
+| 31 | go-iouring-rkkautsar | #260 | Go (io_uring, cgo SQLite B-tree reads) | **210,000** | 20,529 | 139.5 | 484 | 0.00 | 96 | 43 | 880 | 2026-11-02 |
+| 36 | csharp-iouring-jit-gichamba | #175 | C# (JIT, io_uring) | **209,000** | 20,265 | 366 | 735 | 0.00 | 84 | 38 | 633 | 2026-10-31 |
+| 37 | zig-epoll-unorig-username | #189 | Zig (epoll) | **200,000** | 19,661 | 54 | 154 | 0.00 | 94 | 44 | 1,155 | 2026-10-29 |
+| 37 | crystal-rayo-faustinoaq | #218 | Crystal (Rayo, io_uring, SQLite B-tree reads) | **200,000** | 19,615 | 236 | 596 | 0.00 | 82 | 39 | 1,198 | 2026-10-31 |
+| 37 | c-epoll-patrickryankenneth | #246 | C (io_uring, epoll fallback) | **200,000** | 19,464 | 447 | 692 | 0.00 | 81 | 39 | 762 | 2026-11-02 |
+| 37 | wat-wasmedge-delneg | #272 | WebAssembly (hand-written WAT, WasmEdge AOT, io_uring, SQLite B-tree reads) | **200,000** ᵒ | 19,678 | 13.1 | 189.9 | 0.00 | 63 | 30 | 1,072 | 2026-11-03 |
 | 41 | dexlang-iouring-ensamuel7 | #251 | DexLang (generated C, io_uring) | **199,000** | 19,425 | 316 | 579 | 0.00 | 89 | 43 | 713 | 2026-11-01 |
 | 42 | sql-oneselect-grMLEqomlkkU5Eeinz4brIrOVCUCkJuN | #243 | SQL (one SELECT over a virtual table, C io_uring) | **190,000** | 18,653 | 129 | 573 | 0.00 | 94 | 47 | 1,205 | 2026-11-02 |
 | 43 | csharp-iouring-oswaldosierra | #157 | C# (Native AOT, io_uring) | **189,000** | 18,592 | 20 | 51 | 0.00 | 88 | 44 | 1,176 | 2026-10-28 |
@@ -372,11 +371,11 @@ and a 1.6 s p99 at 40,000.
 24.6 % at 80k) while CPU stayed at 37–51 %. Its fixed-file table is sized from `RLIMIT_NOFILE` (server.c:1117), one slot
 per connection.
 
-ᵒ **wat-wasmedge-delneg** is scored at its follow-up **#272** (`c193a82`, io_uring transport, not merged yet: held for
-a question about SQLite internals, see the rule flags; its head moved to `7792fa9` during the run, which is queued).
-At `c193a82` 247,000 held at 79 % CPU; 270,000 failed the 2-minute probe on p99 (1.34 s) and the 260,000 5-minute hold
-collapsed (47 % errors, nearly all `connection refused`), as did the 280,000 and 320,000 2-minute probes. The earlier
-`f220565` run held 270,000 at 88 % CPU (25,733 req/s, p95 236 / p99 845 ms, 0 err). Its merged **#259** code (`48942ac`,
+ᵒ **wat-wasmedge-delneg** is scored at its merged follow-up **#272** (`7792fa9`, io_uring transport). This head drops
+the earlier writes to SQLite internals (`nBackfill`, `PCache1.iMaxKey`) for a `SQLITE_CONFIG_PCACHE2` wrapper and plain
+`sqlite3_wal_checkpoint_v2` checkpoints. At `7792fa9` 200,000 held at 63 % CPU; from 210,000 up every probe failed on
+`connection refused` (35 % errors at 210k–220k, 74–87 % at 240k–320k) while CPU stayed at 53–56 %. The earlier
+`c193a82` run held 247,000 (79 % CPU) and `f220565` 270,000 (88 % CPU), both with the internals writes. Its **#259** code (`48942ac`,
 epoll) held **60,000** (5,905 req/s, p95 3.1 / p99 204 ms, 0 err, 23 % CPU, 2026-11-01) and was not CPU-bound: from
 63,000 up its probes failed on EOFs (1.5 % at 63k to 2.7 % at 80k) at 43–55 % CPU, because it closes sockets idle for
 1.5 s or more once it holds over 60,000 (README) and requests landed on those closed keep-alive sockets.
@@ -486,13 +485,6 @@ public plugin APIs (a custom page cache through `SQLITE_CONFIG_PCACHE2`, a custo
   `src/btree.h` with renamed identifiers; the io_uring transport, HTTP, JSON and JWT code are the author's own (from
   before #245). Same open question as #271: building on another entry vs. the copies rule. Scored as submitted (260k
   at `d76e386`); held open for Arjay.
-- **wat-wasmedge-delneg #272 writes SQLite's WAL-index `nBackfill`**: unmodified SQLite 3.54.1, but `sqlite_glue.c`
-  swaps the DB file's `xSync` (via `SQLITE_FCNTL_FILE_POINTER`) to skip the checkpoint's DB sync, then moves
-  `walCkptInfo->nBackfill` back and forward around its own io_uring fsync so the WAL can't restart over pages that
-  aren't durable yet. Not a source patch, but it changes SQLite's internal checkpoint state from outside the public
-  APIs. Since `c193a82` it also wraps pcache1's `xRekey` hook and writes `PCache1.iMaxKey` back after a rekey to the
-  lock-byte page's number. Open question for Arjay. Scored as submitted (247k at `c193a82`; 270k at `f220565`); held
-  open for Arjay.
 - **Reads can see uncommitted writes** in the same batch: Deno #119 (also serves a snapshot up to 20 ms stale), Zig #125.
 - **start.sh restart loops** (the app restarts itself instead of letting systemd see a crash): Deno #119, c-epoll #64,
   c-iouring-raoz #26 (restarts after a signal exit), go-epoll-Antheurus #65 (worker 0 re-spawns dead workers).
