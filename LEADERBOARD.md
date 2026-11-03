@@ -43,7 +43,8 @@ java-jdkhttpserver-razorree is scored at its follow-up PR #262 (`d1268e6`); its 
 earlier #238 run (`9cbd120`) held 210,000. wat-wasmedge-delneg is scored at its merged follow-up PR #272 (`7792fa9`);
 its earlier #272 runs held 247,000 (`c193a82`) and 270,000 (`f220565`), and its #259 code (`48942ac`) 60,000.
 lean-verified-soonhokong is scored at #286 (`fe89683`), which replaces its closed #271; the #271 run (`30d259c`) held
-290,000.
+290,000. c-iouring-unorig-username is scored at its follow-up PR #290 (`97d0470`); its earlier #184 run (`e157f0c`) held
+250,000.
 
 **Re-runs.** The first submissions (#2–#29) were scored on a DigitalOcean $12 droplet, which is about 2× slower for
 CPU-bound servers, so those numbers aren't comparable. All of them have now been re-run on this box (finished
@@ -62,17 +63,17 @@ CPU % and µs/request are the app's own cgroup over the scored hold (µs = app C
 | 5 | lean-verified-soonhokong | #286 | Lean 4 (verified handlers, io_uring, SQLite B-tree reads) | **280,000** | 26,678 | 44.9 | 359 | 0.00 | 74 | 25 | 1,390 | 2026-11-03 |
 | 5 | lean-derive-hargup | #153 | Lean 4 (generated C, io_uring) | **280,000** | 26,683 | 141 | 316 | 0.00 | 92 | 31 | 836 | 2026-10-28 |
 | 5 | objc-uring-delneg | #154 | Objective-C (GNUstep, io_uring, SQLite B-tree reads) | **280,000** | 26,741 | 35 | 227 | 0.00 | 79 | 27 | 1,245 | 2026-10-31 |
-| 8 | c-iouring-shivanshthapliyal | #250 | C (io_uring, SQLite B-tree reads) | **276,000** | 26,403 | 23 | 147 | 0.00 | 77 | 26 | 638 | 2026-11-01 |
-| 9 | c-iouring-public | #158 | C (io_uring, SQLite B-tree reads) | **275,000** | 26,227 | 128 | 672 | 0.00 | 80 | 28 | 625 | 2026-10-31 |
-| 10 | crystal-epoll-faustinoaq | #193 | Crystal (io_uring) | **270,000** | 25,693 | 348 | 879 | 0.00 | 92 | 32 | 1,160 | 2026-10-29 |
-| 10 | lexlean-iouring-humuhumu33 | #287 | C (LexLean/Lean 4-generated core, io_uring, SQLite B-tree reads) | **270,000** | 25,873 | 40.2 | 206 | 0.00 | 78 | 27 | 1,067 | 2026-11-03 |
-| 12 | rust-epoll-scooter1337 | #82 | Rust (io_uring) | **264,000** ˣ | 25,147 | 259 | 499 | 0.00 | 84 | 30 | 630 | 2026-10-21 |
-| 13 | c-rawsqlite-larvance | #210 | C (io_uring, SQLite B-tree reads) | **260,000** | 24,914 | 241 | 962 | 0.00 | 88 | 32 | 744 | 2026-11-03 |
-| 14 | v-epoll-i098 | #191 | V (io_uring, SQLite B-tree reads) | **257,000** | 24,766 | 13.5 | 29 | 0.00 | 74 | 27 | 732 | 2026-10-30 |
-| 15 | c-iouring-unorig-username | #184 | C (io_uring) | **250,000** | 24,072 | 123 | 294 | 0.00 | 91 | 34 | 985 | 2026-10-29 |
-| 15 | asm-iouring-unorig-username | #206 | x86-64 asm (io_uring) | **250,000** | 24,053 | 141 | 397 | 0.00 | 91 | 34 | 1,486 | 2026-10-30 |
-| 15 | ada-native-visseranalytics | #237 | Ada (GNAT, io_uring) | **250,000** | 24,119 | 84 | 286 | 0.00 | 77 | 29 | 1,169 | 2026-11-01 |
-| 15 | c-rawuring-thehimalayanleo | #269 | C (io_uring, SQLite B-tree reads) | **250,000** | 24,014 | 220 | 359 | 0.00 | 79 | 30 | 970 | 2026-11-02 |
+| 5 | c-iouring-unorig-username | #290 | C (io_uring, SQLite B-tree reads) | **280,000** | 26,688 | 56.4 | 713 | 0.00 | 78 | 26 | 1,357 | 2026-11-03 |
+| 9 | c-iouring-shivanshthapliyal | #250 | C (io_uring, SQLite B-tree reads) | **276,000** | 26,403 | 23 | 147 | 0.00 | 77 | 26 | 638 | 2026-11-01 |
+| 10 | c-iouring-public | #158 | C (io_uring, SQLite B-tree reads) | **275,000** | 26,227 | 128 | 672 | 0.00 | 80 | 28 | 625 | 2026-10-31 |
+| 11 | crystal-epoll-faustinoaq | #193 | Crystal (io_uring) | **270,000** | 25,693 | 348 | 879 | 0.00 | 92 | 32 | 1,160 | 2026-10-29 |
+| 11 | lexlean-iouring-humuhumu33 | #287 | C (LexLean/Lean 4-generated core, io_uring, SQLite B-tree reads) | **270,000** | 25,873 | 40.2 | 206 | 0.00 | 78 | 27 | 1,067 | 2026-11-03 |
+| 13 | rust-epoll-scooter1337 | #82 | Rust (io_uring) | **264,000** ˣ | 25,147 | 259 | 499 | 0.00 | 84 | 30 | 630 | 2026-10-21 |
+| 14 | c-rawsqlite-larvance | #210 | C (io_uring, SQLite B-tree reads) | **260,000** | 24,914 | 241 | 962 | 0.00 | 88 | 32 | 744 | 2026-11-03 |
+| 15 | v-epoll-i098 | #191 | V (io_uring, SQLite B-tree reads) | **257,000** | 24,766 | 13.5 | 29 | 0.00 | 74 | 27 | 732 | 2026-10-30 |
+| 16 | asm-iouring-unorig-username | #206 | x86-64 asm (io_uring) | **250,000** | 24,053 | 141 | 397 | 0.00 | 91 | 34 | 1,486 | 2026-10-30 |
+| 16 | ada-native-visseranalytics | #237 | Ada (GNAT, io_uring) | **250,000** | 24,119 | 84 | 286 | 0.00 | 77 | 29 | 1,169 | 2026-11-01 |
+| 16 | c-rawuring-thehimalayanleo | #269 | C (io_uring, SQLite B-tree reads) | **250,000** | 24,014 | 220 | 359 | 0.00 | 79 | 30 | 970 | 2026-11-02 |
 | 19 | fsharp-kestrel-delneg | #201 | F# (Kestrel, io_uring) | **247,000** | 23,884 | 14 | 72 | 0.00 | 71 | 27 | 750 | 2026-10-30 |
 | 19 | lisp-sbcl-heyitstony97-max | #283 | Common Lisp (SBCL, io_uring, SQLite B-tree reads) | **247,000** | 23,772 | 251 | 596 | 0.00 | 79 | 30 | 1,187 | 2026-11-03 |
 | 21 | asm-epoll-umitaltintas | #152 | x86-64 asm (io_uring) | **240,000** | 22,985 | 366 | 633 | 0.00 | 83 | 33 | 545 | 2026-10-28 |
