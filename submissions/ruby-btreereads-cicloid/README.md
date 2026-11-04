@@ -33,7 +33,9 @@ SQLITE_PATH=... JWT_SECRET=... HOST=0.0.0.0 PORT=80 bash start.sh
 ```
 
 The connection layer, its requirements and its settings (`CONNECTIONS`, `URING_RINGS`) are as in
-[`ruby-uring-cicloid`](../ruby-uring-cicloid#connection-layer-io_uring-with-an-automatic-epoll-fallback).
+[`ruby-uring-cicloid`](../ruby-uring-cicloid#connection-layer-io_uring-with-an-automatic-epoll-fallback),
+except that `URING_RINGS` defaults to 4 here: room for 262,140 connections. With two rings the server
+stopped accepting at 131,070, which is where the first score (126,000) stopped.
 
 ## What the extension does, and what it doesn't
 

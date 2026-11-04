@@ -12,7 +12,7 @@ require_relative "uring"
 # connection waits in `accept` or reconnects for want of a descriptor: the process itself keeps
 # about 15 descriptors open.
 class UringServer < HTTPServer
-  RINGS = Integer(ENV.fetch("URING_RINGS", "2"))
+  RINGS = Integer(ENV.fetch("URING_RINGS", "4")) # 4 x 65,535 connections; two capped the server at 131,070
   SLOT_BITS = 16 # connection id = ring << SLOT_BITS | slot
   SLOT_MASK = (1 << SLOT_BITS) - 1
   BUFFERS = 4096 # provided receive buffers per ring
