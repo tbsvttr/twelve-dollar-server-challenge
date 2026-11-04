@@ -262,13 +262,80 @@ Full write-up for a reader new to this folder: [BENCHMARK.md](BENCHMARK.md). In 
   node 652, wasi 4,347. p95 is about 65 ms everywhere: the commit window (next steps, 2).
 - `build.sh` now builds only `feed.kexe`, so `start.sh` serves kn on the box.
 
+## S18. Reads stop waiting for the commit window; checkpoints leave the loop (kali, 2026-11-03)
+
+Scored at 2fb010a on the box: 175,000 users held; 180k and 200k failed the 2-minute probe on p99 (1.4 s, 2.7 s) with
+0% errors and the CPU at 64%. The p50 of 83 ms was the commit window (S10): every response waited for the open
+transaction's COMMIT, reads included. Three changes, each measured on kali:
+
+1. Reads answer at once; writes queue unexecuted (`Xio.respond`, `Feed.answer`, `WriteQueue`). A write is checked when
+   it arrives (bearer, id, body); its connection reads nothing more until its response is out. 64 ms after the first
+   queued write the loop runs BEGIN IMMEDIATE, every queued write in arrival order, COMMIT, then their responses. No
+   read runs while a write is uncommitted, so no read waits (rule 6 holds: a 201 follows its commit).
+2. Checkpoints leave the loop thread. `strace` of the loop under `mixlat.sh` showed 24 fsyncs in 10 s, each over
+   10 ms (max 151 ms): SQLite's auto-checkpoint inside COMMIT. Now `wal_autocheckpoint=0`, both connections open with
+   SQLite's own `unix-excl` VFS (no fcntl locks, wal-index in heap memory, as `locking_mode=EXCLUSIVE` gave, but a
+   second connection in the process may open the file), SQLite is built `THREADSAFE=2`, and `feedbt_checkpointer`
+   runs a PASSIVE checkpoint every 100 ms on its own thread and connection (the leaders' design: pavlyhalim
+   `src/db.h`, oh-meh `src/shim.c`). Pitfall: a connection that has not read yet has no WAL open, and
+   `sqlite3_wal_checkpoint_v2` then does nothing and returns SQLITE_OK; the thread reads `sqlite_schema` once first.
+3. The WAL gate (`feedbt_wal_ready`). Without it the log never restarts (a batch commits every 64 ms, so the log is
+   rarely fully copied when the next BEGIN comes): `walprobe.sh` under 64 like-posters grew the WAL to 119 MB in
+   20 s. Past 1,000 frames the next batch waits (reads go on, at most 500 ms) until the thread reports the whole log
+   copied; its BEGIN then restarts the log. Same probe: the WAL holds at 4.7 MB, likes 861/s.
+
+Also: the request head is parsed in one pass, each header line matched first against the name k6 v2.3.0 sends at
+that position (`Http.kt`, `GET_PLAN`, `POST_PLAN`; captured from 124,884 real k6 requests: GET `Host`, `User-Agent`;
+POST adds `Content-Length`, `Authorization`, `Content-Type`). Its saving is under the 1 µs resolution of `knee2.sh`.
+
+The baseline ("before") is the build that was in kali's tree before this work: the same commit-window design, its
+source commit not recorded (4,111,728 bytes; the box builds of 2fb010a and 1b524df are 4,125,920 and 4,125,928).
+
+`mixlat.sh` (idle box, alternating runs; one GET /feed connection, alone, then beside 64 like-posters):
+
+| build | alone | beside 64 like-posters: req/s, p50 / p90 / p99 |
+|---|---|---|
+| before | 7,469-7,581 req/s, p50 121 µs | 14-15, 65.8 ms / 82.7 ms / 128.6-132.2 ms |
+| change 1 only | 7,382-7,531, 121 µs | 3,040, 288-293 µs / 742-763 µs / 49.2-51.8 ms |
+| changes 1-3 | 7,508-7,539, 121 µs | 3,164-3,200, 274-283 µs / 436-452 µs / 12.0-13.3 ms |
+
+The leaders in S10: #1 1.38 ms / 6.11 ms (p50 / p99), #5 3.44 / 7.32.
+
+`knee2.sh`, 1,024 connections, idle box, changes 1 and 3 with a checkpoint thread that did nothing yet: health 8-9
+µs, feed 20-21, post 10, unchanged; like 27-28 µs against 32-33 (its p99 87-94 ms against 278-307).
+
+The k6 mix at 128k users (`kn.sh load`, 60 s ramp, 30 s hold, loadgen on the same VM):
+
+| build | hold req/s | p50 / p95 / p99 | server CPU, user + sys | cgroup memory in the hold |
+|---|---|---|---|---|
+| before | 13,355 | 149.5 / 239.6 / 270.3 ms | 20 + 61% | ~640 MB, flat |
+| changes 1-3 | 13,548 | 1.1 / 51.2 / 81.9 ms | 24 + 70% | ~620 MB, flat; WAL 4.5 MB at the end |
+
+The p95 and p99 are now the writes (7.8% of the mix) waiting for their batch. The cost: sys time rose by about 9 to
+16 points, because reads answer in their own wake and the loop makes more, smaller `io_uring_enter` calls. That is the
+next limit (next steps, 3). A second run of the baseline overlapped another project's Gradle build on kali and is not
+counted.
+
+Batch waits (`feed_enter`, the #1 entry's numbers: kensac `src/main.rs` WAIT_MIN 256, WAIT_NS 1 ms): ring 0 now waits
+for 256 completions or 1 ms, never past the commit deadline. The vcheck load step made 1,370 `io_uring_enter` calls in
+4 s against 56,307 (101k against 92k req/s); a lone connection's p50 rose from 121 µs to 1.37 ms. The k6 mix at 128k,
+alternating runs:
+
+| build | hold req/s | p50 / p95 / p99 | server CPU, user + sys |
+|---|---|---|---|
+| changes 1-3 | 13,551; 13,542 | 0.9 / 52.7 / 87.0; 0.5 / 46.6 / 78.8 ms | 22 + 67%; 22 + 67% |
+| + batch waits | 13,546; 13,542 | 4.2 / 40.4 / 77.8; 4.4 / 39.9 / 76.8 ms | 14 + 61%; 13 + 62% |
+
+About 55 µs per request against 66 on kali, where the load generator shares the VM and inflates sys time.
+
 ## Next steps, in order of measured size
 
 1. Done: B-tree cursor reads in C for feed and post (098ccd1, feed 40 to 23 µs), and a held read transaction per wake (4dc083f, feed 21 µs, post 10 µs).
-2. Reads must not wait for the commit window. Measure the window knee (64, 16, 4, 2, 1 ms) with `mixlat.sh` and `knee2.sh like`, then a 64k run.
-3. Batch formation (2 ms or 64 completions): about 3 µs per mix request.
+2. Done (S18): reads do not wait for the commit window; checkpoints run on their own thread; the WAL gate keeps the log
+   small. Measure the window knee (64, 16, 4, 2, 1 ms) with `mixlat.sh` and `knee2.sh like` on this design.
+3. Done (S18): batch waits, 256 completions or 1 ms per wake (128k: 89% to 75% CPU).
 4. Pin once and recycle windows (Poller arrays, `Out` buffers): about 2.5 µs, and the GC share falls.
-5. WAL read path (`walFindFrame`, `pcache1Fetch` 3.3%) and the checkpoint off the loop.
+5. WAL read path (`walFindFrame`, `pcache1Fetch` 3.3%). Done (S18): the checkpoint off the loop.
 6. Task P follow-up: the other three winners need their own toolchains.
 7. 128k run with a Linux load generator; SCTP 64k.
 8. The channel layer to the floor (S16, items 1 to 6), in TrikeShed master. Then the server's Poller moves into common code over the elements, and the per-runtime pollers (`Poller.linux.kt`, the JVM `Poller.kt`, `Poller.js.kt`) become elements or go away.
@@ -277,7 +344,7 @@ Full write-up for a reader new to this folder: [BENCHMARK.md](BENCHMARK.md). In 
 
 ## State
 
-- Challenge repo, branch `sctp`: S17 (this commit) on the five-runtime start.sh, the node build, the native-image
-  handles and S15/S16, 35316a6 (research), 4dc083f (one read transaction per wake), 098ccd1 (B-tree reads). TrikeShed
-  pin 20280e867. `main` is the PR head 87b974c. Push guard on. Nothing pushed.
+- Challenge repo: #128 merged upstream at 2fb010a (scored 175,000). S18 (ae41a19 reads off the commit window,
+  954c594 batch waits) and the KN-only build (1b524df) are in the follow-up PR from branch `reads-off-commit-window`.
+  TrikeShed pin 20280e867. Push guard on; pushes go to the fork's explicit URL.
 - Shelved: mingw lines for `trikeshed/build.gradle.kts`, kept as `references/mingw-slice.patch` in the skill `twelve-dollar-kali-loadtest`.

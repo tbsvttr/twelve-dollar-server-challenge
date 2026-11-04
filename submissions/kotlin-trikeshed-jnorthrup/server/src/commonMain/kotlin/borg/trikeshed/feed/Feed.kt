@@ -29,6 +29,9 @@ interface FeedStore {
 
     /** The end of a wake: read state held for the wake's reads (a read transaction) is let go. */
     fun rest() {}
+
+    /** Whether the next write batch may begin now; false holds it (reads go on) while the store's WAL gate is shut. */
+    fun ready(): Boolean = true
 }
 
 /** Status line + fixed headers, up to the Content-Length value. */
@@ -73,10 +76,61 @@ val BODY_KEYS: Array<String> = arrayOf("body")
 /** The POST /posts body's one member, as a known-schema plan. */
 val BODY_SCHEMA: KnownSchema = KnownSchema(*BODY_KEYS)
 
+/** [WriteQueue.kind]: POST /posts/:id/like. */
+const val LIKE = 1
+
+/** [WriteQueue.kind]: POST /posts. */
+const val CREATE = 2
+
+/** [Feed.route]'s answer for a write it queued: no response yet; [Feed.answer] writes it after the batch runs. */
+val QUEUED: ByteArray = ByteArray(0)
+
+/**
+ * Write requests that passed every check (bearer verified, id or body valid) and are not executed yet, in arrival
+ * order, with the connection each response goes to. The batch runs them in one transaction, then COMMIT, then the
+ * responses go out: no read ever runs while a write is uncommitted, so no read waits for the batch.
+ */
+class WriteQueue {
+    var count = 0
+    var kind = IntArray(256)
+    var user = LongArray(256)
+    var post = LongArray(256)
+    var author = arrayOfNulls<String>(256)
+    var text = arrayOfNulls<String>(256)
+    var close = BooleanArray(256)
+    var keepAlive = BooleanArray(256)
+    var conns = arrayOfNulls<Conn>(256)
+
+    fun add(k: Int, u: Long, p: Long, a: String?, t: String?) {
+        if (count == kind.size) {
+            val n = count * 2
+            kind = kind.copyOf(n); user = user.copyOf(n); post = post.copyOf(n)
+            author = author.copyOf(n); text = text.copyOf(n)
+            close = close.copyOf(n); keepAlive = keepAlive.copyOf(n); conns = conns.copyOf(n)
+        }
+        kind[count] = k
+        user[count] = u
+        post[count] = p
+        author[count] = a
+        text[count] = t
+        count++
+    }
+
+    /** Entry [i] is answered: its references go, so the strings and the connection are not kept alive by the queue. */
+    fun clear(i: Int) {
+        author[i] = null
+        text[i] = null
+        conns[i] = null
+    }
+}
+
 /** Routes one framed request and appends its whole HTTP response to [send]. */
 class Feed(val store: FeedStore, val bearer: Bearer, val startedSeconds: Long) {
     val body = Out()
     val bodyReader = BODY_SCHEMA.reader()
+
+    /** Where valid writes wait for the batch; null runs each write at once in the store's open transaction. */
+    var queue: WriteQueue? = null
 
     fun respond(src: ByteArray, r: Request, send: Out) {
         body.size = 0
@@ -87,10 +141,37 @@ class Feed(val store: FeedStore, val bearer: Bearer, val startedSeconds: Long) {
             body.raw(INTERNAL)
             S500
         }
+        if (status === QUEUED) {
+            val q = queue!!
+            q.close[q.count - 1] = r.close
+            q.keepAlive[q.count - 1] = r.keepAlive
+            return
+        }
+        frame(status, r.close, r.keepAlive, send)
+    }
+
+    /** Status line, headers and [body] into [send]. */
+    fun frame(status: ByteArray, close: Boolean, keepAlive: Boolean, send: Out) {
         send.raw(status)
         send.long(body.size.toLong())
-        send.raw(if (r.close) CLOSE_HEAD else if (r.keepAlive) KEEP_HEAD else CRLF2)
+        send.raw(if (close) CLOSE_HEAD else if (keepAlive) KEEP_HEAD else CRLF2)
         send.raw(body.bytes, 0, body.size)
+    }
+
+    /** Runs queued write [i] in the store's open transaction and writes its whole response into [send]. */
+    fun answer(q: WriteQueue, i: Int, send: Out) {
+        body.size = 0
+        val status = try {
+            if (q.kind[i] == LIKE) liked(q.user[i], q.post[i]) else {
+                store.create(q.user[i], q.author[i]!!, q.text[i]!!, body)
+                S201
+            }
+        } catch (failure: Throwable) {
+            body.size = 0
+            body.raw(INTERNAL)
+            S500
+        }
+        frame(status, q.close[i], q.keepAlive[i], send)
     }
 
     fun route(src: ByteArray, r: Request): ByteArray {
@@ -147,6 +228,11 @@ class Feed(val store: FeedStore, val bearer: Bearer, val startedSeconds: Long) {
         val text = bodyReader.text(0)?.ecmaTrim()
         if (text.isNullOrEmpty()) return body(BODY_REQUIRED, S400)
         if (text.codePointLength() > 500) return body(BODY_TOO_LONG, S400)
+        val q = queue
+        if (q != null) {
+            q.add(CREATE, bearer.user, 0, bearer.name, text)
+            return QUEUED
+        }
         store.create(bearer.user, bearer.name, text, body)
         return S201
     }
@@ -155,7 +241,17 @@ class Feed(val store: FeedStore, val bearer: Bearer, val startedSeconds: Long) {
         authorize(src, r)?.let { return it }
         val id = pathId(src, from, to)
         if (id == 0L) return body(INVALID_ID, S400)
-        return when (store.like(bearer.user, id)) {
+        val q = queue
+        if (q != null) {
+            q.add(LIKE, bearer.user, id, null, null)
+            return QUEUED
+        }
+        return liked(bearer.user, id)
+    }
+
+    /** The like runs in the store's open transaction; its status, with the body written. */
+    fun liked(user: Long, id: Long): ByteArray {
+        return when (store.like(user, id)) {
             1 -> { body.raw(LIKED); body.long(id); body.byte('}'.code); S201 }
             0 -> { body.raw(RELIKED); body.long(id); body.byte('}'.code); S200 }
             else -> body(POST_NOT_FOUND, S404)

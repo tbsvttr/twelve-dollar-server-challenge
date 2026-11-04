@@ -229,14 +229,22 @@ static void feed_close(int r, int slot, int aux) {
   io_uring_sqe_set_data64(cl, feed_ud(FEED_CLOSE, (unsigned)r, (unsigned)slot, (unsigned)aux));
 }
 
-/* Submits every ring, then waits on ring 0 up to timeout_ms (0: only flushes ring 0's deferred completions). */
+/*
+ * One wake: every ring's queued SQEs are submitted, then ring 0 waits for FEED_WAIT_MIN completions or the timeout,
+ * capped at FEED_WAIT_NS, whichever comes first (timeout_ms 0: no wait). A wake then carries a batch, not one
+ * completion: the kernel runs deferred task work in proportion to the completions asked for.
+ */
+#define FEED_WAIT_MIN 256
+#define FEED_WAIT_NS 1000000LL
 static void feed_enter(int timeout_ms) {
   for (unsigned i = 1; i < FEED_RINGS; i++)
     if (io_uring_sq_ready(&FR[i].r) || !FR[i].efd_on) { if (!FR[i].efd_on) feed_arm_efd(i); io_uring_submit(&FR[i].r); }
-  if (timeout_ms <= 0) { io_uring_submit_and_get_events(&FR[0].r); return; }
-  struct __kernel_timespec ts = { timeout_ms / 1000, (long long)(timeout_ms % 1000) * 1000000LL };
+  if (timeout_ms == 0) { io_uring_submit_and_get_events(&FR[0].r); return; }
+  long long ns = timeout_ms < 0 ? FEED_WAIT_NS : (long long)timeout_ms * 1000000LL;
+  if (ns > FEED_WAIT_NS) ns = FEED_WAIT_NS;
+  struct __kernel_timespec ts = { ns / 1000000000LL, ns % 1000000000LL };
   struct io_uring_cqe *cq;
-  io_uring_submit_and_wait_timeout(&FR[0].r, &cq, 1, &ts, NULL);
+  io_uring_submit_and_wait_timeout(&FR[0].r, &cq, FEED_WAIT_MIN, &ts, NULL);
 }
 
 /*
@@ -301,6 +309,8 @@ int feedbt_init(sqlite3 *db);
 int feedbt_feed(char *dst, int cap);
 int feedbt_post(long long id, char *dst, int cap);
 void feedbt_release(void);
+int feedbt_checkpointer(sqlite3 *db, const char *path, int ms);
+int feedbt_wal_ready(void);
 
 /* The JSON text writer and the digit writer live in feedbt.c (built into libsqlite3.a with the amalgamation): the
  * cinterop stub does not export its own functions to the archive, so they are defined there and declared here. */

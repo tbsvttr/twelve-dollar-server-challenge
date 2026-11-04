@@ -15,4 +15,14 @@ int feedbt_post(long long id, char *dst, int cap);
  * before any SQL statement steps on the connection. */
 void feedbt_release(void);
 
+/* Starts the checkpoint thread: a second connection to path (VFS unix-excl, as the loop's connection db) that runs a
+ * PASSIVE checkpoint every ms milliseconds, so no checkpoint and no fsync runs on the loop thread (db sets
+ * wal_autocheckpoint=0). Also installs db's wal hook for feedbt_wal_ready. 0 when running; below 0 when the connection or
+ * the thread could not start. */
+int feedbt_checkpointer(sqlite3 *db, const char *path, int ms);
+
+/* 1 when the loop's next write batch may begin; 0 while the WAL is past its gate and not yet fully copied, so the batch
+ * waits (reads go on) and its BEGIN then starts the log over. */
+int feedbt_wal_ready(void);
+
 #endif

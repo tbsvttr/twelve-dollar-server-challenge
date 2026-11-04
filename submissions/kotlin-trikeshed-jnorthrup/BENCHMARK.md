@@ -111,8 +111,9 @@ native image 173 s.
 How to read it:
 
 - **1,000 users is a light load: about 110 requests/s.** Every runtime keeps up, so requests/s is the same for all.
-- **The p95 of about 65 ms is the commit window, not server speed.** Writes join one transaction for up to 64 ms
-  (group commit, rule 6), and every response produced while it is open, reads included, waits for its `COMMIT`.
+- **The p95 of about 65 ms is the commit window, not server speed.** In this run (before STUDIES.md S18), writes joined
+  one transaction for up to 64 ms (group commit, rule 6), and every response produced while it was open, reads
+  included, waited for its `COMMIT`. Since S18 reads answer at once and only writes wait for the batch.
 - **CPU per request is the number that separates the runtimes.** It is the server's cgroup CPU time over the run
   divided by its requests. The run is short (40 s), so it includes warm-up: the JIT runtimes (graal-jit, node, and
   wasmtime's compiler) look worse here than they would after minutes of load. It ranks the runtimes; it is not the

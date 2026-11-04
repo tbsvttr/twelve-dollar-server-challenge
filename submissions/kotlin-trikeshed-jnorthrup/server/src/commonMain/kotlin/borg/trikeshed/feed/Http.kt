@@ -29,21 +29,27 @@ class Request {
     }
 
     /**
-     * Parses the request head starting at [from]: [bodyFrom] when the head is complete, with [bodyTo] where the body
-     * ends (possibly past [to]), 0 when more head bytes are needed, -1 when the bytes are not an HTTP/1.x request.
+     * Parses the request head starting at [from] in one pass: [bodyFrom] when the head is complete, with [bodyTo] where
+     * the body ends (possibly past [to]), 0 when more head bytes are needed, -1 when the bytes are not an HTTP/1.x
+     * request. Each line is found once (its CR); a header line is first matched against the name predicted at its
+     * position ([plan]: the order HTTP clients send them), which gives its colon without a search. A line off the
+     * prediction is classified the general way, so any order and any case parse the same.
      */
     fun frameHead(src: ByteArray, from: Int, to: Int): Int {
-        val headEnd = headerEnd(src, from, to)
-        if (headEnd < 0) return if (to - from > MAX_HEAD) -1 else 0
-        if (headEnd + 4 - from > MAX_HEAD) return -1
-        val sp1 = src.indexOf(' '.code.toByte(), from, headEnd)
+        val lineEnd = src.indexOf(CR, from, minOf(to, from + MAX_HEAD))
+        if (lineEnd < 0 || lineEnd + 1 >= to) return more(from, to)
+        if (src[lineEnd + 1] != LF) return -1
+        val sp1 = when {
+            src[from] == 'G'.code.toByte() && src.startsWith(from, GET_SP) -> from + 3
+            src[from] == 'P'.code.toByte() && src.startsWith(from, POST_SP) -> from + 4
+            else -> src.indexOf(' '.code.toByte(), from, lineEnd)
+        }
         if (sp1 < 0) return -1
         method = when {
             sp1 - from == 3 && src.startsWith(from, GET) -> Method.GET
             sp1 - from == 4 && src.startsWith(from, POST) -> Method.POST
             else -> Method.OTHER
         }
-        val lineEnd = src.indexOf('\r'.code.toByte(), sp1, headEnd + 2)
         val sp2 = src.indexOf(' '.code.toByte(), sp1 + 1, lineEnd)
         if (sp2 < 0) return -1
         pathFrom = sp1 + 1
@@ -54,18 +60,41 @@ class Request {
         val http10 = lineEnd - sp2 == 9 && src[sp2 + 8] == '0'.code.toByte() && src[sp2 + 7] == '.'.code.toByte()
         close = http10
         keepAlive = false
+        val plan = if (method == Method.POST) POST_PLAN else GET_PLAN
+        var k = 0
         var length = 0L
         var line = lineEnd + 2
-        while (line < headEnd + 2) {
-            val eol = src.indexOf('\r'.code.toByte(), line, headEnd + 2)
-            val colon = src.indexOf(':'.code.toByte(), line, eol)
-            if (colon > line) {
+        while (true) {
+            if (line + 1 >= to) return more(from, to)
+            if (src[line] == CR) {
+                if (src[line + 1] != LF) return -1
+                break
+            }
+            val eol = src.indexOf(CR, line, minOf(to, from + MAX_HEAD))
+            if (eol < 0 || eol + 1 >= to) return more(from, to)
+            if (src[eol + 1] != LF) return -1
+            var colon: Int
+            var kind: Int
+            if (k < plan.size && src.startsWith(line, plan[k])) {
+                colon = line + plan[k].size - 1
+                kind = PLAN_KIND[plan[k].size]
+                k++
+            } else {
+                colon = src.indexOf(':'.code.toByte(), line, eol)
+                kind = when (colon - line) {
+                    14 -> if (src.equalsIgnoreCase(line, CONTENT_LENGTH)) KIND_LENGTH else KIND_SKIP
+                    13 -> if (src.equalsIgnoreCase(line, AUTHORIZATION)) KIND_AUTH else KIND_SKIP
+                    10 -> if (src.equalsIgnoreCase(line, CONNECTION)) KIND_CONNECTION else KIND_SKIP
+                    else -> KIND_SKIP
+                }
+            }
+            if (kind != KIND_SKIP) {
                 var v = colon + 1
                 while (v < eol && (src[v] == ' '.code.toByte() || src[v] == '\t'.code.toByte())) v++
                 var ve = eol
                 while (ve > v && (src[ve - 1] == ' '.code.toByte() || src[ve - 1] == '\t'.code.toByte())) ve--
-                when (colon - line) {
-                    14 -> if (src.equalsIgnoreCase(line, CONTENT_LENGTH)) {
+                when (kind) {
+                    KIND_LENGTH -> {
                         length = 0
                         for (i in v until ve) {
                             val d = src[i] - '0'.code.toByte()
@@ -73,8 +102,8 @@ class Request {
                             length = length * 10 + d
                         }
                     }
-                    13 -> if (src.equalsIgnoreCase(line, AUTHORIZATION)) { authFrom = v; authTo = ve }
-                    10 -> if (src.equalsIgnoreCase(line, CONNECTION)) {
+                    KIND_AUTH -> { authFrom = v; authTo = ve }
+                    KIND_CONNECTION -> {
                         if (ve - v == 5 && src.equalsIgnoreCase(v, CLOSE)) {
                             close = true
                         } else if (ve - v == 10 && src.equalsIgnoreCase(v, KEEP_ALIVE)) {
@@ -86,11 +115,15 @@ class Request {
             }
             line = eol + 2
         }
+        if (line + 2 - from > MAX_HEAD) return -1
         if (length > MAX_BODY) return -1
-        bodyFrom = headEnd + 4
+        bodyFrom = line + 2
         bodyTo = bodyFrom + length.toInt()
         return bodyFrom
     }
+
+    /** The head is incomplete in src[from, to): 0 to wait for more bytes, or -1 once it can no longer fit [MAX_HEAD]. */
+    fun more(from: Int, to: Int): Int = if (to - from > MAX_HEAD) -1 else 0
 
     /** Becomes [o] as read from bytes that start [base] later: every offset moves down by [base]. */
     fun copyFrom(o: Request, base: Int) {
@@ -109,13 +142,39 @@ class Request {
 const val MAX_HEAD: Int = 16384
 const val MAX_BODY: Long = 1L shl 20
 
+const val CR: Byte = 13
+const val LF: Byte = 10
+
+/** A header line's meaning to the parser: skipped, Content-Length, Authorization or Connection. */
+const val KIND_SKIP = 0
+const val KIND_LENGTH = 1
+const val KIND_AUTH = 2
+const val KIND_CONNECTION = 3
+
 val GET: ByteArray = "GET".encodeToByteArray()
 val POST: ByteArray = "POST".encodeToByteArray()
+val GET_SP: ByteArray = "GET ".encodeToByteArray()
+val POST_SP: ByteArray = "POST ".encodeToByteArray()
 val CONTENT_LENGTH: ByteArray = "content-length".encodeToByteArray()
 val AUTHORIZATION: ByteArray = "authorization".encodeToByteArray()
 val CONNECTION: ByteArray = "connection".encodeToByteArray()
 val CLOSE: ByteArray = "close".encodeToByteArray()
 val KEEP_ALIVE: ByteArray = "keep-alive".encodeToByteArray()
+
+/**
+ * The header names predicted line by line after the request line, colon included, in the order HTTP clients send
+ * them (k6 v2.3.0, bench/load.js: Host, User-Agent; a POST adds Content-Length, Authorization, Content-Type). A
+ * name matches with its exact bytes; a line off the plan is classified the general way, and the same prediction
+ * waits for the next line.
+ */
+val GET_PLAN: Array<ByteArray> = arrayOf("Host:".encodeToByteArray(), "User-Agent:".encodeToByteArray())
+val POST_PLAN: Array<ByteArray> = arrayOf(
+    "Host:".encodeToByteArray(), "User-Agent:".encodeToByteArray(), "Content-Length:".encodeToByteArray(),
+    "Authorization:".encodeToByteArray(), "Content-Type:".encodeToByteArray(),
+)
+
+/** The kind of a predicted name, indexed by its size: the five names (5, 11, 15, 14 and 13 bytes) differ in size. */
+val PLAN_KIND: IntArray = IntArray(16).also { it[15] = KIND_LENGTH; it[14] = KIND_AUTH }
 
 /** Index of the CR of the CRLFCRLF that ends the header block, or -1. */
 fun headerEnd(src: ByteArray, from: Int, to: Int): Int {

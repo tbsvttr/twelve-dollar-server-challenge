@@ -44,20 +44,25 @@ with the io_uring rings in `feedc.def`.
   before the listen selector is selected, plus that pass's header visits); its consumer visits up to 64 ready
   connections per pass and queues the rest in order. While a body or write key is armed, the thread waits on all four
   at once: on Linux one `poll(2)` over their epoll descriptors.
-- **Group commit (rule 6).** The first write opens `BEGIN IMMEDIATE`, and later writes join it until the transaction is
-  64 ms old, counted from that first write; the thread waits at most until then and checks the deadline after every
-  connection it serves. Then there is one `COMMIT`, and only then are the responses held
-  since the transaction opened written (reads inside it included), so a 201 always follows its commit. Historical
-  measurements, committed in a06b671 before the four-selector reactor, when `start.sh` used `-Xms128m -Xmx384m`; the
+- **Group commit (rule 6).** Reads never wait for a write. A read runs at once on committed data and answers in the
+  same pass. A write is checked when it arrives (bearer, id, body) and then queued unexecuted; its connection reads
+  nothing more until the write is answered, so responses leave in request order. 64 ms after the first queued write,
+  the loop runs `BEGIN IMMEDIATE`, every queued write in arrival order, one `COMMIT`, and only then writes their
+  responses, so a 201 always follows its commit and no read ever sees an uncommitted row (`Xio.settle`). Historical
+  measurements of the older design, in which every response waited for the open transaction's `COMMIT`, committed in
+  a06b671 before the four-selector reactor, when `start.sh` used `-Xms128m -Xmx384m`; the
   container's host is not recorded. This repo's load model at 64,000 users against a 1-CPU / 2 GB container (2 min
   holds, alternating runs), server CPU per request: one `COMMIT` per selector pass 67.1-69.6 us (p95 10-17 ms); a
   32 ms window 59.7-62.1 us (p95 52-59 ms); 64 ms 56.2-59.0 us (p95 89-104 ms, p99 122-150 ms); 128 ms 56.3-56.4 us
   (p95 180-183 ms, p99 309-399 ms). A 5-minute hold at 64,000 users with the 64 ms window: 56.2 us per request,
-  6,736 requests/s, p95 95 ms, p99 124 ms, max 190 ms, no errors. Current measurements: Benchmark, below.
-- **SQLite settings.** `journal_mode=WAL`, `synchronous=NORMAL`, `locking_mode=EXCLUSIVE` (the wal-index lives in
-  process memory, with no `-shm` file), `mmap_size` 1 GiB, `cache_size` 16 MiB, `temp_store=MEMORY`. Statements are
+  6,736 requests/s, p95 95 ms, p99 124 ms, max 190 ms, no errors. Current measurements: STUDIES.md S18.
+- **SQLite settings.** `journal_mode=WAL`, `synchronous=NORMAL`, `wal_autocheckpoint=0`, SQLite's own `unix-excl` VFS
+  (this process alone opens the file: no fcntl locks, and the wal-index lives in process memory, with no `-shm` file),
+  `mmap_size` 1 GiB, `cache_size` 16 MiB, `temp_store=MEMORY`. A second connection on its own thread runs a PASSIVE
+  checkpoint every 100 ms (`feedbt_checkpointer`), so no checkpoint and no fsync runs on the loop thread. Statements are
   prepared once with `SQLITE_PREPARE_PERSISTENT` and reused. They cache plans, not data (rule 5).
-- **SQLite build.** `SQLITE_THREADSAFE=0` because one thread owns the connection. From the list at
+- **SQLite build.** `SQLITE_THREADSAFE=2` (multi-thread): the loop thread and the checkpoint thread each own one
+  connection. From the list at
   sqlite.org/compile.html#rcmd: `DQS=0`, `DEFAULT_MEMSTATUS=0`, `DEFAULT_WAL_SYNCHRONOUS=1`, `LIKE_DOESNT_MATCH_BLOBS`,
   `MAX_EXPR_DEPTH=0`, `OMIT_DECLTYPE`, `OMIT_DEPRECATED`, `OMIT_PROGRESS_CALLBACK`, `OMIT_SHARED_CACHE`. Also
   `USE_ALLOCA`, `OMIT_LOAD_EXTENSION` and `ENABLE_QPSG`. Without the query planner stability guarantee, SQLite 3.54.0
@@ -66,8 +71,11 @@ with the io_uring rings in `feedc.def`.
 - **FFM downcalls** are linked as `critical`: there is no thread-state transition per call, and Kotlin byte arrays go to
   `sqlite3_bind_text` in place.
 - **HTTP.** Only `Content-Length`, `Authorization` and `Connection` are read (RelaxFactory's header interest), and other
-  headers are skipped. Pipelined requests on one connection are answered with one write. Idle keep-alive connections
-  stay open.
+  headers are skipped. The head is parsed in one pass: each line's CR is found once, and each header line is first
+  matched against the name expected at its position (Host, User-Agent, then Content-Length, Authorization and
+  Content-Type for a POST: the order k6 v2.3.0 sends them), which gives its colon without a search. A line off that
+  order is classified the general way, case-insensitive, so every client parses the same. Pipelined requests on one
+  connection are answered in order. Idle keep-alive connections stay open.
 - **Responses.** JSON is written from byte templates into one reused buffer. Text columns are copied out of SQLite and
   escaped in place. Each response then waits for its write in a reused 1 MiB output chunk (a larger one in its own
   array).

@@ -17,6 +17,9 @@ const val ROW_ROOM: Int = 4096
 /** The room a B-tree plan is offered first: a usual feed fits; a larger one asks once for its exact size. */
 const val PLAN_ROOM: Int = 32768
 
+/** How often the checkpoint thread runs a PASSIVE checkpoint (feedbt_checkpointer), in milliseconds. */
+const val CHECKPOINT_MS: Int = 100
+
 const val POST_SELECT: String = "SELECT p.id, p.body, p.created_at, u.username, " +
     "(SELECT count(*) FROM likes l WHERE l.post_id = p.id) FROM posts p JOIN users u ON u.id = p.user_id"
 
@@ -50,15 +53,16 @@ class SqliteStore(path: String) : FeedStore {
     init {
         db = memScoped {
             val pp = alloc<CPointerVar<sqlite3>>()
-            val rc = sqlite3_open_v2(path, pp.ptr, SQLITE_OPEN_READWRITE or SQLITE_OPEN_NOMUTEX, null)
+            val rc = sqlite3_open_v2(path, pp.ptr, SQLITE_OPEN_READWRITE or SQLITE_OPEN_NOMUTEX, "unix-excl")
             val d = pp.value ?: error("sqlite3_open_v2($path): rc $rc")
             check(rc == 0) { "sqlite3_open_v2($path): ${sqlite3_errmsg(d)?.toKString()}" }
             d
         }
-        // locking_mode before the first WAL access keeps the wal-index in heap memory (no -shm).
-        exec("PRAGMA locking_mode=EXCLUSIVE")
+        // VFS unix-excl: this process alone opens the file, so no fcntl locks and the wal-index in heap memory (no -shm),
+        // shared with the checkpoint thread's connection. That thread checkpoints; this connection never does.
         exec("PRAGMA journal_mode=WAL")
         exec("PRAGMA synchronous=NORMAL")
+        exec("PRAGMA wal_autocheckpoint=0")
         exec("PRAGMA mmap_size=1073741824")
         exec("PRAGMA cache_size=-16384")
         exec("PRAGMA temp_store=MEMORY")
@@ -73,7 +77,11 @@ class SqliteStore(path: String) : FeedStore {
         commitStmt = prepare("COMMIT")
         rollbackStmt = prepare("ROLLBACK")
         plans = feedbt_init(db) == 1
+        val ck = feedbt_checkpointer(db, path, CHECKPOINT_MS)
+        check(ck == 0) { "checkpoint thread: $ck" }
     }
+
+    override fun ready(): Boolean = feedbt_wal_ready() == 1
 
     fun message(): String = sqlite3_errmsg(db)?.toKString() ?: "unknown error"
 

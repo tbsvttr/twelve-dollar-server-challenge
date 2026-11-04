@@ -14,6 +14,8 @@
  */
 #include "sqlite3.c"
 #include "feedbt.h"
+#include <pthread.h>
+#include <time.h>
 
 /* BEGIN feed_json_text */
 /*
@@ -174,6 +176,60 @@ void feedbt_release(void) {
   sqlite3BtreeCloseCursor(B.posts); sqlite3BtreeCloseCursor(B.users);
   sqlite3BtreeCloseCursor(B.likes); sqlite3BtreeCloseCursor(B.postsIdx);
   sqlite3BtreeCommit(B.bt);
+}
+
+/* The checkpoint thread (feedbt.h). Its connection only ever checkpoints; SQLite is built multi-thread
+ * (SQLITE_THREADSAFE=2), one connection per thread.
+ * The WAL gate: the loop's connection reports the log's size after each commit (its wal hook); the thread reports how
+ * much of the log its last checkpoint copied. Past FEEDBT_WAL_GATE frames the loop holds its next write batch (reads go
+ * on) until the whole log is copied, so that batch's BEGIN starts the log over from its beginning (walRestartLog) and the
+ * WAL stays small. While the loop waits, the thread checks every millisecond. */
+#define FEEDBT_WAL_GATE 1000
+static sqlite3 *ck_db;
+static int ck_ms;
+static int ck_frames;          /* frames in the log after the loop's last commit: the loop writes, both read */
+static long long ck_state;     /* the thread's last checkpoint: frames in the log << 32 | frames copied */
+static int ck_hurry;           /* the loop waits for a full copy */
+
+static int ck_hook(void *arg, sqlite3 *db, const char *name, int frames) {
+  (void)arg; (void)db; (void)name;
+  __atomic_store_n(&ck_frames, frames, __ATOMIC_RELEASE);
+  return SQLITE_OK;
+}
+
+static void *ck_run(void *arg) {
+  (void)arg;
+  struct timespec slow = { ck_ms / 1000, (long)(ck_ms % 1000) * 1000000L }, fast = { 0, 1000000L };
+  for (;;) {
+    nanosleep(__atomic_load_n(&ck_hurry, __ATOMIC_ACQUIRE) ? &fast : &slow, NULL);
+    int log = 0, done = 0;
+    if (sqlite3_wal_checkpoint_v2(ck_db, "main", SQLITE_CHECKPOINT_PASSIVE, &log, &done) == SQLITE_OK)
+      __atomic_store_n(&ck_state, (long long)log << 32 | (unsigned)done, __ATOMIC_RELEASE);
+  }
+  return NULL;
+}
+
+int feedbt_checkpointer(sqlite3 *db, const char *path, int ms) {
+  if (sqlite3_open_v2(path, &ck_db, SQLITE_OPEN_READWRITE, "unix-excl") != SQLITE_OK) return -1;
+  /* A connection that has not read yet has no WAL open, and its checkpoints do nothing (sqlite3PagerCheckpoint). */
+  if (sqlite3_exec(ck_db, "SELECT count(*) FROM sqlite_schema", NULL, NULL, NULL) != SQLITE_OK) return -3;
+  ck_ms = ms;
+  sqlite3_wal_hook(db, ck_hook, NULL);
+  pthread_t t;
+  if (pthread_create(&t, NULL, ck_run, NULL) != 0) return -2;
+  pthread_detach(t);
+  return 0;
+}
+
+int feedbt_wal_ready(void) {
+  int frames = __atomic_load_n(&ck_frames, __ATOMIC_ACQUIRE);
+  long long s = __atomic_load_n(&ck_state, __ATOMIC_ACQUIRE);
+  if (frames < FEEDBT_WAL_GATE || ((int)(s >> 32) == frames && (int)(unsigned)s == frames)) {
+    __atomic_store_n(&ck_hurry, 0, __ATOMIC_RELEASE);
+    return 1;
+  }
+  __atomic_store_n(&ck_hurry, 1, __ATOMIC_RELEASE);
+  return 0;
 }
 
 static int fb_cursors(void) {

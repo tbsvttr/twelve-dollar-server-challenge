@@ -128,10 +128,11 @@ val sqliteSource = tasks.register<JavaExec>("sqliteSource") {
     outputs.files(sqliteDir.map { it.file("sqlite3.c") }, sqliteDir.map { it.file("sqlite3.h") })
 }
 
-// compile.html#rcmd, plus no extension loading; SQLITE_THREADSAFE=0: one thread owns the connection.
+// compile.html#rcmd, plus no extension loading; SQLITE_THREADSAFE=2 (multi-thread): the loop thread and the checkpoint
+// thread (feedbt_checkpointer) each own one connection.
 // SQLITE_ENABLE_QPSG: binding a new post id no longer re-prepares the post statement (sqlite3ExprIsInteger).
 val sqliteOptions = listOf(
-    "-DSQLITE_DQS=0", "-DSQLITE_THREADSAFE=0", "-DSQLITE_DEFAULT_MEMSTATUS=0", "-DSQLITE_DEFAULT_WAL_SYNCHRONOUS=1",
+    "-DSQLITE_DQS=0", "-DSQLITE_THREADSAFE=2", "-DSQLITE_DEFAULT_MEMSTATUS=0", "-DSQLITE_DEFAULT_WAL_SYNCHRONOUS=1",
     "-DSQLITE_LIKE_DOESNT_MATCH_BLOBS", "-DSQLITE_MAX_EXPR_DEPTH=0", "-DSQLITE_OMIT_DECLTYPE", "-DSQLITE_OMIT_DEPRECATED",
     "-DSQLITE_OMIT_PROGRESS_CALLBACK", "-DSQLITE_OMIT_SHARED_CACHE", "-DSQLITE_USE_ALLOCA", "-DSQLITE_OMIT_LOAD_EXTENSION",
     "-DSQLITE_ENABLE_QPSG",

@@ -66,6 +66,9 @@ expect fun monoNanos(): Long
  */
 const val COMMIT_WINDOW_NANOS = 64_000_000L
 
+/** The longest a due write batch waits for [FeedStore.ready] (the WAL gate) before it runs anyway. */
+const val GATE_HOLD_NANOS = 500_000_000L
+
 /** Connections the listen state accepts per visit; the listening socket stays ready for the next visit. */
 const val ACCEPT_BUDGET = 64
 
@@ -108,6 +111,8 @@ class Conn(val handle: Handle) {
     var open = true
     /** Close once the output already produced is written (Connection: close, HTTP/1.0). */
     var closing = false
+    /** A write of this connection waits in [Xio.queue]; nothing after it is read until its response is out. */
+    var awaiting = false
     /** The read state the connection returns to once its output is out: [HEADER], or [BODY] while a body is incomplete. */
     var reading = HEADER
     /** The state that may act on the connection now: [HEADER], [BODY], [PARKED] or [WRITE]. */
@@ -121,6 +126,8 @@ class Conn(val handle: Handle) {
 class HeaderRead(val conn: Conn) {
     var held: ByteArray? = null
     var heldSize = 0
+    /** [held] may hold whole requests that arrived behind a queued write: framed again once that write is answered. */
+    var replay = false
     /** Read interest is on in the header selector. */
     var armed = false
 }
@@ -205,32 +212,21 @@ class Output {
     }
 }
 
-/** The connections parked until the open write transaction's COMMIT, their responses in their [BufferedWrite]s. */
-class CommitQueue {
-    var conns = arrayOfNulls<Conn>(1024)
-    var count = 0
-
-    fun add(c: Conn) {
-        if (count == conns.size) conns = conns.copyOf(count * 2)
-        conns[count++] = c
-    }
-}
-
 /**
  * RelaxFactory's one.xio.HttpMethod.init/innerloop, monomorphized per transport state: [Poller] keeps one selector
  * per state class, and each selector's own dispatch loop calls one of [onAccept], [onHeader], [onBody] and [onWrite]
- * with that one class. One thread owns everything, SQLite included. Writes join one open transaction until it is
- * [commitWindowNanos] old, counted from the start of the request that began it; every response produced while it is
- * open waits, its connection parked in [commits], and [tick] commits as soon as the window has passed, between any
- * two handled keys or writes (never inside one, so no response of the transaction is left outside the queue).
+ * with that one class. One thread owns everything, SQLite included. Reads run at once on committed data and answer in
+ * the same visit. A write is checked when it arrives and queued unexecuted ([queue]); its connection reads nothing
+ * more until the write is answered. [tick] runs the batch once the first queued write is [commitWindowNanos] old:
+ * BEGIN, every queued write, COMMIT, then their responses; no read ever sees a write that is not committed.
  */
 class Xio(val poller: Poller, val feed: Feed, val store: FeedStore, val commitWindowNanos: Long = COMMIT_WINDOW_NANOS) {
     val rx = ByteArray(READ_BUDGET)
     val request = Request()
     val send = Out()
     val output = Output()
-    val commits = CommitQueue()
-    /** Whether a write transaction is open, and when its window ends ([monoNanos]). */
+    val queue = WriteQueue().also { feed.queue = it }
+    /** Whether writes wait in [queue], and when their batch runs ([monoNanos]). */
     var windowOpen = false
     var deadline = 0L
 
@@ -239,16 +235,18 @@ class Xio(val poller: Poller, val feed: Feed, val store: FeedStore, val commitWi
     /** The end of a wake (the poller's dispatch pass is done): read state held for the wake's reads is let go. */
     fun rest() = store.rest()
 
-    /** COMMIT once the open transaction's window has passed. */
+    /** COMMIT once the first queued write is [commitWindowNanos] old and the store is [FeedStore.ready], or [GATE_HOLD_NANOS] later regardless. */
     fun tick() {
-        if (windowOpen && monoNanos() - deadline >= 0) settle()
+        if (!windowOpen) return
+        val late = monoNanos() - deadline
+        if (late >= 0 && (store.ready() || late > GATE_HOLD_NANOS)) settle()
     }
 
-    /** How long the owner thread may wait for readiness: until the window ends, or -1 when no transaction is open. */
+    /** How long the owner thread may wait for readiness: until the batch is due, or -1 when no write waits; 1 ms while a due batch is held. */
     fun waitMillis(): Long {
         if (!windowOpen) return -1
         val left = deadline - monoNanos()
-        return if (left <= 0) 0 else (left + 999_999L) / 1_000_000L
+        return if (left <= 0) 1 else (left + 999_999L) / 1_000_000L
     }
 
     /** Listen state: at most [ACCEPT_BUDGET] new connections, each into [HeaderRead] with its key armed. */
@@ -366,14 +364,31 @@ class Xio(val poller: Poller, val feed: Feed, val store: FeedStore, val commitWi
         }
     }
 
-    /** COMMIT, then every parked connection's output joins the write selector's queue: a 201 follows its commit. */
+    /**
+     * The batch: every queued write runs in one transaction, in arrival order, each response written behind whatever
+     * its connection produced before it; then COMMIT, and only then do the responses join the write selector's queue.
+     * A failed COMMIT closes those connections: none of their writes is acknowledged.
+     */
     fun settle() {
         windowOpen = false
-        val committed = try { store.commit(); true } catch (_: Throwable) { false }
-        val q = commits
-        for (i in 0 until q.count) {
+        val q = queue
+        val n = q.count
+        for (i in 0 until n) {
             val c = q.conns[i]!!
-            q.conns[i] = null
+            send.size = 0
+            val w = c.write
+            if (c.open && w.to > w.from) {
+                send.raw(w.bytes, w.from, w.to)
+                output.release(w)
+            }
+            feed.answer(q, i, send)
+            if (c.open) output.put(w, send.bytes, 0, send.size)
+        }
+        val committed = try { store.commit(); true } catch (_: Throwable) { false }
+        for (i in 0 until n) {
+            val c = q.conns[i]!!
+            q.clear(i)
+            c.awaiting = false
             if (!c.open) continue
             if (committed) {
                 c.stage = WRITE
@@ -394,11 +409,15 @@ class Xio(val poller: Poller, val feed: Feed, val store: FeedStore, val commitWi
         poller.close(c.handle)
     }
 
-    /** Answers every complete request in src[start, to) into [send]; a partial head stays in [HeaderRead], a partial body moves to [BodyRead]. */
+    /**
+     * Answers every complete request in src[start, to) into [send]; a partial head stays in [HeaderRead], a partial
+     * body moves to [BodyRead]. A queued write stops it: the bytes behind the write wait in [HeaderRead.held] for
+     * [toRead] to frame them again, so responses leave in request order.
+     */
     fun frame(c: Conn, src: ByteArray, start: Int, to: Int) {
         val r = request
         var from = start
-        while (from < to && !c.closing) {
+        while (from < to && !c.closing && !c.awaiting) {
             val at = r.frameHead(src, from, to)
             if (at < 0) { close(c); return }
             if (at == 0) break
@@ -410,6 +429,7 @@ class Xio(val poller: Poller, val feed: Feed, val store: FeedStore, val commitWi
             val h = c.header
             h.held = if (src === rx) src.copyOfRange(from, to) else src.copyInto(src, 0, from, to)
             h.heldSize = to - from
+            if (c.awaiting) h.replay = true
         }
     }
 
@@ -424,32 +444,37 @@ class Xio(val poller: Poller, val feed: Feed, val store: FeedStore, val commitWi
         c.reading = BODY
     }
 
-    /** One response into [send]; when it began the write transaction, the window starts from the request's start. */
+    /** One request: a read's response into [send] at once; a valid write joins [queue], and the batch is due [commitWindowNanos] after the first. */
     fun respond(c: Conn, src: ByteArray, r: Request) {
-        val start = if (windowOpen) 0L else monoNanos()
+        val q = queue
+        val before = q.count
         feed.respond(src, r, send)
         if (r.close) c.closing = true
-        if (!windowOpen && store.pending) {
-            windowOpen = true
-            deadline = start + commitWindowNanos
+        if (q.count != before) {
+            q.conns[before] = c
+            c.awaiting = true
+            if (!windowOpen) {
+                windowOpen = true
+                deadline = monoNanos() + commitWindowNanos
+            }
         }
     }
 
     /**
-     * What this read produced goes out: parked in [BufferedWrite] until COMMIT while a transaction is open; else handed
-     * straight to the poller (one copy, into the send arena), and only a rest the socket did not take is kept in
-     * [BufferedWrite] for the write selector's queue. Nothing produced: the connection stays in, or enters, its read state.
+     * What this read produced goes out: handed straight to the poller (one copy, into the send arena), and only a rest
+     * the socket did not take is kept in [BufferedWrite] for the write selector's queue. With a write queued, the
+     * responses before it wait in [BufferedWrite] and the batch appends the write's response. Nothing produced: the
+     * connection stays in, or enters, its read state.
      */
     fun emit(c: Conn) {
         if (!c.open) return
-        if (send.size == 0) { toRead(c); return }
         val w = c.write
-        if (store.pending) {
-            output.put(w, send.bytes, 0, send.size)
+        if (c.awaiting) {
+            if (send.size > 0) output.put(w, send.bytes, 0, send.size)
             c.stage = PARKED
-            commits.add(c)
             return
         }
+        if (send.size == 0) { toRead(c); return }
         val n = poller.write(c.handle, send.bytes, 0, send.size)
         if (n < 0) { close(c); return }
         if (n == send.size) {
@@ -463,13 +488,24 @@ class Xio(val poller: Poller, val feed: Feed, val store: FeedStore, val commitWi
 
     /**
      * Its output is out (or it produced none): the connection returns to its read state. [HEADER] arms the header key
-     * if it was disarmed; [BODY] takes read interest from the header key and gives it to the body key.
+     * if it was disarmed, and frames the requests that waited behind a write; [BODY] takes read interest from the
+     * header key and gives it to the body key.
      */
     fun toRead(c: Conn) {
         val h = c.header
         if (c.reading == HEADER) {
             c.stage = HEADER
             if (!h.armed) arm(h, c)
+            if (h.replay && c.open) {
+                h.replay = false
+                val held = h.held!!
+                val n = h.heldSize
+                h.held = null
+                h.heldSize = 0
+                send.size = 0
+                frame(c, held, 0, n)
+                emit(c)
+            }
             return
         }
         c.stage = BODY

@@ -2,8 +2,8 @@
 # Runs the server in the foreground. Config: SQLITE_PATH, JWT_SECRET, HOST, PORT.
 # RUNTIME picks the build: kn (default, Kotlin/Native over io_uring direct descriptors, what build.sh makes),
 # graal-static (GraalVM native image), graal-jit (GraalVM JDK), node (Kotlin/JS on Node.js), wasi (Kotlin/Wasm on
-# wasmtime); bench/all1000.sh builds all five. A runtime whose build is missing falls back along kn, graal-static,
-# graal-jit. The GraalVM builds serve
+# wasmtime); bench/all1000.sh builds all five. build.sh builds only kn, and start.sh runs only kn unless RUNTIME names
+# another; there is no fallback. The GraalVM builds serve
 # through the io_uring ring (TRANSPORT=ring) unless TRANSPORT says otherwise; Node and wasmtime poll their sockets.
 set -euo pipefail
 cd "$(dirname "$0")"
@@ -14,8 +14,6 @@ WASI_MAIN=server/build/dist/wasi/server.wasm
 LIB="$PWD/server/build/sqlite/libsqlite3.so"; [ -f "$LIB" ] || LIB="$PWD/server/build/sqlite/libsqlite3.dylib"
 JAVA=/opt/graalvm/bin/java; [ -x "$JAVA" ] || JAVA="${JAVA_HOME:+$JAVA_HOME/bin/}java"
 runtime=${RUNTIME:-kn}
-[ "$runtime" = kn ] && [ ! -x "$KN" ] && runtime=graal-static
-[ "$runtime" = graal-static ] && [ ! -x "$STATIC" ] && runtime=graal-jit
 echo "start.sh: RUNTIME=$runtime" >&2
 case "$runtime" in
   kn)

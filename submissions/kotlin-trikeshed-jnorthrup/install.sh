@@ -6,7 +6,7 @@
 set -euo pipefail
 export DEBIAN_FRONTEND=noninteractive
 apt-get update
-apt-get install -y --no-install-recommends aria2 build-essential zlib1g-dev ca-certificates curl git unzip
+apt-get install -y --no-install-recommends aria2 build-essential zlib1g-dev ca-certificates curl git openssl unzip
 
 fetch() { # fetch <url> <sha256> <file>: aria2c with 16 connections; curl if aria2c fails
   aria2c -q -x16 -s16 -k1M --max-tries=5 --retry-wait=3 --allow-overwrite=true -d . -o "$3" "$1" ||
