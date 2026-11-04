@@ -42,8 +42,8 @@ java-jdkhttpserver-razorree is scored at its follow-up PR #262 (`d1268e6`); its 
 #265 (`412c71a`), which replaces its closed #222; the #222 run (`13151f2`) held 135,000. rust-native-scooter1337 is scored at its follow-up PR #267 (`908ea75`); its
 earlier #238 run (`9cbd120`) held 210,000. wat-wasmedge-delneg is scored at its merged follow-up PR #272 (`7792fa9`);
 its earlier #272 runs held 247,000 (`c193a82`) and 270,000 (`f220565`), and its #259 code (`48942ac`) 60,000.
-lean-verified-soonhokong is scored at #286 (`fe89683`), which replaces its closed #271; the #271 run (`30d259c`) held
-290,000. c-iouring-unorig-username is scored at its follow-up PR #290 (`97d0470`); its earlier #184 run (`e157f0c`) held
+lean-verified-soonhokong is scored at #286 (`307205a`), which replaces its closed #271; the earlier #286 run (`fe89683`)
+also held 280,000 and the #271 run (`30d259c`) 290,000. c-iouring-unorig-username is scored at its follow-up PR #290 (`97d0470`); its earlier #184 run (`e157f0c`) held
 250,000. kotlin-trikeshed-jnorthrup is scored at its follow-up PR #298 (`61ddd97`); its merged #128 code (`2fb010a`) held
 175,000 and its earlier #128 run (`87b974c`) 71,000.
 
@@ -61,7 +61,7 @@ CPU % and µs/request are the app's own cgroup over the scored hold (µs = app C
 | 2 | mojo-iouring-oh-meh | #257 | Mojo (io_uring, SQLite B-tree reads) | **304,000** | 28,705 | 159 | 545 | 0.00 | 82 | 26 | 726 | 2026-11-01 |
 | 3 | c-iouring-pavlyhalim | #245 | C (io_uring, SQLite B-tree reads) | **295,000** | 28,013 | 28 | 117 | 0.00 | 81 | 26 | 1,536 | 2026-11-01 |
 | 4 | rust-native-scooter1337 | #267 | Rust (io_uring, SQLite B-tree reads) | **290,000** | 27,580 | 26.5 | 514 | 0.00 | 80 | 26 | 1,035 | 2026-11-02 |
-| 5 | lean-verified-soonhokong | #286 | Lean 4 (verified handlers, io_uring, SQLite B-tree reads) | **280,000** | 26,678 | 44.9 | 359 | 0.00 | 74 | 25 | 1,390 | 2026-11-03 |
+| 5 | lean-verified-soonhokong | #286 | Lean 4 (verified handlers, io_uring, SQLite B-tree reads) | **280,000** | 26,738 | 40.6 | 188 | 0.00 | 93 | 31 | 1,446 | 2026-11-04 |
 | 5 | lean-derive-hargup | #153 | Lean 4 (generated C, io_uring) | **280,000** | 26,683 | 141 | 316 | 0.00 | 92 | 31 | 836 | 2026-10-28 |
 | 5 | objc-uring-delneg | #154 | Objective-C (GNUstep, io_uring, SQLite B-tree reads) | **280,000** | 26,741 | 35 | 227 | 0.00 | 79 | 27 | 1,245 | 2026-10-31 |
 | 5 | c-iouring-unorig-username | #290 | C (io_uring, SQLite B-tree reads) | **280,000** | 26,688 | 56.4 | 713 | 0.00 | 78 | 26 | 1,357 | 2026-11-03 |
@@ -515,7 +515,7 @@ public plugin APIs (a custom page cache through `SQLITE_CONFIG_PCACHE2`, a custo
 - **lean-verified-soonhokong #286 (was #271) reuses c-iouring-pavlyhalim #245's B-tree helpers**: `runtime/db.c`'s record
   decoder, payload fetch, index seek and multi-key descent closely follow #245's `src/btree.h` (now credited in its
   README); the Lean handlers, HTTP/JWT/JSON code and the io_uring transport are new. Open question for Arjay: building
-  on another entry vs. the copies rule. Scored as submitted (280k at `fe89683`; 290k at `30d259c` as #271); held open for Arjay.
+  on another entry vs. the copies rule. Scored as submitted (280k at `307205a` and `fe89683`; 290k at `30d259c` as #271); held open for Arjay.
 - **c-rawsqlite-larvance #210 reuses c-iouring-pavlyhalim #245's B-tree helpers**: since `d76e386`, `src/db.c`'s record
   decoder, index seek, cursor helpers and rootpage/keyinfo lookups (~150 of ~2,350 lines) closely follow #245's
   `src/btree.h` with renamed identifiers; the io_uring transport, HTTP, JSON and JWT code are the author's own (from
