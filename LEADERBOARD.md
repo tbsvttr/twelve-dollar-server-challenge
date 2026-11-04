@@ -270,7 +270,11 @@ p95 (567 ms, 93 % CPU, 0 errors). Earlier follow-up heads (#213 / #227): `7a3f61
 the 2-minute probe on p95/p99 (83–94 % CPU, 0 errors). #268's next head `28db5bb` (generic io_uring runtime: direct
 descriptors, multishot accept/recv, 5 rings) scored **157,000** (15,401 req/s, p95 198 / p99 352 ms, 0 err, 65 % CPU,
 39 µs/req, 711 MB, 42/42, 2026-11-02; 165,000 failed the 5-minute hold on p99 1.23 s), but #268 was closed unmerged
-during the run; its replacement #280 is the row above.
+during the run; its replacement #280 is the row above. Its next follow-up **#304** (`7f2a823`, `-O3 -march=native
+-flto`, background checkpoint thread, batched B-tree reads; held, not merged: it didn't beat the merged row) scored
+**135,000** (13,248 req/s, p95 24.5 / p99 646 ms, 0.59 % err = HTTP 500 on 23,480 likes and 4,500 posts, 55 % CPU,
+39 µs/req, 1,244 MB, 2026-11-04). 140,000 failed the 2-minute probe on p95/p99 (2.15 / 2.68 s, 53 % CPU, 0 errors);
+160,000 failed with 1.33 % HTTP 500s.
 
 ʸ **scala-netty-jacksonhoran** stays on its merged #107 row. Its follow-up **#149** (`4430836`, rejects tokens
 without `exp`; held, not merged: it didn't beat the merged row) scored **83,000** (8,128 req/s, p95 325 / p99 627 ms,
