@@ -7,12 +7,34 @@ compiled ahead of time to native code by WasmEdge, and run by a small C embedder
 
 | File | Language | What it does |
 |---|---|---|
-| `src/app.wat` | WAT, hand-written | Everything a request touches: the io_uring event loop (it writes every submission entry and reads every completion itself), HTTP/1.1 parsing, routing, JSON reading and writing, base64url, SHA-256 and HMAC for the HS256 JWT check, SQL statement calls, group commit, when to checkpoint the WAL, and the B-tree read paths (record decoding, which cursors to open and seek) |
-| `src/host.c` | C, ~200 lines | WasmEdge embedder: loads the AOT-compiled module, gives it WASI (used only by SQLite for file I/O, env vars and the clock) and five Linux imports: `listen`; `ring_new` (sets up an io_uring and its fixed-file table); `ring_pbuf` (registers a provided-buffer ring that lives in wasm memory); `ring_go` (copies the SQEs the WAT wrote into the ring, calls `io_uring_enter`, copies the completions back); and `membase` (the native address of wasm memory, which the kernel needs for buffer addresses). It also starts one thread that calls `fdatasync` on the WAL file every 100 ms (below). There is no request logic in it |
-| `src/sqlite_glue.c` | C, ~130 lines | `#include`s the stock SQLite amalgamation and exports what the WAT calls: the public SQL API; one-line wrappers over SQLite's B-tree cursor functions (open, first, next, previous, seek, payload); a WAL hook that records the WAL's size, and a passive `sqlite3_wal_checkpoint_v2`; and a page cache that wraps SQLite's default one (below). All of it is SQLite's public API. When to checkpoint is decided in the WAT |
+| `src/app.wat` | WAT, hand-written | Everything a request touches: the io_uring event loop (it writes every submission entry and reads every completion itself), HTTP/1.1 parsing, routing, JSON reading and writing, base64url, SHA-256 and HMAC for the HS256 JWT check, SQL statement calls, group commit, parking POSTs during a checkpoint hold, and the B-tree read paths (record decoding, which cursors to open and seek) |
+| `src/host.c` | C, ~300 lines | WasmEdge embedder: loads the AOT-compiled module, gives it WASI (used only by SQLite for file I/O, env vars and the clock) and five Linux imports: `listen`; `ring_new` (sets up an io_uring and its fixed-file table); `ring_pbuf` (registers a provided-buffer ring that lives in wasm memory); `ring_go` (copies the SQEs the WAT wrote into the ring, calls `io_uring_enter`, copies the completions back); and `membase` (the native address of wasm memory, which the kernel needs for buffer addresses). It also starts one thread that calls `fdatasync` on the WAL file every 100 ms and a second that runs the checkpointer in its own WasmEdge VM, and gives both instances the shared-memory, atomic and futex imports they need (below). There is no request logic in it |
+| `src/sqlite_glue.c` | C, ~150 lines | `#include`s the stock SQLite amalgamation and adds one-line wrappers over SQLite's B-tree cursor functions (open, first, next, previous, seek, payload), which only exist inside SQLite's own translation unit; a small VFS that gives SQLite the shared-memory methods its WASI build lacks; and the checkpoint logic: `ck_tick` on the loop, `ckpt_main` on the checkpointer (below). Everything else the WAT calls directly: SQLite's public API (`build.sh` exports each function `app.wat` imports), and through the exported function table it installs its own WAL hook and page-cache wrapper (below) |
 | SQLite 3.54.1 | C, stock | The amalgamation, unmodified, compiled to wasm with wasi-sdk |
 | wasi-libc | C | From wasi-sdk, for SQLite (malloc, file calls) |
 | `experiments/` | notes, scripts, C | The worklog of every measured change, and `baseline/cserve.c`, the C reference server used to compare WAT with C compiled to wasm. Not built or run by the entry |
+
+The C that stays, and why:
+
+- `host.c` `main`: something has to create the WasmEdge VM, give it WASI and the "sys" module and run
+  the AOT code; the `wasmedge` CLI can add host functions only through a plugin, which would be C too. It also raises the soft `RLIMIT_NOFILE` to
+  the hard one and ignores SIGPIPE (one line each).
+- `listen`, `ring_new`, `ring_pbuf`, `ring_go` and `membase`: WebAssembly has no way to make a Linux call
+  or to know where its memory is. The kernel maps an io_uring's rings only at an address it picks: mapping
+  them into wasm memory with `MAP_FIXED` fails with EINVAL (we tried; io_uring refuses a caller's address),
+  and `IORING_SETUP_NO_MMAP` on Linux 6.8 needs the rings in one physically contiguous block (a huge page).
+  So the rings are outside wasm memory, and only C can copy SQEs in and CQEs out; `ring_go` also drains CQ
+  overflow. We also tried one generic `syscall` import with the socket and ring registration in the WAT
+  (30 lines less C): on our scorer-like harness it cost ~0.7 µs per request and more p99, so it was dropped.
+- The WAL thread (`walsync`, with `pincode`): the `fdatasync` every 100 ms has to run beside the event
+  loop, and the wasm side runs on a single thread. Pinning runs in the same thread so the loop never waits for it.
+- The checkpointer (`ckthread`, the `shm_*` and `ck_*` imports): a checkpoint's fsyncs have to happen off
+  the event loop. WASI has no threads and no shared memory, so the host starts the second instance on a
+  thread, maps one memfd into both instances' memories and provides the atomics and the futex.
+- `sqlite_glue.c`'s B-tree wrappers: they call SQLite's internal B-tree functions, which exist only
+  inside SQLite's own translation unit. Its VFS and checkpoint logic use SQLite's public API, as does
+  everything else the WAT calls. They are C for convenience, not necessity: a WAT port could cut them, but
+  it hasn't been tried.
 
 The WAT and SQLite are two wasm modules joined into one with `wasm-merge`; WasmEdge compiles the result
 with LLVM (`wasmedge compile --optimize=3`) to a shared object that `host` loads.
@@ -46,29 +68,45 @@ downloaded by `build.sh`:
   a send the kernel would retry later is waited for briefly and then cancelled (the connection is
   closed), so the buffer is never reused under a send. One send in flight per connection.
 - **SQLite:** WAL, `synchronous=NORMAL`, persistent prepared statements, 64 MiB page cache,
-  `temp_store=MEMORY` (WASI has no temp directory). WASI has no shared memory, so the connection runs with
-  `locking_mode=EXCLUSIVE` (the WAL index lives in its heap); it is the only connection anyway.
-  With no thread or fork in WASI, checkpoints run on the event loop, every 128,000 frames (500 MiB of
-  WAL) instead of SQLite's default 1,000, so one comes every ~25 s at 300,000 users.
-- **WAL flusher thread.** A checkpoint starts by syncing the WAL, which by then holds up to 500 MiB, and
-  the loop waits for it. A thread in `host.c` calls `fdatasync` on the WAL file (through its own
-  descriptor) every 100 ms, so that sync finds little left to write. It only makes data durable sooner;
-  SQLite still makes every sync it would make anyway. At 280,000 users this halved p95 and p99 (below).
-- **Checkpoints are SQLite's own.** `wal_autocheckpoint` is off and a WAL hook records the WAL's size
-  after each commit; once it reaches `CKPT_FRAMES` (128,000), the WAT calls
-  `sqlite3_wal_checkpoint_v2(PASSIVE)` after the batch's responses are sent, so that batch does not wait
-  for it (the loop does: the copy and the syncs run on it). SQLite does every step and every sync itself,
-  through its public API only. `CKPT_AUTO=1` uses `sqlite3_wal_autocheckpoint(CKPT_FRAMES)` instead (the
-  checkpoint then runs inside the commit). Each checkpoint stops the loop for a time that grows only
-  slowly with its size, so fewer, larger ones give a better tail: at 300,000 users p99 went from 410-480 ms
-  at 16,000 frames to 143-270 ms at 128,000 (below). The WAL then takes up to ~500 MiB on disk and in the
-  page cache; with `MemoryMax=1200M` the server still ran without errors. An earlier build skipped the
-  checkpoint's database sync and sent it to io_uring, which meant writing SQLite's internal `nBackfill`;
-  that is gone.
-- **A page-cache fix in the glue.** perf showed `pcache1Truncate` at 1.2% of the CPU. Each commit calls
+  `temp_store=MEMORY` (WASI has no temp directory). `wal_autocheckpoint` is off and a WAL hook records the
+  WAL's size after each commit.
+- **Checkpoints on a second wasm instance.** The host runs the same `app.so` a second time on its own
+  thread, with its own SQLite connection (`ckpt_main` in `sqlite_glue.c`). WASI SQLite has no shared
+  memory, so a small VFS over `unix-none` adds the four `xShm` methods: the wal-index is one memfd mapped
+  into both instances' memories, and its locks are atomic words in the host. The loop's connection uses
+  `locking_mode=NORMAL`, and every step is SQLite's own `sqlite3_wal_checkpoint_v2(PASSIVE)` through its
+  public API.
+- **Short write holds finish each round.** At `CKPT_FRAMES` (8,000 frames, 32 MiB) the loop asks for a pass
+  and keeps serving. Passes repeat until `CKPT_TAIL` (200) frames or fewer are left, or the WAL reaches 3x
+  the threshold. Then the loop parks incoming POSTs in their connections' pending bytes while GETs go on, up to
+  4,096 parked at a time (past that a POST is served and the round may not finish), and the last pass copies
+  the rest. With nothing written since, the WAL is fully copied and the next write restarts it. A hold
+  ends after `CKPT_HOLD` (500 ms) at the latest, or 2 s once the WAL is past 3x the threshold, and the parked
+  POSTs are then served. Each still commits before its response is sent.
+- **What still syncs on the loop.** SQLite syncs the WAL's new header when the next write restarts the WAL
+  (once a round; the rest of the file was synced by the checkpoint), and past 8x the threshold (64,000 frames)
+  or with `CKPT_HOLD=0` the loop runs one inline PASSIVE checkpoint as the last resort. `SHMX=0` turns the
+  whole mechanism off: `locking_mode=EXCLUSIVE` and inline checkpoints, as in the build scored at `df9da40`.
+- **WAL flusher thread.** A thread in `host.c` calls `fdatasync` on the WAL file (through its own
+  descriptor) every 100 ms. It only makes data durable sooner. It halved p95 and p99 when checkpoints ran
+  on the loop; with the checkpointer it no longer buys any latency (2-minute A/B at 270,000 users, E75), and it stays
+  to keep the loss window after a power cut at 100 ms. The same thread does the code locking below.
+- **Memory on the 2 GB box.** Each open connection costs the kernel ~3.8 KiB (socket, inode, file,
+  dentry) plus ~0.35 KiB for its pending io_uring receive, so 300,000 users take ~1.2 GB before the
+  server does anything. What is left for the page cache is small, and the kernel evicts file pages as the
+  ramp ends: the database, the WAL and our own machine code. With one loop thread, every evicted page it
+  needs is a wait on the disk; meanwhile every user's next request queues in the kernel (each holds at
+  least a page of TCP memory), TCP memory passes its limit, and in the end the OOM killer takes the
+  server. That is the "connection refused" #272 got from 210,000 users on. Three changes keep the loop
+  off the disk: the small WAL above (it stays cached; #272 let it grow to 128,000 frames, 500 MiB), `mlock` on the code (the WAL thread in `host.c`
+  locks app.so's code and the pages of the libraries' code in use, ~7 MiB, within the default 8 MiB
+  `RLIMIT_MEMLOCK`; `PIN=0` turns it off), and the 18 MiB connection tables are no longer zeroed at start,
+  so slots that are never used never become resident. SQLite's 64 MiB page cache holds the hot pages in
+  the process's own memory, which the kernel can't evict (no swap).
+- **A page-cache fix.** perf showed `pcache1Truncate` at 1.2% of the CPU. Each commit calls
   it with the database's size, and about one commit in ten made it walk all 8,192 hash slots (~250 µs).
   The cause is SQLite's `balance_nonroot`, which swaps two pages through a temporary page number, the
-  lock-byte page's (262,145 here), and the cache then believes it holds a page that far out. The glue
+  lock-byte page's (262,145 here), and the cache then believes it holds a page that far out. The WAT
   installs a page cache (`SQLITE_CONFIG_PCACHE2`) that wraps SQLite's default one, tracks the highest
   page number it holds (not counting that temporary one) and skips a truncate that is past it. Public
   API only; SQLite's source and internals are untouched. With the first version of this fix, which set
@@ -92,13 +130,61 @@ downloaded by `build.sh`:
 
 ## Measured
 
-**Scorer-like load, Synteq.** A rented 8 vCPU box with the grader droplet's CPU (Xeon Platinum 8260) and
+All of this is our own harness, not the scorer. Twice it read too high: #272 held 300,000 here and scored
+200,000, and `df9da40` held 290,000 here and scored 200,000 (210,000 failed on p99 with 0 errors). So read
+the 260,000 below as an upper guess.
+
+**This head, harness v3** (`experiments/worklog.md` E61-E81). The harness below, without the CPU spin and
+with the disk capped at 3,000 write IOPS (systemd `IOWriteIOPSMax`), `SRVMB=1900`, 5-minute holds. p95/p99 in ms:
+
+| build | users | p95 / p99 (ms) | result |
+|---|---|---|---|
+| inline checkpoints (`c49b70d`) | 210,000 | 670 / 855 | fails on p95 |
+| this head | 260,000 (2 holds) | 56 / 335, 52 / 355 | pass, 0 errors |
+| this head | 270,000 (2 holds) | 51 / 305, 255 / 1,035 | one pass, one misses p99 by 35 ms |
+| this head | 280,000 (2 holds) | 81 / 340, then OOM-killed | one pass, one fail (41% errors) |
+
+At half the IOPS (1,500 reads and writes) the previous tuning held 260,000 at 90 / 455, and the inline build
+failed 210,000 at 1,405 / 1,970. Memory is what ends the climb: at 280,000 sockets dominate 2.5 GB of slab
+(both ends counted on this box), and the margin there is under ~90 MB. With less memory (`SRVMB=1650`) 240,000
+fails too, from page-cache thrash; that setting is harsher than the scorer, by the calibration below.
+
+This harness doesn't reproduce the scorer's cliff at 210,000: at 3,000 IOPS the old build's tail grows smoothly in
+2-minute probes. Correctness of the shared wal-index, on this build (E78; method in E60, E64): 391 read-your-writes checks with 0 stale, 0 of
+2,270 acked writes missing after `kill -9`, integrity ok; the hold checks (split, pipelined and large POSTs, closes
+mid-hold) found 0 bad. 42/42. The clean `ubuntu:24.04` install has not been rerun for this head.
+
+**Before the checkpointer: why memory was the first wall.** Our earlier bench box (below) held 300,000 users with #272,
+which then scored 200,000: on the real 2 GB droplet it was OOM-killed after the ramp ("connection refused"
+from 210,000 on). `experiments/worklog.md` (S14, E37-E48, C1, M3) has how we reproduced that. The harness, on
+the same rented 8 vCPU box: the server is a systemd unit as a non-root user, `LimitNOFILE=65535`, every
+other limit at systemd's default (8 MiB of locked memory), on CPU 0; a memory hog leaves the server what a
+1,967 MB box would, after the load generator's own memory (11.5 KiB per user, measured); `tcp_mem` at
+twice a 2 GB box's default, since on loopback it also carries the load generator's sockets. We fitted the
+hog to a build the scorer has scored: f220565 held 270,000 there and failed at 280,000, and it does the
+same here. What this harness can't show: on loopback the kernel's receive work for the
+server's sockets runs on the load generator's CPUs, while the droplet's single vCPU pays for it, and
+the scorer's probes run back to back.
+
+5-minute holds there of `df9da40` ("this one", inline checkpoints), 0 errors in all of them:
+
+| build | users | p95 (ms) | p99 (ms) |
+|---|---|---|---|
+| the same with 4,000 frames (f3e9410) | 280,000 | 280 | 480 |
+| this one | 290,000 (4 holds) | 325, 345, 315, 350 | 600, 585, 530, 575 |
+| this one, without the code locking (`PIN=0`) | 290,000 | 395, 345 | 720, 605 |
+| this one | 300,000 (4 holds) | 440, 625, 370, 405 | 795, 1,945, 680, 725 (in the second the ramp's end evicted the WAL, and checkpoints read it back from disk) |
+| this one | 310,000 | 535 | 1,290 |
+
+At 290,000 users: ~30.4k req/s, ~87% of the CPU (~28.5 µs per request), RSS 115-160 MB.
+
+**Earlier: scorer-like load, Synteq.** A rented 8 vCPU box with the grader droplet's CPU (Xeon Platinum 8260) and
 kernel (6.8.0). The server runs alone on CPU 0 in a scope with `MemoryMax=2G`, with `LimitNOFILE=65535`;
 the load generator (`ul`, C, the `bench/load.js` user loop with its real think times, one keep-alive
 connection per user, 32 source addresses) runs on CPUs 1-7. 60 s ramp, then the measured window.
 `experiments/worklog.md` has every run, including the changes that didn't help.
 
-5-minute holds with SQLite's own checkpoint every 128,000 frames (this commit): at 300,000 users,
+5-minute holds with SQLite's own checkpoint every 128,000 frames (#272): at 300,000 users,
 31.7k req/s, p50 2.1 ms, **p95 82 ms, p99 330 ms, 0 errors**, max 1.1 s, 91% of the CPU (28.8 µs per
 request), 1,210 MB peak (cgroup, page cache included); two earlier holds of the same setting gave p95 63
 and 46 ms / p99 325 and 305 ms, against p95 141 and 152 / p99 425 and 460 every 64,000 frames. At 320,000
@@ -120,13 +206,13 @@ five holds). 330,000 and 340,000 users fail on CPU (97-98%).
 | SQLite's own checkpoint, every 16,000 frames | 300,000 | 225, 255, 265 | 430, 505, 510 | 27.8-28.2 µs |
 | same, with `wal_autocheckpoint` (`CKPT_AUTO=1`) | 300,000 | 250, 255, 275 | 515, 495, 575 | 27.5-28.1 µs |
 | SQLite's own checkpoint, every 64,000 frames | 300,000 | 66, 52, 48 | 230, 210, 193 | 28.1-28.7 µs |
-| SQLite's own checkpoint, every 128,000 frames (this commit) | 300,000 | 24, 51, 28 | 181, 270, 143 | 28.3-29.0 µs |
+| SQLite's own checkpoint, every 128,000 frames (#272) | 300,000 | 24, 51, 28 | 181, 270, 143 | 28.3-29.0 µs |
 | objc-uring-delneg, for reference (1 run) | 280,000 | 11.2 | 23.4 | 25.5 µs |
 
 At 320,000 users the server is at 91-94% of its one CPU, so CPU per request is the next limit.
 
-The ObjC entry checkpoints from a separate process, so its loop never waits for an fsync; that is most
-of the gap in the tail. It uses about 0.9x this entry's CPU per request here.
+The ObjC entry checkpoints from a separate process, so its loop never waits for an fsync; that was most
+of the gap in the tail, and it is what the checkpointer above copies. It uses about 0.9x this entry's CPU per request here.
 
 The build merged in #259 (epoll, one file descriptor per connection) had to close idle keep-alive
 connections past ~60,000 users; the io_uring loop keeps all of them.
@@ -148,9 +234,9 @@ at scale 0.007 (more than any of them can serve), 3 interleaved runs:
 So this entry does about 0.72x of either io_uring entry's work per CPU second. Both read `/feed` and
 posts through SQLite's B-tree layer the same way, natively (ObjC also with PGO), and their kernel time
 per request is close to this entry's. This entry's user time is about 2x theirs: SQLite and the WAT
-running as wasm. They also checkpoint the WAL off the event loop (a forked child, a thread). WASI here
-has neither, so checkpoints run inline and their fsyncs pause the loop: at ~30k req/s, p95 is ~38 ms
-against 1.5-1.9 ms for the two baselines. That is well inside the score's 500 ms.
+running as wasm. They also checkpoint the WAL off the event loop (a forked child, a thread). This entry
+did not yet (these numbers predate the checkpointer), so checkpoints ran inline and their fsyncs paused the loop: at ~30k req/s, p95 is ~38 ms
+against 1.5-1.9 ms for the two baselines.
 
 **WAT vs C compiled to wasm.** With the same epoll loop, the same host and the same SQL statements, the
 WAT server and the C reference server compiled to wasm used the same CPU per request (7.9 against

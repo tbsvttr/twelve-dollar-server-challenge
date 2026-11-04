@@ -702,3 +702,511 @@ Default set to 128,000 in app.wat (E36). 42/42 on opt-box, Synteq and the clean 
 build (ci2.sh); kill -9 under load then integrity_check ok (opt-box). Holds of E36 itself: 300k p95 82,
 p99 330, max 1097 ms, 31.7k rps, 91.2 %, 28.78 us/req, 1,210 MB; 320k p95 315, p99 1,005 (fails p99
 by 5 ms), max 2647, 33.6k rps, 95.2 %, 28.33 us/req, 1,259 MB. Same edge as E26-E30.
+
+## S14: a scorer-like harness, and the 210k cliff reproduced (3 Nov, Synteq; TdscWat3 from here on)
+The scorer (7792fa9 = #272): 200,000 held, 210k and up failed ("connection refused", 35 % errors) at ~55 % CPU,
+while TdscWat2's Synteq runs held 300k. The scoring README: a DigitalOcean Basic droplet, 1 vCPU / 2 GB, no swap,
+k6 on another machine, no kernel tuning. Harness `hs.sh` (Synteq `/root/watlab`, scripts copied in
+`/tmp/tdsc-wat3/` on the Mac): the server is a systemd unit as a new non-root user `deploy`, `LimitNOFILE=65535`,
+every other limit systemd's default (memlock 8 MiB), CPU 0, no Restart, fresh seed DB; `ul` on CPUs 1-7 as before;
+samples every 10 s (sockets, cgroup, MemAvailable, slab, TCP pages, WAL size, ul and server RSS). `FAITH=1` starts a
+memory hog (`hog.py`, touched anonymous memory, no swap on Synteq) sized so the server gets what a 1,967 MB box
+leaves it: MemAvailable minus 1,650 MiB minus the load generator's own cost, measured at 11.5 KiB per user (ul RSS
+1,684 MB at 210k = 8.2 KiB/user, plus a client socket ~3.7 KiB: TCP 2.31 + sock_inode 0.81 + filp 0.25 + dentry
+0.19 KiB). Sysctls set to a 2 GB droplet's defaults: tcp_mem 22000 29400 44000, tcp_rmem 4096 131072 6291456,
+tcp_max_orphans 16384, tcp_max_syn_backlog 256 (originals in `/root/watlab/w3/sysctl.orig`: tcp_mem 1572864
+2097152 3145728, rmem 4096 16384 4194304, orphans 1048576, syn_backlog 1024; somaxconn 4096 and min_free_kbytes
+67584 unchanged); to be restored at the end. Build `b7792` = 7792fa9 (opt-box build, AOT on Synteq; app.so
+identical to out/e36). All 2-minute runs at 210,000 users:
+- h1, deploy user, page cache dropped before start, no hog: collapse (13.7k rps, p95 5.3 s, 29.6 % errors,
+  187,533 connect errors), TCP memory 390k pages, server at ~95 % CPU. h2, TdscWat2's root ubs.sh, same app:
+  22.2k rps, p99 4.3 ms. h3, deploy user, no cache drop: 22.2k, p99 51 ms. So the non-root user and limits
+  are not the cause (all 8 rings come up under memlock 8 MiB); a cold or short page cache is.
+- h4 (healthy, 16 GB): server-side kernel memory per connection ~3.7 KiB + ~0.35 KiB of io_uring recv state
+  (io_kiocb, kmalloc-96), ~850 MB at 210k, mostly outside the server's cgroup (allocated in softirq).
+- h5, h6 with FAITH=1: 14.3k / 14.9k rps, p95 3.9 / 5.3 s, p99 5.3 s, 78k / 95k requests stuck in flight, 0 %
+  errors in ul. Reproduced. Sequence: at the end of the ramp the WAL reaches 500 MiB (CKPT_FRAMES 128,000) and the
+  first checkpoint stalls the loop; tens of thousands of sockets queue a request meanwhile, each charging at least a
+  page to tcp_mem, TCP memory jumps to 60-90k pages, past the 2 GB box's hard limit (44,000), the kernel prunes and
+  drops, and CPU per request doubles (ul 13.6 -> 28-30 us/req). The server never catches up; page cache was ~650 MB
+  (DB 243 MB + WAL 500 MB don't fit). Not seen on 16 GB because tcp_mem there is 70x larger.
+- Consult (DeepSeek + Gemini, session 1103-090543-2964): both say "connection refused" (RST to SYN) means no
+  listener, i.e. the process died (OOM kill, or a crash loop past systemd's start limit), not a stall. DeepSeek's
+  tcp_mem formula (/8, 2x mine) is wrong: opt-box (4 GB) has 45114 60155 90228 = /16, so a 2 GB box has ~22.5k/30k/45k
+  as set. Rejected: async DB xSync and journal_mode=MEMORY (rule 6), checkpoint on another thread (one wasm
+  instance, SQLite not shared). ENOBUFS recv is re-armed (checked, `$on_recv`). The scorer's c193a82 notes fit a death:
+  "2-minute probes passed 240k and 260k... the 260k 5-minute hold collapsed at 47 % errors, nearly all connection
+  refused". hs.sh so far protected both the hog and (by size) ul from the OOM killer only by luck: from here ul gets
+  oom_score_adj -1000 too, so a memory death lands on the server, as it would on the droplet.
+
+## E38: CKPT_FRAMES 4,000 vs 16,000 at 250k (3 Nov, Synteq, hs.sh FAITH=1, b7792, env only) — 4,000 better
+Per-second counters added to hs.sh (server CPU and state, read_bytes, kswapd/direct scans, major faults, TcpExt
+PruneCalled / TCPRcvQDrop / TCPMemoryPressures). Two earlier 16k runs at 250k: 25.8k rps p95 2.0 s; and 12.8k rps,
+3.35 % errors: from the end of the ramp kswapd scans ~100-300k pages/10 s, the server reads 150-250 MB/10 s (re-reading
+the 63 MB WAL at each checkpoint, ~every 4 s, once LRU has evicted it), thousands of major faults, PruneCalled
+~300k/10 s, TCPRcvQDrop up to 25k/10 s, D state, CPU ~60 %. MemAvailable (~600 MB) overstates: ~250 MB of it is
+socket inode/dentry slab pinned by open sockets. Interleaved, 2 reps, 2-min:
+- 4,000: 26.1k / 26.3k rps, p95 290 / 215, p99 2,435 / 320 ms, max 5.2 / 0.8 s, read 62 / 44 MB, prune 349 / 578
+- 16,000: 25.7k / 26.0k rps, p95 2,015 / 1,330, p99 5,320 / 5,320 ms, read 82 / 83 MB, prune 904k / 725k
+4k: WAL 16 MB stays cached; p50 rises (6.8-9.9 vs ~2 ms, more checkpoints). The 4k r1 tail: one kswapd event at
+mid-run (47k pages scanned, 361 major faults, 26 MB read, CPU dip, TCP 33k pages). 4k r2 passes at 250k.
+
+## E39: 4,000 and 2,000 frames at 280k (3 Nov, Synteq, hs.sh FAITH=1 with ul OOM-protected) — the scorer's failure reproduced
+Both runs: at the end of the ramp the loop stalls (D state, ~600 MB read in 20 s, major faults), each user's next
+request queues in the kernel, TCP memory reaches 173k pages (676 MB, ~4x tcp_mem's hard limit) and the kernel OOM
+killer kills the server: `watsrv.service: Failed with result 'oom-kill'`, every later dial fails (5.7M / 6.5M
+connect errors = "connection refused", 98-100 % errors). That is the scorer's "connection refused at ~55 % CPU":
+an OOM kill, not a stall. dmesg: "ul invoked oom-killer ... tcp_stream_alloc_skb".
+
+## E40: 4,000 frames at 250k, residency (3 Nov, Synteq) — measurement
+26.3k rps, p95 220, p99 365 ms, 0 errors (4k at 250k: 2 passes of 3). Server smaps at steady state: anon 85 MB,
+libwasmedge.so resident 5.6 MB, io_uring rings 4.2 MB, app.so < 2 MB: the code in use (~7.5 MB) fits the default
+8 MiB RLIMIT_MEMLOCK. `bin/fc` (mincore, `/tmp/tdsc-wat3/fc.c`) now samples the page-cache residency of app.so,
+libwasmedge, feed.db and the WAL every 2 s.
+
+## E41: lock the code in memory (3 Nov, host.c `pincode`, PIN=0 turns it off) — kept for now, no gain shown
+The WAL-sync thread mlocks app.so's code, then the resident pages of the other libraries' code, every 5 s for the
+first minute, until mlock fails at the limit (VmLck reached 8,192 kB). 270k, 4k frames: pinned and unpinned both
+OOM-killed at the end of the ramp (99.0 / 99.6 % errors); the pinned run's trace: kswapd from ~1 GB available,
+then TCP memory 3k -> 90k pages in 10 s, feed.db's page cache 243 MB -> 0, libwasmedge 49 -> 2 MB, disk reads,
+OOM. Memory is the edge at 270k on this harness (the scorer's: f220565 held 270k, died at 280k; c193a82 died in a
+260k hold, so the harness is about right, maybe slightly pessimistic). Server-side kernel memory per connection
+(~3.8 KiB socket + ~0.35 KiB io_uring) is ~41 MB per 10k users and can't be cut, so the room has to come from what
+the loop needs that can be evicted: DB pages, WAL pages, code.
+
+## E42: SQLite page cache 64 -> 256 MiB (3 Nov, b42 = E41 + cache_size=-262144, 4k frames by env) — no effect on RSS
+250k: 26.3k rps, p95 190, p99 290, max 514 ms, 0 errors, 4 MB read, 0 prunes (cleanest 250k so far), but server RSS
+stayed 116 MB: SQLite never held more than ~64 MB, so the larger limit changed nothing and 250k at 4k frames just
+varies (now 3 passes of 4). 270k: OOM-killed (73.6 % errors). Trace: at the end of the ramp feed.db's page cache
+243 -> 0 MB and libwasmedge 49 -> 2 MB within 12 s, then a sustained thrash for 70+ s: TCP memory 100-170k pages,
+PruneCalled ~40k/s, kswapd and direct reclaim every second, major faults, server at 60-100 % CPU, until the OOM kill.
+At 270k this harness's box is full with sockets alone (MemAvailable 550-630 MB, of which ~270 MB is socket
+inode/dentry slab pinned by open sockets). Next: calibrate the harness on a build the scorer has scored.
+
+## C1: calibrating hs.sh on a build the scorer scored (3 Nov, Synteq) — in progress
+f220565 (`out/e26`) on the scorer: 270k held 5 min, 280k probe "connection refused" (71 %). On hs.sh:
+- SRVMB 1650, tcp_mem 22000 29400 44000: 270k OOM-killed at the end of the ramp (99.8 % errors). Too harsh.
+- SRVMB 1800: 270k 14.2k rps, p95 5.3 s, 3.2 % errors, 2.0 GB read; 280k the same. Not killed, but thrashing.
+- SRVMB 1800, tcp_mem doubled to 45000 60000 90000 (on loopback the one global limit also carries the load
+  generator's queued and retransmitted requests, which on the scorer sit on the k6 machines): 270k 12.5k rps,
+  p95 5.3 s; 280k OOM-killed (91 %).
+Snapshot in the 270k thrash: TCP memory 115k pages (450 MB), skbuff_small_head 118 MB, a 512-byte slab
+(pool_workqueue, merged) 87 MB that healthy runs don't have; AnonPages: hog 10.4 GB + ul ~2.2 GB (8.2 KiB/user)
++ server 0.1 GB. A 16 GB box also has two zones (lowmem reserve) and min_free_kbytes 67 MB that a 2 GB droplet
+doesn't lose the same way. Rather than model every term, SRVMB is fitted to the scorer's numbers.
+- SRVMB 2000 (tcp_mem doubled): 270k p99 74 ms, 280k p99 127 ms, both clean: too generous (the scorer killed 280k).
+- SRVMB 1900: 280k p95 695, p99 5.3 s (fails, not killed); 270k (rerun; the first try overlapped an AOT
+  compile on the box and was void) 28.5k rps, p95 70, p99 230 ms, 0 errors: holds, as on the scorer.
+**Calibrated harness from here: hs.sh FAITH=1 SRVMB=1900, tcp_mem 45000 60000 90000.** It matches f220565's
+scorer result (270k held, 280k failed); a bit generous at 280k (fails on latency, the scorer's died).
+
+## E43: 4,000 frames by default + code pinning (E41) + CONN/GEN tables not zero-filled (3 Nov, b43) — kept
+`$ck_t` default 128,000 -> 4,000 (CKPT_FRAMES still overrides), cache_size back to 64 MiB, `memory.fill` of the
+16 MiB CONN and 2 MiB GEN tables dropped (a slot's CONN entry is zeroed when a connection lands in it; a GEN value
+only has to match itself). Calibrated harness, 2-min:
+- 270k: 28.4k rps, p50 16.7, p95 215, p99 330, max 505 ms, 0 errors, 0 MB read, 0 prunes, RSS 119 MB
+- 280k: 29.5k rps, p50 29.8, p95 235, p99 365, max 570 ms, 0 errors, 0 MB read, RSS 141 MB
+(f220565 = e26 on the same harness: 270k p99 230; 280k fails.) p50 is higher than with large checkpoints (one
+every ~1 s now), well inside the limits.
+
+## E44: E43 at 300k / 320k, and a control (3 Nov, calibrated harness, 2-min)
+- control: 7792fa9 with CKPT_FRAMES=4000 by env only, 280k: 29.3k rps, p50 54, p95 370, p99 980, max 2,122 ms
+  (b43 at 280k: p95 235, p99 365), so pinning and the untouched tables help (one run each)
+- b43 300k: 31.4k rps, p50 73, p95 405, p99 850, max 1,591 ms, 0 errors, 0 MB read, CPU ~88 %
+- b43 320k: 31.2k rps (short of ~33.4k), p50 315, p95 4,020, p99 5,320 ms, 0 errors, CPU 90-91 %: CPU-bound
+  (TCP memory < 35k pages, nothing read from disk). ~28 us/req, as before. Edge ~300-310k on this harness.
+
+## H1: 5-minute holds of b43 (= f3e9410) (3 Nov, calibrated harness)
+- 280k: 29.4k rps, p50 36, p95 280, p99 480, max 1,421 ms, 0 errors, 0 MB read — passes
+- 290k: 30.2k rps, p50 80, p95 515, p99 1,645, max 3,097 ms, 0 errors — fails
+- 300k: 31.2k rps, p50 92, p95 555, p99 1,215, max 2,553 ms, 0 errors — fails
+Not memory any more (no reads, TCP memory < 14k pages, RSS 115 -> 159 MB as SQLite's cache fills): CPU 85-90 %
+(~28.5 us/req) plus the checkpoints' fixed cost (~3 syncs on the loop each, one checkpoint per ~1 s).
+
+## E45: CKPT_FRAMES 8,000 vs 4,000, 5-minute holds at 290k (3 Nov, b43, env; calibrated harness) — 8,000 kept
+Interleaved, 2 reps, 0 errors everywhere, nothing read from disk:
+- 8,000: 30.4k / 30.4k rps, p50 21 / 29, p95 325 / 345, p99 600 / 585, max 1,548 / 1,138 ms, ul us/req 15.8 / 16.3
+- 4,000: 30.3k / 30.4k rps, p50 60 / 56, p95 385 / 360, p99 855 / 740, max 2,220 / 2,168 ms, ul us/req 16.8 / 16.4
+Half as many checkpoints (each ~3 syncs on the loop and a copy of every hot page) for 16 MB more WAL in the
+page cache. (H1's 4k hold at 290k failed; 4k passed both holds here: the edge varies hold to hold.)
+
+## E46: 8,000 frames by default (3 Nov, b46), 5-minute holds — kept
+42/42 (opt-box). Calibrated harness:
+- 300k r1: 31.4k rps, p50 61, p95 440, p99 795, max 1,851 ms, 0 errors — passes (b43, 4k frames, failed here)
+- 310k: 32.3k rps, p50 77, p95 535, p99 1,290, max 2,745 ms, 0 errors — fails
+- 300k r2: 31.2k rps, p50 73, p95 625, p99 1,945, max 19.1 s, 0 errors — fails: at the end of the ramp the page
+  cache was squeezed (feed.db 241 -> 22 MB, WAL 31 -> 18 MB within 30 s), checkpoints read the WAL back
+  (121 MB read), TCP memory spiked to 81k pages; recovered, no OOM. MemAvailable low-water 724 MB (of which
+  ~300 MB is socket inode/dentry slab pinned by open sockets).
+300k is a coin flip on this harness (memory and CPU both run out there); 290k held 2 of 2 (E45).
+Consult (same session, round 2): mlock is a setting inside the process (fails soft here: a failed lock just
+stops pinning) but must be A/B'd on its own (E47); don't headline 300k; the harness can't see the NIC's receive
+softirq on the server's one vCPU (on loopback it runs on the client's CPUs) or the scorer's back-to-back probes.
+Rejected: DeepSeek's tcp_mem formula again (/8; opt-box measures /16), the fd-limit worry (fixed-file slots
+don't count against LimitNOFILE; the scorer held 270k with f220565).
+
+## E47: code locking on/off (3 Nov, b46, PIN=0 by env), 5-minute holds at 290k — kept
+Interleaved, 2 reps, 0 errors, ~0 MB read:
+- pinned: p50 21 / 29, p95 315 / 350, p99 530 / 575, max 1,015 / 1,227 ms
+- PIN=0:  p50 44 / 30, p95 395 / 345, p99 720 / 605, max 2,050 / 1,679 ms
+A modest gain in p99 and max. With E45, four 5-minute holds at 290k passed with 8,000 frames and pinning.
+
+## PR #288 (3 Nov): follow-up to #272 from `wat-wasm-delneg-3` at c3f81f7
+Clean ubuntu:24.04 container build (opt-box ci2.sh): 42/42. Body through humanizer-v3, every number marked as ours.
+
+## M3: where the CPU goes at 280k (3 Nov, Synteq, calibrated harness, debug-names build of c3f81f7)
+perf record -F 997 on the server for 30 s, 40 s after the ramp (that run: 29.4k rps, p95 325, p99 575 ms).
+By library: kernel 64.6 %, app.so 32.7 %, libc 1.3 %, libwasmedge 1.1 %. Kernel: network/TCP ~32 %, locks 6 %,
+AppArmor's socket hooks 3.5 %, io_uring only 3.0 %, rest (copies, page clears, wakeups) ~20 %. Top symbols:
+sqlite3BtreeTableMoveto 5.8 (mostly the 20 author seeks per /feed), __inet_lookup_established 5.4, record 2.2,
+rep_movs 1.9, pcache1Fetch 1.8, putjson 1.6, BtreeIndexMoveto 1.4, bt_post_out 1.2, getPageNormal 1.2.
+Our code is ~9 of the ~28 us per request; most of the rest is TCP work every entry pays.
+Harness gap found here: the established-socket hash has one bucket per 128 KiB of RAM, 131,072 on this 16 GB box
+(both ends' sockets, ~4 per chain at 280k) against ~16,384 on a 2 GB droplet (~18 per chain at 290k, server side
+only), and every incoming packet walks a chain, so the droplet pays more per request than this box shows. A boot
+with `thash_entries=32768` would match the chain length; not done.
+
+## E48: POSIX_FADV_WILLNEED on the WAL after each 100 ms sync (3 Nov, b48 = c3f81f7 + that, WALWN=0 off) — dropped
+Meant to keep a checkpoint's WAL reads off the disk when the ramp's end squeezes the page cache. 300k 5-minute
+holds, interleaved, 2 reps, 0 errors:
+- WILLNEED: p50 60 / 65, p95 455 / 470, p99 880 / 1,025, max 1,758 / 2,954 ms, 0 MB read
+- off:      p50 45 / 49, p95 370 / 405, p99 680 / 725, max 1,541 / 2,078 ms, 21 / 0 MB read
+Worse with it (the readahead walk every 100 ms, and it keeps 32 MB hot that the kernel would rather reclaim);
+reverted. The "off" arm is the PR head's code: with E46, 300k now holds in 3 of 4 runs on this harness.
+
+## Wrap-up (3 Nov, TdscWat3)
+Synteq's sysctls restored to `/root/watlab/w3/sysctl.orig` (checked with diff); hog and server stopped; perf data
+deleted. Left on Synteq: user `deploy` (+ /home/deploy/we, the WasmEdge lib copy, 108 MB), hs.sh, q.sh, hog.py,
+samp.py, prof.sh, bin/fc, out/b7792..b48, w3/ logs (5 MB). To rerun the calibrated harness, set tcp_mem
+45000 60000 90000, tcp_rmem 4096 131072 6291456, tcp_max_orphans 16384, tcp_max_syn_backlog 256, then
+`SRVMB=1900 MEAS=300 bash q.sh <name> "<label> <build> <users> [ENV=..]"`.
+Not done: a boot with thash_entries=32768 (M3), back-to-back holds without a restart, CPU work in the app
+(our code is ~9 of ~28 us per request; most of the rest is TCP).
+
+## Cut C (3 Nov, TdscWat3): a separate pass to cut host.c + sqlite_glue.c (232 + 127 = 359 lines at f3e9410)
+Gate for each cut: 42/42, and no speed loss beyond noise in 5-minute holds at 290k on the calibrated harness.
+
+## E49: the glue's public-API wrappers go; the WAT calls SQLite directly (b e49) — kept
+`build.sh` exports from the C module each function `app.wat` imports (sqlite3_exec, _prepare_v3, _step,
+_column_*, _wal_hook, _wal_checkpoint_v2, getenv, malloc, ...) and the function table (`--export-table
+--growable-table`). The WAT grows the table by 10 and fills it from a passive element segment: its own WAL
+hook (`$wal_cb`) and the page-cache wrapper (`$pc_create` .. `$pc_shrink`, installed with sqlite3_config
+GETPCACHE2/PCACHE2; the variadic argument goes as a pointer to it). `ENC(db)` (internal) became `PRAGMA
+encoding`. Dead exports db_last_rowid and mem_realloc dropped. sqlite_glue.c 127 -> 42 lines (the B-tree
+wrappers stay: they call SQLite's internal B-tree functions, reachable only from its translation unit).
+Checked with a throwaway build that logs from the wrapper: 5 caches created, truncates skipped. 42/42.
+Interleaved, 2 reps, 0 errors:
+- e49:         p50 23 / 35, p95 320 / 370, p99 550 / 690, max 1,505 / 1,554 ms, 16.2 / 17.0 us/req
+- head df9da40: p50 44 / 31, p95 420 / 355, p99 850 / 690, max 2,196 / 1,649 ms, 17.1 / 16.8 us/req
+No loss.
+
+## E50: listen, the provided-buffer ring and the fixed-file table move to the WAT via one `syscall` import (b e50) — kept
+host.c gets one generic import, `syscall(nr, a1..a6)` (i64s, -errno on failure), and the WAT now does
+socket/setsockopt/bind/listen, IORING_REGISTER_PBUF_RING (with the 6.8.0-147 retry), prlimit64 +
+IORING_REGISTER_FILES2, and publishes the buffer-ring tail itself before each `ring_go`. WASI gets the whole
+environment instead of six named variables. host.c 232 -> 202 lines.
+Tried first and dropped: mapping each ring into wasm memory (mmap MAP_FIXED at membase + offset) so the WAT
+could read and write the rings itself and `ring_go`/`ring_new` could go too. The kernel refuses it: mmap of
+an io_uring fd at a caller-chosen address returns EINVAL (io_uring's get_unmapped_area rejects any address);
+NO_MMAP on 6.8 needs one physically contiguous folio. So the rings stay mapped by C, outside wasm memory.
+42/42 (opt-box, and the clean ubuntu:24.04 container build). Interleaved, 2 reps, 0 errors:
+- e50: p50 28 / 30, p95 335 / 335, p99 570 / 570, max 1,146 / 1,249 ms, 16.0 / 16.4 us/req
+- e49: p50 32 / 33, p95 385 / 410, p99 795 / 1,000, max 1,866 / 3,080 ms, 16.3 / 16.4 us/req
+No loss. C lines: #259 195; #272 (7792fa9) 200 + 127 = 327; f3e9410 359; now 202 + 42 = 244.
+
+## Score of PR #288 (3 Nov, benchmark agent's comment at 13:41 UTC, on df9da40)
+200,000 held 5 min on the $12 box (19,619 req/s, p95 229 / p99 356 ms, 0 % errors, 68 % CPU, 32 us/req,
+712 MB peak); 210k and 220k failed the 2-minute probe on p99 (1.5 s / 4.5 s, 0 errors, 69-75 % CPU); 240k
+and 320k failed on connection refused (~80 % errors). A tie with #272, so not merged; the PR stays open.
+Our harness held 290k at ~16 us/req: the droplet spends ~2x the CPU per request, so the harness is far too
+lenient on CPU and tail latency (see M3's hash-chain gap) even though it reproduced the refusals.
+
+## H2: a harness that fails where the scorer failed #288 (3 Nov, Synteq)
+The loopback harness held 290k; the scorer held df9da40 at 200k and failed 210k/220k on p99 with 0 errors.
+Two gaps found: on loopback the receive softirq runs on the sender's CPU, so the server's CPU never paid for
+TCP receive, and the app ran at ~2x the droplet's speed per request.
+Harness v2 (`hs2.sh` + `ns.sh` on Synteq): the server runs in its own network namespace, created after
+`net.ipv4.tcp_child_ehash_entries=16384` (a 2 GB box's established-hash size; its max_syn_backlog comes out
+128), reached over a veth pair; RPS steers the namespace's receive processing to CPU 0, the server's CPU,
+and the client side's to CPUs 1-7; tcp_rmem/wmem set to a 2 GB box's values; the load generator dials from
+32 source addresses. Same memory hog, systemd unit and limits as before. A harness-only build patch
+(never committed) busy-waits SPIN_NS at the start of each request, to give the app the droplet's speed.
+Calibration on df9da40 (2-minute probes, 0 errors in every run; scorer's numbers in brackets):
+- no spin: 200k p95 175 / p99 285; 220k p95 172 / p99 275 (scorer: fails) -> still lenient
+- SPIN_NS=17000: 200k p95 3,440 (scorer: holds) -> too harsh
+- SPIN_NS=10000: 200k p95 245 / p99 380 [229 / 356]; 210k p99 2,035 [1.5 s, fail]; 220k p99 1,245 [4.5 s, fail]
+So the harness from here on is v2 with SPIN_NS=10000. CPU 0 has no idle time at 200k (busy 86 %, the rest is
+io_uring wait, which 6.8 counts as iowait). Caveat: the app cgroup shows 88 % of CPU 0 here against the
+scorer's 68 %, so cgroup CPU % is not comparable between the two; the latency profile is what matches.
+The #272 code (7792fa9) collapses at 200k on v2 (its 500 MiB WAL is reread from disk under memory pressure);
+the scorer held it there and lost it at 210k, so it sits on a memory edge and is not used for calibration.
+Where the p95 comes from (bpftrace on the loop thread, 200k): every ~2 s the loop stops for ~160 ms, ~140 ms
+of it in 2-3 fsync/fdatasync calls: the inline PASSIVE checkpoint. ~8 % of wall time.
+Considered and not done: a VFS whose DB xSync returns before the sync completes (io_uring FSYNC, writes held
+back until it lands). Consult (DeepSeek and Gemini) both judged it a likely breach of "synchronous=NORMAL" in
+spirit; not built.
+
+## C3: Cut C (4e7ad9d) against df9da40 on harness v2 (SPIN_NS=10000), 5-minute holds at 200k — costs speed
+Interleaved, 2 reps, 0 errors:
+- 4e7ad9d: p50 19 / 24, p95 355 / 375, p99 635 / 630 ms, 17.2 / 16.7 us/req (process CPU)
+- df9da40: p50 14 / 13, p95 330 / 325, p99 520 / 525 ms, 16.6 / 16.1 us/req
+A third pair in the profile runs below gave the same sign (15.33 vs 14.60 us/req; p99 465 vs 435). The loopback
+harness (E49, E50) could not show it: its CPU was never saturated. perf (30 s each, names builds): no single
+symbol stands out; the kernel's share is ~2 points higher with the cuts (47.4 vs 45.3 %), app.so's lower. The
+spin's WASI clock calls show up as libc rwlock + vdso (~13 %) in both; that is the harness, not the app.
+Bisecting: 18c5199 (glue cut only) against df9da40 next.
+
+## E51: checkpoint size on harness v2 (2-minute probes at 210k, 0 errors)
+- 8,000 frames: p95 355, p99 565 (the calibration run with the same build gave p99 2,035: 210k is on the cliff)
+- 2,000 frames: p95 1,015, p99 1,740 -> smaller checkpoints are worse
+Why: a like writes one random leaf of sqlite_autoindex_likes_1 (7,511 leaves in the seed DB; posts_user_id_idx
+has 1,342; the tables and the other indexes grow at their tails). A checkpoint writes each distinct page once,
+so its fsync work is ~min(likes since the last one, 7,511) pages at ~65 us each on this disk (1,000 random
+overwrites + fdatasync: 65 ms; one 4K overwrite 0.8 ms, an extend 2.2 ms). At 2 s per checkpoint that is
+~2,400 leaves (~150 ms, as measured); at 32 s (#272's 128,000 frames) nearly all 7,500, i.e. ~5x fewer page
+writes in total, which is why #272's p95 was 13 ms on the scorer. Bigger checkpoints: less sync work in total,
+longer single stalls (capped near ~0.5 s), more WAL in the page cache. Next: 16,000 and 32,000 frames.
+
+## C4: the glue cut alone (18c5199) against df9da40, same harness and holds — kept; the host cut is dropped
+Interleaved, 3 reps of each, 0 errors:
+- 18c5199: p95 305 / 290 / 340, p99 490 / 440 / 565 ms, 15.8 / 15.6 / 15.4 us/req
+- df9da40: p95 295 / 330 / (c3: 330, 325), p99 455 / 675 / (c3: 520, 525) ms, 17.6 / 16.5 us/req
+No loss from the glue cut (paired runs: 1.0-1.8 us/req lower, p95/p99 within the run-to-run spread). The loss in
+C3 is the host cut's (E50): its code is reverted here (host.c back to 232 lines; C total 232 + 42 = 274). What in
+it costs was not found (perf shows no single symbol); the README lists it as tried and dropped.
+
+## E52: 16,000 / 24,000 / 32,000 frames, and the group-commit window (WINDOW_MS), harness v2, 2-minute probes, 0 errors
+Checkpoint size (window 2 ms):
+- 200k: 16,000 p95 240 / 210, p99 445 / 385 (two runs); 32,000 p95 1,485, p99 5,320 (the WAL is reread from
+  disk: 159 MB read during the run; memory pressure)
+- 210k: 8,000 p95 330, p99 500; 16,000 p95 215, p99 390; 24,000 p95 350, p99 960 (13 MB reread)
+- 220k: 16,000 p95 495, p99 3,230; 24,000 p95 5,320 (115 MB reread) -> 220k fails at every size tried
+- 230k: 16,000 p95 4,070
+Group-commit window with 16,000 frames (new env knob WINDOW_MS, default 2 ms as before):
+- 210k: 2 ms p95 230 / p99 410; 5 ms 220 / 395; 10 ms 285 / 695
+- 220k: 5 ms p95 1,385 / p99 5,320; 10 ms 1,170 / 5,320
+The window makes no difference beyond noise at 2-5 ms and hurts at 10. 16,000 frames is the only change that
+moves 210k well inside the limits; 220k is past the edge (CPU 0 busy 94-95 %, page-cache rereads start).
+Next: 5-minute holds, df9da40 against 16,000 frames, at 210k and 215k (h3).
+
+## H3: 5-minute holds, df9da40 against 16,000 frames + WINDOW_MS=5 (harness v2, SPIN_NS=10000, conntrack off on veth0) — 16,000 dropped
+NOTRACK rules for veth0 were added first (Docker on this box turns conntrack on in the root netns; the scorer's
+box has no Docker). Interleaved, 0 errors:
+- df9da40, 210k: p95 350 / 580, p99 555 / 1,430 ms; 0 MB of the database reread from disk -> 1 of 2 pass
+- 16,000 frames, 210k: p95 450 / 410, p99 1,675 / 1,260 ms; 26 / 32 MB reread -> 0 of 2
+- 16,000 frames, 215k: p95 740 / 470, p99 4,350 / 1,765 ms; 47 / 37 MB reread -> 0 of 2
+The harness now matches the scorer at the edge (200k holds, 210k fails about half the time). The bigger WAL
+(63 MB against 32 MB) costs the box page cache: the reads come in the ~15 s after the ramp ends, when the
+sockets' kernel memory peaks, and they block the loop. The 2-minute wins in E52 did not survive 5 minutes.
+Memory at 210k (slabtop, server side): ~4 KB of kernel memory per connection (TCP 2.3 KB, sock_inode 0.8 KB,
+filp, dentry, io_kiocb 0.25 KB + async poll 0.1 KB for the armed recv), ~840 MB in all; server RSS ~150 MB.
+Consult (DeepSeek, Gemini), what next: a longer commit window (Gemini) is already measured worse (E52); a
+native SQLite in the host sharing the wal-index (Gemini) adds a second SQLite to the C, not done; a clustered
+likes key or a stored like count (DeepSeek) changes the schema or comes close to caching, not done without the
+owner. Taken up: check whether 240k's refusals are memory or a queue (next), and whether the p99 spikes line
+up with checkpoints or with reclaim.
+
+## H4: what happens at 240k (df9da40, harness v2, 2-minute probe) — capacity, not a bug
+p50 600, p95/p99 5,320 ms (capped), 0 errors in ul (it waits; k6 on the scorer times out or is reset, not
+seen here), 21.7k req/s against ~25k asked, CPU 0 busy 98 %. ListenOverflows 0, ListenDrops 0, no OOM kill,
+0 MB reread. With the loop behind, nearly every connection holds a request in its socket: TCP memory went
+50k -> 103k pages (tcp_mem 45,000 / 60,000 / 90,000), PruneCalled +48,676, TCPMemoryPressures up. So 240k
+asks for more requests than one vCPU serves; the memory blow-up follows from the backlog.
+Pinning the database's page cache (DeepSeek's idea, to make 16,000 frames safe) is out: a non-root unit has
+RLIMIT_MEMLOCK 8 MiB (VmLck 8,192 kB), which the code pinning already uses.
+Synteq sysctls restored from w3/sysctl.orig; the calibrated values are in w3/sysctl.cal.
+
+## TdscWat4 (3 Nov on): hypotheses first (experiments/hypotheses.md, append-only, locked), then E53+
+Paid calls tally (limit $1): consult 1103-205423-0386 round 1 $0.0233, round 2 $0.0177, round 3 $0.0087. Total $0.050.
+Boxes: Synteq (harness v2 = hs2.sh/q2.sh, SPIN_NS=10000 unless marked), opt-box (builds).
+
+## E53 (H3): fsync cost against dirty pages, Synteq disk (3 Nov, root, `bin/fsb`, source /tmp/tdsc-wat4/fsb.c)
+A copy of the seed feed.db (243 MB); N random 4 KiB pages read and rewritten in place, then one fdatasync; 3 reps each
+(ms): N=1: 1.3, 1.5, 156 (one outlier, likely an ext4 journal commit); 10: 2.1-2.6; 30: 3.1-4.5; 100: 5.7-7.1 (one 20);
+300: 20-42; 1,000: 73-89; 2,400: 147-150. So ~1.3 ms floor and ~60 us per page above ~100 pages: today's checkpoint
+(~2,400 leaves) is the 150 ms stall measured on the loop. Verdict H3: the cost scales with dirty pages, not a fixed floor,
+so a tail checkpoint of <= ~30 pages costs ~3-5 ms. H1's inline tail is viable if the tail stays that small.
+(/dev/sda1, ext4 commit=30, discard, mq-deadline, non-rotational.)
+
+## E54 (H1): checkpoints on a second wasm instance, first build `h1a` (3 Nov, harness v2, SPIN_NS=10000, 2-minute probes, 210k)
+Build: sqlite_glue.c gets a VFS "shmx" wrapping unix-none with xShmMap/xShmLock/xShmBarrier/xShmUnmap (one memfd mapped by
+the host into a page-aligned 8 MiB slice of each instance's memory; lock words and handshake are host atomics); host.c
+starts a pthread (nice 10) running a second WasmEdge VM on the same app.so (`_initialize`, then `ckpt_main`: own
+connection, PASSIVE on request, polls every 1 ms); app.wat opens with "shmx" and locking_mode NORMAL, and `$ckpt_step`
+calls `ck_tick`: WAL >= 8,000 frames -> bulk pass on the checkpointer; while frames since > CKPT_TAIL (300) another pass;
+then one inline PASSIVE (the tail) and the next write restarts the WAL. SHMX=0 keeps the old path. 42/42 (opt-box).
+Functional check (opt-box, CKPT_FRAMES=200, 3,000 likes over curl): WAL stayed at 1.45 MB (restarts happen), the DB file
+grew, integrity_check ok, 3,000 new likes present.
+Interleaved (b4s = c49b70d with the spin patch, i.e. f5115b9's code; h1as = this build with the spin patch), 0 errors:
+- b4s r1: 21.9k rps, p50 39, p95 460, p99 1,305, max 1,901 ms, 16.16 us/req, prune 96,831
+- h1as r1: 22.0k rps, p50 32, p95 340, p99 690, max 1,159 ms, 18.67 us/req, prune 10,978
+- b4s r2: 22.1k rps, p50 33, p95 410, p99 1,000, max 2,102 ms, 16.48 us/req
+- h1as r2: 22.1k rps, p50 5.4, p95 260, p99 410, max 631 ms, 17.89 us/req
+The tail moves well inside the limits at 210k (both h1 runs pass; both b4 runs fail p99 >= 1 s), but the server process
+spends +1.4-2.5 us per request more. Next (E55): where that comes from, at 150k (below the cliff, CPU per request only).
+
+## E55 (H1/H12): where h1a's extra CPU goes (3 Nov, harness v2, SPIN_NS=10000, 2-minute probes at 150k, below the cliff)
+- b4s: 15.9k rps, p95 127, p99 240 ms, 11.91 us/req, CPU0 busy 63 %
+- h1as: p95 106, p99 215 ms, 13.47 us/req, busy 64 %
+- h1as SHMX=0 (same binary, old exclusive path): p95 129, p99 240 ms, 11.82 us/req, busy 61 %
+- h1as CKPT_NAP_US=20000 (checkpointer polls every 20 ms instead of 1 ms): p95 119, p99 230 ms, 12.50 us/req, busy 62 %
+The new binary costs nothing on the old path. Of h1a's +1.56 us/req, ~1.0 is the checkpointer's 1 ms polling (a
+thread wakeup plus host calls 1,000 times a second, on the same CPU); the rest (~0.6) is the shared mode itself (read
+locks per transaction through host calls, the barrier host call) plus the extra tail checkpoints. Next: h1b with a futex
+wait instead of polling, one host call per xShmLock, and an empty xShmBarrier (an indirect call is a compiler barrier and
+x86 keeps load-load and store-store order, which is all SQLite's two header copies rely on).
+
+## E57: verdicts by measurement and arithmetic, no server runs (H5, H7, H8, H9, H14) (3 Nov)
+- H5: SQLite built with `-mno-bulk-memory` gives a byte-identical merged.opt.wasm (sha256 1f27de56... both ways): clang
+  then calls wasi-libc's memcpy/memset, which are themselves `memory.copy`/`memory.fill`, and wasm-opt -O3 inlines them
+  back (sq.wasm: 320 copies / 159 fills; merged: 334 / 165). The flag can't remove them. Avoiding them needs our own
+  memcpy/memset in the glue (a loop the AOT may turn back into a native call). Upper bound from M3's profile:
+  libwasmedge 1.1 % + libc 1.3 % of CPU. Left as a low-value follow-up (H5b), not built.
+- H7 (JWT offload): only likes and posts carry a JWT, 0.17 of every 2.17 requests (7.8 %). The HMAC pads are set up once
+  at start (`$hmac_init`), so a check is ~3 SHA-256 blocks (~1 us in wasm at a few hundred MB/s). Averaged over all
+  requests that is < 0.1 us of ~28-35 us. A plugin (wasi_crypto) or a native host import can't save more than that, and
+  the Xeon 8260 has no SHA-NI. Dead.
+- H8 (HTTP compression): /feed is 5,102 bytes (4 TCP segments), GET /posts/:id 361. gzip -1 makes /feed 1,982 bytes, but
+  zlib level 1 costs 38.5 us per /feed natively (opt-box, Python's zlib): more than the whole request costs today, for ~2
+  fewer segments (a few us of kernel at most). k6 decompresses gzip and probably sends Accept-Encoding (unverified, from
+  memory of k6's Go client); load.js sets only Authorization and Content-Type. Dead on CPU, whatever k6 sends.
+- H9 (C -> Rust): the host binary doesn't appear in M3's profile (kernel 64.6 + app.so 32.7 + libc 1.3 + libwasmedge 1.1 =
+  99.7 %): <= 0.3 % of CPU, the same LLVM code either way, not fewer lines, and a Rust toolchain to pin in install.sh.
+  No speed to gain. Dead for speed (only a matter of taste).
+- H14 (registered ring fd): S12 counted 79,704 io_uring_enter in 20 s at 31.6k req/s, 0.13 per request; skipping the
+  fdget/fput (~50 ns) saves < 0.01 us/req. Dead.
+
+## E56 (H1): h1b = futex instead of polling, one host call per xShmLock, empty xShmBarrier (3 Nov, harness v2, SPIN_NS=10000, 2-minute probes, 0 errors)
+- 150k: b4s p95 118, p99 220, 11.96 us/req; h1bs p95 106, p99 215, 11.79 us/req -> the overhead is gone (E55 had +1.56)
+- 210k: h1bs r1 p50 5.8, p95 275, p99 440, max 744 ms, 16.15 us/req; b4s p50 38, p95 350, p99 550, max 967 ms, 17.07; h1bs r2 p50 3.6, p95 240, p99 390, max 601 ms, 15.59
+With E54's two baseline runs, b4 at 210k is p99 1,305 / 1,000 / 550 and h1 is 690 / 410 / 440 / 390. CPU 0 is busy 88 % against 91 %.
+
+## E59 (H10, H5b): WAT against clang -O3 and rustc opt-level=3 wasm, routine by routine (4 Nov, opt-box, AOT --optimize=3, one CPU, best of 5, source /tmp/tdsc-wat4/cmp, ~/watlab/compilers)
+ns per call, all merged and put through wasm-opt -O3 like the entry; WAT = the functions copied out of app.wat:
+- SHA-256 block: WAT 205, C 219, Rust 215. A hand-written round loop beats both compilers; nothing to learn there.
+- integer formatting (6 digits): WAT 9.8, C 11.8, Rust 12.5.
+- JSON string, 12 / 47 / 200 clean bytes: WAT 12.7 / 18.6 / 21.9; C 9.2 / 12.8 / 17.5; Rust 9.4 / 13.0 / 17.5.
+  The compilers keep the write cursor in a local for the whole loop; our WAT wrote the global $w on every step and
+  called $put/$putc for the rest. Taken from them: the local cursor. Added beyond them: the bytes after the last full 16
+  are checked with one overlapping 16-byte load, instead of a byte loop.
+  New $putjson: 12.9 / 5.9 / 15.7 ns (the short case is unchanged, it has no full block). A differential check against the
+  C version: 0 mismatches over 3M random strings with quotes, backslashes and control characters.
+  At ~40 putjson calls per /feed (20 bodies, 20 usernames) that is at most ~0.3 us per /feed, ~0.15 us per request.
+- memory.copy (H5b): 8-40 bytes 5.8 ns against an inline loop's 2.4-3.2; 100-200 bytes 6.3-7.0 against 6.7-8.6. So the runtime
+  call costs ~3 ns on small copies, not the tens of ns we assumed. SQLite's copies aren't worth replacing: dead.
+The compiler output has no trick that moves the total: our own code is a small slice of ~28-35 us and most of it matches or beats them.
+
+## E58 (H1): 5-minute holds at 220k on harness v2 with the spin (4 Nov) — no gain there, because that harness is CPU-bound
+- h1bs: 22.8k rps, p50 92, p95 715, p99 1,380, max 2,208 ms, 0 errors, CPU 0 busy 95 %
+- b4s: 22.8k rps, p50 115, p95 735, p99 1,215, max 2,461 ms, 0 errors, CPU 0 busy 93 %
+Both fail. With 10 us of spin per request CPU 0 has no room at 220k, so taking the stall off the loop can't help; the scorer ran 220k at
+69-75 % CPU, so it was not out of CPU there (fact F2 in hypotheses.md). The rest of that queue (repeat pair, 230k, 240k) was stopped: more
+spin runs can't answer the question. Next: H2, a harness without the spin whose disk is slowed instead.
+
+## E60 (H1): correctness of the shared wal-index (4 Nov, opt-box, `h1check.py`, CKPT_FRAMES=100 so checkpoints never stop; DeepSeek asked for this before trusting any number)
+8 writer connections (random user, random post) + 4 oracle connections: one post each, distinct users in order, and after each 201 a GET
+must show exactly one more like; then kill -9 under load; the database is opened with native SQLite; the server restarted on it.
+k2: 16,260 read-your-writes checks, 0 stale; 110,378 acked likes, 0 missing after kill -9; integrity_check ok; restart: /health 200, /feed fine.
+k3 (below): 15,927 checks, 0 stale; 107,933 acked, 0 missing; integrity ok. The WAL at the kill was 45.7 MB in k2 with a 100-frame threshold:
+if passes can't catch up it would keep growing, so k3 adds a limit: past 3x the threshold the loop does one inline checkpoint (11.7 MB at the
+kill). In the 220k holds it peaked at 46 MB, so passes do converge there. 42/42.
+
+## E61 (H2): harness v3 = v2 without the spin, the disk slowed by a cgroup cap (hs3.sh/q3.sh on Synteq; 4 Nov)
+The cap (`IOWriteIOPSMax=/dev/sda N` on the unit) only bites if the file's inode belongs to the unit's cgroup (writeback goes to the inode's owner), so the unit
+copies the seed itself in ExecStartPre (a plain systemd-run on a file made by root's shell showed no slowdown at all). fsb, 2,400 dirty pages: no cap ~170 ms; 8,000 IOPS 250 ms; 4,000 525 ms; 2,000 1,110 ms.
+Baseline (b4 = c49b70d, no spin), 2-minute probes, 0 errors in all:
+- 8,000: 210k p95 194, p99 295
+- 4,000: 200k p95 305, p99 430; 210k 345 / 490; 220k 350 / 500; 240k 455 / 700
+- 3,000: 210k p95 495, p99 685; 220k 530 / 745
+Scorer on df9da40: 200k 229 / 356 held; 210k p99 1.5 s; 220k p99 4.5 s; 240k+ refused. The app cgroup now uses 64-68 % of CPU 0 at 200-210k, as the scorer's 68 %, which the spin build didn't (88 %).
+But it has no cliff at 210k: the tail grows smoothly. So neither calibration reproduces the scorer: the spin gets the cliff by running out of CPU the scorer still has, and the cap gets the CPU right
+without the cliff. Whatever turns ~70 % CPU into p99 1.5 s on the scorer isn't modelled yet. A harness caveat, not a result.
+
+## E62 (H1, H26): baseline against H1 on harness v3, ENOBUFS and loop gaps (4 Nov, cap 3,000 IOPS, no spin, 2-minute probes, 0 errors)
+- 240k: k3 p50 18, p95 535, p99 780, max 1,345 ms; b4 p50 59, p95 625, p99 895, max 1,324 ms
+- 260k: k3 p50 83, p95 665, p99 1,025, max 1,754 ms; b4 p50 97, p95 680, p99 985, max 1,748 ms
+- 280k: k3 p95 2,150, p99 4,110; b4 p95 1,740, p99 2,885 (CPU 0 busy 94 % / 89 %)
+So H1 as built gains little under the cap, and the reason is measurable (gap.bt on the loop thread, k3 at 240k, p95 570, p99 820):
+273 loop gaps > 40 ms in ~180 s, mean 176 ms, worst ~490 ms, each with ~3 fsyncs on the loop thread (sync_ms ~ gap): the inline tail. At up to 300 frames, under
+a slowed disk and behind the bulk pass's queued writes, the tail is far from the few ms E53 implied on the free disk. Next: CKPT_TAIL=30 (E63), and if needed H1c (hold writes, no sync on the loop at all).
+H26 (bpftrace enob.bt, baseline b4 at 220k): 315,223 receives ended -ENOBUFS out of 8.98M completions, ~3,000 per second at 22k req/s: during each long stall a ring's 2,048 buffers run dry, and each of those
+connections takes a re-arm. CQ overflow only at the end of the run (135k, when the load generator closes every connection). k3 at 240k: 403,123 (its stalls are still long).
+
+## E63 (H26, H24, H27): smaller buffers, smaller tail, nice (4 Nov, harness v3, cap 3,000 IOPS, 2-minute probes, 0 errors)
+Buffers (8,192 x 512 B per ring instead of 2,048 x 2 KiB, same 4 MiB). bb = b4 with them, k4 = k3 with them:
+- 240k: b4 625/895, bb 590/850; k3 535/780 (570/820 with bpftrace), k4 525/770
+- 260k: b4 680/985, bb 965/2,415 (one bad run); k3 665/1,025, k4 600/875 and 595/900
+H26 verdict: ENOBUFS gone (0 of 9.1M completions, was 403k), which helps a little at most: the stalls are the cost, the storm a side effect. Kept, costs nothing.
+k4 CKPT_TAIL=30 (H24): 240k 525/780, 260k 585/855. Nothing: gap.bt still has ~195 gaps > 40 ms in 180 s, mean 209 ms, 3 fsyncs each, sync_ms ~ gap (184, 353, 438 ms). So the size of the tail
+isn't the cost. Each inline fsync waits for the disk under the writes already queued, whatever the tail adds. H24 done for the tail. (pw=0 in those lines isn't real: WasmEdge's WASI doesn't use pwrite64.)
+CKPT_NICE=0 (H27): 260k 560/840 against 585/855, within noise. Dead.
+Without the cap, k4 CKPT_TAIL=30 at 240k: 198/325.
+
+## E64 (H1c): writes held while the checkpointer finishes, no sync on the loop at all (4 Nov, harness v3, 2-minute probes, 0 errors)
+k5 = k4 + hold, sha256 afb95b16 of merged.opt.wasm, rebuilt identically from the worktree. After a bulk pass with <= 300 frames left the loop parks POSTs in the connection's pending bytes (GETs go on), the
+checkpointer does the last pass, and the first write afterwards restarts the WAL. A hold ends after 250 ms at the latest. Only the 3x-threshold inline checkpoint can still sync on the loop.
+- 240k cap 3,000: k5 p50 1.4, p95 16.6, p99 164, max 876 (k4 22/525/770)
+- 260k cap 3,000: k5 p50 1.5, p95 18, p99 124, max 401 (k4 65/595/900)
+- 280k cap 3,000: k5 p50 1.8, p95 65, p99 235, max 1,084 (k4 and b4 failed here in E62)
+A step, not a trim: p95 falls 30-fold, us/req 17.3 -> 15.3. This matches the f220565 finding (E26: DB sync off the loop held 270k on the scorer), now without writing private state.
+Checks: 42/42. h1check.py: 672 checks 0 stale, 4,122 acked 0 missing after kill -9, integrity ok (CKPT_FRAMES=100). holdcheck.py (new, raw sockets through constant holds): 1,193 split POSTs, 1,115 pipelined
+POST+GET+POST in order, 1,143 POSTs over 3 KiB split, 1,137 closes right after a POST; 0 bad, 0 of 4,566 acked missing after kill -9, integrity ok.
+
+## E65-E67 (H1c): the k5 runs that finished the picture (4 Nov, harness v3, cap 3,000 unless noted, 0 errors unless noted)
+2-minute probes: k4 280k 745/1,275; k5 240k without the cap 5/36; k5 CKPT_HOLD=50 240k 5/27. k5 300k p95 5,320, 1.3 % errors, tcp up to 173k pages; 320k and 340k: the OOM killer took the server (global OOM, E39's "refused"),
+so memory ends this harness somewhere between 280k and 300k whatever the loop does.
+5-minute holds tell a different story from the 2-minute probes: k5 280k 3,110/5,320 (fail), k4 260k 860/1,255 (fail). k5's WAL stepped 49, 73, 91, 95 MB: 95 MB is the 3x force limit (24,000 frames), so the passes weren't catching up
+(tail target 300 frames with new frames arriving while each pass runs) and the inline last resort fired, seconds of stall on the loop at 3,000 IOPS, then ~3 MB/s of rereads. Also seen: feed.db in page cache goes from 243 MB to ~25 MB at
+the end of the ramp at 240k and up, memory pressure from the sockets; the 64 MiB SQLite cache and few rereads carry it until a long stall.
+
+## E68 (H1c, k6): hold earlier, longer, and no inline last resort short of 8x (4 Nov, harness v3, cap 3,000, 5-minute holds, 0 errors)
+k6: hold from 1,000 frames left, 500 ms limit (2 s past 3x), inline only past 8x the threshold. New CKPT_LOG=1 logs every step. wasm sha256 2b453565. 42/42, holdcheck.py 0 bad, 0 of 1,430 missing after kill -9.
+- 260k: k6 p50 1.35, p95 42, p99 280, max 756 ms, 15.2 us/req, RSS 162 MB (k4 860/1,255 fail)
+- 280k: k6 p50 1.9, p95 280, p99 1,050, max 5,810 ms, 17.2 us/req (k5 3,110/5,320): just over the p99 limit
+Event log at 260k: 195 checkpoints in 300 s, 428 bulk passes, 109 holds that timed out, tail pass p50 371, p90 463 ms: the tail is slow under the cap, holds are often lost. GET traffic flows through all of it.
+
+## E69-E72 (H1c, H24): repeats and the tail target (4 Nov, harness v3, 5-minute holds, 0 errors; pass = p95<500, p99<1,000)
+- b4 (the df9da40-style baseline) 240k cap 3,000: p50 124, p95 860, p99 1,175, max 1,799: FAIL
+- k4 (H1 with inline tail) 260k cap 3,000: 860/1,255: FAIL
+- k6 260k cap 3,000: 42/280, repeat 47/280, max 756/690
+- k6 270k cap 3,000: 74/315, max 970
+- k6 280k cap 3,000: 280/1,050 (fail by 50 ms), CKPT_NICE=0 260/770, CKPT_TAIL=400 75/310, max 794
+- k6 260k no cap: 14/81, max 561
+CKPT_TAIL=400 beats 1,000 at 280k: fewer lost holds, one run each so far. H24's "the tail's size doesn't matter" (E63) was for an inline tail; with a hold it does.
+
+DeepSeek round 3 on H1c. Taken: test slower disks and a read cap with less memory (E76, E77), since the harness caps writes only and the page cache collapses at ramp end; holds must stay short of the p95/p99 budget on a slower disk.
+Rejected after checking the code: "n drifts" (n is SQLite's own mxFrame from the WAL hook), "stranger gets a response" (replay checks the generation, holdcheck.py closes mid-hold), "replay re-arms a bulk pass each cycle" (after a restart n starts from 0; bulk starts at 8,000).
+"The hold doesn't save disk work": true and beside the point, it moves the sync off the loop.
+
+## E73 (H1c, H24, H27): repeats of k6 with a smaller tail target (4 Nov, harness v3, cap 3,000, 5-minute holds, 0 errors; ms p95/p99/max)
+- 280k CKPT_TAIL=400: 75/310/794, 126/420/1,645, 77/325/1,102: passes three times of three
+- 280k CKPT_TAIL=200: 53/295/665, 14.82 us/req
+- 280k CKPT_TAIL=400 CKPT_NICE=0: 76/320/679
+- 290k CKPT_TAIL=400: 270/1,210/4,653 (fail); with CKPT_NICE=0: 280/870/2,883 (pass, one run)
+Default becomes CKPT_TAIL=200. Clearly above 200k here, the bar for stopping; what's left is the checks that decide how far this harness can be believed: E74 (spin harness), E76 (less memory, read cap), E77 (half the IOPS), then E78 and the last open verdicts.
+
+## E74, E76, E77 (H1c): other calibrations (4 Nov, 5-minute holds, 0 errors; ms p95/p99/max)
+Spin harness v2, 220k, SPIN_NS=10000: k6 CKPT_TAIL=400 3.25/25/279, CPU 0 66 %; b4 925/2,440/4,023, CPU 0 94 %. So on v2 the checkpoint fsync was most of what looked like CPU in E58: iowait 34 % against 6 %.
+Half the IOPS (cap 1,500 writes and 1,500 reads, SRVMB=1900, CKPT_TAIL=200): k6 240k 69/440/1,193, 260k 90/455/1,417; b4 210k 1,405/1,970/2,950 FAIL. The baseline's failure here looks like the scorer's 210k (p99 1.5 s), which E61 couldn't reproduce with cap 3,000-8,000.
+Less memory (SRVMB=1650, cap 3,000 writes and reads, CKPT_TAIL=200): k6 240k 3,495/5,320, 658 MB read; 260k 5,320/5,320, 1,787 MB read, 17k rps; b4 210k 640/820. All page-cache thrash; E39-era calibration already called SRVMB 1650 too harsh (f220565 OOM-killed at 270k there, while it held 270k on the scorer), and fitted 1900 to those scorer numbers. So this doesn't count against k6, but it is the real wall: memory ends the climb with or without the hold, and the scorer killed f220565 at 280k.
+
+## E78 (H27, H24): nice and tail at the edge (4 Nov, harness v3, cap 3,000, 5-minute holds, 0 errors; ms p95/p99/max)
+- 290k: CKPT_TAIL=200 CKPT_NICE=0 98/350/969; CKPT_TAIL=400 CKPT_NICE=0 280/870/2,883; CKPT_TAIL=200 nice 10 1,075/3,305/9,974 FAIL; CKPT_TAIL=400 nice 10 270/1,210/4,653 FAIL
+- 280k: CKPT_TAIL=200 CKPT_NICE=0 74/320/819; CKPT_TAIL=200 nice 10 53/295/665, 59/300/846
+H27 reverses E63's "within noise": with the hold the checkpointer's speed sets how long POSTs wait, and at 290k a niced one loses on a loaded CPU. Defaults now CKPT_TAIL=200 and CKPT_NICE=0 (build k7, wasm ba492bfc, 42/42, h1check 391 checks 0 stale, 0 of 2,270 missing after kill -9; holdcheck 0 bad, 0 of 2,156 missing).
+
+## E75, E79 (H21, H23, H22, H6; memory margin) (4 Nov, harness v3, cap 3,000, CKPT_TAIL=200)
+2-minute A/Bs at 270k, ms p95/p99, us/req, two reps each: NODELAY on 24/194 14.50, 29/210 13.69; off 33/205 15.36, 33/210 15.59 (H21: small gain, keep). WALSYNC=0 23/193 14.27, 24/184 14.60 (H23: the flusher no longer buys any latency; left in, it keeps the loss window after a power cut at 100 ms). 
+k6 with a 16 MiB cache at 290k, nice 10: 2,085/5,320, RSS only ~17 MB lower (H22: dead, the pages it stops caching come back as page cache or disk reads). wasm-opt -O4 --converge against -O3 at 150k: 13.71, 13.68 vs 14.73, 13.97 us/req, p95 2.7 both, 432 B smaller (H6: within noise of what E56 calls noise, not taken).
+E79, 5-minute holds, k7: 290k OOM-killed 1 min into the hold (96.7 % errors), 280k OOM-killed 3 min in. Same settings on k6 passed at 15:46-16:00 (E78). The two runs differ in one thing: the hog was 86 MB bigger (10,382 against 10,296 MiB at 280k), since it's sized from MemAvailable, which read higher after the AOT step; memory snapshots otherwise match within 1 MB (AnonPages +88 MB, MemAvailable -88 MB, slab equal). So the margin at 280-290k is under ~90 MB: a harness measurement error of that size flips a pass into an OOM kill. Rerun with drop_caches before sizing the hog (E80).
+
+## E80, E81 (H1c): the final build against the memory wall (4 Nov, harness v3, cap 3,000, SRVMB=1900, drop_caches before sizing the hog, 5-minute holds; ms p95/p99/max)
+k7 = wasm ba492bfc, CKPT_TAIL=200, CKPT_NICE=0.
+- 260k: 56/335/1,716, 52/355/2,536. Passes twice, 0 errors. Baseline b4 at 210k: 670/855/1,331, p95 FAIL.
+- 270k: 51/305/825 pass; 255/1,035/4,999 fails p99 by 35 ms
+- 280k: OOM-killed (41 % errors); 81/340/2,016 pass
+- CKPT_FRAMES=4000: 280k and 290k OOM-killed; no help (H4)
+drop_caches narrowed the hog's noise but didn't remove it (10,367-10,522 MiB, not monotonic in users). The wall is memory: 2.5 GB of slab at 280k on this box counts both ends, sockets dominate, RSS 164 MB of which SQLite's cache is 64. A stall burst of tcp pages then tips it over. f220565 on the scorer held 270k and died at 280k, so 260-270k is what I'd expect there; unchecked until scored.
+Summary against the brief's bar: 5-minute holds with 0 errors, final settings or within one knob of them: 260k passes on cap 3,000 (4 of 4: k6 twice, k7 twice), 260k at cap 1,500 (1 of 1); baseline fails 210k at both caps and at 240k. Spin harness v2 220k 3/25 vs 925/2,440.
+Not done: the scorer itself. Every number here is Synteq. C is host.c 304 + sqlite_glue.c 146 lines; a WAT port of the VFS could cut that, not attempted.
+
