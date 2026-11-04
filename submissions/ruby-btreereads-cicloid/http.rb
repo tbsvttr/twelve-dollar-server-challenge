@@ -46,11 +46,9 @@ class HTTPServer
   POST = "POST"
   # Checked in place (`match?` at an offset allocates nothing), so the common request line costs no
   # strings: only a path other than the feed is sliced out.
-  HTTP_11_AT = %r{\GHTTP/1\.1\r\n}
-  HTTP_10_AT = %r{\GHTTP/1\.0\r\n}
   GET_AT = /\GGET /
-  POST_AT = /\GPOST /
-  FEED_AT = %r{\G/feed[ ?]}
+  # The header names the pre-check looks for in a lowercased copy of a GET's head
+  NAMES = ["\r\ncontent-length", "\r\ntransfer-encoding", "\r\nconnection", "\r\nauthorization"].freeze
 
   # `capacity` is how many connections the subclass can hold at once.
   def initialize(app, host, port, capacity)
@@ -113,15 +111,25 @@ class HTTPServer
       space2 = space && buffer.byteindex(" ", space + 1)
       return reject(socket, 400) unless space2 && space > position && space2 < line_end
 
-      version_length = line_end - space2 - 1
-      http10 = version_length == 8 && buffer.match?(HTTP_10_AT, space2 + 1)
-      return reject(socket, 400) unless http10 || (version_length == 8 && buffer.match?(HTTP_11_AT, space2 + 1))
+      # Byte comparisons in place: a regex match at an offset costs several times more under YJIT.
+      # "HTTP/1." then the minor version; the CRLF after it is line_end.
+      v = space2 + 1
+      minor = buffer.getbyte(v + 7) if line_end - v == 8 && buffer.getbyte(v) == 72 && buffer.getbyte(v + 1) == 84 &&
+                                       buffer.getbyte(v + 2) == 84 && buffer.getbyte(v + 3) == 80 &&
+                                       buffer.getbyte(v + 4) == 47 && buffer.getbyte(v + 5) == 49 && buffer.getbyte(v + 6) == 46
+      http10 = minor == 48
+      return reject(socket, 400) unless http10 || minor == 49
 
-      method = if space - position == 3 && buffer.match?(GET_AT, position) then GET
-               elsif space - position == 4 && buffer.match?(POST_AT, position) then POST
+      method = if space - position == 3 && buffer.getbyte(position) == 71 && buffer.getbyte(position + 1) == 69 &&
+                  buffer.getbyte(position + 2) == 84 then GET
+               elsif space - position == 4 && buffer.getbyte(position) == 80 && buffer.getbyte(position + 1) == 79 &&
+                     buffer.getbyte(position + 2) == 83 && buffer.getbyte(position + 3) == 84 then POST
                else buffer.byteslice(position, space - position)
                end
-      path = if buffer.match?(FEED_AT, space + 1) then FEED
+      after = buffer.getbyte(space + 6)
+      path = if (after == 32 || after == 63) && buffer.getbyte(space + 1) == 47 && buffer.getbyte(space + 2) == 102 &&
+                buffer.getbyte(space + 3) == 101 && buffer.getbyte(space + 4) == 101 && buffer.getbyte(space + 5) == 100
+               FEED
              else
                query = buffer.byteindex("?", space + 1)
                path_end = query && query < space2 ? query : space2
@@ -133,8 +141,10 @@ class HTTPServer
       close = http10
       # Searched in place: a head without any of these headers allocates nothing. A match past
       # head_end belongs to the body or the next request.
-      at = line_end
-      while (at = buffer.byteindex(HEADER, at)) && at < head_end
+      # A GET usually has none of the four headers: one lowercased copy and four substring
+      # searches rule them out faster than the case-insensitive scan. Anything else is scanned.
+      at = method == GET && !headers?(buffer, line_end, head_end) ? nil : line_end
+      while at && (at = buffer.byteindex(HEADER, at)) && at < head_end
         name = Regexp.last_match(1)
         value = Regexp.last_match(2)
         at += 2
@@ -172,6 +182,12 @@ class HTTPServer
     elsif position >= size then EMPTY
     else buffer.byteslice(position, size - position)
     end
+  end
+
+  def headers?(buffer, line_end, head_end)
+    head = buffer.byteslice(line_end, head_end - line_end + 2)
+    head.downcase!(:ascii)
+    head.include?(NAMES[0]) || head.include?(NAMES[1]) || head.include?(NAMES[2]) || head.include?(NAMES[3])
   end
 
   def reject(socket, status)

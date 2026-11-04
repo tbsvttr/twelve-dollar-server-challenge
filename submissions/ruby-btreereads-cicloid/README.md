@@ -34,8 +34,22 @@ SQLITE_PATH=... JWT_SECRET=... HOST=0.0.0.0 PORT=80 bash start.sh
 
 The connection layer, its requirements and its settings (`CONNECTIONS`, `URING_RINGS`) are as in
 [`ruby-uring-cicloid`](../ruby-uring-cicloid#connection-layer-io_uring-with-an-automatic-epoll-fallback),
-except that `URING_RINGS` defaults to 4 here: room for 262,140 connections. With two rings the server
-stopped accepting at 131,070, which is where the first score (126,000) stopped.
+with three differences:
+
+- `URING_RINGS` defaults to 4: room for 262,140 connections. With two rings the server stopped
+  accepting at 131,070, which is where the first score (126,000) stopped.
+- Ruby reads and writes the rings in place. liburing still sets each ring up and enters the kernel,
+  but `uring.rb` writes submission entries straight into the ring's shared memory and reads
+  completions from it, with no FFI call or `FFI::Pointer` per entry. Each entry is written field by
+  field as liburing's `io_uring_prep_*` helpers write it; we compared them byte for byte.
+- Receive buffers live in a buffer ring (`IORING_REGISTER_PBUF_RING`). A buffer goes back to the
+  kernel as one ring entry and a tail store, once its bytes are copied out, with no submission.
+  Ubuntu's 6.8.0-136+ kernels refuse the registration unless a reserved field is set (Launchpad
+  #2162843), so a refusal is retried with it, as the PyPy entry does.
+
+The HTTP parser checks the request line, the method and `/feed` byte by byte with `getbyte`, and a
+`GET` without any of the four headers the API reads skips the case-insensitive header scan. Both
+used to be regex matches.
 
 ## What the extension does, and what it doesn't
 
@@ -122,7 +136,22 @@ test VM ran about 1.7× slower per request than in October (the Proxmox host was
 showed heavy steal time), so compare the rows with each other, not with `ruby-uring-cicloid`'s
 README.
 
-Test suite: 42/42.
+**Ring access and parser, paired** (the same VM with a full core, 4 rings, 120,000 `mload` users
+with 1 s think time on three load VMs, 3-minute hold, builds alternated within a session; every run
+saturated the core, so CPU per request is what changes; no run had errors):
+
+| Session | Build | Round 1 | Round 2 |
+|---|---|---:|---:|
+| 1 | as scored in #300 | 84.1 µs | 84.1 µs |
+| 1 | rings in place, classic provided buffers | 82.0 µs | 82.7 µs |
+| 2 | rings in place, buffer ring | 83.2 µs | 82.6 µs |
+| 2 | rings in place, buffer ring, parser (this build) | 81.6 µs | 81.9 µs |
+
+Session 2 ran slower overall; a third session put the two buffer schemes within 0.1 µs of each
+other. Together, about 3% less CPU per request than #300. A profile at 120,000 users puts about 60% of the CPU in the
+kernel's TCP stack and virtio, 10% in SQLite and 27% in Ruby; the Async reactor itself is under 1%.
+
+Test suite: 42/42, on io_uring and on the epoll fallback.
 
 ## Trade-offs
 

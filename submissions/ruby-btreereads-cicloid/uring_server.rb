@@ -95,7 +95,7 @@ class UringServer < HTTPServer
   def complete(ring, index, id, operation, result, flags)
     case operation
     when RECV
-      if result.positive?
+      if result > 0
         data = ring.take_buffer(flags >> Uring::CQE_BUFFER_SHIFT, result)
         if (input = @input[id]) then input << data else @input[id] = data end
         unless @busy[id]
@@ -107,7 +107,7 @@ class UringServer < HTTPServer
             add_worker if @waiting < @ready.size && @workers < MAX_WORKERS
           end
         end
-        ring.receive(id & SLOT_MASK, id << 3 | RECV) if flags.nobits?(Uring::CQE_F_MORE)
+        ring.receive(id & SLOT_MASK, id << 3 | RECV) if flags & Uring::CQE_F_MORE == 0
       elsif result == -ENOBUFS # out of provided buffers: they come back with this pass's submit
         ring.receive(id & SLOT_MASK, id << 3 | RECV)
       else # end of stream, an error, or cancelled
@@ -133,7 +133,8 @@ class UringServer < HTTPServer
   # Only GETs, and no write batch open: serving them can't suspend, so the pump serves them itself
   # instead of handing the connection to a worker fiber (a queue push, and two fiber switches).
   def reads_only?(input)
-    input.match?(GET_AT, 0) && !input.include?(POST_REQUEST) && !@app.writing?
+    input.getbyte(0) == 71 && input.getbyte(1) == 69 && input.getbyte(2) == 84 && input.getbyte(3) == 32 &&
+      !input.include?(POST_REQUEST) && !@app.writing?
   end
 
   # Inside the completion loop: an exception must not escape it, or completions already handled
@@ -182,7 +183,13 @@ class UringServer < HTTPServer
   end
 
   def flush
-    @rings.each { |ring| ring.submit if ring.pending? }
+    # A while loop rather than `each`: no block call per ring.
+    index = 0
+    while index < RINGS
+      ring = @rings[index]
+      ring.submit if ring.pending?
+      index += 1
+    end
   end
 
   # Moves the connection toward closing once nothing holds it: a closing connection's receive is
@@ -229,12 +236,12 @@ class UringServer < HTTPServer
     @sending[id] = memory
     @send_length[id] = length
     @send_offset[id] = 0
-    @rings[id >> SLOT_BITS].send_data(id & SLOT_MASK, memory, length, id << 3 | SEND)
+    @rings[id >> SLOT_BITS].send_data(id & SLOT_MASK, memory.address, length, id << 3 | SEND)
   end
 
   def sent(id, result)
     memory = @sending[id]
-    if result.negative?
+    if result < 0
       release(memory)
       @sending[id] = @out[id] = nil
       @closing[id] = true
@@ -244,7 +251,7 @@ class UringServer < HTTPServer
     offset = @send_offset[id] + result
     if offset < @send_length[id] # a short send: the rest goes next
       @send_offset[id] = offset
-      @rings[id >> SLOT_BITS].send_data(id & SLOT_MASK, memory + offset, @send_length[id] - offset, id << 3 | SEND)
+      @rings[id >> SLOT_BITS].send_data(id & SLOT_MASK, memory.address + offset, @send_length[id] - offset, id << 3 | SEND)
     elsif (pending = @out[id])
       @out[id] = nil
       release(memory)
