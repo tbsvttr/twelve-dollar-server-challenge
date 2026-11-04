@@ -112,13 +112,33 @@ sockets under `LimitNOFILE=65535`.
   output buffers adds at most 2,048 × 32 KB. Kernel socket memory (~3.4 KB per connection
   measured) comes on top of all this.
 - Each connection has one **multishot receive** into a provided-buffer ring (1,024 × 2 KB per
-  ring), so an idle connection holds no receive buffer. Receives that run out of buffers are
-  re-armed after the pass has returned its buffers.
+  ring), so an idle connection holds no receive buffer, and a request costs one completion.
+- **After a burst, reads are bounded.** After a stall, every connection has a request waiting,
+  and the multishot receives use up the buffer ring at once. The rest end with ENOBUFS. Re-arming
+  them all together would only repeat that, pass after pass. So a receive that ends is not
+  re-armed. Its connection goes on a first-in, first-out read queue instead. Each pass then
+  issues one single-shot receive per queued connection, with `MSG_DONTWAIT`, and never more on a
+  ring than it has buffers. The reads are submitted and reaped in the same pass (with
+  `DEFER_TASKRUN` they complete inside the non-blocking enter), in rounds while the queue is
+  longer than the buffers. A read that fills its buffer is queued again. A shorter read, or
+  EAGAIN, means the socket is drained, and the multishot receive is armed again.
+- **Drain first.** A pass reads up to 16,384 times but answers at most 2,048 reads. The rest are
+  kept on the connection, next to a partial request, and go on a ready list that later passes
+  answer first, oldest first. While anything is queued, ring 0 doesn't wait. Reading costs a
+  copy the size of the request, while a request left in its socket costs a 3–4 KB socket buffer.
+  So the socket queues empty as fast as the reads can run, instead of building up toward TCP's
+  memory limit. In a 40k-user run with four 2 s stalls, receives ended with ENOBUFS about once
+  per connection per stall (119k in all), where re-arming them all at once had caused 2.15
+  million. Half a second after each stall, TCP held ~600 of its ~29k pages, where it had held
+  ~20k before.
+  [c-iouring-pavlyhalim](../c-iouring-pavlyhalim) (#245) reads this way all the time, from a
+  readiness poll. Here that costs ~10% more CPU per request in steady state (a poll completion
+  and a read for each request), so it is used only to recover from a burst.
 - Output buffers come from a pool and go back once a send completes, so idle connections hold
   no heap memory, only a fixed 48-byte record (its three buffers are null pointers until
   used). One send per connection is in flight at a time. Pipelined responses queue behind it.
 - Closing is a `SHUTDOWN` hard-linked to a fixed-file `CLOSE`. The shutdown ends the multishot
-  receive. A generation number in every `user_data` drops completions for a reused slot.
+  receive or the single-shot read in flight. A generation number in every `user_data` drops completions for a reused slot.
 - Idle connections are never closed by the server (Nginx-style 65 s reuse is safe).
 
 ## Request path

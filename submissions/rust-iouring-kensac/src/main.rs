@@ -7,6 +7,7 @@ mod jwt;
 
 use app::App;
 use io_uring::{cqueue, opcode, squeue, types, IoUring, SubmissionQueue, Submitter};
+use std::collections::VecDeque;
 use std::io;
 use std::os::fd::{AsRawFd, RawFd};
 use std::sync::atomic::{AtomicU16, Ordering};
@@ -17,6 +18,8 @@ const OP_RECV: u64 = 2;
 const OP_SEND: u64 = 3;
 const OP_SHUTDOWN: u64 = 4;
 const OP_CLOSE: u64 = 5;
+/// A single-shot read, for a connection whose multishot receive ran out of buffers.
+const OP_READ: u64 = 6;
 /// Single-shot accepts kept in flight on the accepting ring, spread evenly over the listeners
 /// (fewer on a small table). Each is re-armed only after a pass sees it complete, so this bounds
 /// the accept rate: a ramp of thousands of connections a second needs hundreds in flight, or the
@@ -28,8 +31,16 @@ const LISTENERS: usize = 8;
 
 const SQ_ENTRIES: u32 = 4096;
 const CQ_ENTRIES: u32 = 65536;
+/// Receive buffers per ring. A request is a few hundred bytes, a POST with its body under 2 KB;
+/// a longer one fills its buffer and is read again. The count also bounds the single-shot reads
+/// one round puts in flight on the ring.
 const BUF_SIZE: usize = 2048;
 const BUF_COUNT: u16 = 1024;
+/// Drain first: a pass reads up to READS_PER_PASS times but answers at most ANSWERS_PER_PASS
+/// reads; the rest wait on the connection (in `partial`) on the ready list. A request read costs a
+/// copy the size of the request; one left in its socket costs a 3-4 KB socket buffer.
+const READS_PER_PASS: usize = 16384;
+const ANSWERS_PER_PASS: u32 = 2048;
 const MAX_RINGS: usize = 16;
 /// Each pass waits on ring 0 for this many completions or WAIT_NS, whichever comes first.
 /// Larger passes share one COMMIT. Newer kernels cap the deferred task work one enter runs
@@ -131,6 +142,12 @@ struct Conn {
     /// shutdown/close submitted.
     closing: bool,
     sending: bool,
+    /// On the read queue: its multishot receive ended (out of buffers) and no read is issued yet.
+    queued: bool,
+    /// A read is in flight.
+    recving: bool,
+    /// On the ready list: bytes it read wait in `partial` for a later pass's answers.
+    ready: bool,
     in_batch: bool,
     /// Produced a response in this batch (not just marked to flush older output).
     answered: bool,
@@ -187,7 +204,8 @@ struct Ring {
     /// accept that finds the table full has already taken the connection off the listen queue
     /// and would drop it. Single-shot accepts bound how many can land after the switch.
     margin: u32,
-    rearm: Vec<u32>,
+    /// Single-shot reads in flight: each holds at most one receive buffer, so never more than BUF_COUNT.
+    reads: u32,
 }
 
 impl Ring {
@@ -205,7 +223,7 @@ impl Ring {
         let depth = (slots / 16).clamp(LISTENERS as u32, ACCEPT_DEPTH) / LISTENERS as u32 * LISTENERS as u32;
         // At most a quarter of a small table, so a full ring can still drain below 2x margin.
         let margin = (slots / 8).clamp(depth + 1, 2 * ACCEPT_DEPTH).min(slots / 4);
-        Ok(Ring { uring, bufs, conns, accepting: false, accepts: [0; LISTENERS], depth, full: false, open: 0, margin, rearm: Vec::new() })
+        Ok(Ring { uring, bufs, conns, accepting: false, accepts: [0; LISTENERS], depth, full: false, open: 0, margin, reads: 0 })
     }
 }
 
@@ -231,9 +249,73 @@ fn push(sq: &mut SubmissionQueue, sub: &Submitter, e: &squeue::Entry, room: usiz
     unsafe { sq.push(e).expect("submission queue has room") };
 }
 
+/// The steady state: one multishot receive per connection, one completion per request.
 fn arm_recv(sq: &mut SubmissionQueue, sub: &Submitter, ri: usize, slot: u32, gen: u16) {
     let e = opcode::RecvMulti::new(types::Fixed(slot), 0).build().user_data(ud(OP_RECV, ri, gen, slot));
     push(sq, sub, &e, 1);
+}
+
+/// One read of a queued connection. MSG_DONTWAIT: if nothing is left it ends with EAGAIN instead
+/// of waiting.
+fn arm_read(sq: &mut SubmissionQueue, sub: &Submitter, ri: usize, slot: u32, gen: u16) {
+    let e = opcode::Recv::new(types::Fixed(slot), std::ptr::null_mut(), 0)
+        .buf_group(0)
+        .flags(libc::MSG_DONTWAIT)
+        .build()
+        .flags(squeue::Flags::BUFFER_SELECT)
+        .user_data(ud(OP_READ, ri, gen, slot));
+    push(sq, sub, &e, 1);
+}
+
+/// Puts a connection on the read queue (once).
+#[inline]
+fn queue_read(rq: &mut VecDeque<(u8, u32, u16)>, ri: usize, slot: u32, c: &mut Conn) {
+    if !c.queued {
+        c.queued = true;
+        rq.push_back((ri as u8, slot, c.gen));
+    }
+}
+
+/// The client is done sending (EOF, an error). A held write or bytes on the ready list are still
+/// owed answers: then it closes once they are answered.
+#[inline]
+fn finish(touched: &mut Vec<(u8, u32)>, ri: usize, slot: u32, c: &mut Conn) {
+    if c.held || c.ready {
+        c.eof = true;
+    } else {
+        c.close_after = true;
+        mark(touched, ri, slot, c);
+    }
+}
+
+/// Bytes received: answered now if this pass has answers left and nothing older waits on the
+/// connection, otherwise kept for a later pass (drain first).
+#[allow(clippy::too_many_arguments)]
+#[inline]
+fn received(app: &mut App, pool: &mut Vec<Box<Vec<u8>>>, touched: &mut Vec<(u8, u32)>, held: &mut Vec<(u8, u32, u16)>, ready: &mut VecDeque<(u8, u32, u16)>, answers_left: &mut u32, ri: usize, slot: u32, c: &mut Conn, data: &[u8]) {
+    if c.close_after {
+        // Its answers are done; what follows is dropped.
+    } else if c.held || c.ready || *answers_left == 0 {
+        stash(c, data);
+        if !c.held && !c.ready {
+            c.ready = true;
+            ready.push_back((ri as u8, slot, c.gen));
+        }
+        #[cfg(feature = "stats")]
+        stats::add(stats::DEFERRED, 1);
+    } else {
+        *answers_left -= 1;
+        serve(app, pool, touched, held, ri, slot, c, data);
+    }
+}
+
+/// Keeps bytes on the connection, behind any it already has, to be answered later.
+#[inline]
+fn stash(c: &mut Conn, data: &[u8]) {
+    match &mut c.partial.0 {
+        Some(v) => v.extend_from_slice(data),
+        None => c.partial = Buf(Some(Box::new(data.to_vec()))),
+    }
 }
 
 fn arm_send(sq: &mut SubmissionQueue, sub: &Submitter, ri: usize, slot: u32, c: &Conn) {
@@ -247,7 +329,7 @@ fn arm_send(sq: &mut SubmissionQueue, sub: &Submitter, ri: usize, slot: u32, c: 
 
 fn arm_close(sq: &mut SubmissionQueue, sub: &Submitter, ri: usize, slot: u32, c: &mut Conn) {
     c.closing = true;
-    // The shutdown ends the multishot receive; the close frees the slot.
+    // The shutdown ends the multishot receive or the read in flight; the close frees the slot.
     let s = opcode::Shutdown::new(types::Fixed(slot), libc::SHUT_RDWR)
         .build()
         .flags(squeue::Flags::IO_HARDLINK)
@@ -286,6 +368,12 @@ struct Server {
     /// Connections whose next request is a write waiting for a checkpoint hold to end
     /// (ring, slot, generation). May hold duplicates.
     held: Vec<(u8, u32, u16)>,
+    /// Readable connections waiting for a read, first in first out (ring, slot, generation).
+    rq: VecDeque<(u8, u32, u16)>,
+    /// Connections with bytes read but not yet answered, oldest first.
+    ready: VecDeque<(u8, u32, u16)>,
+    /// Reads this pass may still answer.
+    answers_left: u32,
     need_ring: bool,
     /// When adding a ring failed: don't retry before this.
     spill_after: std::time::Instant,
@@ -309,9 +397,9 @@ fn give_buf(pool: &mut Vec<Box<Vec<u8>>>, b: Buf) {
 impl Server {
     /// Handles every completion of ring `ri`. Returns how many there were.
     fn drain(&mut self, ri: usize) -> usize {
-        let Server { rings, app, pool, touched, held, listen, need_ring, .. } = self;
+        let Server { rings, app, pool, touched, held, listen, need_ring, rq, ready, answers_left, .. } = self;
         let r = &mut rings[ri];
-        let Ring { uring, bufs, conns, accepting, accepts, depth, full, open, margin, rearm } = r;
+        let Ring { uring, bufs, conns, accepting, accepts, depth, full, open, margin, reads } = r;
         let slots = conns.len() as u32;
         let (sub, mut sq, mut cq) = uring.split();
         cq.sync();
@@ -339,6 +427,7 @@ impl Server {
                     }
                 }
                 OP_RECV => {
+                    // The multishot receive.
                     let bid = cqueue::buffer_select(flags);
                     let c = &mut conns[slot as usize];
                     if c.gen != gen || !c.open || c.closing {
@@ -348,30 +437,65 @@ impl Server {
                         continue;
                     }
                     if res > 0 {
-                        let Some(b) = bid else {
-                            rearm.push(slot);
-                            continue;
-                        };
-                        let data = bufs.get(b, res as usize);
-                        serve(app, pool, touched, held, ri, slot, c, data);
-                        bufs.add(b);
+                        if let Some(b) = bid {
+                            received(app, pool, touched, held, ready, answers_left, ri, slot, c, bufs.get(b, res as usize));
+                            bufs.add(b);
+                        }
                         if !cqueue::more(flags) {
-                            rearm.push(slot);
+                            // It ended (the buffers ran out behind it): read the rest in bounded
+                            // single-shot reads, which re-arm it once the socket is drained.
+                            queue_read(rq, ri, slot, c);
                         }
                     } else if res == -libc::ENOBUFS {
-                        rearm.push(slot);
+                        // A burst emptied the buffer ring. Not re-armed: re-arming every receive
+                        // at once repeats the storm.
+                        #[cfg(feature = "stats")]
+                        stats::add(stats::ENOBUFS, 1);
+                        queue_read(rq, ri, slot, c);
                     } else {
                         // EOF or error: finish what was asked, then close.
                         if let Some(b) = bid {
                             bufs.add(b);
                         }
-                        if c.held {
-                            // Its held write is still owed an answer.
-                            c.eof = true;
-                        } else {
-                            c.close_after = true;
-                            mark(touched, ri, slot, c);
+                        finish(touched, ri, slot, c);
+                    }
+                }
+                OP_READ => {
+                    *reads -= 1;
+                    let bid = cqueue::buffer_select(flags);
+                    let c = &mut conns[slot as usize];
+                    if c.gen != gen || !c.open || c.closing {
+                        if let Some(b) = bid {
+                            bufs.add(b);
                         }
+                        continue;
+                    }
+                    c.recving = false;
+                    if res > 0 {
+                        let Some(b) = bid else {
+                            queue_read(rq, ri, slot, c);
+                            continue;
+                        };
+                        received(app, pool, touched, held, ready, answers_left, ri, slot, c, bufs.get(b, res as usize));
+                        bufs.add(b);
+                        if res as usize == BUF_SIZE {
+                            // The buffer filled: there may be more.
+                            queue_read(rq, ri, slot, c);
+                        } else {
+                            // The socket is drained: back to the multishot receive.
+                            arm_recv(&mut sq, &sub, ri, slot, gen);
+                        }
+                    } else if res == -libc::EAGAIN {
+                        arm_recv(&mut sq, &sub, ri, slot, gen);
+                    } else if res == -libc::ENOBUFS {
+                        #[cfg(feature = "stats")]
+                        stats::add(stats::ENOBUFS, 1);
+                        queue_read(rq, ri, slot, c);
+                    } else {
+                        if let Some(b) = bid {
+                            bufs.add(b);
+                        }
+                        finish(touched, ri, slot, c);
                     }
                 }
                 OP_SEND => {
@@ -466,20 +590,6 @@ impl Server {
             }
         }
         touched.clear();
-        for (ri, r) in rings.iter_mut().enumerate() {
-            if r.rearm.is_empty() {
-                continue;
-            }
-            let Ring { uring, conns, rearm, .. } = r;
-            let (sub, mut sq, _) = uring.split();
-            for &slot in rearm.iter() {
-                let c = &conns[slot as usize];
-                if c.open && !c.closing {
-                    arm_recv(&mut sq, &sub, ri, slot, c.gen);
-                }
-            }
-            rearm.clear();
-        }
         if self.need_ring && std::time::Instant::now() >= self.spill_after {
             // Retried (once a second) until some ring accepts again, so accepting never stops.
             self.need_ring = !self.spill();
@@ -505,6 +615,91 @@ impl Server {
                 }
             }
         }
+    }
+
+    /// Answers connections on the ready list, oldest first, while this pass has answers left.
+    fn run_ready(&mut self) {
+        let Server { rings, app, pool, touched, held, ready, answers_left, .. } = self;
+        while *answers_left > 0 {
+            let Some((ri, slot, gen)) = ready.pop_front() else { break };
+            let c = &mut rings[ri as usize].conns[slot as usize];
+            if c.gen != gen || !c.open || c.closing {
+                continue;
+            }
+            c.ready = false;
+            if c.held {
+                continue; // release_held answers it, with everything behind the held write
+            }
+            *answers_left -= 1;
+            serve(app, pool, touched, held, ri as usize, slot, c, &[]);
+            if c.eof && !c.held {
+                c.close_after = true;
+                mark(touched, ri as usize, slot, c);
+            }
+        }
+    }
+
+    /// Issues one read per queued connection, up to `budget` and never more on a ring than it has
+    /// free receive buffers, so the kernel never runs out of them. The rest stay queued, in order.
+    /// Returns the reads issued.
+    fn issue_reads(&mut self, budget: usize) -> usize {
+        let Server { rings, rq, .. } = self;
+        let mut issued = 0;
+        for _ in 0..rq.len() {
+            if issued == budget {
+                break;
+            }
+            let Some(e @ (ri, slot, gen)) = rq.pop_front() else { break };
+            let r = &mut rings[ri as usize];
+            let c = &mut r.conns[slot as usize];
+            if c.gen != gen || !c.open || c.closing {
+                continue;
+            }
+            if c.recving || r.reads >= BUF_COUNT as u32 {
+                rq.push_back(e);
+                continue;
+            }
+            c.queued = false;
+            c.recving = true;
+            r.reads += 1;
+            issued += 1;
+            let (sub, mut sq, _) = r.uring.split();
+            arm_read(&mut sq, &sub, ri as usize, slot, gen);
+        }
+        issued
+    }
+
+    /// Reads the queued connections, in rounds of at most a buffer ring per ring. A MSG_DONTWAIT
+    /// read completes inside the submit, so each round is one non-blocking enter per ring, and a
+    /// request is answered in the pass that saw it readable.
+    fn read_rounds(&mut self) -> usize {
+        let mut n = 0;
+        let mut budget = READS_PER_PASS;
+        while budget > 0 && !self.rq.is_empty() {
+            let k = self.issue_reads(budget);
+            if k == 0 {
+                break;
+            }
+            budget -= k;
+            #[cfg(feature = "stats")]
+            stats::add(stats::READS, k as u64);
+            for r in self.rings.iter_mut() {
+                let to_submit = unsafe { r.uring.submission_shared().len() } as u32;
+                if to_submit > 0 {
+                    let rc = unsafe { r.uring.submitter().enter::<libc::sigset_t>(to_submit, 0, GETEVENTS, None) };
+                    if let Err(e) = rc {
+                        match e.raw_os_error() {
+                            Some(libc::EINTR | libc::EBUSY | libc::EAGAIN) => {}
+                            _ => eprintln!("io_uring_enter: {e}"),
+                        }
+                    }
+                }
+            }
+            for ri in 0..self.rings.len() {
+                n += self.drain(ri);
+            }
+        }
+        n
     }
 
     /// A ring's descriptor table is full: accept on the next ring with room, adding one if needed.
@@ -543,10 +738,12 @@ impl Server {
             // and collect without waiting; ring 0 goes last and waits for WAIT_MIN
             // completions or WAIT_NS, so with several rings a pass still spans up to WAIT_NS
             // instead of spinning, and no ring's sends sit behind the wait.
+            // With reads or answers still queued there is work now: ring 0 doesn't wait either.
+            let busy = !self.rq.is_empty() || !self.ready.is_empty();
             for (ri, r) in self.rings.iter_mut().enumerate().rev() {
                 let sub = r.uring.submitter();
                 let to_submit = unsafe { r.uring.submission_shared().len() } as u32;
-                let rc = if ri == 0 {
+                let rc = if ri == 0 && !busy {
                     let ts = types::Timespec::new().nsec(WAIT_NS);
                     let args = types::SubmitArgs::new().timespec(&ts);
                     sub.submit_with_args(WAIT_MIN, &args)
@@ -560,11 +757,17 @@ impl Server {
                     }
                 }
             }
+            self.answers_left = ANSWERS_PER_PASS;
             let mut n = 0;
             for ri in 0..self.rings.len() {
                 n += self.drain(ri);
             }
+            // Oldest first: what earlier passes read, then what this pass reads.
+            self.run_ready();
+            n += self.read_rounds();
             let _ = n;
+            #[cfg(feature = "stats")]
+            stats::queues(self.rq.len(), self.ready.len());
             if !self.held.is_empty() && !self.app.db.writes_held() {
                 self.release_held();
             }
@@ -575,13 +778,37 @@ impl Server {
     }
 }
 
-/// `--features stats`: batch sizes on stderr every 5 s (not in the submitted build).
+/// `--features stats`: batch sizes and receive counters on stderr every 5 s (not in the
+/// submitted build).
 #[cfg(feature = "stats")]
 mod stats {
     use std::cell::Cell;
     use std::time::Instant;
+    pub const ENOBUFS: usize = 0;
+    pub const READS: usize = 1;
+    pub const DEFERRED: usize = 2;
+    pub const RQ_MAX: usize = 3;
+    pub const READY_MAX: usize = 4;
     thread_local! {
         static S: Cell<(u64, u64, u64, u64, Option<Instant>)> = const { Cell::new((0, 0, 0, 0, None)) };
+        static C: Cell<[u64; 5]> = const { Cell::new([0; 5]) };
+        static T: Cell<u64> = const { Cell::new(0) };
+    }
+    pub fn add(k: usize, n: u64) {
+        C.with(|c| {
+            let mut v = c.get();
+            v[k] += n;
+            c.set(v);
+        });
+    }
+    #[allow(dead_code)]
+    pub fn queues(rq: usize, ready: usize) {
+        C.with(|c| {
+            let mut v = c.get();
+            v[RQ_MAX] = v[RQ_MAX].max(rq as u64);
+            v[READY_MAX] = v[READY_MAX].max(ready as u64);
+            c.set(v);
+        });
     }
     pub fn batch(cqes: usize, responses: usize, wrote: bool) {
         S.with(|s| {
@@ -593,7 +820,24 @@ mod stats {
             w += wrote as u64;
             if t.elapsed().as_secs() >= 5 {
                 let secs = t.elapsed().as_secs_f64();
-                eprintln!("stats: {:.0} loops/s, {:.1} cqes/loop, {:.1} conns answered/loop, {:.0} write commits/s", b as f64 / secs, c as f64 / b as f64, r as f64 / b as f64, w as f64 / secs);
+                let v = C.with(|c| c.replace([0; 5]));
+                let tot = T.with(|x| {
+                    x.set(x.get() + v[ENOBUFS]);
+                    x.get()
+                });
+                eprintln!(
+                    "stats: {:.0} loops/s, {:.1} cqes/loop, {:.1} conns answered/loop, {:.0} write commits/s; reads {} deferred {} enobufs {} (total {}) rq_max {} ready_max {}",
+                    b as f64 / secs,
+                    c as f64 / b as f64,
+                    r as f64 / b as f64,
+                    w as f64 / secs,
+                    v[READS],
+                    v[DEFERRED],
+                    v[ENOBUFS],
+                    tot,
+                    v[RQ_MAX],
+                    v[READY_MAX]
+                );
                 s.set((0, 0, 0, 0, Some(Instant::now())));
             } else {
                 s.set((b, c, r, w, Some(t)));
@@ -736,6 +980,6 @@ fn main() {
     });
     arm_accept(&mut ring, 0, &fd);
     eprintln!("listening on {host}:{port}; io_uring, {slots} direct descriptors per ring");
-    let mut s = Server { rings: vec![ring], app, listen: fd, slots, pool: Vec::new(), touched: Vec::new(), held: Vec::new(), need_ring: false, spill_after: std::time::Instant::now() };
+    let mut s = Server { rings: vec![ring], app, listen: fd, slots, pool: Vec::new(), touched: Vec::new(), held: Vec::new(), rq: VecDeque::new(), ready: VecDeque::new(), answers_left: 0, need_ring: false, spill_after: std::time::Instant::now() };
     s.run()
 }
