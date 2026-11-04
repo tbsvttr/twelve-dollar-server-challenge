@@ -47,6 +47,9 @@ also held 280,000 and the #271 run (`30d259c`) 290,000. c-iouring-unorig-usernam
 250,000. kotlin-trikeshed-jnorthrup is scored at its follow-up PR #298 (`61ddd97`); its merged #128 code (`2fb010a`) held
 175,000 and its earlier #128 run (`87b974c`) 71,000. c-iouring-fajarreza-gif #302 is scored at `d7a2e70`; the PR's head
 moved to `4845c30` during that run and is queued for a re-run. Its earlier `1441393` run held 71,000 (fd cap, ᶠ).
+java-nio-stohirov keeps its merged #88 row (102,000); its follow-up PR #303 (`bf4ef5f`, io_uring + SQLite B-tree reads;
+held, not merged: open copies question, see the rule flags) scored 195,000 (19,187 req/s, p95 12.6 / p99 98.5 ms, 0 err,
+60 % CPU, 29 µs/req, 1,249 MB, 2026-11-04; 200,000 failed the 2-minute probe on p99 6.1 s).
 
 **Re-runs.** The first submissions (#2–#29) were scored on a DigitalOcean $12 droplet, which is about 2× slower for
 CPU-bound servers, so those numbers aren't comparable. All of them have now been re-run on this box (finished
@@ -542,6 +545,11 @@ public plugin APIs (a custom page cache through `SQLITE_CONFIG_PCACHE2`, a custo
   code, 415 lines) is byte-identical to #245's and `sha256.h` nearly so (credited in its README since `d7a2e70`);
   `server.c`, HTTP, JWT and the database code are new. Same building-on vs. copies question as #271. Scored as
   submitted (64k at `d7a2e70`, 71k at `1441393`); held open for Arjay.
+- **java-nio-stohirov #303 (follow-up to #88) ports rust-iouring-kensac #264's SQLite layer**: `csrc/shim.c`'s B-tree
+  helpers (open/layout/keyinfo/seek/count_likes/payload) and its checkpoint state machine closely follow #264's
+  `shim.c` (credited in its README and the shim header); the Java io_uring server (FFM) is the author's own. Same
+  building-on vs. copies question as #271. Scored as submitted (195k at `bf4ef5f`; it requires `exp`, fixing #88's
+  flag); held open for Arjay, so #88's row (102k) stays.
 - **Reads can see uncommitted writes** in the same batch: Deno #119 (also serves a snapshot up to 20 ms stale), Zig #125.
 - **start.sh restart loops** (the app restarts itself instead of letting systemd see a crash): Deno #119, c-epoll #64,
   c-iouring-raoz #26 (restarts after a signal exit), go-epoll-Antheurus #65 (worker 0 re-spawns dead workers).
