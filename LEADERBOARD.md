@@ -73,7 +73,7 @@ CPU % and µs/request are the app's own cgroup over the scored hold (µs = app C
 | 10 | c-iouring-public | #158 | C (io_uring, SQLite B-tree reads) | **275,000** ᵇ | 26,227 | 128 | 672 | 0.00 | 80 | 28 | 625 | 2026-10-31 |
 | 11 | crystal-epoll-faustinoaq | #193 | Crystal (io_uring) | **270,000** | 25,693 | 348 | 879 | 0.00 | 92 | 32 | 1,160 | 2026-10-29 |
 | 11 | lexlean-iouring-humuhumu33 | #287 | C (LexLean/Lean 4-generated core, io_uring, SQLite B-tree reads) | **270,000** | 25,873 | 40.2 | 206 | 0.00 | 78 | 27 | 1,067 | 2026-11-03 |
-| 11 | goose-iouring-ahmadsh2007 | #291 | Goose (compiles to C, io_uring, SQLite B-tree reads) | **270,000** | 25,854 | 84.8 | 349 | 0.00 | 78 | 27 | 1,190 | 2026-11-03 |
+| 11 | goose-iouring-ahmadsh2007 | #291 | Goose (compiles to C, io_uring, SQLite B-tree reads) | **270,000** | 25,770 | 261 | 906 | 0.00 | 79 | 28 | 1,106 | 2026-11-04 |
 | 14 | rust-epoll-scooter1337 | #82 | Rust (io_uring) | **264,000** ˣ | 25,147 | 259 | 499 | 0.00 | 84 | 30 | 630 | 2026-10-21 |
 | 15 | c-rawsqlite-larvance | #210 | C (io_uring, SQLite B-tree reads) | **260,000** | 24,914 | 241 | 962 | 0.00 | 88 | 32 | 744 | 2026-11-03 |
 | 16 | v-epoll-i098 | #191 | V (io_uring, SQLite B-tree reads) | **257,000** | 24,766 | 13.5 | 29 | 0.00 | 74 | 27 | 732 | 2026-10-30 |
@@ -545,7 +545,7 @@ public plugin APIs (a custom page cache through `SQLITE_CONFIG_PCACHE2`, a custo
   of #264's io_uring transport and `db.c` adapted #264's B-tree helpers and checkpoint logic (credited). Since `67ef830`
   those files are gone: new `uring.c` (kernel plumbing only) and `sqlite.c`, with the event loop, connection table and
   checkpoint policy in `app.goose` (the request path was already new Goose code). Same open question as #271/#210:
-  building on another entry vs. the copies rule. Scored as submitted (260k at `204b6b0`, 270k at `67ef830`); held open
+  building on another entry vs. the copies rule. Scored as submitted (260k at `204b6b0`, 270k at `67ef830` and `74d44c9`); held open
   for Arjay.
 - **c-iouring-oix7 #296 writes SQLite's private B-tree cursor fields**: `db.c`'s `cur_seek` / `cur_count_likes_fast`
   descend pages with SQLite's internal helpers and set `BtCursor` fields (`ix`, `curFlags`, `info.nKey`, `info.nSize`)
