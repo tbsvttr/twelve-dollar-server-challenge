@@ -661,7 +661,12 @@ static int cc_build_in_dir(const char *wd, const char *rt, const char *cpath,
     /* HPHP_CFLAGS is a debugging aid (sanitizers, coverage); it is appended
      * to the optimisation flag the backend already uses. */
     const char *extra = getenv("HPHP_CFLAGS");
-    const char *opt = dev ? "-O0" : "-O2";
+    /* Release builds can select target-specific optimization flags without
+     * changing HolyPHP source semantics. Keep -O2 as the portable default;
+     * the challenge box can opt into native CPU tuning and LTO at build time. */
+    const char *release_opt = getenv("HPHP_OPT");
+    const char *opt = dev ? "-O0" :
+                      (release_opt && *release_opt ? release_opt : "-O2");
     char optbuf[512];
     if (extra && *extra) {
         snprintf(optbuf, sizeof optbuf, "%s %s", opt, extra);

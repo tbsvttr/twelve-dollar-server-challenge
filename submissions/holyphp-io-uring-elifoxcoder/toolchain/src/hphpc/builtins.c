@@ -3,7 +3,8 @@
 
 Type *ty_int, *ty_i8, *ty_i16, *ty_i32, *ty_i64,
     *ty_float, *ty_f32, *ty_f64, *ty_bool, *ty_string, *ty_void, *ty_mixed,
-    *ty_null;
+    *ty_null, *ty_false;
+static Type *ty_int_false;
 
 static Builtin *tbl = NULL;
 static size_t tbl_len = 0, tbl_cap = 0;
@@ -34,6 +35,13 @@ void builtins_init(void) {
     ty_void = type_new(TY_VOID);
     ty_mixed = type_new(TY_MIXED);
     ty_null = type_new(TY_NULL);
+    ty_false = type_new(TY_BOOL);
+    ty_false->bool_const = 1;
+    ty_int_false = type_new(TY_UNION);
+    ty_int_false->nmembers = 2;
+    ty_int_false->members = xmalloc(sizeof(Type *) * 2);
+    ((Type **)ty_int_false->members)[0] = ty_int;
+    ((Type **)ty_int_false->members)[1] = ty_false;
 
     /* PHP string functions */
     add("strlen",        B_LEN,     ty_int,    false, false);
@@ -54,7 +62,7 @@ void builtins_init(void) {
     add("substr",        B_MISC,    ty_string, false, false);
     add("strstr",        B_STR2,    ty_mixed,  false, false);   /* string|false, PHP-style */
     add("strchr",        B_STR2,    ty_mixed,  false, false);   /* alias, string|false */
-    add("strpos",        B_MISC,    ty_mixed,  false, false);   /* (hay, needle[, offset]) -> int|false, PHP-style */
+    add("strpos",        B_MISC,    ty_int_false, false, false); /* (hay, needle[, offset]) -> int|false */
     add("str_contains",  B_STR2,    ty_bool,   false, false);
     add("str_at_eq",      B_MISC,    ty_bool,   false, false);
     add("str_to_int",      B_MISC,    ty_int,    false, false);
@@ -86,9 +94,11 @@ void builtins_init(void) {
     add("sha256",           B_STR1, ty_string, false, false);
     add("hash_hmac",        B_MISC, ty_mixed,  false, false);  /* (algo, data, key[, raw]) */
     add("jwt_verify",       B_MISC, ty_string, false, false);  /* (token, secret, now) -> payload|"" */
+    add("jwt_verifier_new", B_MISC, ty_string, false, false);  /* (secret) -> reusable HMAC key state */
+    add("jwt_verify_prepared", B_MISC, ty_string, false, false); /* (token, key_state, now) -> payload|"" */
     add("json_str_field",   B_MISC, ty_string, false, false);  /* (json, key) -> value|"" */
     add("json_num_field",   B_MISC, ty_int,    false, false);  /* (json, key) -> int|-1 */
-    add("str_pos_ci",       B_MISC, ty_mixed,  false, false);  /* (hay, needle[, off]) -> int|false */
+    add("str_pos_ci",       B_MISC, ty_int_false, false, false); /* (hay, needle[, off]) -> int|false */
     add("str_prefix_ci",    B_MISC, ty_bool,   false, false);  /* (s, prefix) -> bool */
     add("str_int_range",    B_MISC, ty_int,    false, false);  /* (s, start, end) -> int */
     add("str_trim_range",   B_MISC, ty_string, false, false);  /* (s, start, end) -> trimmed slice */
@@ -296,8 +306,10 @@ void builtins_init(void) {
     add("epoll_del",            B_MISC, ty_bool,   false, false);
     add("epoll_mod",            B_MISC, ty_bool,   false, false);
     add("epoll_wait2",          B_MISC, ty_bool,   false, false);
+    add("epoll_wait_iarr2",     B_MISC, ty_bool,   false, false);
     add("epoll_wait_into",      B_MISC, type_array_of(ty_mixed), false, false);
     add("stream_recv",          B_MISC, ty_string, false, false);
+    add("stream_recv_release",  B_MISC, ty_bool,   false, false);
     add("stream_send",          B_MISC, ty_int,    false, false);
     add("stream_send2",         B_MISC, ty_int,    false, false);
     add("stream_send_nb",       B_MISC, ty_int,    false, false);
@@ -884,17 +896,28 @@ void builtins_init(void) {
     add("bt_rowid",             B_MISC, ty_int,    false, false);
     add("bt_payload_ptr",       B_MISC, ty_int,    false, false);
     add("bt_payload_size",      B_MISC, ty_int,    false, false);
+    add("bt_payload_pin",       B_MISC, ty_int,    false, false);
+    add("bt_page_release",      B_MISC, ty_bool,   false, false);
     add("bt_cols",              B_MISC, ty_int,    false, false);
     add("bt_col_off",           B_MISC, ty_int,    false, false);
     add("bt_col_len",           B_MISC, ty_int,    false, false);
     add("bt_col_int",           B_MISC, ty_int,    false, false);
+    add("bt_read",              B_MISC, ty_int,    false, false);
     add("bt_count_key",        B_MISC, ty_int,    false, false);
+    add("bt_count_range",      B_MISC, ty_int,    false, false);
+    add("bt_multi_seek",       B_MISC, ty_int,    false, false);
+    add("bt_multi_payloads",   B_MISC, ty_bool,   false, false);
+    add("bt_multi_release",    B_MISC, ty_bool,   false, false);
     add("iarr_new",            B_MISC, ty_int,    false, false);
+    add("iarr_release",        B_MISC, ty_bool,   false, false);
     add("iarr_get",            B_MISC, ty_int,    false, false);
     add("iarr_set",            B_MISC, ty_bool,   false, false);
+    add("iarr_len",            B_MISC, ty_int,    false, false);
     add("sb_new",               B_MISC, ty_int,    false, false);
     add("sb_put",               B_MISC, ty_bool,   false, false);
     add("sb_bytes",             B_MISC, ty_bool,   false, false);
+    add("sb_data_ptr",          B_MISC, ty_int,    false, false);
+    add("sb_discard",           B_MISC, ty_bool,   false, false);
     add("sb_int",               B_MISC, ty_bool,   false, false);
     add("sb_json",              B_MISC, ty_bool,   false, false);
     add("sb_json_str",          B_MISC, ty_bool,   false, false);
@@ -906,6 +929,10 @@ void builtins_init(void) {
     add("stream_send_sb",       B_MISC, ty_int,    false, false);
     add("int_digits",           B_MISC, ty_int,    false, false);
     add("sqlite_open",          B_MISC, ty_int,    false, false);  /* (path) -> handle|0 */
+    add("sqlite_open_vfs",      B_MISC, ty_int,    false, false);  /* (path, vfs) -> handle|0 */
+    add("sqlite_bg_checkpoint_start", B_MISC, ty_bool, false, false); /* (db, path, frames, hold_ms) */
+    add("sqlite_bg_checkpoint_hold", B_MISC, ty_bool, false, false); /* (db) */
+    add("sqlite_bg_checkpoint_active", B_MISC, ty_bool, false, false); /* (db) */
     add("sqlite_close",         B_MISC, ty_bool,   false, false);
     add("sqlite_exec",          B_MISC, ty_bool,   false, false);  /* (db, sql) */
     add("sqlite_prepare",       B_MISC, ty_int,    false, false);  /* (db, sql) -> stmt|0 */

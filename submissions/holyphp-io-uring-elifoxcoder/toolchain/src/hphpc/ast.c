@@ -112,6 +112,8 @@ const Type *type_without_null(const Type *t) {
 bool type_same_member(const Type *a, const Type *b) {
     if (!a || !b) return false;
     if (a->kind != b->kind) return false;
+    if (a->kind == TY_BOOL && (a->bool_const || b->bool_const))
+        return a->bool_const != 0 && a->bool_const == b->bool_const;
     switch (a->kind) {
     case TY_CLASS: case TY_STRUCT: case TY_INTERFACE: case TY_ENUM: case TY_FN:
         return a->name && b->name && strcmp(a->name, b->name) == 0;

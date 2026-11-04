@@ -273,8 +273,10 @@ class Server {
     pub int $srv = 0;
     pub int $db = 0;
     pub string $secret = "";
+    pub string $jwtVerifier = "";
     pub int $start = 0;
     pub int $sweep = 0;
+    pub bool $bgCheckpoint = false;
 
     /* per-connection state, keyed by socket fd. socks/lasts are fixed-size
      * int64 arrays indexed by fd (8 bytes a slot, one pointer add) instead of
@@ -290,18 +292,24 @@ class Server {
 
     /* ready list, kept between rounds so a round allocates no array */
     pub array $ready = [];
+    pub int $readyIds = 0;
+    pub int $writableIds = 0;
+    pub bool $fdArrays = false;
 
     /* response header prefixes per status code, built once */
     pub array $hdr = [];
 
     /* B-tree cursors for the feed fast path (0 when unavailable) */
     pub int $btPosts = 0;
+    pub int $btFeed = 0;
     pub int $btLikes = 0;
     pub int $btUsers = 0;
 
     /* Connection shedding: computed from the process's real fd limit */
     pub int $shedAt = 58000;
     pub int $paused = 0;
+    pub int $idleTimeout = 90;
+    pub int $idleSweep = 0;
 
     /* Responses that did not fit into the socket buffer: the rest is written
      * when epoll reports EPOLLOUT instead of sleeping in the loop. */
@@ -331,6 +339,10 @@ class Server {
     pub bool $statsmode = false;
     pub bool $ring = false;
     pub bool $feedjson = false;
+    pub bool $feedBatchAuthors = false;
+    pub bool $feedBatchUsers = false;
+    pub bool $postSendBuilder = false;
+    pub bool $sparseBufs = false;
     pub int $reqs = 0;
     pub int $reqsBase = 0;
 
@@ -338,12 +350,14 @@ class Server {
 
     public function open_bt_cursors(): void {
         if ($this->btPosts == 0) { $this->btPosts = bt_open($this->db, "posts", 0); }
+        if ($this->btFeed == 0) { $this->btFeed = bt_open($this->db, "posts_created_at_id_idx", 1); }
         if ($this->btLikes == 0) { $this->btLikes = bt_open($this->db, "likes_post_id_idx", 1); }
         if ($this->btUsers == 0) { $this->btUsers = bt_open($this->db, "users", 0); }
     }
 
     public function close_bt_cursors(): void {
         if ($this->btPosts != 0) { bt_close($this->btPosts); $this->btPosts = 0; }
+        if ($this->btFeed != 0) { bt_close($this->btFeed); $this->btFeed = 0; }
         if ($this->btLikes != 0) { bt_close($this->btLikes); $this->btLikes = 0; }
         if ($this->btUsers != 0) { bt_close($this->btUsers); $this->btUsers = 0; }
     }
@@ -354,8 +368,17 @@ class Server {
         $sec = getenv("JWT_SECRET");
         if ($sec === false || $sec == "") { $sec = "twelve-dollar-challenge"; }
         $this->secret = $sec;
+        $this->jwtVerifier = jwt_verifier_new($sec);
+        $this->postSendBuilder = (getenv("HPHP_POST_SB") == "1");
         if (getenv("HPHP_STATS") == "1") { $this->statsmode = true; }
+        $idleEnv = getenv("HPHP_IDLE_TIMEOUT");
+        if ($idleEnv != "") {
+            $idleSecs = intval($idleEnv);
+            if ($idleSecs >= 1 && $idleSecs <= 3600) { $this->idleTimeout = $idleSecs; }
+        }
 
+        $bgCheckpoint = getenv("HPHP_BG_CHECKPOINT") == "1";
+        $this->bgCheckpoint = $bgCheckpoint;
         $db = sqlite_open($path);
         if ($db == 0) {
             echo "fatal: cannot open sqlite database " . $path . "\n";
@@ -365,18 +388,25 @@ class Server {
         sqlite_busy_timeout($db, 5000);
         sqlite_exec($db, "PRAGMA journal_mode=WAL");
         sqlite_exec($db, "PRAGMA synchronous=NORMAL");
-        /* WAL in exclusive mode: one process owns the database, so SQLite
-         * keeps the WAL index in memory instead of taking the -shm file
-         * locks on every read and commit (they showed up in the profile). */
-        sqlite_exec($db, "PRAGMA locking_mode=EXCLUSIVE");
+        /* Both connections use SQLite's default unix VFS so they see the same
+         * shared WAL index. The unix-excl VFS is for single-connection use. */
+        if (!$bgCheckpoint) { sqlite_exec($db, "PRAGMA locking_mode=EXCLUSIVE"); }
         sqlite_exec($db, "PRAGMA temp_store=MEMORY");
         sqlite_exec($db, "PRAGMA cache_size=-65536");
-        sqlite_exec($db, "PRAGMA mmap_size=268435456");
+        if (getenv("HPHP_MMAP") == "1") { sqlite_exec($db, "PRAGMA mmap_size=268435456"); }
+        else { sqlite_exec($db, "PRAGMA mmap_size=0"); }
         sqlite_exec($db, "PRAGMA foreign_keys=OFF");
-        /* The default 1000-page checkpoint runs every few commits on the
-         * event loop; 4000 keeps the WAL small enough that page lookups stay
-         * cheap without checkpointing constantly. */
-        sqlite_exec($db, "PRAGMA wal_autocheckpoint=4000");
+        if ($bgCheckpoint) {
+            sqlite_exec($db, "PRAGMA wal_autocheckpoint=0");
+            if (!sqlite_bg_checkpoint_start($db, $path, 4096, 250)) {
+                echo "fatal: cannot start SQLite background checkpoint worker\n";
+                return false;
+            }
+        } else {
+            /* Keep occasional checkpoints in the event loop when the optional
+             * worker is disabled. */
+            sqlite_exec($db, "PRAGMA wal_autocheckpoint=4000");
+        }
 
         /* The response bodies are rendered by SQLite's JSON1 functions, in
          * the exact key order the spec wants. The feed's ordering comes from
@@ -390,12 +420,7 @@ class Server {
            . ") ) || '}' "
            . "FROM (SELECT p.id, p.body, p.created_at, u.username AS author "
            . "FROM posts p JOIN users u ON u.id = p.user_id "
-           /* ids are assigned in insert order and created_at is set from the
-            * clock at the same moment, so id DESC is the same order as
-            * created_at DESC, id DESC (verified byte-identical against
-            * test/golden/feed.json) and it walks the rowid index instead of
-            * a second index plus scattered row lookups. */
-           . "ORDER BY p.id DESC LIMIT 20) p";
+           . "ORDER BY p.created_at DESC, p.id DESC LIMIT 20) p";
         $this->feed = sqlite_prepare($db, $q);
         if ($this->feed == 0) {
             echo "fatal: feed query: " . sqlite_errmsg($db) . "\n";
@@ -467,10 +492,6 @@ class Server {
                 return false;
             }
         }
-        /* Generic B-tree cursors are reopened around write batches so SQLite
-         * never has to save a low-level cursor position across an INSERT. */
-        $this->open_bt_cursors();
-
         $this->srv = intval($srv);
         /* TCP_NODELAY is inherited by accepted sockets on Linux, so set it
          * once on the listener instead of paying a setsockopt per accepted
@@ -478,10 +499,12 @@ class Server {
         stream_set_nodelay($srv);
         epoll_add($this->srv);
         /* Handles are either real fds (< 65536) or direct-descriptor handles
-         * (65536 + ring * 65536 + slot). Up to 5 rings x 65535 slots fit in
-         * 524288 int slots (real fds and direct handles share the space). */
-        $this->socks = iarr_new(524288);
-        $this->lasts = iarr_new(524288);
+         * (65536 + ring * 65536 + slot). The runtime supports eight rings;
+         * reserve the full handle range even when fewer rings start. */
+        $this->socks = iarr_new(655360);
+        $this->idleSweep = 1;
+        if (getenv("HPHP_IDLE_SWEEP") == "0") { $this->idleSweep = 0; }
+        if ($this->idleSweep == 1) { $this->lasts = iarr_new(655360); }
 
         /* Shed only when the process is really near its descriptor limit.
          * The box sets LimitNOFILE; a hard 58,000 would close every response
@@ -498,12 +521,9 @@ class Server {
             $this->shedAt = $lim - 4096;
             if ($this->shedAt < 32000) { $this->shedAt = 32000; }
             if ($this->shedAt > $lim) { $this->shedAt = $lim; }
-            /* Keep-alive holding is capped by the ring's armed-recv capacity
-             * (the kernel caps the SQ ring at 32768, the default track limit
-             * is 28000). Anything beyond that pays accept/close per request
-             * -- the park-and-retry regime the 145k box run measured at
-             * 60 us/req; the epoll-hold alternative measured at 76 us/req. */
-            if (uring_active() && $this->shedAt > 28000) { $this->shedAt = 28000; }
+            /* The runtime flushes submitted SQEs as needed; multishot receives
+             * do not reserve one SQ slot for each live connection. The real
+             * descriptor limit, with this reserve, is the applicable cap. */
         }
         /* Operator override (tests, capacity experiments): the shed regime is
          * the churn regime, so being able to force it locally is how the
@@ -518,9 +538,20 @@ class Server {
         $texts = ["OK", "Created", "Bad Request", "Unauthorized",
                   "Not Found", "Internal Server Error", "Service Unavailable"];
         $this->ring = uring_active();
+        $this->fdArrays = (getenv("HPHP_FD_ARRAYS") == "1");
+        if ($this->fdArrays) {
+            $this->readyIds = iarr_new(262144);
+            $this->writableIds = iarr_new(262144);
+        }
         /* A/B knob: HPHP_FEED=json forces the native JSON1 feed query instead
          * of the VM B-tree walk (operator measurement, unset in the bench). */
         $this->feedjson = (getenv("HPHP_FEED") == "json");
+        $this->feedBatchAuthors = (getenv("HPHP_FEED_BATCH_AUTHORS") == "1");
+        $this->feedBatchUsers = (getenv("HPHP_FEED_BATCH_USERS") == "1");
+        /* The hot path does not need one empty PHP-array entry per idle
+         * connection. Keep it opt-out so direct binary launches get the same
+         * sparse receive-state layout as start.sh. */
+        $this->sparseBufs = (getenv("HPHP_SPARSE_BUFS") != "0");
         for ($i = 0; $i < 7; $i++) {
             $this->hdr[$codes[$i]] = "HTTP/1.1 " . $codes[$i] . " " . $texts[$i]
                 . "\r\nContent-Type: application/json\r\nContent-Encoding: identity"
@@ -534,6 +565,24 @@ class Server {
     /* -------------------------------------------------------- main loop */
 
     public function handle_ready(): void {
+        if ($this->fdArrays) {
+            $i = 0; $n = iarr_len($this->writableIds);
+            while ($i < $n) {
+                $fd = iarr_get($this->writableIds, $i);
+                if (isset($this->out[$fd])) { $this->flush_fd($fd); }
+                $i = $i + 1;
+            }
+            $i = 0; $n = iarr_len($this->readyIds);
+            while ($i < $n) {
+                $fd = iarr_get($this->readyIds, $i);
+                if ($fd == $this->srv) { $this->accept_all(); $i = $i + 1; continue; }
+                if (!(iarr_get($this->socks, $fd) != 0)) { $i = $i + 1; continue; }
+                if (isset($this->out[$fd])) { $i = $i + 1; continue; }
+                $this->read_fd($fd);
+                $i = $i + 1;
+            }
+            return;
+        }
         /* finish pending responses before reading new requests */
         foreach ($this->writable as $w) {
             $fd = intval($w);
@@ -573,21 +622,26 @@ class Server {
              * by scope_end(): no per-request malloc survives the round. */
             scope_begin();
 
-            epoll_wait2($this->ready, $this->writable, 50);
+            if ($this->fdArrays) { epoll_wait_iarr2($this->readyIds, $this->writableIds, 50); }
+            else { epoll_wait2($this->ready, $this->writable, 50); }
             $this->handle_ready();
             /* A transaction has a fixed cost; when only a few writes are
              * pending, wait up to a millisecond for more requests before
              * committing. That batches them without hurting the tail much. */
             $n = count($this->pending);
             if ($n > 0 && $n < 32) {
-                epoll_wait2($this->ready, $this->writable, 1);
+                if ($this->fdArrays) { epoll_wait_iarr2($this->readyIds, $this->writableIds, 1); }
+                else { epoll_wait2($this->ready, $this->writable, 1); }
                 $this->handle_ready();
             }
             $this->execute_writes();
-
             /* Idle sweep: a bounded slice per cycle, so 110k sockets never
              * turn into one long stall. */
-            $this->expire(time());
+            if ($this->idleSweep == 1) { $this->expire(time()); }
+
+            /* Match Rust's batch-scoped B-tree snapshot and release the read
+             * transaction before the next poll/checkpoint opportunity. */
+            $this->close_bt_cursors();
 
             scope_end();
         }
@@ -609,10 +663,10 @@ class Server {
             $fd = intval($s);
             if ($fd <= 0) { return; }
             iarr_set($this->socks, $fd, $fd);
-            $this->bufs[$fd] = "";
-            iarr_set($this->lasts, $fd, time());
+            if (!$this->sparseBufs) { $this->bufs[$fd] = ""; }
+            if ($this->idleSweep == 1) { iarr_set($this->lasts, $fd, time()); }
             $this->nconn = $this->nconn + 1;
-            $this->sockList[] = $fd;
+            if ($this->idleSweep == 1) { $this->sockList[] = $fd; }
             epoll_add($fd);
         }
     }
@@ -636,7 +690,7 @@ class Server {
             $this->sweepPos = $this->sweepPos + 1;
             $budget = $budget - 1;
             if (!(iarr_get($this->socks, $fd) != 0)) { continue; }
-            if ($now - iarr_get($this->lasts, $fd) >= 90) { $this->close_fd($fd); }
+            if ($now - iarr_get($this->lasts, $fd) >= $this->idleTimeout) { $this->close_fd($fd); }
         }
         if ($this->sweepPos >= $n) {
             $this->sweepPos = 0;
@@ -644,7 +698,7 @@ class Server {
             if ($n > $this->nconn * 2 + 1024) {
                 $this->sockList = [];
                 $k = 0;
-                while ($k < 524288) {
+                while ($k < 655360) {
                     if (iarr_get($this->socks, $k) != 0) { $this->sockList[] = $k; }
                     $k = $k + 1;
                 }
@@ -656,7 +710,7 @@ class Server {
         if (iarr_get($this->socks, $fd) != 0) { $this->nconn = $this->nconn - 1; }
         iarr_set($this->socks, $fd, 0);
         unset($this->bufs[$fd]);
-        iarr_set($this->lasts, $fd, 0);
+        if ($this->idleSweep == 1) { iarr_set($this->lasts, $fd, 0); }
         unset($this->out[$fd]);
         unset($this->closing[$fd]);
         epoll_del($fd);
@@ -679,16 +733,24 @@ class Server {
         /* $this->bufs[$fd] is "" (static) or a heap copy of a partial
          * request; the concatenation lives in the request scope and is
          * either consumed here or copied back with str_persist(). */
-        iarr_set($this->lasts, $fd, time());
+        if ($this->idleSweep == 1) { iarr_set($this->lasts, $fd, time()); }
+        if ($this->sparseBufs && !isset($this->bufs[$fd])) {
+            $this->parse($fd, $chunk);
+            stream_recv_release($fd);
+            return;
+        }
         $old = $this->bufs[$fd];
         if ($old == "") {
             /* the common case: a whole request in one recv, no copy at all */
             $this->parse($fd, $chunk);
+            stream_recv_release($fd);
         } else {
             $buf = $old . $chunk;
             str_free($old);
-            $this->bufs[$fd] = "";
+            if ($this->sparseBufs) { unset($this->bufs[$fd]); }
+            else { $this->bufs[$fd] = ""; }
             $this->parse($fd, $buf);
+            stream_recv_release($fd);
         }
     }
 
@@ -696,14 +758,16 @@ class Server {
         if ($this->statsmode) { $this->reqs++; }
         $buf = $in;
         while (true) {
+            $bufLen = strlen($buf);
             $he = strpos($buf, "\r\n\r\n");
             if ($he === false) {
-                if (strlen($buf) > 131072) {
+                if ($bufLen > 131072) {
                     $this->close_fd($fd);
                     return;
                 }
-                if (strlen($buf) == 0) {
-                    $this->bufs[$fd] = "";
+                if ($bufLen == 0) {
+                    if ($this->sparseBufs) { unset($this->bufs[$fd]); }
+                    else { $this->bufs[$fd] = ""; }
                 } else {
                     $this->bufs[$fd] = str_persist($buf);
                 }
@@ -712,9 +776,11 @@ class Server {
             /* request line: METHOD SP PATH SP VERSION — compare in place, no
              * substrings for the hot GET routes */
             $sp1 = strpos($buf, " ");
-            if ($sp1 === false || $sp1 > $he) { $this->close_fd($fd); return; }
+            if ($sp1 === false) { $this->close_fd($fd); return; }
+            if ($sp1 > $he) { $this->close_fd($fd); return; }
             $sp2 = strpos($buf, " ", $sp1 + 1);
-            if ($sp2 === false || $sp2 > $he) { $this->close_fd($fd); return; }
+            if ($sp2 === false) { $this->close_fd($fd); return; }
+            if ($sp2 > $he) { $this->close_fd($fd); return; }
             $ps = intval($sp1) + 1;
             $pl = intval($sp2) - $ps;
 
@@ -732,7 +798,7 @@ class Server {
                 }
                 if (!(iarr_get($this->socks, $fd) != 0)) { return; }
                 $np = $he + 4;                          /* EXPERIMENT R */
-                if ($np == strlen($buf)) { return; }    /* no substr for the
+                if ($np == $bufLen) { return; }          /* no substr for the
                                                            last request in
                                                            the packet */
                 $buf = substr($buf, $np);
@@ -766,7 +832,7 @@ class Server {
             }
 
             $start = $he + 4;
-            if (strlen($buf) - $start < $cl) {
+            if ($bufLen - $start < $cl) {
                 $this->bufs[$fd] = str_persist($buf);
                 return;
             }
@@ -805,7 +871,8 @@ class Server {
     }
 
     public function on_feed(int $fd): void {
-        if (!$this->feedjson && $this->btPosts != 0 && $this->btLikes != 0 && $this->btUsers != 0) {
+        if (!$this->feedjson && $this->btFeed == 0) { $this->open_bt_cursors(); }
+        if (!$this->feedjson && $this->btPosts != 0 && $this->btFeed != 0 && $this->btLikes != 0 && $this->btUsers != 0) {
             $this->on_feed_bt($fd);
             return;
         }
@@ -819,12 +886,361 @@ class Server {
         $this->send_json($fd, 200, $b);
     }
 
-    /* The feed from SQLite's B-tree cursors instead of SQL. Both walks run at
-     * once: posts descend the rowid index, the likes index descends in the
-     * same (post_id) order, so the likes of the post being emitted are always
-     * the next index entries. Records are decoded with raw pointers and
-     * escaped straight into the response, so a row allocates nothing. */
+    /* Collect the newest feed IDs and their like histogram, then read and
+     * render each post directly into the response builder without row objects. */
+
+
+
     public function on_feed_bt(int $fd): void {
+        if ($this->feedBatchUsers && $this->on_feed_bt_batch_users($fd)) { return; }
+        if ($this->feedBatchAuthors && $this->on_feed_bt_batch_authors($fd)) { return; }
+        $this->on_feed_bt_legacy($fd);
+    }
+
+    /* Mirror the leader's batched author lookup with the generic B-tree APIs:
+     * collect the user rowids while scanning posts, descend the users tree for
+     * all of them together, then render in feed order from the pinned pages.
+     * Every hit is released before returning; this is per-request work, not a
+     * cross-request result cache. */
+    public function on_feed_bt_batch_authors(int $fd): bool {
+        $ids = iarr_new(20);
+        $uids = iarr_new(20);
+        $hits = iarr_new(60);       /* found, payload pointer, payload size */
+        $postHits = iarr_new(60);   /* found, payload pointer, payload size */
+        $postMeta = iarr_new(80); /* body offset/len and created offset/len */
+        $counts = iarr_new(256);
+        $r = bt_first($this->btFeed);
+        $n = 0;
+        $ok = true;
+        while ($r == 1 && $n < 20) {
+            if (bt_cols($this->btFeed) < 2) { $ok = false; break; }
+            iarr_set($ids, $n, bt_col_int(1));
+            $n = $n + 1;
+            $r = bt_next($this->btFeed);
+        }
+        if (!$ok) {
+            iarr_release($ids); iarr_release($uids); iarr_release($hits);
+            iarr_release($postHits); iarr_release($postMeta);
+            iarr_release($counts);
+            return false;
+        }
+        if ($n == 0) {
+            iarr_release($ids); iarr_release($uids); iarr_release($hits);
+            iarr_release($postHits); iarr_release($postMeta);
+            iarr_release($counts);
+            $this->send_json($fd, 200, '{"posts":[]}');
+            return true;
+        }
+
+        $lo = iarr_get($ids, 0);
+        $hi = $lo;
+        $i = 1;
+        while ($i < $n) {
+            $id = iarr_get($ids, $i);
+            if ($id < $lo) { $lo = $id; }
+            if ($id > $hi) { $hi = $id; }
+            $i = $i + 1;
+        }
+        if ($hi - $lo >= 256 || bt_count_range($this->btLikes, $lo, $hi, $counts) != 0) {
+            iarr_release($ids); iarr_release($uids); iarr_release($hits);
+            iarr_release($postHits); iarr_release($postMeta);
+            iarr_release($counts);
+            return false;
+        }
+
+        /* Batch the post rowid lookups too. This avoids a PHP/runtime cursor
+         * call for every row and keeps each payload page pinned through JSON
+         * rendering. The generic B-tree primitive returns raw SQLite records;
+         * HolyPHP still owns the feed ordering and response logic. */
+        $postMulti = bt_multi_seek($this->btPosts, $ids, $n);
+        if ($postMulti == 0 || !bt_multi_payloads($postMulti, $postHits)) { $ok = false; }
+        $i = 0;
+        while ($ok && $i < $n) {
+            if (iarr_get($postHits, $i * 3) == 0) { $ok = false; break; }
+            $pp = iarr_get($postHits, $i * 3 + 1);
+            $ps = iarr_get($postHits, $i * 3 + 2);
+            $uid: int = 0;
+            $bo: int = 0;
+            $bl: int = 0;
+            $co: int = 0;
+            $cl: int = 0;
+            $parsed: bool = false;
+            unsafe {
+                $q = $pp as *u8;
+                if ($ps >= 5) {
+                    $hdr = *$q & 255;
+                    $st1 = *($q + 2) & 255;
+                    $st2 = *($q + 3) & 255;
+                    $k = 4;
+                    $valid = true;
+                    if ($st2 >= 128) {
+                        if ($k >= $ps) { $valid = false; }
+                        else { $st2 = (($st2 & 127) << 7) | (*($q + $k) & 255); $k = $k + 1; }
+                    }
+                    if ($valid && $k < $ps) {
+                        $st3 = *($q + $k) & 255;
+                        $ul = 0;
+                        if ($st1 >= 1 && $st1 <= 4) { $ul = $st1; }
+                        else if ($st1 == 5) { $ul = 6; }
+                        else if ($st1 == 6) { $ul = 8; }
+                        else if ($st1 == 9) { $uid = 1; }
+                        if (($st2 >= 13 && ($st2 & 1) == 1) && ($st3 >= 13 && ($st3 & 1) == 1)) {
+                            $bl = ($st2 - 13) >> 1;
+                            $cl = ($st3 - 13) >> 1;
+                            $bo = $hdr + $ul;
+                            $co = $bo + $bl;
+                            if ($hdr > 0 && $hdr <= $ps && $co + $cl <= $ps) {
+                                $j = 0;
+                                while ($j < $ul) { $uid = ($uid << 8) | (*($q + $hdr + $j) & 255); $j = $j + 1; }
+                                $parsed = true;
+                            }
+                        }
+                    }
+                }
+            }
+            if (!$parsed || $uid <= 0) { $ok = false; break; }
+            iarr_set($uids, $i, $uid);
+            iarr_set($postMeta, $i * 4, $bo);
+            iarr_set($postMeta, $i * 4 + 1, $bl);
+            iarr_set($postMeta, $i * 4 + 2, $co);
+            iarr_set($postMeta, $i * 4 + 3, $cl);
+            $i = $i + 1;
+        }
+        if (!$ok) {
+            if ($postMulti != 0) { bt_multi_release($postMulti); }
+            iarr_release($ids); iarr_release($uids); iarr_release($hits);
+            iarr_release($postHits); iarr_release($postMeta);
+            iarr_release($counts);
+            return false;
+        }
+
+        $multi = bt_multi_seek($this->btUsers, $uids, $n);
+        if ($multi == 0 || !bt_multi_payloads($multi, $hits)) {
+            if ($multi != 0) { bt_multi_release($multi); }
+            bt_multi_release($postMulti);
+            iarr_release($ids); iarr_release($uids); iarr_release($hits);
+            iarr_release($postHits); iarr_release($postMeta);
+            iarr_release($counts);
+            return false;
+        }
+        $i = 0;
+        while ($i < $n) {
+            if (iarr_get($hits, $i * 3) == 0) { $ok = false; break; }
+            $i = $i + 1;
+        }
+
+        $sb = 0;
+        if ($ok) {
+            $sb = sb_new();
+            sb_reserve($sb, 12288);
+            sb_put($sb, '{"posts":[');
+            $i = 0;
+            while ($ok && $i < $n) {
+                $id = iarr_get($ids, $i);
+                $p = iarr_get($postHits, $i * 3 + 1);
+                $bo = iarr_get($postMeta, $i * 4);
+                $bl = iarr_get($postMeta, $i * 4 + 1);
+                $co = iarr_get($postMeta, $i * 4 + 2);
+                $cl = iarr_get($postMeta, $i * 4 + 3);
+                $up = iarr_get($hits, $i * 3 + 1);
+                $us = iarr_get($hits, $i * 3 + 2);
+                $uh: int = 0;
+                $al: int = 0;
+                $a: int = 0;
+                unsafe {
+                    $uq = $up as *u8;
+                    $uh = *$uq & 255;
+                    $st: int = *($uq + 2) & 255;
+                    if ($st >= 128) { $st = (($st & 127) << 8) | (*($uq + 3) & 255); }
+                    if ($st >= 13 && ($st & 1) == 1) { $al = ($st - 13) >> 1; }
+                    else { $ok = false; }
+                    if ($uh <= 0 || $uh + $al > $us) { $ok = false; }
+                    $a = $up + $uh;
+                }
+                if (!$ok) { break; }
+
+                if ($i > 0) { sb_put($sb, ","); }
+                sb_put($sb, '{"id":');
+                sb_int($sb, $id);
+                sb_put($sb, ',"body":');
+                sb_json($sb, $p + $bo, $bl);
+                sb_put($sb, ',"created_at":');
+                sb_json($sb, $p + $co, $cl);
+                sb_put($sb, ',"author":');
+                sb_json($sb, $a, $al);
+                sb_put($sb, ',"like_count":');
+                sb_int($sb, iarr_get($counts, $id - $lo));
+                sb_put($sb, "}");
+                $i = $i + 1;
+            }
+        }
+
+        if (!$ok) {
+            if ($sb != 0) { sb_discard($sb); }
+            bt_multi_release($multi);
+            bt_multi_release($postMulti);
+            iarr_release($ids); iarr_release($uids); iarr_release($hits);
+            iarr_release($postHits); iarr_release($postMeta);
+            iarr_release($counts);
+            return false;
+        }
+        sb_put($sb, "]}");
+        $blen = sb_len($sb);
+        $shed = $this->nconn >= $this->shedAt;
+        if ($shed) {
+            sb_prepend($sb, $this->hdr[200] . $blen . "\r\nConnection: close\r\n\r\n");
+        } else {
+            sb_prepend($sb, $this->hdr[200] . $blen . "\r\nConnection: keep-alive\r\n\r\n");
+        }
+        bt_multi_release($multi);
+        bt_multi_release($postMulti);
+        iarr_release($ids); iarr_release($uids); iarr_release($hits);
+        iarr_release($postHits); iarr_release($postMeta);
+        iarr_release($counts);
+        $sent = stream_send_sb($fd, $sb);
+        if ($sent == -2) { $this->close_fd($fd); return true; }
+        if ($shed) { $this->close_fd($fd); }
+        return true;
+    }
+
+    /* Like the legacy path, walk posts and likes with their live cursors. Pin
+     * each post's page, then resolve all authors in one sorted B-tree descent.
+     * This removes the per-post users-table seek while keeping row selection,
+     * output order, and JSON rendering in HolyPHP. */
+    public function on_feed_bt_batch_users(int $fd): bool {
+        $rows = iarr_new(240);      /* 12 integers per post */
+        $uids = iarr_new(20);
+        $hits = iarr_new(60);       /* found, payload pointer, payload size */
+        $lr = bt_last($this->btLikes);
+        $lpid = -1;
+        $r = bt_last($this->btPosts);
+        $n = 0;
+        $pinned = 0;
+        $ok = true;
+
+        while ($r == 1 && $n < 20) {
+            $base = $n * 12;
+            $id = bt_rowid($this->btPosts);
+            $p = bt_payload_ptr($this->btPosts);
+            if ($p == 0 || bt_cols($this->btPosts) < 4) { $ok = false; break; }
+            $uid = bt_col_int(1);
+            $bo = bt_col_off(2);
+            $bl = bt_col_len(2);
+            $co = bt_col_off(3);
+            $cl = bt_col_len(3);
+            $pin = bt_payload_pin($this->btPosts);
+            if ($pin == 0) { $ok = false; break; }
+
+            $cnt = 0;
+            while ($lr == 1) {
+                if ($lpid < 0) {
+                    if (bt_cols($this->btLikes) < 1) { break; }
+                    $lpid = bt_col_int(0);
+                }
+                if ($lpid != $id) { break; }
+                $cnt = $cnt + 1;
+                $lpid = -1;
+                $lr = bt_prev($this->btLikes);
+            }
+
+            iarr_set($rows, $base, $id);
+            iarr_set($rows, $base + 1, $uid);
+            iarr_set($rows, $base + 2, $p);
+            iarr_set($rows, $base + 3, bt_payload_size($this->btPosts));
+            iarr_set($rows, $base + 4, $bo);
+            iarr_set($rows, $base + 5, $bl);
+            iarr_set($rows, $base + 6, $co);
+            iarr_set($rows, $base + 7, $cl);
+            iarr_set($rows, $base + 8, $cnt);
+            iarr_set($rows, $base + 9, $pin);
+            iarr_set($uids, $n, $uid);
+            $pinned = $pinned + 1;
+            $n = $n + 1;
+            $r = bt_prev($this->btPosts);
+        }
+        if (!$ok) {
+            $i = 0;
+            while ($i < $pinned) { bt_page_release(iarr_get($rows, $i * 12 + 9)); $i = $i + 1; }
+            iarr_release($rows); iarr_release($uids); iarr_release($hits);
+            return false;
+        }
+        if ($n == 0) {
+            iarr_release($rows); iarr_release($uids); iarr_release($hits);
+            $this->send_json($fd, 200, '{"posts":[]}');
+            return true;
+        }
+
+        $multi = bt_multi_seek($this->btUsers, $uids, $n);
+        if ($multi == 0 || !bt_multi_payloads($multi, $hits)) { $ok = false; }
+        $i = 0;
+        while ($ok && $i < $n) {
+            $base = $i * 12;
+            if (iarr_get($hits, $i * 3) == 0) { $ok = false; break; }
+            $up = iarr_get($hits, $i * 3 + 1);
+            $us = iarr_get($hits, $i * 3 + 2);
+            $al = 0;
+            $a = 0;
+            unsafe {
+                $uq = $up as *u8;
+                $uh = *$uq & 255;
+                $st = *($uq + 2) & 255;
+                if ($st >= 128 && $us > 3) { $st = (($st & 127) << 8) | (*($uq + 3) & 255); }
+                if ($st >= 13 && ($st & 1) == 1) { $al = ($st - 13) >> 1; }
+                else { $ok = false; }
+                if ($uh <= 0 || $uh + $al > $us) { $ok = false; }
+                $a = $up + $uh;
+            }
+            iarr_set($rows, $base + 10, $a);
+            iarr_set($rows, $base + 11, $al);
+            $i = $i + 1;
+        }
+        if (!$ok) {
+            if ($multi != 0) { bt_multi_release($multi); }
+            $i = 0;
+            while ($i < $pinned) { bt_page_release(iarr_get($rows, $i * 12 + 9)); $i = $i + 1; }
+            iarr_release($rows); iarr_release($uids); iarr_release($hits);
+            return false;
+        }
+
+        $sb = sb_new();
+        sb_reserve($sb, 12288);
+        sb_put($sb, '{"posts":[');
+        $i = 0;
+        while ($i < $n) {
+            $base = $i * 12;
+            if ($i > 0) { sb_put($sb, ','); }
+            sb_put($sb, '{"id":');
+            sb_int($sb, iarr_get($rows, $base));
+            sb_put($sb, ',"body":');
+            sb_json($sb, iarr_get($rows, $base + 2) + iarr_get($rows, $base + 4), iarr_get($rows, $base + 5));
+            sb_put($sb, ',"created_at":');
+            sb_json($sb, iarr_get($rows, $base + 2) + iarr_get($rows, $base + 6), iarr_get($rows, $base + 7));
+            sb_put($sb, ',"author":');
+            sb_json($sb, iarr_get($rows, $base + 10), iarr_get($rows, $base + 11));
+            sb_put($sb, ',"like_count":');
+            sb_int($sb, iarr_get($rows, $base + 8));
+            sb_put($sb, '}');
+            $i = $i + 1;
+        }
+        sb_put($sb, ']}');
+        $blen = sb_len($sb);
+        $shed = $this->nconn >= $this->shedAt;
+        if ($shed) {
+            sb_prepend($sb, $this->hdr[200] . $blen . "\r\nConnection: close\r\n\r\n");
+        } else {
+            sb_prepend($sb, $this->hdr[200] . $blen . "\r\nConnection: keep-alive\r\n\r\n");
+        }
+        bt_multi_release($multi);
+        $i = 0;
+        while ($i < $pinned) { bt_page_release(iarr_get($rows, $i * 12 + 9)); $i = $i + 1; }
+        iarr_release($rows); iarr_release($uids); iarr_release($hits);
+        $sent = stream_send_sb($fd, $sb);
+        if ($sent == -2) { $this->close_fd($fd); return true; }
+        if ($shed) { $this->close_fd($fd); }
+        return true;
+    }
+
+    public function on_feed_bt_legacy(int $fd): void {
         $sb = sb_new();
         sb_reserve($sb, 12288);
         sb_put($sb, '{"posts":[');
@@ -835,6 +1251,12 @@ class Server {
         $i = 0;
         while ($r == 1 && $i < 20) {
             $id = bt_rowid($this->btPosts);
+            $p: int = 0;
+            $uid: int = 0;
+            $bo: int = 0;
+            $bl: int = 0;
+            $co: int = 0;
+            $cl: int = 0;
             $p = bt_payload_ptr($this->btPosts);
             if (bt_cols($this->btPosts) < 4) { break; }
             $uid = bt_col_int(1);
@@ -909,12 +1331,13 @@ class Server {
             $this->send_json($fd, 404, '{"error":"post not found"}');
             return;
         }
+        $p: int = 0;
+        $uid: int = 0;
+        $bo: int = 0;
+        $bl: int = 0;
+        $co: int = 0;
+        $cl: int = 0;
         $p = bt_payload_ptr($this->btPosts);
-        $uid = 0;
-        $bo = 0;
-        $bl = 0;
-        $co = 0;
-        $cl = 0;
         unsafe {
             $q = $p as *u8;
             $hdr = *$q & 255;
@@ -940,13 +1363,13 @@ class Server {
             while ($j < $l1) { $uid = ($uid << 8) | (*($q + $o1 + $j) & 255); $j = $j + 1; }
         }
         $a = 0;
-        $al = 0;
+        $al: int = 0;
         if (bt_seek($this->btUsers, $uid) == 1) {
             $up = bt_payload_ptr($this->btUsers);
             unsafe {
                 $q = $up as *u8;
-                $hdr = *$q & 255;
-                $st1 = *($q + 2) & 255;
+                $hdr: int = *$q & 255;
+                $st1: int = *($q + 2) & 255;
                 if ($st1 >= 128) { $st1 = (($st1 & 127) << 7) | (*($q + 3) & 255); }
                 $al = ($st1 - 13) >> 1;
                 $a = $up + $hdr;
@@ -980,10 +1403,24 @@ class Server {
         sb_put($sb, ',"like_count":');
         sb_int($sb, $n);
         sb_put($sb, "}}");
+        if ($this->postSendBuilder) {
+            $blen = sb_len($sb);
+            $shed = $this->nconn >= $this->shedAt;
+            if ($shed) {
+                sb_prepend($sb, $this->hdr[200] . $blen . "\r\nConnection: close\r\n\r\n");
+            } else {
+                sb_prepend($sb, $this->hdr[200] . $blen . "\r\nConnection: keep-alive\r\n\r\n");
+            }
+            $sent = stream_send_sb($fd, $sb);
+            if ($sent == -2) { $this->close_fd($fd); return; }
+            if ($shed) { $this->close_fd($fd); }
+            return;
+        }
         $this->send_json($fd, 200, sb_take($sb));
     }
 
     public function on_post(int $fd, string $ids): void {
+        if ($this->btPosts == 0) { $this->open_bt_cursors(); }
         if ($this->btPosts != 0 && $this->btUsers != 0 && $this->likecnt != 0) {
             $this->on_post_bt($fd, $ids);
             return;
@@ -1141,7 +1578,7 @@ class Server {
         /* native HS256 check: the split, the alg field, the constant-time
          * signature compare and exp are all verified in the runtime without
          * building intermediate strings (the PHP version allocated ~20). */
-        $pj = jwt_verify($tok, $this->secret, time());
+        $pj = jwt_verify_prepared($tok, $this->jwtVerifier, time());
         if ($pj == "") { return [2]; }
 
         $sub = json_str_field($pj, "sub");
@@ -1253,6 +1690,7 @@ class Server {
     }
 
     public function execute_writes(): void {
+        if ($this->bgCheckpoint && sqlite_bg_checkpoint_hold($this->db)) { return; }
         $n = count($this->pending);
         if ($n == 0) { return; }
 
@@ -1261,7 +1699,6 @@ class Server {
         $this->close_bt_cursors();
         if (!$this->txn($this->beginTx)) {
             $this->fail_writes();
-            $this->open_bt_cursors();
             $this->flush();
             return;
         }
@@ -1274,12 +1711,20 @@ class Server {
                 sqlite_bind_int($this->insPost, 1, $r["uid"]);
                 sqlite_bind_text($this->insPost, 2, $r["text"]);
                 $rc = sqlite_step($this->insPost);
-                if ($rc != 100) { $ok = false; break; }
+                if ($rc != 100) {
+                    /* sqlite3_step errors leave the statement active until it
+                     * is reset; do that before rolling back the batch. */
+                    sqlite_reset($this->insPost);
+                    sqlite_clear_bindings($this->insPost);
+                    $ok = false;
+                    break;
+                }
                 $pid = sqlite_column_int($this->insPost, 0);
                 $cat = sqlite_column_text($this->insPost, 1);
-                sqlite_step($this->insPost);
+                $done = sqlite_step($this->insPost);
                 sqlite_reset($this->insPost);
                 sqlite_clear_bindings($this->insPost);
+                if ($done != 101) { $ok = false; break; }
                 /* build the body here instead of asking SQLite's JSON
                  * functions to format it inside the statement */
                 $sb = sb_new();
@@ -1333,7 +1778,6 @@ class Server {
             $this->txn($this->rollbackTx);
             $this->fail_writes();
         }
-        $this->open_bt_cursors();
         $this->flush();
     }
 

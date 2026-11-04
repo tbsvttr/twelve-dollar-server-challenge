@@ -95,15 +95,17 @@ extern uint64_t hp_st[HP_ST_N];
 /* hstr flags */
 #define HP_F_STATIC 1u  /* interned literal: lives in the literal table forever */
 #define HP_F_SCOPED 2u  /* owned by the current request scope: freed by hp_scope_end */
+#define HP_F_BORROWED 4u /* external buffer: valid only until its owner releases it */
 
 struct hstr {
     size_t len;         /* byte length (PHP-style byte strings) */
     size_t cap;         /* allocated bytes incl. NUL; >= len+1 */
     uint32_t hash;      /* 0 = not computed */
     uint32_t rc;
-    uint32_t flags;     /* HP_F_STATIC / HP_F_SCOPED */
+    uint32_t flags;     /* HP_F_STATIC / HP_F_SCOPED / HP_F_BORROWED */
     char data[];        /* NUL-terminated for C interop */
 };
+
 
 hstr *hp_str_lit(const char *cstr);
 hstr *hp_char_str(unsigned char c);   /* shared 1-byte string (never freed) */
@@ -389,6 +391,7 @@ void hp_free(void *p);           /* counterpart of hp_alloc: keeps the live coun
 int64_t hp_live_allocs(void);   /* diagnostic: live hp_alloc blocks */
 int64_t hp_live_bytes(void);    /* diagnostic: glibc in-use heap bytes */
 void hp_echo(hval v);              /* PHP echo: print value */
+void hp_echo_newline(void);        /* terminate each echo statement */
 
 /* ---------- builtin function entry points (hphp_std.c) ---------- */
 hval hpbi_strlen(hval s);
@@ -446,7 +449,11 @@ hval hpbi_preg_grep(hval pat, hval arr);
 hval hpbi_sha256(hval s);
 hval hpbi_hash_hmac(hval algo, hval data, hval key, hval raw_output);
 hval hpbi_jwt_verify(hval tok, hval secret, hval now);
+hval hpbi_jwt_verifier_new(hval secret);
+hval hpbi_jwt_verify_prepared(hval tok, hval prepared, hval now);
 hstr *hp_jwt_verify_t(hstr *tok, hstr *secret, int64_t now);
+hstr *hp_jwt_verifier_new_t(hstr *secret);
+hstr *hp_jwt_verify_prepared_t(hstr *tok, hstr *prepared, int64_t now);
 hval hpbi_json_str_field(hval j, hval k);
 hval hpbi_json_num_field(hval j, hval k);
 hstr *hp_json_str_field_t(hstr *j, hstr *key);
@@ -484,6 +491,7 @@ hval hpbi_stream_socket_accept(hval srv);
 hval hpbi_stream_set_blocking(hval s, hval block);
 hval hpbi_stream_set_nodelay(hval s);
 hval hpbi_stream_recv(hval s, hval max);
+hval hpbi_stream_recv_release(hval s);
 hval hpbi_stream_send(hval s, hval data);
 hval hpbi_stream_send2(hval s, hval a, hval b);
 hval hpbi_stream_send_nb(hval s, hval data);
@@ -499,6 +507,7 @@ hval hpbi_epoll_add(hval s);
 hval hpbi_epoll_del(hval s);
 hval hpbi_epoll_mod(hval s, hval mask);
 hval hpbi_epoll_wait2(hval in, hval out, hval timeout_ms);
+hval hpbi_epoll_wait_iarr2(hval in, hval out, hval timeout_ms);
 hval hpbi_epoll_wait_into(hval out, hval timeout_ms);
 hval hpbi_stream_eof(hval s);
 hval hpbi_stream_peer(hval s);
@@ -1075,10 +1084,19 @@ hval hpbi_bt_seek(hval h, hval rowid);
 hval hpbi_bt_rowid(hval h);
 hval hpbi_bt_payload_ptr(hval h);
 hval hpbi_bt_payload_size(hval h);
+hval hpbi_bt_payload_pin(hval h);
+hval hpbi_bt_page_release(hval pin);
 hval hpbi_bt_count_key(hval h, hval key);
+hval hpbi_bt_count_range(hval h, hval lo, hval hi, hval out);
+hval hpbi_bt_multi_seek(hval h, hval keys, hval count);
+hval hpbi_bt_multi_payloads(hval result, hval out);
+hval hpbi_bt_multi_release(hval result);
+hval hpbi_bt_read(hval h, hval out, hval cols);
 hval hpbi_sb_new(void);
 hval hpbi_sb_put(hval h, hval str);
 hval hpbi_sb_bytes(hval h, hval ptr, hval len);
+hval hpbi_sb_data_ptr(hval h);
+hval hpbi_sb_discard(hval h);
 hval hpbi_sb_int(hval h, hval n);
 hval hpbi_sb_json(hval h, hval ptr, hval len);
 hval hpbi_sb_json_str(hval h, hval str);
@@ -1086,9 +1104,15 @@ hval hpbi_str_from_bytes(hval ptr, hval len);
 hval hpbi_sb_reserve(hval h, hval n);
 hval hpbi_sb_take(hval h);
 hval hpbi_iarr_new(hval size);
+hval hpbi_iarr_release(hval h);
 hval hpbi_iarr_get(hval h, hval i);
 hval hpbi_iarr_set(hval h, hval i, hval v);
+hval hpbi_iarr_len(hval h);
 hval hpbi_sqlite_open(hval path);
+hval hpbi_sqlite_open_vfs(hval path, hval vfs);
+hval hpbi_sqlite_bg_checkpoint_start(hval db, hval path, hval frames, hval hold_ms);
+hval hpbi_sqlite_bg_checkpoint_hold(hval db);
+hval hpbi_sqlite_bg_checkpoint_active(hval db);
 hval hpbi_sqlite_close(hval db);
 hval hpbi_sqlite_exec(hval db, hval sql);
 hval hpbi_sqlite_prepare(hval db, hval sql);
@@ -1109,6 +1133,9 @@ hval hpbi_sqlite_busy_timeout(hval db, hval ms);
 int64_t hp_sb_new_t(void);
 bool hp_sb_reserve_t(int64_t h, int64_t n);
 bool hp_sb_put_t(int64_t h, hstr *s);
+bool hp_sb_bytes_t(int64_t h, int64_t ptr, int64_t len);
+int64_t hp_sb_data_ptr_t(int64_t h);
+bool hp_sb_discard_t(int64_t h);
 int64_t hp_sb_len_t(int64_t h);
 bool hp_sb_prepend_t(int64_t h, hstr *s);
 bool hp_sb_int_t(int64_t h, int64_t n);
@@ -1118,8 +1145,11 @@ hstr *hp_sb_take_t(int64_t h);
 int64_t hp_stream_send_sb_t(int64_t fd, int64_t sb);
 int64_t hp_int_digits_t(int64_t n);
 int64_t hp_iarr_new_t(int64_t n);
+bool hp_iarr_release_t(int64_t h);
 int64_t hp_iarr_get_t(int64_t h, int64_t k);
 bool hp_iarr_set_t(int64_t h, int64_t k, int64_t v);
+int64_t hp_iarr_len_t(int64_t h);
+bool hp_epoll_wait_iarr2_t(int64_t in, int64_t out, int64_t timeout_ms);
 int64_t hp_bt_last_t(int64_t h);
 int64_t hp_bt_first_t(int64_t h);
 int64_t hp_bt_prev_t(int64_t h);
@@ -1131,7 +1161,13 @@ int64_t hp_bt_cols_t(int64_t h);
 int64_t hp_bt_col_off_t(int64_t i);
 int64_t hp_bt_col_len_t(int64_t i);
 int64_t hp_bt_col_int_t(int64_t i);
+int64_t hp_bt_read_t(int64_t h, int64_t out, int64_t cols);
 int64_t hp_bt_payload_size_t(int64_t h);
+int64_t hp_bt_payload_pin_t(int64_t h);
+bool hp_bt_page_release_t(int64_t pin);
+int64_t hp_bt_multi_seek_t(int64_t h, int64_t keys, int64_t count);
+bool hp_bt_multi_payloads_t(int64_t result, int64_t out);
+bool hp_bt_multi_release_t(int64_t result);
 int64_t hp_stream_send_nb_t(int64_t fd, hstr *s);
 int64_t hp_stream_send2_nb_t(int64_t fd, hstr *a, hstr *b);
 bool hp_epoll_mod_t(int64_t fd, int64_t mask);
@@ -1146,6 +1182,7 @@ hstr *hp_strtolower_t(hstr *s);
 hstr *hp_trim_t(hstr *s);
 hstr *hp_substr_t(hstr *s, int64_t start, int64_t len);
 hstr *hp_stream_recv_t(int64_t fd, int64_t maxn);
+int64_t hp_stream_recv_release_t(int64_t fd);
 bool hp_sqlite_bind_int_t(int64_t stmt, int64_t idx, int64_t v);
 bool hp_sqlite_bind_text_t(int64_t stmt, int64_t idx, hstr *s);
 int64_t hp_sqlite_step_t(int64_t stmt);

@@ -98,7 +98,23 @@ char *cache_key_for_files(PtrVec *files, PtrVec *tools) {
             free(h);
         }
     }
+    /* Compiler and link flags change both object code and linked images.
+     * Include them in the cache identity so switching between portable O2
+     * and target-tuned LTO builds cannot return a stale executable. */
     unsigned long kh = simple_hash(key);
+    {
+        const char *names[] = {"HPHP_OPT", "HPHP_CFLAGS"};
+        for (size_t i = 0; i < sizeof names / sizeof names[0]; i++) {
+            const char *v = getenv(names[i]);
+            if (v && *v) {
+                const char *parts[] = {names[i], "=", v, ";"};
+                for (size_t j = 0; j < sizeof parts / sizeof parts[0]; j++)
+                    for (const unsigned char *p = (const unsigned char *)parts[j];
+                         *p; p++)
+                        kh = ((kh << 5) + kh) + *p;
+            }
+        }
+    }
     char *res = malloc(64);
     snprintf(res, 64, "cache_%lx", kh);
     free(key);

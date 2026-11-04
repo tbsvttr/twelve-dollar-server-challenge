@@ -67,6 +67,7 @@ void hp_echo(hval v) {
     hstr *s = hp_val_to_str(v);
     fwrite(s->data, 1, s->len, stdout);
 }
+void hp_echo_newline(void) { fputc('\n', stdout); }
 
 /* ---------------- string builder ---------------- */
 void hbuf_init(Buf *b) { b->data = NULL; b->len = b->cap = 0; }
@@ -274,10 +275,10 @@ hstr *hp_str_copy(hstr *s) {
     return hp_str_new(s ? s->data : "", s ? s->len : 0);
 }
 
-/* Copy a scoped string out of the request scope (no-op for heap/static). */
+/* Copy a scoped or borrowed string past its lifetime (no-op for heap/static). */
 hstr *hp_str_persist(hstr *s) {
     if (!s) return hp_null_str();
-    if (!(s->flags & HP_F_SCOPED)) return s;
+    if (!(s->flags & (HP_F_SCOPED | HP_F_BORROWED))) return s;
     hstr *r = hp_str_heap_new(s->data, s->len);
     r->hash = s->hash;
     return r;
@@ -287,7 +288,7 @@ hstr *hp_str_persist(hstr *s) {
  * literal table / the scope and are never freed here. */
 void hp_str_free(hstr *s) {
     if (!s) return;
-    if (s->flags & (HP_F_STATIC | HP_F_SCOPED)) return;
+    if (s->flags & (HP_F_STATIC | HP_F_SCOPED | HP_F_BORROWED)) return;
     free(s);
     g_live_allocs--;
 }

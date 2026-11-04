@@ -713,7 +713,11 @@ static void emit_binop(Codegen *g, Expr *e, Buf *dst) {
     }
     switch (op) {
     case T_PLUS:
-        if (lt && lt->kind == TY_PTR) buf_printf(dst, "((char*)(%s) + (%s))", ls, rs);
+        if (lt && lt->kind == TY_PTR && lt->elem) {
+            const char *pt = lt->elem->kind == TY_I8 ? "unsigned char" : ctype_of(lt->elem);
+            buf_printf(dst, "((%s*)(%s) + (%s))", pt, ls, rs);
+        }
+        else if (lt && lt->kind == TY_PTR) buf_printf(dst, "((char*)(%s) + (%s))", ls, rs);
         else if (numeric) buf_printf(dst, "((%s) + (%s))", ls, rs);
         /* the runtime's hp_add keeps PHP semantics (numeric strings add as
          * numbers), so only project to hstr* when the node is typed string */
@@ -723,7 +727,11 @@ static void emit_binop(Codegen *g, Expr *e, Buf *dst) {
             buf_printf(dst, "hp_add(hv(%s), hv(%s))", ls, rs);
         break;
     case T_MINUS:
-        if (lt && lt->kind == TY_PTR) buf_printf(dst, "((char*)(%s) - (%s))", ls, rs);
+        if (lt && lt->kind == TY_PTR && lt->elem) {
+            const char *pt = lt->elem->kind == TY_I8 ? "unsigned char" : ctype_of(lt->elem);
+            buf_printf(dst, "((%s*)(%s) - (%s))", pt, ls, rs);
+        }
+        else if (lt && lt->kind == TY_PTR) buf_printf(dst, "((char*)(%s) - (%s))", ls, rs);
         else if (numeric) buf_printf(dst, "((%s) - (%s))", ls, rs);
         else buf_printf(dst, "hpbi_scalar_sub(hv(%s), hv(%s))", ls, rs);
         break;
@@ -731,13 +739,20 @@ static void emit_binop(Codegen *g, Expr *e, Buf *dst) {
         if (numeric) buf_printf(dst, "((%s) * (%s))", ls, rs);
         else buf_printf(dst, "hpbi_scalar_mul(hv(%s), hv(%s))", ls, rs);
         break;
-    /* shifts: unbox both sides, since a string/mixed operand is converted by
-     * hp_val_to_int (PHP semantics); the node type is always int */
+    /* Integer shifts are common in typed unsafe record decoders. Keep them
+     * in C integer space instead of wrapping/unwrapping each operand as an
+     * hval. Dynamic and string operands still use PHP's int conversion. */
     case T_SHL:
-        buf_printf(dst, "(hp_val_to_int(hv(%s)) << hp_val_to_int(hv(%s)))", ls, rs);
+        if (lt && rt && type_is_integral(lt->kind) && type_is_integral(rt->kind))
+            buf_printf(dst, "((%s) << (%s))", ls, rs);
+        else
+            buf_printf(dst, "(hp_val_to_int(hv(%s)) << hp_val_to_int(hv(%s)))", ls, rs);
         break;
     case T_SHR:
-        buf_printf(dst, "(hp_val_to_int(hv(%s)) >> hp_val_to_int(hv(%s)))", ls, rs);
+        if (lt && rt && type_is_integral(lt->kind) && type_is_integral(rt->kind))
+            buf_printf(dst, "((%s) >> (%s))", ls, rs);
+        else
+            buf_printf(dst, "(hp_val_to_int(hv(%s)) >> hp_val_to_int(hv(%s)))", ls, rs);
         break;
     case T_SLASH:
         /* the fast path is plain double division; a string operand has to go
@@ -1165,13 +1180,19 @@ static void emit_builtin_call_body(Codegen *g, const char *name, PtrVec args,
     {
         static const struct { const char *name; const char *params; char ret; } T[] = {
             {"iarr_new",          "i",   'i'},
+            {"iarr_release",      "i",   'b'},
             {"iarr_get",          "ii",  'i'},
             {"iarr_set",          "iii", 'b'},
+            {"iarr_len",          "i",   'i'},
+            {"epoll_wait_iarr2",  "iii", 'b'},
             {"sb_new",           "",    'i'},
             {"sb_reserve",       "ii",  'b'},
             {"sb_len",           "i",   'i'},
+            {"sb_data_ptr",      "i",   'i'},
+            {"sb_discard",       "i",   'b'},
             {"sb_prepend",       "is",  'b'},
             {"sb_put",           "is",  'b'},
+            {"sb_bytes",         "iii", 'b'},
             {"sb_int",           "ii",  'b'},
             {"sb_json",          "iii", 'b'},
             {"sb_json_str",      "is",  'b'},
@@ -1179,6 +1200,8 @@ static void emit_builtin_call_body(Codegen *g, const char *name, PtrVec args,
             {"stream_send_sb",   "ii",  'i'},
             {"int_digits",       "i",   'i'},
             {"jwt_verify",       "ssi", 's'},
+            {"jwt_verifier_new", "s",   's'},
+            {"jwt_verify_prepared", "ssi", 's'},
             {"json_str_field",   "ss",  's'},
             {"json_num_field",   "ss",  'i'},
             {"bt_last",          "i",   'i'},
@@ -1186,13 +1209,19 @@ static void emit_builtin_call_body(Codegen *g, const char *name, PtrVec args,
             {"bt_prev",          "i",   'i'},
             {"bt_next",          "i",   'i'},
             {"bt_seek",          "ii",  'i'},
+            {"bt_multi_seek",    "iii", 'i'},
+            {"bt_multi_payloads", "ii", 'b'},
+            {"bt_multi_release", "i",   'b'},
             {"bt_rowid",         "i",   'i'},
             {"bt_payload_ptr",   "i",   'i'},
             {"bt_payload_size",  "i",   'i'},
+            {"bt_payload_pin",   "i",   'i'},
+            {"bt_page_release",  "i",   'b'},
             {"bt_cols",          "i",   'i'},
             {"bt_col_off",       "i",   'i'},
             {"bt_col_len",       "i",   'i'},
             {"bt_col_int",       "i",   'i'},
+            {"bt_read",          "iii", 'i'},
             {"stream_send_nb",   "is",  'i'},
             {"stream_send2_nb",  "iss", 'i'},
             {"epoll_mod",        "ii",  'b'},
@@ -1208,6 +1237,7 @@ static void emit_builtin_call_body(Codegen *g, const char *name, PtrVec args,
             {"trim",             "s",   's'},
             {"substr",           "sii", 's'},
             {"stream_recv",      "ii",  's'},
+            {"stream_recv_release", "i", 'b'},
             {"sqlite_bind_int",  "iii", 'b'},
             {"sqlite_bind_text", "iis", 'b'},
             {"sqlite_step",      "i",   'i'},
@@ -3068,6 +3098,7 @@ static void emit_stmt(Codegen *g, Stmt *s) {
             line(g, "hp_echo(%s);", buf_take(&v));
             free(v.data);
         }
+        line(g, "hp_echo_newline();");
         break;
     }
     case ST_PRINT: {

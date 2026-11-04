@@ -44,6 +44,9 @@ typedef enum {
 
 struct Type {
     TypeKind kind;
+    /* 0 = ordinary bool, 1 = singleton false, 2 = singleton true.
+     * Used internally for precise PHP builtin unions such as int|false. */
+    uint8_t bool_const;
     const Type *elem, *key, *val;
     const Type *ok, *err;      /* Result */
     const char *name;          /* struct/class/interface/enum */

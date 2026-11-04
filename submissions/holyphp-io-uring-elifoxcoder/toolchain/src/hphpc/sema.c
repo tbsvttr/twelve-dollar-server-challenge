@@ -457,7 +457,22 @@ static void collect_facts(const Expr *e, FactSet *tf, FactSet *ff) {
              * member: an int pattern can never equal a float slot, so that
              * comparison proves nothing at all. */
             const Type *ot = other->type;
+            /* PHP builtins such as strpos return a singleton false, not an
+             * arbitrary bool. Preserve that fact in int|false slots so a
+             * strict false guard can refine the surviving path to int. */
+            if (other->kind == EX_BOOL && !other->u.boolean.b) ot = ty_false;
             if (!ot || !slot_admits(v->type, ot)) return;
+            if (ot == ty_false) {
+                const Type *not_false = type_without_type(v->type, ty_false);
+                if (op == T_EQ2) {
+                    fact_add(tf, v, ty_false);
+                    fact_add(ff, v, not_false);
+                } else {
+                    fact_add(tf, v, not_false);
+                    fact_add(ff, v, ty_false);
+                }
+                return;
+            }
             if (op == T_EQ2) fact_add(tf, v, ot);
             else fact_add(ff, v, ot);
         }
@@ -593,6 +608,10 @@ static bool types_equal(const Type *a, const Type *b) {
         return false;
     }
     switch (a->kind) {
+    case TY_BOOL:
+        if (a->bool_const || b->bool_const)
+            return a->bool_const != 0 && a->bool_const == b->bool_const;
+        return true;
     case TY_ARRAY: case TY_VEC: case TY_SET: case TY_OPTION:
     case TY_REF: case TY_MUTREF: case TY_PTR: case TY_OWN: case TY_RC:
         /* PHP-style: a plain `array` annotation is generic; accept any
@@ -637,6 +656,8 @@ static bool types_compatible(const Type *want, const Type *got) {
      * codegen emits the hp_val_to_* conversion. */
     if (got->kind == TY_MIXED || got->kind == TY_OPTION || got->kind == TY_RESULT)
         return true;
+    if (want->kind == TY_BOOL && got->kind == TY_BOOL)
+        return want->bool_const == 0 || want->bool_const == got->bool_const;
     /* `callable`/variadic fn types accept any closure */
     if (want->kind == TY_FN && want->fn.variadic && got->kind == TY_FN) return true;
     if (got->kind == TY_FN && got->fn.variadic) return true;
