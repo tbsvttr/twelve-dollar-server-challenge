@@ -111,15 +111,15 @@ CPU % and µs/request are the app's own cgroup over the scored hold (µs = app C
 | 48 | csharp-iouring-oswaldosierra | #157 | C# (Native AOT, io_uring) | **189,000** | 18,592 | 20 | 51 | 0.00 | 88 | 44 | 1,176 | 2026-10-28 |
 | 48 | csharp-iouring-AlexandruLT | #196 | C# (Native AOT, io_uring) | **189,000** | 18,599 | 19.5 | 212 | 0.00 | 84 | 42 | 693 | 2026-10-29 |
 | 50 | go-epoll-MegaPanchamZ | #144 | Go (raw epoll) | **185,000** | 18,086 | 288 | 479 | 0.00 | 99 | 51 | 1,286 | 2026-10-28 |
-| 51 | go-epoll-kaikegm | #151 | Go (raw epoll, cgo SQLite) | **175,000** | 16,616 | 37 | 253 | 0.61 | 98 | 55 | 749 | 2026-10-28 |
-| 52 | c-iouring-raoz | #26 | C (io_uring) | **172,000** | 16,875 | 98 | 125 | 0.00 | 69 | 38 | 419 | 2026-10-27 |
-| 53 | asm-nasm-melroy89 | #86 | x86-64 asm (io_uring) | **171,000** | 16,777 | 87 | 142 | 0.00 | 78 | 43 | 358 | 2026-10-21 |
-| 54 | go-epoll-unorig-username | #186 | Go (raw epoll, cgo SQLite) | **165,000** | 16,020 | 479 | 952 | 0.00 | 97 | 56 | 665 | 2026-10-29 |
-| 55 | asm-epoll-HauLTCE | #207 | x86-64 asm (epoll, forked workers) | **160,000** ᵃ | 15,682 | 291 | 757 | 0.61 | 95 | 56 | 1,307 | 2026-10-30 |
-| 56 | java-uring-crux | #170 | Java (FFM io_uring, C row formatter) | **158,000** | 15,531 | 137 | 312 | 0.00 | 72 | 43 | 1,139 | 2026-10-29 |
-| 57 | asm-epoll-unorig-username | #181 | x86-64 asm (epoll) | **155,000** | 15,256 | 14 | 55 | 0.00 | 87 | 53 | 858 | 2026-10-29 |
-| 57 | python-pypy-iouring-kiwamizamurai | #284 | PyPy (io_uring, SQLite B-tree reads) | **155,000** | 15,201 | 120 | 277 | 0.00 | 80 | 49 | 525 | 2026-11-03 |
-| 59 | holyphp-io-uring-elifoxcoder | #280 | HolyPHP (io_uring, SQLite B-tree reads) | **152,000** ᵘ | 14,892 | 208 | 672 | 0.00 | 62 | 39 | 703 | 2026-11-02 |
+| 51 | holyphp-io-uring-elifoxcoder | #304 | HolyPHP (io_uring, SQLite B-tree reads) | **179,000** ᵘ | 17,574 | 91.9 | 401 | 0.00 | 65 | 34 | 1,172 | 2026-11-04 |
+| 52 | go-epoll-kaikegm | #151 | Go (raw epoll, cgo SQLite) | **175,000** | 16,616 | 37 | 253 | 0.61 | 98 | 55 | 749 | 2026-10-28 |
+| 53 | c-iouring-raoz | #26 | C (io_uring) | **172,000** | 16,875 | 98 | 125 | 0.00 | 69 | 38 | 419 | 2026-10-27 |
+| 54 | asm-nasm-melroy89 | #86 | x86-64 asm (io_uring) | **171,000** | 16,777 | 87 | 142 | 0.00 | 78 | 43 | 358 | 2026-10-21 |
+| 55 | go-epoll-unorig-username | #186 | Go (raw epoll, cgo SQLite) | **165,000** | 16,020 | 479 | 952 | 0.00 | 97 | 56 | 665 | 2026-10-29 |
+| 56 | asm-epoll-HauLTCE | #207 | x86-64 asm (epoll, forked workers) | **160,000** ᵃ | 15,682 | 291 | 757 | 0.61 | 95 | 56 | 1,307 | 2026-10-30 |
+| 57 | java-uring-crux | #170 | Java (FFM io_uring, C row formatter) | **158,000** | 15,531 | 137 | 312 | 0.00 | 72 | 43 | 1,139 | 2026-10-29 |
+| 58 | asm-epoll-unorig-username | #181 | x86-64 asm (epoll) | **155,000** | 15,256 | 14 | 55 | 0.00 | 87 | 53 | 858 | 2026-10-29 |
+| 58 | python-pypy-iouring-kiwamizamurai | #284 | PyPy (io_uring, SQLite B-tree reads) | **155,000** | 15,201 | 120 | 277 | 0.00 | 80 | 49 | 525 | 2026-11-03 |
 | 60 | c-iouring-ssmurfgg04-gif | #112 | C (io_uring) | **150,000** | 14,611 | 385 | 524 | 0.00 | 78 | 50 | 413 | 2026-10-21 |
 | 61 | ruby-btreereads-cicloid | #300 | Ruby (io_uring, SQLite B-tree reads) | **145,000** | 14,157 | 266 | 494 | 0.00 | 89 | 59 | 749 | 2026-11-04 |
 | 62 | c-ammarserver-AmmarkoV | #54 | C (AmmarServer, io_uring) | **135,000** | 13,239 | 95 | 470 | 0.00 | 76 | 53 | 320 | 2026-10-27 |
@@ -260,8 +260,13 @@ conflicts with the merged #82 folder) scored **230,000** on the standard 4-sourc
 62 ms, 0 err, 91 % CPU, 37 µs/req, 931 MB, 2026-10-28) and is CPU-bound, not source-port-bound: 240,000 failed at 95 % CPU
 (p99 1.5 s). The row above stays on #82's merged code until #141 is rebased and merged.
 
-ᵘ **HolyPHP** is scored at its follow-up **#280** (`b074068`, generic io_uring runtime, merged 2026-11-02; 160,000
-failed the 5-minute hold on p99 2.96 s at 64 % CPU, 0 errors), which replaces the merged #235 row (`1569472`, 145,000,
+ᵘ **HolyPHP** is scored at its follow-up **#304** (`cbdb08d`, `-O3 -march=native -flto`, background checkpoint
+thread, batched B-tree reads, default unix VFS; not merged: its head moved to `d9aace0` during the run and #304 was then
+closed unmerged; `d9aace0` is the replacement PR #306, queued for its own run). 188,000–230,000 failed the 5-minute hold: from 198,000 up on HTTP 500s (1.5–5.7 %),
+and 188,000 on refused connections (36 % errors, 60 % CPU). #304's earlier head `7f2a823` scored 135,000 (below). Its
+merged #280 code (`b074068`, generic io_uring runtime, merged 2026-11-02) held **152,000** (14,892 req/s, p95 208 / p99
+672 ms, 0 err, 62 % CPU, 39 µs/req, 703 MB, 2026-11-02; 160,000 failed the 5-minute hold on p99 2.96 s at 64 % CPU,
+0 errors), which replaced the merged #235 row (`1569472`, 145,000,
 2026-11-01), which replaced the merged #204 row (epoll, 76,000, 2026-10-30). #235: 150,000 failed the 2-minute probe on
 p95 (567 ms, 93 % CPU, 0 errors). Earlier follow-up heads (#213 / #227): `7a3f61e` scored 135,000 and `8ee9c5a` 130,000 (2026-10-31),
 `c935dfe` 64,000 (timeouts at ~70 % CPU) and `96aa4f5` 110,000 (2026-10-30). Its later follow-up **#268**
@@ -270,8 +275,7 @@ p95 (567 ms, 93 % CPU, 0 errors). Earlier follow-up heads (#213 / #227): `7a3f61
 the 2-minute probe on p95/p99 (83–94 % CPU, 0 errors). #268's next head `28db5bb` (generic io_uring runtime: direct
 descriptors, multishot accept/recv, 5 rings) scored **157,000** (15,401 req/s, p95 198 / p99 352 ms, 0 err, 65 % CPU,
 39 µs/req, 711 MB, 42/42, 2026-11-02; 165,000 failed the 5-minute hold on p99 1.23 s), but #268 was closed unmerged
-during the run; its replacement #280 is the row above. Its next follow-up **#304** (`7f2a823`, `-O3 -march=native
--flto`, background checkpoint thread, batched B-tree reads; held, not merged: it didn't beat the merged row) scored
+during the run; #280 replaced it. #304's first head `7f2a823` (same changes, unix-excl VFS) scored
 **135,000** (13,248 req/s, p95 24.5 / p99 646 ms, 0.59 % err = HTTP 500 on 23,480 likes and 4,500 posts, 55 % CPU,
 39 µs/req, 1,244 MB, 2026-11-04). 140,000 failed the 2-minute probe on p95/p99 (2.15 / 2.68 s, 53 % CPU, 0 errors);
 160,000 failed with 1.33 % HTTP 500s.
