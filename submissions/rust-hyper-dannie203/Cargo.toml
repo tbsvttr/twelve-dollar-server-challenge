@@ -1,0 +1,36 @@
+[package]
+name = "twelve-dollar-rust"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# HTTP & Async Network
+hyper = { version = "1.4", features = ["full"] }
+hyper-util = { version = "0.1", features = ["full"] }
+http-body-util = "0.1"
+tokio = { version = "1.38", features = ["rt", "net", "sync", "macros", "time"] }
+
+# SQLite (Embedded directly with bundled C SQLite)
+rusqlite = { version = "0.31", features = ["bundled"] }
+
+# Crypto & JWT verification
+hmac = "0.12"
+sha2 = "0.10"
+base64 = "0.22"
+memchr = "2.8"
+
+# Time & JSON serialization
+chrono = { version = "0.4", default-features = false, features = ["std", "clock"] }
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+itoa = "1.0"
+
+# High-performance channel for SQLite writer queue
+crossbeam-channel = "0.5"
+
+[profile.release]
+opt-level = 3
+lto = "fat"
+codegen-units = 1
+panic = "abort"
+strip = true
