@@ -1,0 +1,15 @@
+vendor/
+.bundle/
+.ruby-lsp/
+debug.rb
+ext/Makefile
+ext/*.o
+ext/*.so
+ext/*.bundle
+ext/mkmf.log
+ext/extconf.h
+ext/pgo/
+ext/ring/Makefile
+ext/ring/*.o
+ext/ring/*.so
+ext/ring/mkmf.log

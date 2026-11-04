@@ -1,0 +1,7 @@
+source "https://rubygems.org"
+
+gem "async", "2.46.0"
+gem "io-event", "1.22.1"
+gem "rbnacl", "7.1.2"
+gem "ffi", "1.17.4" # epoll.rb, uring.rb (liburing-ffi from install.sh), and rbnacl
+gem "json", "3.1.0"
