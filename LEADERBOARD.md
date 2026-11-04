@@ -45,8 +45,8 @@ its earlier #272 runs held 247,000 (`c193a82`) and 270,000 (`f220565`), and its 
 lean-verified-soonhokong is scored at #286 (`307205a`), which replaces its closed #271; the earlier #286 run (`fe89683`)
 also held 280,000 and the #271 run (`30d259c`) 290,000. c-iouring-unorig-username is scored at its follow-up PR #290 (`97d0470`); its earlier #184 run (`e157f0c`) held
 250,000. kotlin-trikeshed-jnorthrup is scored at its follow-up PR #298 (`61ddd97`); its merged #128 code (`2fb010a`) held
-175,000 and its earlier #128 run (`87b974c`) 71,000. c-iouring-fajarreza-gif #302 is scored at `df2f032`; its
-earlier runs held 115,000 (`4845c30`), 64,000 (`d7a2e70`) and 71,000 (`1441393`, fd cap).
+175,000 and its earlier #128 run (`87b974c`) 71,000. c-iouring-fajarreza-gif #302 is scored at `81d94f1`; its
+earlier runs held 95,000 (`df2f032`), 115,000 (`4845c30`), 64,000 (`d7a2e70`) and 71,000 (`1441393`, fd cap).
 java-nio-stohirov keeps its merged #88 row (102,000); its follow-up PR #303 (`bf4ef5f`, io_uring + SQLite B-tree reads;
 held, not merged: open copies question, see the rule flags) scored 195,000 (19,187 req/s, p95 12.6 / p99 98.5 ms, 0 err,
 60 % CPU, 29 µs/req, 1,249 MB, 2026-11-04; 200,000 failed the 2-minute probe on p99 6.1 s).
@@ -138,11 +138,11 @@ CPU % and µs/request are the app's own cgroup over the scored hold (µs = app C
 | 75 | cpp-uwebsockets-tbsvttr | #6 | C++ (uWebSockets) | **115,000** | 10,940 | 261 | 652 | 0.00 | 87 | 74 | 215 | 2026-10-26 |
 | 76 | d-iouring-cyrusmsk | #163 | D (io_uring, during) | **114,000** | 11,158 | 248 | 567 | 0.00 | 87 | 73 | 475 | 2026-11-01 |
 | 77 | zig-usockets-tbsvttr | #25 | Zig (uSockets) | **110,000** | 10,442 | 335 | 721 | 0.00 | 90 | 80 | 188 | 2026-10-26 |
-| 78 | c-epoll-TheFirstIstari | #64 | C (epoll) | **107,000** | 10,493 | 212 | 409 | 0.94 | 78 | 69 | 169 | 2026-10-21 |
-| 79 | java-nio-stohirov | #88 | Java (FFM epoll) | **102,000** | 10,023 | 86 | 128 | 0.85 | 66 | 61 | 555 | 2026-10-21 |
-| 80 | d-eventcore-cyrusmsk | #165 | D (eventcore) | **98,000** | 9,610 | 109 | 750 | 0.00 | 85 | 82 | 475 | 2026-11-01 |
-| 81 | node-uwebsockets-zahidcakici | #102 | Node (uWebSockets) | **97,000** | 9,471 | 264 | 484 | 0.00 | 92 | 90 | 336 | 2026-10-21 |
-| 82 | c-iouring-fajarreza-gif | #302 | C (io_uring) | **95,000** | 9,343 | 62 | 84 | 0.04 | 42 | 42 | 258 | 2026-11-04 |
+| 78 | c-iouring-fajarreza-gif | #302 | C (io_uring) | **108,000** | 10,627 | 51 | 68 | 0.00 | 48 | 42 | 245 | 2026-11-04 |
+| 79 | c-epoll-TheFirstIstari | #64 | C (epoll) | **107,000** | 10,493 | 212 | 409 | 0.94 | 78 | 69 | 169 | 2026-10-21 |
+| 80 | java-nio-stohirov | #88 | Java (FFM epoll) | **102,000** | 10,023 | 86 | 128 | 0.85 | 66 | 61 | 555 | 2026-10-21 |
+| 81 | d-eventcore-cyrusmsk | #165 | D (eventcore) | **98,000** | 9,610 | 109 | 750 | 0.00 | 85 | 82 | 475 | 2026-11-01 |
+| 82 | node-uwebsockets-zahidcakici | #102 | Node (uWebSockets) | **97,000** | 9,471 | 264 | 484 | 0.00 | 92 | 90 | 336 | 2026-10-21 |
 | 83 | typescript-bun-xxmohamed012 | #3 | Bun | **90,000** | 8,826 | 140 | 359 | 0.00 | 83 | 87 | 301 | 2026-10-21 |
 | 83 | scala-netty-jacksonhoran | #107 | Scala (Netty) | **90,000** ʸ | 8,801 | 484 | 757 | 0.00 | 87 | 92 | 825 | 2026-10-21 |
 | 83 | python-pypy-epoll-pranavds-codes | #84 | PyPy (epoll) | **90,000** | 8,801 | 280 | 474 | 0.00 | 89 | 94 | 270 | 2026-10-21 |
@@ -548,7 +548,7 @@ public plugin APIs (a custom page cache through `SQLITE_CONFIG_PCACHE2`, a custo
 - **c-iouring-fajarreza-gif #302 reuses c-iouring-pavlyhalim #245's syscall layer**: `src/sys.h` (io_uring ABI/ring
   code, 415 lines) is byte-identical to #245's and `sha256.h` nearly so (credited in its README since `d7a2e70`);
   `server.c`, HTTP, JWT and the database code are new. Same building-on vs. copies question as #271. Scored as
-  submitted (95k at `df2f032`, 115k at `4845c30`, 64k at `d7a2e70`, 71k at `1441393`); held open for Arjay.
+  submitted (108k at `81d94f1`, 95k at `df2f032`, 115k at `4845c30`, 64k at `d7a2e70`, 71k at `1441393`); held open for Arjay.
 - **java-nio-stohirov #303 (follow-up to #88) ports rust-iouring-kensac #264's SQLite layer**: `csrc/shim.c`'s B-tree
   helpers (open/layout/keyinfo/seek/count_likes/payload) and its checkpoint state machine closely follow #264's
   `shim.c` (credited in its README and the shim header); the Java io_uring server (FFM) is the author's own. Same
