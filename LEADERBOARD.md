@@ -122,7 +122,7 @@ CPU % and µs/request are the app's own cgroup over the scored hold (µs = app C
 | 62 | go-epoll-brady1408 | #111 | Go (raw epoll, cgo SQLite) | **135,000** | 13,169 | 366 | 962 | 0.00 | 100 | 70 | 296 | 2026-10-27 |
 | 62 | cider-iouring-pomilon | #208 | Cider (native x86-64, io_uring) | **135,000** | 13,168 | 256 | 489 | 0.00 | 88 | 62 | 425 | 2026-10-30 |
 | 65 | odin-odinhttp-wanderingaura | #139 | Odin (odin-http) | **130,000** | 12,644 | 429 | 924 | 0.00 | 82 | 60 | 624 | 2026-10-28 |
-| 65 | ruby-uring-cicloid | #197 | Ruby (io_uring) | **130,000** | 12,625 | 366 | 573 | 0.00 | 90 | 66 | 679 | 2026-10-29 |
+| 65 | ruby-uring-cicloid | #197 | Ruby (io_uring) | **130,000** ᵛ | 12,625 | 366 | 573 | 0.00 | 90 | 66 | 679 | 2026-10-29 |
 | 67 | go-epoll-champ3oy | #76 | Go (io_uring) | **128,000** | 12,604 | 3 | 23 | 0.00 | 77 | 57 | 385 | 2026-10-21 |
 | 68 | cobol-gnucobol-unorig-username | #185 | COBOL (GnuCOBOL, epoll) | **126,000** | 12,398 | 34 | 125 | 0.00 | 93 | 70 | 607 | 2026-10-29 |
 | 69 | cpp-uwebsockets-v2-tbsvttr | #15 | C++ (uWebSockets) | **125,000** | 12,188 | 204 | 306 | 0.00 | 89 | 68 | 182 | 2026-10-26 |
@@ -408,6 +408,11 @@ req/s, p95 208 / p99 456 ms, 0 err, 72 % CPU, 39 µs/req, 379 MB, 2026-11-03): 1
 cursed-sqlite-turbo on stock SQLite; held, not merged: it scored below the merged row, and its own bytecode executor is
 an open rule 2 / ruling 8 question for Arjay) held **270,000** (25,856 req/s, p95 40.2 / p99 332 ms, 0 err, 75 % CPU,
 26 µs/req, 876 MB, 2026-11-04): 280,000 failed on p99 (8.2 s, 0 err, 82 % CPU) and 320,000 on `connection refused`.
+
+ᵛ **ruby-uring-cicloid** is scored at its merged #197 code (`b5ab6fb`). Its follow-up **#301** (`1d34d47`, `URING_RINGS`
+2 → 4; held, not merged: it scored below the merged row) held **120,000** (11,712 req/s, p95 272 / p99 627 ms, 0 err,
+90 % CPU, 71 µs/req, 672 MB, 2026-11-04): 125,000 and 130,000 failed on p99 (1.2 s / 2.8 s, 0 err, 90–91 % CPU), 140,000
+on p99 (4.0 s) and 160,000 on timeouts (1.6 % err).
 
 ## Patches (ᵖ) and failures
 
