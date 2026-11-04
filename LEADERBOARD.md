@@ -244,7 +244,7 @@ CPU % and µs/request are the app's own cgroup over the scored hold (µs = app C
 | — | nim-io_uring-NioHast | #132 | Nim (io_uring) | **failed** (hangs) | | | | | | | | 2026-10-21 |
 | — | v-fasthttp-ulises-jeremias | #69 | V (fasthttp) | **failed** (install OOM) | | | | | | | | 2026-10-27 |
 | — | v-epoll-quaesitor-scientiam | #166 | V (io_uring) | **failed** (install timeout) | | | | | | | | 2026-10-30 |
-| — | rust-hyper-dannie203 | #178 | Rust (hyper) | **failed** (build: no cargo) | | | | | | | | 2026-10-29 |
+| — | rust-hyper-dannie203 | #178 | Rust (hyper) | **failed** (build: cargo can't write `/opt/rust`) | | | | | | | | 2026-11-04 |
 | — | d-arsd-threadedcgi-cyrusmsk | #161 | D (arsd threaded cgi) | **failed** (0: timeouts at 500 users) | | | | | | | | 2026-10-31 |
 
 ˣ **Rust #82 ran out of load generators first.** One target IP × 4 load generators caps at ~240,000 connections (source
@@ -449,7 +449,10 @@ committed in this repo.
   vlang by pinned commit, same `v1` → `v2` bootstrap): the install hit the 1-hour timeout again (exit 124), 1/42 tests.
 - **Rust #178 — build failed** (`6aa144b`): `install.sh` installs Rust with rustup into root's `~/.cargo`, but
   `build.sh` runs as the `deploy` user, which has no `cargo` (exit 127), so the app never built (1/42 tests). CI passed
-  because GitHub's runner has Rust preinstalled. Not patched.
+  because GitHub's runner has Rust preinstalled. Not patched. Re-run at `547ee25` (2026-11-04, Rust in `/opt/rust`):
+  its pinned Rust 1.84.0 can't build the locked hyper-util 0.1.21 (needs edition 2024 / Rust ≥ 1.85; CI fails the same
+  way), so the run used 1.90.0 (patched for the run only), but `build.sh` (as `deploy`) sets `CARGO_HOME=/opt/rust`,
+  which is root-owned, so cargo couldn't write its registry: `Permission denied` (exit 101), 1/42 tests.
 - **SPICE #220 — scored 0 at `f84ba73`, now scored 500 at `665f4ba`**: the first run installed, built and passed
   42/42, but no probe passed (100 % CPU with Nginx 504s, 93 % errors at the 500-user floor). `665f4ba` replaced
   socat/conn.sh with a network card (nic.c) inside ngspice and held 500 users for 5 minutes (row above).
