@@ -45,8 +45,8 @@ its earlier #272 runs held 247,000 (`c193a82`) and 270,000 (`f220565`), and its 
 lean-verified-soonhokong is scored at #286 (`6d5b097`), which replaces its closed #271; the earlier #286 runs
 (`fe89683`, `307205a`) held 280,000 and the #271 run (`30d259c`) 290,000. c-iouring-unorig-username is scored at its follow-up PR #290 (`97d0470`); its earlier #184 run (`e157f0c`) held
 250,000. kotlin-trikeshed-jnorthrup is scored at its follow-up PR #298 (`61ddd97`); its merged #128 code (`2fb010a`) held
-175,000 and its earlier #128 run (`87b974c`) 71,000. c-iouring-fajarreza-gif #302 is scored at `81d94f1`; its
-earlier runs held 95,000 (`df2f032`), 115,000 (`4845c30`), 64,000 (`d7a2e70`) and 71,000 (`1441393`, fd cap).
+175,000 and its earlier #128 run (`87b974c`) 71,000. c-iouring-fajarreza-gif #302 is scored at `00d6c13`; its
+earlier runs held 108,000 (`81d94f1`), 95,000 (`df2f032`), 115,000 (`4845c30`), 64,000 (`d7a2e70`) and 71,000 (`1441393`, fd cap).
 java-nio-stohirov keeps its merged #88 row (102,000); its follow-up PR #303 (`bf4ef5f`, io_uring + SQLite B-tree reads;
 held, not merged: open copies question, see the rule flags) scored 195,000 (19,187 req/s, p95 12.6 / p99 98.5 ms, 0 err,
 60 % CPU, 29 µs/req, 1,249 MB, 2026-11-04; 200,000 failed the 2-minute probe on p99 6.1 s).
@@ -122,23 +122,23 @@ CPU % and µs/request are the app's own cgroup over the scored hold (µs = app C
 | 58 | python-pypy-iouring-kiwamizamurai | #284 | PyPy (io_uring, SQLite B-tree reads) | **155,000** | 15,201 | 120 | 277 | 0.00 | 80 | 49 | 525 | 2026-11-03 |
 | 60 | c-iouring-ssmurfgg04-gif | #112 | C (io_uring) | **150,000** | 14,611 | 385 | 524 | 0.00 | 78 | 50 | 413 | 2026-10-21 |
 | 61 | ruby-btreereads-cicloid | #300 | Ruby (io_uring, SQLite B-tree reads) | **145,000** | 14,157 | 266 | 494 | 0.00 | 89 | 59 | 749 | 2026-11-04 |
-| 62 | c-ammarserver-AmmarkoV | #54 | C (AmmarServer, io_uring) | **135,000** | 13,239 | 95 | 470 | 0.00 | 76 | 53 | 320 | 2026-10-27 |
-| 62 | go-epoll-brady1408 | #111 | Go (raw epoll, cgo SQLite) | **135,000** | 13,169 | 366 | 962 | 0.00 | 100 | 70 | 296 | 2026-10-27 |
-| 62 | cider-iouring-pomilon | #208 | Cider (native x86-64, io_uring) | **135,000** | 13,168 | 256 | 489 | 0.00 | 88 | 62 | 425 | 2026-10-30 |
-| 65 | odin-odinhttp-wanderingaura | #139 | Odin (odin-http) | **130,000** | 12,644 | 429 | 924 | 0.00 | 82 | 60 | 624 | 2026-10-28 |
-| 65 | ruby-uring-cicloid | #197 | Ruby (io_uring) | **130,000** ᵛ | 12,625 | 366 | 573 | 0.00 | 90 | 66 | 679 | 2026-10-29 |
-| 67 | go-epoll-champ3oy | #76 | Go (io_uring) | **128,000** | 12,604 | 3 | 23 | 0.00 | 77 | 57 | 385 | 2026-10-21 |
-| 68 | cobol-gnucobol-unorig-username | #185 | COBOL (GnuCOBOL, epoll) | **126,000** | 12,398 | 34 | 125 | 0.00 | 93 | 70 | 607 | 2026-10-29 |
-| 69 | cpp-uwebsockets-v2-tbsvttr | #15 | C++ (uWebSockets) | **125,000** | 12,188 | 204 | 306 | 0.00 | 89 | 68 | 182 | 2026-10-26 |
-| 69 | go-epoll-Antheurus | #65 | Go (raw epoll, 3 processes) | **125,000** | 12,274 | 116 | 665 | 0.00 | 98 | 74 | 292 | 2026-10-27 |
-| 69 | go-lowlevel-janso123 | #91 | Go (io_uring, PGO + ThinLTO) | **125,000** | 12,284 | 68 | 261 | 0.00 | 95 | 72 | 500 | 2026-10-27 |
-| 69 | java-nio-unorig-username | #187 | Java (NIO, FFM SQLite) | **125,000** | 12,303 | 9.2 | 49 | 0.00 | 88 | 66 | 1,038 | 2026-10-29 |
-| 73 | kotlin-nio-3x3xX3N0N | #83 | Kotlin (NIO, 2 JVMs) | **120,000** | 11,759 | 246 | 524 | 0.00 | 100 | 79 | 1,380 | 2026-10-21 |
-| 73 | rust-iouring-unorig-username | #188 | Rust (io_uring) | **120,000** | 11,799 | 12 | 144 | 0.00 | 46 | 36 | 543 | 2026-10-29 |
-| 75 | cpp-uwebsockets-tbsvttr | #6 | C++ (uWebSockets) | **115,000** | 10,940 | 261 | 652 | 0.00 | 87 | 74 | 215 | 2026-10-26 |
-| 76 | d-iouring-cyrusmsk | #163 | D (io_uring, during) | **114,000** | 11,158 | 248 | 567 | 0.00 | 87 | 73 | 475 | 2026-11-01 |
-| 77 | zig-usockets-tbsvttr | #25 | Zig (uSockets) | **110,000** | 10,442 | 335 | 721 | 0.00 | 90 | 80 | 188 | 2026-10-26 |
-| 78 | c-iouring-fajarreza-gif | #302 | C (io_uring) | **108,000** | 10,627 | 51 | 68 | 0.00 | 48 | 42 | 245 | 2026-11-04 |
+| 62 | c-iouring-fajarreza-gif | #302 | C (io_uring) | **144,000** | 14,156 | 68 | 90 | 0.00 | 63 | 41 | 879 | 2026-11-04 |
+| 63 | c-ammarserver-AmmarkoV | #54 | C (AmmarServer, io_uring) | **135,000** | 13,239 | 95 | 470 | 0.00 | 76 | 53 | 320 | 2026-10-27 |
+| 63 | go-epoll-brady1408 | #111 | Go (raw epoll, cgo SQLite) | **135,000** | 13,169 | 366 | 962 | 0.00 | 100 | 70 | 296 | 2026-10-27 |
+| 63 | cider-iouring-pomilon | #208 | Cider (native x86-64, io_uring) | **135,000** | 13,168 | 256 | 489 | 0.00 | 88 | 62 | 425 | 2026-10-30 |
+| 66 | odin-odinhttp-wanderingaura | #139 | Odin (odin-http) | **130,000** | 12,644 | 429 | 924 | 0.00 | 82 | 60 | 624 | 2026-10-28 |
+| 66 | ruby-uring-cicloid | #197 | Ruby (io_uring) | **130,000** ᵛ | 12,625 | 366 | 573 | 0.00 | 90 | 66 | 679 | 2026-10-29 |
+| 68 | go-epoll-champ3oy | #76 | Go (io_uring) | **128,000** | 12,604 | 3 | 23 | 0.00 | 77 | 57 | 385 | 2026-10-21 |
+| 69 | cobol-gnucobol-unorig-username | #185 | COBOL (GnuCOBOL, epoll) | **126,000** | 12,398 | 34 | 125 | 0.00 | 93 | 70 | 607 | 2026-10-29 |
+| 70 | cpp-uwebsockets-v2-tbsvttr | #15 | C++ (uWebSockets) | **125,000** | 12,188 | 204 | 306 | 0.00 | 89 | 68 | 182 | 2026-10-26 |
+| 70 | go-epoll-Antheurus | #65 | Go (raw epoll, 3 processes) | **125,000** | 12,274 | 116 | 665 | 0.00 | 98 | 74 | 292 | 2026-10-27 |
+| 70 | go-lowlevel-janso123 | #91 | Go (io_uring, PGO + ThinLTO) | **125,000** | 12,284 | 68 | 261 | 0.00 | 95 | 72 | 500 | 2026-10-27 |
+| 70 | java-nio-unorig-username | #187 | Java (NIO, FFM SQLite) | **125,000** | 12,303 | 9.2 | 49 | 0.00 | 88 | 66 | 1,038 | 2026-10-29 |
+| 74 | kotlin-nio-3x3xX3N0N | #83 | Kotlin (NIO, 2 JVMs) | **120,000** | 11,759 | 246 | 524 | 0.00 | 100 | 79 | 1,380 | 2026-10-21 |
+| 74 | rust-iouring-unorig-username | #188 | Rust (io_uring) | **120,000** | 11,799 | 12 | 144 | 0.00 | 46 | 36 | 543 | 2026-10-29 |
+| 76 | cpp-uwebsockets-tbsvttr | #6 | C++ (uWebSockets) | **115,000** | 10,940 | 261 | 652 | 0.00 | 87 | 74 | 215 | 2026-10-26 |
+| 77 | d-iouring-cyrusmsk | #163 | D (io_uring, during) | **114,000** | 11,158 | 248 | 567 | 0.00 | 87 | 73 | 475 | 2026-11-01 |
+| 78 | zig-usockets-tbsvttr | #25 | Zig (uSockets) | **110,000** | 10,442 | 335 | 721 | 0.00 | 90 | 80 | 188 | 2026-10-26 |
 | 79 | c-epoll-TheFirstIstari | #64 | C (epoll) | **107,000** | 10,493 | 212 | 409 | 0.94 | 78 | 69 | 169 | 2026-10-21 |
 | 80 | java-nio-stohirov | #88 | Java (FFM epoll) | **102,000** | 10,023 | 86 | 128 | 0.85 | 66 | 61 | 555 | 2026-10-21 |
 | 81 | d-eventcore-cyrusmsk | #165 | D (eventcore) | **98,000** | 9,610 | 109 | 750 | 0.00 | 85 | 82 | 475 | 2026-11-01 |
@@ -552,7 +552,7 @@ public plugin APIs (a custom page cache through `SQLITE_CONFIG_PCACHE2`, a custo
 - **c-iouring-fajarreza-gif #302 reuses c-iouring-pavlyhalim #245's syscall layer**: `src/sys.h` (io_uring ABI/ring
   code, 415 lines) is byte-identical to #245's and `sha256.h` nearly so (credited in its README since `d7a2e70`);
   `server.c`, HTTP, JWT and the database code are new. Same building-on vs. copies question as #271. Scored as
-  submitted (108k at `81d94f1`, 95k at `df2f032`, 115k at `4845c30`, 64k at `d7a2e70`, 71k at `1441393`); held open for Arjay.
+  submitted (144k at `00d6c13`, 108k at `81d94f1`, 95k at `df2f032`, 115k at `4845c30`, 64k at `d7a2e70`, 71k at `1441393`); held open for Arjay.
 - **java-nio-stohirov #303 (follow-up to #88) ports rust-iouring-kensac #264's SQLite layer**: `csrc/shim.c`'s B-tree
   helpers (open/layout/keyinfo/seek/count_likes/payload) and its checkpoint state machine closely follow #264's
   `shim.c` (credited in its README and the shim header); the Java io_uring server (FFM) is the author's own. Same
