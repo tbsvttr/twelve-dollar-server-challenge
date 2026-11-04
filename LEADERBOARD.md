@@ -44,7 +44,8 @@ earlier #238 run (`9cbd120`) held 210,000. wat-wasmedge-delneg is scored at its 
 its earlier #272 runs held 247,000 (`c193a82`) and 270,000 (`f220565`), and its #259 code (`48942ac`) 60,000.
 lean-verified-soonhokong is scored at #286 (`fe89683`), which replaces its closed #271; the #271 run (`30d259c`) held
 290,000. c-iouring-unorig-username is scored at its follow-up PR #290 (`97d0470`); its earlier #184 run (`e157f0c`) held
-250,000.
+250,000. kotlin-trikeshed-jnorthrup is scored at its follow-up PR #298 (`61ddd97`); its merged #128 code (`2fb010a`) held
+175,000 and its earlier #128 run (`87b974c`) 71,000.
 
 **Re-runs.** The first submissions (#2–#29) were scored on a DigitalOcean $12 droplet, which is about 2× slower for
 CPU-bound servers, so those numbers aren't comparable. All of them have now been re-run on this box (finished
@@ -94,18 +95,18 @@ CPU % and µs/request are the app's own cgroup over the scored hold (µs = app C
 | 35 | csharp-epoll-gichamba | #174 | C# (Native AOT, io_uring) | **210,000** | 20,411 | 277 | 853 | 0.00 | 76 | 35 | 632 | 2026-10-29 |
 | 35 | c-epoll-unorig-username | #183 | C (epoll) | **210,000** | 20,425 | 300 | 713 | 0.00 | 95 | 43 | 808 | 2026-10-29 |
 | 35 | cider-iouring-pomilon-v2 | #225 | Cider (native x86-64, io_uring) | **210,000** | 20,404 | 348 | 504 | 0.00 | 86 | 39 | 611 | 2026-10-31 |
-| 39 | csharp-iouring-jit-gichamba | #175 | C# (JIT, io_uring) | **209,000** | 20,265 | 366 | 735 | 0.00 | 84 | 38 | 633 | 2026-10-31 |
-| 40 | zig-epoll-unorig-username | #189 | Zig (epoll) | **200,000** | 19,661 | 54 | 154 | 0.00 | 94 | 44 | 1,155 | 2026-10-29 |
-| 40 | crystal-rayo-faustinoaq | #218 | Crystal (Rayo, io_uring, SQLite B-tree reads) | **200,000** | 19,615 | 236 | 596 | 0.00 | 82 | 39 | 1,198 | 2026-10-31 |
-| 40 | c-epoll-patrickryankenneth | #246 | C (io_uring, epoll fallback) | **200,000** ᵉ | 19,464 | 447 | 692 | 0.00 | 81 | 39 | 762 | 2026-11-02 |
-| 40 | wat-wasmedge-delneg | #272 | WebAssembly (hand-written WAT, WasmEdge AOT, io_uring, SQLite B-tree reads) | **200,000** ᵒ | 19,678 | 13.1 | 189.9 | 0.00 | 63 | 30 | 1,072 | 2026-11-03 |
-| 44 | dexlang-iouring-ensamuel7 | #251 | DexLang (generated C, io_uring) | **199,000** | 19,425 | 316 | 579 | 0.00 | 89 | 43 | 713 | 2026-11-01 |
-| 45 | sql-oneselect-grMLEqomlkkU5Eeinz4brIrOVCUCkJuN | #243 | SQL (one SELECT over a virtual table, C io_uring) | **190,000** | 18,653 | 129 | 573 | 0.00 | 94 | 47 | 1,205 | 2026-11-02 |
-| 46 | csharp-iouring-oswaldosierra | #157 | C# (Native AOT, io_uring) | **189,000** | 18,592 | 20 | 51 | 0.00 | 88 | 44 | 1,176 | 2026-10-28 |
-| 46 | csharp-iouring-AlexandruLT | #196 | C# (Native AOT, io_uring) | **189,000** | 18,599 | 19.5 | 212 | 0.00 | 84 | 42 | 693 | 2026-10-29 |
-| 48 | go-epoll-MegaPanchamZ | #144 | Go (raw epoll) | **185,000** | 18,086 | 288 | 479 | 0.00 | 99 | 51 | 1,286 | 2026-10-28 |
-| 49 | go-epoll-kaikegm | #151 | Go (raw epoll, cgo SQLite) | **175,000** | 16,616 | 37 | 253 | 0.61 | 98 | 55 | 749 | 2026-10-28 |
-| 49 | kotlin-trikeshed-jnorthrup | #128 | Kotlin (Kotlin/Native, io_uring, SQLite B-tree reads) | **175,000** | 17,052 | 209.8 | 256 | 0.00 | 64 | 35 | 756 | 2026-11-03 |
+| 35 | kotlin-trikeshed-jnorthrup | #298 | Kotlin (Kotlin/Native, io_uring, SQLite B-tree reads) | **210,000** | 20,566 | 61.7 | 207.7 | 0.00 | 69 | 31 | 579 | 2026-11-04 |
+| 40 | csharp-iouring-jit-gichamba | #175 | C# (JIT, io_uring) | **209,000** | 20,265 | 366 | 735 | 0.00 | 84 | 38 | 633 | 2026-10-31 |
+| 41 | zig-epoll-unorig-username | #189 | Zig (epoll) | **200,000** | 19,661 | 54 | 154 | 0.00 | 94 | 44 | 1,155 | 2026-10-29 |
+| 41 | crystal-rayo-faustinoaq | #218 | Crystal (Rayo, io_uring, SQLite B-tree reads) | **200,000** | 19,615 | 236 | 596 | 0.00 | 82 | 39 | 1,198 | 2026-10-31 |
+| 41 | c-epoll-patrickryankenneth | #246 | C (io_uring, epoll fallback) | **200,000** ᵉ | 19,464 | 447 | 692 | 0.00 | 81 | 39 | 762 | 2026-11-02 |
+| 41 | wat-wasmedge-delneg | #272 | WebAssembly (hand-written WAT, WasmEdge AOT, io_uring, SQLite B-tree reads) | **200,000** ᵒ | 19,678 | 13.1 | 189.9 | 0.00 | 63 | 30 | 1,072 | 2026-11-03 |
+| 45 | dexlang-iouring-ensamuel7 | #251 | DexLang (generated C, io_uring) | **199,000** | 19,425 | 316 | 579 | 0.00 | 89 | 43 | 713 | 2026-11-01 |
+| 46 | sql-oneselect-grMLEqomlkkU5Eeinz4brIrOVCUCkJuN | #243 | SQL (one SELECT over a virtual table, C io_uring) | **190,000** | 18,653 | 129 | 573 | 0.00 | 94 | 47 | 1,205 | 2026-11-02 |
+| 47 | csharp-iouring-oswaldosierra | #157 | C# (Native AOT, io_uring) | **189,000** | 18,592 | 20 | 51 | 0.00 | 88 | 44 | 1,176 | 2026-10-28 |
+| 47 | csharp-iouring-AlexandruLT | #196 | C# (Native AOT, io_uring) | **189,000** | 18,599 | 19.5 | 212 | 0.00 | 84 | 42 | 693 | 2026-10-29 |
+| 49 | go-epoll-MegaPanchamZ | #144 | Go (raw epoll) | **185,000** | 18,086 | 288 | 479 | 0.00 | 99 | 51 | 1,286 | 2026-10-28 |
+| 50 | go-epoll-kaikegm | #151 | Go (raw epoll, cgo SQLite) | **175,000** | 16,616 | 37 | 253 | 0.61 | 98 | 55 | 749 | 2026-10-28 |
 | 51 | c-iouring-raoz | #26 | C (io_uring) | **172,000** | 16,875 | 98 | 125 | 0.00 | 69 | 38 | 419 | 2026-10-27 |
 | 52 | asm-nasm-melroy89 | #86 | x86-64 asm (io_uring) | **171,000** | 16,777 | 87 | 142 | 0.00 | 78 | 43 | 358 | 2026-10-21 |
 | 53 | go-epoll-unorig-username | #186 | Go (raw epoll, cgo SQLite) | **165,000** | 16,020 | 479 | 952 | 0.00 | 97 | 56 | 665 | 2026-10-29 |
