@@ -65,7 +65,7 @@ CPU % and µs/request are the app's own cgroup over the scored hold (µs = app C
 | 5 | objc-uring-delneg | #154 | Objective-C (GNUstep, io_uring, SQLite B-tree reads) | **280,000** | 26,741 | 35 | 227 | 0.00 | 79 | 27 | 1,245 | 2026-10-31 |
 | 5 | c-iouring-unorig-username | #290 | C (io_uring, SQLite B-tree reads) | **280,000** | 26,688 | 56.4 | 713 | 0.00 | 78 | 26 | 1,357 | 2026-11-03 |
 | 9 | c-iouring-shivanshthapliyal | #250 | C (io_uring, SQLite B-tree reads) | **276,000** | 26,403 | 23 | 147 | 0.00 | 77 | 26 | 638 | 2026-11-01 |
-| 10 | c-iouring-public | #158 | C (io_uring, SQLite B-tree reads) | **275,000** | 26,227 | 128 | 672 | 0.00 | 80 | 28 | 625 | 2026-10-31 |
+| 10 | c-iouring-public | #158 | C (io_uring, SQLite B-tree reads) | **275,000** ᵇ | 26,227 | 128 | 672 | 0.00 | 80 | 28 | 625 | 2026-10-31 |
 | 11 | crystal-epoll-faustinoaq | #193 | Crystal (io_uring) | **270,000** | 25,693 | 348 | 879 | 0.00 | 92 | 32 | 1,160 | 2026-10-29 |
 | 11 | lexlean-iouring-humuhumu33 | #287 | C (LexLean/Lean 4-generated core, io_uring, SQLite B-tree reads) | **270,000** | 25,873 | 40.2 | 206 | 0.00 | 78 | 27 | 1,067 | 2026-11-03 |
 | 11 | goose-iouring-ahmadsh2007 | #291 | Goose (compiles to C, io_uring, SQLite B-tree reads) | **270,000** | 25,854 | 84.8 | 349 | 0.00 | 78 | 27 | 1,190 | 2026-11-03 |
@@ -401,6 +401,11 @@ epoll) held **60,000** (5,905 req/s, p95 3.1 / p99 204 ms, 0 err, 23 % CPU, 2026
 batched ring-0 wait, smaller WAL checkpoints; held, not merged: it scored below the merged row) held **175,000** (17,146
 req/s, p95 208 / p99 456 ms, 0 err, 72 % CPU, 39 µs/req, 379 MB, 2026-11-03): 180,000 and 200,000 failed on p99 (742 ms
 / 2.5 s, 0 err, 78–80 % CPU), 240,000 on p99 (9.1 s) and 320,000 on `connection refused`.
+
+ᵇ **c-iouring-public** is scored at its merged #158 code (`68bb947`). Its follow-up **#252** (`2535aa5`, reads through
+cursed-sqlite-turbo on stock SQLite; held, not merged: it scored below the merged row, and its own bytecode executor is
+an open rule 2 / ruling 8 question for Arjay) held **270,000** (25,856 req/s, p95 40.2 / p99 332 ms, 0 err, 75 % CPU,
+26 µs/req, 876 MB, 2026-11-04): 280,000 failed on p99 (8.2 s, 0 err, 82 % CPU) and 320,000 on `connection refused`.
 
 ## Patches (ᵖ) and failures
 
