@@ -539,18 +539,18 @@ public plugin APIs (a custom page cache through `SQLITE_CONFIG_PCACHE2`, a custo
 - **lean-verified-soonhokong #286 (was #271) reuses c-iouring-pavlyhalim #245's B-tree helpers**: `runtime/db.c`'s record
   decoder, payload fetch, index seek and multi-key descent closely follow #245's `src/btree.h` (now credited in its
   README); the Lean handlers, HTTP/JWT/JSON code and the io_uring transport are new. Open question for Arjay: building
-  on another entry vs. the copies rule. Scored as submitted (290k at `6d5b097`; 280k at `307205a` and `fe89683`; 290k at `30d259c` as #271); held open for Arjay.
+  on another entry vs. the copies rule. Arjay ruled 2026-11-04: credited reuse of helper code is fine, so it's its own
+  entry; it merges once its newest commit (`e7acdcc`) is scored. Scored as submitted (290k at `6d5b097`; 280k at `307205a` and `fe89683`; 290k at `30d259c` as #271).
 - **c-rawsqlite-larvance #210 reuses c-iouring-pavlyhalim #245's B-tree helpers**: since `d76e386`, `src/db.c`'s record
   decoder, index seek, cursor helpers and rootpage/keyinfo lookups (~150 of ~2,350 lines) closely follow #245's
   `src/btree.h` with renamed identifiers; the io_uring transport, HTTP, JSON and JWT code are the author's own (from
-  before #245). Same open question as #271: building on another entry vs. the copies rule. Scored as submitted (260k
-  at `d76e386`); held open for Arjay.
+  before #245). Arjay ruled 2026-11-04: reusing another entry's helpers is fine when the README credits it; #245 isn't
+  credited yet, so it's held until the author adds the credit. Scored as submitted (260k at `d76e386`).
 - **goose-iouring-ahmadsh2007 #291 builds on rust-iouring-kensac #264's design**: at `204b6b0` its `net.c` was a C port
   of #264's io_uring transport and `db.c` adapted #264's B-tree helpers and checkpoint logic (credited). Since `67ef830`
   those files are gone: new `uring.c` (kernel plumbing only) and `sqlite.c`, with the event loop, connection table and
-  checkpoint policy in `app.goose` (the request path was already new Goose code). Same open question as #271/#210:
-  building on another entry vs. the copies rule. Scored as submitted (260k at `204b6b0`, 270k at `67ef830` and `74d44c9`); held open
-  for Arjay.
+  checkpoint policy in `app.goose` (the request path was already new Goose code). Arjay ruled 2026-11-04: credited
+  reuse is fine → merged at `74d44c9`. Scored as submitted (260k at `204b6b0`, 270k at `67ef830` and `74d44c9`).
 - **c-iouring-oix7 #296 writes SQLite's private B-tree cursor fields**: `db.c`'s `cur_seek` / `cur_count_likes_fast`
   descend pages with SQLite's internal helpers and set `BtCursor` fields (`ix`, `curFlags`, `info.nKey`, `info.nSize`)
   directly. Open question for Arjay: ruling 8 (no writing SQLite's internal state from outside) vs. the allowed
