@@ -33,7 +33,7 @@ its #229 run (`f0fb733`) held 232,000, its #216 run (`ee683db`) and #211 run (`7
 (`7387a31`); its earlier #233 run (`3f5c305`) held 270,000. Its later follow-up #278 (`088cc44`, `db.h` tuning; held,
 not merged: it didn't beat the merged row) scored 290,000 (27,513 req/s, p95 78 / p99 345 ms, 0 err, 87 % CPU, 28 µs/req,
 654 MB, 2026-11-02; 300,000 failed the 2-minute probe on p99 4.0 s). rust-iouring-kensac is scored at its follow-up PR #264
-(`4298101`, not merged yet); its merged #248 code (`3bd2352`, merged as rebased `551ff3a`) held 270,000 and its earlier
+(`4298101`, merged 2026-11-04 as the same folder rebased to `e69dbb6`); its earlier merged #248 code (`3bd2352`, merged as rebased `551ff3a`) held 270,000 and its
 #247 run (`d42783b`) 257,000. php-symfony-gnugat is scored at its follow-up PR #256 (`4a11a5d`); its
 earlier #136 run (`48e3783`) held 15,500. mojo-iouring-oh-meh is scored at its follow-up PR #257 (`a9df151`); its merged
 #224 code (`ef45beb`) held 280,000, and its earlier #224 runs held 280,000 (`29024f3`) and 290,000 (`1f4eb0b`).
