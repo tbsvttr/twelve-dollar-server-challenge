@@ -264,7 +264,10 @@ conflicts with the merged #82 folder) scored **230,000** on the standard 4-sourc
 
 ᵘ **HolyPHP** is scored at its merged follow-up **#307** (`5cf1f18`, merged 2026-11-04; replaces closed #306/#304:
 INSERT…RETURNING reset before rollback, 6 rings by default, accept depth 512). 220,000 failed the 2-minute probe on
-refused connections (68.5 % errors, 35 % CPU) and 240,000 on p95/p99 (8.2 / 8.8 s, 73 % CPU, 0 errors). Its earlier
+refused connections (68.5 % errors, 35 % CPU) and 240,000 on p95/p99 (8.2 / 8.8 s, 73 % CPU, 0 errors). Its later
+follow-up **#312** (`64d470e`, 8 SO_REUSEPORT listeners; not merged: not above 210,000) held **200,000** (19,683
+req/s, p95 11.9 / p99 85.7 ms, 0 err, 73 % CPU, 34 µs/req, 1,125 MB, 2026-11-05); 210,000 and 220,000 failed the
+2-minute probe on refused connections (43 % / 64 % errors) and 240,000 on p95/p99 (9.7 / 10.4 s). Its earlier
 follow-up **#304** (`cbdb08d`, `-O3 -march=native -flto`, background checkpoint
 thread, batched B-tree reads, default unix VFS; not merged: its head moved to `d9aace0` during the run and #304 was then
 closed unmerged) scored **179,000** (17,574 req/s, p95 91.9 / p99 401 ms, 0 err, 65 % CPU, 34 µs/req, 1,172 MB,
