@@ -79,17 +79,17 @@ CPU % and µs/request are the app's own cgroup over the scored hold (µs = app C
 | 11 | goose-iouring-ahmadsh2007 | #291 | Goose (compiles to C, io_uring, SQLite B-tree reads) | **270,000** | 25,770 | 261 | 906 | 0.00 | 79 | 28 | 1,106 | 2026-11-04 |
 | 11 | lean-verified-soonhokong | #286 | Lean 4 (verified handlers, io_uring, SQLite B-tree reads) | **270,000** | 25,856 | 40.2 | 282.8 | 0.00 | 74 | 26 | 954 | 2026-11-05 |
 | 15 | rust-epoll-scooter1337 | #82 | Rust (io_uring) | **264,000** ˣ | 25,147 | 259 | 499 | 0.00 | 84 | 30 | 630 | 2026-10-21 |
-| 16 | c-rawsqlite-larvance | #210 | C (io_uring, SQLite B-tree reads) | **260,000** | 24,914 | 241 | 962 | 0.00 | 88 | 32 | 744 | 2026-11-03 |
 | 16 | csharp-kestrel-mbobka | #316 | C# (.NET 10 ReadyToRun, Kestrel host, io_uring) | **260,000** | 24,980 | 134 | 286 | 0.00 | 82 | 30 | 692 | 2026-11-05 |
-| 18 | v-epoll-i098 | #191 | V (io_uring, SQLite B-tree reads) | **257,000** | 24,766 | 13.5 | 29 | 0.00 | 74 | 27 | 732 | 2026-10-30 |
-| 18 | c-iouring-oix7 | #296 | C (io_uring, SQLite B-tree reads) | **257,000** | 24,654 | 239 | 796 | 0.00 | 76 | 28 | 905 | 2026-11-04 |
-| 20 | asm-iouring-unorig-username | #206 | x86-64 asm (io_uring) | **250,000** | 24,053 | 141 | 397 | 0.00 | 91 | 34 | 1,486 | 2026-10-30 |
-| 20 | ada-native-visseranalytics | #237 | Ada (GNAT, io_uring) | **250,000** | 24,119 | 84 | 286 | 0.00 | 77 | 29 | 1,169 | 2026-11-01 |
-| 20 | c-rawuring-thehimalayanleo | #269 | C (io_uring, SQLite B-tree reads) | **250,000** | 24,014 | 220 | 359 | 0.00 | 79 | 30 | 970 | 2026-11-02 |
-| 23 | fsharp-kestrel-delneg | #201 | F# (Kestrel, io_uring) | **247,000** | 23,884 | 14 | 72 | 0.00 | 71 | 27 | 750 | 2026-10-30 |
-| 23 | lisp-sbcl-heyitstony97-max | #283 | Common Lisp (SBCL, io_uring, SQLite B-tree reads) | **247,000** | 23,772 | 251 | 596 | 0.00 | 79 | 30 | 1,187 | 2026-11-03 |
-| 25 | asm-epoll-umitaltintas | #152 | x86-64 asm (io_uring) | **240,000** | 22,985 | 366 | 633 | 0.00 | 83 | 33 | 545 | 2026-10-28 |
-| 25 | cider-iouring-pomilon-v5 | #273 | Cider (native x86-64, io_uring, SQLite B-tree reads) | **240,000** | 23,198 | 145 | 236 | 0.02 | 92 | 36 | 706 | 2026-11-02 |
+| 17 | v-epoll-i098 | #191 | V (io_uring, SQLite B-tree reads) | **257,000** | 24,766 | 13.5 | 29 | 0.00 | 74 | 27 | 732 | 2026-10-30 |
+| 17 | c-iouring-oix7 | #296 | C (io_uring, SQLite B-tree reads) | **257,000** | 24,654 | 239 | 796 | 0.00 | 76 | 28 | 905 | 2026-11-04 |
+| 19 | asm-iouring-unorig-username | #206 | x86-64 asm (io_uring) | **250,000** | 24,053 | 141 | 397 | 0.00 | 91 | 34 | 1,486 | 2026-10-30 |
+| 19 | ada-native-visseranalytics | #237 | Ada (GNAT, io_uring) | **250,000** | 24,119 | 84 | 286 | 0.00 | 77 | 29 | 1,169 | 2026-11-01 |
+| 19 | c-rawuring-thehimalayanleo | #269 | C (io_uring, SQLite B-tree reads) | **250,000** | 24,014 | 220 | 359 | 0.00 | 79 | 30 | 970 | 2026-11-02 |
+| 22 | fsharp-kestrel-delneg | #201 | F# (Kestrel, io_uring) | **247,000** | 23,884 | 14 | 72 | 0.00 | 71 | 27 | 750 | 2026-10-30 |
+| 22 | lisp-sbcl-heyitstony97-max | #283 | Common Lisp (SBCL, io_uring, SQLite B-tree reads) | **247,000** | 23,772 | 251 | 596 | 0.00 | 79 | 30 | 1,187 | 2026-11-03 |
+| 24 | asm-epoll-umitaltintas | #152 | x86-64 asm (io_uring) | **240,000** | 22,985 | 366 | 633 | 0.00 | 83 | 33 | 545 | 2026-10-28 |
+| 24 | cider-iouring-pomilon-v5 | #273 | Cider (native x86-64, io_uring, SQLite B-tree reads) | **240,000** | 23,198 | 145 | 236 | 0.02 | 92 | 36 | 706 | 2026-11-02 |
+| 24 | c-rawsqlite-larvance | #210 | C (io_uring, SQLite B-tree reads) | **240,000** | 23,237 | 118 | 280 | 0.00 | 84 | 33 | 1,153 | 2026-11-05 |
 | 27 | c-iouring-meros | #199 | C (io_uring) | **238,000** | 22,796 | 417 | 750 | 0.00 | 78 | 31 | 1,567 | 2026-10-30 |
 | 28 | zig-iouring-unorig-username | #190 | Zig (io_uring) | **235,000** | 22,785 | 34 | 160 | 0.00 | 80 | 32 | 1,019 | 2026-10-29 |
 | 28 | cider-iouring-pomilon-v4 | #249 | Cider (native x86-64, io_uring, SQLite B-tree reads) | **235,000** | 22,817 | 10.5 | 29 | 0.00 | 88 | 35 | 908 | 2026-11-01 |
@@ -539,7 +539,7 @@ committed in this repo.
 public plugin APIs (a custom page cache through `SQLITE_CONFIG_PCACHE2`, a custom VFS). Not allowed (rule 2):
   - **an own engine for SQLite's file format**: none on the board now. c-rawsqlite-larvance #210 (`raw_sqlite.c`, no
     libsqlite3; scored 280k at `15e3271`) came off the board and is back since `d76e386`, which builds the stock SQLite
-    3.54.1 amalgamation and reads through its B-tree cursor API (260k, row above).
+    3.54.1 amalgamation and reads through its B-tree cursor API (240k at `70d8fde`, row above).
   - **patching SQLite's source**: none on the board now. objc-uring-delneg #154 (dropped its patch in `1fe6941`) and
     c-iouring-public #158 (dropped its `pcache1-maxkey` patch in `68bb947`) were re-run on stock SQLite 3.54.1.
 - **python-pyrustapi #147 serves its reads from the `pyrustapi` package's native SQL tier** (`sql=` route options),
@@ -568,8 +568,8 @@ public plugin APIs (a custom page cache through `SQLITE_CONFIG_PCACHE2`, a custo
 - **c-rawsqlite-larvance #210 reuses c-iouring-pavlyhalim #245's B-tree helpers**: since `d76e386`, `src/db.c`'s record
   decoder, index seek, cursor helpers and rootpage/keyinfo lookups (~150 of ~2,350 lines) closely follow #245's
   `src/btree.h` with renamed identifiers; the io_uring transport, HTTP, JSON and JWT code are the author's own (from
-  before #245). Arjay ruled 2026-11-04: reusing another entry's helpers is fine when the README credits it; #245 isn't
-  credited yet, so it's held until the author adds the credit. Scored as submitted (260k at `d76e386`).
+  before #245). Arjay ruled 2026-11-04: reusing another entry's helpers is fine when the README credits it; the README
+  credits #245 since `76bb85b` → merged 2026-11-05 at `70d8fde` (240k). Earlier run: 260k at `d76e386`.
 - **goose-iouring-ahmadsh2007 #291 builds on rust-iouring-kensac #264's design**: at `204b6b0` its `net.c` was a C port
   of #264's io_uring transport and `db.c` adapted #264's B-tree helpers and checkpoint logic (credited). Since `67ef830`
   those files are gone: new `uring.c` (kernel plumbing only) and `sqlite.c`, with the event loop, connection table and
