@@ -298,7 +298,7 @@ mod linux_uring {
 
     impl RawRing {
         fn create(sq_entries: u32, cq_entries: u32, direct_slots: u32) -> io::Result<Self> {
-            let mut params = io_uring_params::default();
+            let mut params;
             let mut cq = cq_entries;
             let fd = loop {
                 params = io_uring_params {

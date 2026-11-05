@@ -30,13 +30,21 @@ fn main() {
         .arg("-DSQLITE_DEFAULT_WAL_SYNCHRONOUS=1")
         .arg("-DSQLITE_LIKE_DOESNT_MATCH_BLOBS")
         .arg("-DSQLITE_MAX_EXPR_DEPTH=0")
+        .arg("-DSQLITE_USE_ALLOCA")
         .arg("-DSQLITE_OMIT_DECLTYPE")
         .arg("-DSQLITE_OMIT_DEPRECATED")
         .arg("-DSQLITE_OMIT_PROGRESS_CALLBACK")
         .arg("-DSQLITE_OMIT_SHARED_CACHE")
         .arg("-DSQLITE_OMIT_AUTOINIT")
         .arg("-DSQLITE_OMIT_LOAD_EXTENSION")
-        .arg("-DSQLITE_DQS=0");
+        .arg("-DSQLITE_OMIT_UTF16")
+        .arg("-DSQLITE_OMIT_TRACE")
+        .arg("-DSQLITE_OMIT_COMPLETE")
+        .arg("-DSQLITE_OMIT_GET_TABLE")
+        .arg("-DSQLITE_OMIT_TCL_VARIABLE")
+        .arg("-DSQLITE_DQS=0")
+        .arg("-DHAVE_FDATASYNC=1")
+        .arg("-DHAVE_USLEEP=1");
 
     if env::var("CARGO_CFG_TARGET_ARCH").as_deref() == Ok("x86_64") {
         cmd.arg("-march=native");

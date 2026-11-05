@@ -5,7 +5,7 @@ use crate::http::{
     Method, ParsedRequest, write_dynamic_json_response, write_static_json_response,
 };
 use crate::json::{
-    BodyError, extract_and_validate_post_body, format_utc_iso_ms, write_feed_result,
+    BodyError, extract_and_validate_post_body, format_utc_iso_ms_from, write_feed_result,
     write_health_json, write_like_json, write_single_post_json, write_single_post_result,
 };
 use crate::jwt::{JwtError, JwtVerifier};
@@ -136,8 +136,8 @@ impl App {
     }
 
     fn handle_create_post(&mut self, req: &ParsedRequest<'_>, out: &mut Vec<u8>) {
-        let now_s = unix_now_secs();
-        let claims = match self.jwt.verify_bearer(req.auth_header, now_s) {
+        let now_ts = unix_now_timespec();
+        let claims = match self.jwt.verify_bearer(req.auth_header, now_ts.tv_sec) {
             Ok(c) => c,
             Err(err) => {
                 write_jwt_error(out, req.close_conn, err);
@@ -161,7 +161,7 @@ impl App {
             }
         };
 
-        let created_at = format_utc_iso_ms();
+        let created_at = format_utc_iso_ms_from(now_ts);
         match self.db.insert_post(claims.user_id, trimmed_body, &created_at) {
             Ok(post_id) => {
                 let author = &claims.username[..claims.username_len];
@@ -238,7 +238,7 @@ fn parse_strict_post_id(bytes: &[u8]) -> Option<i64> {
 }
 
 #[inline]
-fn unix_now_secs() -> i64 {
+fn unix_now_timespec() -> timespec {
     let mut ts = timespec {
         tv_sec: 0,
         tv_nsec: 0,
@@ -246,5 +246,10 @@ fn unix_now_secs() -> i64 {
     unsafe {
         clock_gettime(CLOCK_REALTIME, &mut ts);
     }
-    ts.tv_sec
+    ts
+}
+
+#[inline]
+fn unix_now_secs() -> i64 {
+    unix_now_timespec().tv_sec
 }

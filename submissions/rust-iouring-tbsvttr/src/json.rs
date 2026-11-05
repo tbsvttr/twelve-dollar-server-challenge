@@ -1,12 +1,213 @@
 use crate::db::{TvccFeedResult, TvccSinglePostResult};
-use crate::sys::{CLOCK_REALTIME, clock_gettime, find_json_special, timespec};
+use crate::sys::{CLOCK_REALTIME, clock_gettime, timespec, word_has_json_special};
 
-const DIGIT_PAIRS: &[u8; 200] = b"\
+pub(crate) const DIGIT_PAIRS: &[u8; 200] = b"\
 0001020304050607080910111213141516171819\
 2021222324252627282930313233343536373839\
 4041424344454647484950515253545556575859\
 6061626364656667686970717273747576777879\
 8081828384858687888990919293949596979899";
+
+const fn build_esc_table() -> [u8; 256] {
+    let mut t = [0u8; 256];
+    let mut i = 0;
+    while i < 0x20 {
+        t[i] = 1;
+        i += 1;
+    }
+    t[b'"' as usize] = 1;
+    t[b'\\' as usize] = 1;
+    t
+}
+
+static ESC_TABLE: [u8; 256] = build_esc_table();
+
+pub const INT_BOUND: usize = 20;
+
+#[inline(always)]
+pub const fn esc_bound(n: usize) -> usize {
+    6 * n
+}
+
+pub struct JsonCur {
+    p: *mut u8,
+    end: *mut u8,
+}
+
+#[inline(always)]
+pub fn fill_json(out: &mut Vec<u8>, bound: usize, f: impl FnOnce(&mut JsonCur)) {
+    out.reserve(bound);
+    let len = out.len();
+    unsafe {
+        let base = out.as_mut_ptr();
+        let mut c = JsonCur {
+            p: base.add(len),
+            end: base.add(len + bound),
+        };
+        f(&mut c);
+        debug_assert!(c.p <= c.end, "fill_json bound exceeded");
+        out.set_len(c.p.offset_from(base) as usize);
+    }
+}
+
+impl JsonCur {
+    #[inline(always)]
+    pub fn lit(&mut self, s: &[u8]) {
+        debug_assert!(self.p as usize + s.len() <= self.end as usize);
+        unsafe {
+            std::ptr::copy_nonoverlapping(s.as_ptr(), self.p, s.len());
+            self.p = self.p.add(s.len());
+        }
+    }
+
+    #[inline(always)]
+    pub fn byte(&mut self, b: u8) {
+        debug_assert!(self.p < self.end);
+        unsafe {
+            *self.p = b;
+            self.p = self.p.add(1);
+        }
+    }
+
+    #[inline(always)]
+    pub fn i64(&mut self, v: i64) {
+        debug_assert!(self.p as usize + INT_BOUND <= self.end as usize);
+        let mut buf = [0u8; 40];
+        let mut i = 20usize;
+        let mut n = v.unsigned_abs();
+        while n >= 100 {
+            let r = ((n % 100) as usize) * 2;
+            n /= 100;
+            i -= 2;
+            buf[i] = DIGIT_PAIRS[r];
+            buf[i + 1] = DIGIT_PAIRS[r + 1];
+        }
+        if n >= 10 {
+            let r = (n as usize) * 2;
+            i -= 2;
+            buf[i] = DIGIT_PAIRS[r];
+            buf[i + 1] = DIGIT_PAIRS[r + 1];
+        } else {
+            i -= 1;
+            buf[i] = b'0' + n as u8;
+        }
+        if v < 0 {
+            i -= 1;
+            buf[i] = b'-';
+        }
+        unsafe {
+            std::ptr::copy_nonoverlapping(buf.as_ptr().add(i), self.p, INT_BOUND);
+            self.p = self.p.add(20 - i);
+        }
+    }
+
+    #[inline]
+    pub fn esc(&mut self, s: &[u8]) {
+        debug_assert!(self.p as usize + esc_bound(s.len()) <= self.end as usize);
+        let mut i = 0usize;
+        #[cfg(target_arch = "x86_64")]
+        {
+            #[cfg(target_feature = "avx2")]
+            while i + 32 <= s.len() {
+                let m = unsafe { simd::store_check32(s.as_ptr().add(i), self.p) };
+                i += self.chunk_tail(s, i, 32, m);
+            }
+            while i + 16 <= s.len() {
+                let m = unsafe { simd::store_check16(s.as_ptr().add(i), self.p) };
+                i += self.chunk_tail(s, i, 16, m);
+            }
+        }
+        while i + 8 <= s.len() {
+            let w = u64::from_le_bytes(s[i..i + 8].try_into().unwrap());
+            if word_has_json_special(w) != 0 {
+                for &c in &s[i..i + 8] {
+                    self.esc_byte(c);
+                }
+            } else {
+                unsafe {
+                    std::ptr::write_unaligned(self.p as *mut u64, w.to_le());
+                    self.p = self.p.add(8);
+                }
+            }
+            i += 8;
+        }
+        for &c in &s[i..] {
+            self.esc_byte(c);
+        }
+    }
+
+    #[inline(always)]
+    #[allow(dead_code)]
+    fn chunk_tail(&mut self, s: &[u8], i: usize, n: usize, m: u32) -> usize {
+        if m == 0 {
+            unsafe { self.p = self.p.add(n) };
+        } else {
+            let k = m.trailing_zeros() as usize;
+            unsafe { self.p = self.p.add(k) };
+            for &c in &s[i + k..i + n] {
+                self.esc_byte(c);
+            }
+        }
+        n
+    }
+
+    #[inline(always)]
+    fn esc_byte(&mut self, c: u8) {
+        if ESC_TABLE[c as usize] == 0 {
+            self.byte(c);
+        } else {
+            self.esc_special(c);
+        }
+    }
+
+    #[cold]
+    fn esc_special(&mut self, c: u8) {
+        const HEX: &[u8; 16] = b"0123456789abcdef";
+        match c {
+            b'"' => self.lit(b"\\\""),
+            b'\\' => self.lit(b"\\\\"),
+            b'\n' => self.lit(b"\\n"),
+            b'\r' => self.lit(b"\\r"),
+            b'\t' => self.lit(b"\\t"),
+            0x08 => self.lit(b"\\b"),
+            0x0c => self.lit(b"\\f"),
+            _ => self.lit(&[
+                b'\\',
+                b'u',
+                b'0',
+                b'0',
+                HEX[(c >> 4) as usize],
+                HEX[(c & 0x0f) as usize],
+            ]),
+        }
+    }
+}
+
+#[cfg(target_arch = "x86_64")]
+mod simd {
+    use std::arch::x86_64::*;
+
+    #[inline(always)]
+    pub unsafe fn store_check16(src: *const u8, dst: *mut u8) -> u32 {
+        let v = unsafe { _mm_loadu_si128(src as *const __m128i) };
+        unsafe { _mm_storeu_si128(dst as *mut __m128i, v) };
+        let ctl = unsafe { _mm_cmpeq_epi8(_mm_min_epu8(v, _mm_set1_epi8(0x1f)), v) };
+        let q = unsafe { _mm_cmpeq_epi8(v, _mm_set1_epi8(b'"' as i8)) };
+        let b = unsafe { _mm_cmpeq_epi8(v, _mm_set1_epi8(b'\\' as i8)) };
+        unsafe { _mm_movemask_epi8(_mm_or_si128(ctl, _mm_or_si128(q, b))) as u32 }
+    }
+
+    #[cfg(target_feature = "avx2")]
+    #[inline(always)]
+    pub unsafe fn store_check32(src: *const u8, dst: *mut u8) -> u32 {
+        let v = unsafe { _mm256_loadu_si256(src as *const __m256i) };
+        unsafe { _mm256_storeu_si256(dst as *mut __m256i, v) };
+        let ctl = unsafe { _mm256_cmpeq_epi8(_mm256_min_epu8(v, _mm256_set1_epi8(0x1f)), v) };
+        let q = unsafe { _mm256_cmpeq_epi8(v, _mm256_set1_epi8(b'"' as i8)) };
+        let b = unsafe { _mm256_cmpeq_epi8(v, _mm256_set1_epi8(b'\\' as i8)) };
+        unsafe { _mm256_movemask_epi8(_mm256_or_si256(ctl, _mm256_or_si256(q, b))) as u32 }
+    }
+}
 
 #[derive(Clone, Copy, Debug, PartialEq, Eq)]
 pub enum BodyError {
@@ -53,49 +254,6 @@ pub fn push_i64(out: &mut Vec<u8>, val: i64) {
 }
 
 #[inline]
-pub fn push_json_str(out: &mut Vec<u8>, bytes: &[u8]) {
-    out.push(b'"');
-    let mut start = 0usize;
-    while start < bytes.len() {
-        let tail = &bytes[start..];
-        let Some(rel) = find_json_special(tail) else {
-            out.extend_from_slice(tail);
-            break;
-        };
-        if rel > 0 {
-            out.extend_from_slice(&tail[..rel]);
-        }
-        escape_byte(out, tail[rel]);
-        start += rel + 1;
-    }
-    out.push(b'"');
-}
-
-#[inline]
-fn escape_byte(out: &mut Vec<u8>, b: u8) {
-    match b {
-        b'"' => out.extend_from_slice(b"\\\""),
-        b'\\' => out.extend_from_slice(b"\\\\"),
-        b'\x08' => out.extend_from_slice(b"\\b"),
-        b'\x0c' => out.extend_from_slice(b"\\f"),
-        b'\n' => out.extend_from_slice(b"\\n"),
-        b'\r' => out.extend_from_slice(b"\\r"),
-        b'\t' => out.extend_from_slice(b"\\t"),
-        _ => {
-            const HEX: &[u8; 16] = b"0123456789abcdef";
-            out.extend_from_slice(&[
-                b'\\',
-                b'u',
-                b'0',
-                b'0',
-                HEX[(b >> 4) as usize],
-                HEX[(b & 0x0f) as usize],
-            ]);
-        }
-    }
-}
-
-#[inline]
 pub fn write_single_post_json(
     out: &mut Vec<u8>,
     id: i64,
@@ -104,17 +262,20 @@ pub fn write_single_post_json(
     author: &[u8],
     like_count: i64,
 ) {
-    out.extend_from_slice(b"{\"post\":{\"id\":");
-    push_i64(out, id);
-    out.extend_from_slice(b",\"body\":");
-    push_json_str(out, body);
-    out.extend_from_slice(b",\"created_at\":\"");
-    out.extend_from_slice(created_at);
-    out.extend_from_slice(b"\",\"author\":\"");
-    out.extend_from_slice(author);
-    out.extend_from_slice(b"\",\"like_count\":");
-    push_i64(out, like_count);
-    out.extend_from_slice(b"}}");
+    let bound = 128 + esc_bound(body.len() + created_at.len() + author.len());
+    fill_json(out, bound, |c| {
+        c.lit(b"{\"post\":{\"id\":");
+        c.i64(id);
+        c.lit(b",\"body\":\"");
+        c.esc(body);
+        c.lit(b"\",\"created_at\":\"");
+        c.esc(created_at);
+        c.lit(b"\",\"author\":\"");
+        c.esc(author);
+        c.lit(b"\",\"like_count\":");
+        c.i64(like_count);
+        c.lit(b"}}");
+    });
 }
 
 #[inline]
@@ -131,32 +292,38 @@ pub fn write_single_post_result(out: &mut Vec<u8>, post: &TvccSinglePostResult) 
 
 #[inline]
 pub fn write_feed_result(out: &mut Vec<u8>, feed: &TvccFeedResult) {
-    out.extend_from_slice(b"{\"posts\":[");
+    const ROW_FIXED: usize =
+        b",{\"id\":,\"body\":\"\",\"created_at\":\"\",\"author\":\"\",\"like_count\":}".len()
+            + 2 * INT_BOUND;
     let count = feed.count as usize;
     let pool = &feed.text[..feed.text_used as usize];
-    for (idx, row) in feed.rows[..count].iter().enumerate() {
-        if idx > 0 {
-            out.push(b',');
+    let bound = b"{\"posts\":[]}".len() + count * ROW_FIXED + esc_bound(pool.len());
+    fill_json(out, bound, |c| {
+        c.lit(b"{\"posts\":[");
+        for (idx, row) in feed.rows[..count].iter().enumerate() {
+            if idx > 0 {
+                c.byte(b',');
+            }
+            c.lit(b"{\"id\":");
+            c.i64(row.id);
+            c.lit(b",\"body\":\"");
+            let b_start = row.body_off as usize;
+            let b_end = b_start + row.body_len as usize;
+            c.esc(&pool[b_start..b_end]);
+            c.lit(b"\",\"created_at\":\"");
+            let c_start = row.created_off as usize;
+            let c_end = c_start + row.created_len as usize;
+            c.esc(&pool[c_start..c_end]);
+            c.lit(b"\",\"author\":\"");
+            let a_start = row.author_off as usize;
+            let a_end = a_start + row.author_len as usize;
+            c.esc(&pool[a_start..a_end]);
+            c.lit(b"\",\"like_count\":");
+            c.i64(row.like_count);
+            c.byte(b'}');
         }
-        out.extend_from_slice(b"{\"id\":");
-        push_i64(out, row.id);
-        out.extend_from_slice(b",\"body\":");
-        let b_start = row.body_off as usize;
-        let b_end = b_start + row.body_len as usize;
-        push_json_str(out, &pool[b_start..b_end]);
-        out.extend_from_slice(b",\"created_at\":\"");
-        let c_start = row.created_off as usize;
-        let c_end = c_start + row.created_len as usize;
-        out.extend_from_slice(&pool[c_start..c_end]);
-        out.extend_from_slice(b"\",\"author\":\"");
-        let a_start = row.author_off as usize;
-        let a_end = a_start + row.author_len as usize;
-        out.extend_from_slice(&pool[a_start..a_end]);
-        out.extend_from_slice(b"\",\"like_count\":");
-        push_i64(out, row.like_count);
-        out.push(b'}');
-    }
-    out.extend_from_slice(b"]}");
+        c.lit(b"]}");
+    });
 }
 
 #[inline]
@@ -177,6 +344,8 @@ pub fn write_health_json(out: &mut Vec<u8>, uptime_s: u64) {
     out.push(b'}');
 }
 
+#[allow(dead_code)]
+#[inline]
 pub fn format_utc_iso_ms() -> [u8; 24] {
     let mut ts = timespec {
         tv_sec: 0,
@@ -185,6 +354,11 @@ pub fn format_utc_iso_ms() -> [u8; 24] {
     unsafe {
         clock_gettime(CLOCK_REALTIME, &mut ts);
     }
+    format_utc_iso_ms_from(ts)
+}
+
+#[inline]
+pub fn format_utc_iso_ms_from(ts: timespec) -> [u8; 24] {
     let secs = ts.tv_sec.max(0) as u64;
     let millis = (ts.tv_nsec.max(0) as u64 / 1_000_000) % 1000;
 

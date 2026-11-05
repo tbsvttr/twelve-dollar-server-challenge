@@ -1,4 +1,4 @@
-use crate::json::push_u64;
+use crate::json::{DIGIT_PAIRS, push_u64};
 use crate::sys::find_byte;
 
 pub const MAX_HEADER_BYTES: usize = 8192;
@@ -29,19 +29,17 @@ pub enum ParseState<'a> {
 }
 
 pub fn parse_http_request(buf: &[u8]) -> ParseState<'_> {
-    let search_cap = buf.len().min(MAX_HEADER_BYTES);
-    let Some(hdr_end) = find_crlf_crlf(&buf[..search_cap]) else {
+    let search_cap = buf.len().min(MAX_HEADER_BYTES + 4);
+    let Some(nl1) = find_byte(b'\n', &buf[..search_cap]) else {
         if buf.len() >= MAX_HEADER_BYTES {
             return ParseState::Invalid;
         }
         return ParseState::Incomplete;
     };
-
-    let head = &buf[..hdr_end];
-    let body_offset = hdr_end + 4;
-
-    let line1_end = find_crlf(head).unwrap_or(head.len());
-    let req_line = &head[..line1_end];
+    if nl1 == 0 || buf[nl1 - 1] != b'\r' {
+        return ParseState::Invalid;
+    }
+    let req_line = &buf[..nl1 - 1];
 
     let (method, after_method) = if req_line.starts_with(b"GET ") {
         (Method::Get, 4)
@@ -81,14 +79,25 @@ pub fn parse_http_request(buf: &[u8]) -> ParseState<'_> {
     let mut has_content_len = false;
     let mut close_conn = is_http10;
 
-    let mut pos = line1_end + 2;
-    while pos < head.len() {
-        let rem = &head[pos..];
-        let line_len = find_crlf(rem).unwrap_or(rem.len());
-        let line = &rem[..line_len];
-        pos += line_len + 2;
+    let mut pos = nl1 + 1;
+    let body_offset = loop {
+        let Some(rel_nl) = find_byte(b'\n', &buf[pos..search_cap]) else {
+            if buf.len() >= MAX_HEADER_BYTES {
+                return ParseState::Invalid;
+            }
+            return ParseState::Incomplete;
+        };
+        let line_end = pos + rel_nl;
+        if line_end == pos || buf[line_end - 1] != b'\r' {
+            return ParseState::Invalid;
+        }
+        let line = &buf[pos..line_end - 1];
+        pos = line_end + 1;
         if line.is_empty() {
-            continue;
+            if line_end - 1 > MAX_HEADER_BYTES {
+                return ParseState::Invalid;
+            }
+            break pos;
         }
 
         let first = line[0] | 0x20;
@@ -119,7 +128,7 @@ pub fn parse_http_request(buf: &[u8]) -> ParseState<'_> {
         {
             return ParseState::Invalid;
         }
-    }
+    };
 
     let total_needed = body_offset + content_len;
     if buf.len() < total_needed {
@@ -134,34 +143,6 @@ pub fn parse_http_request(buf: &[u8]) -> ParseState<'_> {
         close_conn,
         total_consumed: total_needed,
     })
-}
-
-#[inline]
-fn find_crlf(b: &[u8]) -> Option<usize> {
-    let mut pos = 0usize;
-    while pos + 1 < b.len() {
-        let idx = find_byte(b'\r', &b[pos..])?;
-        let abs = pos + idx;
-        if abs + 1 < b.len() && b[abs + 1] == b'\n' {
-            return Some(abs);
-        }
-        pos = abs + 1;
-    }
-    None
-}
-
-#[inline]
-fn find_crlf_crlf(b: &[u8]) -> Option<usize> {
-    let mut pos = 0usize;
-    while pos + 3 < b.len() {
-        let idx = find_byte(b'\r', &b[pos..])?;
-        let abs = pos + idx;
-        if abs + 3 < b.len() && b[abs + 1] == b'\n' && b[abs + 2] == b'\r' && b[abs + 3] == b'\n' {
-            return Some(abs);
-        }
-        pos = abs + 1;
-    }
-    None
 }
 
 #[inline]
@@ -240,21 +221,26 @@ pub fn write_dynamic_json_response<F>(
     build_body(out);
     let body_len = out.len() - body_start;
     let slot = body_start - 8;
-    let mut digits = [0u8; 20];
-    let mut d = digits.len();
-    let mut v = body_len;
-    loop {
-        d -= 1;
-        digits[d] = b'0' + (v % 10) as u8;
-        v /= 10;
-        if v == 0 {
-            break;
-        }
-    }
-    let digits = &digits[d..];
-    if digits.len() == 4 {
-        out[slot..slot + 4].copy_from_slice(digits);
+    if (1000..=9999).contains(&body_len) {
+        let hi = (body_len / 100) * 2;
+        let lo = (body_len % 100) * 2;
+        out[slot] = DIGIT_PAIRS[hi];
+        out[slot + 1] = DIGIT_PAIRS[hi + 1];
+        out[slot + 2] = DIGIT_PAIRS[lo];
+        out[slot + 3] = DIGIT_PAIRS[lo + 1];
     } else {
+        let mut digits = [0u8; 20];
+        let mut d = digits.len();
+        let mut v = body_len;
+        loop {
+            d -= 1;
+            digits[d] = b'0' + (v % 10) as u8;
+            v /= 10;
+            if v == 0 {
+                break;
+            }
+        }
+        let digits = &digits[d..];
         let delta = digits.len() as isize - 4;
         if delta > 0 {
             out.resize(out.len() + delta as usize, 0);

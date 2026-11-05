@@ -76,12 +76,34 @@ pub fn find_byte(needle: u8, haystack: &[u8]) -> Option<usize> {
     }
 }
 
+#[inline(always)]
+pub fn word_has_json_special(w: u64) -> u64 {
+    const ONES: u64 = 0x0101_0101_0101_0101;
+    const HIGH: u64 = 0x8080_8080_8080_8080;
+    let ctl = w.wrapping_sub(ONES * 0x20) & !w;
+    let q = w ^ (ONES * (b'"' as u64));
+    let q = q.wrapping_sub(ONES) & !q;
+    let b = w ^ (ONES * (b'\\' as u64));
+    let b = b.wrapping_sub(ONES) & !b;
+    (ctl | q | b) & HIGH
+}
+
 #[inline]
 pub fn find_json_special(haystack: &[u8]) -> Option<usize> {
-    for (idx, &b) in haystack.iter().enumerate() {
-        if b == b'"' || b == b'\\' || b < 0x20 {
-            return Some(idx);
+    let mut i = 0usize;
+    while i + 8 <= haystack.len() {
+        let w = u64::from_le_bytes(haystack[i..i + 8].try_into().unwrap());
+        if word_has_json_special(w) != 0 {
+            break;
         }
+        i += 8;
+    }
+    while i < haystack.len() {
+        let b = haystack[i];
+        if b == b'"' || b == b'\\' || b < 0x20 {
+            return Some(i);
+        }
+        i += 1;
     }
     None
 }

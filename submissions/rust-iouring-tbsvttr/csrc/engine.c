@@ -5,304 +5,26 @@
 #include "sqlite3.c"
 
 #include <pthread.h>
-#include <stdatomic.h>
 #include <stdbool.h>
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
+#include <sys/resource.h>
+#include <sys/syscall.h>
 #include <time.h>
 #include <unistd.h>
 
 /* =========================================================================
- * 1. Custom VFS Wrapper: In-Place WAL Write Coalescer over default unix VFS
- * ========================================================================= */
-
-#define TVCC_WAL_STAGE_CAP (128 * 1024)
-
-static sqlite3_vfs *g_parent_vfs = NULL;
-static sqlite3_vfs g_tvcc_vfs;
-static const sqlite3_io_methods *g_orig_wal_io = NULL;
-static sqlite3_io_methods g_tvcc_wal_io;
-static sqlite3_file *g_active_wal_file = NULL;
-static sqlite3_int64 g_wal_stage_off = 0;
-static int g_wal_stage_len = 0;
-static unsigned char g_wal_stage_buf[TVCC_WAL_STAGE_CAP];
-static pthread_mutex_t g_wal_stage_mu = PTHREAD_MUTEX_INITIALIZER;
-
-static int tvcc_wal_flush_locked(sqlite3_file *f) {
-    if (g_wal_stage_len <= 0 || f != g_active_wal_file || !g_orig_wal_io) {
-        return SQLITE_OK;
-    }
-    int len = g_wal_stage_len;
-    sqlite3_int64 off = g_wal_stage_off;
-    g_wal_stage_len = 0;
-    return g_orig_wal_io->xWrite(f, g_wal_stage_buf, len, off);
-}
-
-static int tvcc_wal_close(sqlite3_file *f) {
-    pthread_mutex_lock(&g_wal_stage_mu);
-    int rc = tvcc_wal_flush_locked(f);
-    if (f == g_active_wal_file) {
-        g_active_wal_file = NULL;
-        g_wal_stage_len = 0;
-    }
-    pthread_mutex_unlock(&g_wal_stage_mu);
-    int rc2 = g_orig_wal_io->xClose(f);
-    return rc != SQLITE_OK ? rc : rc2;
-}
-
-static int tvcc_wal_read(sqlite3_file *f, void *buf, int amt, sqlite3_int64 off) {
-    pthread_mutex_lock(&g_wal_stage_mu);
-    int rc = tvcc_wal_flush_locked(f);
-    pthread_mutex_unlock(&g_wal_stage_mu);
-    if (rc != SQLITE_OK) return rc;
-    return g_orig_wal_io->xRead(f, buf, amt, off);
-}
-
-static int tvcc_wal_write(sqlite3_file *f, const void *buf, int amt, sqlite3_int64 off) {
-    pthread_mutex_lock(&g_wal_stage_mu);
-    if (f != g_active_wal_file || amt <= 0 || amt > (TVCC_WAL_STAGE_CAP / 2)) {
-        int rc = tvcc_wal_flush_locked(f);
-        pthread_mutex_unlock(&g_wal_stage_mu);
-        if (rc != SQLITE_OK) return rc;
-        return g_orig_wal_io->xWrite(f, buf, amt, off);
-    }
-
-    if (g_wal_stage_len > 0) {
-        if (off == g_wal_stage_off + g_wal_stage_len &&
-            (g_wal_stage_len + amt) <= TVCC_WAL_STAGE_CAP) {
-            memcpy(g_wal_stage_buf + g_wal_stage_len, buf, (size_t)amt);
-            g_wal_stage_len += amt;
-            if (amt == 4096 && g_wal_stage_len >= 4120) {
-                const unsigned char *hdr = g_wal_stage_buf + g_wal_stage_len - 4120;
-                uint32_t ntrunc = ((uint32_t)hdr[4] << 24) | ((uint32_t)hdr[5] << 16) |
-                                  ((uint32_t)hdr[6] << 8) | (uint32_t)hdr[7];
-                if (ntrunc != 0) {
-                    int rc = tvcc_wal_flush_locked(f);
-                    pthread_mutex_unlock(&g_wal_stage_mu);
-                    return rc;
-                }
-            }
-            pthread_mutex_unlock(&g_wal_stage_mu);
-            return SQLITE_OK;
-        }
-        int rc = tvcc_wal_flush_locked(f);
-        if (rc != SQLITE_OK) {
-            pthread_mutex_unlock(&g_wal_stage_mu);
-            return rc;
-        }
-    }
-
-    if (amt == 24 || amt == 32) {
-        g_wal_stage_off = off;
-        g_wal_stage_len = amt;
-        memcpy(g_wal_stage_buf, buf, (size_t)amt);
-        pthread_mutex_unlock(&g_wal_stage_mu);
-        return SQLITE_OK;
-    }
-
-    pthread_mutex_unlock(&g_wal_stage_mu);
-    return g_orig_wal_io->xWrite(f, buf, amt, off);
-}
-
-static int tvcc_wal_truncate(sqlite3_file *f, sqlite3_int64 size) {
-    pthread_mutex_lock(&g_wal_stage_mu);
-    if (f == g_active_wal_file) {
-        g_wal_stage_len = 0;
-    }
-    pthread_mutex_unlock(&g_wal_stage_mu);
-    return g_orig_wal_io->xTruncate(f, size);
-}
-
-static int tvcc_wal_sync(sqlite3_file *f, int flags) {
-    pthread_mutex_lock(&g_wal_stage_mu);
-    int rc = tvcc_wal_flush_locked(f);
-    pthread_mutex_unlock(&g_wal_stage_mu);
-    if (rc != SQLITE_OK) return rc;
-    return g_orig_wal_io->xSync(f, flags);
-}
-
-static int tvcc_wal_filesize(sqlite3_file *f, sqlite3_int64 *pSize) {
-    pthread_mutex_lock(&g_wal_stage_mu);
-    int rc = tvcc_wal_flush_locked(f);
-    pthread_mutex_unlock(&g_wal_stage_mu);
-    if (rc != SQLITE_OK) return rc;
-    return g_orig_wal_io->xFileSize(f, pSize);
-}
-
-static int tvcc_wal_device_chars(sqlite3_file *f) {
-    int base_caps = g_orig_wal_io->xDeviceCharacteristics
-                        ? g_orig_wal_io->xDeviceCharacteristics(f)
-                        : 0;
-    return base_caps | SQLITE_IOCAP_SEQUENTIAL | SQLITE_IOCAP_POWERSAFE_OVERWRITE |
-           SQLITE_IOCAP_BATCH_ATOMIC;
-}
-
-static int tvcc_vfs_open(sqlite3_vfs *pVfs, sqlite3_filename zName, sqlite3_file *f, int flags, int *pOutFlags) {
-    (void)pVfs;
-    int rc = g_parent_vfs->xOpen(g_parent_vfs, zName, f, flags, pOutFlags);
-    if (rc != SQLITE_OK || !f->pMethods) {
-        return rc;
-    }
-
-    if ((flags & SQLITE_OPEN_WAL) != 0) {
-        pthread_mutex_lock(&g_wal_stage_mu);
-        if (!g_orig_wal_io) {
-            g_orig_wal_io = f->pMethods;
-            g_tvcc_wal_io = *g_orig_wal_io;
-            g_tvcc_wal_io.xClose = tvcc_wal_close;
-            g_tvcc_wal_io.xRead = tvcc_wal_read;
-            g_tvcc_wal_io.xWrite = tvcc_wal_write;
-            g_tvcc_wal_io.xTruncate = tvcc_wal_truncate;
-            g_tvcc_wal_io.xSync = tvcc_wal_sync;
-            g_tvcc_wal_io.xFileSize = tvcc_wal_filesize;
-            g_tvcc_wal_io.xDeviceCharacteristics = tvcc_wal_device_chars;
-        }
-        if (!g_active_wal_file && f->pMethods == g_orig_wal_io) {
-            g_active_wal_file = f;
-            g_wal_stage_len = 0;
-            f->pMethods = &g_tvcc_wal_io;
-        }
-        pthread_mutex_unlock(&g_wal_stage_mu);
-    }
-    return SQLITE_OK;
-}
-
-/* =========================================================================
- * 2. Custom Page-Cache Wrapper (SQLITE_CONFIG_PCACHE2)
- *    Avoids full-hash-table walks on xTruncate when no page >= iLimit exists
- * ========================================================================= */
-
-#define TVCC_PCACHE_REAL_LIMIT 262144u
-
-typedef struct TvccPcache {
-    sqlite3_pcache *inner;
-    unsigned int max_real_pgno;
-} TvccPcache;
-
-static sqlite3_pcache_methods2 g_orig_pcache;
-static int g_pcache_installed = 0;
-
-static int tvcc_pc_init(void *arg) {
-    return g_orig_pcache.xInit ? g_orig_pcache.xInit(arg) : SQLITE_OK;
-}
-
-static void tvcc_pc_shutdown(void *arg) {
-    if (g_orig_pcache.xShutdown) g_orig_pcache.xShutdown(arg);
-}
-
-static sqlite3_pcache *tvcc_pc_create(int szPage, int szExtra, int bPurgeable) {
-    TvccPcache *pc = (TvccPcache *)sqlite3_malloc(sizeof(TvccPcache));
-    if (!pc) return NULL;
-    pc->inner = g_orig_pcache.xCreate(szPage, szExtra, bPurgeable);
-    if (!pc->inner) {
-        sqlite3_free(pc);
-        return NULL;
-    }
-    pc->max_real_pgno = 0;
-    return (sqlite3_pcache *)pc;
-}
-
-static void tvcc_pc_cachesize(sqlite3_pcache *p, int nCachesize) {
-    TvccPcache *pc = (TvccPcache *)p;
-    g_orig_pcache.xCachesize(pc->inner, nCachesize);
-}
-
-static int tvcc_pc_pagecount(sqlite3_pcache *p) {
-    TvccPcache *pc = (TvccPcache *)p;
-    return g_orig_pcache.xPagecount(pc->inner);
-}
-
-static sqlite3_pcache_page *tvcc_pc_fetch(sqlite3_pcache *p, unsigned key, int createFlag) {
-    TvccPcache *pc = (TvccPcache *)p;
-    sqlite3_pcache_page *pg = g_orig_pcache.xFetch(pc->inner, key, createFlag);
-    if (pg && createFlag != 0 && key < TVCC_PCACHE_REAL_LIMIT && key > pc->max_real_pgno) {
-        pc->max_real_pgno = key;
-    }
-    return pg;
-}
-
-static void tvcc_pc_unpin(sqlite3_pcache *p, sqlite3_pcache_page *pg, int discard) {
-    TvccPcache *pc = (TvccPcache *)p;
-    g_orig_pcache.xUnpin(pc->inner, pg, discard);
-}
-
-static void tvcc_pc_rekey(sqlite3_pcache *p, sqlite3_pcache_page *pg, unsigned oldKey, unsigned newKey) {
-    TvccPcache *pc = (TvccPcache *)p;
-    g_orig_pcache.xRekey(pc->inner, pg, oldKey, newKey);
-    if (newKey < TVCC_PCACHE_REAL_LIMIT && newKey > pc->max_real_pgno) {
-        pc->max_real_pgno = newKey;
-    }
-}
-
-static void tvcc_pc_truncate(sqlite3_pcache *p, unsigned iLimit) {
-    TvccPcache *pc = (TvccPcache *)p;
-    if (iLimit < TVCC_PCACHE_REAL_LIMIT && iLimit > pc->max_real_pgno + 1) {
-        return;
-    }
-    g_orig_pcache.xTruncate(pc->inner, iLimit);
-    if (iLimit < TVCC_PCACHE_REAL_LIMIT && iLimit > 0 && pc->max_real_pgno >= iLimit) {
-        pc->max_real_pgno = iLimit - 1;
-    }
-}
-
-static void tvcc_pc_destroy(sqlite3_pcache *p) {
-    TvccPcache *pc = (TvccPcache *)p;
-    if (pc) {
-        if (pc->inner) g_orig_pcache.xDestroy(pc->inner);
-        sqlite3_free(pc);
-    }
-}
-
-static void tvcc_pc_shrink(sqlite3_pcache *p) {
-    TvccPcache *pc = (TvccPcache *)p;
-    if (g_orig_pcache.xShrink) g_orig_pcache.xShrink(pc->inner);
-}
-
-static void tvcc_register_extensions_once(void) {
-    if (g_pcache_installed) return;
-    g_pcache_installed = 1;
-
-    sqlite3PCacheSetDefault();
-    sqlite3_config(SQLITE_CONFIG_GETPCACHE2, &g_orig_pcache);
-    if (g_orig_pcache.xCreate) {
-        sqlite3_pcache_methods2 custom_pc = {
-            1,
-            g_orig_pcache.pArg,
-            tvcc_pc_init,
-            tvcc_pc_shutdown,
-            tvcc_pc_create,
-            tvcc_pc_cachesize,
-            tvcc_pc_pagecount,
-            tvcc_pc_fetch,
-            tvcc_pc_unpin,
-            tvcc_pc_rekey,
-            tvcc_pc_truncate,
-            tvcc_pc_destroy,
-            tvcc_pc_shrink,
-        };
-        sqlite3_config(SQLITE_CONFIG_PCACHE2, &custom_pc);
-    }
-    sqlite3_initialize();
-
-    g_parent_vfs = sqlite3_vfs_find("unix-excl");
-    if (!g_parent_vfs) {
-        g_parent_vfs = sqlite3_vfs_find(NULL);
-    }
-    if (g_parent_vfs) {
-        g_tvcc_vfs = *g_parent_vfs;
-        g_tvcc_vfs.zName = "tvcc-wal-vfs";
-        g_tvcc_vfs.xOpen = tvcc_vfs_open;
-        sqlite3_vfs_register(&g_tvcc_vfs, 0);
-    }
-}
-
-/* =========================================================================
- * 3. Shared Data Structures for Rust FFI
+ * 1. Shared Data Structures for Rust FFI
  * ========================================================================= */
 
 #define TVCC_FEED_MAX_ROWS 20
 #define TVCC_TEXT_POOL_CAP 24576
+
+#define TVCC_CKPT_FRAMES 4096
+#define TVCC_CKPT_FORCE  65536
+#define TVCC_HOLD_MAX_MS 250
+#define TVCC_CKPT_NICE   19
 
 typedef struct TvccPostRow {
     int64_t id;
@@ -334,10 +56,12 @@ typedef struct TvccSinglePostResult {
 } TvccSinglePostResult;
 
 enum {
-    CKPT_IDLE = 0,
-    CKPT_REQ_HOLD = 1,
-    CKPT_HELD = 2,
-    CKPT_DONE = 3,
+    CK_IDLE = 0,
+    CK_BULK = 1,
+    CK_BULK_DONE = 2,
+    CK_TAIL = 3,
+    CK_TAIL_DONE = 4,
+    CK_STOP = 5,
 };
 
 typedef struct TvccDbEngine {
@@ -378,14 +102,17 @@ typedef struct TvccDbEngine {
 
     pthread_t ck_thread;
     int ck_thread_started;
-    atomic_int stop_flag;
-    atomic_int ckpt_state;
-    atomic_uint writes_since_ckpt;
-    uint32_t user_ver_seq;
+    pthread_mutex_t ck_mu;
+    pthread_cond_t ck_cv;
+    int ck_state;
+    int ck_full;
+    int wal_frames;
+    int writes_held;
+    struct timespec hold_t0;
 } TvccDbEngine;
 
 /* =========================================================================
- * 4. Record Decoding & B-Tree Cursor Management
+ * 2. Record Decoding & B-Tree Cursor Management
  * ========================================================================= */
 
 static inline uint32_t tvcc_serial_byte_len(uint32_t st) {
@@ -428,17 +155,16 @@ static inline int64_t tvcc_decode_be_int(const uint8_t *p, uint32_t st) {
 }
 
 static inline const uint8_t *tvcc_fetch_record(TvccDbEngine *eng, BtCursor *cur, uint32_t *out_sz) {
-    u32 sz = sqlite3BtreePayloadSize(cur);
-    *out_sz = sz;
-    if (sz == 0 || sz > sizeof(eng->scratch)) {
+    getCellInfo(cur);
+    u32 total = cur->info.nPayload;
+    *out_sz = total;
+    if (cur->info.nLocal == total) {
+        return cur->info.pPayload;
+    }
+    if (total == 0 || total > sizeof(eng->scratch)) {
         return NULL;
     }
-    u32 local_amt = 0;
-    const uint8_t *ptr = (const uint8_t *)sqlite3BtreePayloadFetch(cur, &local_amt);
-    if (local_amt >= sz) {
-        return ptr;
-    }
-    if (sqlite3BtreePayload(cur, 0, sz, eng->scratch) != SQLITE_OK) {
+    if (sqlite3BtreePayload(cur, 0, total, eng->scratch) != SQLITE_OK) {
         return NULL;
     }
     return eng->scratch;
@@ -659,14 +385,16 @@ static int tvcc_count_likes(TvccDbEngine *eng, int64_t post_id, int64_t *out_cou
     }
     eng->probe_mems[0].flags = MEM_Int;
     eng->probe_mems[0].u.i = post_id;
-    eng->probe_mems[1].flags = MEM_Int;
-    eng->probe_mems[1].u.i = 0;
-    eng->probe_likes->nField = 2;
-    eng->probe_likes->default_rc = 0;
+    eng->probe_likes->nField = 1;
+    eng->probe_likes->default_rc = +1;
 
     int cmp = 0;
     int rc = sqlite3BtreeIndexMoveto(eng->cur_likes, eng->probe_likes, &cmp);
     if (rc != SQLITE_OK) return 0;
+    if (sqlite3BtreeEof(eng->cur_likes)) {
+        *out_count = 0;
+        return 1;
+    }
     if (cmp < 0) {
         rc = sqlite3BtreeNext(eng->cur_likes, 0);
         if (rc == SQLITE_DONE) {
@@ -708,10 +436,8 @@ static int tvcc_count_likes(TvccDbEngine *eng, int64_t post_id, int64_t *out_cou
 static int tvcc_count_likes_range(TvccDbEngine *eng, int64_t lo, int64_t hi, uint32_t *counts) {
     eng->probe_mems[0].flags = MEM_Int;
     eng->probe_mems[0].u.i = lo;
-    eng->probe_mems[1].flags = MEM_Int;
-    eng->probe_mems[1].u.i = 0;
-    eng->probe_likes->nField = 2;
-    eng->probe_likes->default_rc = 0;
+    eng->probe_likes->nField = 1;
+    eng->probe_likes->default_rc = +1;
 
     int cmp = 0;
     int rc = sqlite3BtreeIndexMoveto(eng->cur_likes, eng->probe_likes, &cmp);
@@ -787,113 +513,103 @@ static int tvcc_parse_post_record(const uint8_t *rec, uint32_t rec_sz, int64_t *
 }
 
 /* =========================================================================
- * 6. Background Checkpoint Thread (nice 19) + Zero-Loop-Fsync Pre-Sync
+ * 4. Two-Stage Condition-Variable Checkpoint Thread (nice 19, 250ms Hold Cap)
  * ========================================================================= */
 
-static void tvcc_sleep_ms(long ms) {
-    struct timespec ts;
-    ts.tv_sec = ms / 1000;
-    ts.tv_nsec = (ms % 1000) * 1000000L;
-    nanosleep(&ts, NULL);
+static int tvcc_wal_hook(void *arg, sqlite3 *db, const char *zDb, int nFrame) {
+    (void)db;
+    (void)zDb;
+    TvccDbEngine *eng = (TvccDbEngine *)arg;
+    eng->wal_frames = nFrame;
+    return SQLITE_OK;
 }
 
-static void tvcc_presync_wal_frame1(TvccDbEngine *eng) {
-    char sql[64];
-    eng->user_ver_seq = (eng->user_ver_seq + 1) & 0x7fffffffU;
-    if (eng->user_ver_seq == 0) eng->user_ver_seq = 1;
-    sqlite3_snprintf(sizeof(sql), sql, "PRAGMA user_version = %u;", eng->user_ver_seq);
-    sqlite3_exec(eng->ck_db, sql, NULL, NULL, NULL);
+static void tvcc_ck_set(TvccDbEngine *eng, int st) {
+    pthread_mutex_lock(&eng->ck_mu);
+    __atomic_store_n(&eng->ck_state, st, __ATOMIC_RELEASE);
+    pthread_cond_signal(&eng->ck_cv);
+    pthread_mutex_unlock(&eng->ck_mu);
+}
+
+static long tvcc_ms_since(const struct timespec *t0) {
+    struct timespec t;
+    clock_gettime(CLOCK_MONOTONIC, &t);
+    return (t.tv_sec - t0->tv_sec) * 1000L + (t.tv_nsec - t0->tv_nsec) / 1000000L;
 }
 
 static void *tvcc_checkpoint_worker(void *arg) {
     TvccDbEngine *eng = (TvccDbEngine *)arg;
-    int nice_rc = nice(19);
+#ifdef __linux__
+    setpriority(PRIO_PROCESS, (id_t)syscall(SYS_gettid), TVCC_CKPT_NICE);
+#else
+    int nice_rc = nice(TVCC_CKPT_NICE);
     (void)nice_rc;
+#endif
 
-    unsigned int last_seen_writes = 0;
-
-    while (!atomic_load_explicit(&eng->stop_flag, memory_order_relaxed)) {
-        tvcc_sleep_ms(35);
-        if (atomic_load_explicit(&eng->stop_flag, memory_order_relaxed)) break;
-
-        unsigned int cur_writes = atomic_load_explicit(&eng->writes_since_ckpt, memory_order_relaxed);
-        if ((unsigned int)(cur_writes - last_seen_writes) < 2048U) {
-            continue;
+    for (;;) {
+        pthread_mutex_lock(&eng->ck_mu);
+        while (eng->ck_state != CK_BULK && eng->ck_state != CK_TAIL && eng->ck_state != CK_STOP) {
+            pthread_cond_wait(&eng->ck_cv, &eng->ck_mu);
         }
-        last_seen_writes = cur_writes;
+        int st = eng->ck_state;
+        pthread_mutex_unlock(&eng->ck_mu);
+        if (st == CK_STOP) {
+            break;
+        }
 
-        int nlog = 0, nckpt = 0;
+        int nlog = -1, ndone = -2;
         int rc = sqlite3_wal_checkpoint_v2(
-            eng->ck_db, "main", SQLITE_CHECKPOINT_PASSIVE, &nlog, &nckpt
+            eng->ck_db, "main", SQLITE_CHECKPOINT_PASSIVE, &nlog, &ndone
         );
-
-        if (rc == SQLITE_OK && nlog > 0 && nckpt == nlog) {
-            /* WAL is completely checkpointed; next write will reset to Frame 1. */
-            continue;
+        pthread_mutex_lock(&eng->ck_mu);
+        eng->ck_full = (rc == SQLITE_OK && nlog == ndone);
+        if (eng->ck_state != CK_STOP) {
+            __atomic_store_n(&eng->ck_state, st + 1, __ATOMIC_RELEASE);
         }
-
-        if (nlog >= 4096 && nckpt < nlog) {
-            int expected = CKPT_IDLE;
-            if (atomic_compare_exchange_strong_explicit(
-                    &eng->ckpt_state, &expected, CKPT_REQ_HOLD,
-                    memory_order_acq_rel, memory_order_relaxed)) {
-                int waited_ms = 0;
-                while (!atomic_load_explicit(&eng->stop_flag, memory_order_relaxed)) {
-                    int st = atomic_load_explicit(&eng->ckpt_state, memory_order_acquire);
-                    if (st == CKPT_HELD) {
-                        for (int attempt = 0; attempt < 50; attempt++) {
-                            nlog = 0;
-                            nckpt = 0;
-                            rc = sqlite3_wal_checkpoint_v2(
-                                eng->ck_db, "main", SQLITE_CHECKPOINT_PASSIVE, &nlog, &nckpt
-                            );
-                            if (rc == SQLITE_OK && nlog == nckpt) {
-                                /* Pre-write Frame 1 on this nice-19 thread while writes are held
-                                 * so the WAL header fdatasync() happens here, NOT on the main loop! */
-                                tvcc_presync_wal_frame1(eng);
-                                break;
-                            }
-                            tvcc_sleep_ms(2);
-                        }
-                        atomic_store_explicit(&eng->ckpt_state, CKPT_DONE, memory_order_release);
-                        break;
-                    }
-                    tvcc_sleep_ms(1);
-                    waited_ms++;
-                    if (waited_ms > 200) {
-                        atomic_store_explicit(&eng->ckpt_state, CKPT_IDLE, memory_order_release);
-                        break;
-                    }
-                }
-            }
-        }
+        pthread_mutex_unlock(&eng->ck_mu);
     }
     return NULL;
 }
 
 int tvcc_db_poll_checkpoint(TvccDbEngine *eng, int has_inflight_reads) {
+    (void)has_inflight_reads;
     if (!eng) return 0;
-    int st = atomic_load_explicit(&eng->ckpt_state, memory_order_acquire);
-    if (st == CKPT_IDLE) return 0;
-    if (st == CKPT_REQ_HOLD) {
-        if (!has_inflight_reads) {
-            tvcc_db_end_read_batch(eng);
-            atomic_store_explicit(&eng->ckpt_state, CKPT_HELD, memory_order_release);
-        }
-        return 1;
+    switch (__atomic_load_n(&eng->ck_state, __ATOMIC_ACQUIRE)) {
+        case CK_IDLE:
+            if (eng->wal_frames >= TVCC_CKPT_FORCE) {
+                int nlog = 0, ndone = 0;
+                if (sqlite3_wal_checkpoint_v2(
+                        eng->db, "main", SQLITE_CHECKPOINT_PASSIVE, &nlog, &ndone
+                    ) == SQLITE_OK && nlog == ndone) {
+                    eng->wal_frames = 0;
+                }
+            } else if (eng->wal_frames >= TVCC_CKPT_FRAMES) {
+                tvcc_ck_set(eng, CK_BULK);
+            }
+            break;
+        case CK_BULK_DONE:
+            eng->writes_held = 1;
+            clock_gettime(CLOCK_MONOTONIC, &eng->hold_t0);
+            tvcc_ck_set(eng, CK_TAIL);
+            break;
+        case CK_TAIL_DONE:
+            if (eng->ck_full) {
+                eng->wal_frames = 0;
+            }
+            eng->writes_held = 0;
+            tvcc_ck_set(eng, CK_IDLE);
+            break;
+        default:
+            if (eng->writes_held && tvcc_ms_since(&eng->hold_t0) > TVCC_HOLD_MAX_MS) {
+                eng->writes_held = 0;
+            }
+            break;
     }
-    if (st == CKPT_HELD) {
-        return 1;
-    }
-    if (st == CKPT_DONE) {
-        atomic_store_explicit(&eng->ckpt_state, CKPT_IDLE, memory_order_release);
-        return 0;
-    }
-    return 0;
+    return eng->writes_held;
 }
 
 /* =========================================================================
- * 7. Lifecycle: Open, Warm Cache, Close
+ * 5. Lifecycle: Open, Warm Cache, Close
  * ========================================================================= */
 
 void tvcc_db_close(TvccDbEngine *eng);
@@ -915,32 +631,35 @@ int tvcc_db_open(const char *path, TvccDbEngine **out_eng) {
     if (!path || !out_eng) return -1;
     *out_eng = NULL;
 
-    tvcc_register_extensions_once();
+    if (sqlite3_initialize() != SQLITE_OK) {
+        return -1;
+    }
 
     TvccDbEngine *eng = (TvccDbEngine *)calloc(1, sizeof(TvccDbEngine));
     if (!eng) return -1;
+    pthread_mutex_init(&eng->ck_mu, NULL);
+    pthread_cond_init(&eng->ck_cv, NULL);
 
-    const char *vfs_name = g_parent_vfs ? "tvcc-wal-vfs" : NULL;
-    int flags = SQLITE_OPEN_READWRITE | SQLITE_OPEN_CREATE | SQLITE_OPEN_NOMUTEX;
+    const char *vfs_name = sqlite3_vfs_find("unix-excl") ? "unix-excl" : NULL;
+    int flags = SQLITE_OPEN_READWRITE | SQLITE_OPEN_NOMUTEX;
     if (sqlite3_open_v2(path, &eng->db, flags, vfs_name) != SQLITE_OK) {
         tvcc_db_close(eng);
         return -1;
     }
 
     const char *init_sql =
-        "PRAGMA locking_mode = NORMAL;"
         "PRAGMA journal_mode = WAL;"
         "PRAGMA synchronous = NORMAL;"
         "PRAGMA cache_size = -65536;"
         "PRAGMA mmap_size = 0;"
         "PRAGMA temp_store = MEMORY;"
-        "PRAGMA foreign_keys = ON;"
         "PRAGMA wal_autocheckpoint = 0;"
-        "PRAGMA busy_timeout = 5000;";
+        "SELECT count(*) FROM sqlite_schema;";
     if (sqlite3_exec(eng->db, init_sql, NULL, NULL, NULL) != SQLITE_OK) {
         tvcc_db_close(eng);
         return -1;
     }
+    sqlite3_wal_hook(eng->db, tvcc_wal_hook, eng);
 
     /* Warm SQLite page cache with hot interior and leaf pages */
     sqlite3_exec(
@@ -1040,18 +759,18 @@ int tvcc_db_open(const char *path, TvccDbEngine **out_eng) {
     if (sqlite3_open_v2(path, &eng->ck_db, flags, vfs_name) == SQLITE_OK) {
         sqlite3_exec(
             eng->ck_db,
-            "PRAGMA journal_mode = WAL;"
             "PRAGMA synchronous = NORMAL;"
             "PRAGMA wal_autocheckpoint = 0;"
-            "PRAGMA cache_size = -512;"
-            "PRAGMA temp_store = MEMORY;",
+            "PRAGMA cache_size = 16;",
             NULL, NULL, NULL
         );
-        /* Pre-write WAL Frame 1 at startup so the very first write never calls fdatasync on the WAL header */
-        tvcc_presync_wal_frame1(eng);
-        if (pthread_create(&eng->ck_thread, NULL, tvcc_checkpoint_worker, eng) == 0) {
+        pthread_attr_t attr;
+        pthread_attr_init(&attr);
+        pthread_attr_setstacksize(&attr, 256 << 10);
+        if (pthread_create(&eng->ck_thread, &attr, tvcc_checkpoint_worker, eng) == 0) {
             eng->ck_thread_started = 1;
         }
+        pthread_attr_destroy(&attr);
     }
 
     *out_eng = eng;
@@ -1061,10 +780,12 @@ int tvcc_db_open(const char *path, TvccDbEngine **out_eng) {
 void tvcc_db_close(TvccDbEngine *eng) {
     if (!eng) return;
     if (eng->ck_thread_started) {
-        atomic_store_explicit(&eng->stop_flag, 1, memory_order_relaxed);
+        tvcc_ck_set(eng, CK_STOP);
         pthread_join(eng->ck_thread, NULL);
         eng->ck_thread_started = 0;
     }
+    pthread_cond_destroy(&eng->ck_cv);
+    pthread_mutex_destroy(&eng->ck_mu);
     tvcc_db_end_read_batch(eng);
     if (eng->cur_feed) {
         sqlite3_free(eng->cur_feed);
@@ -1100,7 +821,7 @@ void tvcc_db_close(TvccDbEngine *eng) {
 }
 
 /* =========================================================================
- * 8. Public Query & Mutation Operations
+ * 6. Public Query & Mutation Operations
  * ========================================================================= */
 
 int tvcc_db_health(TvccDbEngine *eng) {
@@ -1215,24 +936,32 @@ int tvcc_db_feed(TvccDbEngine *eng, TvccFeedResult *out) {
         }
     }
 
-    /* Sort (post_id, slot) ascending so posts & likes B-tree probes walk monotonically */
+    /* Sort (post_id, slot) ascending so posts & likes B-tree probes walk monotonically.
+     * Newest-first is normally descending id, so reverse order is already ascending. */
     typedef struct {
         int64_t post_id;
         uint32_t slot;
     } TvccOrderPair;
     TvccOrderPair order[TVCC_FEED_MAX_ROWS];
+    int sorted = 1;
     for (uint32_t i = 0; i < n_rows; i++) {
-        order[i].post_id = post_ids[i];
-        order[i].slot = i;
-    }
-    for (uint32_t i = 1; i < n_rows; i++) {
-        TvccOrderPair key = order[i];
-        int j = (int)i - 1;
-        while (j >= 0 && order[j].post_id > key.post_id) {
-            order[j + 1] = order[j];
-            j--;
+        uint32_t rev = n_rows - 1 - i;
+        order[i].post_id = post_ids[rev];
+        order[i].slot = rev;
+        if (i > 0 && order[i - 1].post_id > order[i].post_id) {
+            sorted = 0;
         }
-        order[j + 1] = key;
+    }
+    if (!sorted) {
+        for (uint32_t i = 1; i < n_rows; i++) {
+            TvccOrderPair key = order[i];
+            int j = (int)i - 1;
+            while (j >= 0 && order[j].post_id > key.post_id) {
+                order[j + 1] = order[j];
+                j--;
+            }
+            order[j + 1] = key;
+        }
     }
 
     int64_t slot_uids[TVCC_FEED_MAX_ROWS];
@@ -1243,7 +972,7 @@ int tvcc_db_feed(TvccDbEngine *eng, TvccFeedResult *out) {
         int64_t pid = order[i].post_id;
         uint32_t slot = order[i].slot;
         int moved = 0;
-        if (i > 0 && eng->cur_posts->eState == CURSOR_VALID) {
+        if (i > 0 && pid == order[i - 1].post_id + 1 && eng->cur_posts->eState == CURSOR_VALID) {
             if (sqlite3BtreeNext(eng->cur_posts, 0) == SQLITE_OK &&
                 eng->cur_posts->eState == CURSOR_VALID &&
                 sqlite3BtreeIntegerKey(eng->cur_posts) == pid) {
@@ -1439,7 +1168,6 @@ int tvcc_db_insert_post(TvccDbEngine *eng, int64_t user_id, const uint8_t *body,
     }
 
     *out_post_id = sqlite3_last_insert_rowid(eng->db);
-    atomic_fetch_add_explicit(&eng->writes_since_ckpt, 1u, memory_order_relaxed);
     return 0;
 }
 
@@ -1477,7 +1205,6 @@ int tvcc_db_like_post(TvccDbEngine *eng, int64_t post_id, int64_t user_id) {
 
     int changed = sqlite3_changes(eng->db);
     if (changed > 0) {
-        atomic_fetch_add_explicit(&eng->writes_since_ckpt, 1u, memory_order_relaxed);
         return 1;
     }
     return 0;
