@@ -103,7 +103,7 @@ CPU % and µs/request are the app's own cgroup over the scored hold (µs = app C
 | 32 | nelua-iouring-tbsvttr | #281 | Nelua (io_uring, SQLite B-tree reads) | **230,000** | 22,379 | 11.8 | 49.6 | 0.00 | 69 | 28 | 938 | 2026-11-02 |
 | 32 | rust-iouring-rkkautsar | #322 | Rust (io_uring, SQLite B-tree reads) | **230,000** | 22,162 | 322 | 519 | 0.00 | 83 | 34 | 732 | 2026-11-05 |
 | 38 | cider-iouring-pomilon-v3 | #234 | Cider (native x86-64, io_uring, SQLite B-tree reads) | **228,000** | 21,945 | 370 | 853 | 0.00 | 86 | 36 | 668 | 2026-10-31 |
-| 39 | dexlang-iouring-tuned-ensamuel7 | #279 | DexLang (generated C, io_uring, SQLite B-tree reads) | **226,000** | 21,876 | 297 | 633 | 0.00 | 84 | 35 | 873 | 2026-11-02 |
+| 39 | dexlang-iouring-tuned-ensamuel7 | #279 | DexLang (generated C, io_uring, SQLite B-tree reads) | **226,000** ᵝ | 21,876 | 297 | 633 | 0.00 | 84 | 35 | 873 | 2026-11-02 |
 | 40 | wat-wasmedge-delneg | #288 | WebAssembly (hand-written WAT, WasmEdge AOT, io_uring, SQLite B-tree reads) | **220,000** ᵒ | 21,464 | 21.9 | 263.7 | 0.00 | 72 | 31 | 913 | 2026-11-04 |
 | 41 | swift-iouring-Tabonx | #173 | Swift (io_uring, SQLite) | **219,000** ᶻ | 21,284 | 135 | 352 | 0.00 | 80 | 35 | 1,128 | 2026-10-29 |
 | 42 | cpp-eastl-io_uring-pgo-hendy643 | #32 | C++ (io_uring, EASTL) | **210,000** | 20,436 | 322 | 672 | 0.00 | 73 | 33 | 633 | 2026-10-26 |
@@ -331,6 +331,12 @@ failed the 2-minute probe, on refused connections at ~70 % CPU.
 didn't beat the merged row, it tied it) also held **219,000** (21,352 req/s, p95 16.9 / p99 567 ms, 0 err, 63 % CPU,
 27 µs/req, 692 MB, 2026-11-05). 230,000 passed the 2-minute probe but failed the 5-minute hold on p99 (1.21 s at 67 % CPU,
 0 errors); 240,000 failed the 2-minute probe on p99 (3.6 s).
+
+ᵝ **dexlang-iouring-tuned-ensamuel7** stays on its merged #279 row. Its follow-up **#324** (`77d6003`, dex v0.9.31,
+leaner JSON writer, like-index fast path; held, not merged: it didn't beat the merged row) scored **190,000** (18,631
+req/s, p95 225 / p99 338 ms, 0 err, 76 % CPU, 38 µs/req, 649 MB, 2026-11-05). 200,000 passed the 2-minute probe but
+failed the 5-minute hold on p99 (2.2 s at 81 % CPU, 0 errors); 210,000 failed the 2-minute probe on p99 (2.8 s) and
+220,000 / 240,000 on refused connections (68 % / 1.3 % errors).
 
 **Connection collapses in scored entries' failing probes.** v-epoll-i098 #191: 270,000 passed the 2-minute probe but
 failed the 5-minute hold with 60 % errors, nearly all `connection refused` from mid-hold on (an earlier attempt at
