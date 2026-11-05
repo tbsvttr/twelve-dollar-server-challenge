@@ -1,0 +1,143 @@
+// Twelve challenge support leaves — the wire primitives the feed handlers
+// can't spell in Koru: wall-clock helpers, JWT HS256 verification, id and
+// body predicates. Each returns labels the Koru arms map to responses.
+
+const std = @import("std");
+
+// ---- wall clock ----------------------------------------------------------
+
+var boot_unix: i64 = 0;
+
+~pub tor boot-mark {}
+
+~proc boot-mark|zig {
+    boot_unix = std.time.timestamp();
+}
+
+~pub tor uptime-s {} -> i64
+
+~proc uptime-s|zig {
+    return std.time.timestamp() - boot_unix;
+}
+
+// ---- post id -------------------------------------------------------------
+
+// A positive integer spelled in ASCII digits. Overflowing digit strings are
+// still positive integers: they parse-clamp to a value no row holds, so the
+// endpoint answers 404 rather than 400.
+~pub tor pos-id { s: string }
+| ok i64
+| bad
+
+~proc pos-id|zig {
+    if (s.len == 0) return .{ .bad = .{} };
+    for (s) |ch| {
+        if (ch < '0' or ch > '9') return .{ .bad = .{} };
+    }
+    const n = std.fmt.parseInt(i64, s, 10) catch return .{ .ok = std.math.maxInt(i64) };
+    if (n <= 0) return .{ .bad = .{} };
+    return .{ .ok = n };
+}
+
+// ---- post body ------------------------------------------------------------
+
+// The decoded `body` field: trim ASCII whitespace, then the spec's two
+// length walls — non-empty, and at most 500 characters (codepoints, not
+// bytes). The returned slice shares the input's storage.
+~pub tor trim-body { s: string }
+| ok string
+| required
+| too-long
+
+~proc trim-body|zig {
+    const t = std.mem.trim(u8, s, " \t\r\n");
+    if (t.len == 0) return .{ .required = .{} };
+    const cps = std.unicode.utf8CountCodepoints(t) catch t.len;
+    if (cps > 500) return .{ .too_long = .{} };
+    return .{ .ok = t };
+}
+
+// ---- JWT ------------------------------------------------------------------
+
+// Authorization: Bearer <jwt>, HS256 only, secret from env. Labels:
+//   missing    — no header, or it doesn't start with "Bearer "
+//   invalid    — bad signature, expired, not HS256, malformed token
+//   badpayload — verified JWT whose claims fail the contract
+//   ok         — { sub, username }
+// `username` borrows a threadlocal buffer — valid until this thread's next
+// jwt-auth call. Handlers emit it into the response before any other call.
+~pub tor jwt-auth { auth: ?string, secret: string }
+| ok { sub: i64, username: string }
+| missing
+| invalid
+| badpayload
+
+threadlocal var uname_buf: [256]u8 = undefined;
+
+fn b64dec(s: []const u8, buf: []u8) ?usize {
+    const n = std.base64.url_safe_no_pad.Decoder.calcSizeForSlice(s) catch return null;
+    if (n > buf.len) return null;
+    std.base64.url_safe_no_pad.Decoder.decode(buf[0..n], s) catch return null;
+    return n;
+}
+
+const JwtHeader = struct { alg: []const u8 };
+const JwtClaims = struct {
+    sub: ?std.json.Value = null,
+    username: ?std.json.Value = null,
+    exp: ?f64 = null,
+    iat: ?f64 = null,
+};
+
+~proc jwt-auth|zig {
+    const a = auth orelse return .{ .missing = .{} };
+    if (a.len < 8 or !std.mem.startsWith(u8, a, "Bearer ")) return .{ .missing = .{} };
+    const tok = a[7..];
+    const d1 = std.mem.indexOfScalar(u8, tok, '.') orelse return .{ .invalid = .{} };
+    const rest = tok[d1 + 1 ..];
+    const d2 = std.mem.indexOfScalar(u8, rest, '.') orelse return .{ .invalid = .{} };
+    const h = tok[0..d1];
+    const p = rest[0..d2];
+    const s = rest[d2 + 1 ..];
+    if (h.len == 0 or p.len == 0 or s.len == 0) return .{ .invalid = .{} };
+    if (std.mem.indexOfScalar(u8, s, '.') != null) return .{ .invalid = .{} };
+
+    var hbuf: [256]u8 = undefined;
+    const hlen = b64dec(h, &hbuf) orelse return .{ .invalid = .{} };
+    const hdr = std.json.parseFromSlice(JwtHeader, std.heap.page_allocator, hbuf[0..hlen], .{ .ignore_unknown_fields = true }) catch return .{ .invalid = .{} };
+    defer hdr.deinit();
+    if (!std.mem.eql(u8, hdr.value.alg, "HS256")) return .{ .invalid = .{} };
+
+    var mac: [32]u8 = undefined;
+    var hm = std.crypto.auth.hmac.sha2.HmacSha256.init(secret);
+    hm.update(h);
+    hm.update(".");
+    hm.update(p);
+    hm.final(&mac);
+    var sbuf: [64]u8 = undefined;
+    const slen = b64dec(s, &sbuf) orelse return .{ .invalid = .{} };
+    if (slen != 32) return .{ .invalid = .{} };
+    if (!std.crypto.timing_safe.eql([32]u8, sbuf[0..32].*, mac)) return .{ .invalid = .{} };
+
+    var pbuf: [4096]u8 = undefined;
+    const plen = b64dec(p, &pbuf) orelse return .{ .invalid = .{} };
+    const parsed = std.json.parseFromSlice(JwtClaims, std.heap.page_allocator, pbuf[0..plen], .{ .ignore_unknown_fields = true, .allocate = .alloc_if_needed }) catch return .{ .invalid = .{} };
+    defer parsed.deinit();
+    const cl = parsed.value;
+    const exp = cl.exp orelse return .{ .invalid = .{} };
+    if (exp <= @as(f64, @floatFromInt(std.time.timestamp()))) return .{ .invalid = .{} };
+    const subv = cl.sub orelse return .{ .badpayload = .{} };
+    const uname = cl.username orelse return .{ .badpayload = .{} };
+    if (subv != .string or uname != .string) return .{ .badpayload = .{} };
+    const sub_s = subv.string;
+    if (sub_s.len == 0 or sub_s.len > 18) return .{ .badpayload = .{} };
+    var sub_n: i64 = 0;
+    for (sub_s) |ch| {
+        if (ch < '0' or ch > '9') return .{ .badpayload = .{} };
+        sub_n = sub_n * 10 + @as(i64, ch - '0');
+    }
+    if (sub_n <= 0) return .{ .badpayload = .{} };
+    if (uname.string.len > uname_buf.len) return .{ .badpayload = .{} };
+    @memcpy(uname_buf[0..uname.string.len], uname.string);
+    return .{ .ok = .{ .sub = sub_n, .username = uname_buf[0..uname.string.len] } };
+}
