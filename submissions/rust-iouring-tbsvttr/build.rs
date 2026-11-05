@@ -49,6 +49,10 @@ fn main() {
     if env::var("CARGO_CFG_TARGET_ARCH").as_deref() == Ok("x86_64") {
         cmd.arg("-march=native");
     }
+    if env::var("CARGO_CFG_TARGET_OS").as_deref() == Ok("linux") {
+        cmd.arg("-fno-plt");
+    }
+    cmd.arg("-DNDEBUG");
 
     cmd.arg("-o").arg(&obj_path);
     let status = cmd.status().expect("failed to invoke C compiler");

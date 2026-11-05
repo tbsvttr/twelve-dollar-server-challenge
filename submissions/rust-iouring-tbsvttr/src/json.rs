@@ -23,34 +23,60 @@ const fn build_esc_table() -> [u8; 256] {
 static ESC_TABLE: [u8; 256] = build_esc_table();
 
 pub const INT_BOUND: usize = 20;
+const SIMD_HEADROOM: usize = 32;
+const INIT_ESC_SLACK: usize = 32;
 
 #[inline(always)]
-pub const fn esc_bound(n: usize) -> usize {
-    6 * n
+pub const fn esc_fast_bound(n: usize) -> usize {
+    n
 }
 
 pub struct JsonCur {
+    out: *mut Vec<u8>,
+    base: *mut u8,
     p: *mut u8,
     end: *mut u8,
+    slack: usize,
 }
 
 #[inline(always)]
-pub fn fill_json(out: &mut Vec<u8>, bound: usize, f: impl FnOnce(&mut JsonCur)) {
-    out.reserve(bound);
+pub fn fill_json(out: &mut Vec<u8>, fast_bound: usize, f: impl FnOnce(&mut JsonCur)) {
+    let reserve_total = fast_bound + SIMD_HEADROOM + INIT_ESC_SLACK;
+    out.reserve(reserve_total);
     let len = out.len();
     unsafe {
         let base = out.as_mut_ptr();
         let mut c = JsonCur {
+            out: out as *mut Vec<u8>,
+            base,
             p: base.add(len),
-            end: base.add(len + bound),
+            end: base.add(len + fast_bound + INIT_ESC_SLACK),
+            slack: INIT_ESC_SLACK,
         };
         f(&mut c);
         debug_assert!(c.p <= c.end, "fill_json bound exceeded");
-        out.set_len(c.p.offset_from(base) as usize);
+        out.set_len(c.p.offset_from(c.base) as usize);
     }
 }
 
 impl JsonCur {
+    #[cold]
+    #[inline(never)]
+    fn grow_cold(&mut self, extra: usize) {
+        unsafe {
+            let cur_len = self.p.offset_from(self.base) as usize;
+            let cur_end = self.end.offset_from(self.base) as usize;
+            let rem_budget = cur_end.saturating_sub(cur_len);
+            let vec = &mut *self.out;
+            vec.set_len(cur_len);
+            vec.reserve(rem_budget + SIMD_HEADROOM + extra);
+            self.base = vec.as_mut_ptr();
+            self.p = self.base.add(cur_len);
+            self.end = self.base.add(cur_end + extra);
+            self.slack += extra;
+        }
+    }
+
     #[inline(always)]
     pub fn lit(&mut self, s: &[u8]) {
         debug_assert!(self.p as usize + s.len() <= self.end as usize);
@@ -103,7 +129,7 @@ impl JsonCur {
 
     #[inline]
     pub fn esc(&mut self, s: &[u8]) {
-        debug_assert!(self.p as usize + esc_bound(s.len()) <= self.end as usize);
+        debug_assert!(self.p as usize + s.len() <= self.end as usize);
         let mut i = 0usize;
         #[cfg(target_arch = "x86_64")]
         {
@@ -162,6 +188,10 @@ impl JsonCur {
 
     #[cold]
     fn esc_special(&mut self, c: u8) {
+        if self.slack < 5 {
+            self.grow_cold(512);
+        }
+        self.slack -= 5;
         const HEX: &[u8; 16] = b"0123456789abcdef";
         match c {
             b'"' => self.lit(b"\\\""),
@@ -262,7 +292,7 @@ pub fn write_single_post_json(
     author: &[u8],
     like_count: i64,
 ) {
-    let bound = 128 + esc_bound(body.len() + created_at.len() + author.len());
+    let bound = 128 + esc_fast_bound(body.len() + created_at.len() + author.len());
     fill_json(out, bound, |c| {
         c.lit(b"{\"post\":{\"id\":");
         c.i64(id);
@@ -297,7 +327,7 @@ pub fn write_feed_result(out: &mut Vec<u8>, feed: &TvccFeedResult) {
             + 2 * INT_BOUND;
     let count = feed.count as usize;
     let pool = &feed.text[..feed.text_used as usize];
-    let bound = b"{\"posts\":[]}".len() + count * ROW_FIXED + esc_bound(pool.len());
+    let bound = b"{\"posts\":[]}".len() + count * ROW_FIXED + esc_fast_bound(pool.len());
     fill_json(out, bound, |c| {
         c.lit(b"{\"posts\":[");
         for (idx, row) in feed.rows[..count].iter().enumerate() {
@@ -502,7 +532,7 @@ pub fn extract_and_validate_post_body<'a>(
     if trimmed.is_empty() {
         return Err(BodyError::MissingOrEmpty);
     }
-    if trimmed.chars().count() > 500 {
+    if trimmed.len() > 500 && trimmed.chars().count() > 500 {
         return Err(BodyError::TooLong);
     }
 

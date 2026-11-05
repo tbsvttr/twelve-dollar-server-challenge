@@ -26,6 +26,384 @@
 #define TVCC_HOLD_MAX_MS 250
 #define TVCC_CKPT_NICE   19
 
+/* =========================================================================
+ * 1a. Page Cache xTruncate Filter (SQLITE_CONFIG_PCACHE2) & WAL Write VFS
+ * ========================================================================= */
+
+#define TVCC_LOCK_BYTE_OFFSET 0x40000000u
+#define TVCC_VFS_NAME         "tvcc-wal"
+#define TVCC_WAL_FRAME_HDR    24
+#define TVCC_WAL_BUF_CAP      0x1ffff
+
+typedef struct TvccPcache {
+    sqlite3_pcache *base;
+    unsigned max_key;
+    unsigned lock_page;
+    unsigned n_parked;
+} TvccPcache;
+
+static sqlite3_pcache_methods2 tvcc_pcache_base;
+
+static int tvcc_pc_init(void *arg) {
+    (void)arg;
+    return tvcc_pcache_base.xInit(tvcc_pcache_base.pArg);
+}
+
+static void tvcc_pc_shutdown(void *arg) {
+    (void)arg;
+    tvcc_pcache_base.xShutdown(tvcc_pcache_base.pArg);
+}
+
+static sqlite3_pcache *tvcc_pc_create(int szPage, int szExtra, int bPurgeable) {
+    TvccPcache *w = (TvccPcache *)sqlite3_malloc(sizeof(*w));
+    if (!w) return NULL;
+    w->base = tvcc_pcache_base.xCreate(szPage, szExtra, bPurgeable);
+    if (!w->base) {
+        sqlite3_free(w);
+        return NULL;
+    }
+    w->max_key = 0;
+    w->lock_page = TVCC_LOCK_BYTE_OFFSET / (unsigned)szPage + 1;
+    w->n_parked = 0;
+    return (sqlite3_pcache *)w;
+}
+
+static void tvcc_pc_cachesize(sqlite3_pcache *p, int n) {
+    tvcc_pcache_base.xCachesize(((TvccPcache *)p)->base, n);
+}
+
+static int tvcc_pc_pagecount(sqlite3_pcache *p) {
+    return tvcc_pcache_base.xPagecount(((TvccPcache *)p)->base);
+}
+
+static sqlite3_pcache_page *tvcc_pc_fetch(sqlite3_pcache *p, unsigned key, int create) {
+    TvccPcache *w = (TvccPcache *)p;
+    sqlite3_pcache_page *pg = tvcc_pcache_base.xFetch(w->base, key, create);
+    if (pg && create) {
+        if (key == w->lock_page) w->n_parked++;
+        else if (key > w->max_key) w->max_key = key;
+    }
+    return pg;
+}
+
+static void tvcc_pc_unpin(sqlite3_pcache *p, sqlite3_pcache_page *pg, int discard) {
+    tvcc_pcache_base.xUnpin(((TvccPcache *)p)->base, pg, discard);
+}
+
+static void tvcc_pc_rekey(sqlite3_pcache *p, sqlite3_pcache_page *pg, unsigned old_key, unsigned new_key) {
+    TvccPcache *w = (TvccPcache *)p;
+    tvcc_pcache_base.xRekey(w->base, pg, old_key, new_key);
+    if (old_key == w->lock_page && w->n_parked) w->n_parked--;
+    if (new_key == w->lock_page) w->n_parked++;
+    else if (new_key > w->max_key) w->max_key = new_key;
+}
+
+static void tvcc_pc_truncate(sqlite3_pcache *p, unsigned limit) {
+    TvccPcache *w = (TvccPcache *)p;
+    if (w->n_parked == 0 && w->max_key < limit) {
+        return;
+    }
+    tvcc_pcache_base.xTruncate(w->base, limit);
+    if (limit > 0 && w->max_key >= limit) w->max_key = limit - 1;
+    if (w->lock_page >= limit) w->n_parked = 0;
+}
+
+static void tvcc_pc_destroy(sqlite3_pcache *p) {
+    TvccPcache *w = (TvccPcache *)p;
+    tvcc_pcache_base.xDestroy(w->base);
+    sqlite3_free(w);
+}
+
+static void tvcc_pc_shrink(sqlite3_pcache *p) {
+    tvcc_pcache_base.xShrink(((TvccPcache *)p)->base);
+}
+
+static int tvcc_pcache_install(void) {
+    if (sqlite3_config(SQLITE_CONFIG_GETPCACHE2, &tvcc_pcache_base) != SQLITE_OK) return -1;
+    static sqlite3_pcache_methods2 m;
+    m = tvcc_pcache_base;
+    m.pArg = NULL;
+    m.xInit = tvcc_pc_init;
+    m.xShutdown = tvcc_pc_shutdown;
+    m.xCreate = tvcc_pc_create;
+    m.xCachesize = tvcc_pc_cachesize;
+    m.xPagecount = tvcc_pc_pagecount;
+    m.xFetch = tvcc_pc_fetch;
+    m.xUnpin = tvcc_pc_unpin;
+    m.xRekey = tvcc_pc_rekey;
+    m.xTruncate = tvcc_pc_truncate;
+    m.xDestroy = tvcc_pc_destroy;
+    m.xShrink = tvcc_pc_shrink;
+    return sqlite3_config(SQLITE_CONFIG_PCACHE2, &m) == SQLITE_OK ? 0 : -1;
+}
+
+typedef struct TvccWalFile {
+    sqlite3_file base;
+    sqlite3_file *real;
+    int is_wal;
+    int commit;
+    int len;
+    sqlite3_int64 off;
+    sqlite3_int64 last_end;
+    unsigned char *buf;
+} TvccWalFile;
+
+static sqlite3_vfs *tvcc_vfs_real;
+
+static int tvcc_wf_flush(TvccWalFile *f) {
+    if (!f->len) return SQLITE_OK;
+    int n = f->len;
+    f->len = 0;
+    return f->real->pMethods->xWrite(f->real, f->buf, n, f->off);
+}
+
+#define TVCC_WF(p) ((TvccWalFile *)(p))
+#define TVCC_WF_FLUSH(p) do { int rc_ = tvcc_wf_flush(TVCC_WF(p)); if (rc_ != SQLITE_OK) return rc_; } while (0)
+
+static int tvcc_wf_close(sqlite3_file *p) {
+    TvccWalFile *f = TVCC_WF(p);
+    int rc = tvcc_wf_flush(f);
+    int rc2 = f->real->pMethods ? f->real->pMethods->xClose(f->real) : SQLITE_OK;
+    sqlite3_free(f->buf);
+    f->buf = NULL;
+    return rc != SQLITE_OK ? rc : rc2;
+}
+
+static int tvcc_wf_read(sqlite3_file *p, void *b, int n, sqlite3_int64 off) {
+    TVCC_WF_FLUSH(p);
+    return TVCC_WF(p)->real->pMethods->xRead(TVCC_WF(p)->real, b, n, off);
+}
+
+static int tvcc_wf_write(sqlite3_file *p, const void *b, int n, sqlite3_int64 off) {
+    TvccWalFile *f = TVCC_WF(p);
+    if (!f->is_wal) return f->real->pMethods->xWrite(f->real, b, n, off);
+    int append = (off == f->last_end);
+    f->last_end = off + n;
+    if (f->len + n > TVCC_WAL_BUF_CAP) TVCC_WF_FLUSH(p);
+    if (!append || n > TVCC_WAL_BUF_CAP || (!f->buf && !(f->buf = (unsigned char *)sqlite3_malloc(TVCC_WAL_BUF_CAP)))) {
+        TVCC_WF_FLUSH(p);
+        f->commit = 0;
+        return f->real->pMethods->xWrite(f->real, b, n, off);
+    }
+    if (!f->len) f->off = off;
+    memcpy(f->buf + f->len, b, (size_t)n);
+    f->len += n;
+    if (n == TVCC_WAL_FRAME_HDR) {
+        const unsigned char *h = (const unsigned char *)b;
+        f->commit = (h[4] | h[5] | h[6] | h[7]) != 0;
+        return SQLITE_OK;
+    }
+    if (f->commit) {
+        f->commit = 0;
+        return tvcc_wf_flush(f);
+    }
+    return SQLITE_OK;
+}
+
+static int tvcc_wf_truncate(sqlite3_file *p, sqlite3_int64 size) {
+    TVCC_WF_FLUSH(p);
+    return TVCC_WF(p)->real->pMethods->xTruncate(TVCC_WF(p)->real, size);
+}
+
+static int tvcc_wf_sync(sqlite3_file *p, int flags) {
+    TVCC_WF_FLUSH(p);
+    return TVCC_WF(p)->real->pMethods->xSync(TVCC_WF(p)->real, flags);
+}
+
+static int tvcc_wf_filesize(sqlite3_file *p, sqlite3_int64 *size) {
+    TVCC_WF_FLUSH(p);
+    return TVCC_WF(p)->real->pMethods->xFileSize(TVCC_WF(p)->real, size);
+}
+
+static int tvcc_wf_lock(sqlite3_file *p, int l) {
+    TVCC_WF_FLUSH(p);
+    return TVCC_WF(p)->real->pMethods->xLock(TVCC_WF(p)->real, l);
+}
+
+static int tvcc_wf_unlock(sqlite3_file *p, int l) {
+    TVCC_WF_FLUSH(p);
+    return TVCC_WF(p)->real->pMethods->xUnlock(TVCC_WF(p)->real, l);
+}
+
+static int tvcc_wf_check_reserved(sqlite3_file *p, int *out) {
+    return TVCC_WF(p)->real->pMethods->xCheckReservedLock(TVCC_WF(p)->real, out);
+}
+
+static int tvcc_wf_file_control(sqlite3_file *p, int op, void *arg) {
+    TVCC_WF_FLUSH(p);
+    return TVCC_WF(p)->real->pMethods->xFileControl(TVCC_WF(p)->real, op, arg);
+}
+
+static int tvcc_wf_sector_size(sqlite3_file *p) {
+    return TVCC_WF(p)->real->pMethods->xSectorSize(TVCC_WF(p)->real);
+}
+
+static int tvcc_wf_device_chars(sqlite3_file *p) {
+    return TVCC_WF(p)->real->pMethods->xDeviceCharacteristics(TVCC_WF(p)->real);
+}
+
+static int tvcc_wf_shm_map(sqlite3_file *p, int pg, int sz, int extend, void volatile **out) {
+    return TVCC_WF(p)->real->pMethods->xShmMap(TVCC_WF(p)->real, pg, sz, extend, out);
+}
+
+static int tvcc_wf_shm_lock(sqlite3_file *p, int off, int n, int flags) {
+    return TVCC_WF(p)->real->pMethods->xShmLock(TVCC_WF(p)->real, off, n, flags);
+}
+
+static void tvcc_wf_shm_barrier(sqlite3_file *p) {
+    TVCC_WF(p)->real->pMethods->xShmBarrier(TVCC_WF(p)->real);
+}
+
+static int tvcc_wf_shm_unmap(sqlite3_file *p, int del) {
+    return TVCC_WF(p)->real->pMethods->xShmUnmap(TVCC_WF(p)->real, del);
+}
+
+static int tvcc_wf_fetch(sqlite3_file *p, sqlite3_int64 off, int n, void **pp) {
+    TVCC_WF_FLUSH(p);
+    return TVCC_WF(p)->real->pMethods->xFetch(TVCC_WF(p)->real, off, n, pp);
+}
+
+static int tvcc_wf_unfetch(sqlite3_file *p, sqlite3_int64 off, void *pg) {
+    return TVCC_WF(p)->real->pMethods->xUnfetch(TVCC_WF(p)->real, off, pg);
+}
+
+static const sqlite3_io_methods tvcc_wf_methods = {
+    3,
+    tvcc_wf_close,
+    tvcc_wf_read,
+    tvcc_wf_write,
+    tvcc_wf_truncate,
+    tvcc_wf_sync,
+    tvcc_wf_filesize,
+    tvcc_wf_lock,
+    tvcc_wf_unlock,
+    tvcc_wf_check_reserved,
+    tvcc_wf_file_control,
+    tvcc_wf_sector_size,
+    tvcc_wf_device_chars,
+    tvcc_wf_shm_map,
+    tvcc_wf_shm_lock,
+    tvcc_wf_shm_barrier,
+    tvcc_wf_shm_unmap,
+    tvcc_wf_fetch,
+    tvcc_wf_unfetch
+};
+
+#define TVCC_WF_REAL_OFFSET ((sizeof(TvccWalFile) + 7) & ~(size_t)7)
+
+static int tvcc_wv_open(sqlite3_vfs *vfs, sqlite3_filename name, sqlite3_file *p, int flags, int *out_flags) {
+    (void)vfs;
+    TvccWalFile *f = TVCC_WF(p);
+    memset(f, 0, sizeof(*f));
+    f->last_end = -1;
+    f->real = (sqlite3_file *)((char *)p + TVCC_WF_REAL_OFFSET);
+    int rc = tvcc_vfs_real->xOpen(tvcc_vfs_real, name, f->real, flags, out_flags);
+    if (f->real->pMethods == NULL) return rc;
+    f->is_wal = (flags & SQLITE_OPEN_WAL) != 0;
+    if (f->real->pMethods->iVersion < 3) {
+        f->real->pMethods->xClose(f->real);
+        return SQLITE_CANTOPEN;
+    }
+    p->pMethods = &tvcc_wf_methods;
+    return rc;
+}
+
+static int tvcc_wv_delete(sqlite3_vfs *v, const char *z, int sync) {
+    (void)v;
+    return tvcc_vfs_real->xDelete(tvcc_vfs_real, z, sync);
+}
+
+static int tvcc_wv_access(sqlite3_vfs *v, const char *z, int flags, int *out) {
+    (void)v;
+    return tvcc_vfs_real->xAccess(tvcc_vfs_real, z, flags, out);
+}
+
+static int tvcc_wv_full_pathname(sqlite3_vfs *v, const char *z, int n, char *out) {
+    (void)v;
+    return tvcc_vfs_real->xFullPathname(tvcc_vfs_real, z, n, out);
+}
+
+static void *tvcc_wv_dlopen(sqlite3_vfs *v, const char *z) {
+    (void)v;
+    return tvcc_vfs_real->xDlOpen(tvcc_vfs_real, z);
+}
+
+static void tvcc_wv_dlerror(sqlite3_vfs *v, int n, char *z) {
+    (void)v;
+    tvcc_vfs_real->xDlError(tvcc_vfs_real, n, z);
+}
+
+static void (*tvcc_wv_dlsym(sqlite3_vfs *v, void *h, const char *z))(void) {
+    (void)v;
+    return tvcc_vfs_real->xDlSym(tvcc_vfs_real, h, z);
+}
+
+static void tvcc_wv_dlclose(sqlite3_vfs *v, void *h) {
+    (void)v;
+    tvcc_vfs_real->xDlClose(tvcc_vfs_real, h);
+}
+
+static int tvcc_wv_randomness(sqlite3_vfs *v, int n, char *z) {
+    (void)v;
+    return tvcc_vfs_real->xRandomness(tvcc_vfs_real, n, z);
+}
+
+static int tvcc_wv_sleep(sqlite3_vfs *v, int us) {
+    (void)v;
+    return tvcc_vfs_real->xSleep(tvcc_vfs_real, us);
+}
+
+static int tvcc_wv_current_time(sqlite3_vfs *v, double *t) {
+    (void)v;
+    return tvcc_vfs_real->xCurrentTime(tvcc_vfs_real, t);
+}
+
+static int tvcc_wv_last_error(sqlite3_vfs *v, int n, char *z) {
+    (void)v;
+    return tvcc_vfs_real->xGetLastError(tvcc_vfs_real, n, z);
+}
+
+static int tvcc_wv_current_time64(sqlite3_vfs *v, sqlite3_int64 *t) {
+    (void)v;
+    return tvcc_vfs_real->xCurrentTimeInt64(tvcc_vfs_real, t);
+}
+
+static int tvcc_vfs_install(void) {
+    tvcc_vfs_real = sqlite3_vfs_find("unix-excl");
+    if (!tvcc_vfs_real || tvcc_vfs_real->iVersion < 2) return -1;
+    static sqlite3_vfs v;
+    memset(&v, 0, sizeof(v));
+    v.iVersion = 2;
+    v.szOsFile = (int)(TVCC_WF_REAL_OFFSET + (size_t)tvcc_vfs_real->szOsFile);
+    v.mxPathname = tvcc_vfs_real->mxPathname;
+    v.zName = TVCC_VFS_NAME;
+    v.xOpen = tvcc_wv_open;
+    v.xDelete = tvcc_wv_delete;
+    v.xAccess = tvcc_wv_access;
+    v.xFullPathname = tvcc_wv_full_pathname;
+    v.xDlOpen = tvcc_wv_dlopen;
+    v.xDlError = tvcc_wv_dlerror;
+    v.xDlSym = tvcc_wv_dlsym;
+    v.xDlClose = tvcc_wv_dlclose;
+    v.xRandomness = tvcc_wv_randomness;
+    v.xSleep = tvcc_wv_sleep;
+    v.xCurrentTime = tvcc_wv_current_time;
+    v.xGetLastError = tvcc_wv_last_error;
+    v.xCurrentTimeInt64 = tvcc_wv_current_time64;
+    return sqlite3_vfs_register(&v, 0) == SQLITE_OK ? 0 : -1;
+}
+
+static pthread_once_t tvcc_sqlite_once = PTHREAD_ONCE_INIT;
+static int tvcc_sqlite_init_rc = -1;
+
+static void tvcc_sqlite_global_init(void) {
+    (void)tvcc_pcache_install();
+    tvcc_sqlite_init_rc = sqlite3_initialize();
+    if (tvcc_sqlite_init_rc == SQLITE_OK) {
+        (void)tvcc_vfs_install();
+    }
+}
+
 typedef struct TvccPostRow {
     int64_t id;
     uint32_t body_off;
@@ -170,23 +548,14 @@ static inline const uint8_t *tvcc_fetch_record(TvccDbEngine *eng, BtCursor *cur,
     return eng->scratch;
 }
 
-static KeyInfo *tvcc_alloc_keyinfo(sqlite3 *db, int n_key_fields, const uint8_t *sort_orders) {
-    size_t bytes = sizeof(KeyInfo) + (size_t)n_key_fields * sizeof(CollSeq *);
-    KeyInfo *ki = (KeyInfo *)sqlite3DbMallocZero(db, (u64)bytes);
+static KeyInfo *tvcc_alloc_keyinfo(sqlite3 *db, int nkey, int nextra, int desc) {
+    KeyInfo *ki = sqlite3KeyInfoAlloc(db, nkey, nextra);
     if (!ki) return NULL;
-    ki->db = db;
-    ki->enc = ENC(db);
-    ki->nKeyField = (u16)n_key_fields;
-    ki->nAllField = (u16)(n_key_fields + 1);
-    ki->nRef = 1;
-    ki->aSortFlags = (u8 *)sqlite3DbMallocZero(db, (u64)(n_key_fields + 1));
-    if (!ki->aSortFlags) {
-        sqlite3DbFree(db, ki);
-        return NULL;
-    }
-    for (int i = 0; i < n_key_fields; i++) {
-        ki->aSortFlags[i] = sort_orders[i];
+    for (int i = 0; i < nkey + nextra; i++) {
         ki->aColl[i] = db->pDfltColl;
+        if (desc && i < nkey) {
+            ki->aSortFlags[i] = KEYINFO_ORDER_DESC;
+        }
     }
     return ki;
 }
@@ -348,10 +717,50 @@ typedef struct TvccUserBatchItem {
     int resolved;
 } TvccUserBatchItem;
 
+static inline i64 tvcc_bt_cell_key(MemPage *pg, int i) {
+    const u8 *c = findCellPastPtr(pg, i);
+    if (pg->intKeyLeaf) {
+        while (0x80 <= *(c++)) {
+            if (c >= pg->aDataEnd) return INT64_MAX;
+        }
+    }
+    u64 x = 0;
+    for (int k = 0; k < 8; k++) {
+        if (c >= pg->aDataEnd) return INT64_MAX;
+        u8 b = *c++;
+        x = (x << 7) | (u64)(b & 0x7f);
+        if ((b & 0x80) == 0) return (i64)x;
+    }
+    if (c >= pg->aDataEnd) return INT64_MAX;
+    x = (x << 8) | (u64)(*c);
+    return (i64)x;
+}
+
+static int tvcc_bt_lower_bound(MemPage *pg, i64 k) {
+    int n = pg->nCell;
+    i64 k0 = tvcc_bt_cell_key(pg, 0);
+    i64 kn = tvcc_bt_cell_key(pg, n - 1);
+    if (k <= k0) return 0;
+    if (k > kn) return n;
+    int lo = 1, hi = n - 1;
+    int g = lo + (int)((double)(k - k0) / (double)(kn - k0) * (double)(n - 1) - 0.5);
+    if (g < lo) g = lo;
+    if (g > hi) g = hi;
+    for (int probe = 0; lo < hi; probe++) {
+        if (tvcc_bt_cell_key(pg, g) >= k) hi = g;
+        else lo = g + 1;
+        if (probe < 2 && lo < hi) g = (hi == g) ? (g - 1) : (g + 1);
+        else g = lo + ((hi - lo) >> 1);
+        if (g < lo) g = lo;
+        if (g > hi) g = hi;
+    }
+    return lo;
+}
+
 static int tvcc_batch_lookup_users(TvccDbEngine *eng, TvccUserBatchItem *items, int n_items,
                                    uint8_t *text_pool, uint32_t *text_used, uint32_t text_cap) {
-    /* Sort unique user_ids ascending so cur_users walks B-tree leaves monotonically
-     * while keeping root_users pinned in cur_users->apPage[0]. */
+    if (n_items <= 0) return 1;
+    /* Sort unique user_ids ascending so level-by-level descent shares interior/leaf pages. */
     for (int i = 1; i < n_items; i++) {
         TvccUserBatchItem key = items[i];
         int j = i - 1;
@@ -361,7 +770,78 @@ static int tvcc_batch_lookup_users(TvccDbEngine *eng, TvccUserBatchItem *items, 
         }
         items[j + 1] = key;
     }
+
+    if (n_items <= TVCC_FEED_MAX_ROWS && eng->bt && eng->bt->pBt) {
+        BtShared *bs = eng->bt->pBt;
+        MemPage *pg[TVCC_FEED_MAX_ROWS];
+        Pgno next[TVCC_FEED_MAX_ROWS];
+        for (int i = 0; i < n_items; i++) {
+            next[i] = eng->root_users;
+            items[i].resolved = 0;
+        }
+        for (int depth = 0;; depth++) {
+            for (int i = 0; i < n_items; i++) {
+                int j = i - 1;
+                while (j >= 0 && next[j] != next[i]) j--;
+                if (j >= 0) {
+                    pg[i] = pg[j];
+                    sqlite3PagerRef(pg[i]->pDbPage);
+                } else if (getAndInitPage(bs, next[i], &pg[i], PAGER_GET_READONLY) != SQLITE_OK) {
+                    pg[i] = NULL;
+                } else {
+                    __builtin_prefetch(pg[i]->aCellIdx);
+                    __builtin_prefetch(pg[i]->aCellIdx + 2 * (pg[i]->nCell - 1));
+                }
+                if (!pg[i] || !pg[i]->intKey || pg[i]->nCell == 0 || pg[i]->nOverflow ||
+                    depth >= BTCURSOR_MAX_DEPTH || (i > 0 && pg[i]->leaf != pg[0]->leaf)) {
+                    for (int k = 0; k <= i; k++) {
+                        if (pg[k]) releasePageNotNull(pg[k]);
+                    }
+                    goto serial_fallback;
+                }
+            }
+            if (pg[0]->leaf) break;
+            for (int i = 0; i < n_items; i++) {
+                int lw = tvcc_bt_lower_bound(pg[i], items[i].uid);
+                next[i] = (lw >= pg[i]->nCell)
+                    ? get4byte(&pg[i]->aData[pg[i]->hdrOffset + 8])
+                    : get4byte(findCell(pg[i], lw));
+            }
+            for (int i = 0; i < n_items; i++) releasePageNotNull(pg[i]);
+        }
+        for (int i = 0; i < n_items; i++) {
+            int ix = tvcc_bt_lower_bound(pg[i], items[i].uid);
+            if (ix < pg[i]->nCell && tvcc_bt_cell_key(pg[i], ix) == items[i].uid) {
+                CellInfo info;
+                pg[i]->xParseCell(pg[i], findCell(pg[i], ix), &info);
+                if (info.nLocal == info.nPayload && info.nPayload >= 2) {
+                    const uint8_t *rec = info.pPayload;
+                    uint32_t rec_sz = info.nPayload;
+                    u32 hdr_sz = 0, st_id = 0, st_u = 0;
+                    int pos = getVarint32(rec, hdr_sz);
+                    pos += getVarint32(rec + pos, st_id);
+                    pos += getVarint32(rec + pos, st_u);
+                    if (st_u >= 13 && (st_u & 1) != 0) {
+                        uint32_t id_len = tvcc_serial_byte_len(st_id);
+                        uint32_t ulen = (st_u - 13) >> 1;
+                        uint32_t rem = text_cap - *text_used;
+                        if (hdr_sz + id_len + ulen <= rec_sz && ulen <= rem) {
+                            memcpy(text_pool + *text_used, rec + hdr_sz + id_len, ulen);
+                            items[i].text_off = *text_used;
+                            items[i].text_len = ulen;
+                            *text_used += ulen;
+                            items[i].resolved = 1;
+                        }
+                    }
+                }
+            }
+            releasePageNotNull(pg[i]);
+        }
+    }
+
+serial_fallback:
     for (int i = 0; i < n_items; i++) {
+        if (items[i].resolved) continue;
         uint32_t ulen = 0;
         uint32_t rem = text_cap - *text_used;
         if (!tvcc_lookup_single_user(eng, items[i].uid, text_pool + *text_used, rem, &ulen)) {
@@ -477,6 +957,34 @@ static int tvcc_count_likes_range(TvccDbEngine *eng, int64_t lo, int64_t hi, uin
         if (rc == SQLITE_DONE) return 1;
         if (rc != SQLITE_OK) return 0;
     }
+}
+
+static int tvcc_parse_post_uid_body(const uint8_t *rec, uint32_t rec_sz, int64_t *out_uid,
+                                    const uint8_t **out_body, uint32_t *out_body_len) {
+    if (!rec || rec_sz < 3) return 0;
+    u32 hdr_sz = 0;
+    int pos = getVarint32(rec, hdr_sz);
+    if (hdr_sz > rec_sz) return 0;
+
+    u32 st_id = 0, st_uid = 0, st_body = 0;
+    pos += getVarint32(rec + pos, st_id);
+    pos += getVarint32(rec + pos, st_uid);
+    pos += getVarint32(rec + pos, st_body);
+
+    if (st_body < 13 || (st_body & 1) == 0) {
+        return 0;
+    }
+    uint32_t id_len = tvcc_serial_byte_len(st_id);
+    uint32_t uid_len = tvcc_serial_byte_len(st_uid);
+    uint32_t body_len = (st_body - 13) >> 1;
+    if (hdr_sz + id_len + uid_len + body_len > rec_sz) {
+        return 0;
+    }
+
+    *out_uid = tvcc_decode_be_int(rec + hdr_sz + id_len, st_uid);
+    *out_body = rec + hdr_sz + id_len + uid_len;
+    *out_body_len = body_len;
+    return 1;
 }
 
 static int tvcc_parse_post_record(const uint8_t *rec, uint32_t rec_sz, int64_t *out_uid,
@@ -631,7 +1139,8 @@ int tvcc_db_open(const char *path, TvccDbEngine **out_eng) {
     if (!path || !out_eng) return -1;
     *out_eng = NULL;
 
-    if (sqlite3_initialize() != SQLITE_OK) {
+    pthread_once(&tvcc_sqlite_once, tvcc_sqlite_global_init);
+    if (tvcc_sqlite_init_rc != SQLITE_OK) {
         return -1;
     }
 
@@ -640,7 +1149,9 @@ int tvcc_db_open(const char *path, TvccDbEngine **out_eng) {
     pthread_mutex_init(&eng->ck_mu, NULL);
     pthread_cond_init(&eng->ck_cv, NULL);
 
-    const char *vfs_name = sqlite3_vfs_find("unix-excl") ? "unix-excl" : NULL;
+    const char *vfs_name = sqlite3_vfs_find(TVCC_VFS_NAME)
+        ? TVCC_VFS_NAME
+        : (sqlite3_vfs_find("unix-excl") ? "unix-excl" : NULL);
     int flags = SQLITE_OPEN_READWRITE | SQLITE_OPEN_NOMUTEX;
     if (sqlite3_open_v2(path, &eng->db, flags, vfs_name) != SQLITE_OK) {
         tvcc_db_close(eng);
@@ -681,10 +1192,8 @@ int tvcc_db_open(const char *path, TvccDbEngine **out_eng) {
         return -1;
     }
 
-    static const uint8_t kFeedSort[2] = {KEYINFO_ORDER_DESC, KEYINFO_ORDER_DESC};
-    static const uint8_t kLikesSort[2] = {0, 0};
-    eng->ki_feed = tvcc_alloc_keyinfo(eng->db, 2, kFeedSort);
-    eng->ki_likes = tvcc_alloc_keyinfo(eng->db, 2, kLikesSort);
+    eng->ki_feed = tvcc_alloc_keyinfo(eng->db, 2, 1, 1);
+    eng->ki_likes = tvcc_alloc_keyinfo(eng->db, 1, 1, 0);
     eng->probe_feed = (UnpackedRecord *)sqlite3DbMallocZero(eng->db, sizeof(UnpackedRecord));
     eng->probe_likes = (UnpackedRecord *)sqlite3DbMallocZero(eng->db, sizeof(UnpackedRecord));
     if (!eng->ki_feed || !eng->ki_likes || !eng->probe_feed || !eng->probe_likes) {
@@ -804,14 +1313,8 @@ void tvcc_db_close(TvccDbEngine *eng) {
     if (eng->db) {
         if (eng->probe_feed) sqlite3DbFree(eng->db, eng->probe_feed);
         if (eng->probe_likes) sqlite3DbFree(eng->db, eng->probe_likes);
-        if (eng->ki_feed) {
-            sqlite3DbFree(eng->db, eng->ki_feed->aSortFlags);
-            sqlite3DbFree(eng->db, eng->ki_feed);
-        }
-        if (eng->ki_likes) {
-            sqlite3DbFree(eng->db, eng->ki_likes->aSortFlags);
-            sqlite3DbFree(eng->db, eng->ki_likes);
-        }
+        if (eng->ki_feed) sqlite3KeyInfoUnref(eng->ki_feed);
+        if (eng->ki_likes) sqlite3KeyInfoUnref(eng->ki_likes);
         sqlite3_close(eng->db);
     }
     if (eng->ck_db) {
@@ -919,13 +1422,22 @@ int tvcc_db_feed(TvccDbEngine *eng, TvccFeedResult *out) {
         u32 st_created = 0, st_id = 0;
         pos += getVarint32(rec + pos, st_created);
         pos += getVarint32(rec + pos, st_id);
-        uint32_t clen = tvcc_serial_byte_len(st_created);
-        uint32_t ilen = tvcc_serial_byte_len(st_id);
-        if (hdr_sz + clen + ilen > rec_sz) {
+        if (st_created < 13 || (st_created & 1) == 0) {
             return tvcc_feed_sql_fallback(eng, out);
         }
+        uint32_t clen = (st_created - 13) >> 1;
+        uint32_t ilen = tvcc_serial_byte_len(st_id);
+        if (hdr_sz + clen + ilen > rec_sz || out->text_used + clen > TVCC_TEXT_POOL_CAP) {
+            return tvcc_feed_sql_fallback(eng, out);
+        }
+        TvccPostRow *row = &out->rows[n_rows];
+        row->created_off = out->text_used;
+        row->created_len = clen;
+        memcpy(out->text + out->text_used, rec + hdr_sz, clen);
+        out->text_used += clen;
+
         post_ids[n_rows] = tvcc_decode_be_int(rec + hdr_sz + clen, st_id);
-        out->rows[n_rows].id = post_ids[n_rows];
+        row->id = post_ids[n_rows];
         n_rows++;
 
         if (n_rows == TVCC_FEED_MAX_ROWS) break;
@@ -971,29 +1483,19 @@ int tvcc_db_feed(TvccDbEngine *eng, TvccFeedResult *out) {
     for (uint32_t i = 0; i < n_rows; i++) {
         int64_t pid = order[i].post_id;
         uint32_t slot = order[i].slot;
-        int moved = 0;
-        if (i > 0 && pid == order[i - 1].post_id + 1 && eng->cur_posts->eState == CURSOR_VALID) {
-            if (sqlite3BtreeNext(eng->cur_posts, 0) == SQLITE_OK &&
-                eng->cur_posts->eState == CURSOR_VALID &&
-                sqlite3BtreeIntegerKey(eng->cur_posts) == pid) {
-                moved = 1;
-            }
-        }
-        if (!moved) {
-            int cmp = 0;
-            if (sqlite3BtreeTableMoveto(eng->cur_posts, pid, 0, &cmp) != SQLITE_OK || cmp != 0) {
-                return tvcc_feed_sql_fallback(eng, out);
-            }
+        int cmp = 0;
+        if (sqlite3BtreeTableMoveto(eng->cur_posts, pid, 0, &cmp) != SQLITE_OK || cmp != 0) {
+            return tvcc_feed_sql_fallback(eng, out);
         }
         uint32_t rec_sz = 0;
         const uint8_t *rec = tvcc_fetch_record(eng, eng->cur_posts, &rec_sz);
         int64_t uid = 0;
-        const uint8_t *bptr = NULL, *cptr = NULL;
-        uint32_t blen = 0, clen = 0;
-        if (!tvcc_parse_post_record(rec, rec_sz, &uid, &bptr, &blen, &cptr, &clen)) {
+        const uint8_t *bptr = NULL;
+        uint32_t blen = 0;
+        if (!tvcc_parse_post_uid_body(rec, rec_sz, &uid, &bptr, &blen)) {
             return tvcc_feed_sql_fallback(eng, out);
         }
-        if (out->text_used + blen + clen > TVCC_TEXT_POOL_CAP) {
+        if (out->text_used + blen > TVCC_TEXT_POOL_CAP) {
             return tvcc_feed_sql_fallback(eng, out);
         }
         TvccPostRow *row = &out->rows[slot];
@@ -1001,11 +1503,6 @@ int tvcc_db_feed(TvccDbEngine *eng, TvccFeedResult *out) {
         row->body_len = blen;
         memcpy(out->text + out->text_used, bptr, blen);
         out->text_used += blen;
-
-        row->created_off = out->text_used;
-        row->created_len = clen;
-        memcpy(out->text + out->text_used, cptr, clen);
-        out->text_used += clen;
 
         slot_uids[slot] = uid;
         int found = 0;
