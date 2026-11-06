@@ -25,5 +25,13 @@ if [ ! -f "vendor/sqlite3.c" ] || [ ! -f "vendor/sqlite3.h" ]; then
 fi
 
 export RUSTFLAGS="${RUSTFLAGS:--C target-cpu=native}"
-cargo build --release --locked
+if [ -x "/opt/tvcc-rust/cargo/bin/cargo" ]; then
+  export RUSTUP_HOME="/opt/tvcc-rust/rustup"
+  export CARGO_HOME="${CARGO_HOME:-$HOME/.cargo}"
+  export PATH="/opt/tvcc-rust/cargo/bin:$PATH"
+  /opt/tvcc-rust/cargo/bin/cargo +1.94.0 build --release --locked
+else
+  cargo build --release --locked
+fi
+
 
