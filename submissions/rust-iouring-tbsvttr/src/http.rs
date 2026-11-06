@@ -195,7 +195,6 @@ pub fn write_dynamic_json_response<F>(
     out: &mut Vec<u8>,
     status_code: u16,
     close_conn: bool,
-    _body_scratch: &mut Vec<u8>,
     build_body: F,
 ) where
     F: FnOnce(&mut Vec<u8>),

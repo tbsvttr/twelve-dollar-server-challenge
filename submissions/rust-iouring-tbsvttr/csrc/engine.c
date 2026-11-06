@@ -23,7 +23,7 @@
 
 #define TVCC_CKPT_FRAMES 4096
 #define TVCC_CKPT_FORCE  65536
-#define TVCC_HOLD_MAX_MS 150
+#define TVCC_HOLD_MAX_MS 250
 #define TVCC_CKPT_NICE   19
 
 static pthread_once_t tvcc_sqlite_once = PTHREAD_ONCE_INIT;
@@ -338,39 +338,6 @@ static int tvcc_lookup_single_user(TvccDbEngine *eng, int64_t uid, uint8_t *dst,
     return 1;
 }
 
-typedef struct TvccUserBatchItem {
-    int64_t uid;
-    uint32_t text_off;
-    uint32_t text_len;
-} TvccUserBatchItem;
-
-static int tvcc_batch_lookup_users(TvccDbEngine *eng, TvccUserBatchItem *items, int n_items,
-                                   uint8_t *text_pool, uint32_t *text_used, uint32_t text_cap) {
-    if (n_items <= 0) return 1;
-    /* Sort unique user_ids ascending so cursor moves monotonically across leaf pages. */
-    for (int i = 1; i < n_items; i++) {
-        TvccUserBatchItem key = items[i];
-        int j = i - 1;
-        while (j >= 0 && items[j].uid > key.uid) {
-            items[j + 1] = items[j];
-            j--;
-        }
-        items[j + 1] = key;
-    }
-
-    for (int i = 0; i < n_items; i++) {
-        uint32_t ulen = 0;
-        uint32_t rem = text_cap - *text_used;
-        if (!tvcc_lookup_single_user(eng, items[i].uid, text_pool + *text_used, rem, &ulen)) {
-            return 0;
-        }
-        items[i].text_off = *text_used;
-        items[i].text_len = ulen;
-        *text_used += ulen;
-    }
-    return 1;
-}
-
 static int tvcc_count_likes_range(TvccDbEngine *eng, int64_t lo, int64_t hi, uint32_t *counts);
 
 static int tvcc_count_likes(TvccDbEngine *eng, int64_t post_id, int64_t *out_count) {
@@ -564,7 +531,8 @@ static long tvcc_ms_since(const struct timespec *t0) {
 static void *tvcc_checkpoint_worker(void *arg) {
     TvccDbEngine *eng = (TvccDbEngine *)arg;
 #ifdef __linux__
-    setpriority(PRIO_PROCESS, (id_t)syscall(SYS_gettid), TVCC_CKPT_NICE);
+    id_t tid = (id_t)syscall(SYS_gettid);
+    setpriority(PRIO_PROCESS, tid, TVCC_CKPT_NICE);
 #else
     int nice_rc = nice(TVCC_CKPT_NICE);
     (void)nice_rc;
@@ -580,11 +548,19 @@ static void *tvcc_checkpoint_worker(void *arg) {
         if (st == CK_STOP) {
             break;
         }
+#ifdef __linux__
+        setpriority(PRIO_PROCESS, tid, st == CK_TAIL ? 0 : TVCC_CKPT_NICE);
+#endif
 
         int nlog = -1, ndone = -2;
         int rc = sqlite3_wal_checkpoint_v2(
             eng->ck_db, "main", SQLITE_CHECKPOINT_PASSIVE, &nlog, &ndone
         );
+#ifdef __linux__
+        if (st == CK_TAIL) {
+            setpriority(PRIO_PROCESS, tid, TVCC_CKPT_NICE);
+        }
+#endif
         pthread_mutex_lock(&eng->ck_mu);
         eng->ck_full = (rc == SQLITE_OK && nlog == ndone);
         if (eng->ck_state != CK_STOP) {
@@ -593,6 +569,10 @@ static void *tvcc_checkpoint_worker(void *arg) {
         pthread_mutex_unlock(&eng->ck_mu);
     }
     return NULL;
+}
+
+int tvcc_db_writes_held(TvccDbEngine *eng) {
+    return eng ? eng->writes_held : 0;
 }
 
 int tvcc_db_poll_checkpoint(TvccDbEngine *eng, int has_inflight_reads) {
@@ -990,9 +970,9 @@ int tvcc_db_feed(TvccDbEngine *eng, TvccFeedResult *out) {
         }
     }
 
-    int64_t slot_uids[TVCC_FEED_MAX_ROWS];
-    TvccUserBatchItem uniq_users[TVCC_FEED_MAX_ROWS];
-    int n_uniq_users = 0;
+    int64_t prev_uid = -1;
+    uint32_t prev_author_off = 0;
+    uint32_t prev_author_len = 0;
 
     for (uint32_t i = 0; i < n_rows; i++) {
         int64_t pid = order[i].post_id;
@@ -1028,32 +1008,21 @@ int tvcc_db_feed(TvccDbEngine *eng, TvccFeedResult *out) {
         memcpy(out->text + out->text_used, bptr, blen);
         out->text_used += blen;
 
-        slot_uids[slot] = uid;
-        int found = 0;
-        for (int u = 0; u < n_uniq_users; u++) {
-            if (uniq_users[u].uid == uid) {
-                found = 1;
-                break;
+        if (uid == prev_uid) {
+            row->author_off = prev_author_off;
+            row->author_len = prev_author_len;
+        } else {
+            uint32_t ulen = 0;
+            uint32_t rem = TVCC_TEXT_POOL_CAP - out->text_used;
+            if (!tvcc_lookup_single_user(eng, uid, out->text + out->text_used, rem, &ulen)) {
+                return tvcc_feed_sql_fallback(eng, out);
             }
-        }
-        if (!found) {
-            uniq_users[n_uniq_users].uid = uid;
-            n_uniq_users++;
-        }
-    }
-
-    if (!tvcc_batch_lookup_users(eng, uniq_users, n_uniq_users, out->text, &out->text_used, TVCC_TEXT_POOL_CAP)) {
-        return tvcc_feed_sql_fallback(eng, out);
-    }
-
-    for (uint32_t slot = 0; slot < n_rows; slot++) {
-        int64_t uid = slot_uids[slot];
-        for (int u = 0; u < n_uniq_users; u++) {
-            if (uniq_users[u].uid == uid) {
-                out->rows[slot].author_off = uniq_users[u].text_off;
-                out->rows[slot].author_len = uniq_users[u].text_len;
-                break;
-            }
+            row->author_off = out->text_used;
+            row->author_len = ulen;
+            prev_uid = uid;
+            prev_author_off = out->text_used;
+            prev_author_len = ulen;
+            out->text_used += ulen;
         }
     }
 

@@ -996,7 +996,7 @@ mod linux_uring {
         while off < buf.len() {
             match parse_http_request(&buf[off..]) {
                 ParseState::Complete(req) => {
-                    if writes_held && App::is_write_request(&req) {
+                    if (writes_held || app.db.writes_held()) && App::is_write_request(&req) {
                         if !c.held {
                             c.held = true;
                             held.push((ri as u8, slot, c.generation));

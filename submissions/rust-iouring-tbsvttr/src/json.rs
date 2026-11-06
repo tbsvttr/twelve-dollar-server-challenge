@@ -299,7 +299,7 @@ pub fn write_single_post_json(
         c.lit(b",\"body\":\"");
         c.esc(body);
         c.lit(b"\",\"created_at\":\"");
-        c.esc(created_at);
+        c.lit(created_at);
         c.lit(b"\",\"author\":\"");
         c.esc(author);
         c.lit(b"\",\"like_count\":");
@@ -343,7 +343,7 @@ pub fn write_feed_result(out: &mut Vec<u8>, feed: &TvccFeedResult) {
             c.lit(b"\",\"created_at\":\"");
             let c_start = row.created_off as usize;
             let c_end = c_start + row.created_len as usize;
-            c.esc(&pool[c_start..c_end]);
+            c.lit(&pool[c_start..c_end]);
             c.lit(b"\",\"author\":\"");
             let a_start = row.author_off as usize;
             let a_end = a_start + row.author_len as usize;

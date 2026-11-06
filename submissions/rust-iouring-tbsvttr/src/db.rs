@@ -80,6 +80,8 @@ unsafe extern "C" {
     fn tvcc_db_commit_batch(eng: *mut TvccDbEngine) -> c_int;
     fn tvcc_db_end_read_batch(eng: *mut TvccDbEngine);
     fn tvcc_db_poll_checkpoint(eng: *mut TvccDbEngine, has_inflight_reads: c_int) -> c_int;
+    #[allow(dead_code)]
+    fn tvcc_db_writes_held(eng: *mut TvccDbEngine) -> c_int;
 }
 
 pub struct Db {
@@ -167,6 +169,12 @@ impl Db {
     #[inline]
     pub fn poll_checkpoint(&mut self, has_inflight_reads: bool) -> bool {
         unsafe { tvcc_db_poll_checkpoint(self.raw, i32::from(has_inflight_reads)) != 0 }
+    }
+
+    #[allow(dead_code)]
+    #[inline]
+    pub fn writes_held(&self) -> bool {
+        unsafe { tvcc_db_writes_held(self.raw) != 0 }
     }
 }
 

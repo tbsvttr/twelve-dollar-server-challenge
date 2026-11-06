@@ -29,7 +29,6 @@ pub struct App {
     started_at: Instant,
     feed_scratch: Box<TvccFeedResult>,
     post_scratch: Box<TvccSinglePostResult>,
-    json_scratch: Vec<u8>,
     body_scratch: Vec<u8>,
 }
 
@@ -41,7 +40,6 @@ impl App {
             started_at: Instant::now(),
             feed_scratch: Box::new(TvccFeedResult::default()),
             post_scratch: Box::new(TvccSinglePostResult::default()),
-            json_scratch: Vec::with_capacity(8192),
             body_scratch: Vec::with_capacity(2048),
         }
     }
@@ -95,7 +93,7 @@ impl App {
     fn handle_feed(&mut self, close_conn: bool, out: &mut Vec<u8>) {
         if self.db.feed(&mut self.feed_scratch).is_ok() {
             let feed_ref = &*self.feed_scratch;
-            write_dynamic_json_response(out, 200, close_conn, &mut self.json_scratch, |b| {
+            write_dynamic_json_response(out, 200, close_conn, |b| {
                 write_feed_result(b, feed_ref);
             });
         } else {
@@ -111,7 +109,7 @@ impl App {
         match self.db.get_post(post_id, &mut self.post_scratch) {
             Ok(true) => {
                 let post_ref = &*self.post_scratch;
-                write_dynamic_json_response(out, 200, close_conn, &mut self.json_scratch, |b| {
+                write_dynamic_json_response(out, 200, close_conn, |b| {
                     write_single_post_result(b, post_ref);
                 });
             }
@@ -127,7 +125,7 @@ impl App {
     fn handle_health(&mut self, close_conn: bool, out: &mut Vec<u8>) {
         if self.db.health() {
             let uptime_s = self.started_at.elapsed().as_secs();
-            write_dynamic_json_response(out, 200, close_conn, &mut self.json_scratch, |b| {
+            write_dynamic_json_response(out, 200, close_conn, |b| {
                 write_health_json(b, uptime_s);
             });
         } else {
@@ -165,7 +163,7 @@ impl App {
         match self.db.insert_post(claims.user_id, trimmed_body, &created_at) {
             Ok(post_id) => {
                 let author = &claims.username[..claims.username_len];
-                write_dynamic_json_response(out, 201, req.close_conn, &mut self.json_scratch, |b| {
+                write_dynamic_json_response(out, 201, req.close_conn, |b| {
                     write_single_post_json(b, post_id, trimmed_body, &created_at, author, 0);
                 });
             }
@@ -193,12 +191,12 @@ impl App {
 
         match self.db.like_post(post_id, claims.user_id) {
             Ok(LikeStatus::Created) => {
-                write_dynamic_json_response(out, 201, req.close_conn, &mut self.json_scratch, |b| {
+                write_dynamic_json_response(out, 201, req.close_conn, |b| {
                     write_like_json(b, false, post_id);
                 });
             }
             Ok(LikeStatus::AlreadyLiked) => {
-                write_dynamic_json_response(out, 200, req.close_conn, &mut self.json_scratch, |b| {
+                write_dynamic_json_response(out, 200, req.close_conn, |b| {
                     write_like_json(b, true, post_id);
                 });
             }
